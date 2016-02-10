@@ -6,8 +6,12 @@ using System.Data.SqlClient;
 
 namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 {
+    /*
+     * A class that return magento export table
+     */
     class UducatExportTable : ExportTable
     {
+        /* constructor that initialize fields */
         public UducatExportTable()
         {
             mainTable = new DataTable();
@@ -132,7 +136,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                object[] list = getData(sku);
+                ArrayList list = getData(sku);
 
                 row = mainTable.NewRow();
            
@@ -218,10 +222,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* method that get the data from given sku */
-        private object[] getData(string sku)
+        private ArrayList getData(string sku)
         {
             // local field for storing data
-            object[] list = new object[9];
+            ArrayList list = new ArrayList();
 
             // allocate design from sku
             string color = sku.Substring(sku.LastIndexOf('-') + 1);
@@ -236,14 +240,14 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             reader.Read();
             for (int i = 0; i <= 3; i++)
             {
-                list[i] = reader.GetValue(i);
+                list.Add(reader.GetValue(i));
             }
             reader.Close();
             // [4] keywords
             command = new SqlCommand("SELECT Design_Service_family_Category_UDUCAT FROM ref_Families WHERE Design_Service_Family_Code = \'" + list[0] + "\';", connection);
             reader = command.ExecuteReader();
             reader.Read();
-            list[4] = reader.GetString(0);
+            list.Add(reader.GetString(0));
             reader.Close();
             // [5] for all related to price, [6] image, [7] active
             command = new SqlCommand("SELECT Base_Price, Image_1_Path, Active FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
@@ -251,14 +255,14 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             reader.Read();
             for (int i = 0; i <= 2; i++)
             {
-                list[i] = reader.GetValue(i);
+                list.Add(reader.GetValue(i));
             }
             reader.Close();
             // [8] name En
             command = new SqlCommand("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
             reader = command.ExecuteReader();
             reader.Read();
-            list[8] = reader.GetString(0);
+            list.Add(reader.GetString(0));
             connection.Close();
 
             return list;

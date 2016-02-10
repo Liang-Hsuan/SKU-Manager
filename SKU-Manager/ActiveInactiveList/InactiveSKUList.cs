@@ -19,7 +19,14 @@ namespace SKU_Manager.ActiveInactiveList
         private void InactiveSKUList_Load(object sender, EventArgs e)
         {
             InactiveSkuTable inactiveSkuTable = new InactiveSkuTable();
-            dataGridView.DataSource = inactiveSkuTable.Table;
+            try
+            {
+                dataGridView.DataSource = inactiveSkuTable.Table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         /* the event for exit button click */

@@ -90,7 +90,14 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new ActiveSkuTable().Table);
+                try
+                {
+                    ds.Tables.Add(new ActiveSkuTable().Table);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 string[] names = new string[1];
                 names[0] = "Active SKU Export Sheet";
                 new XlExport().nowExport(saveFileDialog.FileName, ds, names);
@@ -152,7 +159,14 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new InactiveSkuTable().Table);
+                try
+                {
+                    ds.Tables.Add(new InactiveSkuTable().Table);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 string[] names = new string[1];
                 names[0] = "Inactive SKU Export Sheet";
                 new XlExport().nowExport(saveFileDialog.FileName, ds, names);
@@ -727,6 +741,52 @@ namespace SKU_Manager.MainForms
                     }
 
                     Properties.Settings.Default.UducatTable = ds.Tables[0];
+                }
+
+                showExportMessage(saveFileDialog.FileName);
+            }
+        }
+
+        /* the event for distributor central button click that export distributor central table */
+        private void distributorCentralButton_Click(object sender, EventArgs e)
+        {
+            // local field for excel export
+            XlExport export = new XlExport();
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                ds.Reset();
+                string[] names = new string[1];
+                names[0] = "Distributor Central Export Sheet";
+
+                if (Properties.Settings.Default.DistributorCentralTable != null)   // tables have already been saved
+                {
+                    ds.Tables.Add(Properties.Settings.Default.DistributorCentralTable);
+
+                    // export the excel files      
+                    export.nowExport(saveFileDialog.FileName, ds, names);
+                }
+                else    // load the tables
+                {
+                    exportTables = new ExportTable[1];
+                    exportTables[0] = new DistributorCentralExportTable();
+                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                    form.ShowDialog(this);
+
+                    if (form.Complete)  // the tables have complete
+                    {
+                        // get the data
+                        ds = form.Tables;
+
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names);
+                    }
+                    else    // user close the form early 
+                    {
+                        return;
+                    }
+
+                    Properties.Settings.Default.DistributorCentralTable = ds.Tables[0];
                 }
 
                 showExportMessage(saveFileDialog.FileName);

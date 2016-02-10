@@ -28,11 +28,8 @@ namespace SKU_Manager.ExcelExportModules
             // add worksheet for each table
             addSheet(ds);
 
-            // add column name to each worksheet
-            addColumn(ds, names);
-
-            // add data to each worksheet
-            addData(ds);
+            // add column names and data to each worksheet
+            addData(ds, names);
 
             // save file from the given save path 
             xlWorkBook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
@@ -60,49 +57,45 @@ namespace SKU_Manager.ExcelExportModules
             }
         }
 
-        /* method that add column to the table */
-        private void addColumn(DataSet ds, string[] names)
-        {
-            int i = 1;
-
-            // add column name to each worksheet
-            foreach (DataTable table in ds.Tables)
-            {
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets[i];
-                xlWorkSheet.Name = names[i - 1];
-                i++;
-
-                // add column name to the table
-                int k = 1;
-                foreach (DataColumn column in table.Columns)
-                {
-                    xlWorkSheet.Cells[1, k] = column.ColumnName;
-                    k++;
-                }
-                Excel.Range range = xlWorkSheet.Cells[1, 1] as Excel.Range;
-                range.EntireRow.Font.Bold = true;
-                range.EntireRow.Columns.AutoFit();
-            }
-        }
-
-        /* a method that add data to each sheet */
-        private void addData(DataSet ds)
+        /* method that add column names and data to the tables */
+        private void addData(DataSet ds, string[] names)
         {
             int length = ds.Tables.Count;
 
-            // add data to each sheet 
             for (int i = 0; i < length; i++)
             {
                 xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets[i + 1];
+                xlWorkSheet.Name = names[i];
 
-                for (int j = 0; j < ds.Tables[i].Rows.Count; j++)
+                int rows = ds.Tables[i].Rows.Count;
+                int columns = ds.Tables[i].Columns.Count;
+                var data = new object[rows + 1, columns];
+
+                // insert column names
+                for (int column = 0; column < columns; column++)
                 {
-                    for (int k = 0; k < ds.Tables[i].Columns.Count; k++)
+                    data[0, column] = ds.Tables[i].Columns[column].ColumnName;
+                }
+
+                // insert data
+                for (int row = 0; row < rows; row++)
+                {
+                    for (int column = 0; column < columns; column++)
                     {
-                        object data = ds.Tables[i].Rows[j][k];
-                        xlWorkSheet.Cells[j + 2, k + 1] = data;
+                        data[row + 1, column] = ds.Tables[i].Rows[row][column];
                     }
                 }
+
+                // write data to the excel worksheet
+                Excel.Range beginWrite = xlWorkSheet.Cells[1, 1];
+                Excel.Range endWrite = xlWorkSheet.Cells[rows + 1, columns];
+                Excel.Range sheetData = xlWorkSheet.Range[beginWrite, endWrite];
+                sheetData.Value2 = data;
+
+                // format headers
+                Excel.Range range = xlWorkSheet.Cells[1, 1] as Excel.Range;
+                range.EntireRow.Font.Bold = true;
+                range.EntireRow.Columns.AutoFit();
             }
         }
 

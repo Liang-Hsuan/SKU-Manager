@@ -174,6 +174,13 @@
             this.model5Textbox = new System.Windows.Forms.TextBox();
             this.template1Textbox = new System.Windows.Forms.TextBox();
             this.template2Textbox = new System.Windows.Forms.TextBox();
+            this.updateSkuDetailButton = new System.Windows.Forms.Button();
+            this.completeLabel = new System.Windows.Forms.Label();
+            this.manualRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoRadioButton = new System.Windows.Forms.RadioButton();
+            this.autoManualPanel = new System.Windows.Forms.Panel();
+            this.backgroundWorkerImagePath = new System.ComponentModel.BackgroundWorker();
+            this.autoManualPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // usDutyTextbox
@@ -549,7 +556,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 73;
+            this.progressBar.TabIndex = 75;
             // 
             // wmMerchantLabel
             // 
@@ -559,7 +566,7 @@
             this.wmMerchantLabel.Location = new System.Drawing.Point(4, 889);
             this.wmMerchantLabel.Name = "wmMerchantLabel";
             this.wmMerchantLabel.Size = new System.Drawing.Size(145, 20);
-            this.wmMerchantLabel.TabIndex = 71;
+            this.wmMerchantLabel.TabIndex = 73;
             this.wmMerchantLabel.Text = "WM Merchant SKU";
             // 
             // wmManufacturerLabel
@@ -570,7 +577,7 @@
             this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 863);
             this.wmManufacturerLabel.Name = "wmManufacturerLabel";
             this.wmManufacturerLabel.Size = new System.Drawing.Size(173, 20);
-            this.wmManufacturerLabel.TabIndex = 69;
+            this.wmManufacturerLabel.TabIndex = 71;
             this.wmManufacturerLabel.Text = "WM Manufacturer SKU";
             // 
             // staplesLabel
@@ -581,7 +588,7 @@
             this.staplesLabel.Location = new System.Drawing.Point(4, 733);
             this.staplesLabel.Name = "staplesLabel";
             this.staplesLabel.Size = new System.Drawing.Size(144, 20);
-            this.staplesLabel.TabIndex = 59;
+            this.staplesLabel.TabIndex = 61;
             this.staplesLabel.Text = "STAPLES.CA SKU";
             // 
             // costcoLabel
@@ -592,7 +599,7 @@
             this.costcoLabel.Location = new System.Drawing.Point(4, 577);
             this.costcoLabel.Name = "costcoLabel";
             this.costcoLabel.Size = new System.Drawing.Size(138, 20);
-            this.costcoLabel.TabIndex = 47;
+            this.costcoLabel.TabIndex = 49;
             this.costcoLabel.Text = "COSTCO.CA SKU";
             // 
             // inactiveListButton
@@ -603,7 +610,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(379, 1013);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 76;
+            this.inactiveListButton.TabIndex = 78;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -616,7 +623,7 @@
             this.activeListButton.Location = new System.Drawing.Point(193, 1013);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 75;
+            this.activeListButton.TabIndex = 77;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -630,7 +637,7 @@
             this.updateSkuButton.Location = new System.Drawing.Point(193, 931);
             this.updateSkuButton.Name = "updateSkuButton";
             this.updateSkuButton.Size = new System.Drawing.Size(370, 76);
-            this.updateSkuButton.TabIndex = 74;
+            this.updateSkuButton.TabIndex = 76;
             this.updateSkuButton.Text = "Update SKU";
             this.updateSkuButton.UseVisualStyleBackColor = false;
             this.updateSkuButton.Click += new System.EventHandler(this.updateSkuButton_Click);
@@ -643,7 +650,7 @@
             this.promoMarketingLabel.Location = new System.Drawing.Point(4, 837);
             this.promoMarketingLabel.Name = "promoMarketingLabel";
             this.promoMarketingLabel.Size = new System.Drawing.Size(162, 20);
-            this.promoMarketingLabel.TabIndex = 67;
+            this.promoMarketingLabel.TabIndex = 69;
             this.promoMarketingLabel.Text = "PromoMarketing SKU";
             // 
             // walmartComLabel
@@ -654,7 +661,7 @@
             this.walmartComLabel.Location = new System.Drawing.Point(4, 785);
             this.walmartComLabel.Name = "walmartComLabel";
             this.walmartComLabel.Size = new System.Drawing.Size(166, 20);
-            this.walmartComLabel.TabIndex = 63;
+            this.walmartComLabel.TabIndex = 65;
             this.walmartComLabel.Text = "WALMART.COM SKU";
             // 
             // walmartCaLabel
@@ -665,7 +672,7 @@
             this.walmartCaLabel.Location = new System.Drawing.Point(3, 759);
             this.walmartCaLabel.Name = "walmartCaLabel";
             this.walmartCaLabel.Size = new System.Drawing.Size(152, 20);
-            this.walmartCaLabel.TabIndex = 61;
+            this.walmartCaLabel.TabIndex = 63;
             this.walmartCaLabel.Text = "WALMART.CA SKU";
             // 
             // searsCaLabel
@@ -676,7 +683,7 @@
             this.searsCaLabel.Location = new System.Drawing.Point(4, 707);
             this.searsCaLabel.Name = "searsCaLabel";
             this.searsCaLabel.Size = new System.Drawing.Size(128, 20);
-            this.searsCaLabel.TabIndex = 57;
+            this.searsCaLabel.TabIndex = 59;
             this.searsCaLabel.Text = "SEARS.CA SKU";
             // 
             // amazonComLabel
@@ -687,7 +694,7 @@
             this.amazonComLabel.Location = new System.Drawing.Point(4, 681);
             this.amazonComLabel.Name = "amazonComLabel";
             this.amazonComLabel.Size = new System.Drawing.Size(154, 20);
-            this.amazonComLabel.TabIndex = 55;
+            this.amazonComLabel.TabIndex = 57;
             this.amazonComLabel.Text = "AMAZON.COM SKU";
             // 
             // amazonCaLabel
@@ -698,7 +705,7 @@
             this.amazonCaLabel.Location = new System.Drawing.Point(4, 655);
             this.amazonCaLabel.Name = "amazonCaLabel";
             this.amazonCaLabel.Size = new System.Drawing.Size(144, 20);
-            this.amazonCaLabel.TabIndex = 53;
+            this.amazonCaLabel.TabIndex = 55;
             this.amazonCaLabel.Text = "AMAZON.CA  SKU";
             // 
             // shopcaLabel
@@ -709,7 +716,7 @@
             this.shopcaLabel.Location = new System.Drawing.Point(4, 629);
             this.shopcaLabel.Name = "shopcaLabel";
             this.shopcaLabel.Size = new System.Drawing.Size(117, 20);
-            this.shopcaLabel.TabIndex = 51;
+            this.shopcaLabel.TabIndex = 53;
             this.shopcaLabel.Text = "SHOP.CA SKU";
             // 
             // bestbuyLabel
@@ -720,7 +727,7 @@
             this.bestbuyLabel.Location = new System.Drawing.Point(4, 603);
             this.bestbuyLabel.Name = "bestbuyLabel";
             this.bestbuyLabel.Size = new System.Drawing.Size(148, 20);
-            this.bestbuyLabel.TabIndex = 49;
+            this.bestbuyLabel.TabIndex = 51;
             this.bestbuyLabel.Text = "BESTBUY.CA SKU";
             // 
             // tscLabel
@@ -731,7 +738,7 @@
             this.tscLabel.Location = new System.Drawing.Point(4, 551);
             this.tscLabel.Name = "tscLabel";
             this.tscLabel.Size = new System.Drawing.Size(103, 20);
-            this.tscLabel.TabIndex = 45;
+            this.tscLabel.TabIndex = 47;
             this.tscLabel.Text = "TSC.CA SKU";
             // 
             // magentoLabel
@@ -742,7 +749,7 @@
             this.magentoLabel.Location = new System.Drawing.Point(4, 525);
             this.magentoLabel.Name = "magentoLabel";
             this.magentoLabel.Size = new System.Drawing.Size(126, 20);
-            this.magentoLabel.TabIndex = 43;
+            this.magentoLabel.TabIndex = 45;
             this.magentoLabel.Text = "MAGENTO SKU";
             // 
             // ashlinLabel
@@ -753,7 +760,7 @@
             this.ashlinLabel.Location = new System.Drawing.Point(4, 499);
             this.ashlinLabel.Name = "ashlinLabel";
             this.ashlinLabel.Size = new System.Drawing.Size(89, 20);
-            this.ashlinLabel.TabIndex = 41;
+            this.ashlinLabel.TabIndex = 43;
             this.ashlinLabel.Text = "Ashlin URL";
             // 
             // onlineDetailsLabel
@@ -764,7 +771,7 @@
             this.onlineDetailsLabel.Location = new System.Drawing.Point(0, 458);
             this.onlineDetailsLabel.Name = "onlineDetailsLabel";
             this.onlineDetailsLabel.Size = new System.Drawing.Size(770, 29);
-            this.onlineDetailsLabel.TabIndex = 40;
+            this.onlineDetailsLabel.TabIndex = 42;
             this.onlineDetailsLabel.Text = "Online Details";
             this.onlineDetailsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -776,7 +783,7 @@
             this.distributorCentralLabel.Location = new System.Drawing.Point(4, 811);
             this.distributorCentralLabel.Name = "distributorCentralLabel";
             this.distributorCentralLabel.Size = new System.Drawing.Size(174, 20);
-            this.distributorCentralLabel.TabIndex = 65;
+            this.distributorCentralLabel.TabIndex = 67;
             this.distributorCentralLabel.Text = "Distributor Central SKU";
             // 
             // template2Label
@@ -787,7 +794,7 @@
             this.template2Label.Location = new System.Drawing.Point(5, 1653);
             this.template2Label.Name = "template2Label";
             this.template2Label.Size = new System.Drawing.Size(106, 16);
-            this.template2Label.TabIndex = 140;
+            this.template2Label.TabIndex = 144;
             this.template2Label.Text = "Template URL 2";
             // 
             // template1Label
@@ -798,7 +805,7 @@
             this.template1Label.Location = new System.Drawing.Point(5, 1627);
             this.template1Label.Name = "template1Label";
             this.template1Label.Size = new System.Drawing.Size(106, 16);
-            this.template1Label.TabIndex = 138;
+            this.template1Label.TabIndex = 142;
             this.template1Label.Text = "Template URL 1";
             // 
             // model5Label
@@ -809,7 +816,7 @@
             this.model5Label.Location = new System.Drawing.Point(5, 1601);
             this.model5Label.Name = "model5Label";
             this.model5Label.Size = new System.Drawing.Size(126, 16);
-            this.model5Label.TabIndex = 135;
+            this.model5Label.TabIndex = 139;
             this.model5Label.Text = "Model Image 5 path";
             // 
             // model4Label
@@ -820,7 +827,7 @@
             this.model4Label.Location = new System.Drawing.Point(5, 1575);
             this.model4Label.Name = "model4Label";
             this.model4Label.Size = new System.Drawing.Size(126, 16);
-            this.model4Label.TabIndex = 132;
+            this.model4Label.TabIndex = 136;
             this.model4Label.Text = "Model Image 4 path";
             // 
             // model3Label
@@ -831,7 +838,7 @@
             this.model3Label.Location = new System.Drawing.Point(5, 1549);
             this.model3Label.Name = "model3Label";
             this.model3Label.Size = new System.Drawing.Size(126, 16);
-            this.model3Label.TabIndex = 129;
+            this.model3Label.TabIndex = 133;
             this.model3Label.Text = "Model Image 3 path";
             // 
             // model2Label
@@ -842,7 +849,7 @@
             this.model2Label.Location = new System.Drawing.Point(5, 1523);
             this.model2Label.Name = "model2Label";
             this.model2Label.Size = new System.Drawing.Size(126, 16);
-            this.model2Label.TabIndex = 126;
+            this.model2Label.TabIndex = 130;
             this.model2Label.Text = "Model Image 2 path";
             // 
             // model1Label
@@ -853,7 +860,7 @@
             this.model1Label.Location = new System.Drawing.Point(5, 1497);
             this.model1Label.Name = "model1Label";
             this.model1Label.Size = new System.Drawing.Size(126, 16);
-            this.model1Label.TabIndex = 123;
+            this.model1Label.TabIndex = 127;
             this.model1Label.Text = "Model Image 1 path";
             // 
             // group5Label
@@ -864,7 +871,7 @@
             this.group5Label.Location = new System.Drawing.Point(4, 1471);
             this.group5Label.Name = "group5Label";
             this.group5Label.Size = new System.Drawing.Size(125, 16);
-            this.group5Label.TabIndex = 120;
+            this.group5Label.TabIndex = 124;
             this.group5Label.Text = "Group Image 5 path";
             // 
             // group4Label
@@ -875,7 +882,7 @@
             this.group4Label.Location = new System.Drawing.Point(5, 1445);
             this.group4Label.Name = "group4Label";
             this.group4Label.Size = new System.Drawing.Size(125, 16);
-            this.group4Label.TabIndex = 117;
+            this.group4Label.TabIndex = 121;
             this.group4Label.Text = "Group Image 4 path";
             // 
             // group3Label
@@ -886,7 +893,7 @@
             this.group3Label.Location = new System.Drawing.Point(5, 1419);
             this.group3Label.Name = "group3Label";
             this.group3Label.Size = new System.Drawing.Size(125, 16);
-            this.group3Label.TabIndex = 114;
+            this.group3Label.TabIndex = 118;
             this.group3Label.Text = "Group Image 3 path";
             // 
             // group2Label
@@ -897,7 +904,7 @@
             this.group2Label.Location = new System.Drawing.Point(5, 1393);
             this.group2Label.Name = "group2Label";
             this.group2Label.Size = new System.Drawing.Size(125, 16);
-            this.group2Label.TabIndex = 111;
+            this.group2Label.TabIndex = 115;
             this.group2Label.Text = "Group Image 2 path";
             // 
             // group1Label
@@ -908,7 +915,7 @@
             this.group1Label.Location = new System.Drawing.Point(4, 1367);
             this.group1Label.Name = "group1Label";
             this.group1Label.Size = new System.Drawing.Size(125, 16);
-            this.group1Label.TabIndex = 108;
+            this.group1Label.TabIndex = 112;
             this.group1Label.Text = "Group Image 1 path";
             // 
             // image10Label
@@ -919,7 +926,7 @@
             this.image10Label.Location = new System.Drawing.Point(5, 1341);
             this.image10Label.Name = "image10Label";
             this.image10Label.Size = new System.Drawing.Size(93, 16);
-            this.image10Label.TabIndex = 105;
+            this.image10Label.TabIndex = 109;
             this.image10Label.Text = "Image 10 Path";
             // 
             // image9Label
@@ -930,7 +937,7 @@
             this.image9Label.Location = new System.Drawing.Point(5, 1315);
             this.image9Label.Name = "image9Label";
             this.image9Label.Size = new System.Drawing.Size(86, 16);
-            this.image9Label.TabIndex = 102;
+            this.image9Label.TabIndex = 106;
             this.image9Label.Text = "Image 9 Path";
             // 
             // image8Label
@@ -941,7 +948,7 @@
             this.image8Label.Location = new System.Drawing.Point(5, 1289);
             this.image8Label.Name = "image8Label";
             this.image8Label.Size = new System.Drawing.Size(86, 16);
-            this.image8Label.TabIndex = 99;
+            this.image8Label.TabIndex = 103;
             this.image8Label.Text = "Image 8 Path";
             // 
             // image7Label
@@ -952,7 +959,7 @@
             this.image7Label.Location = new System.Drawing.Point(5, 1263);
             this.image7Label.Name = "image7Label";
             this.image7Label.Size = new System.Drawing.Size(86, 16);
-            this.image7Label.TabIndex = 96;
+            this.image7Label.TabIndex = 100;
             this.image7Label.Text = "Image 7 Path";
             // 
             // image6Label
@@ -963,7 +970,7 @@
             this.image6Label.Location = new System.Drawing.Point(5, 1237);
             this.image6Label.Name = "image6Label";
             this.image6Label.Size = new System.Drawing.Size(86, 16);
-            this.image6Label.TabIndex = 93;
+            this.image6Label.TabIndex = 97;
             this.image6Label.Text = "Image 6 Path";
             // 
             // image5Label
@@ -974,7 +981,7 @@
             this.image5Label.Location = new System.Drawing.Point(5, 1211);
             this.image5Label.Name = "image5Label";
             this.image5Label.Size = new System.Drawing.Size(86, 16);
-            this.image5Label.TabIndex = 90;
+            this.image5Label.TabIndex = 94;
             this.image5Label.Text = "Image 5 Path";
             // 
             // image4Label
@@ -985,7 +992,7 @@
             this.image4Label.Location = new System.Drawing.Point(5, 1185);
             this.image4Label.Name = "image4Label";
             this.image4Label.Size = new System.Drawing.Size(86, 16);
-            this.image4Label.TabIndex = 87;
+            this.image4Label.TabIndex = 91;
             this.image4Label.Text = "Image 4 Path";
             // 
             // image3Label
@@ -996,7 +1003,7 @@
             this.image3Label.Location = new System.Drawing.Point(5, 1159);
             this.image3Label.Name = "image3Label";
             this.image3Label.Size = new System.Drawing.Size(86, 16);
-            this.image3Label.TabIndex = 84;
+            this.image3Label.TabIndex = 88;
             this.image3Label.Text = "Image 3 Path";
             // 
             // image2Label
@@ -1007,7 +1014,7 @@
             this.image2Label.Location = new System.Drawing.Point(5, 1133);
             this.image2Label.Name = "image2Label";
             this.image2Label.Size = new System.Drawing.Size(86, 16);
-            this.image2Label.TabIndex = 81;
+            this.image2Label.TabIndex = 85;
             this.image2Label.Text = "Image 2 Path";
             // 
             // image1Label
@@ -1018,7 +1025,7 @@
             this.image1Label.Location = new System.Drawing.Point(5, 1107);
             this.image1Label.Name = "image1Label";
             this.image1Label.Size = new System.Drawing.Size(86, 16);
-            this.image1Label.TabIndex = 78;
+            this.image1Label.TabIndex = 82;
             this.image1Label.Text = "Image 1 Path";
             // 
             // label24
@@ -1029,7 +1036,7 @@
             this.label24.Location = new System.Drawing.Point(0, 1066);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(770, 29);
-            this.label24.TabIndex = 77;
+            this.label24.TabIndex = 81;
             this.label24.Text = "Image Paths";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1075,7 +1082,7 @@
             this.image1AltButton.Location = new System.Drawing.Point(686, 1104);
             this.image1AltButton.Name = "image1AltButton";
             this.image1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image1AltButton.TabIndex = 80;
+            this.image1AltButton.TabIndex = 84;
             this.image1AltButton.Text = "See Alt";
             this.image1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image1AltButton.UseVisualStyleBackColor = false;
@@ -1091,7 +1098,7 @@
             this.image2AltButton.Location = new System.Drawing.Point(686, 1130);
             this.image2AltButton.Name = "image2AltButton";
             this.image2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image2AltButton.TabIndex = 83;
+            this.image2AltButton.TabIndex = 87;
             this.image2AltButton.Text = "See Alt";
             this.image2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image2AltButton.UseVisualStyleBackColor = false;
@@ -1107,7 +1114,7 @@
             this.image3AltButton.Location = new System.Drawing.Point(686, 1156);
             this.image3AltButton.Name = "image3AltButton";
             this.image3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image3AltButton.TabIndex = 86;
+            this.image3AltButton.TabIndex = 90;
             this.image3AltButton.Text = "See Alt";
             this.image3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image3AltButton.UseVisualStyleBackColor = false;
@@ -1123,7 +1130,7 @@
             this.image4AltButton.Location = new System.Drawing.Point(686, 1183);
             this.image4AltButton.Name = "image4AltButton";
             this.image4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image4AltButton.TabIndex = 89;
+            this.image4AltButton.TabIndex = 93;
             this.image4AltButton.Text = "See Alt";
             this.image4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image4AltButton.UseVisualStyleBackColor = false;
@@ -1139,7 +1146,7 @@
             this.image5AltButton.Location = new System.Drawing.Point(686, 1209);
             this.image5AltButton.Name = "image5AltButton";
             this.image5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image5AltButton.TabIndex = 92;
+            this.image5AltButton.TabIndex = 96;
             this.image5AltButton.Text = "See Alt";
             this.image5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image5AltButton.UseVisualStyleBackColor = false;
@@ -1155,7 +1162,7 @@
             this.image6AltButton.Location = new System.Drawing.Point(686, 1235);
             this.image6AltButton.Name = "image6AltButton";
             this.image6AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image6AltButton.TabIndex = 95;
+            this.image6AltButton.TabIndex = 99;
             this.image6AltButton.Text = "See Alt";
             this.image6AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image6AltButton.UseVisualStyleBackColor = false;
@@ -1171,7 +1178,7 @@
             this.image7AltButton.Location = new System.Drawing.Point(686, 1261);
             this.image7AltButton.Name = "image7AltButton";
             this.image7AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image7AltButton.TabIndex = 98;
+            this.image7AltButton.TabIndex = 102;
             this.image7AltButton.Text = "See Alt";
             this.image7AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image7AltButton.UseVisualStyleBackColor = false;
@@ -1187,7 +1194,7 @@
             this.image8AltButton.Location = new System.Drawing.Point(686, 1287);
             this.image8AltButton.Name = "image8AltButton";
             this.image8AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image8AltButton.TabIndex = 101;
+            this.image8AltButton.TabIndex = 105;
             this.image8AltButton.Text = "See Alt";
             this.image8AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image8AltButton.UseVisualStyleBackColor = false;
@@ -1203,7 +1210,7 @@
             this.image9AltButton.Location = new System.Drawing.Point(686, 1312);
             this.image9AltButton.Name = "image9AltButton";
             this.image9AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image9AltButton.TabIndex = 104;
+            this.image9AltButton.TabIndex = 108;
             this.image9AltButton.Text = "See Alt";
             this.image9AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image9AltButton.UseVisualStyleBackColor = false;
@@ -1219,7 +1226,7 @@
             this.image10AltButton.Location = new System.Drawing.Point(686, 1339);
             this.image10AltButton.Name = "image10AltButton";
             this.image10AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image10AltButton.TabIndex = 107;
+            this.image10AltButton.TabIndex = 111;
             this.image10AltButton.Text = "See Alt";
             this.image10AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image10AltButton.UseVisualStyleBackColor = false;
@@ -1235,7 +1242,7 @@
             this.group1AltButton.Location = new System.Drawing.Point(686, 1365);
             this.group1AltButton.Name = "group1AltButton";
             this.group1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group1AltButton.TabIndex = 110;
+            this.group1AltButton.TabIndex = 114;
             this.group1AltButton.Text = "See Alt";
             this.group1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group1AltButton.UseVisualStyleBackColor = false;
@@ -1251,7 +1258,7 @@
             this.group2AltButton.Location = new System.Drawing.Point(686, 1391);
             this.group2AltButton.Name = "group2AltButton";
             this.group2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group2AltButton.TabIndex = 113;
+            this.group2AltButton.TabIndex = 117;
             this.group2AltButton.Text = "See Alt";
             this.group2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group2AltButton.UseVisualStyleBackColor = false;
@@ -1267,7 +1274,7 @@
             this.group3AltButton.Location = new System.Drawing.Point(686, 1417);
             this.group3AltButton.Name = "group3AltButton";
             this.group3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group3AltButton.TabIndex = 116;
+            this.group3AltButton.TabIndex = 120;
             this.group3AltButton.Text = "See Alt";
             this.group3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group3AltButton.UseVisualStyleBackColor = false;
@@ -1283,7 +1290,7 @@
             this.group4AltButton.Location = new System.Drawing.Point(686, 1443);
             this.group4AltButton.Name = "group4AltButton";
             this.group4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group4AltButton.TabIndex = 119;
+            this.group4AltButton.TabIndex = 123;
             this.group4AltButton.Text = "See Alt";
             this.group4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group4AltButton.UseVisualStyleBackColor = false;
@@ -1299,7 +1306,7 @@
             this.group5AltButton.Location = new System.Drawing.Point(686, 1469);
             this.group5AltButton.Name = "group5AltButton";
             this.group5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group5AltButton.TabIndex = 122;
+            this.group5AltButton.TabIndex = 126;
             this.group5AltButton.Text = "See Alt";
             this.group5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group5AltButton.UseVisualStyleBackColor = false;
@@ -1315,7 +1322,7 @@
             this.model1AltButton.Location = new System.Drawing.Point(686, 1495);
             this.model1AltButton.Name = "model1AltButton";
             this.model1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model1AltButton.TabIndex = 125;
+            this.model1AltButton.TabIndex = 129;
             this.model1AltButton.Text = "See Alt";
             this.model1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model1AltButton.UseVisualStyleBackColor = false;
@@ -1331,7 +1338,7 @@
             this.model2AltButton.Location = new System.Drawing.Point(686, 1521);
             this.model2AltButton.Name = "model2AltButton";
             this.model2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model2AltButton.TabIndex = 128;
+            this.model2AltButton.TabIndex = 132;
             this.model2AltButton.Text = "See Alt";
             this.model2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model2AltButton.UseVisualStyleBackColor = false;
@@ -1347,7 +1354,7 @@
             this.model3AltButton.Location = new System.Drawing.Point(686, 1547);
             this.model3AltButton.Name = "model3AltButton";
             this.model3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model3AltButton.TabIndex = 131;
+            this.model3AltButton.TabIndex = 135;
             this.model3AltButton.Text = "See Alt";
             this.model3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model3AltButton.UseVisualStyleBackColor = false;
@@ -1363,7 +1370,7 @@
             this.model4AltButton.Location = new System.Drawing.Point(686, 1573);
             this.model4AltButton.Name = "model4AltButton";
             this.model4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model4AltButton.TabIndex = 134;
+            this.model4AltButton.TabIndex = 138;
             this.model4AltButton.Text = "See Alt";
             this.model4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model4AltButton.UseVisualStyleBackColor = false;
@@ -1379,7 +1386,7 @@
             this.model5AltButton.Location = new System.Drawing.Point(686, 1599);
             this.model5AltButton.Name = "model5AltButton";
             this.model5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model5AltButton.TabIndex = 137;
+            this.model5AltButton.TabIndex = 141;
             this.model5AltButton.Text = "See Alt";
             this.model5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model5AltButton.UseVisualStyleBackColor = false;
@@ -1390,6 +1397,7 @@
             this.backgroundWorkerUpdate.WorkerReportsProgress = true;
             this.backgroundWorkerUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerUpdate_DoWork);
             this.backgroundWorkerUpdate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerUpdate_ProgressChanged);
+            this.backgroundWorkerUpdate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerUpdate_RunWorkerCompleted);
             // 
             // designCodeTextbox
             // 
@@ -1424,7 +1432,7 @@
             this.ashlinTextbox.Location = new System.Drawing.Point(187, 499);
             this.ashlinTextbox.Name = "ashlinTextbox";
             this.ashlinTextbox.Size = new System.Drawing.Size(574, 20);
-            this.ashlinTextbox.TabIndex = 42;
+            this.ashlinTextbox.TabIndex = 44;
             // 
             // magentoTextbox
             // 
@@ -1432,7 +1440,7 @@
             this.magentoTextbox.Location = new System.Drawing.Point(187, 525);
             this.magentoTextbox.Name = "magentoTextbox";
             this.magentoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.magentoTextbox.TabIndex = 44;
+            this.magentoTextbox.TabIndex = 46;
             // 
             // tscTextbox
             // 
@@ -1440,7 +1448,7 @@
             this.tscTextbox.Location = new System.Drawing.Point(187, 551);
             this.tscTextbox.Name = "tscTextbox";
             this.tscTextbox.Size = new System.Drawing.Size(574, 20);
-            this.tscTextbox.TabIndex = 46;
+            this.tscTextbox.TabIndex = 48;
             // 
             // costcoTextbox
             // 
@@ -1448,7 +1456,7 @@
             this.costcoTextbox.Location = new System.Drawing.Point(187, 577);
             this.costcoTextbox.Name = "costcoTextbox";
             this.costcoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.costcoTextbox.TabIndex = 48;
+            this.costcoTextbox.TabIndex = 50;
             // 
             // bestbuyTextbox
             // 
@@ -1456,7 +1464,7 @@
             this.bestbuyTextbox.Location = new System.Drawing.Point(187, 603);
             this.bestbuyTextbox.Name = "bestbuyTextbox";
             this.bestbuyTextbox.Size = new System.Drawing.Size(574, 20);
-            this.bestbuyTextbox.TabIndex = 50;
+            this.bestbuyTextbox.TabIndex = 52;
             // 
             // shopCaTextbox
             // 
@@ -1464,7 +1472,7 @@
             this.shopCaTextbox.Location = new System.Drawing.Point(187, 629);
             this.shopCaTextbox.Name = "shopCaTextbox";
             this.shopCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.shopCaTextbox.TabIndex = 52;
+            this.shopCaTextbox.TabIndex = 54;
             // 
             // amazonCaTextbox
             // 
@@ -1472,7 +1480,7 @@
             this.amazonCaTextbox.Location = new System.Drawing.Point(187, 655);
             this.amazonCaTextbox.Name = "amazonCaTextbox";
             this.amazonCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonCaTextbox.TabIndex = 54;
+            this.amazonCaTextbox.TabIndex = 56;
             // 
             // amazonComTextbox
             // 
@@ -1480,7 +1488,7 @@
             this.amazonComTextbox.Location = new System.Drawing.Point(187, 681);
             this.amazonComTextbox.Name = "amazonComTextbox";
             this.amazonComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonComTextbox.TabIndex = 56;
+            this.amazonComTextbox.TabIndex = 58;
             // 
             // searsTextbox
             // 
@@ -1488,7 +1496,7 @@
             this.searsTextbox.Location = new System.Drawing.Point(187, 707);
             this.searsTextbox.Name = "searsTextbox";
             this.searsTextbox.Size = new System.Drawing.Size(574, 20);
-            this.searsTextbox.TabIndex = 58;
+            this.searsTextbox.TabIndex = 60;
             // 
             // staplesTextbox
             // 
@@ -1496,7 +1504,7 @@
             this.staplesTextbox.Location = new System.Drawing.Point(187, 733);
             this.staplesTextbox.Name = "staplesTextbox";
             this.staplesTextbox.Size = new System.Drawing.Size(574, 20);
-            this.staplesTextbox.TabIndex = 60;
+            this.staplesTextbox.TabIndex = 62;
             // 
             // walmartCaTextbox
             // 
@@ -1504,7 +1512,7 @@
             this.walmartCaTextbox.Location = new System.Drawing.Point(187, 759);
             this.walmartCaTextbox.Name = "walmartCaTextbox";
             this.walmartCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartCaTextbox.TabIndex = 62;
+            this.walmartCaTextbox.TabIndex = 64;
             // 
             // walmartComTextbox
             // 
@@ -1512,7 +1520,7 @@
             this.walmartComTextbox.Location = new System.Drawing.Point(187, 785);
             this.walmartComTextbox.Name = "walmartComTextbox";
             this.walmartComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartComTextbox.TabIndex = 64;
+            this.walmartComTextbox.TabIndex = 66;
             // 
             // wmManufacturerTextbox
             // 
@@ -1520,7 +1528,7 @@
             this.wmManufacturerTextbox.Location = new System.Drawing.Point(187, 863);
             this.wmManufacturerTextbox.Name = "wmManufacturerTextbox";
             this.wmManufacturerTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmManufacturerTextbox.TabIndex = 70;
+            this.wmManufacturerTextbox.TabIndex = 72;
             // 
             // distributorCentralTextbox
             // 
@@ -1528,7 +1536,7 @@
             this.distributorCentralTextbox.Location = new System.Drawing.Point(187, 811);
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
             this.distributorCentralTextbox.Size = new System.Drawing.Size(574, 20);
-            this.distributorCentralTextbox.TabIndex = 66;
+            this.distributorCentralTextbox.TabIndex = 68;
             // 
             // promoMarketingTextbox
             // 
@@ -1536,7 +1544,7 @@
             this.promoMarketingTextbox.Location = new System.Drawing.Point(187, 837);
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
             this.promoMarketingTextbox.Size = new System.Drawing.Size(574, 20);
-            this.promoMarketingTextbox.TabIndex = 68;
+            this.promoMarketingTextbox.TabIndex = 70;
             // 
             // wmMerchantTextbox
             // 
@@ -1544,7 +1552,7 @@
             this.wmMerchantTextbox.Location = new System.Drawing.Point(187, 889);
             this.wmMerchantTextbox.Name = "wmMerchantTextbox";
             this.wmMerchantTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmMerchantTextbox.TabIndex = 72;
+            this.wmMerchantTextbox.TabIndex = 74;
             // 
             // image1Textbox
             // 
@@ -1552,7 +1560,7 @@
             this.image1Textbox.Location = new System.Drawing.Point(187, 1106);
             this.image1Textbox.Name = "image1Textbox";
             this.image1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image1Textbox.TabIndex = 79;
+            this.image1Textbox.TabIndex = 83;
             // 
             // image2Textbox
             // 
@@ -1560,7 +1568,7 @@
             this.image2Textbox.Location = new System.Drawing.Point(187, 1132);
             this.image2Textbox.Name = "image2Textbox";
             this.image2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image2Textbox.TabIndex = 82;
+            this.image2Textbox.TabIndex = 86;
             // 
             // image3Textbox
             // 
@@ -1568,7 +1576,7 @@
             this.image3Textbox.Location = new System.Drawing.Point(187, 1158);
             this.image3Textbox.Name = "image3Textbox";
             this.image3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image3Textbox.TabIndex = 85;
+            this.image3Textbox.TabIndex = 89;
             // 
             // image4Textbox
             // 
@@ -1576,7 +1584,7 @@
             this.image4Textbox.Location = new System.Drawing.Point(187, 1184);
             this.image4Textbox.Name = "image4Textbox";
             this.image4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image4Textbox.TabIndex = 88;
+            this.image4Textbox.TabIndex = 92;
             // 
             // image5Textbox
             // 
@@ -1584,7 +1592,7 @@
             this.image5Textbox.Location = new System.Drawing.Point(187, 1210);
             this.image5Textbox.Name = "image5Textbox";
             this.image5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image5Textbox.TabIndex = 91;
+            this.image5Textbox.TabIndex = 95;
             // 
             // image6Textbox
             // 
@@ -1592,7 +1600,7 @@
             this.image6Textbox.Location = new System.Drawing.Point(187, 1236);
             this.image6Textbox.Name = "image6Textbox";
             this.image6Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image6Textbox.TabIndex = 94;
+            this.image6Textbox.TabIndex = 98;
             // 
             // image7Textbox
             // 
@@ -1600,7 +1608,7 @@
             this.image7Textbox.Location = new System.Drawing.Point(187, 1262);
             this.image7Textbox.Name = "image7Textbox";
             this.image7Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image7Textbox.TabIndex = 97;
+            this.image7Textbox.TabIndex = 101;
             // 
             // image8Textbox
             // 
@@ -1608,7 +1616,7 @@
             this.image8Textbox.Location = new System.Drawing.Point(187, 1288);
             this.image8Textbox.Name = "image8Textbox";
             this.image8Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image8Textbox.TabIndex = 100;
+            this.image8Textbox.TabIndex = 104;
             // 
             // image9Textbox
             // 
@@ -1616,7 +1624,7 @@
             this.image9Textbox.Location = new System.Drawing.Point(187, 1314);
             this.image9Textbox.Name = "image9Textbox";
             this.image9Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image9Textbox.TabIndex = 103;
+            this.image9Textbox.TabIndex = 107;
             // 
             // image10Textbox
             // 
@@ -1624,7 +1632,7 @@
             this.image10Textbox.Location = new System.Drawing.Point(187, 1340);
             this.image10Textbox.Name = "image10Textbox";
             this.image10Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image10Textbox.TabIndex = 106;
+            this.image10Textbox.TabIndex = 110;
             // 
             // group1Textbox
             // 
@@ -1632,7 +1640,7 @@
             this.group1Textbox.Location = new System.Drawing.Point(187, 1366);
             this.group1Textbox.Name = "group1Textbox";
             this.group1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group1Textbox.TabIndex = 109;
+            this.group1Textbox.TabIndex = 113;
             // 
             // group2Textbox
             // 
@@ -1640,7 +1648,7 @@
             this.group2Textbox.Location = new System.Drawing.Point(187, 1392);
             this.group2Textbox.Name = "group2Textbox";
             this.group2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group2Textbox.TabIndex = 112;
+            this.group2Textbox.TabIndex = 116;
             // 
             // group3Textbox
             // 
@@ -1648,7 +1656,7 @@
             this.group3Textbox.Location = new System.Drawing.Point(187, 1418);
             this.group3Textbox.Name = "group3Textbox";
             this.group3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group3Textbox.TabIndex = 115;
+            this.group3Textbox.TabIndex = 119;
             // 
             // group4Textbox
             // 
@@ -1656,7 +1664,7 @@
             this.group4Textbox.Location = new System.Drawing.Point(187, 1444);
             this.group4Textbox.Name = "group4Textbox";
             this.group4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group4Textbox.TabIndex = 118;
+            this.group4Textbox.TabIndex = 122;
             // 
             // group5Textbox
             // 
@@ -1664,7 +1672,7 @@
             this.group5Textbox.Location = new System.Drawing.Point(187, 1470);
             this.group5Textbox.Name = "group5Textbox";
             this.group5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group5Textbox.TabIndex = 121;
+            this.group5Textbox.TabIndex = 125;
             // 
             // model1Textbox
             // 
@@ -1672,7 +1680,7 @@
             this.model1Textbox.Location = new System.Drawing.Point(187, 1496);
             this.model1Textbox.Name = "model1Textbox";
             this.model1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model1Textbox.TabIndex = 124;
+            this.model1Textbox.TabIndex = 128;
             // 
             // model2Textbox
             // 
@@ -1680,7 +1688,7 @@
             this.model2Textbox.Location = new System.Drawing.Point(187, 1522);
             this.model2Textbox.Name = "model2Textbox";
             this.model2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model2Textbox.TabIndex = 127;
+            this.model2Textbox.TabIndex = 131;
             // 
             // model3Textbox
             // 
@@ -1688,7 +1696,7 @@
             this.model3Textbox.Location = new System.Drawing.Point(187, 1548);
             this.model3Textbox.Name = "model3Textbox";
             this.model3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model3Textbox.TabIndex = 130;
+            this.model3Textbox.TabIndex = 134;
             // 
             // model4Textbox
             // 
@@ -1696,7 +1704,7 @@
             this.model4Textbox.Location = new System.Drawing.Point(187, 1574);
             this.model4Textbox.Name = "model4Textbox";
             this.model4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model4Textbox.TabIndex = 133;
+            this.model4Textbox.TabIndex = 137;
             // 
             // model5Textbox
             // 
@@ -1704,7 +1712,7 @@
             this.model5Textbox.Location = new System.Drawing.Point(187, 1600);
             this.model5Textbox.Name = "model5Textbox";
             this.model5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model5Textbox.TabIndex = 136;
+            this.model5Textbox.TabIndex = 140;
             // 
             // template1Textbox
             // 
@@ -1712,7 +1720,7 @@
             this.template1Textbox.Location = new System.Drawing.Point(187, 1626);
             this.template1Textbox.Name = "template1Textbox";
             this.template1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template1Textbox.TabIndex = 139;
+            this.template1Textbox.TabIndex = 143;
             // 
             // template2Textbox
             // 
@@ -1720,7 +1728,76 @@
             this.template2Textbox.Location = new System.Drawing.Point(187, 1652);
             this.template2Textbox.Name = "template2Textbox";
             this.template2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template2Textbox.TabIndex = 141;
+            this.template2Textbox.TabIndex = 145;
+            // 
+            // updateSkuDetailButton
+            // 
+            this.updateSkuDetailButton.BackColor = System.Drawing.Color.Green;
+            this.updateSkuDetailButton.Enabled = false;
+            this.updateSkuDetailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateSkuDetailButton.ForeColor = System.Drawing.Color.White;
+            this.updateSkuDetailButton.Location = new System.Drawing.Point(601, 421);
+            this.updateSkuDetailButton.Name = "updateSkuDetailButton";
+            this.updateSkuDetailButton.Size = new System.Drawing.Size(160, 34);
+            this.updateSkuDetailButton.TabIndex = 41;
+            this.updateSkuDetailButton.Text = "Update SKU Details";
+            this.updateSkuDetailButton.UseVisualStyleBackColor = false;
+            this.updateSkuDetailButton.Click += new System.EventHandler(this.updateSkuDetailButton_Click);
+            // 
+            // completeLabel
+            // 
+            this.completeLabel.AutoSize = true;
+            this.completeLabel.Location = new System.Drawing.Point(532, 431);
+            this.completeLabel.Name = "completeLabel";
+            this.completeLabel.Size = new System.Drawing.Size(63, 13);
+            this.completeLabel.TabIndex = 40;
+            this.completeLabel.Text = "Completed !";
+            this.completeLabel.Visible = false;
+            // 
+            // manualRadioButton
+            // 
+            this.manualRadioButton.AutoSize = true;
+            this.manualRadioButton.Checked = true;
+            this.manualRadioButton.Enabled = false;
+            this.manualRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manualRadioButton.Location = new System.Drawing.Point(11, 11);
+            this.manualRadioButton.Name = "manualRadioButton";
+            this.manualRadioButton.Size = new System.Drawing.Size(127, 17);
+            this.manualRadioButton.TabIndex = 79;
+            this.manualRadioButton.TabStop = true;
+            this.manualRadioButton.Text = "Manual image update";
+            this.manualRadioButton.UseVisualStyleBackColor = true;
+            this.manualRadioButton.CheckedChanged += new System.EventHandler(this.manualRadioButton_CheckedChanged);
+            // 
+            // autoRadioButton
+            // 
+            this.autoRadioButton.AutoSize = true;
+            this.autoRadioButton.Enabled = false;
+            this.autoRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autoRadioButton.Location = new System.Drawing.Point(11, 34);
+            this.autoRadioButton.Name = "autoRadioButton";
+            this.autoRadioButton.Size = new System.Drawing.Size(114, 17);
+            this.autoRadioButton.TabIndex = 80;
+            this.autoRadioButton.Text = "Auto image update";
+            this.autoRadioButton.UseVisualStyleBackColor = true;
+            this.autoRadioButton.CheckedChanged += new System.EventHandler(this.autoRadioButton_CheckedChanged);
+            // 
+            // autoManualPanel
+            // 
+            this.autoManualPanel.BackColor = System.Drawing.Color.Transparent;
+            this.autoManualPanel.Controls.Add(this.manualRadioButton);
+            this.autoManualPanel.Controls.Add(this.autoRadioButton);
+            this.autoManualPanel.Location = new System.Drawing.Point(569, 940);
+            this.autoManualPanel.Name = "autoManualPanel";
+            this.autoManualPanel.Size = new System.Drawing.Size(141, 67);
+            this.autoManualPanel.TabIndex = 146;
+            // 
+            // backgroundWorkerImagePath
+            // 
+            this.backgroundWorkerImagePath.WorkerReportsProgress = true;
+            this.backgroundWorkerImagePath.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerImagePath_DoWork);
+            this.backgroundWorkerImagePath.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerImagePath_ProgressChanged);
+            this.backgroundWorkerImagePath.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerImagePath_RunWorkerCompleted);
             // 
             // UpdateSKU
             // 
@@ -1729,6 +1806,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.autoManualPanel);
+            this.Controls.Add(this.completeLabel);
+            this.Controls.Add(this.updateSkuDetailButton);
             this.Controls.Add(this.template2Textbox);
             this.Controls.Add(this.template1Textbox);
             this.Controls.Add(this.model5Textbox);
@@ -1877,6 +1957,8 @@
             this.Name = "UpdateSKU";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update SKU";
+            this.autoManualPanel.ResumeLayout(false);
+            this.autoManualPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2029,5 +2111,11 @@
         private System.Windows.Forms.TextBox model5Textbox;
         private System.Windows.Forms.TextBox template1Textbox;
         private System.Windows.Forms.TextBox template2Textbox;
+        private System.Windows.Forms.Button updateSkuDetailButton;
+        private System.Windows.Forms.Label completeLabel;
+        private System.Windows.Forms.RadioButton manualRadioButton;
+        private System.Windows.Forms.RadioButton autoRadioButton;
+        private System.Windows.Forms.Panel autoManualPanel;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerImagePath;
     }
 }

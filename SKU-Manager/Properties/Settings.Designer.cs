@@ -325,5 +325,16 @@ namespace SKU_Manager.Properties {
                 this["ShopCaInventoryTable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable DistributorCentralTable {
+            get {
+                return ((global::System.Data.DataTable)(this["DistributorCentralTable"]));
+            }
+            set {
+                this["DistributorCentralTable"] = value;
+            }
+        }
     }
 }

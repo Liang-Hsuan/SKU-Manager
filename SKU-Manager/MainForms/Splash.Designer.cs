@@ -604,7 +604,7 @@
             this.updateSkuImageButton.Location = new System.Drawing.Point(436, 634);
             this.updateSkuImageButton.Name = "updateSkuImageButton";
             this.updateSkuImageButton.Size = new System.Drawing.Size(51, 71);
-            this.updateSkuImageButton.TabIndex = 0;
+            this.updateSkuImageButton.TabIndex = 38;
             this.updateSkuImageButton.UseVisualStyleBackColor = false;
             this.updateSkuImageButton.Click += new System.EventHandler(this.updateSkuImageButton_Click);
             // 
@@ -620,7 +620,7 @@
             this.updateUpcImageButton.Location = new System.Drawing.Point(659, 634);
             this.updateUpcImageButton.Name = "updateUpcImageButton";
             this.updateUpcImageButton.Size = new System.Drawing.Size(51, 71);
-            this.updateUpcImageButton.TabIndex = 44;
+            this.updateUpcImageButton.TabIndex = 39;
             this.updateUpcImageButton.UseVisualStyleBackColor = false;
             this.updateUpcImageButton.Click += new System.EventHandler(this.updateUpcImageButton_Click);
             // 
@@ -636,7 +636,7 @@
             this.updateGlobalImageButton.Location = new System.Drawing.Point(886, 634);
             this.updateGlobalImageButton.Name = "updateGlobalImageButton";
             this.updateGlobalImageButton.Size = new System.Drawing.Size(51, 71);
-            this.updateGlobalImageButton.TabIndex = 45;
+            this.updateGlobalImageButton.TabIndex = 40;
             this.updateGlobalImageButton.UseVisualStyleBackColor = false;
             this.updateGlobalImageButton.Click += new System.EventHandler(this.updateGlobalImageButton_Click);
             // 

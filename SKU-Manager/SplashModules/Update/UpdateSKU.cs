@@ -52,13 +52,19 @@ namespace SKU_Manager.SplashModules.Update
         private string[] htsList = new string[4];
 
         // fields for storing uri path and alt text of images
+        ImageSearch imageSearch = new ImageSearch();
         private string[] image = new string[10];
         private string[] group = new string[5];
         private string[] model = new string[5];
         private string[] template = new string[2];
+        private TextBox[] imageTextbox = new TextBox[10];
+        private TextBox[] groupTextbox = new TextBox[5];
+        private TextBox[] modelTextbox = new TextBox[5];
+        private TextBox[] templateTextbox = new TextBox[2];
         private string[] imageAlt = new string[10];
         private string[] groupAlt = new string[5];
         private string[] modelAlt = new string[5];
+        AltText alt = new AltText();
 
         // fields for comboBoxes
         private ArrayList skuCodeList = new ArrayList();
@@ -192,6 +198,7 @@ namespace SKU_Manager.SplashModules.Update
                 columnIndexCombobox.Enabled = true;
                 canadianHtsCombobox.Enabled = true;
                 usHtsCombobox.Enabled = true;
+                updateSkuDetailButton.Enabled = true;
                 ashlinTextbox.Enabled = true;
                 magentoTextbox.Enabled = true;
                 tscTextbox.Enabled = true;
@@ -209,48 +216,9 @@ namespace SKU_Manager.SplashModules.Update
                 wmManufacturerTextbox.Enabled = true;
                 wmMerchantTextbox.Enabled = true;
                 updateSkuButton.Enabled = true;
-                image1Textbox.Enabled = true;
-                image2Textbox.Enabled = true;
-                image3Textbox.Enabled = true;
-                image4Textbox.Enabled = true;
-                image5Textbox.Enabled = true;
-                image6Textbox.Enabled = true;
-                image7Textbox.Enabled = true;
-                image8Textbox.Enabled = true;
-                image9Textbox.Enabled = true;
-                image10Textbox.Enabled = true;
-                group1Textbox.Enabled = true;
-                group2Textbox.Enabled = true;
-                group3Textbox.Enabled = true;
-                group4Textbox.Enabled = true;
-                group5Textbox.Enabled = true;
-                model1Textbox.Enabled = true;
-                model2Textbox.Enabled = true;
-                model3Textbox.Enabled = true;
-                model4Textbox.Enabled = true;
-                model5Textbox.Enabled = true;
-                template1Textbox.Enabled = true;
-                template2Textbox.Enabled = true;
-                image1AltButton.Enabled = true;
-                image2AltButton.Enabled = true;
-                image3AltButton.Enabled = true;
-                image4AltButton.Enabled = true;
-                image5AltButton.Enabled = true;
-                image6AltButton.Enabled = true;
-                image7AltButton.Enabled = true;
-                image8AltButton.Enabled = true;
-                image9AltButton.Enabled = true;
-                image10AltButton.Enabled = true;
-                group1AltButton.Enabled = true;
-                group2AltButton.Enabled = true;
-                group3AltButton.Enabled = true;
-                group4AltButton.Enabled = true;
-                group5AltButton.Enabled = true;
-                model1AltButton.Enabled = true;
-                model2AltButton.Enabled = true;
-                model3AltButton.Enabled = true;
-                model4AltButton.Enabled = true;
-                model5AltButton.Enabled = true;
+                manualRadioButton.Enabled = true;
+                autoRadioButton.Enabled = true;
+                autoRadioButton.Checked = true;
 
                 // set sku field from the selected item 
                 sku = ashlinSKUCombobox.SelectedItem.ToString();
@@ -329,6 +297,7 @@ namespace SKU_Manager.SplashModules.Update
                 canadianHtsCombobox.Enabled = false;
                 usHtsCombobox.Enabled = false;
                 activeCheckbox.Checked = false;
+                updateSkuDetailButton.Enabled = false;
                 ashlinTextbox.Enabled = false;
                 magentoTextbox.Enabled = false;
                 tscTextbox.Enabled = false;
@@ -346,49 +315,12 @@ namespace SKU_Manager.SplashModules.Update
                 wmManufacturerTextbox.Enabled = false;
                 wmMerchantTextbox.Enabled = false;
                 updateSkuButton.Enabled = false;
-                image1Textbox.Enabled = false;
-                image2Textbox.Enabled = false;
-                image3Textbox.Enabled = false;
-                image4Textbox.Enabled = false;
-                image5Textbox.Enabled = false;
-                image6Textbox.Enabled = false;
-                image7Textbox.Enabled = false;
-                image8Textbox.Enabled = false;
-                image9Textbox.Enabled = false;
-                image10Textbox.Enabled = false;
-                group1Textbox.Enabled = false;
-                group2Textbox.Enabled = false;
-                group3Textbox.Enabled = false;
-                group4Textbox.Enabled = false;
-                group5Textbox.Enabled = false;
-                model1Textbox.Enabled = false;
-                model2Textbox.Enabled = false;
-                model3Textbox.Enabled = false;
-                model4Textbox.Enabled = false;
-                model5Textbox.Enabled = false;
-                template1Textbox.Enabled = false;
-                template2Textbox.Enabled = false;
-                image1AltButton.Enabled = false;
-                image2AltButton.Enabled = false;
-                image3AltButton.Enabled = false;
-                image4AltButton.Enabled = false;
-                image5AltButton.Enabled = false;
-                image6AltButton.Enabled = false;
-                image7AltButton.Enabled = false;
-                image8AltButton.Enabled = false;
-                image9AltButton.Enabled = false;
-                image10AltButton.Enabled = false;
-                group1AltButton.Enabled = false;
-                group2AltButton.Enabled = false;
-                group3AltButton.Enabled = false;
-                group4AltButton.Enabled = false;
-                group5AltButton.Enabled = false;
-                model1AltButton.Enabled = false;
-                model2AltButton.Enabled = false;
-                model3AltButton.Enabled = false;
-                model4AltButton.Enabled = false;
-                model5AltButton.Enabled = false;
+                manualRadioButton.Enabled = false;
+                autoRadioButton.Enabled = false;
+                autoRadioButton.Checked = true;
             }
+
+            completeLabel.Visible = false;
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -660,9 +592,151 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
-        /* the event for update sku button */
+        /* the event for update sku details button click that only update the sku details */
+        private void updateSkuDetailButton_Click(object sender, EventArgs e)
+        {
+            completeLabel.Visible = false;
+
+            // get data from user input
+            location[0] = warehouseCombobox.SelectedItem.ToString();
+            location[1] = rackCombobox.SelectedItem.ToString();
+            location[2] = shelfCombobox.SelectedItem.ToString();
+            location[3] = columnIndexCombobox.SelectedItem.ToString();
+            caHts = canadianHtsCombobox.SelectedItem.ToString();
+            usHts = usHtsCombobox.SelectedItem.ToString();
+            basePrice = basesPriceTextbox.Text;
+            locationFull = "WH" + location[0] + "-R" + location[1] + "-S" + location[2] + "-C" + location[3];
+            caDuty = caDutyTextbox.Text;
+            usDuty = usDutyTextbox.Text;
+            sku = skuCodeTextbox.Text;
+
+            // connect to database and update the sku
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command;
+                if (!caHts.Equals("") && !usHts.Equals(""))
+                {
+
+                    command = new SqlCommand("UPDATE master_SKU_Attributes SET Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice  + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Now.ToString() + "\' "
+                                           + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                }
+                else
+                {
+                    command = new SqlCommand("UPDATE master_SKU_Attributes SET Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\' "
+                                           + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                }
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+
+            completeLabel.Visible = true;
+        }
+
+        /* the event for radio buttons checked change that determine if user update the image path manually or computer does it automatically */
+        private void manualRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (manualRadioButton.Checked)
+            {
+                image1Textbox.Enabled = true;
+                image2Textbox.Enabled = true;
+                image3Textbox.Enabled = true;
+                image4Textbox.Enabled = true;
+                image5Textbox.Enabled = true;
+                image6Textbox.Enabled = true;
+                image7Textbox.Enabled = true;
+                image8Textbox.Enabled = true;
+                image9Textbox.Enabled = true;
+                image10Textbox.Enabled = true;
+                group1Textbox.Enabled = true;
+                group2Textbox.Enabled = true;
+                group3Textbox.Enabled = true;
+                group4Textbox.Enabled = true;
+                group5Textbox.Enabled = true;
+                model1Textbox.Enabled = true;
+                model2Textbox.Enabled = true;
+                model3Textbox.Enabled = true;
+                model4Textbox.Enabled = true;
+                model5Textbox.Enabled = true;
+                template1Textbox.Enabled = true;
+                template2Textbox.Enabled = true;
+                image1AltButton.Enabled = true;
+                image2AltButton.Enabled = true;
+                image3AltButton.Enabled = true;
+                image4AltButton.Enabled = true;
+                image5AltButton.Enabled = true;
+                image6AltButton.Enabled = true;
+                image7AltButton.Enabled = true;
+                image8AltButton.Enabled = true;
+                image9AltButton.Enabled = true;
+                image10AltButton.Enabled = true;
+                group1AltButton.Enabled = true;
+                group2AltButton.Enabled = true;
+                group3AltButton.Enabled = true;
+                group4AltButton.Enabled = true;
+                group5AltButton.Enabled = true;
+                model1AltButton.Enabled = true;
+                model2AltButton.Enabled = true;
+                model3AltButton.Enabled = true;
+                model4AltButton.Enabled = true;
+                model5AltButton.Enabled = true;
+            }
+        }
+        private void autoRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoRadioButton.Checked)
+            {
+                image1Textbox.Enabled = false;
+                image2Textbox.Enabled = false;
+                image3Textbox.Enabled = false;
+                image4Textbox.Enabled = false;
+                image5Textbox.Enabled = false;
+                image6Textbox.Enabled = false;
+                image7Textbox.Enabled = false;
+                image8Textbox.Enabled = false;
+                image9Textbox.Enabled = false;
+                image10Textbox.Enabled = false;
+                group1Textbox.Enabled = false;
+                group2Textbox.Enabled = false;
+                group3Textbox.Enabled = false;
+                group4Textbox.Enabled = false;
+                group5Textbox.Enabled = false;
+                model1Textbox.Enabled = false;
+                model2Textbox.Enabled = false;
+                model3Textbox.Enabled = false;
+                model4Textbox.Enabled = false;
+                model5Textbox.Enabled = false;
+                template1Textbox.Enabled = false;
+                template2Textbox.Enabled = false;
+                image1AltButton.Enabled = false;
+                image2AltButton.Enabled = false;
+                image3AltButton.Enabled = false;
+                image4AltButton.Enabled = false;
+                image5AltButton.Enabled = false;
+                image6AltButton.Enabled = false;
+                image7AltButton.Enabled = false;
+                image8AltButton.Enabled = false;
+                image9AltButton.Enabled = false;
+                image10AltButton.Enabled = false;
+                group1AltButton.Enabled = false;
+                group2AltButton.Enabled = false;
+                group3AltButton.Enabled = false;
+                group4AltButton.Enabled = false;
+                group5AltButton.Enabled = false;
+                model1AltButton.Enabled = false;
+                model2AltButton.Enabled = false;
+                model3AltButton.Enabled = false;
+                model4AltButton.Enabled = false;
+                model5AltButton.Enabled = false;
+            }
+        }
+
+        /* the event for update sku button click */
         private void updateSkuButton_Click(object sender, EventArgs e)
         {
+            // disable radio buttons
+            manualRadioButton.Enabled = false;
+            autoRadioButton.Enabled = false;
+
             // initialize location field and HTS
             location[0] = warehouseCombobox.SelectedItem.ToString();
             location[1] = rackCombobox.SelectedItem.ToString();
@@ -672,18 +746,224 @@ namespace SKU_Manager.SplashModules.Update
             usHts = usHtsCombobox.SelectedItem.ToString();
 
             // call background worker
+            if (autoRadioButton.Checked)     // case if auto image update
+            {
+                if (!backgroundWorkerImagePath.IsBusy)
+                {
+                    backgroundWorkerImagePath.RunWorkerAsync();
+                }
+            } else    // case if manual update
+            {
+                if (!backgroundWorkerUpdate.IsBusy)
+                {
+                    backgroundWorkerUpdate.RunWorkerAsync();
+                }
+            }
+        }
+        /* case 1 -> auto update */
+        private void backgroundWorkerImagePath_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // simulate progress 1% ~ 10%
+            for (int i = 1; i <= 10; i++)
+            {
+                Thread.Sleep(25);
+                backgroundWorkerImagePath.ReportProgress(i);
+            }
+
+            // get the sku text and initilize sku field
+            sku = skuCodeTextbox.Text;
+
+            // search images and generate uri that assign to image fields
+            int index = 0;
+            string[] imageCopy = imageSearch.getImageUri(sku);
+            foreach (string uri in imageCopy)    // get the value that exist
+            {
+                image[index] = uri;
+                index++;
+            }
+            // add the missing value 
+            for (int i = index; i < 10; i++)
+            {
+                image[i] = "";
+            }
+
+            index = 0;
+            string[] groupCopy = imageSearch.getGroupUri(sku);
+            foreach (string uri in groupCopy)    // get the value that exist
+            {
+                group[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 5; i++)
+            {
+                group[i] = "";
+            }
+
+            index = 0;
+            string[] modelCopy = imageSearch.getModelUri(sku);
+            foreach (string uri in modelCopy)    // get the value that exist
+            {
+                model[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 5; i++)
+            {
+                model[i] = "";
+            }
+
+            index = 0;
+            string[] templateCopy = imageSearch.getTemplateUri(sku);
+            foreach (string uri in templateCopy)    // get the value that exist
+            {
+                template[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 2; i++)
+            {
+                template[i] = "";
+            }
+
+            // simulate progress 10% ~ 20%
+            for (int i = 10; i <= 20; i++)
+            {
+                Thread.Sleep(25);
+                backgroundWorkerImagePath.ReportProgress(i);
+            }
+
+            // assign textboxes to textbox holders
+            imageTextbox[0] = image1Textbox;
+            imageTextbox[1] = image2Textbox;
+            imageTextbox[2] = image3Textbox;
+            imageTextbox[3] = image4Textbox;
+            imageTextbox[4] = image5Textbox;
+            imageTextbox[5] = image6Textbox;
+            imageTextbox[6] = image7Textbox;
+            imageTextbox[7] = image8Textbox;
+            imageTextbox[8] = image9Textbox;
+            imageTextbox[9] = image10Textbox;
+            groupTextbox[0] = group1Textbox;
+            groupTextbox[1] = group2Textbox;
+            groupTextbox[2] = group3Textbox;
+            groupTextbox[3] = group4Textbox;
+            groupTextbox[4] = group5Textbox;
+            modelTextbox[0] = model1Textbox;
+            modelTextbox[1] = model2Textbox;
+            modelTextbox[2] = model3Textbox;
+            modelTextbox[3] = model4Textbox;
+            modelTextbox[4] = model5Textbox;
+            templateTextbox[0] = template1Textbox;
+            templateTextbox[1] = template2Textbox;
+
+            // assgin alt text to image
+            index = 0;
+            for (; index < image.Length; index++)
+            {
+                if (image[index] == "")
+                {
+                    imageAlt[index] = "";
+                }
+                else
+                {
+                    imageAlt[index] = alt.getAlt(sku).Replace("'", "''");
+                }
+            }
+
+            // assgin alt text to image
+            index = 0;
+            for (; index < group.Length; index++)
+            {
+                if (group[index] == "")
+                {
+                    groupAlt[index] = "";
+                }
+                else
+                {
+                    groupAlt[index] = "Group " + alt.getAlt(sku).Replace("'", "''");
+                }
+            }
+
+            // assgin alt text to image
+            index = 0;
+            for (; index < model.Length; index++)
+            {
+                if (model[index] == "")
+                {
+                    modelAlt[index] = "";
+                }
+                else
+                {
+                    modelAlt[index] = "Model " + alt.getAlt(sku).Replace("'", "''");
+                }
+            }
+
+            // simulate progress 20% ~ 30%
+            for (int i = 20; i <= 30; i++)
+            {
+                Thread.Sleep(25);
+                backgroundWorkerImagePath.ReportProgress(i);
+            }
+        }
+        private void backgroundWorkerImagePath_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+        }
+        private void backgroundWorkerImagePath_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // assign image uri to image textboxes
+            for (int i = 0; i < image.Length; i++)
+            {
+                imageTextbox[i].Text = image[i];
+            }
+
+            // assign image uri to group textboxes
+            for (int i = 0; i < group.Length; i++)
+            {
+                groupTextbox[i].Text = group[i];
+            }
+
+            // assign image uri to model textboxes
+            for (int i = 0; i < model.Length; i++)
+            {
+                modelTextbox[i].Text = model[i];
+            }
+
+            // assign image uri to template textboxes
+            for (int i = 0; i < template.Length; i++)
+            {
+                templateTextbox[i].Text = template[i];
+            }
+
+            // call background worker
             if (!backgroundWorkerUpdate.IsBusy)
             {
                 backgroundWorkerUpdate.RunWorkerAsync();
             }
         }
+        /* always need to do this */
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
-            // simulate progress 1% ~ 30%
-            for (int i = 1; i <= 30; i++)
+            bool auto = autoRadioButton.Checked;
+
+            if (auto)
             {
-                Thread.Sleep(25);
-                backgroundWorkerUpdate.ReportProgress(i);
+                // simulate progress 30% ~ 50%
+                for (int i = 30; i <= 50; i++)
+                {
+                    Thread.Sleep(25);
+                    backgroundWorkerUpdate.ReportProgress(i);
+                }
+            }
+            else
+            {
+                // simulate progress 1% ~ 30%
+                for (int i = 1; i <= 30; i++)
+                {
+                    Thread.Sleep(25);
+                    backgroundWorkerUpdate.ReportProgress(i);
+                }
             }
 
             // get data from user input
@@ -691,8 +971,8 @@ namespace SKU_Manager.SplashModules.Update
             locationFull = "WH" + location[0] + "-R" + location[1] + "-S" + location[2] + "-C" + location[3];
             caDuty = caDutyTextbox.Text;
             usDuty = usDutyTextbox.Text;
+            sku = skuCodeTextbox.Text;
             ashlin = ashlinTextbox.Text.Replace("'", "''");
-            sku = skuCodeTextbox.Text.Replace("'", "''");
             magento = magentoTextbox.Text.Replace("'", "''");
             tsc = tscTextbox.Text.Replace("'", "''");
             costco = costcoTextbox.Text.Replace("'", "''");
@@ -708,6 +988,47 @@ namespace SKU_Manager.SplashModules.Update
             promoMarketing = promoMarketingTextbox.Text.Replace("'", "''");
             wmManufacturer = wmManufacturerTextbox.Text.Replace("'", "''");
             wmMerchant = wmMerchantTextbox.Text.Replace("'", "''");
+            image[0] = image1Textbox.Text;
+            image[1] = image2Textbox.Text;
+            image[2] = image3Textbox.Text;
+            image[3] = image4Textbox.Text;
+            image[4] = image5Textbox.Text;
+            image[5] = image6Textbox.Text;
+            image[6] = image7Textbox.Text;
+            image[7] = image8Textbox.Text;
+            image[8] = image9Textbox.Text;
+            image[9] = image10Textbox.Text;
+            group[0] = group1Textbox.Text;
+            group[1] = group2Textbox.Text;
+            group[2] = group3Textbox.Text;
+            group[3] = group4Textbox.Text;
+            group[4] = group5Textbox.Text;
+            model[0] = model1Textbox.Text;
+            model[1] = model2Textbox.Text;
+            model[2] = model3Textbox.Text;
+            model[3] = model4Textbox.Text;
+            model[4] = model5Textbox.Text;
+            template[0] = template1Textbox.Text;
+            template[1] = template2Textbox.Text;
+
+            if (auto)
+            {
+                // simulate progress 50% ~ 70%
+                for (int i = 50; i <= 70; i++)
+                {
+                    Thread.Sleep(25);
+                    backgroundWorkerUpdate.ReportProgress(i);
+                }
+            }
+            else
+            {
+                // simulate progress 30% ~ 60%
+                for (int i = 30; i <= 70; i++)
+                {
+                    Thread.Sleep(25);
+                    backgroundWorkerUpdate.ReportProgress(i);
+                }
+            }
 
             // adding upc image
             if (upcCode9.Length < 11 && upcCode10.Length < 12)
@@ -719,13 +1040,6 @@ namespace SKU_Manager.SplashModules.Update
             ImageReplace imageReplace = new ImageReplace();
             imageReplace.addUPC(sku, upcCode9);
             imageReplace.addUPC(sku, upcCode10);
-
-            // simulate progress 30% ~ 60%
-            for (int i = 30; i <= 60; i++)
-            {
-                Thread.Sleep(25);
-                backgroundWorkerUpdate.ReportProgress(i);
-            }
 
             // connect to database and update the sku
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -749,11 +1063,17 @@ namespace SKU_Manager.SplashModules.Update
             }
 
             // simulate progress 60% ~ 100%
-            for (int i = 60; i <= 100; i++)
+            for (int i = 70; i <= 100; i++)
             {
                 Thread.Sleep(25);
                 backgroundWorkerUpdate.ReportProgress(i);
             }
+        }
+        private void backgroundWorkerUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // enable radio buttons
+            manualRadioButton.Enabled = true;
+            autoRadioButton.Enabled = true;
         }
         private void backgroundWorkerUpdate_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {

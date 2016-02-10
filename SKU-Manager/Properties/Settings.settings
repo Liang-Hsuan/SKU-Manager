@@ -83,5 +83,8 @@
     <Setting Name="ShopCaInventoryTable" Type="System.Data.DataTable" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="DistributorCentralTable" Type="System.Data.DataTable" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

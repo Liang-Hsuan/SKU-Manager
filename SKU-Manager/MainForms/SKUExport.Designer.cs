@@ -614,6 +614,7 @@
             this.distributorCentralButton.TabIndex = 39;
             this.distributorCentralButton.Text = "DistributorCentral";
             this.distributorCentralButton.UseVisualStyleBackColor = false;
+            this.distributorCentralButton.Click += new System.EventHandler(this.distributorCentralButton_Click);
             // 
             // promoMarketingButton
             // 

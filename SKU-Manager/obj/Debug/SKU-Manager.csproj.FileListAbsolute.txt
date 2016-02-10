@@ -294,3 +294,4 @@ C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\ExcelLibrary.dll
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ExcelExportModules.BrightpearlExports.SelectionViewExcel.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.SelectionViewTable.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.DistributorCentralView.resources

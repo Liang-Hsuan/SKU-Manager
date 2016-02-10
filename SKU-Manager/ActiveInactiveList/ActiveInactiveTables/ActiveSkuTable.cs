@@ -20,6 +20,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // reset table just in case
             mainTable.Reset();
 
+
             // connect to database and grab the all the active colors' data and put them into the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

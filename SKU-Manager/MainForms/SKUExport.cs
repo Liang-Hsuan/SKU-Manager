@@ -169,6 +169,13 @@ namespace SKU_Manager.MainForms
             uducatView.ShowDialog(this);
         }
 
+        /* the event for distributor central button click */
+        private void distributorCentralButton_Click(object sender, EventArgs e)
+        {
+            DistributorCentralView distributorCentralView = new DistributorCentralView();
+            distributorCentralView.ShowDialog(this);
+        }
+
         /* the event for top 1 button click (view sku management) */
         private void topButton1_Click(object sender, EventArgs e)
         {
