@@ -1,0 +1,296 @@
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.dashboard.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Splash.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+V:\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+V:\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+V:\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.dashboard.resources
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Splash.resources
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+V:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+E:\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+E:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+E:\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddMaterial.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddFamily.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddDesign.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddDesign.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddMaterial.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddFamily.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.dashboard.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Splash.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddDesign.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddMaterial.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddFamily.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddSKU.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddSKU.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateColor.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateMaterial.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateColor.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateMaterial.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateFamily.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.activeColorList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.inactiveColorList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveMaterialList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveMaterialList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveFamilyList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateDesign.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveFamilyList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateSKU.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveSKUList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateDesign.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateFamily.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateSKU.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.EditAlt.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveDesignList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.EditAlt.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveDesignList.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveSKUList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateColor.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateColor.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveColorList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveDesignList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveFamilyList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveMaterialList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveSKUList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddSKU.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveColorList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveDesignList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveFamilyList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveMaterialList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveSKUList.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.EditAlt.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateDesign.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateFamily.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateColor.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateMaterial.resources
+C:\Users\Intern1001\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateSKU.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateMaterial.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateFamily.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateDesign.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateSKU.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateColor.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateDesign.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateFamily.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateMaterial.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateSKU.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateGlobalForm.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateColor.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateFamily.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateMaterial.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateGlobalForm.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateDesign.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateSKU.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.ModifyDiscount.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateHTS.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Admin.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.ModifyDiscount.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateHTS.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExport.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateColor.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateDesign.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateFamily.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateMaterial.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateSKU.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ActivePriceView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.UpcExportView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.MagentoView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.GiantTigerView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.GiantTigerView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.ModifyDiscount.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateHTS.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.GiantTigerView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateColor.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateDesign.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateFamily.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateMaterial.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateSKU.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddDesign.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddMaterial.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddFamily.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddSKU.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateColor.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateDesign.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateFamily.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateMaterial.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateSKU.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.EditAlt.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateDesign.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateFamily.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateColor.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateMaterial.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateSKU.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateGlobalForm.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+V:\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+V:\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe
+V:\Project\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.pdb
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csprojResolveAssemblyReference.cache
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveColorList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveDesignList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveFamilyList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveMaterialList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.ActiveSKUList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveColorList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveDesignList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveFamilyList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveMaterialList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.InactiveSKUList.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Admin.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.ModifyDiscount.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateHTS.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.dashboard.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExport.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ActivePriceView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.GiantTigerView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.MagentoView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.UpcExportView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Splash.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateColor.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateDesign.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateFamily.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateMaterial.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Activate.ActivateSKU.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddColor.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddDesign.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddMaterial.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddFamily.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.AddSKU.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateColor.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateDesign.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateFamily.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateMaterial.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateSKU.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.EditAlt.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateDesign.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateFamily.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateColor.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateMaterial.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Update.UpdateSKU.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateGlobalForm.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
+V:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.StockQuantityView.resources
+\\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.StockQuantityView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.StockQuantityView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.SelectionView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.UducatView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.BPinventoryView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveColorList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveDesignList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveFamilyList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveMaterialList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveSKUList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveColorList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveDesignList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveFamilyList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveMaterialList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveSKUList.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.Admin.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.dashboard.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.SKUExport.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.MagentoView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.UpcExportView.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.Splash.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.ExcelExport.resources
+\\Mac\Home\Documents\Work\Ashlin BPG Markeing Inc\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.ActivePriceView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveColorList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveDesignList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveFamilyList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveMaterialList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.ActiveSKUList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveColorList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveDesignList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveFamilyList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveMaterialList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ActiveInactiveList.InactiveSKUList.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.Admin.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.dashboard.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.ExcelExport.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.SKUExport.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.ActivePriceView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.BPinventoryView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.MagentoView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.UpcExportView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.UducatView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.Splash.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ExcelExportModules.ExportTableLoadingForm.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\ExcelLibrary.dll
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.ExcelExportModules.BrightpearlExports.SelectionViewExcel.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.SelectionViewTable.resources

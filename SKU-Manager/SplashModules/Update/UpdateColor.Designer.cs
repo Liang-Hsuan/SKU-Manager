@@ -1,0 +1,389 @@
+﻿namespace SKU_Manager.SplashModules.Update
+{
+    partial class UpdateColor
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateColor));
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.detailLabel = new System.Windows.Forms.Label();
+            this.inactiveListButton = new System.Windows.Forms.Button();
+            this.activeListButton = new System.Windows.Forms.Button();
+            this.updateColorButton = new System.Windows.Forms.Button();
+            this.noteLabel = new System.Windows.Forms.Label();
+            this.extendedDescriptionLabel = new System.Windows.Forms.Label();
+            this.extendedFrenchDescriptionTextbox = new System.Windows.Forms.TextBox();
+            this.extendedEnglishDescriptionTextbox = new System.Windows.Forms.TextBox();
+            this.shortFrenchDescriptionTextbox = new System.Windows.Forms.TextBox();
+            this.shortEnglishDescriptionTextbox = new System.Windows.Forms.TextBox();
+            this.shortDescriptionLabel = new System.Windows.Forms.Label();
+            this.translateButton = new System.Windows.Forms.Button();
+            this.frenchLabel = new System.Windows.Forms.Label();
+            this.englishLabel = new System.Windows.Forms.Label();
+            this.colorCodeLabel = new System.Windows.Forms.Label();
+            this.activeLabel = new System.Windows.Forms.Label();
+            this.colorCodeCombobox = new System.Windows.Forms.ComboBox();
+            this.activeCheckbox = new System.Windows.Forms.CheckBox();
+            this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerCombobox = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerInfo = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerUpdate = new System.ComponentModel.BackgroundWorker();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.SuspendLayout();
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleLabel.BackColor = System.Drawing.Color.Green;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.Location = new System.Drawing.Point(-9, -3);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(761, 60);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Update Color";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // detailLabel
+            // 
+            this.detailLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.detailLabel.BackColor = System.Drawing.Color.Green;
+            this.detailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detailLabel.ForeColor = System.Drawing.Color.White;
+            this.detailLabel.Location = new System.Drawing.Point(-6, 70);
+            this.detailLabel.Name = "detailLabel";
+            this.detailLabel.Size = new System.Drawing.Size(754, 29);
+            this.detailLabel.TabIndex = 1;
+            this.detailLabel.Text = "Color Details";
+            this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // inactiveListButton
+            // 
+            this.inactiveListButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.inactiveListButton.BackColor = System.Drawing.Color.Silver;
+            this.inactiveListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inactiveListButton.ForeColor = System.Drawing.Color.Black;
+            this.inactiveListButton.Location = new System.Drawing.Point(362, 683);
+            this.inactiveListButton.Name = "inactiveListButton";
+            this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
+            this.inactiveListButton.TabIndex = 19;
+            this.inactiveListButton.Text = "Inactive List";
+            this.inactiveListButton.UseVisualStyleBackColor = false;
+            this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
+            // 
+            // activeListButton
+            // 
+            this.activeListButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.activeListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.activeListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeListButton.ForeColor = System.Drawing.Color.White;
+            this.activeListButton.Location = new System.Drawing.Point(176, 683);
+            this.activeListButton.Name = "activeListButton";
+            this.activeListButton.Size = new System.Drawing.Size(180, 39);
+            this.activeListButton.TabIndex = 18;
+            this.activeListButton.Text = "Active List";
+            this.activeListButton.UseVisualStyleBackColor = false;
+            this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
+            // 
+            // updateColorButton
+            // 
+            this.updateColorButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.updateColorButton.BackColor = System.Drawing.Color.Green;
+            this.updateColorButton.Enabled = false;
+            this.updateColorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateColorButton.ForeColor = System.Drawing.Color.White;
+            this.updateColorButton.Location = new System.Drawing.Point(176, 601);
+            this.updateColorButton.Name = "updateColorButton";
+            this.updateColorButton.Size = new System.Drawing.Size(370, 76);
+            this.updateColorButton.TabIndex = 17;
+            this.updateColorButton.Text = "Update Color";
+            this.updateColorButton.UseVisualStyleBackColor = false;
+            this.updateColorButton.Click += new System.EventHandler(this.updateColorButton_Click);
+            // 
+            // noteLabel
+            // 
+            this.noteLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.noteLabel.AutoSize = true;
+            this.noteLabel.BackColor = System.Drawing.Color.White;
+            this.noteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noteLabel.ForeColor = System.Drawing.Color.Gray;
+            this.noteLabel.Location = new System.Drawing.Point(58, 553);
+            this.noteLabel.Name = "noteLabel";
+            this.noteLabel.Size = new System.Drawing.Size(612, 13);
+            this.noteLabel.TabIndex = 15;
+            this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
+    "%, ?, *, #, $, @, >, <";
+            // 
+            // extendedDescriptionLabel
+            // 
+            this.extendedDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.extendedDescriptionLabel.AutoSize = true;
+            this.extendedDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.extendedDescriptionLabel.ForeColor = System.Drawing.Color.Green;
+            this.extendedDescriptionLabel.Location = new System.Drawing.Point(21, 295);
+            this.extendedDescriptionLabel.Name = "extendedDescriptionLabel";
+            this.extendedDescriptionLabel.Size = new System.Drawing.Size(169, 20);
+            this.extendedDescriptionLabel.TabIndex = 10;
+            this.extendedDescriptionLabel.Text = "Extended Description";
+            // 
+            // extendedFrenchDescriptionTextbox
+            // 
+            this.extendedFrenchDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.extendedFrenchDescriptionTextbox.Enabled = false;
+            this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(469, 297);
+            this.extendedFrenchDescriptionTextbox.MaxLength = 100;
+            this.extendedFrenchDescriptionTextbox.Multiline = true;
+            this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
+            this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 190);
+            this.extendedFrenchDescriptionTextbox.TabIndex = 12;
+            // 
+            // extendedEnglishDescriptionTextbox
+            // 
+            this.extendedEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.extendedEnglishDescriptionTextbox.Enabled = false;
+            this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 297);
+            this.extendedEnglishDescriptionTextbox.MaxLength = 100;
+            this.extendedEnglishDescriptionTextbox.Multiline = true;
+            this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
+            this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 190);
+            this.extendedEnglishDescriptionTextbox.TabIndex = 11;
+            // 
+            // shortFrenchDescriptionTextbox
+            // 
+            this.shortFrenchDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.shortFrenchDescriptionTextbox.Enabled = false;
+            this.shortFrenchDescriptionTextbox.Location = new System.Drawing.Point(469, 217);
+            this.shortFrenchDescriptionTextbox.MaxLength = 50;
+            this.shortFrenchDescriptionTextbox.Multiline = true;
+            this.shortFrenchDescriptionTextbox.Name = "shortFrenchDescriptionTextbox";
+            this.shortFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 59);
+            this.shortFrenchDescriptionTextbox.TabIndex = 9;
+            // 
+            // shortEnglishDescriptionTextbox
+            // 
+            this.shortEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.shortEnglishDescriptionTextbox.Enabled = false;
+            this.shortEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 217);
+            this.shortEnglishDescriptionTextbox.MaxLength = 50;
+            this.shortEnglishDescriptionTextbox.Multiline = true;
+            this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
+            this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 59);
+            this.shortEnglishDescriptionTextbox.TabIndex = 8;
+            // 
+            // shortDescriptionLabel
+            // 
+            this.shortDescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.shortDescriptionLabel.AutoSize = true;
+            this.shortDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shortDescriptionLabel.ForeColor = System.Drawing.Color.Green;
+            this.shortDescriptionLabel.Location = new System.Drawing.Point(21, 215);
+            this.shortDescriptionLabel.Name = "shortDescriptionLabel";
+            this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
+            this.shortDescriptionLabel.TabIndex = 7;
+            this.shortDescriptionLabel.Text = "Short Description";
+            // 
+            // translateButton
+            // 
+            this.translateButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.translateButton.BackColor = System.Drawing.Color.Black;
+            this.translateButton.Enabled = false;
+            this.translateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.translateButton.ForeColor = System.Drawing.Color.White;
+            this.translateButton.Location = new System.Drawing.Point(411, 171);
+            this.translateButton.Name = "translateButton";
+            this.translateButton.Size = new System.Drawing.Size(92, 23);
+            this.translateButton.TabIndex = 5;
+            this.translateButton.Text = "TRANSLATE";
+            this.translateButton.UseVisualStyleBackColor = false;
+            this.translateButton.Click += new System.EventHandler(this.translateButton_Click);
+            // 
+            // frenchLabel
+            // 
+            this.frenchLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.frenchLabel.AutoSize = true;
+            this.frenchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.frenchLabel.ForeColor = System.Drawing.Color.Gray;
+            this.frenchLabel.Location = new System.Drawing.Point(561, 175);
+            this.frenchLabel.Name = "frenchLabel";
+            this.frenchLabel.Size = new System.Drawing.Size(57, 15);
+            this.frenchLabel.TabIndex = 6;
+            this.frenchLabel.Text = "FRENCH";
+            // 
+            // englishLabel
+            // 
+            this.englishLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.englishLabel.AutoSize = true;
+            this.englishLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.englishLabel.ForeColor = System.Drawing.Color.Gray;
+            this.englishLabel.Location = new System.Drawing.Point(289, 175);
+            this.englishLabel.Name = "englishLabel";
+            this.englishLabel.Size = new System.Drawing.Size(60, 15);
+            this.englishLabel.TabIndex = 4;
+            this.englishLabel.Text = "ENGLISH";
+            // 
+            // colorCodeLabel
+            // 
+            this.colorCodeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.colorCodeLabel.AutoSize = true;
+            this.colorCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorCodeLabel.ForeColor = System.Drawing.Color.Green;
+            this.colorCodeLabel.Location = new System.Drawing.Point(21, 132);
+            this.colorCodeLabel.Name = "colorCodeLabel";
+            this.colorCodeLabel.Size = new System.Drawing.Size(93, 20);
+            this.colorCodeLabel.TabIndex = 2;
+            this.colorCodeLabel.Text = "Color Code";
+            // 
+            // activeLabel
+            // 
+            this.activeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.activeLabel.AutoSize = true;
+            this.activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activeLabel.ForeColor = System.Drawing.Color.Green;
+            this.activeLabel.Location = new System.Drawing.Point(21, 509);
+            this.activeLabel.Name = "activeLabel";
+            this.activeLabel.Size = new System.Drawing.Size(159, 20);
+            this.activeLabel.TabIndex = 13;
+            this.activeLabel.Text = "Is this Color Active?";
+            // 
+            // colorCodeCombobox
+            // 
+            this.colorCodeCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.colorCodeCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.colorCodeCombobox.FormattingEnabled = true;
+            this.colorCodeCombobox.Location = new System.Drawing.Point(218, 131);
+            this.colorCodeCombobox.Name = "colorCodeCombobox";
+            this.colorCodeCombobox.Size = new System.Drawing.Size(481, 21);
+            this.colorCodeCombobox.TabIndex = 3;
+            this.colorCodeCombobox.SelectedValueChanged += new System.EventHandler(this.colorCodeCombobox_SelectedValueChanged);
+            // 
+            // activeCheckbox
+            // 
+            this.activeCheckbox.AutoSize = true;
+            this.activeCheckbox.Enabled = false;
+            this.activeCheckbox.Location = new System.Drawing.Point(218, 512);
+            this.activeCheckbox.Name = "activeCheckbox";
+            this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.activeCheckbox.TabIndex = 14;
+            this.activeCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // backgroundWorkerTranslate
+            // 
+            this.backgroundWorkerTranslate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTranslate_DoWork);
+            this.backgroundWorkerTranslate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTranslate_RunWorkerCompleted);
+            // 
+            // backgroundWorkerCombobox
+            // 
+            this.backgroundWorkerCombobox.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCombobox_DoWork);
+            this.backgroundWorkerCombobox.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerCombobox_RunWorkerCompleted);
+            // 
+            // backgroundWorkerInfo
+            // 
+            this.backgroundWorkerInfo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerInfo_DoWork);
+            this.backgroundWorkerInfo.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerInfo_RunWorkerCompleted);
+            // 
+            // backgroundWorkerUpdate
+            // 
+            this.backgroundWorkerUpdate.WorkerReportsProgress = true;
+            this.backgroundWorkerUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerUpdate_DoWork);
+            this.backgroundWorkerUpdate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerUpdate_ProgressChanged);
+            // 
+            // progressBar
+            // 
+            this.progressBar.ForeColor = System.Drawing.Color.Green;
+            this.progressBar.Location = new System.Drawing.Point(176, 595);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(370, 10);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.TabIndex = 16;
+            // 
+            // UpdateColor
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.progressBar);
+            this.Controls.Add(this.activeCheckbox);
+            this.Controls.Add(this.colorCodeCombobox);
+            this.Controls.Add(this.activeLabel);
+            this.Controls.Add(this.inactiveListButton);
+            this.Controls.Add(this.activeListButton);
+            this.Controls.Add(this.updateColorButton);
+            this.Controls.Add(this.noteLabel);
+            this.Controls.Add(this.extendedDescriptionLabel);
+            this.Controls.Add(this.extendedFrenchDescriptionTextbox);
+            this.Controls.Add(this.extendedEnglishDescriptionTextbox);
+            this.Controls.Add(this.shortFrenchDescriptionTextbox);
+            this.Controls.Add(this.shortEnglishDescriptionTextbox);
+            this.Controls.Add(this.shortDescriptionLabel);
+            this.Controls.Add(this.translateButton);
+            this.Controls.Add(this.frenchLabel);
+            this.Controls.Add(this.englishLabel);
+            this.Controls.Add(this.colorCodeLabel);
+            this.Controls.Add(this.detailLabel);
+            this.Controls.Add(this.titleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.Name = "UpdateColor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Update Color";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label detailLabel;
+        private System.Windows.Forms.Button inactiveListButton;
+        private System.Windows.Forms.Button activeListButton;
+        private System.Windows.Forms.Button updateColorButton;
+        private System.Windows.Forms.Label noteLabel;
+        private System.Windows.Forms.Label extendedDescriptionLabel;
+        private System.Windows.Forms.TextBox extendedFrenchDescriptionTextbox;
+        private System.Windows.Forms.TextBox extendedEnglishDescriptionTextbox;
+        private System.Windows.Forms.TextBox shortFrenchDescriptionTextbox;
+        private System.Windows.Forms.TextBox shortEnglishDescriptionTextbox;
+        private System.Windows.Forms.Label shortDescriptionLabel;
+        private System.Windows.Forms.Button translateButton;
+        private System.Windows.Forms.Label frenchLabel;
+        private System.Windows.Forms.Label englishLabel;
+        private System.Windows.Forms.Label colorCodeLabel;
+        private System.Windows.Forms.Label activeLabel;
+        private System.Windows.Forms.ComboBox colorCodeCombobox;
+        private System.Windows.Forms.CheckBox activeCheckbox;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerCombobox;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerInfo;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerUpdate;
+        private System.Windows.Forms.ProgressBar progressBar;
+    }
+}
