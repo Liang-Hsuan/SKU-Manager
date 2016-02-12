@@ -62,14 +62,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                double basePrice = getBasePrice(sku);
 
                 row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                                           // brand
                 row[1] = "nishis_boutique";                                      // store name
                 row[2] = sku;                                                    // sku
-                double basePrice = Convert.ToDouble(list[0]);
                 row[3] = Math.Ceiling(basePrice * multiplier * 0.9) - 0.01;      // supplier suggested retail price
                 row[4] = basePrice * multiplier;                                 // msrp
                 row[5] = Math.Ceiling(basePrice * multiplier * 0.9) - 0.01;      // supplier list price
@@ -84,6 +83,22 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             return mainTable;
         }
 
+        private double getBasePrice(string sku)
+        {
+            double basePrice;
+
+            // start grabbing data              
+            // [0] for all related to price      
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            basePrice = Convert.ToDouble(reader.GetValue(0));
+            connection.Close();
+
+            return basePrice;
+        }
+
         /* method that get the data from given sku */
         protected override ArrayList getData(string sku)
         {
@@ -91,11 +106,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // start grabbing data              
             // [0] for all related to price      
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            list.Add(reader.GetValue(0));
             connection.Close();
 
             return list;

@@ -357,7 +357,7 @@
             // amazonCaTextbox1
             // 
             this.amazonCaTextbox1.Location = new System.Drawing.Point(245, 574);
-            this.amazonCaTextbox1.MaxLength = 20;
+            this.amazonCaTextbox1.MaxLength = 35;
             this.amazonCaTextbox1.Name = "amazonCaTextbox1";
             this.amazonCaTextbox1.Size = new System.Drawing.Size(233, 20);
             this.amazonCaTextbox1.TabIndex = 22;
@@ -365,7 +365,7 @@
             // amazonCaTextbox2
             // 
             this.amazonCaTextbox2.Location = new System.Drawing.Point(493, 576);
-            this.amazonCaTextbox2.MaxLength = 20;
+            this.amazonCaTextbox2.MaxLength = 35;
             this.amazonCaTextbox2.Name = "amazonCaTextbox2";
             this.amazonCaTextbox2.Size = new System.Drawing.Size(233, 20);
             this.amazonCaTextbox2.TabIndex = 23;
@@ -373,7 +373,7 @@
             // amazonComTextbox1
             // 
             this.amazonComTextbox1.Location = new System.Drawing.Point(245, 602);
-            this.amazonComTextbox1.MaxLength = 20;
+            this.amazonComTextbox1.MaxLength = 35;
             this.amazonComTextbox1.Name = "amazonComTextbox1";
             this.amazonComTextbox1.Size = new System.Drawing.Size(233, 20);
             this.amazonComTextbox1.TabIndex = 25;
@@ -381,7 +381,7 @@
             // amazonComTextbox2
             // 
             this.amazonComTextbox2.Location = new System.Drawing.Point(493, 602);
-            this.amazonComTextbox2.MaxLength = 20;
+            this.amazonComTextbox2.MaxLength = 35;
             this.amazonComTextbox2.Name = "amazonComTextbox2";
             this.amazonComTextbox2.Size = new System.Drawing.Size(233, 20);
             this.amazonComTextbox2.TabIndex = 26;

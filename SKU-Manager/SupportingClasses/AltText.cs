@@ -8,15 +8,9 @@ namespace SKU_Manager.SupportingClasses
      */
     class AltText
     {
-        // fields for sku elements
-        private string design;
-        private string material;
-        private string color;
-
         // fields for database connection
         private string connectionString = Properties.Settings.Default.Designcs;
         private SqlConnection connection;
-        private SqlDataAdapter adapter;
 
         /* constructor that initialize database connection */
         public AltText()
@@ -24,42 +18,23 @@ namespace SKU_Manager.SupportingClasses
             connection = new SqlConnection(connectionString);
         }
 
+        /* method that return the alt text from the given sku */
         public string getAlt(string sku)
         {
             // local fields for storing data
-            DataTable table = new DataTable();
             string alt = "Ashlin® ";
 
-            // get the first two of elements in the sku (design and material)
-            string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
-
-            // allocate elements from sku
-            color = sku.Substring(sku.LastIndexOf('-') + 1);
-            material = firstTwo.Substring(firstTwo.LastIndexOf('-') + 1);
-            design = sku.Substring(0, sku.IndexOf('-'));
-
             // search design 
-            adapter = new SqlDataAdapter("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Short_Description, Material_Description_Short, Colour_Description_Short FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            adapter.Fill(table);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            alt += reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2);
             connection.Close();
-            alt += table.Rows[0][0] + " ";
-            table.Reset();
-
-            // search material
-            adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
-            connection.Open();
-            adapter.Fill(table);
-            connection.Close();
-            alt += table.Rows[0][0] + " ";
-            table.Reset();
-
-            // search material
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            connection.Open();
-            adapter.Fill(table);
-            connection.Close();
-            alt += table.Rows[0][0];
 
             return alt;
         }

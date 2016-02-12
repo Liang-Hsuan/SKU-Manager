@@ -668,7 +668,7 @@
             // 
             this.extendedFrenchDescriptionTextbox.Enabled = false;
             this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(464, 336);
-            this.extendedFrenchDescriptionTextbox.MaxLength = 100;
+            this.extendedFrenchDescriptionTextbox.MaxLength = 250;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 123);
@@ -678,7 +678,7 @@
             // 
             this.extendedEnglishDescriptionTextbox.Enabled = false;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(213, 336);
-            this.extendedEnglishDescriptionTextbox.MaxLength = 100;
+            this.extendedEnglishDescriptionTextbox.MaxLength = 250;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 123);
@@ -880,7 +880,7 @@
             // 
             this.option5FrenchTextbox.Enabled = false;
             this.option5FrenchTextbox.Location = new System.Drawing.Point(1121, 889);
-            this.option5FrenchTextbox.MaxLength = 50;
+            this.option5FrenchTextbox.MaxLength = 255;
             this.option5FrenchTextbox.Multiline = true;
             this.option5FrenchTextbox.Name = "option5FrenchTextbox";
             this.option5FrenchTextbox.Size = new System.Drawing.Size(251, 32);
@@ -890,7 +890,7 @@
             // 
             this.option4FrenchTextbox.Enabled = false;
             this.option4FrenchTextbox.Location = new System.Drawing.Point(1121, 851);
-            this.option4FrenchTextbox.MaxLength = 50;
+            this.option4FrenchTextbox.MaxLength = 255;
             this.option4FrenchTextbox.Multiline = true;
             this.option4FrenchTextbox.Name = "option4FrenchTextbox";
             this.option4FrenchTextbox.Size = new System.Drawing.Size(251, 32);
@@ -900,7 +900,7 @@
             // 
             this.option5EnglishTextbox.Enabled = false;
             this.option5EnglishTextbox.Location = new System.Drawing.Point(839, 889);
-            this.option5EnglishTextbox.MaxLength = 50;
+            this.option5EnglishTextbox.MaxLength = 255;
             this.option5EnglishTextbox.Multiline = true;
             this.option5EnglishTextbox.Name = "option5EnglishTextbox";
             this.option5EnglishTextbox.Size = new System.Drawing.Size(251, 32);
@@ -910,7 +910,7 @@
             // 
             this.option4EnglishTextbox.Enabled = false;
             this.option4EnglishTextbox.Location = new System.Drawing.Point(839, 851);
-            this.option4EnglishTextbox.MaxLength = 50;
+            this.option4EnglishTextbox.MaxLength = 255;
             this.option4EnglishTextbox.Multiline = true;
             this.option4EnglishTextbox.Name = "option4EnglishTextbox";
             this.option4EnglishTextbox.Size = new System.Drawing.Size(251, 32);
@@ -920,7 +920,7 @@
             // 
             this.option3FrenchTextbox.Enabled = false;
             this.option3FrenchTextbox.Location = new System.Drawing.Point(1121, 813);
-            this.option3FrenchTextbox.MaxLength = 50;
+            this.option3FrenchTextbox.MaxLength = 255;
             this.option3FrenchTextbox.Multiline = true;
             this.option3FrenchTextbox.Name = "option3FrenchTextbox";
             this.option3FrenchTextbox.Size = new System.Drawing.Size(251, 32);
@@ -930,7 +930,7 @@
             // 
             this.option3EnglishTextbox.Enabled = false;
             this.option3EnglishTextbox.Location = new System.Drawing.Point(839, 813);
-            this.option3EnglishTextbox.MaxLength = 50;
+            this.option3EnglishTextbox.MaxLength = 255;
             this.option3EnglishTextbox.Multiline = true;
             this.option3EnglishTextbox.Name = "option3EnglishTextbox";
             this.option3EnglishTextbox.Size = new System.Drawing.Size(251, 32);
@@ -940,7 +940,7 @@
             // 
             this.option2FrenchTextbox.Enabled = false;
             this.option2FrenchTextbox.Location = new System.Drawing.Point(1121, 773);
-            this.option2FrenchTextbox.MaxLength = 50;
+            this.option2FrenchTextbox.MaxLength = 255;
             this.option2FrenchTextbox.Multiline = true;
             this.option2FrenchTextbox.Name = "option2FrenchTextbox";
             this.option2FrenchTextbox.Size = new System.Drawing.Size(251, 34);
@@ -950,7 +950,7 @@
             // 
             this.option2EnglishTextbox.Enabled = false;
             this.option2EnglishTextbox.Location = new System.Drawing.Point(839, 775);
-            this.option2EnglishTextbox.MaxLength = 50;
+            this.option2EnglishTextbox.MaxLength = 255;
             this.option2EnglishTextbox.Multiline = true;
             this.option2EnglishTextbox.Name = "option2EnglishTextbox";
             this.option2EnglishTextbox.Size = new System.Drawing.Size(251, 32);
@@ -960,7 +960,7 @@
             // 
             this.option1FrenchTextbox.Enabled = false;
             this.option1FrenchTextbox.Location = new System.Drawing.Point(1121, 735);
-            this.option1FrenchTextbox.MaxLength = 50;
+            this.option1FrenchTextbox.MaxLength = 255;
             this.option1FrenchTextbox.Multiline = true;
             this.option1FrenchTextbox.Name = "option1FrenchTextbox";
             this.option1FrenchTextbox.Size = new System.Drawing.Size(251, 32);
@@ -981,7 +981,7 @@
             // 
             this.option1EnglishTextbox.Enabled = false;
             this.option1EnglishTextbox.Location = new System.Drawing.Point(839, 737);
-            this.option1EnglishTextbox.MaxLength = 50;
+            this.option1EnglishTextbox.MaxLength = 255;
             this.option1EnglishTextbox.Multiline = true;
             this.option1EnglishTextbox.Name = "option1EnglishTextbox";
             this.option1EnglishTextbox.Size = new System.Drawing.Size(251, 32);

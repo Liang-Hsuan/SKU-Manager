@@ -9,7 +9,7 @@ namespace SKU_Manager.SKUExportModules.Tables
         protected DataTable mainTable;
 
         // field for database connection
-        protected SqlConnection connection;
+        protected SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
         // supporting field
         public int progress = 0;

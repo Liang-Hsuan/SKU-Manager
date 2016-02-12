@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using SKU_Manager.SupportingClasses;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses;
+using System;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 {
@@ -76,12 +77,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             mainTable.BeginLoadData();
 
             // add data to each row 
+            // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                object[] list = getDatas(sku);
 
                 row = mainTable.NewRow();
-          
+
                 row[0] = "ashlin_bpg";                       // supplier id
                 row[1] = "nishis_boutique";                  // store name
                 row[2] = sku;                                // sku
@@ -90,43 +92,95 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[5] = list[2];                            // shipping weight
                 row[6] = "GM";                               // shipping weight unit of measure
                 row[7] = 151048;                             // primary product category id
-                row[8] = list[7];                            // product type
-                row[9] = list[10];                           // main image location
-                row[10] = list[21];                          // standard product id
+                row[8] = list[6];                            // product type
+                row[9] = list[8];                            // main image location
+                row[10] = list[20];                          // standard product id
                 row[11] = "UPC";                             // standard product id type
                 row[12] = true;                              // availability
                 row[13] = "Ashlin®";                         // brand
-                row[14] = list[11];                          // launch date
-                row[15] = list[20];                          // release date
+                row[14] = list[9];                           // launch date
+                row[15] = list[19];                          // release date
                 row[16] = "NEW";                             // product condition
                 row[17] = 1;                                 // item package quantity
                 row[18] = 1;                                 // number of items
                 row[19] = "Ashlin®";                         // designer
-                row[20] = list[4];                           // package height
-                row[21] = list[5];                           // package length
-                row[22] = list[6];                           // package width
+                row[20] = list[3];                           // package height
+                row[21] = list[4];                           // package length
+                row[22] = list[5];                           // package width
                 row[23] = "CM";                              // package dimension unit of measure
                 row[24] = 100;                               // max order quantity
                 row[25] = "";                                // legal disclaimer
                 row[26] = "Ashlin BPG Marketing INC";        // manufacturer
                 row[27] = sku;                               // mfr part number
-                row[28] = list[8];                           // search term
+                row[28] = list[7];                           // search term
                 row[29] = sku.Substring(0, sku.IndexOf('-')); ;       // parent sku
                 row[30] = 620977;                            // secondary product category id
                 row[31] = true;                              // is new product
-                row[32] = list[12];                          // alt iamge location 1
-                row[33] = list[13];                          // alt iamge location 2
-                row[34] = list[14];                          // alt iamge location 3
-                row[35] = list[15];                          // alt iamge location 4
-                row[36] = list[16];                          // alt iamge location 5
-                row[37] = list[17];                          // alt iamge location 6
-                row[38] = list[18];                          // alt iamge location 7
-                row[39] = list[19];                          // alt iamge location 8
-                row[40] = list[20];                          // alt iamge location 9
+                row[32] = list[11];                          // alt iamge location 1
+                row[33] = list[12];                          // alt iamge location 2
+                row[34] = list[13];                          // alt iamge location 3
+                row[35] = list[14];                          // alt iamge location 4
+                row[36] = list[15];                          // alt iamge location 5
+                row[37] = list[16];                          // alt iamge location 6
+                row[38] = list[17];                          // alt iamge location 7
+                row[39] = list[18];                          // alt iamge location 8
+                row[40] = list[19];                          // alt iamge location 9
+
+                mainTable.Rows.Add(row);
+                progress++;
+            }
+
+
+
+            /*foreach (DataRow row in table.Rows)
+            {
+                newRow = mainTable.NewRow();
+
+                newRow[0] = "ashlin_bpg";                      // supplier id
+                newRow[1] = "nishis_boutique";                 // store name
+                newRow[2] = row[8];                                // sku
+                newRow[3] = "Ashlin® " + row[0] + " " + row[22] + " " + row[23];                    // title
+                newRow[4] = row[1];                            // description
+                newRow[5] = row[2];                            // shipping weight
+                newRow[6] = "GM";                              // shipping weight unit of measure
+                newRow[7] = 151048;                            // primary product category id
+                newRow[8] = row[6];                            // product type
+                newRow[9] = row[8];                            // main image location
+                newRow[10] = row[21];                          // standard product id
+                newRow[11] = "UPC";                            // standard product id type
+                newRow[12] = true;                             // availability
+                newRow[13] = "Ashlin®";                        // brand
+                newRow[14] = row[10];                          // launch date
+                newRow[15] = row[20];                          // release date
+                newRow[16] = "NEW";                            // product condition
+                newRow[17] = 1;                                // item package quantity
+                newRow[18] = 1;                                // number of items
+                newRow[19] = "Ashlin®";                        // designer
+                newRow[20] = row[3];                           // package height
+                newRow[21] = row[4];                           // package length
+                newRow[22] = row[5];                           // package width
+                newRow[23] = "CM";                             // package dimension unit of measure
+                newRow[24] = 100;                              // max order quantity
+                newRow[25] = "";                               // legal disclaimer
+                newRow[26] = "Ashlin BPG Marketing INC";       // manufacturer
+                newRow[27] = row[8];                           // mfr part number
+                newRow[28] = row[7];                           // search term
+                newRow[29] = row[8].ToString().Substring(0, row[8].ToString().IndexOf('-')); ;       // parent sku
+                newRow[30] = 620977;                           // secondary product category id
+                newRow[31] = true;                             // is new product
+                newRow[32] = row[11];                          // alt iamge location 1
+                newRow[33] = row[12];                          // alt iamge location 2
+                newRow[34] = row[13];                          // alt iamge location 3
+                newRow[35] = row[14];                          // alt iamge location 4
+                newRow[36] = row[15];                          // alt iamge location 5
+                newRow[37] = row[16];                          // alt iamge location 6
+                newRow[38] = row[17];                          // alt iamge location 7
+                newRow[39] = row[18];                          // alt iamge location 8
+                newRow[40] = row[19];                          // alt iamge location 9
 
                 mainTable.Rows.Add(row);           
                 progress++;
-            }
+            } */
 
             // finish loading data
             mainTable.EndLoadData();
@@ -135,48 +189,66 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* method that get the data from given sku */
-        protected override ArrayList getData(string sku)
+        private object[] getDatas(string sku)
         {
-            // local field for storing data
-            ArrayList list = new ArrayList();
-            DataTable table = new DataTable();
-
-            // get the first two of elements in the sku (design and material)
-            string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
-
-            // allocate elements from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string material = firstTwo.Substring(firstTwo.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
+            object[] list = new object[21];
 
             // grab data from design
+            // [0] title, [1] description, [2] shipping weight, [3] package height, [4] package length, [5] package width
+            // [6] product type, [7] search term
+            // [8] main image location, [9] launch date, [10] ~ [18] alt image location, [19] release date, [20] standard product id
+            SqlCommand command = new SqlCommand("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, " +
+                                                "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
+                                                "Image_1_Path, sku.Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, sku.Date_Activated, UPC_Code_9 " +
+                                                "FROM master_SKU_Attributes sku " + 
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            // [0] title, [1] description, [2] shipping weight, [3] for further looking, [4] package height, [5] package length, [6] package width            
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Design_Service_Family_Code, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 6; i++)
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            for (int i = 0; i <= 20; i++)
             {
-                list.Add(table.Rows[0][i]);
-            }
-            // [7] product type, [8] search term
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_KeyWords_General FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][3].ToString() + "\';", connection);
-            table.Reset();
-            adapter.Fill(table);
-            for (int i = 0; i <= 1; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [9] main image location, [10] launch date, [11] ~ [19] alt image location, [20] release date, [21] standard product id
-            adapter = new SqlDataAdapter("SELECT Image_1_Path, Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Date_Activated, UPC_Code_9 FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 12; i++)
-            {
-                list.Add(table.Rows[0][i]);
+                list[i] = reader.GetValue(i);
             }
             connection.Close();
 
             return list;
+        }
+
+        /* override method -> i will delete this soon and make getDatas as the new ShopCaExportTable method */
+        protected override ArrayList getData(string sku)
+        {
+            throw new NotImplementedException();
+        }
+
+        /* new version of getData that directly return the desired table -> fixing issue right now */
+        private DataTable getData()
+        {
+            // local field for storing data
+            DataTable table = new DataTable();
+
+            // grab data from database
+            // [0] title, [1] description, [2] shipping weight, [3] package height, [4] package length, [5] package width                                                                                                                 
+            // [6] product type, [7] search term
+            // [8] sku, [9] main image location, [10] launch date, [11] ~ [19] alt image location, [20] release date, [21] standard product id
+            // & mfr part number
+            // [22] & [23] title
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, " +
+                                                        "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
+                                                        "SKU_Ashlin, Image_1_Path, sku.Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, sku.Date_Activated, UPC_Code_9, " +
+                                                        "Colour_Description_Short, Material_Description_Short " +
+                                                        "FROM master_Design_Attributes design " +
+                                                        "INNER JOIN master_SKU_Attributes sku ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                        "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                        "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                        "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
+                                                        "WHERE SKU_SHOP_CA != \'\' AND sku.Active = \'True\' ORDER BY SKU_Ashlin;", connection);
+            connection.Open();
+            adapter.Fill(table);
+            connection.Close();
+
+            return table;
         }
     }
 }

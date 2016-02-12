@@ -18,6 +18,7 @@ namespace SKU_Manager.MainForms
             splash = new Splash(this);
             excelExport = new ExcelExport(this);
             skuExport = new SKUExport(this);
+            admin = new Admin(this);
         }
 
         /* event for button1 (view sku management) click -> open Splash form */
@@ -25,6 +26,7 @@ namespace SKU_Manager.MainForms
         {
             if (!splash.Visible)
             {
+                splash = new Splash(this);
                 splash.Show(this);
             }
         }
@@ -34,6 +36,7 @@ namespace SKU_Manager.MainForms
         {
             if (!excelExport.Visible)
             {
+                excelExport = new ExcelExport(this);
                 excelExport.Show((this));
             }
         }
@@ -43,6 +46,7 @@ namespace SKU_Manager.MainForms
         {
             if (!skuExport.Visible)
             {
+                skuExport = new SKUExport(this);
                 skuExport.Show(this);
             }
         }
@@ -52,6 +56,7 @@ namespace SKU_Manager.MainForms
         {
             if (!admin.Visible)
             {
+                admin = new Admin(this);
                 admin.Show(this);
             }
         }
