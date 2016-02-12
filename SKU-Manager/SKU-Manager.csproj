@@ -208,7 +208,7 @@
     </Compile>
     <Compile Include="SupportingClasses\Photo\ImageReplace.cs" />
     <Compile Include="SupportingClasses\Photo\ImageSearch.cs" />
-    <Compile Include="SupportingClasses\Product.cs" />
+    <Compile Include="SupportingClasses\ProductDetail\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainForms\SKUExport.cs">
@@ -450,6 +450,7 @@
     <Compile Include="SplashModules\UploadImage\UpdateUPCForm.Designer.cs">
       <DependentUpon>UpdateUPCForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupportingClasses\ProductDetail\Values.cs" />
     <Compile Include="SupportingClasses\Translate.cs" />
     <Compile Include="SupportingClasses\UPC.cs" />
     <Compile Include="SupportingClasses\Photo\UpdatePhoto.cs" />

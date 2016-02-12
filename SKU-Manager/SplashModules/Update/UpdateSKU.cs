@@ -97,6 +97,7 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        #region Comboboxes Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -184,7 +185,9 @@ namespace SKU_Manager.SplashModules.Update
             material = materialTextbox.Text;
             colorCode = colorCodeTextbox.Text;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void ashlinSKUCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -192,29 +195,9 @@ namespace SKU_Manager.SplashModules.Update
             if (ashlinSKUCombobox.SelectedItem.ToString() != "")
             {
                 basesPriceTextbox.Enabled = true;
-                warehouseCombobox.Enabled = true;
-                rackCombobox.Enabled = true;
-                shelfCombobox.Enabled = true;
-                columnIndexCombobox.Enabled = true;
                 canadianHtsCombobox.Enabled = true;
                 usHtsCombobox.Enabled = true;
                 updateSkuDetailButton.Enabled = true;
-                ashlinTextbox.Enabled = true;
-                magentoTextbox.Enabled = true;
-                tscTextbox.Enabled = true;
-                costcoTextbox.Enabled = true;
-                bestbuyTextbox.Enabled = true;
-                shopCaTextbox.Enabled = true;
-                amazonCaTextbox.Enabled = true;
-                amazonComTextbox.Enabled = true;
-                searsTextbox.Enabled = true;
-                staplesTextbox.Enabled = true;
-                walmartCaTextbox.Enabled = true;
-                walmartComTextbox.Enabled = true;
-                distributorCentralTextbox.Enabled = true;
-                promoMarketingTextbox.Enabled = true;
-                wmManufacturerTextbox.Enabled = true;
-                wmMerchantTextbox.Enabled = true;
                 updateSkuButton.Enabled = true;
                 manualRadioButton.Enabled = true;
                 autoRadioButton.Enabled = true;
@@ -290,30 +273,10 @@ namespace SKU_Manager.SplashModules.Update
                 usHtsCombobox.Text = "";
 
                 basesPriceTextbox.Enabled = false;
-                warehouseCombobox.Enabled = false;
-                rackCombobox.Enabled = false;
-                shelfCombobox.Enabled = false;
-                columnIndexCombobox.Enabled = false;
                 canadianHtsCombobox.Enabled = false;
                 usHtsCombobox.Enabled = false;
                 activeCheckbox.Checked = false;
                 updateSkuDetailButton.Enabled = false;
-                ashlinTextbox.Enabled = false;
-                magentoTextbox.Enabled = false;
-                tscTextbox.Enabled = false;
-                costcoTextbox.Enabled = false;
-                bestbuyTextbox.Enabled = false;
-                shopCaTextbox.Enabled = false;
-                amazonCaTextbox.Enabled = false;
-                amazonComTextbox.Enabled = false;
-                searsTextbox.Enabled = false;
-                staplesTextbox.Enabled = false;
-                walmartCaTextbox.Enabled = false;
-                walmartComTextbox.Enabled = false;
-                distributorCentralTextbox.Enabled = false;
-                promoMarketingTextbox.Enabled = false;
-                wmManufacturerTextbox.Enabled = false;
-                wmMerchantTextbox.Enabled = false;
                 updateSkuButton.Enabled = false;
                 manualRadioButton.Enabled = false;
                 autoRadioButton.Enabled = false;
@@ -482,6 +445,7 @@ namespace SKU_Manager.SplashModules.Update
             template1Textbox.Text = template[0];
             template2Textbox.Text = template[1];
         }
+        #endregion
 
         /* the event for design service code textbox text changed that show information about the design and the change in skuCode textbox */
         private void designCodeTextbox_TextChanged(object sender, EventArgs e)
@@ -553,6 +517,62 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        /* the event for design service flag textbox text change that will determine some controls' enabilibty */
+        private void designServiceFlagTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (designServiceFlagTextbox.Text == "Service")
+            {
+                materialTextbox.Enabled = false;
+                colorCodeTextbox.Enabled = false;
+                warehouseCombobox.Enabled = false;
+                rackCombobox.Enabled = false;
+                shelfCombobox.Enabled = false;
+                columnIndexCombobox.Enabled = false;
+                ashlinTextbox.Enabled = false;
+                magentoTextbox.Enabled = false;
+                tscTextbox.Enabled = false;
+                costcoTextbox.Enabled = false;
+                bestbuyTextbox.Enabled = false;
+                shopCaTextbox.Enabled = false;
+                amazonCaTextbox.Enabled = false;
+                amazonComTextbox.Enabled = false;
+                searsTextbox.Enabled = false;
+                staplesTextbox.Enabled = false;
+                walmartCaTextbox.Enabled = false;
+                walmartComTextbox.Enabled = false;
+                distributorCentralTextbox.Enabled = false;
+                promoMarketingTextbox.Enabled = false;
+                wmManufacturerTextbox.Enabled = false;
+                wmMerchantTextbox.Enabled = false;
+            }
+            else
+            {
+                materialTextbox.Enabled = true;
+                colorCodeTextbox.Enabled = true;
+                warehouseCombobox.Enabled = true;
+                rackCombobox.Enabled = true;
+                shelfCombobox.Enabled = true;
+                columnIndexCombobox.Enabled = true;
+                ashlinTextbox.Enabled = true;
+                magentoTextbox.Enabled = true;
+                tscTextbox.Enabled = true;
+                costcoTextbox.Enabled = true;
+                bestbuyTextbox.Enabled = true;
+                shopCaTextbox.Enabled = true;
+                amazonCaTextbox.Enabled = true;
+                amazonComTextbox.Enabled = true;
+                searsTextbox.Enabled = true;
+                staplesTextbox.Enabled = true;
+                walmartCaTextbox.Enabled = true;
+                walmartComTextbox.Enabled = true;
+                distributorCentralTextbox.Enabled = true;
+                promoMarketingTextbox.Enabled = true;
+                wmManufacturerTextbox.Enabled = true;
+                wmMerchantTextbox.Enabled = true;
+            }
+        }
+
+        #region Taxes Comboboxes Event
         /* the event for canadian and us hts combobox selected item changed that show the information about the selected item */
         private void canadianHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -591,6 +611,7 @@ namespace SKU_Manager.SplashModules.Update
                 usDutyTextbox.Text = "";
             }
         }
+        #endregion
 
         /* the event for update sku details button click that only update the sku details */
         private void updateSkuDetailButton_Click(object sender, EventArgs e)
@@ -632,6 +653,7 @@ namespace SKU_Manager.SplashModules.Update
             completeLabel.Visible = true;
         }
 
+        #region Manual Auto Update
         /* the event for radio buttons checked change that determine if user update the image path manually or computer does it automatically */
         private void manualRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -729,7 +751,9 @@ namespace SKU_Manager.SplashModules.Update
                 model5AltButton.Enabled = false;
             }
         }
+        #endregion
 
+        #region Update Button Click
         /* the event for update sku button click */
         private void updateSkuButton_Click(object sender, EventArgs e)
         {
@@ -1079,7 +1103,9 @@ namespace SKU_Manager.SplashModules.Update
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active Inactive Button Click Event
         /* the event for active list button that open the table of active sku list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
@@ -1091,7 +1117,9 @@ namespace SKU_Manager.SplashModules.Update
             InactiveSKUList inactiveSKUList = new InactiveSKUList();
             inactiveSKUList.ShowDialog(this);
         }
+        #endregion
 
+        #region Image Alt
         /* the event when image alt button is clicked -> edit alt text and return it */
         private void image1AltButton_Click(object sender, EventArgs e)
         {
@@ -1193,7 +1221,9 @@ namespace SKU_Manager.SplashModules.Update
                 imageAlt[9] = newAlt.altText;
             }
         }
+        #endregion
 
+        #region Group Alt
         /* the event when group image alt button is clicked -> edit alt text and return it */
         private void group1AltButton_Click(object sender, EventArgs e)
         {
@@ -1245,7 +1275,9 @@ namespace SKU_Manager.SplashModules.Update
                 groupAlt[4] = newAlt.altText;
             }
         }
+        #endregion
 
+        #region Model Alt
         /* the event when model image alt button is clicked -> edit alt text and return it */
         private void model1AltButton_Click(object sender, EventArgs e)
         {
@@ -1297,5 +1329,6 @@ namespace SKU_Manager.SplashModules.Update
                 modelAlt[4] = newAlt.altText;
             }
         }
+        #endregion
     }
 }

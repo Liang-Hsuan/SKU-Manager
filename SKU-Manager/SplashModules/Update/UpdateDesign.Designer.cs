@@ -142,6 +142,7 @@
             this.trendFrenchExtendedTextbox = new System.Windows.Forms.TextBox();
             this.trendShortLabel = new System.Windows.Forms.Label();
             this.trendExtendedLabel = new System.Windows.Forms.Label();
+            this.duplicateWarningLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // shippableWeightTextbox
@@ -161,6 +162,7 @@
             this.imprintHeightTextbox.Name = "imprintHeightTextbox";
             this.imprintHeightTextbox.Size = new System.Drawing.Size(386, 20);
             this.imprintHeightTextbox.TabIndex = 33;
+            this.imprintHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintHeightTextbox_KeyPress);
             // 
             // brandTextbox
             // 
@@ -223,6 +225,7 @@
             this.internalNameTextbox.Name = "internalNameTextbox";
             this.internalNameTextbox.Size = new System.Drawing.Size(481, 20);
             this.internalNameTextbox.TabIndex = 11;
+            this.internalNameTextbox.TextChanged += new System.EventHandler(this.internalNameTextbox_TextChanged);
             // 
             // designServiceFlagLabel
             // 
@@ -248,6 +251,7 @@
             this.designServiceFlagCombobox.Name = "designServiceFlagCombobox";
             this.designServiceFlagCombobox.Size = new System.Drawing.Size(161, 21);
             this.designServiceFlagCombobox.TabIndex = 9;
+            this.designServiceFlagCombobox.TextChanged += new System.EventHandler(this.designServiceFlagCombobox_TextChanged);
             // 
             // brandLabel
             // 
@@ -600,6 +604,7 @@
             this.imprintWidthTextbox.Name = "imprintWidthTextbox";
             this.imprintWidthTextbox.Size = new System.Drawing.Size(386, 20);
             this.imprintWidthTextbox.TabIndex = 35;
+            this.imprintWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintWidthTextbox_KeyPress);
             // 
             // imprintedCombobox
             // 
@@ -1318,7 +1323,7 @@
             // 
             this.trendEnglishExtendedTextbox.Enabled = false;
             this.trendEnglishExtendedTextbox.Location = new System.Drawing.Point(213, 513);
-            this.trendEnglishExtendedTextbox.MaxLength = 100;
+            this.trendEnglishExtendedTextbox.MaxLength = 250;
             this.trendEnglishExtendedTextbox.Multiline = true;
             this.trendEnglishExtendedTextbox.Name = "trendEnglishExtendedTextbox";
             this.trendEnglishExtendedTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1355,6 +1360,17 @@
             this.trendExtendedLabel.TabIndex = 24;
             this.trendExtendedLabel.Text = "Trend Extended Description";
             // 
+            // duplicateWarningLabel
+            // 
+            this.duplicateWarningLabel.AutoSize = true;
+            this.duplicateWarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateWarningLabel.Location = new System.Drawing.Point(524, 214);
+            this.duplicateWarningLabel.Name = "duplicateWarningLabel";
+            this.duplicateWarningLabel.Size = new System.Drawing.Size(170, 13);
+            this.duplicateWarningLabel.TabIndex = 108;
+            this.duplicateWarningLabel.Text = "duplicate Internal Name detected !";
+            this.duplicateWarningLabel.Visible = false;
+            // 
             // UpdateDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1362,6 +1378,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
+            this.Controls.Add(this.duplicateWarningLabel);
             this.Controls.Add(this.trendExtendedLabel);
             this.Controls.Add(this.trendShortLabel);
             this.Controls.Add(this.trendFrenchExtendedTextbox);
@@ -1595,5 +1612,6 @@
         private System.Windows.Forms.TextBox trendFrenchExtendedTextbox;
         private System.Windows.Forms.Label trendShortLabel;
         private System.Windows.Forms.Label trendExtendedLabel;
+        private System.Windows.Forms.Label duplicateWarningLabel;
     }
 }

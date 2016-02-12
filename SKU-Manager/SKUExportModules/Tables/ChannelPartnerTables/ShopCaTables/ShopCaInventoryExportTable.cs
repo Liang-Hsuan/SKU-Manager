@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses;
+using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 {

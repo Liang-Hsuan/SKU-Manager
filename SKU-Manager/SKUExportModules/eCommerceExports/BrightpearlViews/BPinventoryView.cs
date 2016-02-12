@@ -22,7 +22,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         private bool[] done = new bool[8];
 
         // initialize brightpearl inventory Table objects
-        private BPexportTable[] exportTable;
+        private BPexportTable[] exportTable = new BPexportTable[8];
 
         /* constructor that initialize graphic components */
         public BPinventoryView()

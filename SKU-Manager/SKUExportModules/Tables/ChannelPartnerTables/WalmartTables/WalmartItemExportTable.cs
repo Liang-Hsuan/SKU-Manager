@@ -152,27 +152,27 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
                 row = mainTable.NewRow();
 
-                row[0] = list[0];                                            // upc/gtin
-                row[2] = sku;                                                    // supplier stock number
-                row[3] = list[9];                // item description 1
-                row[4] = list[10];            // french item description 1
-                row[5] = list[11];            // shelf 1 / color
-                row[6] = list[12];            // french shelf 1 / color
-                row[9] = "Ea";          // unit size uom
-                row[10] = 00001.0000;   // unit size / sell qty
-                row[11] = "Online Only";    // item description 2
-                row[12] = "En ligne seulement";  // french item description 2
-                row[13] = "Leather Goods";      // UPC Description
-                row[14] = "Ashlin Cuir";        // French UPC description
-                row[15] = "Ashlin® " + list[3];      // signing desc
-                row[16] = "Ashlin® " + list[4];      // french signing desc
-                row[17] = 312999;           // brand 
-                row[45] = Convert.ToDouble(list[1]) * price[0];               // unit cost
-                row[46] = Convert.ToDouble(list[1]) * price[1];           // base unit retail
-                row[83] = list[5];           // item length
-                row[84] = list[6];           // item width
-                row[85] = list[7];           // item height
-                row[86] = list[8];           // item weight
+                row[0] = list[0];                                 // upc/gtin
+                row[2] = sku;                                     // supplier stock number
+                row[3] = list[8];                                 // item description 1
+                row[4] = list[9];                                 // french item description 1
+                row[5] = list[10];                                // shelf 1 / color
+                row[6] = list[11];                                // french shelf 1 / color
+                row[9] = "Ea";                                    // unit size uom
+                row[10] = 00001.0000;                             // unit size / sell qty
+                row[11] = "Online Only";                          // item description 2
+                row[12] = "En ligne seulement";                   // french item description 2
+                row[13] = "Leather Goods";                        // UPC Description
+                row[14] = "Ashlin Cuir";                          // French UPC description
+                row[15] = "Ashlin® " + list[2];                   // signing desc
+                row[16] = "Ashlin® " + list[3];                   // french signing desc
+                row[17] = 312999;                                 // brand 
+                row[45] = Convert.ToDouble(list[1]) * price[0];   // unit cost
+                row[46] = Convert.ToDouble(list[1]) * price[1];   // base unit retail
+                row[83] = list[4];                                // item length
+                row[84] = list[5];                                // item width
+                row[85] = list[6];                                // item height
+                row[86] = list[7];                                // item weight
 
                 mainTable.Rows.Add(row);  
                 progress++;
@@ -189,46 +189,23 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
         {
             // local fields for storing data
             ArrayList list = new ArrayList();
-            DataTable table = new DataTable();
 
-            // allocate elements from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
-
-            // start grabbing data              
-            // [0] upc/gtin, [1] for all related to price
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT UPC_Code_10, Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT UPC_Code_10, Base_Price, " +
+                                                "Short_Description, Short_Description_FR, Depth_cm, Width_cm, Height_cm, Weight_grams, " +
+                                                "Design_Service_Family_Description, Design_Service_Family_Description_FR, " +
+                                                "Colour_Description_Short, Colour_Description_Short_FR " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            adapter.Fill(table);
-            for (int i = 0; i <= 1; i++)
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            for (int i = 0; i <= 11; i++)
             {
-                list.Add(table.Rows[0][i]);
+                list.Add(reader.GetValue(i));
             }
-            table.Reset();
-            // [2] for further looking, [3] signing desc, [4] french signgin desc, [5] item length, [6] item width, [7] item height, [8] item weight
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Short_Description, Short_Description_FR, Depth_cm, Width_cm, Height_cm, Weight_grams FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i < 7; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            // [9] item description 1, [10] french item description 1
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_Description_FR FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][0] + "\';", connection);
-            table.Reset();
-            adapter.Fill(table);
-            for (int i = 0; i <= 1; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [11] shelf 1 / color, [12] french shelf 1 / color
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 1; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
             connection.Close();
 
             return list;

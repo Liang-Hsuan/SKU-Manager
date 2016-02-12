@@ -247,7 +247,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                object[] list = getDatas(sku);
+                ArrayList list = getData(sku);
 
                 row = mainTable.NewRow();
 
@@ -359,7 +359,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[89] = list[51];                                                 // components
                 double msrp = discountList[21] * basePrice;
                 row[90] = msrp;                                                     // msrp
-                double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[51]) - 1;
+                double runCharge;
+                if (!list[51].Equals(DBNull.Value))
+                {
+                    runCharge = Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[51]) - 1;
+                }
+                else
+                {
+                    runCharge = Math.Round(msrp*0.05)/0.6;
+                }
                 if (runCharge > 8)
                 {
                     row[91] = 8;
@@ -529,50 +537,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // local field for storing data
             ArrayList list = new ArrayList();
 
-            // grab data from design database
-            // [3] material description short, [4] material description extended, [5] material description short fr, [6] material description extended fr                                                                                                                                                                                                                                                                                                                                                                                                                
-           /* SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended, Material_Description_Short_FR, Material_Description_Extended_FR FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
-            connection.Open();
-            adapter.Fill(table);
-            for (int i = 0; i <= 3; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [7] colour description short, [8] colour description extended, [9] colour description short fr, [10] colour description extended fr
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended, Colour_Description_Short_FR, Colour_Description_Extended_FR FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 3; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [11] design service flag, [12] design service family code, [13] design short description, [14] design extended description, [15] design short description fr, [16] design extended description fr, [17] imprintable, [18] imprint height cm, [19] imprint width cm, [20] depth cm, [21] width cm, [22] height cm, [23] weight grams. [24] shippable width cm, [25] shippable height cm, [26] shippable depth cm, [27] shippable weight grams, [28] strap, [29] detachable strap, [30] zipped enclosure, [31] design service fashion name ashlin, [32] design service fashion name tsc, [33] design service fashion name costco, [34] design service fashion name bestbuy, [35] design service fashion name shop ca, [36] design service fashion name amazon ca, [37] design service fashion name amazon com, [38] design service fashion name sears, [39] design service fashion name staples, [40] design service fashion name walmart, [41] option 1, [42] option 2, [43] option 3, [44] option 4, [45] option 5, [46] option 1 fr, [47] option 2 fr, [48] option 3 fr, [49] option 4 fr, [50] option 5 fr, [51] components, [52] flat shippable, [53] website flag
-            //                                and further looking                                                                                                                                                                        & imprint height in     & imprint width in     & depth in     & width in     & height in     & weight pounds    & shippable width in     & shippable height in     & shippable depth in     & shippalbe weight lb
-            adapter = new SqlDataAdapter("SELECT Design_Service_Flag, Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 42; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            // [54] design servie family description, [55] design service family description fr, [56] design service family keywords general, [57] design service family category sage, [58] design service family category esp, [59] design service family category promomarketing, [60] design service family category uducat, [61] design service family distributocentral, [62] design service family themes sage
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Design_Service_Family_Themes_Sage FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][1] + "\';", connection);
-            table.Reset();
-            adapter.Fill(table);
-            for (int i = 0; i <= 8; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path
-            adapter = new SqlDataAdapter("SELECT SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 60; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            connection.Close(); */
-
             //return list;
             // get the first two of elements in the sku (design and material)
             string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
@@ -593,7 +557,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path
             SqlCommand commnad = new SqlCommand("SELECT Material_Description_Short, Material_Description_Extended, Material_Description_Short_FR, Material_Description_Extended_FR, " +
                                                 "Colour_Description_Short, Colour_Description_Extended, Colour_Description_Short_FR, Colour_Description_Extended_FR, " +
-                                                "Design_Service_Flag, Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
+                                                "Design_Service_Flag, design.Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Design_Service_Family_Themes_Sage, " +
                                                 "SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path " +
                                                 "FROM master_SKU_Attributes sku " +
@@ -602,55 +566,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            connection.Open();
             SqlDataReader reader = commnad.ExecuteReader();
-            int i = 0;
-            while (reader.Read())
+            reader.Read();
+            for (int i = 0; i <= 120; i++)
             {
                 list.Add(reader.GetValue(i));
             }
-
-            return list;
-        }
-
-        private object[] getDatas(string sku)
-        {
-            object[] list = new object[124];
-
-            // get the first two of elements in the sku (design and material)
-            string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
-
-            // allocate elements from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string material = firstTwo.Substring(firstTwo.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
-
-            // [0] design, [1] material, [2] color;
-            list[0] = design; list[1] = material; list[2] = color;
-
-            // grab data from database
-            // [3] material description short, [4] material description extended, [5] material description short fr, [6] material description extended fr 
-            // [7] colour description short, [8] colour description extended, [9] colour description short fr, [10] colour description extended fr
-            // [11] design service flag, [12] design service family code, [13] design short description, [14] design extended description, [15] design short description fr, [16] design extended description fr, [17] imprintable, [18] imprint height cm, [19] imprint width cm, [20] depth cm, [21] width cm, [22] height cm, [23] weight grams. [24] shippable width cm, [25] shippable height cm, [26] shippable depth cm, [27] shippable weight grams, [28] strap, [29] detachable strap, [30] zipped enclosure, [31] design service fashion name ashlin, [32] design service fashion name tsc, [33] design service fashion name costco, [34] design service fashion name bestbuy, [35] design service fashion name shop ca, [36] design service fashion name amazon ca, [37] design service fashion name amazon com, [38] design service fashion name sears, [39] design service fashion name staples, [40] design service fashion name walmart, [41] option 1, [42] option 2, [43] option 3, [44] option 4, [45] option 5, [46] option 1 fr, [47] option 2 fr, [48] option 3 fr, [49] option 4 fr, [50] option 5 fr, [51] components, [52] flat shippable, [53] website flag
-            // [54] design servie family description, [55] design service family description fr, [56] design service family keywords general, [57] design service family category sage, [58] design service family category esp, [59] design service family category promomarketing, [60] design service family category uducat, [61] design service family distributocentral, [62] design service family themes sage                                                                                                                                                                                                                  & imprint height in     & imprint width in     & depth in     & width in     & height in     & weight pounds    & shippable width in     & shippable height in     & shippable depth in     & shippalbe weight lb
-            // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path
-            SqlCommand commnad = new SqlCommand("SELECT Material_Description_Short, Material_Description_Extended, Material_Description_Short_FR, Material_Description_Extended_FR, " +
-                                                "Colour_Description_Short, Colour_Description_Extended, Colour_Description_Short_FR, Colour_Description_Extended_FR, " +
-                                                "Design_Service_Flag, Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
-                                                "Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Design_Service_Family_Themes_Sage, " +
-                                                "SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path " +
-                                                "FROM master_SKU_Attributes sku " +
-                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
-                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            SqlDataReader reader = commnad.ExecuteReader();
-            reader.Read();
-            for (int i = 3; i <= 123; i++)
-            {
-                list[i] = reader.GetValue(i);
-            }
-
+            
+            connection.Close();
             return list;
         }
 

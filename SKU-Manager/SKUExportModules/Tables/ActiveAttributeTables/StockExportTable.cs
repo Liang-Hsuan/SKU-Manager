@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using SKU_Manager.SupportingClasses;
+using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 {
@@ -32,18 +33,36 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // local field for inserting data to table
             DataRow row;
             Product product = new Product();
+            List<Values> list = product.getStockList();
+            bool found = false;
 
             // start load data
             mainTable.BeginLoadData();
 
-            // add data to each row 
             foreach (string sku in skuList)
             {
                 row = mainTable.NewRow();
 
-                row[0] = sku;                           // sku
-                row[1] = product.getProductId(sku);     // bp item#
-                row[2] = product.getQuantity(sku);      // quantity 
+                row[0] = sku;
+
+                // looking for the data for this sku
+                foreach (Values value in list)
+                {
+                    if (sku == value.SKU)
+                    {
+                        row[1] = value.ProductId;
+                        row[2] = value.Quantity;
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    row[2] = -1;
+                }
+
+                found = false;
 
                 mainTable.Rows.Add(row);
                 progress++;

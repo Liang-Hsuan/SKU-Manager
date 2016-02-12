@@ -82,23 +82,20 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         {
             // local field for storing data
             ArrayList list = new ArrayList();
-            DataTable table = new DataTable();
-
-            // get the design code from sku
-            string design = sku.Substring(0, sku.IndexOf('-'));
 
             // grab data from design
-            // [0] short description
+            // [0] short description, [1] upc code 10, [2] upc code check digit
+            SqlCommand command = new SqlCommand("SELECT Short_Description, UPC_Code_9, UPC_Code_10 " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            table.Reset();
-            // [1] upc code 9, [2] upc check digit
-            adapter = new SqlDataAdapter("SELECT UPC_Code_9, UPC_Code_10 FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            list.Add(table.Rows[0][1]);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            for (int i = 0; i <= 2; i++)
+            {
+                list.Add(reader.GetValue(i));
+            }
             connection.Close();
 
             return list;

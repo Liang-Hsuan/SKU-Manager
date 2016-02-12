@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
 {
@@ -165,6 +166,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
 
             // local field for inserting data to table
             DataRow row;
+            Product product = new Product();
+            double multiplier = getMultiplier();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -179,17 +182,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[0] = "Ashlin®" + list[0];                      // item name
                 row[2] = "Ashlin®";                                // brand name
                 row[3] = "Ashlin®";                                // manufacturer 
-                row[4] = list[23];                                 // external product_id
+                row[4] = list[24];                                 // external product_id
                 row[5] = "UPC";                                    // external product id type
-                row[6] = list[24];                                 // item sku
+                row[6] = sku;                                      // item sku
                 row[7] = "Ashlin®";                                // part number
                 row[8] = list[1];                                  // product description
                 row[9] = "PartiaUpdate";                           // update delete
-                row[10] = Convert.ToDouble(list[25]) * 1.0495;     // standard price
+                row[10] = Math.Ceiling(Convert.ToDouble(list[25]) * multiplier) - 0.05;     // standard price
                 row[11] = "CAD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note
-                row[16] = 12;                                      // quantity
+                row[16] = product.getQuantity(sku);                // quantity
                 row[17] = 1;                                       // max aggregate ship quantity
                 row[18] = 1;                                       // item package quantity
                 row[19] = 1;                                       // number_of_items
@@ -204,18 +207,18 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[35] = "GR";                                    // item weight unit of measure
                 row[36] = list[6];                                 // website shipping weight
                 row[37] = "GR";                                    // service outside mnf warranty
-                row[40] = list[16];                                // keyword amazon 1
-                row[41] = list[17];                                // keyword amazon 2
-                row[42] = list[18];                                // keyword amazon 3
-                row[43] = list[19];                                // keyword amazon 4
-                row[44] = list[20];                                // keyword amazon 5
+                row[40] = list[17];                                // keyword amazon 1
+                row[41] = list[18];                                // keyword amazon 2
+                row[42] = list[19];                                // keyword amazon 3
+                row[43] = list[20];                                // keyword amazon 4
+                row[44] = list[21];                                // keyword amazon 5
                 row[45] = "man";                                   // target audience base 1
                 row[46] = "wonmen";                                // target audience base 2
                 row[47] = "boys";                                  // target audience base 3
                 row[48] = "girls";                                 // target audience base 4
                 row[49] = "unisex";                                // target audience base 5
-                row[51] = list[21];                                // recommended browse nodes 1
-                row[52] = list[22];                                // recommended browse nodes 2
+                row[51] = list[22];                                // recommended browse nodes 1
+                row[52] = list[23];                                // recommended browse nodes 2
                 row[53] = list[8];                                 // bullet point 1
                 row[54] = list[9];                                 // bullet point 2
                 row[55] = list[10];                                // bullet point 3

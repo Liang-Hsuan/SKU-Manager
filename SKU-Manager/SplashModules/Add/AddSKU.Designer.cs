@@ -428,7 +428,7 @@
             // 
             // ashlinTextbox
             // 
-            this.ashlinTextbox.BackColor = System.Drawing.Color.White;
+            this.ashlinTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.ashlinTextbox.Location = new System.Drawing.Point(187, 435);
             this.ashlinTextbox.MaxLength = 50;
             this.ashlinTextbox.Name = "ashlinTextbox";
@@ -437,7 +437,7 @@
             // 
             // magentoTextbox
             // 
-            this.magentoTextbox.BackColor = System.Drawing.Color.White;
+            this.magentoTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.magentoTextbox.Location = new System.Drawing.Point(187, 461);
             this.magentoTextbox.MaxLength = 50;
             this.magentoTextbox.Name = "magentoTextbox";
@@ -446,7 +446,7 @@
             // 
             // tscTextbox
             // 
-            this.tscTextbox.BackColor = System.Drawing.Color.White;
+            this.tscTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.tscTextbox.Location = new System.Drawing.Point(187, 487);
             this.tscTextbox.MaxLength = 50;
             this.tscTextbox.Name = "tscTextbox";
@@ -455,7 +455,7 @@
             // 
             // costcoTextbox
             // 
-            this.costcoTextbox.BackColor = System.Drawing.Color.White;
+            this.costcoTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.costcoTextbox.Location = new System.Drawing.Point(187, 513);
             this.costcoTextbox.MaxLength = 50;
             this.costcoTextbox.Name = "costcoTextbox";
@@ -464,7 +464,7 @@
             // 
             // bestbuyTextbox
             // 
-            this.bestbuyTextbox.BackColor = System.Drawing.Color.White;
+            this.bestbuyTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.bestbuyTextbox.Location = new System.Drawing.Point(187, 539);
             this.bestbuyTextbox.MaxLength = 50;
             this.bestbuyTextbox.Name = "bestbuyTextbox";
@@ -473,7 +473,7 @@
             // 
             // shopCaTextbox
             // 
-            this.shopCaTextbox.BackColor = System.Drawing.Color.White;
+            this.shopCaTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.shopCaTextbox.Location = new System.Drawing.Point(187, 565);
             this.shopCaTextbox.MaxLength = 50;
             this.shopCaTextbox.Name = "shopCaTextbox";
@@ -537,7 +537,7 @@
             // 
             // amazonCaTextbox
             // 
-            this.amazonCaTextbox.BackColor = System.Drawing.Color.White;
+            this.amazonCaTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.amazonCaTextbox.Location = new System.Drawing.Point(187, 591);
             this.amazonCaTextbox.MaxLength = 50;
             this.amazonCaTextbox.Name = "amazonCaTextbox";
@@ -546,7 +546,7 @@
             // 
             // amazonComTextbox
             // 
-            this.amazonComTextbox.BackColor = System.Drawing.Color.White;
+            this.amazonComTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.amazonComTextbox.Location = new System.Drawing.Point(187, 617);
             this.amazonComTextbox.MaxLength = 50;
             this.amazonComTextbox.Name = "amazonComTextbox";
@@ -555,7 +555,7 @@
             // 
             // searsTextbox
             // 
-            this.searsTextbox.BackColor = System.Drawing.Color.White;
+            this.searsTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.searsTextbox.Location = new System.Drawing.Point(187, 643);
             this.searsTextbox.MaxLength = 50;
             this.searsTextbox.Name = "searsTextbox";
@@ -564,7 +564,7 @@
             // 
             // staplesTextbox
             // 
-            this.staplesTextbox.BackColor = System.Drawing.Color.White;
+            this.staplesTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.staplesTextbox.Location = new System.Drawing.Point(187, 669);
             this.staplesTextbox.MaxLength = 50;
             this.staplesTextbox.Name = "staplesTextbox";
@@ -617,7 +617,7 @@
             // 
             // walmartCaTextbox
             // 
-            this.walmartCaTextbox.BackColor = System.Drawing.Color.White;
+            this.walmartCaTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.walmartCaTextbox.Location = new System.Drawing.Point(187, 695);
             this.walmartCaTextbox.MaxLength = 50;
             this.walmartCaTextbox.Name = "walmartCaTextbox";
@@ -626,7 +626,7 @@
             // 
             // walmartComTextbox
             // 
-            this.walmartComTextbox.BackColor = System.Drawing.Color.White;
+            this.walmartComTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.walmartComTextbox.Location = new System.Drawing.Point(187, 721);
             this.walmartComTextbox.MaxLength = 50;
             this.walmartComTextbox.Name = "walmartComTextbox";
@@ -720,6 +720,7 @@
             this.designServiceFlagTextbox.Name = "designServiceFlagTextbox";
             this.designServiceFlagTextbox.Size = new System.Drawing.Size(159, 20);
             this.designServiceFlagTextbox.TabIndex = 8;
+            this.designServiceFlagTextbox.TextChanged += new System.EventHandler(this.designServiceFlagTextbox_TextChanged);
             // 
             // materialShortDescriptionTextbox
             // 
@@ -1233,7 +1234,7 @@
             // 
             // distributorCentralTextbox
             // 
-            this.distributorCentralTextbox.BackColor = System.Drawing.Color.White;
+            this.distributorCentralTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.distributorCentralTextbox.Location = new System.Drawing.Point(187, 747);
             this.distributorCentralTextbox.MaxLength = 50;
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
@@ -1242,7 +1243,7 @@
             // 
             // promoMarketingTextbox
             // 
-            this.promoMarketingTextbox.BackColor = System.Drawing.Color.White;
+            this.promoMarketingTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.promoMarketingTextbox.Location = new System.Drawing.Point(187, 773);
             this.promoMarketingTextbox.MaxLength = 50;
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
@@ -1338,7 +1339,7 @@
             // 
             // wmManufacturerTextbox
             // 
-            this.wmManufacturerTextbox.BackColor = System.Drawing.Color.White;
+            this.wmManufacturerTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.wmManufacturerTextbox.Location = new System.Drawing.Point(187, 799);
             this.wmManufacturerTextbox.MaxLength = 50;
             this.wmManufacturerTextbox.Name = "wmManufacturerTextbox";
@@ -1347,7 +1348,7 @@
             // 
             // wmMerchantTextbox
             // 
-            this.wmMerchantTextbox.BackColor = System.Drawing.Color.White;
+            this.wmMerchantTextbox.BackColor = System.Drawing.SystemColors.Window;
             this.wmMerchantTextbox.Location = new System.Drawing.Point(187, 825);
             this.wmMerchantTextbox.MaxLength = 50;
             this.wmMerchantTextbox.Name = "wmMerchantTextbox";

@@ -290,6 +290,7 @@
             this.designServiceFlagTextbox.Name = "designServiceFlagTextbox";
             this.designServiceFlagTextbox.Size = new System.Drawing.Size(159, 20);
             this.designServiceFlagTextbox.TabIndex = 9;
+            this.designServiceFlagTextbox.TextChanged += new System.EventHandler(this.designServiceFlagTextbox_TextChanged);
             // 
             // brandTextbox
             // 

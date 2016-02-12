@@ -49,16 +49,19 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                 row[2] = list[2];                                           // description
                 row[3] = "1; 6; 24; 50; 100; 250; 500; 1000; 2500";         // qty breaks
                 double msrp = Convert.ToDouble(list[0]) * discountList[9];
-                double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[1]) - 1;
-                if (runCharge > 8)
+                if (!list[1].Equals(DBNull.Value))
                 {
-                    runCharge = 8;
+                    double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[1]) - 1;
+                    if (runCharge > 8)
+                    {
+                        runCharge = 8;
+                    }
+                    else if (runCharge < 1)
+                    {
+                        runCharge = 1;
+                    }
+                    msrp = msrp + runCharge;
                 }
-                else if (runCharge < 1)
-                {
-                    runCharge = 1;
-                }
-                msrp = msrp + runCharge;
                 // costs breaks
                 row[4] = msrp * discountList[0] + "; " + msrp * discountList[1] + "; " + msrp * discountList[2] + "; " + msrp * discountList[3] + "; " + msrp * discountList[4] + "; " +
                          msrp * discountList[5] + "; " + msrp * discountList[6] + "; " + msrp * discountList[7] + "; " + msrp * discountList[8];

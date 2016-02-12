@@ -8,6 +8,8 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Update
 {
@@ -61,6 +63,7 @@ namespace SKU_Manager.SplashModules.Update
         // field for comboBox
         private ArrayList designCodeList = new ArrayList();
         private ArrayList productFamilyList = new ArrayList();
+        private List<string> internalNameList = new List<string>();
 
         // connection string to the database
         private string connectionString = Properties.Settings.Default.Designcs;
@@ -79,6 +82,7 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -104,6 +108,15 @@ namespace SKU_Manager.SplashModules.Update
             {
                 productFamilyList.Add(reader.GetValue(0));
             }
+            reader.Close();
+
+            // additional addition for ashlin internal name checking
+            command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;", connection);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                internalNameList.Add(reader.GetString(0));
+            }
             connection.Close();
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -111,7 +124,9 @@ namespace SKU_Manager.SplashModules.Update
             designCodeCombobox.DataSource = designCodeList;
             productFamilyCombobox.DataSource = productFamilyList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void designCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -130,26 +145,6 @@ namespace SKU_Manager.SplashModules.Update
                 trendFrenchShortTextbox.Enabled = true;
                 trendEnglishExtendedTextbox.Enabled = true;
                 trendFrenchExtendedTextbox.Enabled = true;
-                monogrammedCombobox.Enabled = true;
-                imprintedCombobox.Enabled = true;
-                imprintHeightTextbox.Enabled = true;
-                imprintWidthTextbox.Enabled = true;
-                productHeightTextbox.Enabled = true;
-                productWidthTextbox.Enabled = true;
-                productDepthTextbox.Enabled = true;
-                weightTextBox.Enabled = true;
-                numberComponentTextbox.Enabled = true;
-                strapCombobox.Enabled = true;
-                detachableCombobox.Enabled = true;
-                zippedCombobox.Enabled = true;
-                tscTextbox.Enabled = true;
-                costcoTextbox.Enabled = true;
-                bestbuyTextbox.Enabled = true;
-                shopcaTextbox.Enabled = true;
-                amazonTextbox.Enabled = true;
-                searsTextbox.Enabled = true;
-                staplesTextbox.Enabled = true;
-                walmartTextbox.Enabled = true;
                 translateButton2.Enabled = true;
                 option1EnglishTextbox.Enabled = true;
                 option2EnglishTextbox.Enabled = true;
@@ -220,6 +215,8 @@ namespace SKU_Manager.SplashModules.Update
                 strapCombobox.Text = "";
                 detachableCombobox.Text = "";
                 zippedCombobox.Text = "";
+                shippedFlatCombobox.Text = "";
+                shippedFoldedCombobox.Text = "";
                 displayedOnWebsiteCombobox.Text = "";
 
                 productFamilyCombobox.Enabled = false;
@@ -234,26 +231,6 @@ namespace SKU_Manager.SplashModules.Update
                 trendFrenchShortTextbox.Enabled = false;
                 trendEnglishExtendedTextbox.Enabled = false;
                 trendFrenchExtendedTextbox.Enabled = false;
-                monogrammedCombobox.Enabled = false;
-                imprintedCombobox.Enabled = false;
-                imprintHeightTextbox.Enabled = false;
-                imprintWidthTextbox.Enabled = false;
-                productHeightTextbox.Enabled = false;
-                productWidthTextbox.Enabled = false;
-                productDepthTextbox.Enabled = false;
-                weightTextBox.Enabled = false;
-                numberComponentTextbox.Enabled = false;
-                strapCombobox.Enabled = false;
-                detachableCombobox.Enabled = false;
-                zippedCombobox.Enabled = false;
-                tscTextbox.Enabled = false;
-                costcoTextbox.Enabled = false;
-                bestbuyTextbox.Enabled = false;
-                shopcaTextbox.Enabled = false;
-                amazonTextbox.Enabled = false;
-                searsTextbox.Enabled = false;
-                staplesTextbox.Enabled = false;
-                walmartTextbox.Enabled = false;
                 translateButton2.Enabled = false;
                 option1EnglishTextbox.Enabled = false;
                 option2EnglishTextbox.Enabled = false;
@@ -358,7 +335,6 @@ namespace SKU_Manager.SplashModules.Update
         {
             productFamilyCombobox.Text = productFamily;
             brandTextbox.Text = "Ashlin®";
-            designServiceFlagCombobox.Text = designServiceFlag;
             internalNameTextbox.Text = internalName;
             shortEnglishDescriptionTextbox.Text = shortEnglishDescription;
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
@@ -413,8 +389,101 @@ namespace SKU_Manager.SplashModules.Update
             {
                 activeCheckbox.Checked = false;
             }
+            designServiceFlagCombobox.Text = designServiceFlag;
+        }
+        #endregion
+
+        /* the event of design service flag combobox that set the enability of some controls */
+        private void designServiceFlagCombobox_TextChanged(object sender, EventArgs e)
+        {
+            if (designServiceFlagCombobox.Text == "Design")
+            {
+                tscTextbox.Enabled = true;
+                costcoTextbox.Enabled = true;
+                bestbuyTextbox.Enabled = true;
+                shopcaTextbox.Enabled = true;
+                amazonTextbox.Enabled = true;
+                searsTextbox.Enabled = true;
+                staplesTextbox.Enabled = true;
+                walmartTextbox.Enabled = true;
+                monogrammedCombobox.Enabled = true;
+                imprintedCombobox.Enabled = true;
+                imprintHeightTextbox.Enabled = true;
+                imprintWidthTextbox.Enabled = true;
+                productHeightTextbox.Enabled = true;
+                productWidthTextbox.Enabled = true;
+                productDepthTextbox.Enabled = true;
+                weightTextBox.Enabled = true;
+                numberComponentTextbox.Enabled = true;
+                strapCombobox.Enabled = true;
+                detachableCombobox.Enabled = true;
+                zippedCombobox.Enabled = true;
+                shippedFlatCombobox.Enabled = true;
+                shippedFoldedCombobox.Enabled = true;
+                shippableHeightTextbox.Enabled = true;
+                shippableWidthTextbox.Enabled = true;
+                shippableDepthTextbox.Enabled = true;
+            }
+            else
+            {
+                tscTextbox.Enabled = false;
+                costcoTextbox.Enabled = false;
+                bestbuyTextbox.Enabled = false;
+                shopcaTextbox.Enabled = false;
+                amazonTextbox.Enabled = false;
+                searsTextbox.Enabled = false;
+                staplesTextbox.Enabled = false;
+                walmartTextbox.Enabled = false;
+                monogrammedCombobox.Enabled = false;
+                imprintedCombobox.Enabled = false;
+                imprintHeightTextbox.Enabled = false;
+                imprintWidthTextbox.Enabled = false;
+                productHeightTextbox.Enabled = false;
+                productWidthTextbox.Enabled = false;
+                productDepthTextbox.Enabled = false;
+                weightTextBox.Enabled = false;
+                numberComponentTextbox.Enabled = false;
+                strapCombobox.Enabled = false;
+                detachableCombobox.Enabled = false;
+                zippedCombobox.Enabled = false;
+                shippedFlatCombobox.Enabled = false;
+                shippedFoldedCombobox.Enabled = false;
+                shippableHeightTextbox.Enabled = false;
+                shippableWidthTextbox.Enabled = false;
+                shippableDepthTextbox.Enabled = false;
+            }
         }
 
+        /* the event of internal ashlin name textbox that detect whether the user input has duplicate */
+        private void internalNameTextbox_TextChanged(object sender, EventArgs e)
+        {
+            bool found = false;
+
+            if (internalNameTextbox.Text != "")
+            {
+                foreach (string name in internalNameList)
+                {
+                    if (internalNameTextbox.Text == name && internalNameTextbox.Text != internalName)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    internalNameTextbox.BackColor = Color.Red;
+                    duplicateWarningLabel.Visible = true;
+                }
+                else
+                {
+                    internalNameTextbox.BackColor = SystemColors.Window;
+                    duplicateWarningLabel.Visible = false;
+                }
+            }
+        }
+
+        #region Translate Button 1 Event
         /* the event for the first translate button that translate English to French */
         private void translateButton1_Click(object sender, EventArgs e)
         {
@@ -471,7 +540,9 @@ namespace SKU_Manager.SplashModules.Update
             trendFrenchShortTextbox.Text = trendShortFrenchDescription;
             trendFrenchExtendedTextbox.Text = trendExtendedFrenchDescription;
         }
+        #endregion
 
+        #region Translate Button 2 Event
         /* the background worker for translate button 2 */
         private void translateButton2_Click(object sender, EventArgs e)
         {
@@ -536,6 +607,7 @@ namespace SKU_Manager.SplashModules.Update
             option4FrenchTextbox.Text = englishOption[3];
             option5FrenchTextbox.Text = englishOption[4];
         }
+        #endregion
 
         /* a method that turn boolean from the user input to 1 or 0 */
         private void calculateTrueAndFalse()
@@ -581,13 +653,17 @@ namespace SKU_Manager.SplashModules.Update
             {
                 imprintHeightTextbox.Enabled = false;
                 imprintWidthTextbox.Enabled = false;
+                imprintHeightTextbox.Text = "";
+                imprintWidthTextbox.Text = "";
             }
             else
             {
-                shippedFoldedCombobox.Enabled = true;
+                imprintHeightTextbox.Enabled = true;
+                imprintWidthTextbox.Enabled = true;
             }
         }
 
+        #region Shipped Flat and Shipped Folded Comboboxes Event
         /* the event for shipped property combobox selected item changed that change the other shipped property's combobox enability*/
         private void shippedFlatCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -646,7 +722,31 @@ namespace SKU_Manager.SplashModules.Update
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
             }
         }
+        #endregion
 
+        #region Imprint Dimensions Textboxes Keypress Event 
+        /* the keypress event for imprint dimensions textbox that only allow numbers */
+        private void imprintHeightTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+        private void imprintWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Product Dimensions Textboxes Event
         /* the event for product dimension textbox text changed that show the correspond value in shippable deimension textbox */
         private void productHeightTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -661,7 +761,7 @@ namespace SKU_Manager.SplashModules.Update
             {
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
             }
-            else if (isFlat)    // is flat, calculate the flat value of width
+            else if (isFlat && productWidthTextbox.Text != "")    // is flat, calculate the flat value of width
             {
                 shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text) * 1.2).ToString();
             }
@@ -672,12 +772,14 @@ namespace SKU_Manager.SplashModules.Update
             {
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
             }
-            else if (isFlat)    // is flat, calculate the flat value of depth
+            else if (isFlat && productDepthTextbox.Text != "")    // is flat, calculate the flat value of depth
             {
                 shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text) * 0.3).ToString();
             }
         }
+        #endregion
 
+        #region Product Dimensions Textboxes Keypress Event
         /* the restriction on product dimension textboxes that only allow numbers */
         private void productHeightTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -706,13 +808,19 @@ namespace SKU_Manager.SplashModules.Update
                 e.Handled = true;
             }
         }
+        #endregion
 
+        #region Shippable Dimensions Textboxes Event
         /* the event when shippable dimension textbox text change that calculate the shippable weight if all fields are filled */
         private void shippableHeightTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
             {
                 shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
+            }
+            else
+            {
+                shippableWeightTextbox.Text = "";
             }
         }
         private void shippableWidthTextbox_TextChanged(object sender, EventArgs e)
@@ -721,6 +829,10 @@ namespace SKU_Manager.SplashModules.Update
             {
                 shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
             }
+            else
+            {
+                shippableWeightTextbox.Text = "";
+            }
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -728,8 +840,14 @@ namespace SKU_Manager.SplashModules.Update
             {
                 shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
             }
+            else
+            {
+                shippableWeightTextbox.Text = "";
+            }
         }
+        #endregion
 
+        #region Shippable Dimensions Textboxes Keypress Event
         /* the restriction on shippable dimension textboxes that only allow numbers */
         private void shippableHeightTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -758,7 +876,9 @@ namespace SKU_Manager.SplashModules.Update
                 e.Handled = true;
             }
         }
+        #endregion
 
+        #region Update Button Click Event 
         /* the event for update design button */
         private void updateDesignButton_Click(object sender, EventArgs e)
         {
@@ -794,16 +914,38 @@ namespace SKU_Manager.SplashModules.Update
             trendExtendedEnglishDescription = trendEnglishExtendedTextbox.Text.Replace("'", "''");
             trendExtendedFrenchDescription = trendFrenchExtendedTextbox.Text.Replace("'", "''");
             imprintHeight = imprintHeightTextbox.Text;
+            if (imprintHeight == "")
+                imprintHeight = "NULL";
             imprintWidth = imprintWidthTextbox.Text;
+            if (imprintWidth == "")
+                imprintWidth = "NULL";
             productHeight = productHeightTextbox.Text;
+            if (productHeight == "")
+                productHeight = "NULL";
             productWidth = productWidthTextbox.Text;
+            if (productWidth == "")
+                productWidth = "NULL";
             productDepth = productDepthTextbox.Text;
+            if (productDepth == "")
+                productDepth = "NULL";
             weight = weightTextBox.Text;
+            if (weight == "")
+                weight = "NULL";
             numberComponents = numberComponentTextbox.Text;
+            if (numberComponents == "")
+                numberComponents = "NULL";
             shippableHeight = shippableHeightTextbox.Text;
+            if (shippableHeight == "")
+                shippableHeight = "NULL";
             shippableWidth = productWidthTextbox.Text;
+            if (shippableWidth == "")
+                shippableWidth = "NULL";
             shippableDepth = shippableDepthTextbox.Text;
+            if (shippableDepth == "")
+                shippableDepth = "NULL";
             shippableWeight = shippableWeightTextbox.Text;
+            if (shippableWeight == "")
+                shippableWeight = "NULL";
             tsc = tscTextbox.Text.Replace("'", "''");
             costco = costcoTextbox.Text.Replace("'", "''");
             bestbuy = bestbuyTextbox.Text.Replace("'", "''");
@@ -864,7 +1006,9 @@ namespace SKU_Manager.SplashModules.Update
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive List Buttons Event
         /* the event for active and inactive list button that open the table of active design list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
@@ -876,5 +1020,6 @@ namespace SKU_Manager.SplashModules.Update
             InactiveDesignList inactiveDesignList = new InactiveDesignList();
             inactiveDesignList.ShowDialog(this);
         }
+        #endregion
     }
 }

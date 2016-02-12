@@ -100,6 +100,7 @@ namespace SKU_Manager.SplashModules.Add
             }
         }
 
+        #region Comboboxes Background Workers
         /* the backgound workder for adding items to comboBoxes*/
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -208,7 +209,9 @@ namespace SKU_Manager.SplashModules.Add
             material = materialCombobox.Text;
             colorCode = colorCodeCombobox.Text;
         }
+        #endregion
 
+        #region All the Events Associated with Design Service Code Combobox 
         /* the event for design service code combobox selected item changed that show the information about the selected item */
         private void designServiceCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -283,6 +286,84 @@ namespace SKU_Manager.SplashModules.Add
             caDutyTextbox.Text = htsList[1];
             usHtsCombobox.Text = htsList[2];
             usDutyTextbox.Text = htsList[3];
+        }
+        #endregion
+
+        /* the event for design service flag textbox that determine the sku code */
+        private void designServiceFlagTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (designServiceFlagTextbox.Text == "Service")
+            {
+                materialCombobox.Enabled = false;
+                colorCodeCombobox.Enabled = false;
+                warehouseCombobox.Enabled = false;
+                rackCombobox.Enabled = false;
+                shelfCombobox.Enabled = false;
+                columnIndexCombobox.Enabled = false;
+                ashlinTextbox.Enabled = false;
+                magentoTextbox.Enabled = false;
+                tscTextbox.Enabled = false;
+                costcoTextbox.Enabled = false;
+                bestbuyTextbox.Enabled = false;
+                shopCaTextbox.Enabled = false;
+                amazonCaTextbox.Enabled = false;
+                amazonComTextbox.Enabled = false;
+                searsTextbox.Enabled = false;
+                staplesTextbox.Enabled = false;
+                walmartCaTextbox.Enabled = false;
+                walmartComTextbox.Enabled = false;
+                distributorCentralTextbox.Enabled = false;
+                promoMarketingTextbox.Enabled = false;
+                wmManufacturerTextbox.Enabled = false;
+                wmMerchantTextbox.Enabled = false;
+
+                materialCombobox.Text = "SVC";
+                colorCodeCombobox.Text = "SVC";
+                rackCombobox.Text = "";
+                shelfCombobox.Text = "";
+                columnIndexCombobox.Text = "";
+                ashlinTextbox.Text = "";
+                magentoTextbox.Text = "";
+                tscTextbox.Text = "";
+                costcoTextbox.Text = "";
+                bestbuyTextbox.Text = "";
+                shopCaTextbox.Text = "";
+                amazonCaTextbox.Text = "";
+                amazonComTextbox.Text = "";
+                searsTextbox.Text = "";
+                staplesTextbox.Text = "";
+                walmartCaTextbox.Text = "";
+                walmartComTextbox.Text = "";
+                distributorCentralTextbox.Text = "";
+                promoMarketingTextbox.Text = "";
+                wmManufacturerTextbox.Text = "";
+                wmMerchantTextbox.Text = "";
+            }
+            else
+            {
+                materialCombobox.Enabled = true;
+                colorCodeCombobox.Enabled = true;
+                warehouseCombobox.Enabled = true;
+                rackCombobox.Enabled = true;
+                shelfCombobox.Enabled = true;
+                columnIndexCombobox.Enabled = true;
+                ashlinTextbox.Enabled = true;
+                magentoTextbox.Enabled = true;
+                tscTextbox.Enabled = true;
+                costcoTextbox.Enabled = true;
+                bestbuyTextbox.Enabled = true;
+                shopCaTextbox.Enabled = true;
+                amazonCaTextbox.Enabled = true;
+                amazonComTextbox.Enabled = true;
+                searsTextbox.Enabled = true;
+                staplesTextbox.Enabled = true;
+                walmartCaTextbox.Enabled = true;
+                walmartComTextbox.Enabled = true;
+                distributorCentralTextbox.Enabled = true;
+                promoMarketingTextbox.Enabled = true;
+                wmManufacturerTextbox.Enabled = true;
+                wmMerchantTextbox.Enabled = true;
+            }
         }
 
         /* the event for material combobox selected item changed that show the information about the selected item */
@@ -395,6 +476,7 @@ namespace SKU_Manager.SplashModules.Add
             colorCode = currentColorCode;
         }
 
+        #region Taxes Comboboxes
         /* the event for hts comboboxes selected item changed that show the information about the selected item */
         private void canadianHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -433,7 +515,9 @@ namespace SKU_Manager.SplashModules.Add
                 usDutyTextbox.Text = "";
             }
         }
+        #endregion
 
+        #region Add SKU
         /* the event for add sku button click */
         private void addSkuButton_Click(object sender, EventArgs e)
         {
@@ -699,7 +783,9 @@ namespace SKU_Manager.SplashModules.Add
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive Button Click Event
         /* the event for active and inactive sku button click */
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
@@ -721,5 +807,6 @@ namespace SKU_Manager.SplashModules.Add
 
             this.AutoScrollPosition = new Point(786, 800);
         }
+        #endregion
     }
 }

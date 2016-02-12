@@ -139,6 +139,7 @@
             this.trendExtendedFrenchTextbox = new System.Windows.Forms.TextBox();
             this.trendShortLabel = new System.Windows.Forms.Label();
             this.trendExtendedLabel = new System.Windows.Forms.Label();
+            this.duplicateWarningLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -183,6 +184,7 @@
             this.designServiceCodeTextbox.Name = "designServiceCodeTextbox";
             this.designServiceCodeTextbox.Size = new System.Drawing.Size(481, 20);
             this.designServiceCodeTextbox.TabIndex = 3;
+            this.designServiceCodeTextbox.TextChanged += new System.EventHandler(this.designServiceCodeTextbox_TextChanged);
             // 
             // shortDescriptionLabel
             // 
@@ -233,7 +235,7 @@
             // shortEnglishDescriptionTextbox
             // 
             this.shortEnglishDescriptionTextbox.Location = new System.Drawing.Point(213, 297);
-            this.shortEnglishDescriptionTextbox.MaxLength = 50;
+            this.shortEnglishDescriptionTextbox.MaxLength = 100;
             this.shortEnglishDescriptionTextbox.Multiline = true;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 33);
@@ -242,7 +244,7 @@
             // shortFrenchDescriptionTextbox
             // 
             this.shortFrenchDescriptionTextbox.Location = new System.Drawing.Point(464, 297);
-            this.shortFrenchDescriptionTextbox.MaxLength = 50;
+            this.shortFrenchDescriptionTextbox.MaxLength = 100;
             this.shortFrenchDescriptionTextbox.Multiline = true;
             this.shortFrenchDescriptionTextbox.Name = "shortFrenchDescriptionTextbox";
             this.shortFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 33);
@@ -336,6 +338,7 @@
             this.imprintWidthTextbox.Name = "imprintWidthTextbox";
             this.imprintWidthTextbox.Size = new System.Drawing.Size(386, 20);
             this.imprintWidthTextbox.TabIndex = 35;
+            this.imprintWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintWidthTextbox_KeyPress);
             // 
             // productHeightTextbox
             // 
@@ -1080,6 +1083,7 @@
             this.designServiceFlagCombobox.Size = new System.Drawing.Size(161, 21);
             this.designServiceFlagCombobox.TabIndex = 9;
             this.designServiceFlagCombobox.Text = "Design";
+            this.designServiceFlagCombobox.SelectedIndexChanged += new System.EventHandler(this.designServiceFlagCombobox_SelectedIndexChanged);
             // 
             // designServiceFlagLabel
             // 
@@ -1099,6 +1103,7 @@
             this.internalNameTextbox.Name = "internalNameTextbox";
             this.internalNameTextbox.Size = new System.Drawing.Size(481, 20);
             this.internalNameTextbox.TabIndex = 11;
+            this.internalNameTextbox.TextChanged += new System.EventHandler(this.internalNameTextbox_TextChanged);
             // 
             // internalNameLabel
             // 
@@ -1206,6 +1211,7 @@
             this.imprintHeightTextbox.Name = "imprintHeightTextbox";
             this.imprintHeightTextbox.Size = new System.Drawing.Size(386, 20);
             this.imprintHeightTextbox.TabIndex = 33;
+            this.imprintHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintHeightTextbox_KeyPress);
             // 
             // progressBar
             // 
@@ -1283,6 +1289,17 @@
             this.trendExtendedLabel.TabIndex = 24;
             this.trendExtendedLabel.Text = "Trend Extended Description";
             // 
+            // duplicateWarningLabel
+            // 
+            this.duplicateWarningLabel.AutoSize = true;
+            this.duplicateWarningLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateWarningLabel.Location = new System.Drawing.Point(524, 214);
+            this.duplicateWarningLabel.Name = "duplicateWarningLabel";
+            this.duplicateWarningLabel.Size = new System.Drawing.Size(170, 13);
+            this.duplicateWarningLabel.TabIndex = 109;
+            this.duplicateWarningLabel.Text = "duplicate Internal Name detected !";
+            this.duplicateWarningLabel.Visible = false;
+            // 
             // AddDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1290,6 +1307,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
+            this.Controls.Add(this.duplicateWarningLabel);
             this.Controls.Add(this.trendExtendedLabel);
             this.Controls.Add(this.trendShortLabel);
             this.Controls.Add(this.trendExtendedFrenchTextbox);
@@ -1519,5 +1537,6 @@
         private System.Windows.Forms.TextBox trendExtendedFrenchTextbox;
         private System.Windows.Forms.Label trendShortLabel;
         private System.Windows.Forms.Label trendExtendedLabel;
+        private System.Windows.Forms.Label duplicateWarningLabel;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -30,19 +29,19 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             addColumn(mainTable, "Total VNPK Case Cost");                 // 2
             addColumn(mainTable, "Unit Retail");                          // 3
             addColumn(mainTable, "Whse Pack Cost");                       // 4
-            addColumn(mainTable, "item Description");
-            addColumn(mainTable, "VNPK Case Qty");
-            addColumn(mainTable, "Current Total VNPK Case Cost");
-            addColumn(mainTable, "Current EDLP Retail");
-            addColumn(mainTable, "Current On Hand");
-            addColumn(mainTable, "Current On Order");
-            addColumn(mainTable, "Per Unit Cost WM");
-            addColumn(mainTable, "Optimal PP Covered Uni Retail");
-            addColumn(mainTable, "Case Cost Needed to Cover PP");
-            addColumn(mainTable, "Markdown $ At Cost");
-            addColumn(mainTable, "Markdown $ At Retail");
-            addColumn(mainTable, "Old Margin");
-            addColumn(mainTable, "New Margin");
+            addColumn(mainTable, "item Description");                     // 5     
+            addColumn(mainTable, "VNPK Case Qty");                        // 6
+            addColumn(mainTable, "Current Total VNPK Case Cost");         // 7
+            addColumn(mainTable, "Current EDLP Retail");                  // 8
+            addColumn(mainTable, "Current On Hand");                      // 9
+            addColumn(mainTable, "Current On Order");                     // 10
+            addColumn(mainTable, "Per Unit Cost WM");                     // 11
+            addColumn(mainTable, "Optimal PP Covered Uni Retail");        // 12
+            addColumn(mainTable, "Case Cost Needed to Cover PP");         // 13
+            addColumn(mainTable, "Markdown $ At Cost");                   // 14
+            addColumn(mainTable, "Markdown $ At Retail");                 // 15
+            addColumn(mainTable, "Old Margin");                           // 16
+            addColumn(mainTable, "New Margin");                           // 17
 
             // local field for inserting data to table
             DataRow row;
@@ -81,11 +80,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
             // start grabbing data              
             // [0] for all related to price       
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            list.Add(reader.GetValue(0));
             connection.Close();
 
             return list;
