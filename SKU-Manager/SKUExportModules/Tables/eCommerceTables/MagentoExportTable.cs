@@ -197,7 +197,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[7] = list[1] + "-" + list[2];                        // colour material code
                 row[8] = list[3];                                        // material description extended 
                 row[9] = list[4];                                        // color description extended
-                row[10] = list[26];                                      // design service family description
+                row[10] = list[25];                                      // design service family description
                 row[11] = list[8];                                       // option 1
                 row[12] = list[9];                                       // option 2
                 row[13] = list[10];                                      // option 3
@@ -219,7 +219,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 }
                 row[24] = list[20] + "cm x " + list[21] + "cm x " + list[22] + "cm";                                                                             // finished dimensions (cm)
                 row[25] = Convert.ToDouble(list[20]) / 2.54 + "in x " + Convert.ToDouble(list[21]) / 2.54 + "in x " + Convert.ToDouble(list[22]) / 2.54 + "in";  // finished dimensions (in)
-                double msrp = discountList[21] * Convert.ToDouble(list[28]);
+                double msrp = discountList[21] * Convert.ToDouble(list[27]);
                 row[26] = msrp * discountList[1];                        // price 1 c blank
                 row[27] = msrp * discountList[2];                        // price 6 c blank
                 row[28] = msrp * discountList[3];                        // price 24 c blank
@@ -301,52 +301,52 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[95] = (msrp + runCharge) * discountList[10] * discountList[17];         // price rush 500 net im
                 row[96] = (msrp + runCharge) * discountList[10] * discountList[18];         // price rush 1000 net im
                 row[97] = (msrp + runCharge) * discountList[10] * discountList[19];         // price rush 2500 net im
-                row[98] = list[29];                                      // image 1 path
-                row[99] = list[30];                                      // image 2 path
-                row[100] = list[31];                                     // image 3 path
-                row[101] = list[32];                                     // image 4 path
-                row[102] = list[33];                                     // image 5 path
-                row[103] = list[34];                                     // image 6 path
-                row[104] = list[35];                                     // image 7 path
-                row[105] = list[36];                                     // image 8 path
-                row[106] = list[37];                                     // image 9 path
-                row[107] = list[38];                                     // image 10 path
-                row[108] = list[39];                                     // image group 1 path
-                row[109] = list[40];                                     // image group 2 path
-                row[110] = list[41];                                     // image group 3 path
-                row[111] = list[42];                                     // image group 4 path
-                row[112] = list[43];                                     // image group 5 path
-                row[113] = list[44];                                     // image model 1 path   
-                row[114] = list[45];                                     // image model 2 path
-                row[115] = list[46];                                     // image model 3 path
-                row[116] = list[47];                                     // image model 4 path
-                row[117] = list[48];                                     // image model 5 path
+                row[98] = list[28];                                      // image 1 path
+                row[99] = list[29];                                      // image 2 path
+                row[100] = list[30];                                     // image 3 path
+                row[101] = list[31];                                     // image 4 path
+                row[102] = list[32];                                     // image 5 path
+                row[103] = list[33];                                     // image 6 path
+                row[104] = list[34];                                     // image 7 path
+                row[105] = list[35];                                     // image 8 path
+                row[106] = list[36];                                     // image 9 path
+                row[107] = list[37];                                     // image 10 path
+                row[108] = list[38];                                     // image group 1 path
+                row[109] = list[39];                                     // image group 2 path
+                row[110] = list[40];                                     // image group 3 path
+                row[111] = list[41];                                     // image group 4 path
+                row[112] = list[42];                                     // image group 5 path
+                row[113] = list[43];                                     // image model 1 path   
+                row[114] = list[44];                                     // image model 2 path
+                row[115] = list[45];                                     // image model 3 path
+                row[116] = list[46];                                     // image model 4 path
+                row[117] = list[47];                                     // image model 5 path
                 row[118] = getSwatch(sku);                               // swatch path
-                row[119] = list[49];                                     // alt text image 1 path
-                row[120] = list[50];                                     // alt text image 2 path
-                row[121] = list[51];                                     // alt text image 3 path
-                row[122] = list[52];                                     // alt text image 4 path
-                row[123] = list[53];                                     // alt text image 5 path
-                row[124] = list[54];                                     // alt text image 6 path
-                row[125] = list[55];                                     // alt text image 7 path
-                row[126] = list[56];                                     // alt text image 8 path
-                row[127] = list[57];                                     // alt text image 9 path
-                row[128] = list[58];                                     // alt text image 10 path
-                row[129] = list[59];                                     // alt text image group 1 path
-                row[130] = list[60];                                     // alt text image group 2 path
-                row[131] = list[61];                                     // alt text image group 3 path
-                row[132] = list[62];                                     // alt text image group 4 path
-                row[133] = list[63];                                     // alt text image group 5 path
-                row[134] = list[64];                                     // alt text image model 1 path
-                row[135] = list[65];                                     // alt text image model 2 path
-                row[136] = list[66];                                     // alt text image model 3 path
-                row[137] = list[67];                                     // alt text image model 4 path
-                row[138] = list[68];                                     // alt text image model 5 path
+                row[119] = list[48];                                     // alt text image 1 path
+                row[120] = list[49];                                     // alt text image 2 path
+                row[121] = list[50];                                     // alt text image 3 path
+                row[122] = list[51];                                     // alt text image 4 path
+                row[123] = list[52];                                     // alt text image 5 path
+                row[124] = list[53];                                     // alt text image 6 path
+                row[125] = list[54];                                     // alt text image 7 path
+                row[126] = list[55];                                     // alt text image 8 path
+                row[127] = list[56];                                     // alt text image 9 path
+                row[128] = list[57];                                     // alt text image 10 path
+                row[129] = list[58];                                     // alt text image group 1 path
+                row[130] = list[59];                                     // alt text image group 2 path
+                row[131] = list[60];                                     // alt text image group 3 path
+                row[132] = list[61];                                     // alt text image group 4 path
+                row[133] = list[62];                                     // alt text image group 5 path
+                row[134] = list[63];                                     // alt text image model 1 path
+                row[135] = list[64];                                     // alt text image model 2 path
+                row[136] = list[65];                                     // alt text image model 3 path
+                row[137] = list[66];                                     // alt text image model 4 path
+                row[138] = list[67];                                     // alt text image model 5 path
                 row[139] = msrp;                                         // msrp
                 row[140] = msrp + runCharge;                             // msrp imprinted
                 row[141] = msrp * discountList[20];                      // wholesale
-                row[142] = list[27];                                     // keywords
-                row[143] = list[24];                                     // monogram
+                row[142] = list[26];                                     // keywords
+                row[143] = list[23];                                     // monogram
 
                 mainTable.Rows.Add(row);
                 progress++;
@@ -382,7 +382,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         {
             // local field for storing data
             ArrayList list = new ArrayList();
-            DataTable table = new DataTable();
 
             // get the first two of elements in the sku (design and material)
             string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
@@ -397,7 +396,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
 
             // grab data from design
             // [3] material description extended                                                                                                                                                                                                                                                                                                                                                                                                               
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Extended FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
+            /*SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Extended FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
             connection.Open();
             adapter.Fill(table);
             for (int i = 0; i < 1; i++)
@@ -437,7 +436,32 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             {
                 list.Add(table.Rows[0][i]);
             }
-            connection.Close();
+            connection.Close(); */
+
+            // grab data from design
+            // [3] material description extended 
+            // [4] colour description extended
+            // [5] design service fashion name ashlin, [6] design short description, [7] design extended description, [8] ~ [12] options, [13] strap, [14] detachable strap, [15] zippered enclosure, [16] shippable weight grams, [17] imprintable,  [18] & [19] imprint area cm, [20] ~ [22] finished dimensions (cm), [23] monogram, [24] for price calculation
+            //                                                                                                                                                                                           & shippable weight lb                                  & imprint area in            & finished dimensions (in)
+            // [25] design servie family description, [26] keywords
+            // [27] all related to price, [28] ~ [37] iamge path, [38] ~ [42] group path, [43] ~ [47] model path, [48] ~ [57] alt image path, [58] ~ [62] alt group path, [63] ~ [67] alt model path
+            SqlCommand command = new SqlCommand("SELECT Material_Description_Extended FROM ref_Materials, " +
+                                                "Colour_Description_Extended, " +
+                                                "Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Strap, Detachable_Strap, Zippered_Enclosure, Shippable_weight_grams, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Monogram, Components, " +
+                                                "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
+                                                "Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code;", connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            for (int i = 3; i <= 67; i++)
+            {
+                list.Add(reader.GetValue(i));
+            }
 
             return list;
         }

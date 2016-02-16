@@ -572,9 +572,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             for (int i = 0; i <= 120; i++)
             {
                 list.Add(reader.GetValue(i));
-            }
-            
+            }   
             connection.Close();
+
             return list;
         }
 

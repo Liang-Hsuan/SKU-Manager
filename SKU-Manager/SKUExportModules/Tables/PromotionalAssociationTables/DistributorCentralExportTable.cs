@@ -136,13 +136,13 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 
                 row[0] = list[1];                                                // supplier item guid
                 row[2] = sku;                                                    // supl item no
-                row[3] = "Ashlin® " + list[3] + " " + list[4] + ", " + list[23]; // item name
+                row[3] = "Ashlin® " + list[3] + " " + list[4] + ", " + list[22]; // item name
                 row[4] = sku;                                                    // sup display no
                 row[5] = "Ashlin";                                               // supl display name
                 row[8] = list[5] + ". " + list[6] + ". " + list[7] + ". " + list[8] + ". " + list[9] + ". " + list[10];    // description
                 row[9] = list[11] + "cm x " + list[12] + "cm";                          // add info
                 row[11] = sku;                                                          // supl inventory no
-                row[12] = list[22];                                                     // categories
+                row[12] = list[21];                                                     // categories
                 row[13] = list[13] + "cm x " + list[14] + "cm x " + list[15] + "cm";    // size
                 row[14] = Convert.ToDouble(list[16]) / 453.592 + " lb";                 // display weight
                 row[15] = "AE5A5850-05E9-42F9-A2B0-8CDA87D605AB";                       // country of manufacture guid
@@ -246,44 +246,29 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // local fields for storing data
             ArrayList list = new ArrayList();
 
-            // allocate elements from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
-
             // grab data from design database
             // [0] field that related to price, [1] SupplierItemGuid, [2] has image
             //                                                          & image link
-            SqlCommand command = new SqlCommand("SELECT Base_Price, SKU_DistributorCentral, Image_1_Path FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            // [3] & [4] ItemName, [5] ~ [10] description, [11] ~ [12] add info, [13] ~ [15] size, [16] displayWeight, [17] ship weight 1, [18] ship legnth 1, [19] ship width 1, [20] ship height 1
+            //                                                                                                            & ship weight 2,    & ship length2      & ship width 2,    & ship height 2
+            // [21] categories
+            // [22] item name
+            SqlCommand command = new SqlCommand("SELECT Base_Price, SKU_DistributorCentral, Image_1_Path, " +
+                                                "Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Weight_grams, Shippable_Weight_grams, Shippable_Depth_cm, Shippable_Width_cm, Shippable_Height_cm, " +
+                                                "Design_service_Family_Category_DistributorCentral, " +
+                                                "Colour_Description_Short " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i <= 22; i++)
             {
                 list.Add(reader.GetValue(i));
             }
-            reader.Close();
-            // [3] & [4] ItemName, [5] ~ [10] description, [11] ~ [12] add info, [13] ~ [15] size, [16] displayWeight, [17] ship weight 1, [18] ship legnth 1, [19] ship width 1, [20] ship height 1, [21] for further looking
-            //                                                                                                            & ship weight 2,    & ship length2      & ship width 2,    & ship height 2
-            command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Weight_grams, Shippable_Weight_grams, Shippable_Depth_cm, Shippable_Width_cm, Shippable_Height_cm, Design_Service_Family_Code "
-                                   + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 18; i++)
-            {
-                list.Add(reader.GetValue(i));
-            }
-            reader.Close();
-            // [22] categories
-            command = new SqlCommand("SELECT Design_service_Family_Category_DistributorCentral FROM ref_Families WHERE Design_Service_Family_Code = \'" + list[21] + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list.Add(reader.GetString(0));
-            reader.Close();
-            // [23] item name
-            command = new SqlCommand("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list.Add(reader.GetString(0));
             connection.Close();
 
             return list;

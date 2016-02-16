@@ -18,13 +18,14 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         /* constructor that initilize GetRequest class */
         public Product()
         {
-            SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs);
-            SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl Testing\';", authenticationConnection);
-            authenticationConnection.Open();
-            SqlDataReader reader = getAuthetication.ExecuteReader();
-            reader.Read();
-            get = new GetRequest(reader.GetString(0), reader.GetString(1));
-            authenticationConnection.Close();
+            using (SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs))
+            {
+                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl Testing\';", authenticationConnection);
+                authenticationConnection.Open();
+                SqlDataReader reader = getAuthetication.ExecuteReader();
+                reader.Read();
+                get = new GetRequest(reader.GetString(0), reader.GetString(1));
+            }
         }
 
         /* a method that return the quantity of specific sku */

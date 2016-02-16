@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using System;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 {
@@ -80,7 +79,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                object[] list = getDatas(sku);
+                ArrayList list = getData(sku);
 
                 row = mainTable.NewRow();
 
@@ -189,9 +188,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* method that get the data from given sku */
-        private object[] getDatas(string sku)
+        protected override ArrayList getData(string sku)
         {
-            object[] list = new object[21];
+            ArrayList list = new ArrayList();
 
             // grab data from design
             // [0] title, [1] description, [2] shipping weight, [3] package height, [4] package length, [5] package width
@@ -200,7 +199,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             SqlCommand command = new SqlCommand("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
                                                 "Image_1_Path, sku.Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, sku.Date_Activated, UPC_Code_9 " +
-                                                "FROM master_SKU_Attributes sku " + 
+                                                "FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
@@ -209,19 +208,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             reader.Read();
             for (int i = 0; i <= 20; i++)
             {
-                list[i] = reader.GetValue(i);
+                list.Add(reader.GetValue(i));
             }
             connection.Close();
 
             return list;
         }
 
-        /* override method -> i will delete this soon and make getDatas as the new ShopCaExportTable method */
-        protected override ArrayList getData(string sku)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region Deprecated Area
         /* new version of getData that directly return the desired table -> fixing issue right now */
         private DataTable getData()
         {
@@ -250,5 +244,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             return table;
         }
+        #endregion
     }
 }

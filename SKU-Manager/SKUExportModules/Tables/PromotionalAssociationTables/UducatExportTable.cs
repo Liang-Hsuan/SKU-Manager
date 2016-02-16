@@ -141,12 +141,12 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row = mainTable.NewRow();
            
                 row[0] = sku;                                            // sku 
-                row[1] = list[2];                                        // category
-                row[12] = "Ashlin® " + list[1] + " " + list[2] + ", " + list[8];  // name en
-                row[14] = list[3];                                       // description en
-                row[16] = list[6];                                       // image
+                row[1] = list[1];                                        // category
+                row[12] = "Ashlin® " + list[0] + " " + list[1] + ", " + list[7];  // name en
+                row[14] = list[2];                                       // description en
+                row[16] = list[5];                                       // image
                 row[18] = DateTime.Now.Year;                             // catalog year
-                row[19] = list[7];                                       // active
+                row[19] = list[6];                                       // active
                 row[20] = 1;                                             // cart qtr min
                 // cad general info en
                 row[24] = "CUSTOM COLORS: We have several custom colours available upon enquiry.\n" +
@@ -154,7 +154,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                           "DIE & SETUP: Blind debossing, hot foil stamping (in gold and silver) as well as Custom Colours"; 
                 row[26] = 1;                                             // cad min qty1
                 row[27] = 5;                                             // cad max qty1
-                double msrp = discountList[9] * Convert.ToDouble(list[5]);
+                double msrp = discountList[9] * Convert.ToDouble(list[4]);
                 row[28] = msrp * discountList[0];                        // cad price 1
                 row[30] = 'C';                                           // cad price code 1 
                 row[33] = 6;                                             // cad min qty 2
@@ -188,7 +188,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[82] = 2500;                                          // cad min qty 8
                 row[84] = msrp * discountList[8];                        // cad price 9
                 row[86] = 'C';                                           // cad price code 9
-                row[98] = list[4];                                       // keywords
+                row[98] = list[3];                                       // keywords
 
                 mainTable.Rows.Add(row);
                 progress++;
@@ -227,42 +227,28 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // local field for storing data
             ArrayList list = new ArrayList();
 
-            // allocate design from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
-
-            // grab data from design
+            // start grabbing data
+            // [0] name en, [1] category, [2] description en
+            //                & name en
+            // [3] keywords
+            // [4] for all related to price, [5] image, [6] active
+            // [7] name En
+            SqlCommand command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, " +
+                                                "Design_Service_family_Category_UDUCAT, " +
+                                                "Base_Price, Image_1_Path, sku.Active, " +
+                                                "Colour_Description_Short " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
-            // [0] for further looking, [1] name en, [2] category, [3] description en
-            //                                         & name en
-            SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= 7; i++)
             {
                 list.Add(reader.GetValue(i));
             }
-            reader.Close();
-            // [4] keywords
-            command = new SqlCommand("SELECT Design_Service_family_Category_UDUCAT FROM ref_Families WHERE Design_Service_Family_Code = \'" + list[0] + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list.Add(reader.GetString(0));
-            reader.Close();
-            // [5] for all related to price, [6] image, [7] active
-            command = new SqlCommand("SELECT Base_Price, Image_1_Path, Active FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 2; i++)
-            {
-                list.Add(reader.GetValue(i));
-            }
-            reader.Close();
-            // [8] name En
-            command = new SqlCommand("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list.Add(reader.GetString(0));
             connection.Close();
 
             return list;
