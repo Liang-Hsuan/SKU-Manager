@@ -15,7 +15,6 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         public DistributorCentralExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -134,11 +133,11 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row = mainTable.NewRow();
                 ArrayList list = getData(sku);
 
-                row[0] = list[1];                                                // supplier item guid
-                row[2] = sku;                                                    // supl item no
-                row[3] = "Ashlin® " + list[3] + " " + list[4] + ", " + list[22]; // item name
-                row[4] = sku;                                                    // sup display no
-                row[5] = "Ashlin";                                               // supl display name
+                row[0] = list[1];                                                       // supplier item guid
+                row[2] = sku;                                                           // supl item no
+                row[3] = "Ashlin® " + list[3] + " " + list[4] + ", " + list[22];        // item name
+                row[4] = sku;                                                           // sup display no
+                row[5] = "Ashlin";                                                      // supl display name
                 row[8] = list[5] + ". " + list[6] + ". " + list[7] + ". " + list[8] + ". " + list[9] + ". " + list[10];    // description
                 row[9] = list[11] + "cm x " + list[12] + "cm";                          // add info
                 row[11] = sku;                                                          // supl inventory no

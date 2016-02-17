@@ -36,6 +36,7 @@ namespace SKU_Manager.MainForms
             this.parent = parent;
         }
 
+        #region Active List
         /* the event for active list buttons click */
         private void activeColorButton_Click(object sender, EventArgs e)
         {
@@ -104,7 +105,9 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
         }
+        #endregion
 
+        #region Inactive List
         /* the event for inactive list buttons click */
         private void inactiveColorButton_Click(object sender, EventArgs e)
         {
@@ -173,7 +176,9 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
         }
-        
+        #endregion
+
+        #region Active Attributes 
         /* the event for active price list button click that export active price list export table */
         private void activePriceListButton_Click(object sender, EventArgs e)
         {
@@ -182,16 +187,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Active Price List Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 3 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.ActivePriceTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.ActivePriceTable);
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    // export the excel files    
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -206,7 +215,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -228,16 +237,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "UPC Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 3 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.UpcTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.UpcTable);
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    // export the excel files    
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -251,8 +264,8 @@ namespace SKU_Manager.MainForms
                         // get the data
                         ds = form.Tables;
 
-                        // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        // export the excel files 
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -277,13 +290,16 @@ namespace SKU_Manager.MainForms
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Active Price List Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.StockQuantityTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.StockQuantityTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -298,7 +314,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -311,7 +327,9 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
         }
+        #endregion
 
+        #region Channel Partners
         /* the event for bestbuy button click that export bestbuy export table */
         private void bestbuyButton_Click(object sender, EventArgs e)
         {
@@ -323,13 +341,16 @@ namespace SKU_Manager.MainForms
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Bestbuy Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1, 11 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.BestbuyTable1 != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.BestbuyTable1);
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    // export the excel files         
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -344,7 +365,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -366,16 +387,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Amazon.ca Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 7 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.AmazonCaTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.AmazonCaTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -390,7 +415,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -412,16 +437,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Amazon.com Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 7 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.AmazonComTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.AmazonComTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -436,7 +465,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -458,16 +487,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Staples Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 6, 7 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.StaplesTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.StaplesTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -482,7 +515,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -504,10 +537,16 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // fields for formatting
                 ds.Reset();
                 string[] names = new string[2];
                 names[0] = "Walmart Item Export Sheet";
                 names[1] = "Walmart Price Export Sheet";
+                int[][] textIndex = new int[2][];
+                int[] index1 = { 3 };
+                textIndex[0] = index1;
+                int[] index2 = { 1 };
+                textIndex[1] = index2;
 
                 if (Properties.Settings.Default.WalmartItemTable != null && Properties.Settings.Default.WalmartPriceTable != null)   // tables have already been saved
                 {
@@ -515,7 +554,7 @@ namespace SKU_Manager.MainForms
                     ds.Tables.Add(Properties.Settings.Default.WalmartPriceTable);
 
                     // export the excel files             
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -531,7 +570,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files               
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -549,13 +588,20 @@ namespace SKU_Manager.MainForms
         /* the event for shop ca button click that export shop ca export tables */
         private void shopCaButton_Click(object sender, EventArgs e)
         {
-            // local field for excel export
+            // local field for excel export and formatting
             XlExport export = new XlExport();
             string[] names = new string[4];
             names[0] = "Shop.ca Bag Attributes Sheet";
             names[1] = "Shop.ca Base Data Sheet";
             names[2] = "Shop.ca Inventory Sheet";
             names[3] = "Shop.ca Price List Sheet";
+            int[][] textIndex = new int[4][];
+            int[] index1 = { 3, 28 };
+            textIndex[0] = index1;
+            textIndex[1] = index1;
+            int[] index2 = { 3 };
+            textIndex[2] = index2;
+            textIndex[3] = index2;
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -569,7 +615,7 @@ namespace SKU_Manager.MainForms
                     ds.Tables.Add(Properties.Settings.Default.ShopCaPriceTable);
 
                     // export the excel files               
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -585,7 +631,7 @@ namespace SKU_Manager.MainForms
                     {
                         // get the data
                         ds = form.Tables;
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -610,16 +656,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // local fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Giant Tiger Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.GiantTigerTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.GiantTigerTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -634,7 +684,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -647,7 +697,9 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
         }
+        #endregion
 
+        #region eCommerce
         /* the event for magento button click that export magento export table */
         private void magentoButton_Click(object sender, EventArgs e)
         {
@@ -656,16 +708,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // local fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "Magento Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1, 8 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.MagentoTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.MagentoTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -680,7 +736,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -700,7 +756,9 @@ namespace SKU_Manager.MainForms
             SelectionViewExcel view = new SelectionViewExcel(this);
             view.ShowDialog(this);
         }
+        #endregion
 
+        #region Promotional Association
         /* the event for uducat button click that export uducat export table */
         private void uducatButton_Click(object sender, EventArgs e)
         {
@@ -709,16 +767,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // local fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
                 names[0] = "UDUCAT Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.UducatTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.UducatTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -733,7 +795,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -755,16 +817,20 @@ namespace SKU_Manager.MainForms
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // local fields for formatting
                 ds.Reset();
                 string[] names = new string[1];
-                names[0] = "Distributor Central Export Sheet";
+                names[0] = "Distributor Central Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 3, 5, 12 };
+                textIndex[0] = index;
 
                 if (Properties.Settings.Default.DistributorCentralTable != null)   // tables have already been saved
                 {
                     ds.Tables.Add(Properties.Settings.Default.DistributorCentralTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -779,7 +845,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names);
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                     {
@@ -792,6 +858,7 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
         }
+        #endregion
 
         /* method that showing messagebox for sucessfully export an Excel file */
         private void showExportMessage(string filePath)

@@ -447,6 +447,28 @@ namespace SKU_Manager.SplashModules.Update
         }
         #endregion
 
+        #region Left and Right Buttons
+        /* the event for left and right button click that change the index of comboboxes */
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            int i = ashlinSKUCombobox.SelectedIndex;
+            if (i > 0)
+            {
+                i--;
+            }
+            ashlinSKUCombobox.SelectedIndex = i;
+        }
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            int i = ashlinSKUCombobox.SelectedIndex;
+            if (i < skuCodeList.Count - 1)
+            {
+                i++;
+            }
+            ashlinSKUCombobox.SelectedIndex = i;
+        }
+        #endregion
+
         /* the event for design service code textbox text changed that show information about the design and the change in skuCode textbox */
         private void designCodeTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -891,7 +913,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
                 else
                 {
-                    imageAlt[index] = alt.getAlt(sku).Replace("'", "''");
+                    imageAlt[index] = alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 
@@ -905,7 +927,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
                 else
                 {
-                    groupAlt[index] = "Group " + alt.getAlt(sku).Replace("'", "''");
+                    groupAlt[index] = "Group " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 
@@ -919,7 +941,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
                 else
                 {
-                    modelAlt[index] = "Model " + alt.getAlt(sku).Replace("'", "''");
+                    modelAlt[index] = "Model " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 

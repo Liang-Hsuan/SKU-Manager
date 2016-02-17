@@ -13,7 +13,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         public BPcodedBlankExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -46,7 +45,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
 ;
                 row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];           // BP item id#
                 row[1] = sku;                                                   // sku#
-                row[2] = list[1];                                               // description
+                row[2] = list[2];                                               // description
                 row[3] = "1; 6; 24; 50; 100; 250; 500; 1000; 2500";             // qty breaks
                 double msrp = Convert.ToDouble(list[0]) * discountList[9];
                 // costs breaks
@@ -61,30 +60,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             mainTable.EndLoadData();
 
             return mainTable;
-        }
-
-        /* method that get the data from given sku */
-        protected override object[] getData(string sku)
-        {
-            // local fields for storing data
-            object[] list = new object[2];
-
-            // grab data from design database
-            // [0] field that related to price
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            list[0] = reader.GetValue(0);
-            reader.Close();
-            // [1] description
-            command = new SqlCommand("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + sku.Substring(0, sku.IndexOf('-')) + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list[1] = reader.GetString(0);
-            connection.Close();
-
-            return list;
         }
 
         /* a method that return the discount matrix */

@@ -42,6 +42,7 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -61,7 +62,9 @@ namespace SKU_Manager.SplashModules.Update
         {
             materialCodeCombobox.DataSource = materialCodeList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void materialCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -135,7 +138,31 @@ namespace SKU_Manager.SplashModules.Update
                 activeCheckbox.Checked = true;
             }
         }
+        #endregion
 
+        #region Left and Right Buttons
+        /* the event for left and right button click that change the index of comboboxes */
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            int i = materialCodeCombobox.SelectedIndex;
+            if (i > 0)
+            {
+                i--;
+            }
+            materialCodeCombobox.SelectedIndex = i;
+        }
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            int i = materialCodeCombobox.SelectedIndex;
+            if (i < materialCodeList.Count - 1)
+            {
+                i++;
+            }
+            materialCodeCombobox.SelectedIndex = i;
+        }
+        #endregion
+
+        #region Translate
         /* the event for translate button that translate English to French */
         private void translateButton_Click(object sender, EventArgs e)
         {
@@ -176,7 +203,9 @@ namespace SKU_Manager.SplashModules.Update
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
         }
+        #endregion
 
+        #region Update
         /* the event when update material button is clicked */
         private void updateMaterialButton_Click(object sender, EventArgs e)
         {
@@ -231,7 +260,9 @@ namespace SKU_Manager.SplashModules.Update
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive List
         /* the event for active and inactive list button that open the table of active material list */
         private void activeMaterialButton_Click(object sender, EventArgs e)
         {
@@ -243,5 +274,6 @@ namespace SKU_Manager.SplashModules.Update
             InactiveMaterialList inactiveMaterialList = new InactiveMaterialList();
             inactiveMaterialList.Show();
         }
+        #endregion
     }
 }

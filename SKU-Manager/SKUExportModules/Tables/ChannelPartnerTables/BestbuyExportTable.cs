@@ -14,6 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         public BestbuyExportTable()
         {
             mainTable = new DataTable();
+            skuList = getSKU();
         }
 
         /* the real thing -> return the table !!! */

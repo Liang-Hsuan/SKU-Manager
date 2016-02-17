@@ -93,7 +93,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 newRow[0] = "ashlin_bpg";                                // supplier id
                 newRow[1] = "nishis_boutique";                           // store name
                 newRow[2] = list[24];                                    // sku
-                newRow[3] = "Ashlin® " + list[0] + " " + list[21] + list[23];    // title
+                newRow[3] = "Ashlin® " + list[0] + " " + list[21] + " " + list[23];    // title
                 newRow[4] = list[1];                                     // description
                 newRow[5] = list[2];                                     // shipping weight
                 newRow[6] = "GM";                                        // shipping weight unit of measure

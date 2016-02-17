@@ -103,6 +103,8 @@
             this.backgroundWorkerInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerUpdate = new System.ComponentModel.BackgroundWorker();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBar
@@ -113,7 +115,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 133;
+            this.progressBar.TabIndex = 68;
             // 
             // usDutyTextbox
             // 
@@ -121,7 +123,7 @@
             this.usDutyTextbox.Location = new System.Drawing.Point(493, 677);
             this.usDutyTextbox.Name = "usDutyTextbox";
             this.usDutyTextbox.Size = new System.Drawing.Size(233, 20);
-            this.usDutyTextbox.TabIndex = 100;
+            this.usDutyTextbox.TabIndex = 33;
             // 
             // usHtsCombobox
             // 
@@ -132,7 +134,7 @@
             this.usHtsCombobox.Location = new System.Drawing.Point(245, 677);
             this.usHtsCombobox.Name = "usHtsCombobox";
             this.usHtsCombobox.Size = new System.Drawing.Size(233, 21);
-            this.usHtsCombobox.TabIndex = 99;
+            this.usHtsCombobox.TabIndex = 32;
             this.usHtsCombobox.SelectedValueChanged += new System.EventHandler(this.usHtsCombobox_SelectedValueChanged);
             // 
             // usHtsLabel
@@ -143,7 +145,7 @@
             this.usHtsLabel.Location = new System.Drawing.Point(21, 678);
             this.usHtsLabel.Name = "usHtsLabel";
             this.usHtsLabel.Size = new System.Drawing.Size(71, 20);
-            this.usHtsLabel.TabIndex = 98;
+            this.usHtsLabel.TabIndex = 31;
             this.usHtsLabel.Text = "US HTS";
             // 
             // caDutyTextbox
@@ -152,7 +154,7 @@
             this.caDutyTextbox.Location = new System.Drawing.Point(493, 651);
             this.caDutyTextbox.Name = "caDutyTextbox";
             this.caDutyTextbox.Size = new System.Drawing.Size(233, 20);
-            this.caDutyTextbox.TabIndex = 97;
+            this.caDutyTextbox.TabIndex = 30;
             // 
             // canadianHtsCombobox
             // 
@@ -163,7 +165,7 @@
             this.canadianHtsCombobox.Location = new System.Drawing.Point(245, 651);
             this.canadianHtsCombobox.Name = "canadianHtsCombobox";
             this.canadianHtsCombobox.Size = new System.Drawing.Size(233, 21);
-            this.canadianHtsCombobox.TabIndex = 96;
+            this.canadianHtsCombobox.TabIndex = 29;
             this.canadianHtsCombobox.SelectedValueChanged += new System.EventHandler(this.canadianHtsCombobox_SelectedValueChanged);
             // 
             // canadianHtsLabel
@@ -174,7 +176,7 @@
             this.canadianHtsLabel.Location = new System.Drawing.Point(21, 651);
             this.canadianHtsLabel.Name = "canadianHtsLabel";
             this.canadianHtsLabel.Size = new System.Drawing.Size(118, 20);
-            this.canadianHtsLabel.TabIndex = 95;
+            this.canadianHtsLabel.TabIndex = 28;
             this.canadianHtsLabel.Text = "Canadian HTS";
             // 
             // distributorCentralTextbox
@@ -187,7 +189,7 @@
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
             this.distributorCentralTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.distributorCentralTextbox.Size = new System.Drawing.Size(501, 81);
-            this.distributorCentralTextbox.TabIndex = 132;
+            this.distributorCentralTextbox.TabIndex = 67;
             // 
             // removeDistributorCentralButton
             // 
@@ -196,7 +198,7 @@
             this.removeDistributorCentralButton.Location = new System.Drawing.Point(635, 1437);
             this.removeDistributorCentralButton.Name = "removeDistributorCentralButton";
             this.removeDistributorCentralButton.Size = new System.Drawing.Size(91, 23);
-            this.removeDistributorCentralButton.TabIndex = 131;
+            this.removeDistributorCentralButton.TabIndex = 66;
             this.removeDistributorCentralButton.Text = "REMOVE";
             this.removeDistributorCentralButton.UseVisualStyleBackColor = false;
             this.removeDistributorCentralButton.Click += new System.EventHandler(this.removeDistributorCentralButton_Click);
@@ -208,7 +210,7 @@
             this.addDistributorCentralButton.Location = new System.Drawing.Point(538, 1437);
             this.addDistributorCentralButton.Name = "addDistributorCentralButton";
             this.addDistributorCentralButton.Size = new System.Drawing.Size(91, 23);
-            this.addDistributorCentralButton.TabIndex = 130;
+            this.addDistributorCentralButton.TabIndex = 65;
             this.addDistributorCentralButton.Text = "ADD";
             this.addDistributorCentralButton.UseVisualStyleBackColor = false;
             this.addDistributorCentralButton.Click += new System.EventHandler(this.addDistributorCentralButton_Click);
@@ -222,7 +224,7 @@
             this.distributorCentralCombobox.Location = new System.Drawing.Point(225, 1437);
             this.distributorCentralCombobox.Name = "distributorCentralCombobox";
             this.distributorCentralCombobox.Size = new System.Drawing.Size(301, 21);
-            this.distributorCentralCombobox.TabIndex = 129;
+            this.distributorCentralCombobox.TabIndex = 64;
             // 
             // distributorCentralLabel
             // 
@@ -232,7 +234,7 @@
             this.distributorCentralLabel.Location = new System.Drawing.Point(21, 1438);
             this.distributorCentralLabel.Name = "distributorCentralLabel";
             this.distributorCentralLabel.Size = new System.Drawing.Size(147, 20);
-            this.distributorCentralLabel.TabIndex = 128;
+            this.distributorCentralLabel.TabIndex = 63;
             this.distributorCentralLabel.Text = "Distributor Central";
             // 
             // uducatTextbox
@@ -245,7 +247,7 @@
             this.uducatTextbox.Name = "uducatTextbox";
             this.uducatTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.uducatTextbox.Size = new System.Drawing.Size(501, 81);
-            this.uducatTextbox.TabIndex = 127;
+            this.uducatTextbox.TabIndex = 62;
             // 
             // removeUducatButton
             // 
@@ -254,7 +256,7 @@
             this.removeUducatButton.Location = new System.Drawing.Point(635, 1312);
             this.removeUducatButton.Name = "removeUducatButton";
             this.removeUducatButton.Size = new System.Drawing.Size(91, 23);
-            this.removeUducatButton.TabIndex = 126;
+            this.removeUducatButton.TabIndex = 61;
             this.removeUducatButton.Text = "REMOVE";
             this.removeUducatButton.UseVisualStyleBackColor = false;
             this.removeUducatButton.Click += new System.EventHandler(this.removeUducatButton_Click);
@@ -266,7 +268,7 @@
             this.addUducatButton.Location = new System.Drawing.Point(538, 1312);
             this.addUducatButton.Name = "addUducatButton";
             this.addUducatButton.Size = new System.Drawing.Size(91, 23);
-            this.addUducatButton.TabIndex = 125;
+            this.addUducatButton.TabIndex = 60;
             this.addUducatButton.Text = "ADD";
             this.addUducatButton.UseVisualStyleBackColor = false;
             this.addUducatButton.Click += new System.EventHandler(this.addUducatButton_Click);
@@ -280,7 +282,7 @@
             this.uducatCombobox.Location = new System.Drawing.Point(225, 1314);
             this.uducatCombobox.Name = "uducatCombobox";
             this.uducatCombobox.Size = new System.Drawing.Size(301, 21);
-            this.uducatCombobox.TabIndex = 124;
+            this.uducatCombobox.TabIndex = 59;
             // 
             // uducatLabel
             // 
@@ -290,7 +292,7 @@
             this.uducatLabel.Location = new System.Drawing.Point(21, 1315);
             this.uducatLabel.Name = "uducatLabel";
             this.uducatLabel.Size = new System.Drawing.Size(79, 20);
-            this.uducatLabel.TabIndex = 123;
+            this.uducatLabel.TabIndex = 58;
             this.uducatLabel.Text = "UDUCAT";
             // 
             // promoMarketingTextbox
@@ -303,7 +305,7 @@
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
             this.promoMarketingTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.promoMarketingTextbox.Size = new System.Drawing.Size(501, 81);
-            this.promoMarketingTextbox.TabIndex = 122;
+            this.promoMarketingTextbox.TabIndex = 57;
             // 
             // removePromoMarketingButton
             // 
@@ -312,7 +314,7 @@
             this.removePromoMarketingButton.Location = new System.Drawing.Point(635, 1189);
             this.removePromoMarketingButton.Name = "removePromoMarketingButton";
             this.removePromoMarketingButton.Size = new System.Drawing.Size(91, 23);
-            this.removePromoMarketingButton.TabIndex = 121;
+            this.removePromoMarketingButton.TabIndex = 56;
             this.removePromoMarketingButton.Text = "REMOVE";
             this.removePromoMarketingButton.UseVisualStyleBackColor = false;
             this.removePromoMarketingButton.Click += new System.EventHandler(this.removePromoMarketingButton_Click);
@@ -324,7 +326,7 @@
             this.addPromoMarketingButton.Location = new System.Drawing.Point(538, 1189);
             this.addPromoMarketingButton.Name = "addPromoMarketingButton";
             this.addPromoMarketingButton.Size = new System.Drawing.Size(91, 23);
-            this.addPromoMarketingButton.TabIndex = 120;
+            this.addPromoMarketingButton.TabIndex = 55;
             this.addPromoMarketingButton.Text = "ADD";
             this.addPromoMarketingButton.UseVisualStyleBackColor = false;
             this.addPromoMarketingButton.Click += new System.EventHandler(this.addPromoMarketingButton_Click);
@@ -338,7 +340,7 @@
             this.promoMarketingCombobox.Location = new System.Drawing.Point(225, 1191);
             this.promoMarketingCombobox.Name = "promoMarketingCombobox";
             this.promoMarketingCombobox.Size = new System.Drawing.Size(301, 21);
-            this.promoMarketingCombobox.TabIndex = 119;
+            this.promoMarketingCombobox.TabIndex = 54;
             // 
             // promoMarketingLabel
             // 
@@ -348,7 +350,7 @@
             this.promoMarketingLabel.Location = new System.Drawing.Point(21, 1192);
             this.promoMarketingLabel.Name = "promoMarketingLabel";
             this.promoMarketingLabel.Size = new System.Drawing.Size(136, 20);
-            this.promoMarketingLabel.TabIndex = 118;
+            this.promoMarketingLabel.TabIndex = 53;
             this.promoMarketingLabel.Text = "Promo Marketing";
             // 
             // espTextbox
@@ -361,7 +363,7 @@
             this.espTextbox.Name = "espTextbox";
             this.espTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.espTextbox.Size = new System.Drawing.Size(501, 81);
-            this.espTextbox.TabIndex = 117;
+            this.espTextbox.TabIndex = 52;
             // 
             // removeEspButton
             // 
@@ -370,7 +372,7 @@
             this.removeEspButton.Location = new System.Drawing.Point(635, 1068);
             this.removeEspButton.Name = "removeEspButton";
             this.removeEspButton.Size = new System.Drawing.Size(91, 23);
-            this.removeEspButton.TabIndex = 116;
+            this.removeEspButton.TabIndex = 51;
             this.removeEspButton.Text = "REMOVE";
             this.removeEspButton.UseVisualStyleBackColor = false;
             this.removeEspButton.Click += new System.EventHandler(this.removeEspButton_Click);
@@ -382,7 +384,7 @@
             this.addEspButton.Location = new System.Drawing.Point(538, 1068);
             this.addEspButton.Name = "addEspButton";
             this.addEspButton.Size = new System.Drawing.Size(91, 23);
-            this.addEspButton.TabIndex = 115;
+            this.addEspButton.TabIndex = 50;
             this.addEspButton.Text = "ADD";
             this.addEspButton.UseVisualStyleBackColor = false;
             this.addEspButton.Click += new System.EventHandler(this.addEspButton_Click);
@@ -396,7 +398,7 @@
             this.espCombobox.Location = new System.Drawing.Point(225, 1068);
             this.espCombobox.Name = "espCombobox";
             this.espCombobox.Size = new System.Drawing.Size(301, 21);
-            this.espCombobox.TabIndex = 114;
+            this.espCombobox.TabIndex = 49;
             // 
             // espLabel
             // 
@@ -406,7 +408,7 @@
             this.espLabel.Location = new System.Drawing.Point(21, 1071);
             this.espLabel.Name = "espLabel";
             this.espLabel.Size = new System.Drawing.Size(42, 20);
-            this.espLabel.TabIndex = 113;
+            this.espLabel.TabIndex = 48;
             this.espLabel.Text = "ESP";
             // 
             // sageThemeTextbox
@@ -419,7 +421,7 @@
             this.sageThemeTextbox.Name = "sageThemeTextbox";
             this.sageThemeTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sageThemeTextbox.Size = new System.Drawing.Size(501, 81);
-            this.sageThemeTextbox.TabIndex = 112;
+            this.sageThemeTextbox.TabIndex = 47;
             // 
             // removeSageThemeButton
             // 
@@ -428,7 +430,7 @@
             this.removeSageThemeButton.Location = new System.Drawing.Point(635, 945);
             this.removeSageThemeButton.Name = "removeSageThemeButton";
             this.removeSageThemeButton.Size = new System.Drawing.Size(91, 23);
-            this.removeSageThemeButton.TabIndex = 111;
+            this.removeSageThemeButton.TabIndex = 46;
             this.removeSageThemeButton.Text = "REMOVE";
             this.removeSageThemeButton.UseVisualStyleBackColor = false;
             this.removeSageThemeButton.Click += new System.EventHandler(this.removeSageThemeButton_Click);
@@ -439,7 +441,7 @@
             this.addSageThemeButton.Location = new System.Drawing.Point(538, 945);
             this.addSageThemeButton.Name = "addSageThemeButton";
             this.addSageThemeButton.Size = new System.Drawing.Size(91, 23);
-            this.addSageThemeButton.TabIndex = 110;
+            this.addSageThemeButton.TabIndex = 45;
             this.addSageThemeButton.Text = "ADD";
             this.addSageThemeButton.UseVisualStyleBackColor = false;
             this.addSageThemeButton.Click += new System.EventHandler(this.addSageThemeButton_Click);
@@ -453,7 +455,7 @@
             this.sageThemeCombobox.Location = new System.Drawing.Point(225, 947);
             this.sageThemeCombobox.Name = "sageThemeCombobox";
             this.sageThemeCombobox.Size = new System.Drawing.Size(301, 21);
-            this.sageThemeCombobox.TabIndex = 109;
+            this.sageThemeCombobox.TabIndex = 44;
             // 
             // sageThemeLabel
             // 
@@ -463,7 +465,7 @@
             this.sageThemeLabel.Location = new System.Drawing.Point(21, 948);
             this.sageThemeLabel.Name = "sageThemeLabel";
             this.sageThemeLabel.Size = new System.Drawing.Size(129, 20);
-            this.sageThemeLabel.TabIndex = 108;
+            this.sageThemeLabel.TabIndex = 43;
             this.sageThemeLabel.Text = "SAGE [THEME]";
             // 
             // sageCategoryTextbox
@@ -476,7 +478,7 @@
             this.sageCategoryTextbox.Name = "sageCategoryTextbox";
             this.sageCategoryTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sageCategoryTextbox.Size = new System.Drawing.Size(501, 81);
-            this.sageCategoryTextbox.TabIndex = 107;
+            this.sageCategoryTextbox.TabIndex = 42;
             // 
             // removeSageCategoryButton
             // 
@@ -485,7 +487,7 @@
             this.removeSageCategoryButton.Location = new System.Drawing.Point(635, 820);
             this.removeSageCategoryButton.Name = "removeSageCategoryButton";
             this.removeSageCategoryButton.Size = new System.Drawing.Size(91, 23);
-            this.removeSageCategoryButton.TabIndex = 106;
+            this.removeSageCategoryButton.TabIndex = 41;
             this.removeSageCategoryButton.Text = "REMOVE";
             this.removeSageCategoryButton.UseVisualStyleBackColor = false;
             this.removeSageCategoryButton.Click += new System.EventHandler(this.removeSageCategoryButton_Click);
@@ -497,7 +499,7 @@
             this.addSageCategoryButton.Location = new System.Drawing.Point(538, 820);
             this.addSageCategoryButton.Name = "addSageCategoryButton";
             this.addSageCategoryButton.Size = new System.Drawing.Size(91, 23);
-            this.addSageCategoryButton.TabIndex = 105;
+            this.addSageCategoryButton.TabIndex = 40;
             this.addSageCategoryButton.Text = "ADD";
             this.addSageCategoryButton.UseVisualStyleBackColor = false;
             this.addSageCategoryButton.Click += new System.EventHandler(this.addSageCategoryButton_Click);
@@ -511,7 +513,7 @@
             this.sageCategoryCombobox.Location = new System.Drawing.Point(225, 822);
             this.sageCategoryCombobox.Name = "sageCategoryCombobox";
             this.sageCategoryCombobox.Size = new System.Drawing.Size(301, 21);
-            this.sageCategoryCombobox.TabIndex = 104;
+            this.sageCategoryCombobox.TabIndex = 39;
             // 
             // sageCategoryLabel
             // 
@@ -521,7 +523,7 @@
             this.sageCategoryLabel.Location = new System.Drawing.Point(23, 822);
             this.sageCategoryLabel.Name = "sageCategoryLabel";
             this.sageCategoryLabel.Size = new System.Drawing.Size(162, 20);
-            this.sageCategoryLabel.TabIndex = 103;
+            this.sageCategoryLabel.TabIndex = 38;
             this.sageCategoryLabel.Text = "SAGE [CATEGORY]";
             // 
             // onlineCategoriesLabel
@@ -532,7 +534,7 @@
             this.onlineCategoriesLabel.Location = new System.Drawing.Point(0, 781);
             this.onlineCategoriesLabel.Name = "onlineCategoriesLabel";
             this.onlineCategoriesLabel.Size = new System.Drawing.Size(746, 29);
-            this.onlineCategoriesLabel.TabIndex = 102;
+            this.onlineCategoriesLabel.TabIndex = 37;
             this.onlineCategoriesLabel.Text = "Online Categories";
             this.onlineCategoriesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -544,7 +546,7 @@
             this.amazonComLabel.Location = new System.Drawing.Point(21, 600);
             this.amazonComLabel.Name = "amazonComLabel";
             this.amazonComLabel.Size = new System.Drawing.Size(212, 20);
-            this.amazonComLabel.TabIndex = 92;
+            this.amazonComLabel.TabIndex = 25;
             this.amazonComLabel.Text = "Amazon.com Browse Node";
             // 
             // amazonCaLabel
@@ -555,7 +557,7 @@
             this.amazonCaLabel.Location = new System.Drawing.Point(21, 574);
             this.amazonCaLabel.Name = "amazonCaLabel";
             this.amazonCaLabel.Size = new System.Drawing.Size(198, 20);
-            this.amazonCaLabel.TabIndex = 89;
+            this.amazonCaLabel.TabIndex = 22;
             this.amazonCaLabel.Text = "Amazon.ca Browse Node";
             // 
             // amazonComTextbox2
@@ -565,7 +567,7 @@
             this.amazonComTextbox2.MaxLength = 35;
             this.amazonComTextbox2.Name = "amazonComTextbox2";
             this.amazonComTextbox2.Size = new System.Drawing.Size(233, 20);
-            this.amazonComTextbox2.TabIndex = 94;
+            this.amazonComTextbox2.TabIndex = 27;
             // 
             // amazonComTextbox1
             // 
@@ -574,7 +576,7 @@
             this.amazonComTextbox1.MaxLength = 35;
             this.amazonComTextbox1.Name = "amazonComTextbox1";
             this.amazonComTextbox1.Size = new System.Drawing.Size(233, 20);
-            this.amazonComTextbox1.TabIndex = 93;
+            this.amazonComTextbox1.TabIndex = 26;
             // 
             // amazonCaTextbox2
             // 
@@ -583,7 +585,7 @@
             this.amazonCaTextbox2.MaxLength = 35;
             this.amazonCaTextbox2.Name = "amazonCaTextbox2";
             this.amazonCaTextbox2.Size = new System.Drawing.Size(233, 20);
-            this.amazonCaTextbox2.TabIndex = 91;
+            this.amazonCaTextbox2.TabIndex = 24;
             // 
             // amazonCaTextbox1
             // 
@@ -592,7 +594,7 @@
             this.amazonCaTextbox1.MaxLength = 35;
             this.amazonCaTextbox1.Name = "amazonCaTextbox1";
             this.amazonCaTextbox1.Size = new System.Drawing.Size(233, 20);
-            this.amazonCaTextbox1.TabIndex = 90;
+            this.amazonCaTextbox1.TabIndex = 23;
             // 
             // amazonKeywordsLabel
             // 
@@ -602,7 +604,7 @@
             this.amazonKeywordsLabel.Location = new System.Drawing.Point(21, 418);
             this.amazonKeywordsLabel.Name = "amazonKeywordsLabel";
             this.amazonKeywordsLabel.Size = new System.Drawing.Size(148, 20);
-            this.amazonKeywordsLabel.TabIndex = 83;
+            this.amazonKeywordsLabel.TabIndex = 16;
             this.amazonKeywordsLabel.Text = "Amazon Keywords";
             // 
             // amazonKeywordsTextbox5
@@ -612,7 +614,7 @@
             this.amazonKeywordsTextbox5.MaxLength = 50;
             this.amazonKeywordsTextbox5.Name = "amazonKeywordsTextbox5";
             this.amazonKeywordsTextbox5.Size = new System.Drawing.Size(481, 20);
-            this.amazonKeywordsTextbox5.TabIndex = 88;
+            this.amazonKeywordsTextbox5.TabIndex = 21;
             // 
             // amazonKeywordsTextbox4
             // 
@@ -621,7 +623,7 @@
             this.amazonKeywordsTextbox4.MaxLength = 50;
             this.amazonKeywordsTextbox4.Name = "amazonKeywordsTextbox4";
             this.amazonKeywordsTextbox4.Size = new System.Drawing.Size(481, 20);
-            this.amazonKeywordsTextbox4.TabIndex = 87;
+            this.amazonKeywordsTextbox4.TabIndex = 20;
             // 
             // amazonKeywordsTextbox2
             // 
@@ -630,7 +632,7 @@
             this.amazonKeywordsTextbox2.MaxLength = 50;
             this.amazonKeywordsTextbox2.Name = "amazonKeywordsTextbox2";
             this.amazonKeywordsTextbox2.Size = new System.Drawing.Size(481, 20);
-            this.amazonKeywordsTextbox2.TabIndex = 85;
+            this.amazonKeywordsTextbox2.TabIndex = 18;
             // 
             // noteLabel2
             // 
@@ -641,7 +643,7 @@
             this.noteLabel2.Location = new System.Drawing.Point(366, 402);
             this.noteLabel2.Name = "noteLabel2";
             this.noteLabel2.Size = new System.Drawing.Size(238, 13);
-            this.noteLabel2.TabIndex = 82;
+            this.noteLabel2.TabIndex = 15;
             this.noteLabel2.Text = "SEPARATE KEYWORDS BY SEMICOLONS ( ; )";
             // 
             // generalKeywordsTextBox
@@ -652,7 +654,7 @@
             this.generalKeywordsTextBox.Multiline = true;
             this.generalKeywordsTextBox.Name = "generalKeywordsTextBox";
             this.generalKeywordsTextBox.Size = new System.Drawing.Size(481, 104);
-            this.generalKeywordsTextBox.TabIndex = 81;
+            this.generalKeywordsTextBox.TabIndex = 14;
             // 
             // noteLabel1
             // 
@@ -663,7 +665,7 @@
             this.noteLabel1.Location = new System.Drawing.Point(366, 255);
             this.noteLabel1.Name = "noteLabel1";
             this.noteLabel1.Size = new System.Drawing.Size(238, 13);
-            this.noteLabel1.TabIndex = 79;
+            this.noteLabel1.TabIndex = 12;
             this.noteLabel1.Text = "SEPARATE KEYWORDS BY SEMICOLONS ( ; )";
             // 
             // inactiveListButton
@@ -674,7 +676,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(386, 1654);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 136;
+            this.inactiveListButton.TabIndex = 71;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveFamilyButton_Click);
@@ -687,7 +689,7 @@
             this.activeListButton.Location = new System.Drawing.Point(201, 1654);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 135;
+            this.activeListButton.TabIndex = 70;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeFamilyButton_Click);
@@ -701,7 +703,7 @@
             this.updateFamilyButton.Location = new System.Drawing.Point(201, 1572);
             this.updateFamilyButton.Name = "updateFamilyButton";
             this.updateFamilyButton.Size = new System.Drawing.Size(370, 76);
-            this.updateFamilyButton.TabIndex = 134;
+            this.updateFamilyButton.TabIndex = 69;
             this.updateFamilyButton.Text = "Update Product Family";
             this.updateFamilyButton.UseVisualStyleBackColor = false;
             this.updateFamilyButton.Click += new System.EventHandler(this.updateFamilyButton_Click);
@@ -715,7 +717,7 @@
             this.noteLabel3.Location = new System.Drawing.Point(69, 758);
             this.noteLabel3.Name = "noteLabel3";
             this.noteLabel3.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel3.TabIndex = 101;
+            this.noteLabel3.TabIndex = 36;
             this.noteLabel3.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -727,7 +729,7 @@
             this.generalkeywordsLabel.Location = new System.Drawing.Point(21, 271);
             this.generalkeywordsLabel.Name = "generalkeywordsLabel";
             this.generalkeywordsLabel.Size = new System.Drawing.Size(146, 20);
-            this.generalkeywordsLabel.TabIndex = 80;
+            this.generalkeywordsLabel.TabIndex = 13;
             this.generalkeywordsLabel.Text = "General Keywords";
             // 
             // amazonKeywordsTextbox3
@@ -737,7 +739,7 @@
             this.amazonKeywordsTextbox3.MaxLength = 50;
             this.amazonKeywordsTextbox3.Name = "amazonKeywordsTextbox3";
             this.amazonKeywordsTextbox3.Size = new System.Drawing.Size(481, 20);
-            this.amazonKeywordsTextbox3.TabIndex = 86;
+            this.amazonKeywordsTextbox3.TabIndex = 19;
             // 
             // amazonKeywordsTextbox1
             // 
@@ -746,7 +748,7 @@
             this.amazonKeywordsTextbox1.MaxLength = 50;
             this.amazonKeywordsTextbox1.Name = "amazonKeywordsTextbox1";
             this.amazonKeywordsTextbox1.Size = new System.Drawing.Size(481, 20);
-            this.amazonKeywordsTextbox1.TabIndex = 84;
+            this.amazonKeywordsTextbox1.TabIndex = 17;
             // 
             // shortFrenchDescriptionTextbox
             // 
@@ -755,7 +757,7 @@
             this.shortFrenchDescriptionTextbox.MaxLength = 50;
             this.shortFrenchDescriptionTextbox.Name = "shortFrenchDescriptionTextbox";
             this.shortFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 20);
-            this.shortFrenchDescriptionTextbox.TabIndex = 78;
+            this.shortFrenchDescriptionTextbox.TabIndex = 11;
             // 
             // shortEnglishDescriptionTextbox
             // 
@@ -764,7 +766,7 @@
             this.shortEnglishDescriptionTextbox.MaxLength = 50;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 20);
-            this.shortEnglishDescriptionTextbox.TabIndex = 77;
+            this.shortEnglishDescriptionTextbox.TabIndex = 10;
             // 
             // shortDescriptionLabel
             // 
@@ -774,7 +776,7 @@
             this.shortDescriptionLabel.Location = new System.Drawing.Point(21, 205);
             this.shortDescriptionLabel.Name = "shortDescriptionLabel";
             this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
-            this.shortDescriptionLabel.TabIndex = 76;
+            this.shortDescriptionLabel.TabIndex = 9;
             this.shortDescriptionLabel.Text = "Short Description";
             // 
             // translateButton
@@ -786,7 +788,7 @@
             this.translateButton.Location = new System.Drawing.Point(439, 176);
             this.translateButton.Name = "translateButton";
             this.translateButton.Size = new System.Drawing.Size(92, 23);
-            this.translateButton.TabIndex = 74;
+            this.translateButton.TabIndex = 7;
             this.translateButton.Text = "TRANSLATE";
             this.translateButton.UseVisualStyleBackColor = false;
             this.translateButton.Click += new System.EventHandler(this.translateButton_Click);
@@ -799,7 +801,7 @@
             this.frenchLabel.Location = new System.Drawing.Point(584, 180);
             this.frenchLabel.Name = "frenchLabel";
             this.frenchLabel.Size = new System.Drawing.Size(57, 15);
-            this.frenchLabel.TabIndex = 75;
+            this.frenchLabel.TabIndex = 8;
             this.frenchLabel.Text = "FRENCH";
             // 
             // englishLabel
@@ -810,7 +812,7 @@
             this.englishLabel.Location = new System.Drawing.Point(322, 180);
             this.englishLabel.Name = "englishLabel";
             this.englishLabel.Size = new System.Drawing.Size(60, 15);
-            this.englishLabel.TabIndex = 73;
+            this.englishLabel.TabIndex = 6;
             this.englishLabel.Text = "ENGLISH";
             // 
             // productFamilyLabel
@@ -821,7 +823,7 @@
             this.productFamilyLabel.Location = new System.Drawing.Point(21, 129);
             this.productFamilyLabel.Name = "productFamilyLabel";
             this.productFamilyLabel.Size = new System.Drawing.Size(121, 20);
-            this.productFamilyLabel.TabIndex = 71;
+            this.productFamilyLabel.TabIndex = 2;
             this.productFamilyLabel.Text = "Product Family";
             // 
             // detailLabel
@@ -856,7 +858,7 @@
             this.activeLabel.Location = new System.Drawing.Point(23, 722);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(168, 20);
-            this.activeLabel.TabIndex = 137;
+            this.activeLabel.TabIndex = 34;
             this.activeLabel.Text = "Is this Family Active?";
             // 
             // activeCheckbox
@@ -866,7 +868,7 @@
             this.activeCheckbox.Location = new System.Drawing.Point(245, 727);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 138;
+            this.activeCheckbox.TabIndex = 35;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             // 
             // productFamilyCombobox
@@ -876,8 +878,8 @@
             this.productFamilyCombobox.FormattingEnabled = true;
             this.productFamilyCombobox.Location = new System.Drawing.Point(245, 128);
             this.productFamilyCombobox.Name = "productFamilyCombobox";
-            this.productFamilyCombobox.Size = new System.Drawing.Size(481, 21);
-            this.productFamilyCombobox.TabIndex = 139;
+            this.productFamilyCombobox.Size = new System.Drawing.Size(400, 21);
+            this.productFamilyCombobox.TabIndex = 3;
             this.productFamilyCombobox.SelectedValueChanged += new System.EventHandler(this.productFamilyCombobox_SelectedValueChanged);
             // 
             // backgroundWorkerCombobox
@@ -901,6 +903,30 @@
             this.backgroundWorkerUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerUpdate_DoWork);
             this.backgroundWorkerUpdate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerUpdate_ProgressChanged);
             // 
+            // leftButton
+            // 
+            this.leftButton.BackColor = System.Drawing.Color.Green;
+            this.leftButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.leftButton.Image = ((System.Drawing.Image)(resources.GetObject("leftButton.Image")));
+            this.leftButton.Location = new System.Drawing.Point(654, 126);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(33, 23);
+            this.leftButton.TabIndex = 4;
+            this.leftButton.UseVisualStyleBackColor = false;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
+            // rightButton
+            // 
+            this.rightButton.BackColor = System.Drawing.Color.Green;
+            this.rightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rightButton.Image = ((System.Drawing.Image)(resources.GetObject("rightButton.Image")));
+            this.rightButton.Location = new System.Drawing.Point(693, 126);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(33, 23);
+            this.rightButton.TabIndex = 5;
+            this.rightButton.UseVisualStyleBackColor = false;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
+            // 
             // UpdateFamily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,6 +934,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.leftButton);
+            this.Controls.Add(this.rightButton);
             this.Controls.Add(this.productFamilyCombobox);
             this.Controls.Add(this.activeCheckbox);
             this.Controls.Add(this.activeLabel);
@@ -1065,5 +1093,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
         private System.ComponentModel.BackgroundWorker backgroundWorkerUpdate;
+        private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.Button rightButton;
     }
 }

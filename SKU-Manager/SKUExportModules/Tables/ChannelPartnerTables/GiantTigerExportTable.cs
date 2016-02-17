@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
 {
     /*
      * A class that return giant tiger export table
      */
-    class GiantTigerExportTable : ExportTable
+    class GiantTigerExportTable : ExportTableFast
     {
         /* constructor that initialize fields */
         public GiantTigerExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -52,45 +49,43 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "Image 10 Path");                             // 23
 
             // local field for inserting data to table
-            DataRow row;
-            AltText alt = new AltText();
+            DataRow newRow;
+            DataTable table = getDataTable();
             double multiplier = getMultiplier();
 
             // start loading data
             mainTable.BeginLoadData();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (DataRow row in table.Rows)
             {
-                ArrayList list = getData(sku);
+                newRow = mainTable.NewRow();
 
-                row = mainTable.NewRow();
+                newRow[0] = row[20];                                                   // sku number
+                newRow[1] = "Ashlin®";                                                 // brand
+                newRow[2] = row[6];                                                    // style
+                newRow[3] = "Ashlin® " + row[0] + " " + row[7] + " " + row[8];         // description
+                newRow[4] = row[0];                                                    // romance
+                newRow[5] = row[8];                                                    // color
+                newRow[6] = row[7];                                                    // material
+                newRow[7] = row[2] + "cm x " + row[3] + "cm x " + row[4] + "cm";       // size in cm
+                newRow[8] = row[5];                                                    // weight
+                newRow[9] = Convert.ToDouble(row[9]) * 0.6;                            // cost
+                newRow[10] = Convert.ToDouble(row[9]) * multiplier * 0.95;             // retail
+                newRow[11] = Convert.ToDouble(row[9]) * multiplier;                    // mrsp
+                newRow[12] = "L5J 4S7";                                                // area code
+                newRow[13] = row[10];                                                  // image 1 path
+                newRow[14] = row[11];                                                  // image 2 path
+                newRow[15] = row[12];                                                  // image 3 path
+                newRow[16] = row[13];                                                  // image 4 path
+                newRow[17] = row[14];                                                  // image 5 path
+                newRow[18] = row[15];                                                  // image 6 path
+                newRow[19] = row[16];                                                  // image 7 path
+                newRow[20] = row[17];                                                  // image 8 path
+                newRow[21] = row[18];                                                  // image 9 path
+                newRow[22] = row[19];                                                  // image 10 path
 
-                row[0] = sku;                                                        // sku number
-                row[1] = "Ashlin®";                                                  // brand
-                row[2] = list[7];                                                    // style
-                row[3] = alt.getAlt(sku);                                            // description
-                row[4] = list[1];                                                    // romance
-                row[5] = list[9];                                                    // color
-                row[6] = list[8];                                                    // material
-                row[7] = list[3] + "cm x " + list[4] + "cm x " + list[5] + "cm";     // size in cm
-                row[8] = list[6];                                                    // weight
-                row[9] = Convert.ToDouble(list[10]) * 0.6;                           // cost
-                row[10] = Convert.ToDouble(list[10]) * multiplier * 0.95;            // retail
-                row[11] = Convert.ToDouble(list[10]) * multiplier;                   // mrsp
-                row[12] = "L5J 4S7";                                                 // area code
-                row[13] = list[11];                                                  // image 1 path
-                row[14] = list[12];                                                  // image 2 path
-                row[15] = list[13];                                                  // image 3 path
-                row[16] = list[14];                                                  // image 4 path
-                row[17] = list[15];                                                  // image 5 path
-                row[18] = list[16];                                                  // image 6 path
-                row[19] = list[17];                                                  // image 7 path
-                row[20] = list[18];                                                  // image 8 path
-                row[21] = list[19];                                                  // image 9 path
-                row[22] = list[20];                                                  // image 10 path
-
-                mainTable.Rows.Add(row);
+                mainTable.Rows.Add(newRow);
                 progress++;
             }
 
@@ -120,55 +115,33 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* method that get the data from given sku */
-        private ArrayList getData(string sku)
+        protected override DataTable getDataTable()
         {
             // local field for storing data
-            ArrayList list = new ArrayList();
             DataTable table = new DataTable();
 
-            // get the first two of elements in the sku (design and material)
-            string firstTwo = sku.Substring(0, sku.LastIndexOf('-'));
-
-            // allocate elements from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string material = firstTwo.Substring(firstTwo.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
-
             // grab data from design
+            // [0] description, [1] romance, [2] ~ [4] size in cm, [5] weight
+            // [6] style
+            // [7] material
+            // [8] color
+            // [9] for all related to price, [10] ~ [19] iamge paths, [20] sku number
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Height_cm, Width_cm, Depth_cm, Weight_grams, " +
+                                                        "Design_Service_Family_Description, " +
+                                                        "Material_Description_Short, " +
+                                                        "Colour_Description_Short, " +
+                                                        "Base_Price, Image_1_Path,Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, SKU_Ashlin " +
+                                                        "FROM master_SKU_Attributes sku " +
+                                                        "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " + 
+                                                        "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " + 
+                                                        "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " + 
+                                                        "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                        "WHERE sku.Active = \'True\' AND SKU_WALMART_CA != \'\' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
-            // [0] description, [1] romance, [2] for further looking, [3] ~ [5] size in cm, [6] weight
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Design_Service_Family_Code, Height_cm, Width_cm, Depth_cm, Weight_grams FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
             adapter.Fill(table);
-            for (int i = 0; i <= 6; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            // [7] style
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][2].ToString() + "\';", connection);
-            table.Reset();
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            table.Reset();
-            // [8] material
-            adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            table.Reset();
-            // [9] color
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            table.Reset();
-            // [10] for all related to price, [11] ~ [20] iamge paths
-            adapter = new SqlDataAdapter("SELECT Base_Price, Image_1_Path,Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 10; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
             connection.Close();
 
-            return list;
+            return table;
         }
 
         /* method that give price multiplier */

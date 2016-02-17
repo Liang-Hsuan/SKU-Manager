@@ -7,7 +7,7 @@ namespace SKU_Manager.ExcelExportModules
     /*
      * A class that export Excel File
      */
-    class XlExport
+    public class XlExport
     {
         // fields for excel export
         Excel.Application xlApp;
@@ -22,7 +22,8 @@ namespace SKU_Manager.ExcelExportModules
             xlWorkBook = xlApp.Workbooks.Add(misValue);
         }
 
-        /* method that export excel file from the table and save path given */
+        #region Export Excel Methods
+        /* methods that export excel file from the table and save path given */
         public void nowExport(string path, DataSet ds, string[] names)
         {
             // add worksheet for each table
@@ -40,6 +41,24 @@ namespace SKU_Manager.ExcelExportModules
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
         }
+        public void nowExport(string path, DataSet ds, string[] names, int[][] textIndex)
+        {
+            // add worksheet for each table
+            addSheet(ds);
+
+            // add column names and data to each worksheet
+            addData(ds, names, textIndex);
+
+            // save file from the given save path 
+            xlWorkBook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
+        }
+        #endregion
 
         /* a method that add the number of worksheets according to dataset */
         private void addSheet(DataSet ds)
@@ -57,6 +76,7 @@ namespace SKU_Manager.ExcelExportModules
             }
         }
 
+        #region Add Data Methods
         /* method that add column names and data to the tables */
         private void addData(DataSet ds, string[] names)
         {
@@ -98,6 +118,55 @@ namespace SKU_Manager.ExcelExportModules
                 range.EntireRow.Columns.AutoFit();
             }
         }
+        private void addData(DataSet ds, string[] names, int[][] textIndex)
+        {
+            int length = ds.Tables.Count;
+
+            for (int i = 0; i < length; i++)
+            {
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets[i + 1];
+                xlWorkSheet.Name = names[i];
+
+                // format column cast as text 
+                Excel.Range range;
+                foreach (int j in textIndex[i])
+                {
+                    range = xlWorkSheet.Cells[1, j] as Excel.Range;
+                    range.EntireColumn.NumberFormat = "@";
+                }
+
+                int rows = ds.Tables[i].Rows.Count;
+                int columns = ds.Tables[i].Columns.Count;
+                var data = new object[rows + 1, columns];
+
+                // insert column names
+                for (int column = 0; column < columns; column++)
+                {
+                    data[0, column] = ds.Tables[i].Columns[column].ColumnName;
+                }
+
+                // insert data
+                for (int row = 0; row < rows; row++)
+                {
+                    for (int column = 0; column < columns; column++)
+                    {
+                        data[row + 1, column] = ds.Tables[i].Rows[row][column];
+                    }
+                }
+
+                // write data to the excel worksheet
+                Excel.Range beginWrite = xlWorkSheet.Cells[1, 1];
+                Excel.Range endWrite = xlWorkSheet.Cells[rows + 1, columns];
+                Excel.Range sheetData = xlWorkSheet.Range[beginWrite, endWrite];
+                sheetData.Value2 = data;
+
+                // format headers
+                range = xlWorkSheet.Cells[1, 1] as Excel.Range;
+                range.EntireRow.Font.Bold = true;
+                range.EntireRow.Columns.AutoFit();
+            }
+        }
+        #endregion
 
         /* method that release the object */
         private void releaseObject(object obj)

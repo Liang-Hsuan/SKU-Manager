@@ -15,7 +15,6 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         public UducatExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 

@@ -32,7 +32,7 @@ namespace SKU_Manager.SplashModules.Update
         private string trendExtendedEnglishDescription;
         private string trendExtendedFrenchDescription;
         private string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website
-        private int[] integer = new int[9];    // corresponding to the field above
+        private int[] integer = new int[9];          // corresponding to the field above
         private string imprintHeight;
         private string imprintWidth;
         private string productHeight;
@@ -453,6 +453,28 @@ namespace SKU_Manager.SplashModules.Update
                 shippableDepthTextbox.Enabled = false;
             }
         }
+
+        #region Left and Right Buttons
+        /* the event for left and right button click that change the index of comboboxes */
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            int i = designCodeCombobox.SelectedIndex;
+            if (i > 0)
+            {
+                i--;
+            }
+            designCodeCombobox.SelectedIndex = i;
+        }
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            int i = designCodeCombobox.SelectedIndex;
+            if (i < designCodeList.Count - 1)
+            {
+                i++;
+            }
+            designCodeCombobox.SelectedIndex = i;
+        }
+        #endregion
 
         /* the event of internal ashlin name textbox that detect whether the user input has duplicate */
         private void internalNameTextbox_TextChanged(object sender, EventArgs e)

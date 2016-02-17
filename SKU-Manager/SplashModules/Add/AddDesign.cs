@@ -530,6 +530,8 @@ namespace SKU_Manager.SplashModules.Add
             {
                 imprintHeightTextbox.Enabled = false;
                 imprintWidthTextbox.Enabled = false;
+                imprintHeightTextbox.Text = "";
+                imprintWidthTextbox.Text = "";
             }
             else
             {

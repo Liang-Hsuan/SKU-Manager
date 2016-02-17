@@ -13,7 +13,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         public BPnetImprintExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -71,33 +70,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             mainTable.EndLoadData();
 
             return mainTable;
-        }
-
-        /* the real thing -> return the table !!! */
-
-        /* method that get the data from given sku */
-        protected override object[] getData(string sku)
-        {
-            // local fields for storing data
-            object[] list = new object[3];
-
-            // grab data from design database
-            // [0] field that related to price
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            list[0] = reader.GetValue(0);
-            reader.Close();
-            // [1] for price calculation, [2] description
-            command = new SqlCommand("SELECT Components, Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + sku.Substring(0, sku.IndexOf('-')) + "\';", connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            list[1] = reader.GetValue(0);
-            list[2] = reader.GetValue(1);
-            connection.Close();
-
-            return list;
         }
 
         /* a method that return the discount matrix */

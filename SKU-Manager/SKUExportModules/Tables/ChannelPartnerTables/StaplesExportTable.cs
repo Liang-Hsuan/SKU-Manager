@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,13 +8,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
     /*
      * A class that return staples export table
      */
-    class StaplesExportTable : ExportTable
+    class StaplesExportTable : ExportTableFast
     {
         /* constructor that initialize fields */
         public StaplesExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -71,61 +69,60 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "Customization_Logo_Charge");                              // 43
 
             // local field for inserting data to table
-            DataRow row;
+            DataRow newRow;
+            DataTable table = getDataTable();
             double[] discountList = getDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (DataRow row in table.Rows)
             {
-                ArrayList list = getData(sku);
+                newRow = mainTable.NewRow();
 
-                row = mainTable.NewRow();
-
-                row[0] = "Ashlin Leather";                                            // vendor
-                row[1] = "juanne.kochhar@ashlinbpg.com";                              // vendor name
-                row[2] = list[15];                                                    // UPC 
-                row[3] = list[16];                                                    // staples sku
-                row[4] = list[0];                                                     // short product name
-                row[5] = list[17];                                                    // vendor part #
-                row[6] = list[17];                                                    // mfr model
-                if (!list[1].Equals(DBNull.Value))
-                { 
-                    row[14] = Math.Round(Convert.ToDouble(list[1]) / 2.54, 2);        // length
-                    row[15] = Math.Round(Convert.ToDouble(list[2]) / 2.54, 2);        // width
-                    row[16] = Math.Round(Convert.ToDouble(list[3]) / 2.54, 2);        // height
-                }
-                if (!list[4].Equals(DBNull.Value))
+                newRow[0] = "Ashlin Leather";                                          // vendor
+                newRow[1] = "juanne.kochhar@ashlinbpg.com";                            // vendor name
+                newRow[2] = row[15];                                                   // UPC 
+                newRow[3] = row[16];                                                   // staples sku
+                newRow[4] = row[0];                                                    // short product name
+                newRow[5] = row[17];                                                   // vendor part #
+                newRow[6] = row[17];                                                   // mfr model
+                if (!row[1].Equals(DBNull.Value))
                 {
-                    row[17] = Math.Round(Convert.ToDouble(list[4]) / 453.952, 2);     // weight
+                    newRow[14] = Math.Round(Convert.ToDouble(row[1]) / 2.54, 2);       // length
+                    newRow[15] = Math.Round(Convert.ToDouble(row[2]) / 2.54, 2);       // width
+                    newRow[16] = Math.Round(Convert.ToDouble(row[3]) / 2.54, 2);       // height
                 }
-                row[18] = Convert.ToDouble(list[18]) * discountList[0] * discountList[1];    // wholesale cost
-                row[19] = Convert.ToDouble(list[18]) * discountList[1];               // retail price
-                row[23] = "Ashlin®";                                                  // brand
-                row[24] = "Ashlin® " + list[0] + " " + list[5] + " " + list[23];      // web name
-                row[26] = list[6];                                                    // copy bullet 1
-                row[27] = list[7];                                                    // copy bullet 2
-                row[28] = list[8];                                                    // copy bullet 3
-                row[29] = list[9];                                                    // copy bullet 4
-                row[30] = list[10];                                                   // copy bullet 5
-                row[31] = list[11];                                                   // copy bullet 6
-                if (!list[12].Equals(DBNull.Value))
+                if (!row[4].Equals(DBNull.Value))
                 {
-                    row[32] = "Finished Dimensions (cm): " + list[12] + " x " + list[13] + " x " + list[14];                                                                                                                                           // copy bullet 7
-                    row[33] = "Finished Dimensions (in): " + Math.Round(Convert.ToDouble(list[12]) / 2.54, 2) + "\" x " + Math.Round(Convert.ToDouble(list[13]) / 2.54, 2) + "\" x " + Math.Round(Convert.ToDouble(list[14]) / 2.54, 2) + "\"";        // copy bullet 8
+                    newRow[17] = Math.Round(Convert.ToDouble(row[4]) / 453.952, 2);    // weight
                 }
-                row[34] = list[24];                                                   // copy bullet 9
-                row[36] = list[19];                                                   // image 1 path
-                row[37] = list[20];                                                   // image 2 path
-                row[38] = list[21];                                                   // image 3 path
-                row[39] = list[22];                                                   // image 4 path
-                row[40] = 6.00;                                                       // customization personalization initials charge
-                row[41] = 10.00;                                                      // customization personalization name change 
-                row[42] = 75.00;                                                      // customization logo charge
+                newRow[18] = Convert.ToDouble(row[18]) * discountList[0] * discountList[1];    // wholesale cost
+                newRow[19] = Convert.ToDouble(row[18]) * discountList[1];              // retail price
+                newRow[23] = "Ashlin®";                                                // brand
+                newRow[24] = "Ashlin® " + row[0] + " " + row[5] + " " + row[23];       // web name
+                newRow[26] = row[6];                                                   // copy bullet 1
+                newRow[27] = row[7];                                                   // copy bullet 2
+                newRow[28] = row[8];                                                   // copy bullet 3
+                newRow[29] = row[9];                                                   // copy bullet 4
+                newRow[30] = row[10];                                                  // copy bullet 5
+                newRow[31] = row[11];                                                  // copy bullet 6
+                if (!row[12].Equals(DBNull.Value))
+                {
+                    newRow[32] = "Finished Dimensions (cm): " + row[12] + " x " + row[13] + " x " + row[14];                                                                                                                                           // copy bullet 7
+                    newRow[33] = "Finished Dimensions (in): " + Math.Round(Convert.ToDouble(row[12]) / 2.54, 2) + "\" x " + Math.Round(Convert.ToDouble(row[13]) / 2.54, 2) + "\" x " + Math.Round(Convert.ToDouble(row[14]) / 2.54, 2) + "\"";        // copy bullet 8
+                }
+                newRow[34] = row[24];                                                   // copy bullet 9
+                newRow[36] = row[19];                                                   // image 1 path
+                newRow[37] = row[20];                                                   // image 2 path
+                newRow[38] = row[21];                                                   // image 3 path
+                newRow[39] = row[22];                                                   // image 4 path
+                newRow[40] = 6.00;                                                      // customization personalization initials charge
+                newRow[41] = 10.00;                                                     // customization personalization name change 
+                newRow[42] = 75.00;                                                     // customization logo charge
 
-                mainTable.Rows.Add(row);
+                mainTable.Rows.Add(newRow);
                 progress++;
             }
 
@@ -142,7 +139,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'TRUE\' AND SKU_STAPLES_CA != \'\' ORDER BY SKU_Ashlin", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_STAPLES_CA != \'\' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -154,45 +151,30 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             return skuList.ToArray();
         }
 
-        /* method that get the data from given sku */
-        private ArrayList getData(string sku)
+        /* new version of getData that directly return the desired table -> no issue */
+        protected override DataTable getDataTable()
         {
             // local field for storing data
-            ArrayList list = new ArrayList();
             DataTable table = new DataTable();
-
-            // get the design and color code from sku
-            string color = sku.Substring(sku.LastIndexOf('-') + 1);
-            string design = sku.Substring(0, sku.IndexOf('-'));
 
             // grab data from design
             // [0] for short product name, [1] for length [2] for width, [3] for height, [4] for weight , [5] for web name, [6] for copy bullet 1, [7] ~ [11] for copy bullet 2 to 6, [12] ~ [14] for copy bullet 7 
-            //     and web name                                                                                                                                                                                                                                                                                                                                      
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Fashion_Name_STAPLES_CA, Shippable_Depth_cm, Shippable_Width_cm, Shippable_Height_cm, Shippable_Weight_grams, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Width_cm, Height_cm, Depth_cm FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            connection.Open();
-            adapter.Fill(table);
-            for (int i = 0; i <= 14; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
+            //     and web name  
             // [15] for upc, [16] for staples sku, [17] for vendor part #, [18] for wholesale cost, [19] ~ [22] for image path
             //                                      and mfr model           and retail price
-            adapter = new SqlDataAdapter("SELECT UPC_CODE_10, SKU_STAPLES_CA, SKU_Ashlin, Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i <= 7; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
             // [23] for web name, [24] for copy bullet 9
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Fashion_Name_STAPLES_CA, Shippable_Depth_cm, Shippable_Width_cm, Shippable_Height_cm, Shippable_Weight_grams, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Width_cm, Height_cm, Depth_cm, " +
+                                                        "UPC_CODE_10, SKU_STAPLES_CA, SKU_Ashlin, Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, " +
+                                                        "Colour_Description_Short, Colour_Description_Extended " + 
+                                                        "FROM master_SKU_Attributes sku " +
+                                                        "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                        "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                        "WHERE sku.Active = \'True\' AND SKU_STAPLES_CA != \'\' ORDER BY SKU_Ashlin;", connection);
+            connection.Open();
             adapter.Fill(table);
-            list.Add(table.Rows[0][0]);
-            list.Add(table.Rows[0][1]);
             connection.Close();
 
-            return list;
+            return table;
         }
 
         /* a method that return the discount matrix */

@@ -27,8 +27,32 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             return skuList.ToArray();
         }
 
-        /* define other crucial methods that require for all Brightpearl classes */
-        abstract protected object[] getData(string sku);
+        /* set a method for getting data from given sku */
+        protected object[] getData(string sku)
+        {
+            // local fields for storing data
+            object[] list = new object[3];
+
+            // grab data from design database
+            // [0] field that related to price
+            // [1] for price calculation, [2] description
+            SqlCommand command = new SqlCommand("SELECT Base_Price, Components, Short_Description " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            for (int i = 0; i <= 2; i++)
+            {
+                list[i] = reader.GetValue(i);
+            }
+            connection.Close();
+
+            return list;
+        }
+
+        /* define a crucial method that require for all Brightpearl classes */
         abstract protected double[] getDiscount();
     }
 }

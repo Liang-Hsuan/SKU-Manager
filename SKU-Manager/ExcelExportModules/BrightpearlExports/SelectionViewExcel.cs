@@ -27,7 +27,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
             if (Properties.Settings.Default.BPcodedBlankTable != null && Properties.Settings.Default.BPcodedImprintTable != null && Properties.Settings.Default.BPrushCodedBlankTable != null && Properties.Settings.Default.BPrushCodedImprintTable != null
              && Properties.Settings.Default.BPnetBlankTable != null && Properties.Settings.Default.BPnetImprintTable != null && Properties.Settings.Default.BPrushCodedBlankTable != null && Properties.Settings.Default.BPrushNetImprintTable != null)   // tables have already been saved
             {
-                // local field for excel export
+                // local field for excel export and formatting
                 XlExport export = new XlExport();
                 string[] names = new string[8];
                 names[0] = "Coded Blank Price List";
@@ -38,6 +38,12 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 names[5] = "Net Imprinted Price List";
                 names[6] = "Rush Net Blank Price List";
                 names[7] = "Rush Net Imprinted Price List";
+                int[][] textIndex = new int[8][];
+                int[] index = { 2 };
+                for (int i = 0; i < 8; i++)
+                {
+                    textIndex[i] = index;
+                }
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
@@ -53,14 +59,16 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     ds.Tables.Add(Properties.Settings.Default.BPrushNetImprintTable);
 
                     // export the excel files               
-                    export.nowExport(saveFileDialog.FileName, ds, names);
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+
+                    MessageBox.Show("Excel file has been successfully exported in \n" + saveFileDialog.FileName, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else    // prompt user to load stock quantity table first
             {
                 MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                return;
             }
-
         }
 
         /* the event for amazon button clikc */

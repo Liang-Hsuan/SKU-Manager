@@ -86,7 +86,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[0] = "ashlin_bpg";                       // supplier id
                 row[1] = "nishis_boutique";                  // store name
                 row[2] = sku;                                // sku
-                row[3] = alt.getAlt(sku);                    // title
+                row[3] = alt.getAltWithSkuExist(sku);        // title
                 row[4] = list[1];                            // description
                 row[5] = list[2];                            // shipping weight
                 row[6] = "GM";                               // shipping weight unit of measure

@@ -53,6 +53,8 @@
             this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerUpdate = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // inactiveListButton
@@ -64,7 +66,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(361, 683);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 19;
+            this.inactiveListButton.TabIndex = 21;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveMaterialButton_Click);
@@ -78,7 +80,7 @@
             this.activeListButton.Location = new System.Drawing.Point(178, 683);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 18;
+            this.activeListButton.TabIndex = 20;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeMaterialButton_Click);
@@ -93,7 +95,7 @@
             this.updateMaterialButton.Location = new System.Drawing.Point(176, 601);
             this.updateMaterialButton.Name = "updateMaterialButton";
             this.updateMaterialButton.Size = new System.Drawing.Size(370, 76);
-            this.updateMaterialButton.TabIndex = 17;
+            this.updateMaterialButton.TabIndex = 19;
             this.updateMaterialButton.Text = "Update Material";
             this.updateMaterialButton.UseVisualStyleBackColor = false;
             this.updateMaterialButton.Click += new System.EventHandler(this.updateMaterialButton_Click);
@@ -108,7 +110,7 @@
             this.noteLabel.Location = new System.Drawing.Point(58, 553);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel.TabIndex = 15;
+            this.noteLabel.TabIndex = 17;
             this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -121,7 +123,7 @@
             this.extendedDescriptionLabel.Location = new System.Drawing.Point(21, 295);
             this.extendedDescriptionLabel.Name = "extendedDescriptionLabel";
             this.extendedDescriptionLabel.Size = new System.Drawing.Size(169, 20);
-            this.extendedDescriptionLabel.TabIndex = 10;
+            this.extendedDescriptionLabel.TabIndex = 12;
             this.extendedDescriptionLabel.Text = "Extended Description";
             // 
             // extendedFrenchDescriptionTextbox
@@ -133,7 +135,7 @@
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 190);
-            this.extendedFrenchDescriptionTextbox.TabIndex = 12;
+            this.extendedFrenchDescriptionTextbox.TabIndex = 14;
             // 
             // extendedEnglishDescriptionTextbox
             // 
@@ -144,7 +146,7 @@
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 190);
-            this.extendedEnglishDescriptionTextbox.TabIndex = 11;
+            this.extendedEnglishDescriptionTextbox.TabIndex = 13;
             // 
             // shortFrenchDescriptionTextbox
             // 
@@ -155,7 +157,7 @@
             this.shortFrenchDescriptionTextbox.Multiline = true;
             this.shortFrenchDescriptionTextbox.Name = "shortFrenchDescriptionTextbox";
             this.shortFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 59);
-            this.shortFrenchDescriptionTextbox.TabIndex = 9;
+            this.shortFrenchDescriptionTextbox.TabIndex = 11;
             // 
             // shortEnglishDescriptionTextbox
             // 
@@ -166,7 +168,7 @@
             this.shortEnglishDescriptionTextbox.Multiline = true;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 59);
-            this.shortEnglishDescriptionTextbox.TabIndex = 8;
+            this.shortEnglishDescriptionTextbox.TabIndex = 10;
             // 
             // shortDescriptionLabel
             // 
@@ -177,7 +179,7 @@
             this.shortDescriptionLabel.Location = new System.Drawing.Point(21, 215);
             this.shortDescriptionLabel.Name = "shortDescriptionLabel";
             this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
-            this.shortDescriptionLabel.TabIndex = 7;
+            this.shortDescriptionLabel.TabIndex = 9;
             this.shortDescriptionLabel.Text = "Short Description";
             // 
             // translateButton
@@ -190,7 +192,7 @@
             this.translateButton.Location = new System.Drawing.Point(411, 171);
             this.translateButton.Name = "translateButton";
             this.translateButton.Size = new System.Drawing.Size(92, 23);
-            this.translateButton.TabIndex = 5;
+            this.translateButton.TabIndex = 7;
             this.translateButton.Text = "TRANSLATE";
             this.translateButton.UseVisualStyleBackColor = false;
             this.translateButton.Click += new System.EventHandler(this.translateButton_Click);
@@ -204,7 +206,7 @@
             this.frenchLabel.Location = new System.Drawing.Point(561, 175);
             this.frenchLabel.Name = "frenchLabel";
             this.frenchLabel.Size = new System.Drawing.Size(57, 15);
-            this.frenchLabel.TabIndex = 6;
+            this.frenchLabel.TabIndex = 8;
             this.frenchLabel.Text = "FRENCH";
             // 
             // englishLabel
@@ -216,7 +218,7 @@
             this.englishLabel.Location = new System.Drawing.Point(289, 175);
             this.englishLabel.Name = "englishLabel";
             this.englishLabel.Size = new System.Drawing.Size(60, 15);
-            this.englishLabel.TabIndex = 4;
+            this.englishLabel.TabIndex = 6;
             this.englishLabel.Text = "ENGLISH";
             // 
             // materialCodeLabel
@@ -268,7 +270,7 @@
             this.activeLabel.Location = new System.Drawing.Point(21, 509);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(179, 20);
-            this.activeLabel.TabIndex = 13;
+            this.activeLabel.TabIndex = 15;
             this.activeLabel.Text = "Is this Material Active?";
             // 
             // activeCheckbox
@@ -278,7 +280,7 @@
             this.activeCheckbox.Location = new System.Drawing.Point(218, 512);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 14;
+            this.activeCheckbox.TabIndex = 16;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             // 
             // materialCodeCombobox
@@ -288,7 +290,7 @@
             this.materialCodeCombobox.FormattingEnabled = true;
             this.materialCodeCombobox.Location = new System.Drawing.Point(218, 131);
             this.materialCodeCombobox.Name = "materialCodeCombobox";
-            this.materialCodeCombobox.Size = new System.Drawing.Size(481, 21);
+            this.materialCodeCombobox.Size = new System.Drawing.Size(400, 21);
             this.materialCodeCombobox.TabIndex = 3;
             this.materialCodeCombobox.SelectedValueChanged += new System.EventHandler(this.materialCodeCombobox_SelectedValueChanged);
             // 
@@ -320,7 +322,31 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 16;
+            this.progressBar.TabIndex = 18;
+            // 
+            // leftButton
+            // 
+            this.leftButton.BackColor = System.Drawing.Color.Green;
+            this.leftButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.leftButton.Image = ((System.Drawing.Image)(resources.GetObject("leftButton.Image")));
+            this.leftButton.Location = new System.Drawing.Point(627, 131);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(33, 23);
+            this.leftButton.TabIndex = 4;
+            this.leftButton.UseVisualStyleBackColor = false;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
+            // rightButton
+            // 
+            this.rightButton.BackColor = System.Drawing.Color.Green;
+            this.rightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rightButton.Image = ((System.Drawing.Image)(resources.GetObject("rightButton.Image")));
+            this.rightButton.Location = new System.Drawing.Point(666, 131);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(33, 23);
+            this.rightButton.TabIndex = 5;
+            this.rightButton.UseVisualStyleBackColor = false;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // UpdateMaterial
             // 
@@ -328,6 +354,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.leftButton);
+            this.Controls.Add(this.rightButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.materialCodeCombobox);
             this.Controls.Add(this.activeCheckbox);
@@ -385,5 +413,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
         private System.ComponentModel.BackgroundWorker backgroundWorkerUpdate;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.Button rightButton;
     }
 }

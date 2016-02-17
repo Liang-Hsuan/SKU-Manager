@@ -724,7 +724,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
                 else
                 {
-                    imageAlt[i] = alt.getAlt(sku).Replace("'", "''");
+                    imageAlt[i] = alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 
@@ -738,7 +738,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
                 else
                 {
-                    groupAlt[i] = "Group " + alt.getAlt(sku).Replace("'", "''");
+                    groupAlt[i] = "Group " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 
@@ -752,7 +752,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
                 else
                 {
-                    modelAlt[i] = "Model " + alt.getAlt(sku).Replace("'", "''");
+                    modelAlt[i] = "Model " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
                 }
             }
 

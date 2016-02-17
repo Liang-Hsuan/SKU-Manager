@@ -16,7 +16,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         public MagentoExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -229,7 +228,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[32] = msrp * discountList[7];                        // price 500 c blank
                 row[33] = msrp * discountList[8];                        // price 1000 c blank
                 row[34] = msrp * discountList[9];                        // price 2500 c blank
-                double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[25]) - 1;
+                double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[24]) - 1;
                 if (runCharge > 8)
                 {
                     runCharge = 8;
@@ -395,57 +394,13 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             list.Add(design); list.Add(material); list.Add(color);
 
             // grab data from design
-            // [3] material description extended                                                                                                                                                                                                                                                                                                                                                                                                               
-            /*SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Extended FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
-            connection.Open();
-            adapter.Fill(table);
-            for (int i = 0; i < 1; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [4] colour description extended
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Extended FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i < 1; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [5] design service fashion name ashlin, [6] design short description, [7] design extended description, [8] ~ [12] options, [13] strap, [14] detachable strap, [15] zippered enclosure, [16] shippable weight grams, [17] imprintable,  [18] & [19] imprint area cm, [20] ~ [22] finished dimensions (cm), [23] for looking, [24] monogram, [25] for price calculation
-            //                                                                                                                                                                                           & shippable weight lb                                  & imprint area in            & finished dimensions (in)
-            adapter = new SqlDataAdapter("SELECT Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Strap, Detachable_Strap, Zippered_Enclosure, Shippable_weight_grams, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Design_Service_Family_Code, Monogram, Components FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i < 21; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            // [26] design servie family description, [27] keywords
-            adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_KeyWords_General FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][18] + "\';", connection);
-            table.Reset();
-            adapter.Fill(table);
-            for (int i = 0; i < 2; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            table.Reset();
-            // [28] all related to price, [29] ~ [38] iamge path, [39] ~ [43] group path, [44] ~ [48] model path, [49] ~ [58] alt image path, [59] ~ [63] alt group path, [64] ~ [68] alt model path
-            adapter = new SqlDataAdapter("SELECT Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            adapter.Fill(table);
-            for (int i = 0; i < 41; i++)
-            {
-                list.Add(table.Rows[0][i]);
-            }
-            connection.Close(); */
-
-            // grab data from design
             // [3] material description extended 
             // [4] colour description extended
             // [5] design service fashion name ashlin, [6] design short description, [7] design extended description, [8] ~ [12] options, [13] strap, [14] detachable strap, [15] zippered enclosure, [16] shippable weight grams, [17] imprintable,  [18] & [19] imprint area cm, [20] ~ [22] finished dimensions (cm), [23] monogram, [24] for price calculation
             //                                                                                                                                                                                           & shippable weight lb                                  & imprint area in            & finished dimensions (in)
             // [25] design servie family description, [26] keywords
             // [27] all related to price, [28] ~ [37] iamge path, [38] ~ [42] group path, [43] ~ [47] model path, [48] ~ [57] alt image path, [58] ~ [62] alt group path, [63] ~ [67] alt model path
-            SqlCommand command = new SqlCommand("SELECT Material_Description_Extended FROM ref_Materials, " +
+            SqlCommand command = new SqlCommand("SELECT Material_Description_Extended, " +
                                                 "Colour_Description_Extended, " +
                                                 "Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Strap, Detachable_Strap, Zippered_Enclosure, Shippable_weight_grams, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Monogram, Components, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
@@ -454,14 +409,16 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
-                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code;", connection);
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 3; i <= 67; i++)
+            for (int i = 0; i <= 64; i++)
             {
                 list.Add(reader.GetValue(i));
             }
+            connection.Close();
 
             return list;
         }

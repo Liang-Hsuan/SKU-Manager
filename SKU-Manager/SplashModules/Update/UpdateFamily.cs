@@ -74,6 +74,7 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -176,7 +177,9 @@ namespace SKU_Manager.SplashModules.Update
             uducatCombobox.DataSource = uducatList;
             distributorCentralCombobox.DataSource = distributorCentralList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event for family product code combobox selected item changed that show the default tax price for this selected item */
         private void productFamilyCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -393,7 +396,31 @@ namespace SKU_Manager.SplashModules.Update
             uducatTextbox.Text = uducat;
             distributorCentralTextbox.Text = distributorCentral;
         }
+        #endregion
 
+        #region Left and Right Buttons
+        /* the event for left and right button click that change the index of comboboxes */
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            int i = productFamilyCombobox.SelectedIndex;
+            if (i > 0)
+            {
+                i--;
+            }
+            productFamilyCombobox.SelectedIndex = i;
+        }
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            int i = productFamilyCombobox.SelectedIndex;
+            if (i < familyCodeList.Count - 1)
+            {
+                i++;
+            }
+            productFamilyCombobox.SelectedIndex = i;
+        }
+        #endregion
+
+        #region Translate
         /* the event for translate button that translate English to French */
         private void translateButton_Click(object sender, EventArgs e)
         {
@@ -421,7 +448,9 @@ namespace SKU_Manager.SplashModules.Update
             // show result to textbox
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
         }
+        #endregion
 
+        #region Taxes
         /* the event for showing the corresponding ca and us duty form the item selected in combobox */
         private void canadianHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -461,7 +490,9 @@ namespace SKU_Manager.SplashModules.Update
                 usDutyTextbox.Text = "";
             }
         }
+        #endregion
 
+        #region Update
         /* the event when update family button is clicked */
         private void updateFamilyButton_Click(object sender, EventArgs e)
         {
@@ -549,7 +580,9 @@ namespace SKU_Manager.SplashModules.Update
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive List
         /* the event for active and inactive list button that open the table of active family list */
         private void activeFamilyButton_Click(object sender, EventArgs e)
         {
@@ -561,7 +594,9 @@ namespace SKU_Manager.SplashModules.Update
             InactiveFamilyList inactiveFamilyList = new InactiveFamilyList();
             inactiveFamilyList.ShowDialog(this);
         }
+        #endregion
 
+        #region Add and Remove
         /* the event for sage categroy add and remove button click */
         private void addSageCategoryButton_Click(object sender, EventArgs e)
         {
@@ -741,5 +776,6 @@ namespace SKU_Manager.SplashModules.Update
                 distributorCentralTextbox.Text = "";
             }
         }
+        #endregion
     }
 }
