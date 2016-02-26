@@ -379,7 +379,7 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // get data from user input
-            productFamily = productFamilyCombobox.SelectedItem.ToString();
+            productFamily = productFamilyCombobox.SelectedItem.ToString().Replace("'", "''");
             designServiceFlag = designServiceFlagCombobox.SelectedItem.ToString();
             calculateTrueAndFalse();
 
