@@ -906,7 +906,7 @@ namespace SKU_Manager.SplashModules.Update
         {
             // get data from user input
             designServiceCode = designCodeCombobox.SelectedItem.ToString();
-            productFamily = productFamilyCombobox.SelectedItem.ToString().Replace("'", "''");
+            productFamily = productFamilyCombobox.SelectedItem.ToString();
             designServiceFlag = designServiceFlagCombobox.SelectedItem.ToString();
             calculateTrueAndFalse();
 

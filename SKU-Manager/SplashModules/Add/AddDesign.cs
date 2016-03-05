@@ -379,7 +379,7 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // get data from user input
-            productFamily = productFamilyCombobox.SelectedItem.ToString().Replace("'", "''");
+            productFamily = productFamilyCombobox.SelectedItem.ToString();
             designServiceFlag = designServiceFlagCombobox.SelectedItem.ToString();
             calculateTrueAndFalse();
 
@@ -459,6 +459,10 @@ namespace SKU_Manager.SplashModules.Add
             frenchOption[2] = option3FrenchTextbox.Text.Replace("'", "''");
             frenchOption[3] = option4FrenchTextbox.Text.Replace("'", "''");
             frenchOption[4] = option5FrenchTextbox.Text.Replace("'", "''");
+            if (productFamily.Contains("'"))
+            {
+                productFamily = productFamily.Replace("'", "''");
+            }
 
             // addition field (I don't really know what this field is for ==! )
             string designUrl = "https://www.ashlinbpg.com/index.php/" + designServiceCode + "/html";

@@ -158,7 +158,7 @@
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(746, 60);
             this.titleLabel.TabIndex = 10;
-            this.titleLabel.Text = "Activate Product Family";
+            this.titleLabel.Text = "Deactivate Product Family";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorkerCombobox

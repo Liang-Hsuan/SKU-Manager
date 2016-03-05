@@ -363,7 +363,7 @@
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
             this.titleLabel.TabIndex = 28;
-            this.titleLabel.Text = "Activate SKU";
+            this.titleLabel.Text = "Dactivate SKU";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorkerCombobox

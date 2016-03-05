@@ -276,7 +276,7 @@
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
             this.titleLabel.TabIndex = 20;
-            this.titleLabel.Text = "Activate Design";
+            this.titleLabel.Text = "Deactivate Design";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorkerCombobox

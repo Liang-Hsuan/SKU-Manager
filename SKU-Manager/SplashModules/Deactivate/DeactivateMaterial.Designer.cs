@@ -190,7 +190,7 @@
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
             this.titleLabel.TabIndex = 12;
-            this.titleLabel.Text = "Activate Material";
+            this.titleLabel.Text = "Dectivate Material";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorkerCombobox
