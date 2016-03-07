@@ -10,9 +10,9 @@ namespace SKU_Manager.SupportingClasses.Photo
     class UpdatePhoto
     {
         // field that finds and store all sku
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
         private List<string> skuList = new List<string>();
-        ImageSearch imageSearch = new ImageSearch();
+        private ImageSearch imageSearch = new ImageSearch();
 
         /* constructor that initilize that store all sku data */
         public UpdatePhoto()
@@ -33,9 +33,7 @@ namespace SKU_Manager.SupportingClasses.Photo
 
             // store sku data name in the list
             for (int i = 0; i < count; i++)
-            {
                 skuList.Add(table.Rows[i][0].ToString());
-            }
         }
 
         /* update all photo and put them in database */

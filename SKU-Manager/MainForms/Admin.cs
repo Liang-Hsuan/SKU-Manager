@@ -10,7 +10,7 @@ namespace SKU_Manager.MainForms
     public partial class Admin : Form
     {
         // field for getting the root form
-        private IWin32Window parent;
+        private readonly IWin32Window parent;
 
         /* constructor that initialize all graphic components */
         public Admin(IWin32Window parent)
@@ -35,10 +35,11 @@ namespace SKU_Manager.MainForms
             updateHTS.ShowDialog(this);
         }
 
+        #region Top Buttons
         /* the event when the top 1 button is clicked (view sku management) */
         private void topButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
             Splash splash = new Splash(parent);
             splash.Show(parent);
@@ -47,7 +48,7 @@ namespace SKU_Manager.MainForms
         /* the event when the top 2 button is clicked (view excel export) */
         private void topButton2_Click(object sender, EventArgs e)
         {   
-            this.Close();
+            Close();
 
             ExcelExport excelExport = new ExcelExport(parent);
             excelExport.Show((parent));
@@ -56,10 +57,11 @@ namespace SKU_Manager.MainForms
         /* the event when the top 3 button is clicked (view sku exports) */
         private void topButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
             SKUExport skuExport = new SKUExport(parent);
             skuExport.Show(parent);
         }
+        #endregion
     }
 }

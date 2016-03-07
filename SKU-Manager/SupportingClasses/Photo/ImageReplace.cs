@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 
 namespace SKU_Manager.SupportingClasses.Photo
 {
@@ -11,7 +12,7 @@ namespace SKU_Manager.SupportingClasses.Photo
     class ImageReplace
     {
         // fields for searching image, sku, and upc
-        private string startDirectory;
+        private readonly string startDirectory;
         private List<string> skuList = new List<string>();
         
         // field for database connection
@@ -33,22 +34,15 @@ namespace SKU_Manager.SupportingClasses.Photo
 
             // check if directory exists
             if (Directory.Exists(startDirectory + "/" + prefix))
-            {
                 targetDirectory += "/" + prefix;
-            }
-            else    // no image for this design, return it
-            {
+            else // no image for this design, return it
                 return;
-            }
 
             // start copying a upc code image
-            foreach (string image in Directory.GetFiles(targetDirectory, "*.jpg"))
+            foreach (string image in Directory.GetFiles(targetDirectory, "*.jpg").Where(image => image.Contains(sku)))
             {
-                if (image.Contains(sku))
-                {
-                    File.Copy(image, targetDirectory + "/" + upc + "_" + i + ".jpg", true);
-                    i++;
-                }
+                File.Copy(image, targetDirectory + "/" + upc + "_" + i + ".jpg", true);
+                i++;
             }
         }
 
@@ -65,9 +59,7 @@ namespace SKU_Manager.SupportingClasses.Photo
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                {
                     skuList.Add(reader.GetString(0));
-                }
             }
 
             // initialize field for stroing upc code data and generate upc

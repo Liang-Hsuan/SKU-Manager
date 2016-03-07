@@ -24,10 +24,10 @@ namespace SKU_Manager.SplashModules.Activate
         private string extendedDescription;
 
         // fields for combobox
-        ArrayList designCodeList = new ArrayList();
+        private readonly ArrayList designCodeList = new ArrayList();
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
         public ActivateDesign()
@@ -37,12 +37,10 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
-
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -52,16 +50,16 @@ namespace SKU_Manager.SplashModules.Activate
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
-                {
                     designCodeList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             designCodeCombobox.DataSource = designCodeList;
         }
+        #endregion
 
+        #region Combobox Event
         /* the event when user change an item in combobox */
         private void designCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -75,9 +73,7 @@ namespace SKU_Manager.SplashModules.Activate
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -121,7 +117,9 @@ namespace SKU_Manager.SplashModules.Activate
             shortDescriptionTextbox.Text = shortDescription;
             extendedDescriptionTextbox.Text = extendedDescription;
         }
+        #endregion
 
+        #region Activate Button
         /* the event when activate design button is clicked */
         private void activateDesignButton_Click(object sender, EventArgs e)
         {
@@ -130,9 +128,7 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker, the update button will only be activated if vaild color has been selected, so no need to check
             if (!backgroundWorkerActivate.IsBusy)
-            {
                 backgroundWorkerActivate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerActivate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -163,17 +159,18 @@ namespace SKU_Manager.SplashModules.Activate
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive
         /* the event for active and inactive list button that open the table of active design list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveDesignList activeDesignList = new ActiveDesignList();
-            activeDesignList.ShowDialog(this);
+            new ActiveDesignList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveDesignList inactiveDesignList = new InactiveDesignList();
-            inactiveDesignList.ShowDialog(this);
+            new InactiveDesignList().ShowDialog(this);
         }
+        #endregion
     }
 }

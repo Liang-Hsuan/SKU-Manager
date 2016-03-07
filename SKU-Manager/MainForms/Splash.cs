@@ -11,7 +11,7 @@ namespace SKU_Manager.MainForms
     public partial class Splash : Form
     {
         // field for getting the root form
-        private IWin32Window parent;
+        private readonly IWin32Window parent;
 
         /* constructor that initializes the graphic component and work in background */
         public Splash(IWin32Window parent)
@@ -22,160 +22,146 @@ namespace SKU_Manager.MainForms
             this.parent = parent;
         }
 
+        #region Add
         /* the event for clicking add buttons */
         private void addColorButton_Click(object sender, EventArgs e)
         {
-            AddColor addColor = new AddColor();
-            addColor.ShowDialog(this);
+            new AddColor().ShowDialog(this);
         }
         private void addMaterialButton_Click(object sender, EventArgs e)
         {
-            AddMaterial addMaterial = new AddMaterial();
-            addMaterial.ShowDialog(this);
+            new AddMaterial().ShowDialog(this);
         }
         private void addFamilyButton_Click(object sender, EventArgs e)
         {
-            AddFamily addFamily = new AddFamily();
-            addFamily.ShowDialog(this);
+            new AddFamily().ShowDialog(this);
         }
         private void addDesignButton_Click(object sender, EventArgs e)
         {
-            AddDesign addDesign = new AddDesign();
-            addDesign.ShowDialog(this);
+            new AddDesign().ShowDialog(this);
         }
         private void addSkuButton_Click(object sender, EventArgs e)
         {
-            AddSKU addDesign = new AddSKU();
-            addDesign.ShowDialog(this);
+            new AddSKU().ShowDialog(this);
         }
+        #endregion
 
+        #region Update
         /* the event for clicking update buttons */
         private void updateColorButton_Click(object sender, EventArgs e)
         {
-            UpdateColor updateColor = new UpdateColor();
-            updateColor.ShowDialog(this);
+            new UpdateColor().ShowDialog(this);
         }
         private void updateMaterialButton_Click(object sender, EventArgs e)
         {
-            UpdateMaterial updateMaterial = new UpdateMaterial();
-            updateMaterial.ShowDialog(this);
+            new UpdateMaterial().ShowDialog(this);
         }
         private void updateFamilyButton_Click(object sender, EventArgs e)
         {
-            UpdateFamily updateFamily = new UpdateFamily();
-            updateFamily.ShowDialog(this);
+            new UpdateFamily().ShowDialog(this);
         }
         private void updateDesignButton_Click(object sender, EventArgs e)
         {
-            UpdateDesign updateDesign = new UpdateDesign();
-            updateDesign.ShowDialog(this);
+            new UpdateDesign().ShowDialog(this);
         }
         private void updateSkuButton_Click(object sender, EventArgs e)
         {
-            UpdateSKU updateSKU = new UpdateSKU();
-            updateSKU.ShowDialog(this);
+            new UpdateSKU().ShowDialog(this);
         }
+        #endregion
 
+        #region Activate
         /* the event for clicking activate buttons */
         private void activateColorButton_Click(object sender, EventArgs e)
         {
-            ActivateColor activateColor = new ActivateColor();
-            activateColor.ShowDialog(this);
+            new ActivateColor().ShowDialog(this);
         }
         private void activateMaterialButton_Click(object sender, EventArgs e)
         {
-            ActivateMaterial activateMaterial = new ActivateMaterial();
-            activateMaterial.ShowDialog(this);
+            new ActivateMaterial().ShowDialog(this);
         }
         private void activateFamilyButton_Click(object sender, EventArgs e)
         {
-            ActivateFamily activateFamily = new ActivateFamily();
-            activateFamily.ShowDialog(this);
+            new ActivateFamily().ShowDialog(this);
         }
         private void activateDesignButton_Click(object sender, EventArgs e)
         {
-            ActivateDesign activateDesign = new ActivateDesign();
-            activateDesign.ShowDialog(this);
+            new ActivateDesign().ShowDialog(this);
         }
         private void activateSkuButton_Click(object sender, EventArgs e)
         {
-            ActivateSKU activateSKU = new ActivateSKU();
-            activateSKU.ShowDialog(this);
+            new ActivateSKU().ShowDialog(this);
         }
+        #endregion
 
+        #region Deactivate
         /* the event for clicking deactivate buttons */
         private void deactivateColorButton_Click(object sender, EventArgs e)
         {
-            DeactivateColor deactivateColor = new DeactivateColor();
-            deactivateColor.ShowDialog(this);
+            new DeactivateColor().ShowDialog(this);
         }
         private void deactivateMaterialButton_Click(object sender, EventArgs e)
         {
-            DeactivateMaterial deactivateMaterial = new DeactivateMaterial();
-            deactivateMaterial.ShowDialog(this);
+            new DeactivateMaterial().ShowDialog(this);
         }
         private void deactivateFamilyButton_Click(object sender, EventArgs e)
         {
-            DeactivateFamily deactivateFamily = new DeactivateFamily();
-            deactivateFamily.ShowDialog(this);
+            new DeactivateFamily().ShowDialog(this);
         }
         private void deactivateDesignButton_Click(object sender, EventArgs e)
         {
-            DeactivateDesign deactivateDesign = new DeactivateDesign();
-            deactivateDesign.ShowDialog(this);
+            new DeactivateDesign().ShowDialog(this);
         }
         private void deactivateSkuButton_Click(object sender, EventArgs e)
         {
-            DeactivateSKU deactivateSKU = new DeactivateSKU();
-            deactivateSKU.ShowDialog(this);
+            new DeactivateSKU().ShowDialog(this);
         }
+        #endregion
 
+        #region Image Buttons
         /* the event for clicking update photo button */
         private void updateSkuImageButton_Click(object sender, EventArgs e)
         {
-            UpdatePhotoForm updatePhotoForm = new UpdatePhotoForm();
-            updatePhotoForm.ShowDialog();
+            new UpdatePhotoForm().ShowDialog();
         }
 
         /* the event for clicking update upc button */
         private void updateUpcImageButton_Click(object sender, EventArgs e)
         {
-            UpdateUPCForm updateUPCForm = new UpdateUPCForm();
-            updateUPCForm.ShowDialog(this);
+            new UpdateUPCForm().ShowDialog(this);
         }
 
         /* the event for clicking update global button */
         private void updateGlobalImageButton_Click(object sender, EventArgs e)
         {
-            UpdateGlobalForm updateGlobalForm = new UpdateGlobalForm();
-            updateGlobalForm.ShowDialog(this);
+            new UpdateGlobalForm().ShowDialog(this);
         }
+        #endregion
 
+        #region Top Buttons
         /* the event for clicking top button 1 (SKU Export) */
         private void topButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            SKUExport skuExport = new SKUExport(parent);
-            skuExport.Show(parent);
+            new SKUExport(parent).Show(parent);
         }
 
         /* the event for clicking top button 2 (export sku to excel) */
         private void topButton2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            ExcelExport excelExport = new ExcelExport(parent);
-            excelExport.Show(parent);
+            new ExcelExport(parent).Show(parent);
         }
 
         /* the event for clicking top button 3 (Admin) */
         private void topButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Admin admin = new Admin(parent);
-            admin.Show(parent);
+            new Admin(parent).Show(parent);
         }
+        #endregion
     }
 }

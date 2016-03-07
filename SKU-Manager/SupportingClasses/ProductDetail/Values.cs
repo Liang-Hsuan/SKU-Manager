@@ -3,7 +3,7 @@
     /*
      *  A class that store the information of a sku
      */
-    class Values
+    public class Values
     {
         // fields for the infomation about the product 
         public string SKU { get; set; }

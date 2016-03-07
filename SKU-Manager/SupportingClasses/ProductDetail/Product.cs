@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading;
 
@@ -10,7 +11,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
     /* 
      * A class that can get information about the product from Brightpearl
      */
-    class Product
+    public class Product
     {
         // get request object for geting information from Brightpearl
         private GetRequest get;
@@ -33,17 +34,18 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         {
             int quantity = get.getQuantity(sku);
 
-            if (quantity == -2)     // server unavailiable 500
+            switch (quantity)
             {
-                do
-                {
-                    Thread.Sleep(5000);
-                    quantity = getQuantity(sku);
-                } while (quantity == -2);
-            }
-            else if (quantity == -3)    // server bad request 400
-            {
-                quantity = -1;
+                case -2:
+                    do
+                    {
+                        Thread.Sleep(5000);
+                        quantity = getQuantity(sku);
+                    } while (quantity == -2);
+                    break;
+                case -3:
+                    quantity = -1;
+                    break;
             }
 
             return quantity;
@@ -153,20 +155,15 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 // get quantity of the product
                 index = textJSON.IndexOf("inStock") + 9;
                 length = index;
-                while (Char.IsNumber(textJSON[length]))
-                {
+                while (char.IsNumber(textJSON[length]))
                     length++;
-                }
                 string quantity = textJSON.Substring(index, length - index);
 
                 // allocate quantity to the corresponding product
-                foreach (Values value in list)
+                foreach (Values value in list.Where(value => productId == value.ProductId))
                 {
-                    if (productId == value.ProductId)
-                    {
-                        value.Quantity = quantity;
-                        break;
-                    }
+                    value.Quantity = quantity;
+                    break;
                 }
 
                 // proceed the text to the next token
@@ -224,17 +221,13 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                 // the case there is no product exists
                 if (textJSON[textJSON.IndexOf("resultsReturned") + 17] - '0' < 1)
-                {
                     return null;
-                }
 
                 // starting getting product id
                 int index = textJSON.LastIndexOf("results") + 11;
                 int length = index;
-                while (Char.IsNumber(textJSON[length]))
-                {
+                while (char.IsNumber(textJSON[length]))
                     length++;
-                }
 
                 return textJSON.Substring(index, length - index);
             }
@@ -247,9 +240,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                 // the case if there is no such product
                 if (id == null)
-                {
                     return -1;
-                }
 
                 // generate search uri
                 string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/warehouse-service/product-availability/" + id;
@@ -281,20 +272,16 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                         {
                             return -3;      // web server 400 bad request
                         }
-                        else
-                        {
-                            return -2;      // web server 503 server unavailable
-                        }
+
+                        return -2;          // web server 503 server unavailable
                     }
                 }
 
                 // starting getting product quantity
                 int index = textJSON.LastIndexOf("inStock") + 9;
                 int length = index;
-                while (Char.IsNumber(textJSON[length]))
-                {
+                while (char.IsNumber(textJSON[length]))
                     length++;
-                }
 
                 return Convert.ToInt32(textJSON.Substring(index, length - index));
             }
@@ -332,10 +319,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                         {
                             return "404";    // web server 404 not found
                         }
-                        else
-                        {
-                            return "503";   // server unavailable
-                        }
+
+                        return "503";        // server unavailable
                     }
                 }
 

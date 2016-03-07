@@ -368,9 +368,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.BestbuyTable1 = ds.Tables[0];
                 }
@@ -418,9 +416,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.AmazonCaTable = ds.Tables[0];
                 }
@@ -468,9 +464,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.AmazonComTable = ds.Tables[0];
                 }
@@ -518,9 +512,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.StaplesTable = ds.Tables[0];
                 }
@@ -573,9 +565,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.WalmartItemTable = ds.Tables[0];
                     Properties.Settings.Default.WalmartPriceTable = ds.Tables[1];
@@ -634,9 +624,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.ShopCaBagTable = ds.Tables[0];
                     Properties.Settings.Default.ShopCaBaseDataTable = ds.Tables[1];
@@ -687,9 +675,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.GiantTigerTable = ds.Tables[0];
                 }
@@ -739,9 +725,7 @@ namespace SKU_Manager.MainForms
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
-                    {
                         return;
-                    }
 
                     Properties.Settings.Default.MagentoTable = ds.Tables[0];
                 }

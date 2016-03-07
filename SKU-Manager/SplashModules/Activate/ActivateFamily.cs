@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SplashModules.Update;
 
 namespace SKU_Manager.SplashModules.Activate
 {
@@ -19,10 +18,10 @@ namespace SKU_Manager.SplashModules.Activate
         private string shortEnglishDescription;
 
         // fields for combobox
-        ArrayList productFamilyList = new ArrayList();
+        private readonly ArrayList productFamilyList = new ArrayList();
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
         public ActivateFamily()
@@ -32,11 +31,10 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBox */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -46,16 +44,16 @@ namespace SKU_Manager.SplashModules.Activate
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
-                {
                     productFamilyList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             productFamilyCombobox.DataSource = productFamilyList;
         }
+        #endregion
 
+        #region Combobox Event
         /* the event when user change an item in combobox */
         private void productFamilyCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -69,9 +67,7 @@ namespace SKU_Manager.SplashModules.Activate
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -97,7 +93,9 @@ namespace SKU_Manager.SplashModules.Activate
         {
             shortEnglishDescriptionTextbox.Text = shortEnglishDescription;
         }
-
+        #endregion
+    
+        #region Activate Button
         /* the event when activate family button is clicked */
         private void activateFamilyButton_Click(object sender, EventArgs e)
         {
@@ -106,9 +104,7 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker, the update button will only be activated if vaild family has been selected, so no need to check
             if (!backgroundWorkerActivate.IsBusy)
-            {
                 backgroundWorkerActivate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerActivate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -139,17 +135,18 @@ namespace SKU_Manager.SplashModules.Activate
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive
         /* the event for active and inactive list button that open the table of active family list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveFamilyList activeFamilyList = new ActiveFamilyList();
-            activeFamilyList.ShowDialog(this);
+            new ActiveFamilyList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveFamilyList inactiveFamilyList = new InactiveFamilyList();
-            inactiveFamilyList.ShowDialog(this);
+            new InactiveFamilyList().ShowDialog(this);
         }
+        #endregion
     }
 }

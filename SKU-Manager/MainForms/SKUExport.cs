@@ -13,7 +13,7 @@ namespace SKU_Manager.MainForms
     public partial class SKUExport : Form
     {
         // field for getting the root form
-        private IWin32Window parent;
+        private readonly IWin32Window parent;
 
         /* constructor that initialize all graphic components and its root form */
         public SKUExport(IWin32Window parent)
@@ -24,183 +24,166 @@ namespace SKU_Manager.MainForms
             this.parent = parent;
         }
 
+        #region Active List
         /* the event for active button click that show active list */
         private void activeColorButton1_Click(object sender, EventArgs e)
         {
-            ActiveColorList activeColorList = new ActiveColorList();
-            activeColorList.ShowDialog(this);
+            new ActiveColorList().ShowDialog(this);
         }
         private void activeMaterialButton_Click(object sender, EventArgs e)
         {
-            ActiveMaterialList activeMaterialList = new ActiveMaterialList();
-            activeMaterialList.ShowDialog(this);
+            new ActiveMaterialList().ShowDialog(this);
         }
         private void activeFamilyButton_Click(object sender, EventArgs e)
         {
-            ActiveFamilyList activeFamilyList = new ActiveFamilyList();
-            activeFamilyList.ShowDialog(this);
+            new ActiveFamilyList().ShowDialog(this);
         }
         private void activeDesignButton_Click(object sender, EventArgs e)
         {
-            ActiveDesignList activeDesignList = new ActiveDesignList();
-            activeDesignList.ShowDialog(this);
+            new ActiveDesignList().ShowDialog(this);
         }
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
-            ActiveSKUList activeSKUList = new ActiveSKUList();
-            activeSKUList.ShowDialog(this);
+            new ActiveSKUList().ShowDialog(this);
         }
+        #endregion
 
+        #region Inactive List
         /* the event for inactive button click that show inactive list */
         private void inactiveColorButton_Click(object sender, EventArgs e)
         {
-            InactiveColorList inactiveColorList = new InactiveColorList();
-            inactiveColorList.ShowDialog(this);
+            new InactiveColorList().ShowDialog(this);
         }
         private void inactiveMaterialButton_Click(object sender, EventArgs e)
         {
-            InactiveMaterialList inactiveMaterialList = new InactiveMaterialList();
-            inactiveMaterialList.ShowDialog(this);
+            new InactiveMaterialList().ShowDialog(this);
         }
         private void inactiveFamilyButton_Click(object sender, EventArgs e)
         {
-            InactiveFamilyList inactiveFamilyList = new InactiveFamilyList();
-            inactiveFamilyList.ShowDialog(this);
+            new InactiveFamilyList().ShowDialog(this);
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
         {
-            InactiveDesignList inactiveDesignList = new InactiveDesignList();
-            inactiveDesignList.ShowDialog(this);
+            new InactiveDesignList().ShowDialog(this);
         }
         private void inactiveSkuButton_Click(object sender, EventArgs e)
         {
-            InactiveSKUList inactiveSKUList = new InactiveSKUList();
-            inactiveSKUList.ShowDialog(this);
+            new InactiveSKUList().ShowDialog(this);
         }
+        #endregion
 
+        #region Active SKU List
         /* the event for active price list button click */
         private void activePriceListButton_Click(object sender, EventArgs e)
         {
-            ActivePriceView activePriceView = new ActivePriceView();
-            activePriceView.ShowDialog(this);
+            new ActivePriceView().ShowDialog(this);
         }
 
         /* the event for upc list button click */
         private void upcButton_Click(object sender, EventArgs e)
         {
-            UpcExportView upcExportView = new UpcExportView();
-            upcExportView.ShowDialog(this);
+            new UpcExportView().ShowDialog(this);
         }
 
         /* the event for stock quantity button click */
         private void stockButton_Click(object sender, EventArgs e)
         {
-            StockQuantityView stockQuantityView = new StockQuantityView();
-            stockQuantityView.ShowDialog(this);
+            new StockQuantityView().ShowDialog(this);
         }
+        #endregion
 
+        #region Channel Partners
         /* the event for bestbest button click */
         private void bestbuyButton_Click(object sender, EventArgs e)
         {
-            BestbuyView bestbuyView = new BestbuyView();
-            bestbuyView.ShowDialog(this); 
+            new BestbuyView().ShowDialog(this); 
         }
 
         /* the event for amazon.ca button click */
         private void amazonCaButton_Click(object sender, EventArgs e)
         {
-            AmazonCaView amazonCaView = new AmazonCaView();
-            amazonCaView.ShowDialog(this);
+            new AmazonCaView().ShowDialog(this);
         }
 
         /* the event for amazon.com button click */
         private void amazonComButton_Click(object sender, EventArgs e)
         {
-            AmazonComView amazonComView = new AmazonComView();
-            amazonComView.ShowDialog(this);
+            new AmazonComView().ShowDialog(this);
         }
 
         /* the event for staples.ca button click */
         private void staplesButton_Click(object sender, EventArgs e)
         {
-            StaplesView staplesView = new StaplesView();
-            staplesView.ShowDialog(this);
+            new StaplesView().ShowDialog(this);
         }
 
         /* the event for walmart.ca button click */
         private void walmartButton_Click(object sender, EventArgs e)
         {
-            WalmartView walmartView = new WalmartView();
-            walmartView.ShowDialog(this);
+            new WalmartView().ShowDialog(this);
         }
 
         /* the event for shop.ca button click */
         private void shopCaButton_Click(object sender, EventArgs e)
         {
-            ShopCaView shopCaView = new ShopCaView();
-            shopCaView.ShowDialog(this);
+            new ShopCaView().ShowDialog(this);
         }
 
         /* the event for giant tiger button click */
         private void giantTigerButton_Click(object sender, EventArgs e)
         {
-            GiantTigerView giantTigerView = new GiantTigerView();
-            giantTigerView.ShowDialog(this);
+            new GiantTigerView().ShowDialog(this);
         }
+        #endregion
 
         /* the event for magento button click */
         private void magentoButton_Click(object sender, EventArgs e)
         {
-            MagentoView magentoView = new MagentoView();
-            magentoView.ShowDialog(this);
+            new MagentoView().ShowDialog(this);
         }
 
         /* the event for brightpeal button click */
         private void brightPearlButton_Click(object sender, EventArgs e)
         {
-            SelectionViewTable selectionView = new SelectionViewTable(this);
-            selectionView.ShowDialog(this);
+            new SelectionViewTable(this).ShowDialog(this);
         }
 
         /* the event for uducat button click */
         private void uducatButton_Click(object sender, EventArgs e)
         {
-            UducatView uducatView = new UducatView();
-            uducatView.ShowDialog(this);
+            new UducatView().ShowDialog(this);
         }
 
         /* the event for distributor central button click */
         private void distributorCentralButton_Click(object sender, EventArgs e)
         {
-            DistributorCentralView distributorCentralView = new DistributorCentralView();
-            distributorCentralView.ShowDialog(this);
+            new DistributorCentralView().ShowDialog(this);
         }
 
+        #region Top Buttons
         /* the event for top 1 button click (view sku management) */
         private void topButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Splash splash = new Splash(parent);
-            splash.Show(parent);
+            new Splash(parent).Show(parent);
         }
 
         /* the event for top 2 button click (export sku to excel) */
         private void topButton2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            ExcelExport excelExport = new ExcelExport(parent);
-            excelExport.Show(parent);
+            new ExcelExport(parent).Show(parent);
         }
 
         /* the event for top 3 button click (modify dicount) */
         private void topButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
 
-            Admin admin = new Admin(parent);
-            admin.Show(parent);
+            new Admin(parent).Show(parent);
         }
+        #endregion
     }
 }

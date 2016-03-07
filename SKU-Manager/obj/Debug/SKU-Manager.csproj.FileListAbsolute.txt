@@ -432,3 +432,7 @@ W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadIma
 W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
 W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
 W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb

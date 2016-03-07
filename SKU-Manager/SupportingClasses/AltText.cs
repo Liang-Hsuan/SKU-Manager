@@ -6,10 +6,10 @@ namespace SKU_Manager.SupportingClasses
     /* 
      * A class that receive sku and return the alt text for it
      */
-    class AltText
+    public class AltText
     {
         // fields for database connection
-        private SqlConnection connection;
+        private readonly SqlConnection connection;
 
         /* constructor that initialize database connection */
         public AltText()
