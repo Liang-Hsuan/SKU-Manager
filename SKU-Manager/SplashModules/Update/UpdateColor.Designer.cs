@@ -159,7 +159,7 @@
             this.extendedFrenchDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedFrenchDescriptionTextbox.Enabled = false;
             this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(469, 297);
-            this.extendedFrenchDescriptionTextbox.MaxLength = 100;
+            this.extendedFrenchDescriptionTextbox.MaxLength = 1000;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 190);
@@ -170,7 +170,7 @@
             this.extendedEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedEnglishDescriptionTextbox.Enabled = false;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 297);
-            this.extendedEnglishDescriptionTextbox.MaxLength = 100;
+            this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 190);

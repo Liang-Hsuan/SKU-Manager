@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.SupportingClasses;
+using System.Drawing;
+using System.Collections.Generic;
 
 namespace SKU_Manager.SplashModules.Add
 {
@@ -20,19 +22,47 @@ namespace SKU_Manager.SplashModules.Add
         private string extendedFrenchDescription;
         private bool active = true;    // default is set to true
 
+        // field for duplicate checking
+        HashSet<string> colorCodeList = new HashSet<string>();
+
         /* constructor that initialize graphic component */
         public AddColor()
         {
             InitializeComponent();
+
+            // adding all the existing color code list
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            {
+                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours;", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                    colorCodeList.Add(reader.GetString(0));
+            }
         }
 
+        /* the text change event that will check if there is already a duplicate color code */
+        private void colorCodeTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (colorCodeList.Contains(colorCodeTextbox.Text))
+            {
+                duplicateLabel.Visible = true;
+                colorCodeTextbox.BackColor = Color.Red;
+            }
+            else
+            {
+                duplicateLabel.Visible = false;
+                colorCodeTextbox.BackColor = SystemColors.Window;
+            }
+        }
+
+        #region Translate
         /* the event for translate button that translate English to French */
         private void translateButton_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate.IsBusy)
-            {
                 backgroundWorkerTranslate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -66,14 +96,21 @@ namespace SKU_Manager.SplashModules.Add
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;    
         }
+        #endregion
 
+        #region Add 
         /* the event for add color button */
         private void addColorButton_Click(object sender, EventArgs e)
         {
-            if (!backgroundWorkerAddColor.IsBusy)
+            // check if the user has put the color code or not
+            if (colorCodeTextbox.Text == "")
             {
-                backgroundWorkerAddColor.RunWorkerAsync();
+                colorCodeTextbox.BackColor = Color.Red;
+                return;
             }
+
+            if (!backgroundWorkerAddColor.IsBusy)
+                backgroundWorkerAddColor.RunWorkerAsync();
         }
         private void backgroundWorkerAddColor_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -118,7 +155,9 @@ namespace SKU_Manager.SplashModules.Add
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive
         /* the event for active and inactive buttons click */
         private void activeColorButton_Click(object sender, EventArgs e)
         {
@@ -136,5 +175,6 @@ namespace SKU_Manager.SplashModules.Add
             inactiveColorButton.Enabled = false;
             activeColorButton.Enabled = true;
         }
+        #endregion
     }
 }

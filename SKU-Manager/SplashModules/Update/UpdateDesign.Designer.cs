@@ -675,7 +675,7 @@
             // 
             this.extendedFrenchDescriptionTextbox.Enabled = false;
             this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(464, 336);
-            this.extendedFrenchDescriptionTextbox.MaxLength = 250;
+            this.extendedFrenchDescriptionTextbox.MaxLength = 1000;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 123);
@@ -685,7 +685,7 @@
             // 
             this.extendedEnglishDescriptionTextbox.Enabled = false;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(213, 336);
-            this.extendedEnglishDescriptionTextbox.MaxLength = 250;
+            this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1325,7 +1325,7 @@
             // 
             this.trendEnglishExtendedTextbox.Enabled = false;
             this.trendEnglishExtendedTextbox.Location = new System.Drawing.Point(213, 513);
-            this.trendEnglishExtendedTextbox.MaxLength = 250;
+            this.trendEnglishExtendedTextbox.MaxLength = 1000;
             this.trendEnglishExtendedTextbox.Multiline = true;
             this.trendEnglishExtendedTextbox.Name = "trendEnglishExtendedTextbox";
             this.trendEnglishExtendedTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1335,7 +1335,7 @@
             // 
             this.trendFrenchExtendedTextbox.Enabled = false;
             this.trendFrenchExtendedTextbox.Location = new System.Drawing.Point(464, 513);
-            this.trendFrenchExtendedTextbox.MaxLength = 100;
+            this.trendFrenchExtendedTextbox.MaxLength = 1000;
             this.trendFrenchExtendedTextbox.Multiline = true;
             this.trendFrenchExtendedTextbox.Name = "trendFrenchExtendedTextbox";
             this.trendFrenchExtendedTextbox.Size = new System.Drawing.Size(233, 123);

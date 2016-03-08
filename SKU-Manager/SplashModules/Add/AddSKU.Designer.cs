@@ -151,6 +151,7 @@
             this.wmManufacturerLabel = new System.Windows.Forms.Label();
             this.wmMerchantLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.duplicateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -402,6 +403,7 @@
             this.skuCodeTextbox.Name = "skuCodeTextbox";
             this.skuCodeTextbox.Size = new System.Drawing.Size(581, 28);
             this.skuCodeTextbox.TabIndex = 36;
+            this.skuCodeTextbox.TextChanged += new System.EventHandler(this.skuCodeTextbox_TextChanged);
             // 
             // onlineDetailsLabel
             // 
@@ -1387,6 +1389,17 @@
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 70;
             // 
+            // duplicateLabel
+            // 
+            this.duplicateLabel.AutoSize = true;
+            this.duplicateLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel.Location = new System.Drawing.Point(48, 349);
+            this.duplicateLabel.Name = "duplicateLabel";
+            this.duplicateLabel.Size = new System.Drawing.Size(126, 13);
+            this.duplicateLabel.TabIndex = 119;
+            this.duplicateLabel.Text = "duplicate SKU detected !";
+            this.duplicateLabel.Visible = false;
+            // 
             // AddSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1394,6 +1407,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.wmMerchantLabel);
             this.Controls.Add(this.wmManufacturerLabel);
@@ -1647,5 +1661,6 @@
         private System.Windows.Forms.Label wmManufacturerLabel;
         private System.Windows.Forms.Label wmMerchantLabel;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label duplicateLabel;
     }
 }

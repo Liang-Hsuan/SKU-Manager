@@ -49,6 +49,7 @@
             this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerAddMaterial = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.duplicateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inactiveMaterialButton
@@ -217,6 +218,7 @@
             this.materialCodeTextbox.Name = "materialCodeTextbox";
             this.materialCodeTextbox.Size = new System.Drawing.Size(481, 20);
             this.materialCodeTextbox.TabIndex = 4;
+            this.materialCodeTextbox.TextChanged += new System.EventHandler(this.materialCodeTextbox_TextChanged);
             // 
             // materialCodeLabel
             // 
@@ -279,12 +281,24 @@
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 15;
             // 
+            // duplicateLabel
+            // 
+            this.duplicateLabel.AutoSize = true;
+            this.duplicateLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel.Location = new System.Drawing.Point(545, 116);
+            this.duplicateLabel.Name = "duplicateLabel";
+            this.duplicateLabel.Size = new System.Drawing.Size(154, 13);
+            this.duplicateLabel.TabIndex = 112;
+            this.duplicateLabel.Text = "duplicate color code detected !";
+            this.duplicateLabel.Visible = false;
+            // 
             // AddMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveMaterialButton);
             this.Controls.Add(this.activeMaterialButton);
@@ -336,5 +350,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
         private System.ComponentModel.BackgroundWorker backgroundWorkerAddMaterial;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label duplicateLabel;
     }
 }

@@ -100,6 +100,7 @@
             this.usHtsCombobox = new System.Windows.Forms.ComboBox();
             this.usDutyTextbox = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.duplicateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inactiveFamilyButton
@@ -250,6 +251,7 @@
             this.productFamilyCodeTextbox.Name = "productFamilyCodeTextbox";
             this.productFamilyCodeTextbox.Size = new System.Drawing.Size(481, 20);
             this.productFamilyCodeTextbox.TabIndex = 4;
+            this.productFamilyCodeTextbox.TextChanged += new System.EventHandler(this.productFamilyCodeTextbox_TextChanged);
             // 
             // productFamilyLabel
             // 
@@ -836,6 +838,17 @@
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 65;
             // 
+            // duplicateLabel
+            // 
+            this.duplicateLabel.AutoSize = true;
+            this.duplicateLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel.Location = new System.Drawing.Point(530, 113);
+            this.duplicateLabel.Name = "duplicateLabel";
+            this.duplicateLabel.Size = new System.Drawing.Size(196, 13);
+            this.duplicateLabel.TabIndex = 112;
+            this.duplicateLabel.Text = "duplicate product family code detected !";
+            this.duplicateLabel.Visible = false;
+            // 
             // AddFamily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -843,6 +856,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.usDutyTextbox);
             this.Controls.Add(this.usHtsCombobox);
@@ -995,5 +1009,6 @@
         private System.Windows.Forms.ComboBox usHtsCombobox;
         private System.Windows.Forms.TextBox usDutyTextbox;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label duplicateLabel;
     }
 }

@@ -70,7 +70,7 @@ namespace SKU_Manager.SplashModules.Add
         private string[] modelAlt = new string[5];
         AltText alt = new AltText();
 
-        // fields for comboBoxes
+        // fields for lists
         private ArrayList designServiceCodeList = new ArrayList();
         private ArrayList materialList = new ArrayList();
         private ArrayList colorCodeList = new ArrayList();
@@ -80,6 +80,7 @@ namespace SKU_Manager.SplashModules.Add
         private ArrayList columnIndexList = new ArrayList();
         private ArrayList caHtsList = new ArrayList();
         private ArrayList usHtsList = new ArrayList();
+        private HashSet<string> skuList = new HashSet<string>();
 
         // connection string to the database
         private string connectionString = Properties.Settings.Default.Designcs;
@@ -114,27 +115,21 @@ namespace SKU_Manager.SplashModules.Add
             connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 designServiceCodeList.Add(reader.GetString(0));
-            }
             reader.Close();
 
             // make comboBox for Material
             command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code;", connection);    
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 materialList.Add(reader.GetString(0));
-            }
             reader.Close();
 
             // make comboBox for Colour Code
             command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code;", connection);   
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 colorCodeList.Add(reader.GetString(0));
-            }
             reader.Close();
 
 
@@ -142,54 +137,49 @@ namespace SKU_Manager.SplashModules.Add
             command = new SqlCommand("SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL;", connection);  
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 warehouseList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Rack
             command = new SqlCommand("SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL;", connection);  
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 rackList.Add(reader.GetValue(0));
-            }
             reader.Close(); ;
 
             // make comboBox for Shelf
             command = new SqlCommand("SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL;", connection);  
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 shelfList.Add(reader.GetValue(0));
-            }
             reader.Close(); ;
 
             // make comboBox for Column index
             command = new SqlCommand("SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL;", connection); 
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 columnIndexList.Add(reader.GetValue(0));
-            }
             reader.Close(); ;
 
             // make comboBox for Canadian HTS
             command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);   
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 caHtsList.Add(reader.GetValue(0));
-            }
             reader.Close(); 
 
             // make comboBox for US HTS
             command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);   
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 usHtsList.Add(reader.GetValue(0));
-            }
+            reader.Close();
+
+            // add all sku list
+            command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes;", connection);
+            reader = command.ExecuteReader();
+            while (reader.Read())
+                skuList.Add(reader.GetString(0));
             connection.Close();
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -288,6 +278,21 @@ namespace SKU_Manager.SplashModules.Add
             usDutyTextbox.Text = htsList[3];
         }
         #endregion
+
+        /* the text change event that will check if there is already a duplicate sku */
+        private void skuCodeTextbox_TextChanged(object sender, EventArgs e)
+        {
+            if (skuList.Contains(skuCodeTextbox.Text))
+            {
+                skuCodeTextbox.BackColor = Color.Red;
+                duplicateLabel.Visible = true;
+            }
+            else
+            {
+                skuCodeTextbox.BackColor = Color.FromArgb(224, 224, 224);
+                duplicateLabel.Visible = false;
+            }
+        }
 
         /* the event for design service flag textbox that determine the sku code */
         private void designServiceFlagTextbox_TextChanged(object sender, EventArgs e)
@@ -521,11 +526,16 @@ namespace SKU_Manager.SplashModules.Add
         /* the event for add sku button click */
         private void addSkuButton_Click(object sender, EventArgs e)
         {
+            // first check if the user has put the sku or not
+            if (skuCodeTextbox.Text == "")
+            {
+                skuCodeTextbox.BackColor = Color.Red;
+                return;
+            }
+
             // call background worker
             if (!backgroundWorkerImagePath.IsBusy)
-            {
                 backgroundWorkerImagePath.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerImagePath_DoWork(object sender, DoWorkEventArgs e)
         {

@@ -5,7 +5,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
     /* 
      * a abstract class that define methods for all active and inactive list classes
      */
-    abstract class ActiveInactiveTable
+    public abstract class ActiveInactiveTable
     {
         // field for database connection
         protected string connectionString = Properties.Settings.Default.Designcs;

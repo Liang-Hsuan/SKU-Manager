@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 {
     /*
-     * a class that return active color table
+     * A class that return active color table
      */
-    class ActiveSkuTable : ActiveInactiveTable
+    public class ActiveSkuTable : ActiveInactiveTable
     {
         /* constructor that initializes field */
         public ActiveSkuTable()

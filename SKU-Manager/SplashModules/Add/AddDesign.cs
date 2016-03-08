@@ -57,9 +57,10 @@ namespace SKU_Manager.SplashModules.Add
         private bool isFlat = false;
         private bool isFolded = false;
 
-        // field for comboBox
+        // field for lists
         private ArrayList productFamilyList = new ArrayList();
-        private List<string> internalNameList = new List<string>();
+        private HashSet<string> designCodeList = new HashSet<string>();
+        private HashSet<string> internalNameList = new HashSet<string>();
 
         // connection string to the database
         private string connectionString = Properties.Settings.Default.Designcs;
@@ -87,18 +88,20 @@ namespace SKU_Manager.SplashModules.Add
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                {
                     productFamilyList.Add(reader.GetString(0));
-                }
                 reader.Close();
 
-                // additional addition for ashlin internal name checking
+                // additional addition for design service code and ashlin internal name checking
+                command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes;", connection);
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                    designCodeList.Add(reader.GetString(0));
+                reader.Close();
+
                 command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;", connection);
                 reader = command.ExecuteReader();
                 while (reader.Read())
-                {
                     internalNameList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -107,38 +110,33 @@ namespace SKU_Manager.SplashModules.Add
         }
         #endregion
 
-        /* the event for design service code textbox that will change the back color of the textbox */
+        /* the event for design service code textbox that will check if there is duplicate or not */
         private void designServiceCodeTextbox_TextChanged(object sender, EventArgs e)
         {
-            designServiceCodeTextbox.BackColor = SystemColors.Window;
+            if (designCodeList.Contains(designServiceCodeTextbox.Text))
+            {
+                duplicateLabel1.Visible = true;
+                designServiceCodeTextbox.BackColor = Color.Red;
+            }
+            else
+            {
+                duplicateLabel1.Visible = false;
+                designServiceCodeTextbox.BackColor = SystemColors.Window;
+            }
         }
 
         /* the event of internal ashlin name textbox that detect whether the user input has duplicate */
         private void internalNameTextbox_TextChanged(object sender, EventArgs e)
         {
-            bool found = false;
-
-            if (internalNameTextbox.Text != "")
+            if (internalNameTextbox.Text != "" && internalNameList.Contains(internalNameTextbox.Text))
             {
-                foreach (string name in internalNameList)
-                {
-                    if (internalNameTextbox.Text == name)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (found)
-                {
-                    internalNameTextbox.BackColor = Color.Red;
-                    duplicateWarningLabel.Visible = true;
-                }
-                else
-                {
-                    internalNameTextbox.BackColor = SystemColors.Window;
-                    duplicateWarningLabel.Visible = false;
-                }
+                internalNameTextbox.BackColor = Color.Red;
+                duplicateLabel2.Visible = true;
+            }
+            else
+            {
+                internalNameTextbox.BackColor = SystemColors.Window;
+                duplicateLabel2.Visible = false;
             }
         }
 

@@ -49,6 +49,7 @@
             this.backgroundWorkerAddColor = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.duplicateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -151,7 +152,7 @@
             // 
             this.extendedFrenchDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(469, 295);
-            this.extendedFrenchDescriptionTextbox.MaxLength = 100;
+            this.extendedFrenchDescriptionTextbox.MaxLength = 250;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 190);
@@ -161,7 +162,7 @@
             // 
             this.extendedEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 295);
-            this.extendedEnglishDescriptionTextbox.MaxLength = 100;
+            this.extendedEnglishDescriptionTextbox.MaxLength = 250;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 190);
@@ -244,6 +245,7 @@
             this.colorCodeTextbox.Name = "colorCodeTextbox";
             this.colorCodeTextbox.Size = new System.Drawing.Size(481, 20);
             this.colorCodeTextbox.TabIndex = 4;
+            this.colorCodeTextbox.TextChanged += new System.EventHandler(this.colorCodeTextbox_TextChanged);
             // 
             // colorCodeLabel
             // 
@@ -278,12 +280,24 @@
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 15;
             // 
+            // duplicateLabel
+            // 
+            this.duplicateLabel.AutoSize = true;
+            this.duplicateLabel.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel.Location = new System.Drawing.Point(545, 116);
+            this.duplicateLabel.Name = "duplicateLabel";
+            this.duplicateLabel.Size = new System.Drawing.Size(154, 13);
+            this.duplicateLabel.TabIndex = 111;
+            this.duplicateLabel.Text = "duplicate color code detected !";
+            this.duplicateLabel.Visible = false;
+            // 
             // AddColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveColorButton);
             this.Controls.Add(this.activeColorButton);
@@ -335,5 +349,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerAddColor;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label duplicateLabel;
     }
 }

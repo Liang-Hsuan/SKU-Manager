@@ -63,7 +63,7 @@ namespace SKU_Manager.SplashModules.Update
         // field for comboBox
         private ArrayList designCodeList = new ArrayList();
         private ArrayList productFamilyList = new ArrayList();
-        private List<string> internalNameList = new List<string>();
+        private HashSet<string> internalNameList = new HashSet<string>();
 
         // connection string to the database
         private string connectionString = Properties.Settings.Default.Designcs;
@@ -96,27 +96,21 @@ namespace SKU_Manager.SplashModules.Update
             connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 designCodeList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Product Family
             command = new SqlCommand("SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Description is not NULL ORDER BY Design_Service_Family_Description;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 productFamilyList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // additional addition for ashlin internal name checking
             command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 internalNameList.Add(reader.GetString(0));
-            }
             connection.Close();
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -479,29 +473,17 @@ namespace SKU_Manager.SplashModules.Update
         /* the event of internal ashlin name textbox that detect whether the user input has duplicate */
         private void internalNameTextbox_TextChanged(object sender, EventArgs e)
         {
-            bool found = false;
+            string name = internalNameTextbox.Text;
 
-            if (internalNameTextbox.Text != "")
+            if (name != "" && name != internalName && internalNameList.Contains(name))
             {
-                foreach (string name in internalNameList)
-                {
-                    if (internalNameTextbox.Text == name && internalNameTextbox.Text != internalName)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (found)
-                {
                     internalNameTextbox.BackColor = Color.Red;
                     duplicateWarningLabel.Visible = true;
-                }
-                else
-                {
-                    internalNameTextbox.BackColor = SystemColors.Window;
-                    duplicateWarningLabel.Visible = false;
-                }
+            }
+            else
+            {
+                internalNameTextbox.BackColor = SystemColors.Window;
+                duplicateWarningLabel.Visible = false;
             }
         }
 

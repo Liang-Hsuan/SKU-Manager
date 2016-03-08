@@ -139,7 +139,8 @@
             this.trendExtendedFrenchTextbox = new System.Windows.Forms.TextBox();
             this.trendShortLabel = new System.Windows.Forms.Label();
             this.trendExtendedLabel = new System.Windows.Forms.Label();
-            this.duplicateWarningLabel = new System.Windows.Forms.Label();
+            this.duplicateLabel2 = new System.Windows.Forms.Label();
+            this.duplicateLabel1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -264,7 +265,7 @@
             // extendedFrenchDescriptionTextbox
             // 
             this.extendedFrenchDescriptionTextbox.Location = new System.Drawing.Point(464, 336);
-            this.extendedFrenchDescriptionTextbox.MaxLength = 250;
+            this.extendedFrenchDescriptionTextbox.MaxLength = 1000;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 123);
@@ -273,7 +274,7 @@
             // extendedEnglishDescriptionTextbox
             // 
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(213, 336);
-            this.extendedEnglishDescriptionTextbox.MaxLength = 250;
+            this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1244,7 +1245,7 @@
             // trendExtendedEnglishTextbox
             // 
             this.trendExtendedEnglishTextbox.Location = new System.Drawing.Point(213, 513);
-            this.trendExtendedEnglishTextbox.MaxLength = 100;
+            this.trendExtendedEnglishTextbox.MaxLength = 1000;
             this.trendExtendedEnglishTextbox.Multiline = true;
             this.trendExtendedEnglishTextbox.Name = "trendExtendedEnglishTextbox";
             this.trendExtendedEnglishTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1262,7 +1263,7 @@
             // trendExtendedFrenchTextbox
             // 
             this.trendExtendedFrenchTextbox.Location = new System.Drawing.Point(464, 513);
-            this.trendExtendedFrenchTextbox.MaxLength = 100;
+            this.trendExtendedFrenchTextbox.MaxLength = 1000;
             this.trendExtendedFrenchTextbox.Multiline = true;
             this.trendExtendedFrenchTextbox.Name = "trendExtendedFrenchTextbox";
             this.trendExtendedFrenchTextbox.Size = new System.Drawing.Size(233, 123);
@@ -1289,16 +1290,27 @@
             this.trendExtendedLabel.TabIndex = 24;
             this.trendExtendedLabel.Text = "Trend Extended Description";
             // 
-            // duplicateWarningLabel
+            // duplicateLabel2
             // 
-            this.duplicateWarningLabel.AutoSize = true;
-            this.duplicateWarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.duplicateWarningLabel.Location = new System.Drawing.Point(524, 214);
-            this.duplicateWarningLabel.Name = "duplicateWarningLabel";
-            this.duplicateWarningLabel.Size = new System.Drawing.Size(170, 13);
-            this.duplicateWarningLabel.TabIndex = 109;
-            this.duplicateWarningLabel.Text = "duplicate Internal Name detected !";
-            this.duplicateWarningLabel.Visible = false;
+            this.duplicateLabel2.AutoSize = true;
+            this.duplicateLabel2.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel2.Location = new System.Drawing.Point(524, 214);
+            this.duplicateLabel2.Name = "duplicateLabel2";
+            this.duplicateLabel2.Size = new System.Drawing.Size(170, 13);
+            this.duplicateLabel2.TabIndex = 109;
+            this.duplicateLabel2.Text = "duplicate Internal Name detected !";
+            this.duplicateLabel2.Visible = false;
+            // 
+            // duplicateLabel1
+            // 
+            this.duplicateLabel1.AutoSize = true;
+            this.duplicateLabel1.ForeColor = System.Drawing.Color.Red;
+            this.duplicateLabel1.Location = new System.Drawing.Point(495, 112);
+            this.duplicateLabel1.Name = "duplicateLabel1";
+            this.duplicateLabel1.Size = new System.Drawing.Size(199, 13);
+            this.duplicateLabel1.TabIndex = 110;
+            this.duplicateLabel1.Text = "duplicate design service code detected !";
+            this.duplicateLabel1.Visible = false;
             // 
             // AddDesign
             // 
@@ -1307,7 +1319,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
-            this.Controls.Add(this.duplicateWarningLabel);
+            this.Controls.Add(this.duplicateLabel1);
+            this.Controls.Add(this.duplicateLabel2);
             this.Controls.Add(this.trendExtendedLabel);
             this.Controls.Add(this.trendShortLabel);
             this.Controls.Add(this.trendExtendedFrenchTextbox);
@@ -1537,6 +1550,7 @@
         private System.Windows.Forms.TextBox trendExtendedFrenchTextbox;
         private System.Windows.Forms.Label trendShortLabel;
         private System.Windows.Forms.Label trendExtendedLabel;
-        private System.Windows.Forms.Label duplicateWarningLabel;
+        private System.Windows.Forms.Label duplicateLabel2;
+        private System.Windows.Forms.Label duplicateLabel1;
     }
 }
