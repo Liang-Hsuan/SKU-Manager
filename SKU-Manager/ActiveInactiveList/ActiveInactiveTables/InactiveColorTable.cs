@@ -6,7 +6,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
     /*
      * a class that return inactive color table
      */
-    class InactiveColorTable : ActiveInactiveTable
+    public class InactiveColorTable : ActiveInactiveTable
     {
         /* constructor that initializes field */
         public InactiveColorTable()
@@ -23,7 +23,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // connect to database and grab the all the active colors' data and put them into the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Code, Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Active FROM ref_Colours WHERE Active = 'False' ORDER BY Colour_Code;", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM inactive_colour_list;", connection);
                 connection.Open();
                 adapter.Fill(mainTable);
             }

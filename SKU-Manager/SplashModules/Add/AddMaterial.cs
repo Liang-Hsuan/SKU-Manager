@@ -33,7 +33,7 @@ namespace SKU_Manager.SplashModules.Add
             // adding all the existing color code list
             using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
             {
-                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours;", connection);
+                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials;", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
 

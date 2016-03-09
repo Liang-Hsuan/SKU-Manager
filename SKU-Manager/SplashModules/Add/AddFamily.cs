@@ -74,7 +74,6 @@ namespace SKU_Manager.SplashModules.Add
 
             // make comboBox for us HTS
             command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);
-            connection.Open();
             reader = command.ExecuteReader();
             while (reader.Read())
                 usHtsList.Add(reader.GetValue(0));

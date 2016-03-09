@@ -285,11 +285,11 @@
             // 
             this.duplicateLabel.AutoSize = true;
             this.duplicateLabel.ForeColor = System.Drawing.Color.Red;
-            this.duplicateLabel.Location = new System.Drawing.Point(545, 116);
+            this.duplicateLabel.Location = new System.Drawing.Point(532, 116);
             this.duplicateLabel.Name = "duplicateLabel";
-            this.duplicateLabel.Size = new System.Drawing.Size(154, 13);
+            this.duplicateLabel.Size = new System.Drawing.Size(167, 13);
             this.duplicateLabel.TabIndex = 112;
-            this.duplicateLabel.Text = "duplicate color code detected !";
+            this.duplicateLabel.Text = "duplicate material code detected !";
             this.duplicateLabel.Visible = false;
             // 
             // AddMaterial
