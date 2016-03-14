@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using SKU_Manager.AdminModules;
+using SKU_Manager.AdminModules.importUpdate;
+using System.Threading;
 
 namespace SKU_Manager.MainForms
 {
@@ -12,6 +14,9 @@ namespace SKU_Manager.MainForms
         // field for getting the root form
         private readonly IWin32Window parent;
 
+        // field for channel new import 
+        private Sears sears;
+
         /* constructor that initialize all graphic components */
         public Admin(IWin32Window parent)
         {
@@ -21,18 +26,31 @@ namespace SKU_Manager.MainForms
             this.parent = parent;
         }
 
+        #region Modify 
         /* the event when modify discount matrix button is clicked */
         private void modifyDiscountButton_Click(object sender, EventArgs e)
         {
-            ModifyDiscount modifyDiscount = new ModifyDiscount();
-            modifyDiscount.ShowDialog(this);
+            new ModifyDiscount().ShowDialog(this);
         }
 
         /* the event when update hts button is clicked */
         private void modifyHtsButton_Click(object sender, EventArgs e)
         {
-            UpdateHTS updateHTS = new UpdateHTS();
-            updateHTS.ShowDialog(this);
+            new UpdateHTS().ShowDialog(this);
+        }
+        #endregion
+
+        /* sears button clicks that update the new import of inventory for sears */
+        private void searsButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                sears = new Sears();
+
+                // start updating database
+                new Thread(new ThreadStart(() => sears.update(openFileDialog.FileName))).Start();
+                timer.Start();
+            }
         }
 
         #region Top Buttons
@@ -41,8 +59,7 @@ namespace SKU_Manager.MainForms
         {
             Close();
 
-            Splash splash = new Splash(parent);
-            splash.Show(parent);
+            new Splash(parent).Show(parent);
         }
 
         /* the event when the top 2 button is clicked (view excel export) */
@@ -50,8 +67,7 @@ namespace SKU_Manager.MainForms
         {   
             Close();
 
-            ExcelExport excelExport = new ExcelExport(parent);
-            excelExport.Show((parent));
+            new ExcelExport(parent).Show((parent));
         }
 
         /* the event when the top 3 button is clicked (view sku exports) */
@@ -59,9 +75,21 @@ namespace SKU_Manager.MainForms
         {
             Close();
 
-            SKUExport skuExport = new SKUExport(parent);
-            skuExport.Show(parent);
+            new SKUExport(parent).Show(parent);
         }
         #endregion
+
+        /* timer event that show the progress of import update */
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            // check if updating is finish -> stop the timer and set text to nothing
+            if (sears.Current >= sears.Total)
+            {
+                timer.Stop();
+                loadingLabel.Text = "";
+            }
+            else
+                loadingLabel.Text = sears.Current + " / " + sears.Total;
+        }
     }
 }

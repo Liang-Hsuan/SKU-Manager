@@ -983,20 +983,28 @@ namespace SKU_Manager.SplashModules.Update
                 backgroundWorkerUpdate.ReportProgress(i);
             }
 
-            // connect to database and insert new row
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                // this is for searching family code for product family
-                DataTable table = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamily + "\';", connection);
-                connection.Open();
-                adapter.Fill(table);
+                // connect to database and insert new row
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // this is for searching family code for product family
+                    DataTable table = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamily + "\';", connection);
+                    connection.Open();
+                    adapter.Fill(table);
 
-                // this is the real thing
-                SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Brand = \'Ashlin®\', Design_Service_Flag = \'" + designServiceFlag + "\', Design_Service_Family_Code = \'" + table.Rows[0][0].ToString() + "\', Design_Service_Fashion_Name_Ashlin = \'" + internalName + "\', Design_Service_Fashion_Name_TSC_CA = \'" + tsc + "\', Design_Service_Fashion_Name_COSTCO_CA = \'" + costco + "\', Design_Service_Fashion_Name_BESTBUY_CA = \'" + bestbuy + "\', Design_Service_Fashion_Name_SHOP_CA = \'" + shopca + "\', Design_Service_Fashion_Name_AMAZON_CA = \'" + amazon + "\', Design_Service_Fashion_Name_AMAZON_COM = \'" + amazon + "\', Design_Service_Fashion_Name_SEARS_CA = \'" + sears + "\', Design_Service_Fashion_Name_STAPLES_CA = \'" + staples + "\', Design_Service_Fashion_Name_WALMART = \'" + walmart + "\', Short_Description = \'" + shortEnglishDescription + "\', Short_Description_FR = \'" + shortFrenchDescription + "\', Extended_Description = \'" + extendedEnglishDescription + "\', Extended_Description_FR = \'" + extendedFrenchDescription + "\', Imprintable = " + integer[1] + ", Imprint_Height_cm = " + imprintHeight + ", Imprint_Width_cm = " + imprintWidth + ", Width_cm = " + productWidth + ", Height_cm = " + productHeight + ", Depth_cm = " + productDepth + ", Weight_grams = " + weight + " "
-                                                  + ", Flat_Shippable = " + integer[5] + ", Fold_Shippable = " + integer[6] + ", Shippable_Width_cm = " + shippableWidth + ", Shippable_Height_cm = " + shippableHeight + ", Shippable_Depth_cm = " + shippableDepth + ", Shippable_Weight_grams = " + shippableWeight + ", Components = " + numberComponents + ", Strap = " + integer[2] + ", Detachable_Strap = " + integer[3] + ", Zippered_Enclosure = " + integer[4] + ", Option_1 = \'" + englishOption[0] + "\', Option_1_FR = \'" + frenchOption[0] + "\', Option_2 = \'" + englishOption[1] + "\', Option_2_FR = \'" + frenchOption[1] + "\', Option_3 = \'" + englishOption[2] + "\', Option_3_FR = \'" + frenchOption[2] + "\', Option_4 = \'" + englishOption[3] + "\', Option_4_FR = \'" + frenchOption[3] + "\', Option_5 = \'" + englishOption[4] + "\', Option_5_FR = \'" + frenchOption[4] + "\', Website_Flag = " + integer[7] + ", Date_Updated = \'" + DateTime.Now.ToString() + "\', Design_URL = \'" + designUrl + "\', Trend_Short_Description = \'" + trendShortEnglishDescription + "\', Trend_Short_Description_FR = \'" + trendShortFrenchDescription + "\', Trend_Extended_Description = \'" + trendExtendedEnglishDescription + "\', Trend_Extended_Description_FR = \'" + trendExtendedFrenchDescription + "\' "
-                                                  + "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
-                command.ExecuteNonQuery();
+                    // this is the real thing
+                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Brand = \'Ashlin®\', Design_Service_Flag = \'" + designServiceFlag + "\', Design_Service_Family_Code = \'" + table.Rows[0][0].ToString() + "\', Design_Service_Fashion_Name_Ashlin = \'" + internalName + "\', Design_Service_Fashion_Name_TSC_CA = \'" + tsc + "\', Design_Service_Fashion_Name_COSTCO_CA = \'" + costco + "\', Design_Service_Fashion_Name_BESTBUY_CA = \'" + bestbuy + "\', Design_Service_Fashion_Name_SHOP_CA = \'" + shopca + "\', Design_Service_Fashion_Name_AMAZON_CA = \'" + amazon + "\', Design_Service_Fashion_Name_AMAZON_COM = \'" + amazon + "\', Design_Service_Fashion_Name_SEARS_CA = \'" + sears + "\', Design_Service_Fashion_Name_STAPLES_CA = \'" + staples + "\', Design_Service_Fashion_Name_WALMART = \'" + walmart + "\', Short_Description = \'" + shortEnglishDescription + "\', Short_Description_FR = \'" + shortFrenchDescription + "\', Extended_Description = \'" + extendedEnglishDescription + "\', Extended_Description_FR = \'" + extendedFrenchDescription + "\', Imprintable = " + integer[1] + ", Imprint_Height_cm = " + imprintHeight + ", Imprint_Width_cm = " + imprintWidth + ", Width_cm = " + productWidth + ", Height_cm = " + productHeight + ", Depth_cm = " + productDepth + ", Weight_grams = " + weight + " "
+                                                      + ", Flat_Shippable = " + integer[5] + ", Fold_Shippable = " + integer[6] + ", Shippable_Width_cm = " + shippableWidth + ", Shippable_Height_cm = " + shippableHeight + ", Shippable_Depth_cm = " + shippableDepth + ", Shippable_Weight_grams = " + shippableWeight + ", Components = " + numberComponents + ", Strap = " + integer[2] + ", Detachable_Strap = " + integer[3] + ", Zippered_Enclosure = " + integer[4] + ", Option_1 = \'" + englishOption[0] + "\', Option_1_FR = \'" + frenchOption[0] + "\', Option_2 = \'" + englishOption[1] + "\', Option_2_FR = \'" + frenchOption[1] + "\', Option_3 = \'" + englishOption[2] + "\', Option_3_FR = \'" + frenchOption[2] + "\', Option_4 = \'" + englishOption[3] + "\', Option_4_FR = \'" + frenchOption[3] + "\', Option_5 = \'" + englishOption[4] + "\', Option_5_FR = \'" + frenchOption[4] + "\', Website_Flag = " + integer[7] + ", Date_Updated = \'" + DateTime.Now.ToString() + "\', Design_URL = \'" + designUrl + "\', Trend_Short_Description = \'" + trendShortEnglishDescription + "\', Trend_Short_Description_FR = \'" + trendShortFrenchDescription + "\', Trend_Extended_Description = \'" + trendExtendedEnglishDescription + "\', Trend_Extended_Description_FR = \'" + trendExtendedFrenchDescription + "\' "
+                                                      + "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

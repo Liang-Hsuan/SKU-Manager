@@ -795,15 +795,12 @@ namespace SKU_Manager.SplashModules.Update
             if (autoRadioButton.Checked)     // case if auto image update
             {
                 if (!backgroundWorkerImagePath.IsBusy)
-                {
                     backgroundWorkerImagePath.RunWorkerAsync();
-                }
-            } else    // case if manual update
+            }
+            else    // case if manual update
             {
                 if (!backgroundWorkerUpdate.IsBusy)
-                {
                     backgroundWorkerUpdate.RunWorkerAsync();
-                }
             }
         }
         /* case 1 -> auto update */
@@ -829,9 +826,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             // add the missing value 
             for (int i = index; i < 10; i++)
-            {
                 image[i] = "";
-            }
 
             index = 0;
             string[] groupCopy = imageSearch.getGroupUri(sku);
@@ -842,9 +837,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             // add the missing value
             for (int i = index; i < 5; i++)
-            {
                 group[i] = "";
-            }
 
             index = 0;
             string[] modelCopy = imageSearch.getModelUri(sku);
@@ -855,9 +848,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             // add the missing value
             for (int i = index; i < 5; i++)
-            {
                 model[i] = "";
-            }
 
             index = 0;
             string[] templateCopy = imageSearch.getTemplateUri(sku);
@@ -868,9 +859,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             // add the missing value
             for (int i = index; i < 2; i++)
-            {
                 template[i] = "";
-            }
 
             // simulate progress 10% ~ 20%
             for (int i = 10; i <= 20; i++)
@@ -908,13 +897,9 @@ namespace SKU_Manager.SplashModules.Update
             for (; index < image.Length; index++)
             {
                 if (image[index] == "")
-                {
                     imageAlt[index] = "";
-                }
                 else
-                {
                     imageAlt[index] = alt.getAltWithSkuNotExist(sku).Replace("'", "''");
-                }
             }
 
             // assgin alt text to image
@@ -922,13 +907,9 @@ namespace SKU_Manager.SplashModules.Update
             for (; index < group.Length; index++)
             {
                 if (group[index] == "")
-                {
                     groupAlt[index] = "";
-                }
                 else
-                {
                     groupAlt[index] = "Group " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
-                }
             }
 
             // assgin alt text to image
@@ -936,13 +917,9 @@ namespace SKU_Manager.SplashModules.Update
             for (; index < model.Length; index++)
             {
                 if (model[index] == "")
-                {
                     modelAlt[index] = "";
-                }
                 else
-                {
                     modelAlt[index] = "Model " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
-                }
             }
 
             // simulate progress 20% ~ 30%
@@ -960,33 +937,23 @@ namespace SKU_Manager.SplashModules.Update
         {
             // assign image uri to image textboxes
             for (int i = 0; i < image.Length; i++)
-            {
                 imageTextbox[i].Text = image[i];
-            }
 
             // assign image uri to group textboxes
             for (int i = 0; i < group.Length; i++)
-            {
                 groupTextbox[i].Text = group[i];
-            }
 
             // assign image uri to model textboxes
             for (int i = 0; i < model.Length; i++)
-            {
                 modelTextbox[i].Text = model[i];
-            }
 
             // assign image uri to template textboxes
             for (int i = 0; i < template.Length; i++)
-            {
                 templateTextbox[i].Text = template[i];
-            }
 
             // call background worker
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
         /* always need to do this */
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
@@ -1087,25 +1054,33 @@ namespace SKU_Manager.SplashModules.Update
             imageReplace.addUPC(sku, upcCode9);
             imageReplace.addUPC(sku, upcCode10);
 
-            // connect to database and update the sku
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command;
-                if (!caHts.Equals("") && !usHts.Equals(""))
+                // connect to database and update the sku
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
+                    SqlCommand command;
+                    if (!caHts.Equals("") && !usHts.Equals(""))
+                    {
 
-                    command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Now.ToString() + "\', "
-                                           + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
-                                           + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Now.ToString() + "\', "
+                                               + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
+                                               + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                    }
+                    else
+                    {
+                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\', "
+                                              + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
+                                              + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                    }
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
-                else
-                {
-                     command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\', "
-                                           + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
-                                           + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                }
-                connection.Open();
-                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

@@ -240,13 +240,21 @@ namespace SKU_Manager.SplashModules.Update
                 backgroundWorkerUpdate.ReportProgress(i);
             }
 
-            // connect to database and insert new row
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\' "
-                                                  + "WHERE Material_Code = \'" + materialCode + "\'", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                // connect to database and insert new row
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\' "
+                                                      + "WHERE Material_Code = \'" + materialCode + "\'", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

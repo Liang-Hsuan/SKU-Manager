@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.applicationTitle = new System.Windows.Forms.Label();
             this.companyTitle = new System.Windows.Forms.Label();
@@ -41,6 +42,10 @@
             this.topButton3 = new System.Windows.Forms.Button();
             this.topButton2 = new System.Windows.Forms.Button();
             this.topButton1 = new System.Windows.Forms.Button();
+            this.searsButton = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.loadingLabel = new System.Windows.Forms.Label();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -137,12 +142,12 @@
             // 
             // noteLabel
             // 
-            this.noteLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.noteLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.noteLabel.AutoSize = true;
             this.noteLabel.BackColor = System.Drawing.Color.White;
             this.noteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteLabel.ForeColor = System.Drawing.Color.Gray;
-            this.noteLabel.Location = new System.Drawing.Point(463, 579);
+            this.noteLabel.Location = new System.Drawing.Point(463, 689);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(442, 13);
             this.noteLabel.TabIndex = 7;
@@ -191,12 +196,47 @@
             this.topButton1.UseVisualStyleBackColor = false;
             this.topButton1.Click += new System.EventHandler(this.topButton1_Click);
             // 
+            // searsButton
+            // 
+            this.searsButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.searsButton.BackColor = System.Drawing.Color.Transparent;
+            this.searsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searsButton.FlatAppearance.BorderSize = 0;
+            this.searsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searsButton.Image = ((System.Drawing.Image)(resources.GetObject("searsButton.Image")));
+            this.searsButton.Location = new System.Drawing.Point(589, 613);
+            this.searsButton.Name = "searsButton";
+            this.searsButton.Size = new System.Drawing.Size(179, 61);
+            this.searsButton.TabIndex = 11;
+            this.searsButton.UseVisualStyleBackColor = false;
+            this.searsButton.Click += new System.EventHandler(this.searsButton_Click);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 600;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // loadingLabel
+            // 
+            this.loadingLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.loadingLabel.Location = new System.Drawing.Point(633, 587);
+            this.loadingLabel.Name = "loadingLabel";
+            this.loadingLabel.Size = new System.Drawing.Size(100, 23);
+            this.loadingLabel.TabIndex = 12;
+            this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Excel File (*.xls)|*.xls";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.loadingLabel);
+            this.Controls.Add(this.searsButton);
             this.Controls.Add(this.topButton3);
             this.Controls.Add(this.topButton2);
             this.Controls.Add(this.topButton1);
@@ -238,5 +278,9 @@
         private System.Windows.Forms.Button topButton3;
         private System.Windows.Forms.Button topButton2;
         private System.Windows.Forms.Button topButton1;
+        private System.Windows.Forms.Button searsButton;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label loadingLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

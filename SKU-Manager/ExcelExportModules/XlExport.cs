@@ -70,9 +70,7 @@ namespace SKU_Manager.ExcelExportModules
             {
                 // add worksheet for each table
                 for (int i = 2; i <= length; i++)
-                {
                     xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Add();
-                }
             }
         }
 

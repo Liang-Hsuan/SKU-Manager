@@ -123,6 +123,7 @@
     <Compile Include="ActiveInactiveList\InactiveSKUList.Designer.cs">
       <DependentUpon>InactiveSKUList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModules\importUpdate\Sears.cs" />
     <Compile Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.cs">
       <SubType>Form</SubType>
     </Compile>
