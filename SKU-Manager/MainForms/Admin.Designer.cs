@@ -46,6 +46,8 @@
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.loadingLabel = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.excelButton = new System.Windows.Forms.Button();
+            this.inventoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -210,6 +212,7 @@
             this.searsButton.TabIndex = 11;
             this.searsButton.UseVisualStyleBackColor = false;
             this.searsButton.Click += new System.EventHandler(this.searsButton_Click);
+            this.searsButton.MouseHover += new System.EventHandler(this.searsButton_MouseHover);
             // 
             // timer
             // 
@@ -229,12 +232,43 @@
             // 
             this.openFileDialog.Filter = "Excel File (*.xls)|*.xls";
             // 
+            // excelButton
+            // 
+            this.excelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.excelButton.BackColor = System.Drawing.Color.Purple;
+            this.excelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.excelButton.ForeColor = System.Drawing.Color.White;
+            this.excelButton.Location = new System.Drawing.Point(513, 565);
+            this.excelButton.Name = "excelButton";
+            this.excelButton.Size = new System.Drawing.Size(114, 42);
+            this.excelButton.TabIndex = 13;
+            this.excelButton.Text = "Import Excel";
+            this.excelButton.UseVisualStyleBackColor = false;
+            this.excelButton.Visible = false;
+            this.excelButton.Click += new System.EventHandler(this.excelButton_Click);
+            // 
+            // inventoryButton
+            // 
+            this.inventoryButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.inventoryButton.BackColor = System.Drawing.Color.Purple;
+            this.inventoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryButton.ForeColor = System.Drawing.Color.White;
+            this.inventoryButton.Location = new System.Drawing.Point(739, 565);
+            this.inventoryButton.Name = "inventoryButton";
+            this.inventoryButton.Size = new System.Drawing.Size(114, 42);
+            this.inventoryButton.TabIndex = 14;
+            this.inventoryButton.Text = "Update Inventory";
+            this.inventoryButton.UseVisualStyleBackColor = false;
+            this.inventoryButton.Visible = false;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.inventoryButton);
+            this.Controls.Add(this.excelButton);
             this.Controls.Add(this.loadingLabel);
             this.Controls.Add(this.searsButton);
             this.Controls.Add(this.topButton3);
@@ -282,5 +316,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label loadingLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Button excelButton;
+        private System.Windows.Forms.Button inventoryButton;
     }
 }

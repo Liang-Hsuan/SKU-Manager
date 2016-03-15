@@ -32,6 +32,8 @@ namespace SKU_Manager.SupportingClasses
                     englishList.Add('2');
                     englishList.Add('0');
                 }
+                else if (ch == '\'')
+                    continue;
                 else
                     englishList.Add(ch);
             }

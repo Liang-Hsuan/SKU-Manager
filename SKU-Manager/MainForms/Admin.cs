@@ -40,8 +40,26 @@ namespace SKU_Manager.MainForms
         }
         #endregion
 
+        #region Sears Event
         /* sears button clicks that update the new import of inventory for sears */
         private void searsButton_Click(object sender, EventArgs e)
+        {
+            excelButton.Visible = false;
+            inventoryButton.Visible = false;
+            loadingLabel.Visible = false;
+        }
+
+        /* sears button hover that show sear's functions */
+        private void searsButton_MouseHover(object sender, EventArgs e)
+        {
+            loadingLabel.Text = "Sears";
+            excelButton.Visible = true;
+            inventoryButton.Visible = true;
+        }
+        #endregion
+
+        /* the event for excel button clicks that update the merchant sku */
+        private void excelButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {

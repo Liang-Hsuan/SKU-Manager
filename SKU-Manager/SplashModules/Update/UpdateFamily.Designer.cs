@@ -650,7 +650,7 @@
             // 
             this.generalKeywordsTextBox.Enabled = false;
             this.generalKeywordsTextBox.Location = new System.Drawing.Point(245, 273);
-            this.generalKeywordsTextBox.MaxLength = 200;
+            this.generalKeywordsTextBox.MaxLength = 1000;
             this.generalKeywordsTextBox.Multiline = true;
             this.generalKeywordsTextBox.Name = "generalKeywordsTextBox";
             this.generalKeywordsTextBox.Size = new System.Drawing.Size(481, 104);
