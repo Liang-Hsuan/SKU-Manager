@@ -123,6 +123,12 @@
     <Compile Include="ActiveInactiveList\InactiveSKUList.Designer.cs">
       <DependentUpon>InactiveSKUList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModules\DirectUpdate\ModifyChannelPricing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModules\DirectUpdate\ModifyChannelPricing.Designer.cs">
+      <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModules\importUpdate\Sears.cs" />
     <Compile Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.cs">
       <SubType>Form</SubType>
@@ -143,16 +149,16 @@
     <Compile Include="MainForms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminModules\ModifyDiscount.cs">
+    <Compile Include="AdminModules\DirectUpdate\ModifyDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminModules\ModifyDiscount.Designer.cs">
+    <Compile Include="AdminModules\DirectUpdate\ModifyDiscount.Designer.cs">
       <DependentUpon>ModifyDiscount.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminModules\UpdateHTS.cs">
+    <Compile Include="AdminModules\DirectUpdate\UpdateHTS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminModules\UpdateHTS.Designer.cs">
+    <Compile Include="AdminModules\DirectUpdate\UpdateHTS.Designer.cs">
       <DependentUpon>UpdateHTS.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\ExcelExport.cs">
@@ -200,6 +206,12 @@
     <Compile Include="SKUExportModules\Tables\ExportTableFast.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
+    <Compile Include="SplashModules\Online.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashModules\Online.Designer.cs">
+      <DependentUpon>Online.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupportingClasses\AltText.cs" />
     <Compile Include="MainForms\Dashboard.cs">
       <SubType>Form</SubType>
@@ -485,6 +497,9 @@
     <EmbeddedResource Include="ActiveInactiveList\InactiveSKUList.resx">
       <DependentUpon>InactiveSKUList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyChannelPricing.resx">
+      <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.resx">
       <DependentUpon>SelectionViewExcel.cs</DependentUpon>
     </EmbeddedResource>
@@ -494,10 +509,10 @@
     <EmbeddedResource Include="MainForms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminModules\ModifyDiscount.resx">
+    <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyDiscount.resx">
       <DependentUpon>ModifyDiscount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminModules\UpdateHTS.resx">
+    <EmbeddedResource Include="AdminModules\DirectUpdate\UpdateHTS.resx">
       <DependentUpon>UpdateHTS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Dashboard.resx">
@@ -595,6 +610,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Add\AddSKU.resx">
       <DependentUpon>AddSKU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashModules\Online.resx">
+      <DependentUpon>Online.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Deactivate\DeactivateColor.resx">
       <DependentUpon>DeactivateColor.cs</DependentUpon>

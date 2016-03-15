@@ -141,6 +141,8 @@
             this.trendExtendedLabel = new System.Windows.Forms.Label();
             this.duplicateLabel2 = new System.Windows.Forms.Label();
             this.duplicateLabel1 = new System.Windows.Forms.Label();
+            this.onlineButton = new System.Windows.Forms.Button();
+            this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -175,7 +177,7 @@
             this.designServceCodeLabel.Location = new System.Drawing.Point(8, 128);
             this.designServceCodeLabel.Name = "designServceCodeLabel";
             this.designServceCodeLabel.Size = new System.Drawing.Size(168, 20);
-            this.designServceCodeLabel.TabIndex = 2;
+            this.designServceCodeLabel.TabIndex = 3;
             this.designServceCodeLabel.Text = "Design-Service Code";
             // 
             // designServiceCodeTextbox
@@ -183,8 +185,8 @@
             this.designServiceCodeTextbox.Location = new System.Drawing.Point(213, 128);
             this.designServiceCodeTextbox.MaxLength = 10;
             this.designServiceCodeTextbox.Name = "designServiceCodeTextbox";
-            this.designServiceCodeTextbox.Size = new System.Drawing.Size(481, 20);
-            this.designServiceCodeTextbox.TabIndex = 3;
+            this.designServiceCodeTextbox.Size = new System.Drawing.Size(384, 20);
+            this.designServiceCodeTextbox.TabIndex = 4;
             this.designServiceCodeTextbox.TextChanged += new System.EventHandler(this.designServiceCodeTextbox_TextChanged);
             // 
             // shortDescriptionLabel
@@ -195,7 +197,7 @@
             this.shortDescriptionLabel.Location = new System.Drawing.Point(8, 297);
             this.shortDescriptionLabel.Name = "shortDescriptionLabel";
             this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
-            this.shortDescriptionLabel.TabIndex = 15;
+            this.shortDescriptionLabel.TabIndex = 18;
             this.shortDescriptionLabel.Text = "Short Description";
             // 
             // translateButton1
@@ -206,7 +208,7 @@
             this.translateButton1.Location = new System.Drawing.Point(409, 268);
             this.translateButton1.Name = "translateButton1";
             this.translateButton1.Size = new System.Drawing.Size(92, 23);
-            this.translateButton1.TabIndex = 13;
+            this.translateButton1.TabIndex = 16;
             this.translateButton1.Text = "TRANSLATE";
             this.translateButton1.UseVisualStyleBackColor = false;
             this.translateButton1.Click += new System.EventHandler(this.translateButton1_Click);
@@ -219,7 +221,7 @@
             this.frenchLabel1.Location = new System.Drawing.Point(540, 272);
             this.frenchLabel1.Name = "frenchLabel1";
             this.frenchLabel1.Size = new System.Drawing.Size(57, 15);
-            this.frenchLabel1.TabIndex = 14;
+            this.frenchLabel1.TabIndex = 17;
             this.frenchLabel1.Text = "FRENCH";
             // 
             // englishLabel1
@@ -230,7 +232,7 @@
             this.englishLabel1.Location = new System.Drawing.Point(314, 272);
             this.englishLabel1.Name = "englishLabel1";
             this.englishLabel1.Size = new System.Drawing.Size(60, 15);
-            this.englishLabel1.TabIndex = 12;
+            this.englishLabel1.TabIndex = 15;
             this.englishLabel1.Text = "ENGLISH";
             // 
             // shortEnglishDescriptionTextbox
@@ -240,7 +242,7 @@
             this.shortEnglishDescriptionTextbox.Multiline = true;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 33);
-            this.shortEnglishDescriptionTextbox.TabIndex = 16;
+            this.shortEnglishDescriptionTextbox.TabIndex = 19;
             // 
             // shortFrenchDescriptionTextbox
             // 
@@ -249,7 +251,7 @@
             this.shortFrenchDescriptionTextbox.Multiline = true;
             this.shortFrenchDescriptionTextbox.Name = "shortFrenchDescriptionTextbox";
             this.shortFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 33);
-            this.shortFrenchDescriptionTextbox.TabIndex = 17;
+            this.shortFrenchDescriptionTextbox.TabIndex = 20;
             // 
             // extendedDescriptionLabel
             // 
@@ -259,7 +261,7 @@
             this.extendedDescriptionLabel.Location = new System.Drawing.Point(8, 336);
             this.extendedDescriptionLabel.Name = "extendedDescriptionLabel";
             this.extendedDescriptionLabel.Size = new System.Drawing.Size(169, 20);
-            this.extendedDescriptionLabel.TabIndex = 18;
+            this.extendedDescriptionLabel.TabIndex = 21;
             this.extendedDescriptionLabel.Text = "Extended Description";
             // 
             // extendedFrenchDescriptionTextbox
@@ -269,7 +271,7 @@
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
             this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 123);
-            this.extendedFrenchDescriptionTextbox.TabIndex = 20;
+            this.extendedFrenchDescriptionTextbox.TabIndex = 23;
             // 
             // extendedEnglishDescriptionTextbox
             // 
@@ -278,7 +280,7 @@
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 123);
-            this.extendedEnglishDescriptionTextbox.TabIndex = 19;
+            this.extendedEnglishDescriptionTextbox.TabIndex = 22;
             // 
             // detailLabel2
             // 
@@ -288,7 +290,7 @@
             this.detailLabel2.Location = new System.Drawing.Point(736, 68);
             this.detailLabel2.Name = "detailLabel2";
             this.detailLabel2.Size = new System.Drawing.Size(682, 29);
-            this.detailLabel2.TabIndex = 27;
+            this.detailLabel2.TabIndex = 31;
             this.detailLabel2.Text = "Physical Specifications and Dimensions";
             this.detailLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -300,7 +302,7 @@
             this.monogrammedLabel.Location = new System.Drawing.Point(736, 127);
             this.monogrammedLabel.Name = "monogrammedLabel";
             this.monogrammedLabel.Size = new System.Drawing.Size(256, 20);
-            this.monogrammedLabel.TabIndex = 28;
+            this.monogrammedLabel.TabIndex = 32;
             this.monogrammedLabel.Text = "Can this item be monogrammed?";
             // 
             // monogrammedCombobox
@@ -314,7 +316,7 @@
             this.monogrammedCombobox.Location = new System.Drawing.Point(1017, 127);
             this.monogrammedCombobox.Name = "monogrammedCombobox";
             this.monogrammedCombobox.Size = new System.Drawing.Size(386, 21);
-            this.monogrammedCombobox.TabIndex = 29;
+            this.monogrammedCombobox.TabIndex = 33;
             this.monogrammedCombobox.Text = "True";
             // 
             // imprintedCombobox
@@ -328,7 +330,7 @@
             this.imprintedCombobox.Location = new System.Drawing.Point(1017, 153);
             this.imprintedCombobox.Name = "imprintedCombobox";
             this.imprintedCombobox.Size = new System.Drawing.Size(386, 21);
-            this.imprintedCombobox.TabIndex = 31;
+            this.imprintedCombobox.TabIndex = 35;
             this.imprintedCombobox.Text = "True";
             this.imprintedCombobox.SelectedValueChanged += new System.EventHandler(this.imprintedCombobox_SelectedValueChanged);
             // 
@@ -338,7 +340,7 @@
             this.imprintWidthTextbox.MaxLength = 10;
             this.imprintWidthTextbox.Name = "imprintWidthTextbox";
             this.imprintWidthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.imprintWidthTextbox.TabIndex = 35;
+            this.imprintWidthTextbox.TabIndex = 39;
             this.imprintWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintWidthTextbox_KeyPress);
             // 
             // productHeightTextbox
@@ -347,7 +349,7 @@
             this.productHeightTextbox.MaxLength = 10;
             this.productHeightTextbox.Name = "productHeightTextbox";
             this.productHeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.productHeightTextbox.TabIndex = 37;
+            this.productHeightTextbox.TabIndex = 41;
             this.productHeightTextbox.TextChanged += new System.EventHandler(this.productHeightTextbox_TextChanged);
             this.productHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productHeightTextbox_KeyPress);
             // 
@@ -357,7 +359,7 @@
             this.productWidthTextbox.MaxLength = 10;
             this.productWidthTextbox.Name = "productWidthTextbox";
             this.productWidthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.productWidthTextbox.TabIndex = 39;
+            this.productWidthTextbox.TabIndex = 43;
             this.productWidthTextbox.TextChanged += new System.EventHandler(this.productWidthTextbox_TextChanged);
             this.productWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productWidthTextbox_KeyPress);
             // 
@@ -367,7 +369,7 @@
             this.productDepthTextbox.MaxLength = 10;
             this.productDepthTextbox.Name = "productDepthTextbox";
             this.productDepthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.productDepthTextbox.TabIndex = 41;
+            this.productDepthTextbox.TabIndex = 45;
             this.productDepthTextbox.TextChanged += new System.EventHandler(this.productDepthTextbox_TextChanged);
             this.productDepthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productDepthTextbox_KeyPress);
             // 
@@ -379,7 +381,7 @@
             this.imprintedLabel.Location = new System.Drawing.Point(736, 151);
             this.imprintedLabel.Name = "imprintedLabel";
             this.imprintedLabel.Size = new System.Drawing.Size(214, 20);
-            this.imprintedLabel.TabIndex = 30;
+            this.imprintedLabel.TabIndex = 34;
             this.imprintedLabel.Text = "Can this item be imprinted?";
             // 
             // imprintHeightLabel
@@ -390,7 +392,7 @@
             this.imprintHeightLabel.Location = new System.Drawing.Point(736, 178);
             this.imprintHeightLabel.Name = "imprintHeightLabel";
             this.imprintHeightLabel.Size = new System.Drawing.Size(154, 20);
-            this.imprintHeightLabel.TabIndex = 32;
+            this.imprintHeightLabel.TabIndex = 36;
             this.imprintHeightLabel.Text = "Imprint Height (cm)";
             // 
             // imprintWidthLabel
@@ -401,7 +403,7 @@
             this.imprintWidthLabel.Location = new System.Drawing.Point(736, 204);
             this.imprintWidthLabel.Name = "imprintWidthLabel";
             this.imprintWidthLabel.Size = new System.Drawing.Size(148, 20);
-            this.imprintWidthLabel.TabIndex = 34;
+            this.imprintWidthLabel.TabIndex = 38;
             this.imprintWidthLabel.Text = "Imprint Width (cm)";
             // 
             // productHeightLabel
@@ -412,7 +414,7 @@
             this.productHeightLabel.Location = new System.Drawing.Point(736, 230);
             this.productHeightLabel.Name = "productHeightLabel";
             this.productHeightLabel.Size = new System.Drawing.Size(161, 20);
-            this.productHeightLabel.TabIndex = 36;
+            this.productHeightLabel.TabIndex = 40;
             this.productHeightLabel.Text = "Product Height (cm)";
             // 
             // productWidthLabel
@@ -423,7 +425,7 @@
             this.productWidthLabel.Location = new System.Drawing.Point(736, 258);
             this.productWidthLabel.Name = "productWidthLabel";
             this.productWidthLabel.Size = new System.Drawing.Size(155, 20);
-            this.productWidthLabel.TabIndex = 38;
+            this.productWidthLabel.TabIndex = 42;
             this.productWidthLabel.Text = "Product Width (cm)";
             // 
             // productDepthLabel
@@ -434,7 +436,7 @@
             this.productDepthLabel.Location = new System.Drawing.Point(736, 284);
             this.productDepthLabel.Name = "productDepthLabel";
             this.productDepthLabel.Size = new System.Drawing.Size(157, 20);
-            this.productDepthLabel.TabIndex = 40;
+            this.productDepthLabel.TabIndex = 44;
             this.productDepthLabel.Text = "Product Depth (cm)";
             // 
             // weightLabel
@@ -445,7 +447,7 @@
             this.weightLabel.Location = new System.Drawing.Point(736, 310);
             this.weightLabel.Name = "weightLabel";
             this.weightLabel.Size = new System.Drawing.Size(125, 20);
-            this.weightLabel.TabIndex = 42;
+            this.weightLabel.TabIndex = 46;
             this.weightLabel.Text = "Weight (grams)";
             // 
             // weightTextBox
@@ -454,7 +456,7 @@
             this.weightTextBox.MaxLength = 10;
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(386, 20);
-            this.weightTextBox.TabIndex = 43;
+            this.weightTextBox.TabIndex = 47;
             // 
             // numberComponentTextbox
             // 
@@ -462,7 +464,7 @@
             this.numberComponentTextbox.MaxLength = 10;
             this.numberComponentTextbox.Name = "numberComponentTextbox";
             this.numberComponentTextbox.Size = new System.Drawing.Size(386, 20);
-            this.numberComponentTextbox.TabIndex = 45;
+            this.numberComponentTextbox.TabIndex = 49;
             // 
             // numberComponentLabel
             // 
@@ -472,7 +474,7 @@
             this.numberComponentLabel.Location = new System.Drawing.Point(736, 334);
             this.numberComponentLabel.Name = "numberComponentLabel";
             this.numberComponentLabel.Size = new System.Drawing.Size(186, 20);
-            this.numberComponentLabel.TabIndex = 44;
+            this.numberComponentLabel.TabIndex = 48;
             this.numberComponentLabel.Text = "Number of Components";
             // 
             // strapLabel
@@ -483,7 +485,7 @@
             this.strapLabel.Location = new System.Drawing.Point(736, 362);
             this.strapLabel.Name = "strapLabel";
             this.strapLabel.Size = new System.Drawing.Size(224, 20);
-            this.strapLabel.TabIndex = 46;
+            this.strapLabel.TabIndex = 50;
             this.strapLabel.Text = "Does this item have a strap?";
             // 
             // strapCombobox
@@ -497,7 +499,7 @@
             this.strapCombobox.Location = new System.Drawing.Point(1017, 364);
             this.strapCombobox.Name = "strapCombobox";
             this.strapCombobox.Size = new System.Drawing.Size(386, 21);
-            this.strapCombobox.TabIndex = 47;
+            this.strapCombobox.TabIndex = 51;
             this.strapCombobox.Text = "False";
             // 
             // detachableCombobox
@@ -511,7 +513,7 @@
             this.detachableCombobox.Location = new System.Drawing.Point(1017, 389);
             this.detachableCombobox.Name = "detachableCombobox";
             this.detachableCombobox.Size = new System.Drawing.Size(386, 21);
-            this.detachableCombobox.TabIndex = 49;
+            this.detachableCombobox.TabIndex = 53;
             this.detachableCombobox.Text = "False";
             // 
             // detachableLabel
@@ -522,7 +524,7 @@
             this.detachableLabel.Location = new System.Drawing.Point(736, 387);
             this.detachableLabel.Name = "detachableLabel";
             this.detachableLabel.Size = new System.Drawing.Size(188, 20);
-            this.detachableLabel.TabIndex = 48;
+            this.detachableLabel.TabIndex = 52;
             this.detachableLabel.Text = "Is the strap detachable?";
             // 
             // zippedLabel
@@ -533,7 +535,7 @@
             this.zippedLabel.Location = new System.Drawing.Point(736, 441);
             this.zippedLabel.Name = "zippedLabel";
             this.zippedLabel.Size = new System.Drawing.Size(313, 20);
-            this.zippedLabel.TabIndex = 50;
+            this.zippedLabel.TabIndex = 54;
             this.zippedLabel.Text = "Does this item have a zipped enclosure?";
             // 
             // zippedCombobox
@@ -547,7 +549,7 @@
             this.zippedCombobox.Location = new System.Drawing.Point(1082, 440);
             this.zippedCombobox.Name = "zippedCombobox";
             this.zippedCombobox.Size = new System.Drawing.Size(321, 21);
-            this.zippedCombobox.TabIndex = 51;
+            this.zippedCombobox.TabIndex = 55;
             this.zippedCombobox.Text = "False";
             // 
             // shippedFlatCombobox
@@ -561,7 +563,7 @@
             this.shippedFlatCombobox.Location = new System.Drawing.Point(1082, 467);
             this.shippedFlatCombobox.Name = "shippedFlatCombobox";
             this.shippedFlatCombobox.Size = new System.Drawing.Size(321, 21);
-            this.shippedFlatCombobox.TabIndex = 53;
+            this.shippedFlatCombobox.TabIndex = 57;
             this.shippedFlatCombobox.Text = "False";
             this.shippedFlatCombobox.SelectedValueChanged += new System.EventHandler(this.shippedFlatCombobox_SelectedValueChanged);
             // 
@@ -573,7 +575,7 @@
             this.shippedFlatLabel.Location = new System.Drawing.Point(736, 465);
             this.shippedFlatLabel.Name = "shippedFlatLabel";
             this.shippedFlatLabel.Size = new System.Drawing.Size(231, 20);
-            this.shippedFlatLabel.TabIndex = 52;
+            this.shippedFlatLabel.TabIndex = 56;
             this.shippedFlatLabel.Text = "Can this item be shipped flat?";
             // 
             // shippedFoldedCombobox
@@ -587,7 +589,7 @@
             this.shippedFoldedCombobox.Location = new System.Drawing.Point(1082, 494);
             this.shippedFoldedCombobox.Name = "shippedFoldedCombobox";
             this.shippedFoldedCombobox.Size = new System.Drawing.Size(321, 21);
-            this.shippedFoldedCombobox.TabIndex = 55;
+            this.shippedFoldedCombobox.TabIndex = 59;
             this.shippedFoldedCombobox.Text = "False";
             this.shippedFoldedCombobox.SelectedValueChanged += new System.EventHandler(this.shippedFoldedCombobox_SelectedValueChanged);
             // 
@@ -599,7 +601,7 @@
             this.shippedFoldedLabel.Location = new System.Drawing.Point(736, 492);
             this.shippedFoldedLabel.Name = "shippedFoldedLabel";
             this.shippedFoldedLabel.Size = new System.Drawing.Size(253, 20);
-            this.shippedFoldedLabel.TabIndex = 54;
+            this.shippedFoldedLabel.TabIndex = 58;
             this.shippedFoldedLabel.Text = "Can this item be shipped folded?";
             // 
             // shippableHeightLabel
@@ -610,7 +612,7 @@
             this.shippableHeightLabel.Location = new System.Drawing.Point(736, 540);
             this.shippableHeightLabel.Name = "shippableHeightLabel";
             this.shippableHeightLabel.Size = new System.Drawing.Size(176, 20);
-            this.shippableHeightLabel.TabIndex = 56;
+            this.shippableHeightLabel.TabIndex = 60;
             this.shippableHeightLabel.Text = "Shippable Height (cm)";
             // 
             // shippableWidthLabel
@@ -621,7 +623,7 @@
             this.shippableWidthLabel.Location = new System.Drawing.Point(736, 566);
             this.shippableWidthLabel.Name = "shippableWidthLabel";
             this.shippableWidthLabel.Size = new System.Drawing.Size(170, 20);
-            this.shippableWidthLabel.TabIndex = 58;
+            this.shippableWidthLabel.TabIndex = 62;
             this.shippableWidthLabel.Text = "Shippable Width (cm)";
             // 
             // shippableDepthLabel
@@ -632,7 +634,7 @@
             this.shippableDepthLabel.Location = new System.Drawing.Point(736, 590);
             this.shippableDepthLabel.Name = "shippableDepthLabel";
             this.shippableDepthLabel.Size = new System.Drawing.Size(172, 20);
-            this.shippableDepthLabel.TabIndex = 60;
+            this.shippableDepthLabel.TabIndex = 64;
             this.shippableDepthLabel.Text = "Shippable Depth (cm)";
             // 
             // shippableWeightLabel
@@ -643,7 +645,7 @@
             this.shippableWeightLabel.Location = new System.Drawing.Point(736, 616);
             this.shippableWeightLabel.Name = "shippableWeightLabel";
             this.shippableWeightLabel.Size = new System.Drawing.Size(203, 20);
-            this.shippableWeightLabel.TabIndex = 62;
+            this.shippableWeightLabel.TabIndex = 66;
             this.shippableWeightLabel.Text = "Shippable Weight (grams)";
             // 
             // detailLabel3
@@ -654,7 +656,7 @@
             this.detailLabel3.Location = new System.Drawing.Point(0, 673);
             this.detailLabel3.Name = "detailLabel3";
             this.detailLabel3.Size = new System.Drawing.Size(694, 29);
-            this.detailLabel3.TabIndex = 64;
+            this.detailLabel3.TabIndex = 68;
             this.detailLabel3.Text = "Online Naming";
             this.detailLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -666,7 +668,7 @@
             this.tscLabel.Location = new System.Drawing.Point(8, 712);
             this.tscLabel.Name = "tscLabel";
             this.tscLabel.Size = new System.Drawing.Size(244, 20);
-            this.tscLabel.TabIndex = 65;
+            this.tscLabel.TabIndex = 69;
             this.tscLabel.Text = "What is this item\'s TSC Name?";
             // 
             // inactiveDesignButton
@@ -677,7 +679,7 @@
             this.inactiveDesignButton.Location = new System.Drawing.Point(722, 1070);
             this.inactiveDesignButton.Name = "inactiveDesignButton";
             this.inactiveDesignButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveDesignButton.TabIndex = 105;
+            this.inactiveDesignButton.TabIndex = 109;
             this.inactiveDesignButton.Text = "Inactive Design";
             this.inactiveDesignButton.UseVisualStyleBackColor = false;
             this.inactiveDesignButton.Click += new System.EventHandler(this.inactiveDesignButton_Click);
@@ -690,7 +692,7 @@
             this.activeDesignButton.Location = new System.Drawing.Point(536, 1070);
             this.activeDesignButton.Name = "activeDesignButton";
             this.activeDesignButton.Size = new System.Drawing.Size(180, 39);
-            this.activeDesignButton.TabIndex = 104;
+            this.activeDesignButton.TabIndex = 108;
             this.activeDesignButton.Text = "Active Design";
             this.activeDesignButton.UseVisualStyleBackColor = false;
             this.activeDesignButton.Click += new System.EventHandler(this.activeDesignButton_Click);
@@ -703,7 +705,7 @@
             this.addDesignButton.Location = new System.Drawing.Point(537, 988);
             this.addDesignButton.Name = "addDesignButton";
             this.addDesignButton.Size = new System.Drawing.Size(370, 76);
-            this.addDesignButton.TabIndex = 103;
+            this.addDesignButton.TabIndex = 107;
             this.addDesignButton.Text = "Add Design";
             this.addDesignButton.UseVisualStyleBackColor = false;
             this.addDesignButton.Click += new System.EventHandler(this.addDesignButton_Click);
@@ -716,7 +718,7 @@
             this.detailLabel4.Location = new System.Drawing.Point(736, 673);
             this.detailLabel4.Name = "detailLabel4";
             this.detailLabel4.Size = new System.Drawing.Size(682, 29);
-            this.detailLabel4.TabIndex = 81;
+            this.detailLabel4.TabIndex = 85;
             this.detailLabel4.Text = "Options and Features";
             this.detailLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -728,7 +730,7 @@
             this.costcoLabel.Location = new System.Drawing.Point(8, 739);
             this.costcoLabel.Name = "costcoLabel";
             this.costcoLabel.Size = new System.Drawing.Size(282, 20);
-            this.costcoLabel.TabIndex = 67;
+            this.costcoLabel.TabIndex = 71;
             this.costcoLabel.Text = "What is this item\'s COSTCO Name?";
             // 
             // costcoTextbox
@@ -737,7 +739,7 @@
             this.costcoTextbox.MaxLength = 50;
             this.costcoTextbox.Name = "costcoTextbox";
             this.costcoTextbox.Size = new System.Drawing.Size(374, 20);
-            this.costcoTextbox.TabIndex = 68;
+            this.costcoTextbox.TabIndex = 72;
             // 
             // bestbuyTextbox
             // 
@@ -745,15 +747,15 @@
             this.bestbuyTextbox.MaxLength = 50;
             this.bestbuyTextbox.Name = "bestbuyTextbox";
             this.bestbuyTextbox.Size = new System.Drawing.Size(374, 20);
-            this.bestbuyTextbox.TabIndex = 70;
+            this.bestbuyTextbox.TabIndex = 74;
             // 
             // tscTextbox
             // 
             this.tscTextbox.Location = new System.Drawing.Point(312, 711);
-            this.tscTextbox.MaxLength = 50;
+            this.tscTextbox.MaxLength = 67;
             this.tscTextbox.Name = "tscTextbox";
             this.tscTextbox.Size = new System.Drawing.Size(374, 20);
-            this.tscTextbox.TabIndex = 66;
+            this.tscTextbox.TabIndex = 70;
             // 
             // bestbuyLabel
             // 
@@ -763,7 +765,7 @@
             this.bestbuyLabel.Location = new System.Drawing.Point(8, 769);
             this.bestbuyLabel.Name = "bestbuyLabel";
             this.bestbuyLabel.Size = new System.Drawing.Size(289, 20);
-            this.bestbuyLabel.TabIndex = 69;
+            this.bestbuyLabel.TabIndex = 73;
             this.bestbuyLabel.Text = "What is this item\'s BESTBUY Name?";
             // 
             // shopcaLabel
@@ -774,7 +776,7 @@
             this.shopcaLabel.Location = new System.Drawing.Point(8, 803);
             this.shopcaLabel.Name = "shopcaLabel";
             this.shopcaLabel.Size = new System.Drawing.Size(286, 20);
-            this.shopcaLabel.TabIndex = 71;
+            this.shopcaLabel.TabIndex = 75;
             this.shopcaLabel.Text = "What is this item\'s SHOP.CA Name?";
             // 
             // shopcaTextbox
@@ -783,7 +785,7 @@
             this.shopcaTextbox.MaxLength = 50;
             this.shopcaTextbox.Name = "shopcaTextbox";
             this.shopcaTextbox.Size = new System.Drawing.Size(374, 20);
-            this.shopcaTextbox.TabIndex = 72;
+            this.shopcaTextbox.TabIndex = 76;
             // 
             // amazonTextbox
             // 
@@ -791,7 +793,7 @@
             this.amazonTextbox.MaxLength = 50;
             this.amazonTextbox.Name = "amazonTextbox";
             this.amazonTextbox.Size = new System.Drawing.Size(374, 20);
-            this.amazonTextbox.TabIndex = 74;
+            this.amazonTextbox.TabIndex = 78;
             // 
             // searsTextbox
             // 
@@ -799,7 +801,7 @@
             this.searsTextbox.MaxLength = 50;
             this.searsTextbox.Name = "searsTextbox";
             this.searsTextbox.Size = new System.Drawing.Size(374, 20);
-            this.searsTextbox.TabIndex = 76;
+            this.searsTextbox.TabIndex = 80;
             // 
             // staplesTextbox
             // 
@@ -807,7 +809,7 @@
             this.staplesTextbox.MaxLength = 50;
             this.staplesTextbox.Name = "staplesTextbox";
             this.staplesTextbox.Size = new System.Drawing.Size(374, 20);
-            this.staplesTextbox.TabIndex = 78;
+            this.staplesTextbox.TabIndex = 82;
             // 
             // walmartTextbox
             // 
@@ -815,7 +817,7 @@
             this.walmartTextbox.MaxLength = 50;
             this.walmartTextbox.Name = "walmartTextbox";
             this.walmartTextbox.Size = new System.Drawing.Size(374, 20);
-            this.walmartTextbox.TabIndex = 80;
+            this.walmartTextbox.TabIndex = 84;
             // 
             // amazonLabel
             // 
@@ -825,7 +827,7 @@
             this.amazonLabel.Location = new System.Drawing.Point(8, 835);
             this.amazonLabel.Name = "amazonLabel";
             this.amazonLabel.Size = new System.Drawing.Size(281, 20);
-            this.amazonLabel.TabIndex = 73;
+            this.amazonLabel.TabIndex = 77;
             this.amazonLabel.Text = "What is this item\'s AMAZON Name?";
             // 
             // searsLabel
@@ -836,7 +838,7 @@
             this.searsLabel.Location = new System.Drawing.Point(8, 866);
             this.searsLabel.Name = "searsLabel";
             this.searsLabel.Size = new System.Drawing.Size(267, 20);
-            this.searsLabel.TabIndex = 75;
+            this.searsLabel.TabIndex = 79;
             this.searsLabel.Text = "What is this item\'s SEARS Name?";
             // 
             // staplesLabel
@@ -847,7 +849,7 @@
             this.staplesLabel.Location = new System.Drawing.Point(8, 896);
             this.staplesLabel.Name = "staplesLabel";
             this.staplesLabel.Size = new System.Drawing.Size(286, 20);
-            this.staplesLabel.TabIndex = 77;
+            this.staplesLabel.TabIndex = 81;
             this.staplesLabel.Text = "What is this item\'s STAPLES Name?";
             // 
             // walmartLabel
@@ -858,7 +860,7 @@
             this.walmartLabel.Location = new System.Drawing.Point(8, 928);
             this.walmartLabel.Name = "walmartLabel";
             this.walmartLabel.Size = new System.Drawing.Size(295, 20);
-            this.walmartLabel.TabIndex = 79;
+            this.walmartLabel.TabIndex = 83;
             this.walmartLabel.Text = "What is this item\'s WALMART Name?";
             // 
             // translateButton2
@@ -869,7 +871,7 @@
             this.translateButton2.Location = new System.Drawing.Point(1057, 708);
             this.translateButton2.Name = "translateButton2";
             this.translateButton2.Size = new System.Drawing.Size(92, 23);
-            this.translateButton2.TabIndex = 83;
+            this.translateButton2.TabIndex = 87;
             this.translateButton2.Text = "TRANSLATE";
             this.translateButton2.UseVisualStyleBackColor = false;
             this.translateButton2.Click += new System.EventHandler(this.translateButton2_Click);
@@ -882,7 +884,7 @@
             this.frenchLabel2.Location = new System.Drawing.Point(1189, 712);
             this.frenchLabel2.Name = "frenchLabel2";
             this.frenchLabel2.Size = new System.Drawing.Size(57, 15);
-            this.frenchLabel2.TabIndex = 84;
+            this.frenchLabel2.TabIndex = 88;
             this.frenchLabel2.Text = "FRENCH";
             // 
             // englishLabel2
@@ -893,7 +895,7 @@
             this.englishLabel2.Location = new System.Drawing.Point(961, 712);
             this.englishLabel2.Name = "englishLabel2";
             this.englishLabel2.Size = new System.Drawing.Size(60, 15);
-            this.englishLabel2.TabIndex = 82;
+            this.englishLabel2.TabIndex = 86;
             this.englishLabel2.Text = "ENGLISH";
             // 
             // option1EnglishTextbox
@@ -903,7 +905,7 @@
             this.option1EnglishTextbox.Multiline = true;
             this.option1EnglishTextbox.Name = "option1EnglishTextbox";
             this.option1EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option1EnglishTextbox.TabIndex = 86;
+            this.option1EnglishTextbox.TabIndex = 90;
             // 
             // option1Label
             // 
@@ -913,7 +915,7 @@
             this.option1Label.Location = new System.Drawing.Point(736, 735);
             this.option1Label.Name = "option1Label";
             this.option1Label.Size = new System.Drawing.Size(72, 20);
-            this.option1Label.TabIndex = 85;
+            this.option1Label.TabIndex = 89;
             this.option1Label.Text = "Option 1";
             // 
             // option1FrenchTextbox
@@ -923,7 +925,7 @@
             this.option1FrenchTextbox.Multiline = true;
             this.option1FrenchTextbox.Name = "option1FrenchTextbox";
             this.option1FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option1FrenchTextbox.TabIndex = 87;
+            this.option1FrenchTextbox.TabIndex = 91;
             // 
             // option2EnglishTextbox
             // 
@@ -932,7 +934,7 @@
             this.option2EnglishTextbox.Multiline = true;
             this.option2EnglishTextbox.Name = "option2EnglishTextbox";
             this.option2EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option2EnglishTextbox.TabIndex = 89;
+            this.option2EnglishTextbox.TabIndex = 93;
             // 
             // option2FrenchTextbox
             // 
@@ -941,7 +943,7 @@
             this.option2FrenchTextbox.Multiline = true;
             this.option2FrenchTextbox.Name = "option2FrenchTextbox";
             this.option2FrenchTextbox.Size = new System.Drawing.Size(251, 34);
-            this.option2FrenchTextbox.TabIndex = 90;
+            this.option2FrenchTextbox.TabIndex = 94;
             // 
             // option3EnglishTextbox
             // 
@@ -950,7 +952,7 @@
             this.option3EnglishTextbox.Multiline = true;
             this.option3EnglishTextbox.Name = "option3EnglishTextbox";
             this.option3EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option3EnglishTextbox.TabIndex = 92;
+            this.option3EnglishTextbox.TabIndex = 96;
             // 
             // option3FrenchTextbox
             // 
@@ -959,7 +961,7 @@
             this.option3FrenchTextbox.Multiline = true;
             this.option3FrenchTextbox.Name = "option3FrenchTextbox";
             this.option3FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option3FrenchTextbox.TabIndex = 93;
+            this.option3FrenchTextbox.TabIndex = 97;
             // 
             // option4EnglishTextbox
             // 
@@ -968,7 +970,7 @@
             this.option4EnglishTextbox.Multiline = true;
             this.option4EnglishTextbox.Name = "option4EnglishTextbox";
             this.option4EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option4EnglishTextbox.TabIndex = 95;
+            this.option4EnglishTextbox.TabIndex = 99;
             // 
             // option5EnglishTextbox
             // 
@@ -977,7 +979,7 @@
             this.option5EnglishTextbox.Multiline = true;
             this.option5EnglishTextbox.Name = "option5EnglishTextbox";
             this.option5EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option5EnglishTextbox.TabIndex = 98;
+            this.option5EnglishTextbox.TabIndex = 102;
             // 
             // option4FrenchTextbox
             // 
@@ -986,7 +988,7 @@
             this.option4FrenchTextbox.Multiline = true;
             this.option4FrenchTextbox.Name = "option4FrenchTextbox";
             this.option4FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option4FrenchTextbox.TabIndex = 96;
+            this.option4FrenchTextbox.TabIndex = 100;
             // 
             // option5FrenchTextbox
             // 
@@ -995,7 +997,7 @@
             this.option5FrenchTextbox.Multiline = true;
             this.option5FrenchTextbox.Name = "option5FrenchTextbox";
             this.option5FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option5FrenchTextbox.TabIndex = 99;
+            this.option5FrenchTextbox.TabIndex = 103;
             // 
             // option2Label
             // 
@@ -1005,7 +1007,7 @@
             this.option2Label.Location = new System.Drawing.Point(736, 775);
             this.option2Label.Name = "option2Label";
             this.option2Label.Size = new System.Drawing.Size(72, 20);
-            this.option2Label.TabIndex = 88;
+            this.option2Label.TabIndex = 92;
             this.option2Label.Text = "Option 2";
             // 
             // option3Label
@@ -1016,7 +1018,7 @@
             this.option3Label.Location = new System.Drawing.Point(736, 811);
             this.option3Label.Name = "option3Label";
             this.option3Label.Size = new System.Drawing.Size(72, 20);
-            this.option3Label.TabIndex = 91;
+            this.option3Label.TabIndex = 95;
             this.option3Label.Text = "Option 3";
             // 
             // option4Label
@@ -1027,7 +1029,7 @@
             this.option4Label.Location = new System.Drawing.Point(736, 851);
             this.option4Label.Name = "option4Label";
             this.option4Label.Size = new System.Drawing.Size(72, 20);
-            this.option4Label.TabIndex = 94;
+            this.option4Label.TabIndex = 98;
             this.option4Label.Text = "Option 4";
             // 
             // option5Label
@@ -1038,7 +1040,7 @@
             this.option5Label.Location = new System.Drawing.Point(736, 889);
             this.option5Label.Name = "option5Label";
             this.option5Label.Size = new System.Drawing.Size(72, 20);
-            this.option5Label.TabIndex = 97;
+            this.option5Label.TabIndex = 101;
             this.option5Label.Text = "Option 5";
             // 
             // productFamilyLabel
@@ -1049,7 +1051,7 @@
             this.productFamilyLabel.Location = new System.Drawing.Point(8, 154);
             this.productFamilyLabel.Name = "productFamilyLabel";
             this.productFamilyLabel.Size = new System.Drawing.Size(121, 20);
-            this.productFamilyLabel.TabIndex = 4;
+            this.productFamilyLabel.TabIndex = 6;
             this.productFamilyLabel.Text = "Product Family";
             // 
             // productFamilyCombobox
@@ -1060,7 +1062,7 @@
             this.productFamilyCombobox.Location = new System.Drawing.Point(213, 154);
             this.productFamilyCombobox.Name = "productFamilyCombobox";
             this.productFamilyCombobox.Size = new System.Drawing.Size(481, 21);
-            this.productFamilyCombobox.TabIndex = 5;
+            this.productFamilyCombobox.TabIndex = 7;
             // 
             // brandLabel
             // 
@@ -1070,7 +1072,7 @@
             this.brandLabel.Location = new System.Drawing.Point(8, 180);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(54, 20);
-            this.brandLabel.TabIndex = 6;
+            this.brandLabel.TabIndex = 8;
             this.brandLabel.Text = "Brand";
             // 
             // designServiceFlagCombobox
@@ -1082,7 +1084,7 @@
             this.designServiceFlagCombobox.Location = new System.Drawing.Point(213, 206);
             this.designServiceFlagCombobox.Name = "designServiceFlagCombobox";
             this.designServiceFlagCombobox.Size = new System.Drawing.Size(161, 21);
-            this.designServiceFlagCombobox.TabIndex = 9;
+            this.designServiceFlagCombobox.TabIndex = 11;
             this.designServiceFlagCombobox.Text = "Design";
             this.designServiceFlagCombobox.SelectedIndexChanged += new System.EventHandler(this.designServiceFlagCombobox_SelectedIndexChanged);
             // 
@@ -1094,7 +1096,7 @@
             this.designServiceFlagLabel.Location = new System.Drawing.Point(8, 207);
             this.designServiceFlagLabel.Name = "designServiceFlagLabel";
             this.designServiceFlagLabel.Size = new System.Drawing.Size(161, 20);
-            this.designServiceFlagLabel.TabIndex = 8;
+            this.designServiceFlagLabel.TabIndex = 10;
             this.designServiceFlagLabel.Text = "Design-Service Flag";
             // 
             // internalNameTextbox
@@ -1103,7 +1105,7 @@
             this.internalNameTextbox.MaxLength = 30;
             this.internalNameTextbox.Name = "internalNameTextbox";
             this.internalNameTextbox.Size = new System.Drawing.Size(481, 20);
-            this.internalNameTextbox.TabIndex = 11;
+            this.internalNameTextbox.TabIndex = 14;
             this.internalNameTextbox.TextChanged += new System.EventHandler(this.internalNameTextbox_TextChanged);
             // 
             // internalNameLabel
@@ -1114,7 +1116,7 @@
             this.internalNameLabel.Location = new System.Drawing.Point(8, 232);
             this.internalNameLabel.Name = "internalNameLabel";
             this.internalNameLabel.Size = new System.Drawing.Size(176, 20);
-            this.internalNameLabel.TabIndex = 10;
+            this.internalNameLabel.TabIndex = 13;
             this.internalNameLabel.Text = "Internal (Ashlin) Name";
             // 
             // displayedOnWebsiteLabel
@@ -1125,7 +1127,7 @@
             this.displayedOnWebsiteLabel.Location = new System.Drawing.Point(736, 928);
             this.displayedOnWebsiteLabel.Name = "displayedOnWebsiteLabel";
             this.displayedOnWebsiteLabel.Size = new System.Drawing.Size(349, 20);
-            this.displayedOnWebsiteLabel.TabIndex = 100;
+            this.displayedOnWebsiteLabel.TabIndex = 104;
             this.displayedOnWebsiteLabel.Text = "Should this item be displayed on the website?";
             // 
             // displayedOnWebsiteCombobox
@@ -1139,7 +1141,7 @@
             this.displayedOnWebsiteCombobox.Location = new System.Drawing.Point(1121, 927);
             this.displayedOnWebsiteCombobox.Name = "displayedOnWebsiteCombobox";
             this.displayedOnWebsiteCombobox.Size = new System.Drawing.Size(251, 21);
-            this.displayedOnWebsiteCombobox.TabIndex = 101;
+            this.displayedOnWebsiteCombobox.TabIndex = 105;
             this.displayedOnWebsiteCombobox.Text = "True";
             // 
             // backgroundWorkerTranslate1
@@ -1170,7 +1172,7 @@
             this.shippableHeightTextbox.MaxLength = 10;
             this.shippableHeightTextbox.Name = "shippableHeightTextbox";
             this.shippableHeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableHeightTextbox.TabIndex = 57;
+            this.shippableHeightTextbox.TabIndex = 61;
             this.shippableHeightTextbox.TextChanged += new System.EventHandler(this.shippableHeightTextbox_TextChanged);
             this.shippableHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableHeightTextbox_KeyPress);
             // 
@@ -1181,7 +1183,7 @@
             this.shippableWidthTextbox.MaxLength = 10;
             this.shippableWidthTextbox.Name = "shippableWidthTextbox";
             this.shippableWidthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableWidthTextbox.TabIndex = 59;
+            this.shippableWidthTextbox.TabIndex = 63;
             this.shippableWidthTextbox.TextChanged += new System.EventHandler(this.shippableWidthTextbox_TextChanged);
             this.shippableWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableWidthTextbox_KeyPress);
             // 
@@ -1192,7 +1194,7 @@
             this.shippableDepthTextbox.MaxLength = 10;
             this.shippableDepthTextbox.Name = "shippableDepthTextbox";
             this.shippableDepthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableDepthTextbox.TabIndex = 61;
+            this.shippableDepthTextbox.TabIndex = 65;
             this.shippableDepthTextbox.TextChanged += new System.EventHandler(this.shippableDepthTextbox_TextChanged);
             this.shippableDepthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableDepthTextbox_KeyPress);
             // 
@@ -1202,7 +1204,7 @@
             this.brandTextbox.Location = new System.Drawing.Point(213, 178);
             this.brandTextbox.Name = "brandTextbox";
             this.brandTextbox.Size = new System.Drawing.Size(481, 20);
-            this.brandTextbox.TabIndex = 7;
+            this.brandTextbox.TabIndex = 9;
             this.brandTextbox.Text = "Ashlin®";
             // 
             // imprintHeightTextbox
@@ -1211,7 +1213,7 @@
             this.imprintHeightTextbox.MaxLength = 10;
             this.imprintHeightTextbox.Name = "imprintHeightTextbox";
             this.imprintHeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.imprintHeightTextbox.TabIndex = 33;
+            this.imprintHeightTextbox.TabIndex = 37;
             this.imprintHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.imprintHeightTextbox_KeyPress);
             // 
             // progressBar
@@ -1222,7 +1224,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 102;
+            this.progressBar.TabIndex = 106;
             // 
             // shippableWeightTextbox
             // 
@@ -1231,7 +1233,7 @@
             this.shippableWeightTextbox.MaxLength = 10;
             this.shippableWeightTextbox.Name = "shippableWeightTextbox";
             this.shippableWeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableWeightTextbox.TabIndex = 63;
+            this.shippableWeightTextbox.TabIndex = 67;
             // 
             // trendShortFrenchTextbox
             // 
@@ -1240,7 +1242,7 @@
             this.trendShortFrenchTextbox.Multiline = true;
             this.trendShortFrenchTextbox.Name = "trendShortFrenchTextbox";
             this.trendShortFrenchTextbox.Size = new System.Drawing.Size(230, 33);
-            this.trendShortFrenchTextbox.TabIndex = 23;
+            this.trendShortFrenchTextbox.TabIndex = 26;
             // 
             // trendExtendedEnglishTextbox
             // 
@@ -1249,7 +1251,7 @@
             this.trendExtendedEnglishTextbox.Multiline = true;
             this.trendExtendedEnglishTextbox.Name = "trendExtendedEnglishTextbox";
             this.trendExtendedEnglishTextbox.Size = new System.Drawing.Size(233, 123);
-            this.trendExtendedEnglishTextbox.TabIndex = 25;
+            this.trendExtendedEnglishTextbox.TabIndex = 28;
             // 
             // trendShortEnglishTextbox
             // 
@@ -1258,7 +1260,7 @@
             this.trendShortEnglishTextbox.Multiline = true;
             this.trendShortEnglishTextbox.Name = "trendShortEnglishTextbox";
             this.trendShortEnglishTextbox.Size = new System.Drawing.Size(233, 33);
-            this.trendShortEnglishTextbox.TabIndex = 22;
+            this.trendShortEnglishTextbox.TabIndex = 25;
             // 
             // trendExtendedFrenchTextbox
             // 
@@ -1267,7 +1269,7 @@
             this.trendExtendedFrenchTextbox.Multiline = true;
             this.trendExtendedFrenchTextbox.Name = "trendExtendedFrenchTextbox";
             this.trendExtendedFrenchTextbox.Size = new System.Drawing.Size(233, 123);
-            this.trendExtendedFrenchTextbox.TabIndex = 26;
+            this.trendExtendedFrenchTextbox.TabIndex = 29;
             // 
             // trendShortLabel
             // 
@@ -1277,7 +1279,7 @@
             this.trendShortLabel.Location = new System.Drawing.Point(8, 474);
             this.trendShortLabel.Name = "trendShortLabel";
             this.trendShortLabel.Size = new System.Drawing.Size(188, 20);
-            this.trendShortLabel.TabIndex = 21;
+            this.trendShortLabel.TabIndex = 24;
             this.trendShortLabel.Text = "Trend Short Description";
             // 
             // trendExtendedLabel
@@ -1287,7 +1289,7 @@
             this.trendExtendedLabel.Location = new System.Drawing.Point(8, 513);
             this.trendExtendedLabel.Name = "trendExtendedLabel";
             this.trendExtendedLabel.Size = new System.Drawing.Size(161, 47);
-            this.trendExtendedLabel.TabIndex = 24;
+            this.trendExtendedLabel.TabIndex = 27;
             this.trendExtendedLabel.Text = "Trend Extended Description";
             // 
             // duplicateLabel2
@@ -1297,7 +1299,7 @@
             this.duplicateLabel2.Location = new System.Drawing.Point(524, 214);
             this.duplicateLabel2.Name = "duplicateLabel2";
             this.duplicateLabel2.Size = new System.Drawing.Size(170, 13);
-            this.duplicateLabel2.TabIndex = 109;
+            this.duplicateLabel2.TabIndex = 12;
             this.duplicateLabel2.Text = "duplicate Internal Name detected !";
             this.duplicateLabel2.Visible = false;
             // 
@@ -1305,12 +1307,36 @@
             // 
             this.duplicateLabel1.AutoSize = true;
             this.duplicateLabel1.ForeColor = System.Drawing.Color.Red;
-            this.duplicateLabel1.Location = new System.Drawing.Point(495, 112);
+            this.duplicateLabel1.Location = new System.Drawing.Point(398, 112);
             this.duplicateLabel1.Name = "duplicateLabel1";
             this.duplicateLabel1.Size = new System.Drawing.Size(199, 13);
-            this.duplicateLabel1.TabIndex = 110;
+            this.duplicateLabel1.TabIndex = 2;
             this.duplicateLabel1.Text = "duplicate design service code detected !";
             this.duplicateLabel1.Visible = false;
+            // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(7, 607);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 30;
+            this.onlineButton.Text = "Design Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
+            // giftCheckbox
+            // 
+            this.giftCheckbox.AutoSize = true;
+            this.giftCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.giftCheckbox.Location = new System.Drawing.Point(605, 126);
+            this.giftCheckbox.Name = "giftCheckbox";
+            this.giftCheckbox.Size = new System.Drawing.Size(89, 24);
+            this.giftCheckbox.TabIndex = 5;
+            this.giftCheckbox.Text = "Gift Box";
+            this.giftCheckbox.UseVisualStyleBackColor = true;
             // 
             // AddDesign
             // 
@@ -1319,6 +1345,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
+            this.Controls.Add(this.giftCheckbox);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.duplicateLabel1);
             this.Controls.Add(this.duplicateLabel2);
             this.Controls.Add(this.trendExtendedLabel);
@@ -1552,5 +1580,7 @@
         private System.Windows.Forms.Label trendExtendedLabel;
         private System.Windows.Forms.Label duplicateLabel2;
         private System.Windows.Forms.Label duplicateLabel1;
+        private System.Windows.Forms.Button onlineButton;
+        private System.Windows.Forms.CheckBox giftCheckbox;
     }
 }

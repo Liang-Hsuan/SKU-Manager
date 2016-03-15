@@ -50,6 +50,7 @@
             this.backgroundWorkerTranslate = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -62,7 +63,7 @@
             this.titleLabel.Location = new System.Drawing.Point(-9, -3);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
-            this.titleLabel.TabIndex = 1;
+            this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Add Color";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -76,7 +77,7 @@
             this.detailLabel.Location = new System.Drawing.Point(-6, 70);
             this.detailLabel.Name = "detailLabel";
             this.detailLabel.Size = new System.Drawing.Size(754, 29);
-            this.detailLabel.TabIndex = 2;
+            this.detailLabel.TabIndex = 1;
             this.detailLabel.Text = "Color Details";
             this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -89,7 +90,7 @@
             this.inactiveColorButton.Location = new System.Drawing.Point(362, 627);
             this.inactiveColorButton.Name = "inactiveColorButton";
             this.inactiveColorButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveColorButton.TabIndex = 18;
+            this.inactiveColorButton.TabIndex = 19;
             this.inactiveColorButton.Text = "Inactive Color";
             this.inactiveColorButton.UseVisualStyleBackColor = false;
             this.inactiveColorButton.Click += new System.EventHandler(this.inactiveColorButton_Click);
@@ -103,7 +104,7 @@
             this.activeColorButton.Location = new System.Drawing.Point(176, 627);
             this.activeColorButton.Name = "activeColorButton";
             this.activeColorButton.Size = new System.Drawing.Size(180, 39);
-            this.activeColorButton.TabIndex = 17;
+            this.activeColorButton.TabIndex = 18;
             this.activeColorButton.Text = "Active Color";
             this.activeColorButton.UseVisualStyleBackColor = false;
             this.activeColorButton.Click += new System.EventHandler(this.activeColorButton_Click);
@@ -117,7 +118,7 @@
             this.addColorButton.Location = new System.Drawing.Point(176, 545);
             this.addColorButton.Name = "addColorButton";
             this.addColorButton.Size = new System.Drawing.Size(370, 76);
-            this.addColorButton.TabIndex = 16;
+            this.addColorButton.TabIndex = 17;
             this.addColorButton.Text = "Add Color";
             this.addColorButton.UseVisualStyleBackColor = false;
             this.addColorButton.Click += new System.EventHandler(this.addColorButton_Click);
@@ -132,7 +133,7 @@
             this.noteLabel.Location = new System.Drawing.Point(58, 497);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel.TabIndex = 14;
+            this.noteLabel.TabIndex = 15;
             this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -278,7 +279,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 15;
+            this.progressBar.TabIndex = 16;
             // 
             // duplicateLabel
             // 
@@ -287,9 +288,21 @@
             this.duplicateLabel.Location = new System.Drawing.Point(545, 116);
             this.duplicateLabel.Name = "duplicateLabel";
             this.duplicateLabel.Size = new System.Drawing.Size(154, 13);
-            this.duplicateLabel.TabIndex = 111;
+            this.duplicateLabel.TabIndex = 2;
             this.duplicateLabel.Text = "duplicate color code detected !";
             this.duplicateLabel.Visible = false;
+            // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(25, 455);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 14;
+            this.onlineButton.Text = "Colour Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
             // 
             // AddColor
             // 
@@ -297,6 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveColorButton);
@@ -350,5 +364,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerTranslate;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
+        private System.Windows.Forms.Button onlineButton;
     }
 }

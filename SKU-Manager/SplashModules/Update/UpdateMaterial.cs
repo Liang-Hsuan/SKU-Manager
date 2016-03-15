@@ -7,6 +7,8 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
+using SKU_Manager.SplashModules.Add;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Update
 {
@@ -21,6 +23,8 @@ namespace SKU_Manager.SplashModules.Update
         private string extendedEnglishDescription;
         private string shortFrenchDescription;
         private string extendedFrenchDescription;
+        private string materialOnlineEnglish;
+        private string materialOnlineFrench;
         private bool active = true;    // default is set to true
 
         // field for database connection
@@ -76,6 +80,7 @@ namespace SKU_Manager.SplashModules.Update
                 shortFrenchDescriptionTextbox.Enabled = true;
                 extendedEnglishDescriptionTextbox.Enabled = true;
                 extendedFrenchDescriptionTextbox.Enabled = true;
+                onlineButton.Enabled = true;
                 updateMaterialButton.Enabled = true;
 
                 // set materialCode field from the selected item 
@@ -83,9 +88,7 @@ namespace SKU_Manager.SplashModules.Update
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -100,6 +103,7 @@ namespace SKU_Manager.SplashModules.Update
                 shortFrenchDescriptionTextbox.Enabled = false;
                 extendedEnglishDescriptionTextbox.Enabled = false;
                 extendedFrenchDescriptionTextbox.Enabled = false;
+                onlineButton.Enabled = false;
                 activeCheckbox.Checked = false;
                 updateMaterialButton.Enabled = false;
             }
@@ -112,7 +116,7 @@ namespace SKU_Manager.SplashModules.Update
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Short_FR, Material_Description_Extended, Material_Description_Extended_FR, Active FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Short_FR, Material_Description_Extended, Material_Description_Extended_FR, Material_Online, Material_Online_FR, Active FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -122,10 +126,10 @@ namespace SKU_Manager.SplashModules.Update
             shortFrenchDescription = table.Rows[0][1].ToString();
             extendedEnglishDescription = table.Rows[0][2].ToString();
             extendedFrenchDescription = table.Rows[0][3].ToString();
-            if (table.Rows[0][4].ToString() != "True")
-            {
+            materialOnlineEnglish = table.Rows[0][4].ToString();
+            materialOnlineFrench = table.Rows[0][5].ToString();
+            if (table.Rows[0][6].ToString() != "True")
                 active = false;
-            }
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -134,9 +138,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedEnglishDescriptionTextbox.Text = extendedEnglishDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
             if (active)
-            {
                 activeCheckbox.Checked = true;
-            }
         }
         #endregion
 
@@ -146,18 +148,14 @@ namespace SKU_Manager.SplashModules.Update
         {
             int i = materialCodeCombobox.SelectedIndex;
             if (i > 0)
-            {
                 i--;
-            }
             materialCodeCombobox.SelectedIndex = i;
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
             int i = materialCodeCombobox.SelectedIndex;
             if (i < materialCodeList.Count - 1)
-            {
                 i++;
-            }
             materialCodeCombobox.SelectedIndex = i;
         }
         #endregion
@@ -167,9 +165,7 @@ namespace SKU_Manager.SplashModules.Update
         private void translateButton_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate.IsBusy)
-            {
                 backgroundWorkerTranslate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -205,6 +201,20 @@ namespace SKU_Manager.SplashModules.Update
         }
         #endregion
 
+        /* online button clicks that allow user to edit mateiral online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Material Online Description", materialOnlineEnglish, materialOnlineFrench, Color.Green);
+            online.ShowDialog(this);
+
+            // set color online 
+            if (online.DialogResult == DialogResult.OK)
+            {
+                materialOnlineEnglish = online.English.Replace("'", "''");
+                materialOnlineFrench = online.French.Replace("'", "''");
+            }
+        }
+
         #region Update
         /* the event when update material button is clicked */
         private void updateMaterialButton_Click(object sender, EventArgs e)
@@ -214,9 +224,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker, the update button will only be activated if vaild material has been selected, so no need to check
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -245,8 +253,8 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database and insert new row
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\' "
-                                                      + "WHERE Material_Code = \'" + materialCode + "\'", connection);
+                    SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
+                                                        "Material_Online = \'" + materialOnlineEnglish + "\', Material_Online_FR = \'" + materialOnlineFrench + "\',Date_Updated = \'" + DateTime.Today + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -274,13 +282,11 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for active and inactive list button that open the table of active material list */
         private void activeMaterialButton_Click(object sender, EventArgs e)
         {
-            ActiveMaterialList activeMaterialList = new ActiveMaterialList();
-            activeMaterialList.ShowDialog(this);
+            new ActiveMaterialList().ShowDialog(this);
         }
         private void inactiveMaterialButton_Click(object sender, EventArgs e)
         {
-            InactiveMaterialList inactiveMaterialList = new InactiveMaterialList();
-            inactiveMaterialList.Show();
+            new InactiveMaterialList().ShowDialog(this);
         }
         #endregion
     }

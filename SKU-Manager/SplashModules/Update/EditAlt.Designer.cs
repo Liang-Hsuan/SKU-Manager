@@ -81,7 +81,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.altTextbox);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;

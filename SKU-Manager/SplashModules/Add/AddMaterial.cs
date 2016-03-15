@@ -20,6 +20,8 @@ namespace SKU_Manager.SplashModules.Add
         private string extendedEnglishDescription;
         private string shortFrenchDescription;
         private string extendedFrenchDescription;
+        private string materialOnlineEnglish = "";
+        private string materialOnlineFrench = "";
         private bool active = true;    // default is set to true
 
         // field for duplicate checking
@@ -98,6 +100,20 @@ namespace SKU_Manager.SplashModules.Add
         }
         #endregion
 
+        /* online button clicks that allow user to edit material online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Material Online Description", materialOnlineEnglish, materialOnlineFrench, Color.FromArgb(78, 95, 190));
+            online.ShowDialog(this);
+
+            // set color online 
+            if (online.DialogResult == DialogResult.OK)
+            {
+                materialOnlineEnglish = online.English.Replace("'", "''");
+                materialOnlineFrench = online.French.Replace("'", "''");
+            }
+        }
+
         #region Add
         /* the event for add material button */
         private void addMaterialButton_Click(object sender, EventArgs e)
@@ -137,11 +153,20 @@ namespace SKU_Manager.SplashModules.Add
 
             // connect to database and insert new row
             string connectionString = Properties.Settings.Default.Designcs;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("INSERT INTO ref_Materials (Material_Code, Material_Description_Extended, Material_Description_Short, Material_Description_Extended_FR, Material_Description_Short_FR, Active, Date_Added) VALUES (\'" + materialCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + active.ToString() + "\', \'" + DateTime.Now.ToString() + "\');", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("INSERT INTO ref_Materials (Material_Code, Material_Description_Extended, Material_Description_Short, Material_Description_Extended_FR, Material_Description_Short_FR, Material_Online, Material_Online_FR, Active, Date_Added) " +
+                                                        "VALUES (\'" + materialCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + materialOnlineEnglish + "\', \'" + materialOnlineFrench + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

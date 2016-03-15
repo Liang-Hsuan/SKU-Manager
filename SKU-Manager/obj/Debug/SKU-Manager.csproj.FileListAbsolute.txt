@@ -436,3 +436,13 @@ W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.Online.resources
+Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.DirectUpdate.ModifyChannelPricing.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb

@@ -50,6 +50,7 @@
             this.backgroundWorkerAddMaterial = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // inactiveMaterialButton
@@ -61,7 +62,7 @@
             this.inactiveMaterialButton.Location = new System.Drawing.Point(362, 627);
             this.inactiveMaterialButton.Name = "inactiveMaterialButton";
             this.inactiveMaterialButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveMaterialButton.TabIndex = 18;
+            this.inactiveMaterialButton.TabIndex = 19;
             this.inactiveMaterialButton.Text = "Inactive Material";
             this.inactiveMaterialButton.UseVisualStyleBackColor = false;
             this.inactiveMaterialButton.Click += new System.EventHandler(this.inactiveMaterialButton_Click);
@@ -75,7 +76,7 @@
             this.activeMaterialButton.Location = new System.Drawing.Point(176, 627);
             this.activeMaterialButton.Name = "activeMaterialButton";
             this.activeMaterialButton.Size = new System.Drawing.Size(180, 39);
-            this.activeMaterialButton.TabIndex = 17;
+            this.activeMaterialButton.TabIndex = 18;
             this.activeMaterialButton.Text = "Active Material";
             this.activeMaterialButton.UseVisualStyleBackColor = false;
             this.activeMaterialButton.Click += new System.EventHandler(this.activeMaterialButton_Click);
@@ -89,7 +90,7 @@
             this.addMaterialButton.Location = new System.Drawing.Point(176, 545);
             this.addMaterialButton.Name = "addMaterialButton";
             this.addMaterialButton.Size = new System.Drawing.Size(370, 76);
-            this.addMaterialButton.TabIndex = 16;
+            this.addMaterialButton.TabIndex = 17;
             this.addMaterialButton.Text = "Add Material";
             this.addMaterialButton.UseVisualStyleBackColor = false;
             this.addMaterialButton.Click += new System.EventHandler(this.addMaterialButton_Click);
@@ -104,7 +105,7 @@
             this.noteLabel.Location = new System.Drawing.Point(58, 497);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel.TabIndex = 14;
+            this.noteLabel.TabIndex = 15;
             this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -242,7 +243,7 @@
             this.detailLabel.Location = new System.Drawing.Point(-6, 70);
             this.detailLabel.Name = "detailLabel";
             this.detailLabel.Size = new System.Drawing.Size(754, 29);
-            this.detailLabel.TabIndex = 2;
+            this.detailLabel.TabIndex = 1;
             this.detailLabel.Text = "Material Details";
             this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -256,7 +257,7 @@
             this.titleLabel.Location = new System.Drawing.Point(-9, -3);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
-            this.titleLabel.TabIndex = 1;
+            this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Add Material";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -279,7 +280,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 15;
+            this.progressBar.TabIndex = 16;
             // 
             // duplicateLabel
             // 
@@ -288,9 +289,21 @@
             this.duplicateLabel.Location = new System.Drawing.Point(532, 116);
             this.duplicateLabel.Name = "duplicateLabel";
             this.duplicateLabel.Size = new System.Drawing.Size(167, 13);
-            this.duplicateLabel.TabIndex = 112;
+            this.duplicateLabel.TabIndex = 2;
             this.duplicateLabel.Text = "duplicate material code detected !";
             this.duplicateLabel.Visible = false;
+            // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(25, 456);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 14;
+            this.onlineButton.Text = "Material Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
             // 
             // AddMaterial
             // 
@@ -298,6 +311,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveMaterialButton);
@@ -351,5 +365,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerAddMaterial;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
+        private System.Windows.Forms.Button onlineButton;
     }
 }

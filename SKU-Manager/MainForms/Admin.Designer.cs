@@ -48,6 +48,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.excelButton = new System.Windows.Forms.Button();
             this.inventoryButton = new System.Windows.Forms.Button();
+            this.modifyChannelPricingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -120,7 +121,7 @@
             this.modifyDiscountButton.BackColor = System.Drawing.Color.Purple;
             this.modifyDiscountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modifyDiscountButton.ForeColor = System.Drawing.Color.White;
-            this.modifyDiscountButton.Location = new System.Drawing.Point(420, 384);
+            this.modifyDiscountButton.Location = new System.Drawing.Point(230, 384);
             this.modifyDiscountButton.Name = "modifyDiscountButton";
             this.modifyDiscountButton.Size = new System.Drawing.Size(222, 142);
             this.modifyDiscountButton.TabIndex = 5;
@@ -134,10 +135,10 @@
             this.modifyHtsButton.BackColor = System.Drawing.Color.Purple;
             this.modifyHtsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modifyHtsButton.ForeColor = System.Drawing.Color.White;
-            this.modifyHtsButton.Location = new System.Drawing.Point(713, 384);
+            this.modifyHtsButton.Location = new System.Drawing.Point(907, 384);
             this.modifyHtsButton.Name = "modifyHtsButton";
             this.modifyHtsButton.Size = new System.Drawing.Size(222, 142);
-            this.modifyHtsButton.TabIndex = 6;
+            this.modifyHtsButton.TabIndex = 7;
             this.modifyHtsButton.Text = "Modify HTS Tables";
             this.modifyHtsButton.UseVisualStyleBackColor = false;
             this.modifyHtsButton.Click += new System.EventHandler(this.modifyHtsButton_Click);
@@ -152,7 +153,7 @@
             this.noteLabel.Location = new System.Drawing.Point(463, 689);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(442, 13);
-            this.noteLabel.TabIndex = 7;
+            this.noteLabel.TabIndex = 12;
             this.noteLabel.Text = "PLEASE NOTE - ONLY ADMINISTRATOR LEVEL USER IS ABLE TO ENTER THIS PAGE";
             // 
             // topButton3
@@ -225,7 +226,7 @@
             this.loadingLabel.Location = new System.Drawing.Point(633, 587);
             this.loadingLabel.Name = "loadingLabel";
             this.loadingLabel.Size = new System.Drawing.Size(100, 23);
-            this.loadingLabel.TabIndex = 12;
+            this.loadingLabel.TabIndex = 9;
             this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // openFileDialog
@@ -241,7 +242,7 @@
             this.excelButton.Location = new System.Drawing.Point(513, 565);
             this.excelButton.Name = "excelButton";
             this.excelButton.Size = new System.Drawing.Size(114, 42);
-            this.excelButton.TabIndex = 13;
+            this.excelButton.TabIndex = 8;
             this.excelButton.Text = "Import Excel";
             this.excelButton.UseVisualStyleBackColor = false;
             this.excelButton.Visible = false;
@@ -256,10 +257,24 @@
             this.inventoryButton.Location = new System.Drawing.Point(739, 565);
             this.inventoryButton.Name = "inventoryButton";
             this.inventoryButton.Size = new System.Drawing.Size(114, 42);
-            this.inventoryButton.TabIndex = 14;
+            this.inventoryButton.TabIndex = 10;
             this.inventoryButton.Text = "Update Inventory";
             this.inventoryButton.UseVisualStyleBackColor = false;
             this.inventoryButton.Visible = false;
+            // 
+            // modifyChannelPricingButton
+            // 
+            this.modifyChannelPricingButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.modifyChannelPricingButton.BackColor = System.Drawing.Color.Purple;
+            this.modifyChannelPricingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifyChannelPricingButton.ForeColor = System.Drawing.Color.White;
+            this.modifyChannelPricingButton.Location = new System.Drawing.Point(568, 384);
+            this.modifyChannelPricingButton.Name = "modifyChannelPricingButton";
+            this.modifyChannelPricingButton.Size = new System.Drawing.Size(222, 142);
+            this.modifyChannelPricingButton.TabIndex = 6;
+            this.modifyChannelPricingButton.Text = "Modify Channel Pricing\r\n";
+            this.modifyChannelPricingButton.UseVisualStyleBackColor = false;
+            this.modifyChannelPricingButton.Click += new System.EventHandler(this.modifyChannelPricingButton_Click);
             // 
             // Admin
             // 
@@ -267,6 +282,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.modifyChannelPricingButton);
             this.Controls.Add(this.inventoryButton);
             this.Controls.Add(this.excelButton);
             this.Controls.Add(this.loadingLabel);
@@ -318,5 +334,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button excelButton;
         private System.Windows.Forms.Button inventoryButton;
+        private System.Windows.Forms.Button modifyChannelPricingButton;
     }
 }

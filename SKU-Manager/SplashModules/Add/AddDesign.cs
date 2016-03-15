@@ -28,8 +28,10 @@ namespace SKU_Manager.SplashModules.Add
         private string trendShortFrenchDescription;
         private string trendExtendedEnglishDescription;
         private string trendExtendedFrenchDescription;
-        private string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website
-        private int[] integer = new int[9];    // corresponding to the field above
+        private string designOnlineEnglish = "";
+        private string designOnlineFrench = "";
+        private string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website, [8] for gift box
+        private int[] integer = new int[10];         // corresponding to the field above
         private string imprintHeight;
         private string imprintWidth;
         private string productHeight;
@@ -72,9 +74,7 @@ namespace SKU_Manager.SplashModules.Add
 
             // call background worker
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Combobox Generation
@@ -260,6 +260,20 @@ namespace SKU_Manager.SplashModules.Add
         }
         #endregion
 
+        /* online button clicks that allow user to edit design online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Design Online Description", designOnlineEnglish, designOnlineFrench, Color.FromArgb(78, 95, 190));
+            online.ShowDialog(this);
+
+            // set color online 
+            if (online.DialogResult == DialogResult.OK)
+            {
+                designOnlineEnglish = online.English.Replace("'", "''");
+                designOnlineFrench = online.French.Replace("'", "''");
+            }
+        }
+
         #region Translate Button 2 Event
         /* the event for the second translate button that translate English to French */
         private void translateButton2_Click(object sender, EventArgs e)
@@ -345,24 +359,20 @@ namespace SKU_Manager.SplashModules.Add
             for (int i = 0; i < 8; i++)
             {
                 if (boolean[i] == "True")
-                {
                     integer[i] = 1;
-                }
                 else
-                {
                     integer[i] = 0;
-                }
             }
 
-            // special case for active
+            // special cases for active and gift box
             if (active)
-            {
                 integer[8] = 1;
-            }
             else
-            {
                 integer[8] = 0;
-            }
+            if (giftCheckbox.Checked)
+                integer[9] = 1;
+            else
+                integer[9] = 0;
         }
 
         #region Add Design Button Event
@@ -382,9 +392,7 @@ namespace SKU_Manager.SplashModules.Add
             calculateTrueAndFalse();
 
             if (!backgroundWorkerAddDesign.IsBusy)
-            {
                 backgroundWorkerAddDesign.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerAddDesign_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -457,10 +465,7 @@ namespace SKU_Manager.SplashModules.Add
             frenchOption[2] = option3FrenchTextbox.Text.Replace("'", "''");
             frenchOption[3] = option4FrenchTextbox.Text.Replace("'", "''");
             frenchOption[4] = option5FrenchTextbox.Text.Replace("'", "''");
-            if (productFamily.Contains("'"))
-            {
-                productFamily = productFamily.Replace("'", "''");
-            }
+            productFamily = productFamily.Replace("'", "''");
 
             // addition field (I don't really know what this field is for ==! )
             string designUrl = "https://www.ashlinbpg.com/index.php/" + designServiceCode + "/html";
@@ -473,19 +478,27 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // connect to database and insert new row
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                // this is for searching family code for product family
-                SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_service_Family_Description = \'" + productFamily + "\';", connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    // this is for searching family code for product family
+                    SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_service_Family_Description = \'" + productFamily + "\';", connection);
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
 
-                // this is the real thing
-                command = new SqlCommand("INSERT INTO master_Design_Attributes (Design_Service_Code, Brand, Design_Service_Flag, Design_Service_Family_Code, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Short_Description, Short_Description_FR, Extended_Description, Extended_Description_FR, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Width_cm, Height_cm, Depth_cm, Weight_grams, Flat_Shippable, Fold_Shippable, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Weight_grams, Components, Strap, Detachable_Strap, Zippered_Enclosure, Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Date_Added, Design_URL, Monogram) "
-                                       + "VALUES (\'" + designServiceCode + "\', \'Ashlin®\', \'" + designServiceFlag + "\', \'" + reader.GetString(0) + "\', \'" + internalName + "\', \'" + tsc + "\', \'" + costco + "\', \'" + bestbuy + "\', \'" + shopca + "\', \'" + amazon + "\', \'" + amazon + "\', \'" + sears + "\', \'" + staples + "\', \'" + walmart + "\', \'" + shortEnglishDescription + "\', \'" + shortFrenchDescription + "\', \'" + extendedEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + trendShortEnglishDescription + "\', \'" + trendShortFrenchDescription + "\', \'" + trendExtendedEnglishDescription + "\', \'" + trendExtendedFrenchDescription + "\', " + integer[1] + ", " + imprintHeight + ", " + imprintWidth + ", " + productWidth + ", " + productHeight + ", " + productDepth + ", " + weight + ", " + integer[5] + ", " + integer[6] + ", " + shippableWidth + ", " + shippableHeight + ", " + shippableDepth + ", " + shippableWeight + ", " + numberComponents + ", " + integer[2] + ", " + integer[3] + ", " + integer[4] + ", \'" + englishOption[0] + "\', \'" + frenchOption[0] + "\', \'" + englishOption[1] + "\', \'" + frenchOption[1] + "\', \'" + englishOption[2] + "\', \'" + frenchOption[2] + "\', \'" + englishOption[3] + "\', \'" + frenchOption[3] + "\', \'" + englishOption[4] + "\', \'" + frenchOption[4] + "\', " + integer[7] + ", " + integer[8] + ", \'" + DateTime.Now.ToString() + "\', \'" + designUrl + "\', " + integer[0] + ");", connection);
-                reader.Close();
-                command.ExecuteNonQuery();
+                    // this is the real thing
+                    command = new SqlCommand("INSERT INTO master_Design_Attributes (Design_Service_Code, GiftBox, Brand, Design_Service_Flag, Design_Service_Family_Code, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Short_Description, Short_Description_FR, Extended_Description, Extended_Description_FR, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Design_Online, Design_Online_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Width_cm, Height_cm, Depth_cm, Weight_grams, Flat_Shippable, Fold_Shippable, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Weight_grams, Components, Strap, Detachable_Strap, Zippered_Enclosure, Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Date_Added, Design_URL, Monogram) "
+                                           + "VALUES (\'" + designServiceCode + "\', " + integer[9] + ", \'Ashlin®\', \'" + designServiceFlag + "\', \'" + reader.GetString(0) + "\', \'" + internalName + "\', \'" + tsc + "\', \'" + costco + "\', \'" + bestbuy + "\', \'" + shopca + "\', \'" + amazon + "\', \'" + amazon + "\', \'" + sears + "\', \'" + staples + "\', \'" + walmart + "\', \'" + shortEnglishDescription + "\', \'" + shortFrenchDescription + "\', \'" + extendedEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + trendShortEnglishDescription + "\', \'" + trendShortFrenchDescription + "\', \'" + trendExtendedEnglishDescription + "\', \'" + trendExtendedFrenchDescription + "\', \'" + designOnlineEnglish + "\', \'" + designOnlineFrench + "\', " + integer[1] + ", " + imprintHeight + ", " + imprintWidth + ", " + productWidth + ", " + productHeight + ", " + productDepth + ", " + weight + ", " + integer[5] + ", " + integer[6] + ", " + shippableWidth + ", " + shippableHeight + ", " + shippableDepth + ", " + shippableWeight + ", " + numberComponents + ", " + integer[2] + ", " + integer[3] + ", " + integer[4] + ", \'" + englishOption[0] + "\', \'" + frenchOption[0] + "\', \'" + englishOption[1] + "\', \'" + frenchOption[1] + "\', \'" + englishOption[2] + "\', \'" + frenchOption[2] + "\', \'" + englishOption[3] + "\', \'" + frenchOption[3] + "\', \'" + englishOption[4] + "\', \'" + frenchOption[4] + "\', " + integer[7] + ", " + integer[8] + ", \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + designUrl + "\', " + integer[0] + ");", connection);
+                    reader.Close();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%
@@ -511,7 +524,7 @@ namespace SKU_Manager.SplashModules.Add
             activeDesignButton.Enabled = false;
             inactiveDesignButton.Enabled = true;
 
-            this.AutoScrollPosition = new Point(1434, 790);
+            AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
         {
@@ -521,7 +534,7 @@ namespace SKU_Manager.SplashModules.Add
             inactiveDesignButton.Enabled = false;
             activeDesignButton.Enabled = true;
 
-            this.AutoScrollPosition = new Point(1434, 790);
+            AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
         #endregion
 

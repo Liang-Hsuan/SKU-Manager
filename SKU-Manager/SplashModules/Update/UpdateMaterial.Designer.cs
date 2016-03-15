@@ -55,6 +55,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.leftButton = new System.Windows.Forms.Button();
             this.rightButton = new System.Windows.Forms.Button();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // inactiveListButton
@@ -66,7 +67,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(361, 683);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 21;
+            this.inactiveListButton.TabIndex = 22;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveMaterialButton_Click);
@@ -80,7 +81,7 @@
             this.activeListButton.Location = new System.Drawing.Point(178, 683);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 20;
+            this.activeListButton.TabIndex = 21;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeMaterialButton_Click);
@@ -95,7 +96,7 @@
             this.updateMaterialButton.Location = new System.Drawing.Point(176, 601);
             this.updateMaterialButton.Name = "updateMaterialButton";
             this.updateMaterialButton.Size = new System.Drawing.Size(370, 76);
-            this.updateMaterialButton.TabIndex = 19;
+            this.updateMaterialButton.TabIndex = 20;
             this.updateMaterialButton.Text = "Update Material";
             this.updateMaterialButton.UseVisualStyleBackColor = false;
             this.updateMaterialButton.Click += new System.EventHandler(this.updateMaterialButton_Click);
@@ -110,7 +111,7 @@
             this.noteLabel.Location = new System.Drawing.Point(58, 553);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel.TabIndex = 17;
+            this.noteLabel.TabIndex = 18;
             this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -270,7 +271,7 @@
             this.activeLabel.Location = new System.Drawing.Point(21, 509);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(179, 20);
-            this.activeLabel.TabIndex = 15;
+            this.activeLabel.TabIndex = 16;
             this.activeLabel.Text = "Is this Material Active?";
             // 
             // activeCheckbox
@@ -280,7 +281,7 @@
             this.activeCheckbox.Location = new System.Drawing.Point(218, 512);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 16;
+            this.activeCheckbox.TabIndex = 17;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             // 
             // materialCodeCombobox
@@ -322,7 +323,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 18;
+            this.progressBar.TabIndex = 19;
             // 
             // leftButton
             // 
@@ -348,12 +349,26 @@
             this.rightButton.UseVisualStyleBackColor = false;
             this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.Green;
+            this.onlineButton.Enabled = false;
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(25, 458);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 15;
+            this.onlineButton.Text = "Material Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
             // UpdateMaterial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.progressBar);
@@ -415,5 +430,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.Button onlineButton;
     }
 }

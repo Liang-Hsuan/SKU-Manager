@@ -55,6 +55,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.rightButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -94,7 +95,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(362, 683);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 21;
+            this.inactiveListButton.TabIndex = 22;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -108,7 +109,7 @@
             this.activeListButton.Location = new System.Drawing.Point(176, 683);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 20;
+            this.activeListButton.TabIndex = 21;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -123,7 +124,7 @@
             this.updateColorButton.Location = new System.Drawing.Point(176, 601);
             this.updateColorButton.Name = "updateColorButton";
             this.updateColorButton.Size = new System.Drawing.Size(370, 76);
-            this.updateColorButton.TabIndex = 19;
+            this.updateColorButton.TabIndex = 20;
             this.updateColorButton.Text = "Update Color";
             this.updateColorButton.UseVisualStyleBackColor = false;
             this.updateColorButton.Click += new System.EventHandler(this.updateColorButton_Click);
@@ -138,7 +139,7 @@
             this.noteLabel.Location = new System.Drawing.Point(58, 553);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel.TabIndex = 17;
+            this.noteLabel.TabIndex = 18;
             this.noteLabel.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -270,7 +271,7 @@
             this.activeLabel.Location = new System.Drawing.Point(21, 509);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(159, 20);
-            this.activeLabel.TabIndex = 15;
+            this.activeLabel.TabIndex = 16;
             this.activeLabel.Text = "Is this Color Active?";
             // 
             // colorCodeCombobox
@@ -291,7 +292,7 @@
             this.activeCheckbox.Location = new System.Drawing.Point(218, 512);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 16;
+            this.activeCheckbox.TabIndex = 17;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             // 
             // backgroundWorkerTranslate
@@ -322,7 +323,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 18;
+            this.progressBar.TabIndex = 19;
             // 
             // rightButton
             // 
@@ -348,12 +349,26 @@
             this.leftButton.UseVisualStyleBackColor = false;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
             // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.Green;
+            this.onlineButton.Enabled = false;
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(25, 458);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 15;
+            this.onlineButton.Text = "Colour Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
             // UpdateColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.progressBar);
@@ -415,5 +430,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.Button onlineButton;
     }
 }

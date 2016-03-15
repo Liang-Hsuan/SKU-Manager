@@ -7,6 +7,8 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
+using SKU_Manager.SplashModules.Add;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Update
 {
@@ -21,6 +23,8 @@ namespace SKU_Manager.SplashModules.Update
         private string extendedEnglishDescription;
         private string shortFrenchDescription;
         private string extendedFrenchDescription;
+        private string colorOnlineEnglish;
+        private string colorOnlineFrench;
         private bool active = true;    // default is set to true
 
         // field for database connection
@@ -53,9 +57,7 @@ namespace SKU_Manager.SplashModules.Update
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                {
                     colorCodeList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -70,18 +72,14 @@ namespace SKU_Manager.SplashModules.Update
         {
             int i = colorCodeCombobox.SelectedIndex;
             if (i > 0)
-            {
                 i--;
-            }
             colorCodeCombobox.SelectedIndex = i;
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
             int i = colorCodeCombobox.SelectedIndex;
             if (i < colorCodeList.Count - 1)
-            {
                 i++;
-            }
             colorCodeCombobox.SelectedIndex = i;
         }
         #endregion
@@ -98,6 +96,7 @@ namespace SKU_Manager.SplashModules.Update
                 shortFrenchDescriptionTextbox.Enabled = true;
                 extendedEnglishDescriptionTextbox.Enabled = true;
                 extendedFrenchDescriptionTextbox.Enabled = true;
+                onlineButton.Enabled = true;
                 updateColorButton.Enabled = true;
 
                 // set colorCode field from the selected item 
@@ -105,9 +104,7 @@ namespace SKU_Manager.SplashModules.Update
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -122,6 +119,7 @@ namespace SKU_Manager.SplashModules.Update
                 shortFrenchDescriptionTextbox.Enabled = false;
                 extendedEnglishDescriptionTextbox.Enabled = false;
                 extendedFrenchDescriptionTextbox.Enabled = false;
+                onlineButton.Enabled = false;
                 activeCheckbox.Checked = false;
                 updateColorButton.Enabled = false;
             }
@@ -134,7 +132,7 @@ namespace SKU_Manager.SplashModules.Update
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Active FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Colour_Online, Colour_Online_FR, Active FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -144,10 +142,10 @@ namespace SKU_Manager.SplashModules.Update
             shortFrenchDescription = table.Rows[0][1].ToString();
             extendedEnglishDescription = table.Rows[0][2].ToString();
             extendedFrenchDescription = table.Rows[0][3].ToString();
-            if (table.Rows[0][4].ToString() != "True")
-            {
+            colorOnlineEnglish = table.Rows[0][4].ToString();
+            colorOnlineFrench = table.Rows[0][5].ToString();
+            if (table.Rows[0][6].ToString() != "True")
                 active = false;
-            }
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -156,9 +154,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedEnglishDescriptionTextbox.Text = extendedEnglishDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
             if (active)
-            {
                 activeCheckbox.Checked = true;
-            }
         }
         #endregion
 
@@ -167,9 +163,7 @@ namespace SKU_Manager.SplashModules.Update
         private void translateButton_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate.IsBusy)
-            {
                 backgroundWorkerTranslate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -205,7 +199,21 @@ namespace SKU_Manager.SplashModules.Update
         }
         #endregion
 
-        #region Add Color
+        /* online button clicks that allow user to edit color online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Colour Online Description", colorOnlineEnglish, colorOnlineFrench, Color.Green);
+            online.ShowDialog(this);
+
+            // set color online 
+            if (online.DialogResult == DialogResult.OK)
+            {
+                colorOnlineEnglish = online.English.Replace("'", "''");
+                colorOnlineFrench = online.French.Replace("'", "''");
+            }
+        }
+
+        #region Update Color
         /* the event when update color button is clicked */
         private void updateColorButton_Click(object sender, EventArgs e)
         {
@@ -214,9 +222,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker, the update button will only be activated if vaild color has been selected, so no need to check
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -245,8 +251,8 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database and update the color
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Colour_Description_Extended = \'" + extendedEnglishDescription + "\', Colour_Description_Short = \'" + shortEnglishDescription + "\', Colour_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Colour_Description_Short_FR = \'" + shortFrenchDescription + "\', Date_Updated = \'" + DateTime.Now.ToString() + "\' "
-                                                      + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                    SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Colour_Description_Extended = \'" + extendedEnglishDescription + "\', Colour_Description_Short = \'" + shortEnglishDescription + "\', Colour_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Colour_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
+                                                        "Colour_Online = \'" + colorOnlineEnglish + "\', Colour_Online_FR = \'" + colorOnlineFrench + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

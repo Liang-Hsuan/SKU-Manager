@@ -331,7 +331,7 @@ namespace SKU_Manager.SplashModules.Add
             activeFamilyButton.Enabled = false;
             inactiveFamilyButton.Enabled = true;
 
-            AutoScrollPosition = new Point(762, 841);
+            AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
         private void inactiveFamilyButton_Click(object sender, EventArgs e)
         {
@@ -341,7 +341,7 @@ namespace SKU_Manager.SplashModules.Add
             inactiveFamilyButton.Enabled = false;
             activeFamilyButton.Enabled = true;
 
-            AutoScrollPosition = new Point(762, 841);
+            AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
         #endregion
 
@@ -403,12 +403,20 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // connect to database and insert new row
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("INSERT INTO ref_Families (Design_Service_Family_Code, Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Active, Date_Added, KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, Amazon_Browse_Nodes_1_USA, Amazon_Browse_Nodes_2_USA, HTS_CA, HTS_US, CA_Duty, US_Duty) " +
-                                                    "VALUES (\'" + familyCode + "\', \'" + shortEnglishDescription + "\', \'" + shortFrenchDescription + "\', \'" + generalKeywords + "\', \'" + sageCategory + "\', \'" + sageTheme + "\', \'" + esp + "\', \'" + promoMarketing + "\', \'" + uducat + "\', \'" + distributorCentral + "\', \'" + active.ToString() + "\', \'" + DateTime.Now.ToString() + "\', \'" + amazonKeywords[0] + "\', \'" + amazonKeywords[1] + "\', \'" + amazonKeywords[2] + "\', \'" + amazonKeywords[3] + "\', \'" + amazonKeywords[4] + "\', \'" + amazonCaNode[0] + "\', \'" + amazonCaNode[1] + "\', \'" + amazonComNode[0] + "\', \'" + amazonComNode[1] + "\', \'" + caHts + "\', \'" + usHts + "\', " + caDuty + ", " + usDuty + ");", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("INSERT INTO ref_Families (Design_Service_Family_Code, Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Active, Date_Added, KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, Amazon_Browse_Nodes_1_USA, Amazon_Browse_Nodes_2_USA, HTS_CA, HTS_US, CA_Duty, US_Duty) " +
+                                                        "VALUES (\'" + familyCode + "\', \'" + shortEnglishDescription + "\', \'" + shortFrenchDescription + "\', \'" + generalKeywords + "\', \'" + sageCategory + "\', \'" + sageTheme + "\', \'" + esp + "\', \'" + promoMarketing + "\', \'" + uducat + "\', \'" + distributorCentral + "\', \'" + active.ToString() + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + amazonKeywords[0] + "\', \'" + amazonKeywords[1] + "\', \'" + amazonKeywords[2] + "\', \'" + amazonKeywords[3] + "\', \'" + amazonKeywords[4] + "\', \'" + amazonCaNode[0] + "\', \'" + amazonCaNode[1] + "\', \'" + amazonComNode[0] + "\', \'" + amazonComNode[1] + "\', \'" + caHts + "\', \'" + usHts + "\', " + caDuty + ", " + usDuty + ");", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

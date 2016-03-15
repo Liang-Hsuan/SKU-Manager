@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using SKU_Manager.AdminModules;
 using SKU_Manager.AdminModules.importUpdate;
 using System.Threading;
+using SKU_Manager.AdminModules.DirectUpdate;
 
 namespace SKU_Manager.MainForms
 {
@@ -33,6 +34,12 @@ namespace SKU_Manager.MainForms
             new ModifyDiscount().ShowDialog(this);
         }
 
+        /* the event when modify channel pricing button is clicked */
+        private void modifyChannelPricingButton_Click(object sender, EventArgs e)
+        {
+            new ModifyChannelPricing().ShowDialog(this);
+        }
+
         /* the event when update hts button is clicked */
         private void modifyHtsButton_Click(object sender, EventArgs e)
         {
@@ -53,6 +60,7 @@ namespace SKU_Manager.MainForms
         private void searsButton_MouseHover(object sender, EventArgs e)
         {
             loadingLabel.Text = "Sears";
+            loadingLabel.Visible = true;
             excelButton.Visible = true;
             inventoryButton.Visible = true;
         }
