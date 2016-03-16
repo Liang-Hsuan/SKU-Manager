@@ -78,91 +78,49 @@ namespace SKU_Manager.SplashModules.Update
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            // local fields for comboBoxes
-            SqlCommand command;
-            SqlDataReader reader;
-
-            // make comboBox for Canadian HTS
+            // make comboBox for canadian HTS
             SqlConnection connection = new SqlConnection(connectionString);
-            command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Code is not NULL;", connection);  
+            SqlCommand command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);
             connection.Open();
-            reader = command.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
-                familyCodeList.Add(reader.GetValue(0));
-            }
-            reader.Close();
-
-            // make comboBox for Canadian HTS
-            command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
                 canadianHtsList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
-            // make comboBox for US HTS
-            command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);  
+            // make comboBox for us HTS
+            command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 usHtsList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
-            // make comboBox for SAGE [CATEGORY]
-            command = new SqlCommand("SELECT Design_Service_Family_Category_Sage FROM list_online_product_categories WHERE Design_Service_Family_Category_Sage is not NULL;", connection);  
+            // make lists for CATEGORY comboboxes
+            command = new SqlCommand("SELECT Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, " +
+                                     "Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral " +
+                                     "FROM list_online_product_categories;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                sageCategoryList.Add(reader.GetValue(0));
+                if (!reader.IsDBNull(0))
+                    sageCategoryList.Add(reader.GetValue(0));
+                if (!reader.IsDBNull(1))
+                    sageThemeList.Add(reader.GetValue(1));
+                if (!reader.IsDBNull(2))
+                    espList.Add(reader.GetValue(2));
+                if (!reader.IsDBNull(3))
+                    promoMarketingList.Add(reader.GetValue(3));
+                if (!reader.IsDBNull(4))
+                    uducatList.Add(reader.GetValue(4));
+                if (!reader.IsDBNull(5))
+                    distributorCentralList.Add(reader.GetValue(5));
             }
             reader.Close();
 
-            // make comboBox for SAGE [THEME]
-            command = new SqlCommand("SELECT Design_Service_Family_Themes_Sage FROM list_online_product_categories WHERE Design_Service_Family_Themes_Sage is not NULL;", connection);
+            command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
-                sageThemeList.Add(reader.GetValue(0));
-            }
-            reader.Close();
+                familyCodeList.Add(reader.GetString(0));
 
-            // make comboBox for ESP
-            command = new SqlCommand("SELECT Design_Service_Family_Category_ESP FROM list_online_product_categories WHERE Design_Service_Family_Category_ESP is not NULL;", connection); 
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                espList.Add(reader.GetValue(0));
-            }
-            reader.Close();
-
-            // make comboBox for promo marketing
-            command = new SqlCommand("SELECT Design_Service_Family_Category_PromoMarketing FROM list_online_product_categories WHERE Design_Service_Family_Category_PromoMarketing is not NULL;", connection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                promoMarketingList.Add(reader.GetValue(0));
-            }
-            reader.Close();
-
-            // make comboBox for UDUCAT
-            command = new SqlCommand("SELECT Design_Service_Family_Category_UDUCAT FROM list_online_product_categories WHERE Design_Service_Family_Category_UDUCAT is not NULL;", connection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                uducatList.Add(reader.GetValue(0));
-            }
-            reader.Close();
-
-            // make comboBox for distributor central
-            command = new SqlCommand("SELECT Design_Service_Family_Category_DistributorCentral FROM list_online_product_categories WHERE Design_Service_Family_Category_DistributorCentral is not NULL;", connection);
-            reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                distributorCentralList.Add(reader.GetValue(0));
-            }
             connection.Close();
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

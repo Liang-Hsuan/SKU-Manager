@@ -241,30 +241,23 @@ namespace SKU_Manager.SplashModules.Add
 
             // call background worker
             if (!backgroundWorkerHTS.IsBusy)
-            {
                 backgroundWorkerHTS.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerHTS_DoWork(object sender, DoWorkEventArgs e)
         {
-            // connect to database to get design service family code for this design
+            // connect to database to get hts
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, GiftBox FROM ref_Families family JOIN master_Design_Attributes design " +
+                                                "ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
+                                                "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
 
-            // connect to database to get tax price for the found family code
-            command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty FROM ref_Families WHERE  Design_Service_Family_Code = \'" + reader.GetString(0) + "\';", connection);
-            reader.Close();
-            reader = command.ExecuteReader();
-            reader.Read();
-
             // put the found taxes to the list
             for (int i = 0; i < 4; i++)
-            {
               htsList[i] = reader.GetValue(i).ToString();
-            }
+            e.Result = reader.GetBoolean(4);
             connection.Close();
         }
         private void backgroundWorkerHTS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -273,6 +266,7 @@ namespace SKU_Manager.SplashModules.Add
             caDutyTextbox.Text = htsList[1];
             usHtsCombobox.Text = htsList[2];
             usDutyTextbox.Text = htsList[3];
+            giftCheckbox.Checked = (bool)e.Result ? true : false;
         }
         #endregion
 

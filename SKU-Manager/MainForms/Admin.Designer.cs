@@ -261,6 +261,7 @@
             this.inventoryButton.Text = "Update Inventory";
             this.inventoryButton.UseVisualStyleBackColor = false;
             this.inventoryButton.Visible = false;
+            this.inventoryButton.Click += new System.EventHandler(this.inventoryButton_Click);
             // 
             // modifyChannelPricingButton
             // 

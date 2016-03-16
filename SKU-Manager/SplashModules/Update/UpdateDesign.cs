@@ -405,9 +405,6 @@ namespace SKU_Manager.SplashModules.Update
                 zippedCombobox.Enabled = true;
                 shippedFlatCombobox.Enabled = true;
                 shippedFoldedCombobox.Enabled = true;
-                shippableHeightTextbox.Enabled = true;
-                shippableWidthTextbox.Enabled = true;
-                shippableDepthTextbox.Enabled = true;
             }
             else
             {
@@ -433,9 +430,6 @@ namespace SKU_Manager.SplashModules.Update
                 zippedCombobox.Enabled = false;
                 shippedFlatCombobox.Enabled = false;
                 shippedFoldedCombobox.Enabled = false;
-                shippableHeightTextbox.Enabled = false;
-                shippableWidthTextbox.Enabled = false;
-                shippableDepthTextbox.Enabled = false;
             }
         }
 

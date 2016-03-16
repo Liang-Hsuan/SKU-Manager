@@ -92,18 +92,14 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                         // get sku number
                         int length = index;
                         while (textJSON[length] != '"')
-                        {
                             length++;
-                        }
                         string sku = textJSON.Substring(index, length - index);
 
                         // get id number
                         index = textJSON.IndexOf("id") + 4;
                         length = index;
-                        while (Char.IsNumber(textJSON[length]))
-                        {
+                        while (char.IsNumber(textJSON[length]))
                             length++;
-                        }
                         string productId = textJSON.Substring(index, length - index);
 
                         // add sku and id to the list
@@ -210,9 +206,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                     // read all the text from JSON response
                     using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                    {
                         textJSON = streamReader.ReadToEnd();
-                    }
                 }
                 catch
                 {
@@ -259,9 +253,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                     // read all the text from JSON response
                     using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                    {
                         textJSON = streamReader.ReadToEnd();
-                    }
                 }
                 catch (WebException e)
                 {
@@ -269,9 +261,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     {
                         response = e.Response as HttpWebResponse;
                         if ((int)response.StatusCode == 400)
-                        {
                             return -3;      // web server 400 bad request
-                        }
 
                         return -2;          // web server 503 server unavailable
                     }
@@ -316,9 +306,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     {
                         response = e.Response as HttpWebResponse;
                         if ((int)response.StatusCode == 404)
-                        {
                             return "404";    // web server 404 not found
-                        }
 
                         return "503";        // server unavailable
                     }
@@ -347,9 +335,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                     // read all the text from JSON response
                     using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                    {
                         textJSON = streamReader.ReadToEnd();
-                    }
                 }
                 catch (WebException e)
                 {
@@ -357,9 +343,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     {
                         response = e.Response as HttpWebResponse;
                         if ((int)response.StatusCode == 503)
-                        {
                             return "503";   // web server 503 server unavailable
-                        }
                     }
                 }
 

@@ -86,12 +86,18 @@ namespace SKU_Manager.SplashModules.Add
             reader = command.ExecuteReader();
             while (reader.Read())
             {
-                sageCategoryList.Add(reader.GetValue(0));
-                sageThemeList.Add(reader.GetValue(1));
-                espList.Add(reader.GetValue(2));
-                promoMarketingList.Add(reader.GetValue(3));
-                uducatList.Add(reader.GetValue(4));
-                distributorCentralList.Add(reader.GetValue(5));
+                if (!reader.IsDBNull(0))
+                    sageCategoryList.Add(reader.GetValue(0));
+                if (!reader.IsDBNull(1))
+                    sageThemeList.Add(reader.GetValue(1));
+                if (!reader.IsDBNull(2))
+                    espList.Add(reader.GetValue(2));
+                if (!reader.IsDBNull(3))
+                    promoMarketingList.Add(reader.GetValue(3));
+                if (!reader.IsDBNull(4))
+                    uducatList.Add(reader.GetValue(4));
+                if (!reader.IsDBNull(5))
+                    distributorCentralList.Add(reader.GetValue(5));
             }
             reader.Close();
 

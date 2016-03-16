@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using SKU_Manager.SKUExportModules.Tables;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
 
 namespace SKU_Manager.SKUExportModules.ChannelPartnerExports

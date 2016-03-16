@@ -115,8 +115,6 @@ C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateDesign.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Deactivate.DeactivateSKU.resources
-C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.ModifyDiscount.resources
-C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateHTS.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 \\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 \\Mac\Home\Desktop\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Admin.resources
@@ -436,7 +434,6 @@ W:\Project\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
-C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Add.Online.resources
 Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
 Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 Z:\Online\IT DEVELOPMENT\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
@@ -446,3 +443,7 @@ E:\Project\Real Projects\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.confi
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.DirectUpdate.ModifyDiscount.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.DirectUpdate.UpdateHTS.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Online.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.SearsInventory.resources

@@ -467,7 +467,7 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database to get the info about this design code
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
                     connection.Open();
                     adapter.Fill(table);
                 }
@@ -476,6 +476,7 @@ namespace SKU_Manager.SplashModules.Update
                 brandTextbox.Text = table.Rows[0][0].ToString();
                 designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
                 designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
+                giftCheckbox.Checked = table.Rows[0][3].ToString() == "True" ? true : false;
             }
         }
 

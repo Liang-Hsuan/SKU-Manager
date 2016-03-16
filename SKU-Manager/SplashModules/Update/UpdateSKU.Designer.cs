@@ -182,6 +182,7 @@
             this.backgroundWorkerImagePath = new System.ComponentModel.BackgroundWorker();
             this.leftButton = new System.Windows.Forms.Button();
             this.rightButton = new System.Windows.Forms.Button();
+            this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.autoManualPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1826,6 +1827,19 @@
             this.rightButton.UseVisualStyleBackColor = false;
             this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
+            // giftCheckbox
+            // 
+            this.giftCheckbox.AutoSize = true;
+            this.giftCheckbox.Enabled = false;
+            this.giftCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftCheckbox.ForeColor = System.Drawing.Color.Green;
+            this.giftCheckbox.Location = new System.Drawing.Point(354, 170);
+            this.giftCheckbox.Name = "giftCheckbox";
+            this.giftCheckbox.Size = new System.Drawing.Size(89, 24);
+            this.giftCheckbox.TabIndex = 147;
+            this.giftCheckbox.Text = "Gift Box";
+            this.giftCheckbox.UseVisualStyleBackColor = true;
+            // 
             // UpdateSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1833,6 +1847,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.autoManualPanel);
@@ -2148,5 +2163,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerImagePath;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.CheckBox giftCheckbox;
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using SKU_Manager.AdminModules;
 using SKU_Manager.AdminModules.importUpdate;
 using System.Threading;
 using SKU_Manager.AdminModules.DirectUpdate;
+using SKU_Manager.AdminModules.UpdateInventory;
 
 namespace SKU_Manager.MainForms
 {
@@ -66,6 +66,7 @@ namespace SKU_Manager.MainForms
         }
         #endregion
 
+        #region Channel Mangement
         /* the event for excel button clicks that update the merchant sku */
         private void excelButton_Click(object sender, EventArgs e)
         {
@@ -78,6 +79,19 @@ namespace SKU_Manager.MainForms
                 timer.Start();
             }
         }
+
+        /* the event for inventory button clicks that manage the inventory for eCommerce channel */
+        private void inventoryButton_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.StockQuantityTable != null)
+            {
+                SearsInventory bpInventoryView = new SearsInventory();
+                bpInventoryView.ShowDialog(this);
+            }
+            else
+                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+        }
+        #endregion
 
         #region Top Buttons
         /* the event when the top 1 button is clicked (view sku management) */

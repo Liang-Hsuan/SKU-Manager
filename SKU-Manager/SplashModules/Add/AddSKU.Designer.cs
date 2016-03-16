@@ -152,6 +152,7 @@
             this.wmMerchantLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
+            this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -1400,6 +1401,19 @@
             this.duplicateLabel.Text = "duplicate SKU detected !";
             this.duplicateLabel.Visible = false;
             // 
+            // giftCheckbox
+            // 
+            this.giftCheckbox.AutoSize = true;
+            this.giftCheckbox.Enabled = false;
+            this.giftCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.giftCheckbox.Location = new System.Drawing.Point(354, 143);
+            this.giftCheckbox.Name = "giftCheckbox";
+            this.giftCheckbox.Size = new System.Drawing.Size(89, 24);
+            this.giftCheckbox.TabIndex = 120;
+            this.giftCheckbox.Text = "Gift Box";
+            this.giftCheckbox.UseVisualStyleBackColor = true;
+            // 
             // AddSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1407,6 +1421,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.wmMerchantLabel);
@@ -1662,5 +1677,6 @@
         private System.Windows.Forms.Label wmMerchantLabel;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
+        private System.Windows.Forms.CheckBox giftCheckbox;
     }
 }
