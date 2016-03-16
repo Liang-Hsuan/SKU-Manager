@@ -16,10 +16,10 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
 
         // supporting fields
         private int timeLeft;
-        private bool complete = false;  // default set to false
+        private bool complete;  // default set to false
 
         // initialize MagentoExportTable object
-        private MagentoExportTable magentoTable = new MagentoExportTable();
+        private readonly MagentoExportTable magentoTable = new MagentoExportTable();
 
         /* constructor that initialize graphic components */
         public MagentoView()
@@ -35,9 +35,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
 
             // call background worker adding data on data grid view
             if (!backgroundWorkerTable.IsBusy)
-            {
                 backgroundWorkerTable.RunWorkerAsync();
-            }
         }
 
         /* background worker that get the bestbuy export table and send it to data grid view */
@@ -73,15 +71,13 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */

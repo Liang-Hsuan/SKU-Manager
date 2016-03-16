@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace SKU_Manager.AdminModules
+namespace SKU_Manager.AdminModules.DirectUpdate
 {
     /*
      * An application module for admin table that can modify discount matrix table directly 
@@ -20,7 +20,7 @@ namespace SKU_Manager.AdminModules
         private DataSet dataSet;
 
         // database connection string
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic componenets */
         public ModifyDiscount()
@@ -76,7 +76,7 @@ namespace SKU_Manager.AdminModules
 
             try
             {
-                SqlCommandBuilder command = new SqlCommandBuilder(adapter);
+                new SqlCommandBuilder(adapter);
                 adapter.Update(dataSet, "Discount_Matrix");
             }
             catch (Exception ex)

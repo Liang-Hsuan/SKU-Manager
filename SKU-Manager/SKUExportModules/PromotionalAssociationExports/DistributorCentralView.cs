@@ -21,10 +21,10 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
 
         // supporting fields
         private int timeLeft;
-        private bool done = false;  // default set to false
+        private bool done;  // default set to false
 
         // initialize BestbuyExportTable object
-        private DistributorCentralExportTable distributorCentralTable = new DistributorCentralExportTable();
+        private readonly DistributorCentralExportTable distributorCentralTable = new DistributorCentralExportTable();
 
         /* constructor that initialize graphic components */
         public DistributorCentralView()
@@ -40,9 +40,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
 
             // call background worker adding data on data grid view
             if (!backgroundWorkerTable.IsBusy)
-            {
                 backgroundWorkerTable.RunWorkerAsync();
-            }
         }
 
         /* background worker that get the distributor central export table and send it to data grid view */
@@ -78,15 +76,13 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */

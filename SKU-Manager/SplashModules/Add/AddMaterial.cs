@@ -25,7 +25,7 @@ namespace SKU_Manager.SplashModules.Add
         private bool active = true;    // default is set to true
 
         // field for duplicate checking
-        HashSet<string> materialCodeList = new HashSet<string>();
+        private readonly HashSet<string> materialCodeList = new HashSet<string>();
 
         /* constructor that initialize graphic component */
         public AddMaterial()

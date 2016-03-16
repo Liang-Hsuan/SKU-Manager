@@ -1,4 +1,4 @@
-﻿namespace SKU_Manager.AdminModules
+﻿namespace SKU_Manager.AdminModules.DirectUpdate
 {
     partial class UpdateHTS
     {

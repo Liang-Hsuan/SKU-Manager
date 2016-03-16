@@ -30,8 +30,8 @@ namespace SKU_Manager.SplashModules.Add
         private string trendExtendedFrenchDescription;
         private string designOnlineEnglish = "";
         private string designOnlineFrench = "";
-        private string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website, [8] for gift box
-        private int[] integer = new int[10];         // corresponding to the field above
+        private readonly string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website, [8] for gift box
+        private readonly int[] integer = new int[10];         // corresponding to the field above
         private string imprintHeight;
         private string imprintWidth;
         private string productHeight;
@@ -51,8 +51,8 @@ namespace SKU_Manager.SplashModules.Add
         private string sears;
         private string staples;
         private string walmart;
-        private string[] englishOption = new string[5];
-        private string[] frenchOption = new string[5];
+        private readonly string[] englishOption = new string[5];
+        private readonly string[] frenchOption = new string[5];
         private bool active = true;    // default set to true
 
         // supporting boolean flag -> set to default
@@ -60,12 +60,12 @@ namespace SKU_Manager.SplashModules.Add
         private bool isFolded = false;
 
         // field for lists
-        private ArrayList productFamilyList = new ArrayList();
-        private HashSet<string> designCodeList = new HashSet<string>();
-        private HashSet<string> internalNameList = new HashSet<string>();
+        private readonly ArrayList productFamilyList = new ArrayList();
+        private readonly HashSet<string> designCodeList = new HashSet<string>();
+        private readonly HashSet<string> internalNameList = new HashSet<string>();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public AddDesign()
@@ -206,9 +206,7 @@ namespace SKU_Manager.SplashModules.Add
         private void translateButton1_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate1.IsBusy)
-            {
                 backgroundWorkerTranslate1.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -279,10 +277,7 @@ namespace SKU_Manager.SplashModules.Add
         private void translateButton2_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate2.IsBusy)
-            {
                 backgroundWorkerTranslate2.RunWorkerAsync();
-            }
-
         }
         private void backgroundWorkerTranslate2_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -357,22 +352,11 @@ namespace SKU_Manager.SplashModules.Add
 
             // loop through to determine 1 or 0
             for (int i = 0; i < 8; i++)
-            {
-                if (boolean[i] == "True")
-                    integer[i] = 1;
-                else
-                    integer[i] = 0;
-            }
+                integer[i] = boolean[i] == "True" ? 1 : 0;
 
             // special cases for active and gift box
-            if (active)
-                integer[8] = 1;
-            else
-                integer[8] = 0;
-            if (giftCheckbox.Checked)
-                integer[9] = 1;
-            else
-                integer[9] = 0;
+            integer[8] = active ? 1 : 0;
+            integer[9] = giftCheckbox.Checked ? 1 : 0;
         }
 
         #region Add Design Button Event
@@ -561,19 +545,15 @@ namespace SKU_Manager.SplashModules.Add
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void imprintWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         #endregion
 
@@ -588,15 +568,11 @@ namespace SKU_Manager.SplashModules.Add
 
                 // calculate flat value for shippable width
                 if (shippableWidthTextbox.Text != "")
-                {
-                    shippableWidthTextbox.Text = (Convert.ToDouble(shippableWidthTextbox.Text) * 1.2).ToString();
-                }
+                    shippableWidthTextbox.Text = (Convert.ToDouble(shippableWidthTextbox.Text)*1.2).ToString();
 
                 // calculate flat value for shippable depth
                 if (shippableWidthTextbox.Text != "")
-                {
-                    shippableDepthTextbox.Text = (Convert.ToDouble(shippableDepthTextbox.Text) * 0.3).ToString();
-                }
+                    shippableDepthTextbox.Text = (Convert.ToDouble(shippableDepthTextbox.Text)*0.3).ToString();
             }
             else
             {
@@ -642,32 +618,22 @@ namespace SKU_Manager.SplashModules.Add
         /* the event for product dimension textboxes' text changed that show the correspond value in shippable dimension textboxes */
         private void productHeightTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFolded)    // normal situation
-            {
+            if (!isFolded) // normal situation
                 shippableHeightTextbox.Text = productHeightTextbox.Text;
-            }
         }
         private void productWidthTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFlat && !isFolded)    // normal situation
-            {
+            if (!isFlat && !isFolded) // normal situation
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
-            }
-            else if (isFlat && productWidthTextbox.Text != "")    // is flat, calculate the flat value of width
-            {
-                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text) * 1.2).ToString();
-            }
+            else if (isFlat && productWidthTextbox.Text != "") // is flat, calculate the flat value of width
+                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString();
         }
         private void productDepthTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFlat && !isFolded)    // normal situation
-            {
+            if (!isFlat && !isFolded) // normal situation
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
-            }
-            else if (isFlat && productDepthTextbox.Text != "")    // is flat, calculate the flat value of depth
-            {
-                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text) * 0.3).ToString();
-            }
+            else if (isFlat && productDepthTextbox.Text != "") // is flat, calculate the flat value of depth
+                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString();
         }
         #endregion
 
@@ -677,28 +643,22 @@ namespace SKU_Manager.SplashModules.Add
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void productWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void productDepthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         #endregion
 
@@ -706,36 +666,26 @@ namespace SKU_Manager.SplashModules.Add
         /* the event when shippable dimensions textboxes' text change that calculate the shippable weight if all fields are filled */
         private void shippableHeightTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-            {
-                shippableWeightTextbox.Text = Math.Round(((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6), 2).ToString();
-            } 
+            if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" &&
+                shippableDepthTextbox.Text != "")
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString();
             else
-            {
                 shippableWeightTextbox.Text = "";
-            }
         }
         private void shippableWidthTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-            {
-                shippableWeightTextbox.Text = Math.Round(((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6), 2).ToString();
-            }
+            if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" &&
+                shippableDepthTextbox.Text != "")
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString();
             else
-            {
                 shippableWeightTextbox.Text = "";
-            }
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-            {
-                shippableWeightTextbox.Text = Math.Round(((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6), 2).ToString();
-            }
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/ 6, 2).ToString();
             else
-            {
                 shippableWeightTextbox.Text = "";
-            }
         }
         #endregion
 
@@ -745,28 +695,22 @@ namespace SKU_Manager.SplashModules.Add
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void shippableWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void shippableDepthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         #endregion
     }

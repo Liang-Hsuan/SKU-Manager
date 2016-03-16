@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace SKU_Manager.AdminModules
+namespace SKU_Manager.AdminModules.DirectUpdate
 {
     /*
      * An application module for admin table that can update hts tables directly 
@@ -20,7 +20,7 @@ namespace SKU_Manager.AdminModules
         private DataSet dataSet;
 
         // database connection string
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic componenets */
         public UpdateHTS()
@@ -58,14 +58,13 @@ namespace SKU_Manager.AdminModules
             }
         }
 
+        #region Modify
         /* the event when update hts button click that update change to database */
         private void modifyButton_Click(object sender, EventArgs e)
         {
             // call background workder to update the change
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -79,7 +78,7 @@ namespace SKU_Manager.AdminModules
             try
             {
                 // udpate HTS CA
-                SqlCommandBuilder command = new SqlCommandBuilder(adapter[0]);
+                new SqlCommandBuilder(adapter[0]);
                 adapter[0].Update(dataSet, "HTS_CA");
 
                 // simulate progress 30% ~ 60%
@@ -90,7 +89,7 @@ namespace SKU_Manager.AdminModules
                 }
 
                 // update HTS US
-                command = new SqlCommandBuilder(adapter[1]);
+                new SqlCommandBuilder(adapter[1]);
                 adapter[1].Update(dataSet, "HTS_US");
             }
             catch (Exception ex)
@@ -114,5 +113,6 @@ namespace SKU_Manager.AdminModules
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
     }
 }

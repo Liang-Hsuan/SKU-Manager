@@ -58,14 +58,8 @@ namespace SKU_Manager.AdminModules.importUpdate
         }
 
         /* Get methods for the progress to client */
-        public int Total
-        {
-            get { return total; }
-        }
-        public int Current
-        {
-            get { return current; }
-        }
+        public int Total => total;
+        public int Current => current;
 
         /* a supporting method that release the excel object */
         private static void releaseObject(object obj)

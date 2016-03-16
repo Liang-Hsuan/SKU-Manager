@@ -1,5 +1,4 @@
-﻿using SKU_Manager.SKUExportModules.Tables.eCommerceTables;
-using SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportTables;
+﻿using SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportTables;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -13,16 +12,16 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
     public partial class BPinventoryView : Form
     {
         // field for storing data
-        private DataTable[] table = new DataTable[8];
+        private readonly DataTable[] table = new DataTable[8];
 
         // field for countdown
-        private int[] timeLeft = new int[8];
+        private readonly int[] timeLeft = new int[8];
 
         // supporting field
-        private bool[] done = new bool[8];
+        private readonly bool[] done = new bool[8];
 
         // initialize brightpearl inventory Table objects
-        private BPexportTable[] exportTable = new BPexportTable[8];
+        private readonly BPexportTable[] exportTable = new BPexportTable[8];
 
         /* constructor that initialize graphic components */
         public BPinventoryView()
@@ -41,9 +40,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             // set timers
             for (int i = 0; i <= 7; i++)
-            {
                 timeLeft[i] = 4;
-            }
             timer1.Start(); timer2.Start(); timer3.Start(); timer4.Start(); timer5.Start(); timer6.Start(); timer7.Start(); timer8.Start();
 
             // set progress
@@ -68,11 +65,10 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             // set up boolean flag
             for (int i = 0; i <= 7; i++)
-            {
                 done[i] = false;
-            }
         }
 
+        #region Tables Generation
         /* background workers for getting tables */
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -114,7 +110,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             // send table to table field
             table[7] = exportTable[7].getTable();
         }
+        #endregion
 
+        #region Complete Table
         /* put tables to data grid views */
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -205,7 +203,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[7] = true;
         }
+        #endregion
 
+        #region Timers
         /* the event for timers that make the visual of loading promopt */
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -221,9 +221,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer1.Start();
             }
             else
-            {
                 loadingLabel1.Text += ".";
-            }
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -239,9 +237,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer2.Start();
             }
             else
-            {
                 loadingLabel2.Text += ".";
-            }
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -257,9 +253,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer3.Start();
             }
             else
-            {
                 loadingLabel3.Text += ".";
-            }
         }
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -275,9 +269,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer4.Start();
             }
             else
-            {
                 loadingLabel4.Text += ".";
-            }
         }
         private void timer5_Tick(object sender, EventArgs e)
         {
@@ -293,9 +285,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer5.Start();
             }
             else
-            {
                 loadingLabel5.Text += ".";
-            }
         }
         private void timer6_Tick(object sender, EventArgs e)
         {
@@ -311,9 +301,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer6.Start();
             }
             else
-            {
                 loadingLabel6.Text += ".";
-            }
         }
         private void timer7_Tick(object sender, EventArgs e)
         {
@@ -329,9 +317,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer7.Start();
             }
             else
-            {
                 loadingLabel7.Text += ".";
-            }
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
@@ -347,11 +333,11 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timer8.Start();
             }
             else
-            {
                 loadingLabel8.Text += ".";
-            }
         }
+        #endregion
 
+        #region Buttons
         /* event for switching buttons click */
         private void codedBlankButton_Click(object sender, EventArgs e)
         {
@@ -673,48 +659,33 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 progressLabel8.Visible = true;
             }
         }
+        #endregion
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */
         private void BPinventoryView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done[0])
-            {
                 Properties.Settings.Default.BPcodedBlankTable = table[0];
-            }
             if (done[1])
-            {
                 Properties.Settings.Default.BPcodedImprintTable = table[1];
-            }
             if (done[2])
-            {
                 Properties.Settings.Default.BPrushCodedBlankTable = table[2];
-            }
             if (done[3])
-            {
                 Properties.Settings.Default.BPrushCodedImprintTable = table[3];
-            }
             if (done[4])
-            {
                 Properties.Settings.Default.BPnetBlankTable = table[4];
-            }
             if (done[5])
-            {
                 Properties.Settings.Default.BPnetImprintTable = table[5];
-            }
             if (done[6])
-            {
                 Properties.Settings.Default.BPrushNetBlankTable = table[6];
-            }
             if (done[7])
-            {
                 Properties.Settings.Default.BPrushNetImprintTable = table[7];
-            }
 
             Properties.Settings.Default.Save();
         }

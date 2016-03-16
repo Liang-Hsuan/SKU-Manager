@@ -16,10 +16,10 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
 
         // supporting fields
         private int timeLeft;
-        private bool complete = false;  // default set to false
+        private bool complete;  // default set to false
 
         // initialize ActivePriceListTable object
-        private ActivePriceListTable activePriceTable = new ActivePriceListTable();
+        private readonly ActivePriceListTable activePriceTable = new ActivePriceListTable();
 
         /* constructor that initialize graphic components */
         public ActivePriceView()
@@ -35,9 +35,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
 
             // call background worker adding data on data grid view
             if (!backgroundWorkerTable.IsBusy)
-            {
                 backgroundWorkerTable.RunWorkerAsync();
-            }
         }
 
         /* background worker that get the active price list export table */
@@ -73,15 +71,13 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */

@@ -74,7 +74,7 @@ namespace SKU_Manager.MainForms
                 sears = new Sears();
 
                 // start updating database
-                new Thread(new ThreadStart(() => sears.update(openFileDialog.FileName))).Start();
+                new Thread(() => sears.update(openFileDialog.FileName)).Start();
                 timer.Start();
             }
         }

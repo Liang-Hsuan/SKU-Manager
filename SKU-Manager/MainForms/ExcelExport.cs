@@ -209,7 +209,7 @@ namespace SKU_Manager.MainForms
                     ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
                     form.ShowDialog(this);
 
-                    if (form.Complete)  // the tables have complete
+                    if (form.Complete) // the tables have complete
                     {
                         // get the data
                         ds = form.Tables;
@@ -217,10 +217,8 @@ namespace SKU_Manager.MainForms
                         // export the excel files   
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                    {
+                    else // user close the form early 
                         return;
-                    }
 
                     Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
                 }
@@ -259,7 +257,7 @@ namespace SKU_Manager.MainForms
                     ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
                     form.ShowDialog(this);
 
-                    if (form.Complete)  // the tables have complete
+                    if (form.Complete) // the tables have complete
                     {
                         // get the data
                         ds = form.Tables;
@@ -267,10 +265,9 @@ namespace SKU_Manager.MainForms
                         // export the excel files 
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                    {
+                    else // user close the form early 
+
                         return;
-                    }
 
                     Properties.Settings.Default.UpcTable = ds.Tables[0];
                 }
@@ -308,7 +305,7 @@ namespace SKU_Manager.MainForms
                     ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
                     form.ShowDialog(this);
 
-                    if (form.Complete)  // the tables have complete
+                    if (form.Complete) // the tables have complete
                     {
                         // get the data
                         ds = form.Tables;
@@ -316,10 +313,9 @@ namespace SKU_Manager.MainForms
                         // export the excel files   
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                    {
+                    else // user close the form early 
+
                         return;
-                    }
 
                     Properties.Settings.Default.StockQuantityTable = ds.Tables[0];
                 }

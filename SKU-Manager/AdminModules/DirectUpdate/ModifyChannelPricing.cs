@@ -20,7 +20,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         private DataSet dataSet;
 
         // database connection string
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic componenets */
         public ModifyChannelPricing()
@@ -75,7 +75,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
 
             try
             {
-                SqlCommandBuilder command = new SqlCommandBuilder(adapter);
+                new SqlCommandBuilder(adapter);
                 adapter.Update(dataSet, "Channel_Pricing");
             }
             catch (Exception ex)

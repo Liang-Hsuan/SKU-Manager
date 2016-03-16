@@ -1,4 +1,4 @@
-﻿namespace SKU_Manager.SplashModules.Add
+﻿namespace SKU_Manager.SplashModules
 {
     partial class Online
     {

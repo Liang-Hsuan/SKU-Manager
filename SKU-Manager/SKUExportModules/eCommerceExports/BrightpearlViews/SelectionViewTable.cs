@@ -6,7 +6,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
     public partial class SelectionViewTable : Form
     {
         // field for the root form
-        private IWin32Window parent;
+        private readonly IWin32Window parent;
 
         /* constructor that initialize graphic components */
         public SelectionViewTable(IWin32Window parent)
@@ -26,9 +26,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 bpInventoryView.ShowDialog(parent);
             }
             else
-            {
                 MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
-            }
         }
     }
 }

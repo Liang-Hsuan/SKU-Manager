@@ -20,9 +20,9 @@ namespace SKU_Manager.SplashModules.Add
         private string shortEnglishDescription;
         private string shortFrenchDescription;
         private string generalKeywords;
-        private string[] amazonKeywords = new string[5];
-        private string[] amazonCaNode = new string[2];
-        private string[] amazonComNode = new string[2];
+        private readonly string[] amazonKeywords = new string[5];
+        private readonly string[] amazonCaNode = new string[2];
+        private readonly string[] amazonComNode = new string[2];
         private string sageCategory;
         private string sageTheme;
         private string esp;
@@ -36,18 +36,18 @@ namespace SKU_Manager.SplashModules.Add
         private bool active = true;    // default is set to true
 
         // fields for lists
-        private ArrayList canadianHtsList = new ArrayList();
-        private ArrayList usHtsList = new ArrayList();
-        private ArrayList sageCategoryList = new ArrayList();
-        private ArrayList sageThemeList = new ArrayList();
-        private ArrayList espList = new ArrayList();
-        private ArrayList promoMarketingList = new ArrayList();
-        private ArrayList uducatList = new ArrayList();
-        private ArrayList distributorCentralList = new ArrayList();
-        private HashSet<string> familyCodeList = new HashSet<string>();
+        private readonly ArrayList canadianHtsList = new ArrayList();
+        private readonly ArrayList usHtsList = new ArrayList();
+        private readonly ArrayList sageCategoryList = new ArrayList();
+        private readonly ArrayList sageThemeList = new ArrayList();
+        private readonly ArrayList espList = new ArrayList();
+        private readonly ArrayList promoMarketingList = new ArrayList();
+        private readonly ArrayList uducatList = new ArrayList();
+        private readonly ArrayList distributorCentralList = new ArrayList();
+        private readonly HashSet<string> familyCodeList = new HashSet<string>();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public AddFamily()
@@ -167,7 +167,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -179,7 +179,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -195,18 +195,20 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (sageCategoryTextbox.Text.Contains(sageCategoryCombobox.SelectedItem.ToString()))
                 return;
-            else if (sageCategoryTextbox.Text == "")
+            if (sageCategoryTextbox.Text == "")
                 sageCategoryTextbox.Text = sageCategoryCombobox.SelectedItem.ToString();
             else
-                sageCategoryTextbox.Text += "; " + sageCategoryCombobox.SelectedItem.ToString();
+                sageCategoryTextbox.Text += "; " + sageCategoryCombobox.SelectedItem;
         }
+
         private void removeSageCategoryButton_Click(object sender, EventArgs e)
         {
             if (sageCategoryTextbox.Text.Contains(";"))
             {
                 int index = sageCategoryTextbox.Text.LastIndexOf(';');
                 sageCategoryTextbox.Text = sageCategoryTextbox.Text.Substring(0, index);
-            } else
+            }
+            else
                 sageCategoryTextbox.Text = "";
         }
 
@@ -216,11 +218,12 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (sageThemeTextbox.Text.Contains(sageThemeCombobox.SelectedItem.ToString()))
                 return;
-            else if (sageThemeTextbox.Text == "")
+            if (sageThemeTextbox.Text == "")
                 sageThemeTextbox.Text = sageThemeCombobox.SelectedItem.ToString();
             else
-                sageThemeTextbox.Text += "; " + sageThemeCombobox.SelectedItem.ToString();
+                sageThemeTextbox.Text += "; " + sageThemeCombobox.SelectedItem;
         }
+
         private void removeSageThemeButton_Click(object sender, EventArgs e)
         {
             if (sageThemeTextbox.Text.Contains(";"))
@@ -238,11 +241,12 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (espTextbox.Text.Contains(espCombobox.SelectedItem.ToString()))
                 return;
-            else if (espTextbox.Text == "")
+            if (espTextbox.Text == "")
                 espTextbox.Text = espCombobox.SelectedItem.ToString();
             else
-                espTextbox.Text += "; " + espCombobox.SelectedItem.ToString();
+                espTextbox.Text += "; " + espCombobox.SelectedItem;
         }
+
         private void removeEspButton_Click(object sender, EventArgs e)
         {
             if (espTextbox.Text.Contains(";"))
@@ -260,11 +264,12 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (promoMarketingTextbox.Text.Contains(promoMarketingCombobox.SelectedItem.ToString()))
                 return;
-            else if (promoMarketingTextbox.Text == "")
+            if (promoMarketingTextbox.Text == "")
                 promoMarketingTextbox.Text = promoMarketingCombobox.SelectedItem.ToString();
             else
-                promoMarketingTextbox.Text += "; " + promoMarketingCombobox.SelectedItem.ToString();
+                promoMarketingTextbox.Text += "; " + promoMarketingCombobox.SelectedItem;
         }
+
         private void removingPromoMarketingButton_Click(object sender, EventArgs e)
         {
             if (promoMarketingTextbox.Text.Contains(";"))
@@ -282,11 +287,12 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (uducatTextbox.Text.Contains(uducatCombobox.SelectedItem.ToString()))
                 return;
-            else if (uducatTextbox.Text == "")
+            if (uducatTextbox.Text == "")
                 uducatTextbox.Text = uducatCombobox.SelectedItem.ToString();
             else
-                uducatTextbox.Text += "; " + uducatCombobox.SelectedItem.ToString();
+                uducatTextbox.Text += "; " + uducatCombobox.SelectedItem;
         }
+
         private void removeUducatButton_Click(object sender, EventArgs e)
         {
             if (uducatTextbox.Text.Contains(";"))
@@ -304,11 +310,12 @@ namespace SKU_Manager.SplashModules.Add
             // add selected item to the textbox
             if (distributorCentralTextbox.Text.Contains(distributorCentralCombobox.SelectedItem.ToString()))
                 return;
-            else if (distributorCentralTextbox.Text == "")
+            if (distributorCentralTextbox.Text == "")
                 distributorCentralTextbox.Text = distributorCentralCombobox.SelectedItem.ToString();
             else
-                distributorCentralTextbox.Text += "; " + distributorCentralCombobox.SelectedItem.ToString();
+                distributorCentralTextbox.Text += "; " + distributorCentralCombobox.SelectedItem;
         }
+
         private void removeDistributorCentralButton_Click(object sender, EventArgs e)
         {
             if (distributorCentralTextbox.Text.Contains(";"))

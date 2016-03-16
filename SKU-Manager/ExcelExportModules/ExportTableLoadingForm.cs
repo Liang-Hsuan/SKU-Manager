@@ -1,6 +1,7 @@
 ﻿using SKU_Manager.SKUExportModules.Tables;
 using System;
 using System.Data;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -12,16 +13,16 @@ namespace SKU_Manager.ExcelExportModules
     public partial class ExportTableLoadingForm : Form
     {
         // field for storing data
-        private DataSet ds = new DataSet();
-        private DataTable[] dt; // in order to get the table in the same order the export tables came in we need to use datatable array
+        private readonly DataSet ds = new DataSet();
+        private readonly DataTable[] dt; // in order to get the table in the same order the export tables came in we need to use datatable array
 
         // supporting fields
         private int timeLeft;
-        private int total = 0;
-        private bool complete = false;  // default set to false
+        private readonly int total;
+        private bool complete;           // default set to false
 
         // initialize AmazonCATable object
-        private ExportTable[] tables;
+        private readonly ExportTable[] tables;
         
         /* constrcutor that get the ExportTable object */
         public ExportTableLoadingForm(ExportTable[] tables)
@@ -38,9 +39,7 @@ namespace SKU_Manager.ExcelExportModules
             // set progress
             int length = tables.Length;
             foreach (ExportTable table in tables)
-            {
                 total += table.Total;
-            }
             total = total / length;
             progressLabel.Text = 0 + " / " + total;
 
@@ -59,22 +58,10 @@ namespace SKU_Manager.ExcelExportModules
         }
 
         /* return tables to client */
-        public DataSet Tables
-        {
-            get
-            {
-                return ds;
-            }
-        }
+        public DataSet Tables => ds;
 
         /* return if the tables are complete */
-        public bool Complete
-        {
-            get
-            {
-                return complete;
-            }
-        }
+        public bool Complete => complete;
 
         /* method that get the tables from ExportTable */
         private void getTables(ExportTable table, int index)
@@ -88,11 +75,7 @@ namespace SKU_Manager.ExcelExportModules
             timeLeft--;
 
             // set progress
-            int progress = 0;
-            foreach (ExportTable table in tables)
-            {
-                progress += table.progress;
-            }
+            int progress = tables.Sum(table => table.progress);
             progress = progress / tables.Length;
             progressLabel.Text = progress + " / " + total;
 
@@ -102,14 +85,12 @@ namespace SKU_Manager.ExcelExportModules
                 try
                 {
                     foreach (DataTable table in dt)
-                    {
                         ds.Tables.Add(table);
-                    }
                 }
                 catch { }
 
                 complete = true;
-                this.Close();
+                Close();
             }
 
             if (timeLeft <= 0)
@@ -119,9 +100,7 @@ namespace SKU_Manager.ExcelExportModules
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
     }
 }

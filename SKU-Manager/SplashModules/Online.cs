@@ -1,10 +1,10 @@
-﻿using SKU_Manager.SupportingClasses;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using SKU_Manager.SupportingClasses;
 
-namespace SKU_Manager.SplashModules.Add
+namespace SKU_Manager.SplashModules
 {
     /*
      * A spalsh add module that edit the online description

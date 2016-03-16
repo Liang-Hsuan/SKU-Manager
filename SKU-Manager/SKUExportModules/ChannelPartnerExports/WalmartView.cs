@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables;
 
@@ -17,17 +12,17 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
     public partial class WalmartView : Form
     {
         // field for storing data
-        private DataTable[] table = new DataTable[2];
+        private readonly DataTable[] table = new DataTable[2];
 
         // field for countdown
-        private int[] timeLeft = new int[2];
+        private readonly int[] timeLeft = new int[2];
 
         // supporting field
-        private bool[] done = new bool[2];
+        private readonly bool[] done = new bool[2];
 
         // initialize ShopCa Table objects
-        private WalmartItemExportTable itemTable = new WalmartItemExportTable();
-        private WalmartPriceExportTable priceTable = new WalmartPriceExportTable();
+        private readonly WalmartItemExportTable itemTable = new WalmartItemExportTable();
+        private readonly WalmartPriceExportTable priceTable = new WalmartPriceExportTable();
 
         /* constructor that initialize graphic components */
         public WalmartView()
@@ -47,15 +42,12 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
             // call background workers adding data on data grid view
             if (!backgroundWorkerTable1.IsBusy)
-            {
                 backgroundWorkerTable1.RunWorkerAsync();
-            }
             if (!backgroundWorkerTable2.IsBusy)
-            {
                 backgroundWorkerTable2.RunWorkerAsync();
-            }
         }
 
+        #region Tables Generation
         /* background workers that get table for the data grid view */
         private void backgroundWorkerTable1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -67,7 +59,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             // send price table to table field
             table[1] = priceTable.getTable();
         }
+        #endregion
 
+        #region Complete Table
         /* put data to data grid views */
         private void backgroundWorkerTable1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -91,7 +85,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
             done[1] = true;
         }
+        #endregion
 
+        #region Timers
         /* the event for timers that make the visual of loading promopt */
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -107,9 +103,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer1.Start();
             }
             else
-            {
                 loadingLabel1.Text += ".";
-            }
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -125,10 +119,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer2.Start();
             }
             else
-            {
                 loadingLabel2.Text += ".";
-            }
         }
+        #endregion
 
         /* the events for button click */
         private void itemButton_Click(object sender, EventArgs e)
@@ -166,20 +159,16 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */
         private void WalmartView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done[0])
-            {
                 Properties.Settings.Default.WalmartItemTable = table[0];
-            }
             if (done[1])
-            {
                 Properties.Settings.Default.WalmartPriceTable = table[1];
-            }
 
             Properties.Settings.Default.Save();
         }

@@ -22,7 +22,7 @@ namespace SKU_Manager.SplashModules.Add
         private string material = " ";
         private string colorCode = " ";
         private string basePrice;
-        private string[] location = new string[4];    // [0] for warehouse, [1] for rack, [2] for shelf, [3] for columnIndex
+        private readonly string[] location = new string[4];    // [0] for warehouse, [1] for rack, [2] for shelf, [3] for columnIndex
         private string locationFull;
         private string caHts;
         private string usHts;
@@ -53,37 +53,37 @@ namespace SKU_Manager.SplashModules.Add
         private bool frontHasAdded = false;
         private bool middleHasAdded = false;
         private bool lastHasAdded = false;
-        private string[] htsList = new string[4];
+        private readonly string[] htsList = new string[4];
 
         // fields for storing uri path and alt text of images
-        ImageSearch imageSearch = new ImageSearch();
-        private List<string> image = new List<string>();
-        private List<string> group = new List<string>();
-        private List<string> model = new List<string>();
-        private List<string> template = new List<string>();
-        private TextBox[] imageTextbox = new TextBox[10];
-        private TextBox[] groupTextbox = new TextBox[5];
-        private TextBox[] modelTextbox = new TextBox[5];
-        private TextBox[] templateTextbox = new TextBox[2];
-        private string[] imageAlt = new string[10];
-        private string[] groupAlt = new string[5];
-        private string[] modelAlt = new string[5];
-        AltText alt = new AltText();
+        private readonly ImageSearch imageSearch = new ImageSearch();
+        private readonly List<string> image = new List<string>();
+        private readonly List<string> group = new List<string>();
+        private readonly List<string> model = new List<string>();
+        private readonly List<string> template = new List<string>();
+        private readonly TextBox[] imageTextbox = new TextBox[10];
+        private readonly TextBox[] groupTextbox = new TextBox[5];
+        private readonly TextBox[] modelTextbox = new TextBox[5];
+        private readonly TextBox[] templateTextbox = new TextBox[2];
+        private readonly string[] imageAlt = new string[10];
+        private readonly string[] groupAlt = new string[5];
+        private readonly string[] modelAlt = new string[5];
+        private readonly AltText alt = new AltText();
 
         // fields for lists
-        private ArrayList designServiceCodeList = new ArrayList();
-        private ArrayList materialList = new ArrayList();
-        private ArrayList colorCodeList = new ArrayList();
-        private ArrayList warehouseList = new ArrayList();
-        private ArrayList rackList = new ArrayList();
-        private ArrayList shelfList = new ArrayList();
-        private ArrayList columnIndexList = new ArrayList();
-        private ArrayList caHtsList = new ArrayList();
-        private ArrayList usHtsList = new ArrayList();
-        private HashSet<string> skuList = new HashSet<string>();
+        private readonly ArrayList designServiceCodeList = new ArrayList();
+        private readonly ArrayList materialList = new ArrayList();
+        private readonly ArrayList colorCodeList = new ArrayList();
+        private readonly ArrayList warehouseList = new ArrayList();
+        private readonly ArrayList rackList = new ArrayList();
+        private readonly ArrayList shelfList = new ArrayList();
+        private readonly ArrayList columnIndexList = new ArrayList();
+        private readonly ArrayList caHtsList = new ArrayList();
+        private readonly ArrayList usHtsList = new ArrayList();
+        private readonly HashSet<string> skuList = new HashSet<string>();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public AddSKU()
@@ -96,9 +96,7 @@ namespace SKU_Manager.SplashModules.Add
 
             // call background worker
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Comboboxes Background Workers
@@ -228,11 +226,10 @@ namespace SKU_Manager.SplashModules.Add
                 skuCodeTextbox.Text = currentDesignCode;
                 frontHasAdded = true;
             }
-            else if (frontHasAdded)   // has it self, replace it 
-            {
+            else if (frontHasAdded) // has it self, replace it 
+
                 skuCodeTextbox.Text = skuCodeTextbox.Text.Replace(designServiceCode, currentDesignCode);
-            }
-            else    // has something behind
+            else // has something behind
             {
                 string orignal = skuCodeTextbox.Text;
                 skuCodeTextbox.Text = currentDesignCode + "-" + orignal;
@@ -398,22 +395,17 @@ namespace SKU_Manager.SplashModules.Add
             else if (middleHasAdded)    // has it self, replace it
             {
                 string original = skuCodeTextbox.Text;
-                if (original.Contains(designServiceCode) && !original.Contains(colorCode))    // has something in front but nothing behind
-                {
+                if (original.Contains(designServiceCode) && !original.Contains(colorCode))
+                    // has something in front but nothing behind
                     skuCodeTextbox.Text = designServiceCode + "-" + currentMaterial;
-                }
-                else if (!original.Contains(designServiceCode) && original.Contains(colorCode))    // has something behind but nothing infront
-                {
+                else if (!original.Contains(designServiceCode) && original.Contains(colorCode))
+                    // has something behind but nothing infront
                     skuCodeTextbox.Text = currentMaterial + "-" + colorCode;
-                }
-                else if (original.Contains(designServiceCode) && original.Contains(colorCode))    // has both infront and behind
-                {
+                else if (original.Contains(designServiceCode) && original.Contains(colorCode))
+                    // has both infront and behind
                     skuCodeTextbox.Text = designServiceCode + "-" + currentMaterial + "-" + colorCode;
-                }
-                else    // only it self
-                {
+                else // only it self
                     skuCodeTextbox.Text = skuCodeTextbox.Text.Replace(material, currentMaterial);
-                }
             }
             else if (skuCodeTextbox.Text.Contains(designServiceCode) && !skuCodeTextbox.Text.Contains(colorCode))    // has something in front but nothing behind, add behind it 
             {
@@ -462,14 +454,10 @@ namespace SKU_Manager.SplashModules.Add
             else if (lastHasAdded)    // has it self, simply replace it
             {
                 string original = skuCodeTextbox.Text;
-                if (original.Contains(designServiceCode) || original.Contains(material))    // somehing is in front
-                {
+                if (original.Contains(designServiceCode) || original.Contains(material)) // somehing is in front
                     skuCodeTextbox.Text = original.Substring(0, original.LastIndexOf('-') + 1) + currentColorCode;
-                }
-                else     // only it self
-                {
+                else // only it self
                     skuCodeTextbox.Text = skuCodeTextbox.Text.Replace(colorCode, currentColorCode);
-                }
             }
             else    // has something in front
             {
@@ -490,7 +478,7 @@ namespace SKU_Manager.SplashModules.Add
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -498,9 +486,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
             }
             else
-            {
                 caDutyTextbox.Text = "";
-            }
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -508,7 +494,7 @@ namespace SKU_Manager.SplashModules.Add
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -516,9 +502,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
             }
             else
-            {
                 usDutyTextbox.Text = "";
-            }
         }
         #endregion
 
@@ -551,48 +535,32 @@ namespace SKU_Manager.SplashModules.Add
 
             // search images and generate uri that assign to image fields
             string[] imageCopy = imageSearch.getImageUri(sku);
-            foreach (string uri in imageCopy)    // get the value that exist
-            {
+            foreach (string uri in imageCopy) // get the value that exist
                 image.Add(uri);
-            }
             int j = 10 - imageCopy.Length;    // get the number of value missing, add them
             for (int i = 0; i < j; i++)
-            {
                 image.Add("");
-            }
 
             string[] groupCopy = imageSearch.getGroupUri(sku);
-            foreach (string uri in groupCopy)    // get the value that exist
-            {
+            foreach (string uri in groupCopy) // get the value that exist
                 group.Add(uri);
-            }
-            j = 5 - groupCopy.Length;    // get the number of value missing, add them
+            j = 5 - groupCopy.Length;        // get the number of value missing, add them
             for (int i = 0; i < j; i++)
-            {
                 group.Add("");
-            }
 
             string[] modelCopy = imageSearch.getModelUri(sku);
-            foreach (string uri in modelCopy)    // get the value that exist
-            {
+            foreach (string uri in modelCopy) // get the value that exist
                 model.Add(uri);
-            }
-            j = 5 - modelCopy.Length;    // get the number of value missing, add them
+            j = 5 - modelCopy.Length;         // get the number of value missing, add them
             for (int i = 0; i < j; i++)
-            {
                 model.Add("");
-            }
 
             string[] templateCopy = imageSearch.getTemplateUri(sku);
-            foreach (string uri in templateCopy)    // get the value that exist
-            {
+            foreach (string uri in templateCopy) // get the value that exist
                 template.Add(uri);
-            }
-            j = 2 - templateCopy.Length;    // get the number of value missing, add them
+            j = 2 - templateCopy.Length;         // get the number of value missing, add them
             for (int i = 0; i < j; i++)
-            {
                 template.Add("");
-            }
 
             // simulate progress 10% ~ 20%
             for (int i = 10; i <= 20; i++)
@@ -650,27 +618,19 @@ namespace SKU_Manager.SplashModules.Add
         {
             // assign image uri to image textboxes
             for (int i = 0; i < image.Count; i++)
-            {
                 imageTextbox[i].Text = image[i];
-            }
 
             // assign image uri to group textboxes
             for (int i = 0; i < group.Count; i++)
-            {
                 groupTextbox[i].Text = group[i];
-            }
 
             // assign image uri to model textboxes
             for (int i = 0; i < model.Count; i++)
-            {
                 modelTextbox[i].Text = model[i];
-            }
 
             // assign image uri to template textboxes
             for (int i = 0; i < template.Count; i++)
-            {
                 templateTextbox[i].Text = template[i];
-            }
 
             // initialize location field and HTS
             location[0] = warehouseCombobox.SelectedItem.ToString();
@@ -682,9 +642,7 @@ namespace SKU_Manager.SplashModules.Add
 
             // call background worker
             if (!backgroundWorkerAddSKU.IsBusy)
-            {
                 backgroundWorkerAddSKU.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerAddSKU_DoWork(object sender, DoWorkEventArgs e)
         {

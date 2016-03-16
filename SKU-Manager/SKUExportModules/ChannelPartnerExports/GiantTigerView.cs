@@ -16,10 +16,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
         // supporting fields
         private int timeLeft;
-        private bool complete = false;  // default set to false
+        private bool complete;  // default set to false
 
         // initialize GiantTigerExportTable object
-        private GiantTigerExportTable giantTigerTable = new GiantTigerExportTable();
+        private readonly GiantTigerExportTable giantTigerTable = new GiantTigerExportTable();
 
         /* constructor that initialize graphic components */
         public GiantTigerView()
@@ -35,9 +35,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
             // call background worker adding data on data grid view
             if (!backgroundWorkerTable.IsBusy)
-            {
                 backgroundWorkerTable.RunWorkerAsync();
-            }
         }
 
         /* background worker that get the giant tiger export table and send it to data grid view */
@@ -73,15 +71,13 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */

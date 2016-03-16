@@ -12,19 +12,19 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
     public partial class ShopCaView : Form
     {
         // field for storing data
-        private DataTable[] table = new DataTable[4];
+        private readonly DataTable[] table = new DataTable[4];
 
         // field for countdown
-        private int[] timeLeft = new int[4];
+        private readonly int[] timeLeft = new int[4];
 
         // supporting field
-        private  bool[] done = new bool[4];
+        private readonly bool[] done = new bool[4];
 
         // initialize ShopCa Table objects
-        private ShopCaBagExportTable bagTable = new ShopCaBagExportTable();
-        private ShopCaBaseExportTable baseTable = new ShopCaBaseExportTable();
-        private ShopCaPriceExportTable priceTable = new ShopCaPriceExportTable();
-        private ShopCaInventoryExportTable inventoryTable = new ShopCaInventoryExportTable();
+        private readonly ShopCaBagExportTable bagTable = new ShopCaBagExportTable();
+        private readonly ShopCaBaseExportTable baseTable = new ShopCaBaseExportTable();
+        private readonly ShopCaPriceExportTable priceTable = new ShopCaPriceExportTable();
+        private readonly ShopCaInventoryExportTable inventoryTable = new ShopCaInventoryExportTable();
 
         /* constructor that initialize graphic components */
         public ShopCaView()
@@ -46,23 +46,16 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
             // call background workers adding data on data grid view
             if (!backgroundWorkerTable1.IsBusy)
-            {
                 backgroundWorkerTable1.RunWorkerAsync();
-            }
             if (!backgroundWorkerTable2.IsBusy)
-            {
                 backgroundWorkerTable2.RunWorkerAsync();
-            }
             if (!backgroundWorkerTable3.IsBusy)
-            {
                 backgroundWorkerTable3.RunWorkerAsync();
-            }
             if (!backgroundWorkerTable4.IsBusy)
-            {
                 backgroundWorkerTable4.RunWorkerAsync();
-            }
         }
 
+        #region Table Generation
         /* background workers for getting tables */
         private void backgroundWorkerTable1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -84,7 +77,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             // send table to table field
             table[3] = inventoryTable.getTable();
         }
+        #endregion
 
+        #region Complete Table
         /* put tables to data grid views */
         private void backgroundWorkerTable1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -130,7 +125,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
 
             done[3] = true;
         }
+        #endregion
 
+        #region Timers
         /* the event for timers that make the visual of loading promopt */
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -146,9 +143,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer1.Start();
             }
             else
-            {
                 loadingLabel1.Text += ".";
-            }
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -164,9 +159,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer2.Start();
             }
             else
-            {
                 loadingLabel2.Text += ".";
-            }
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -182,10 +175,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer3.Start();
             }
             else
-            {
                 loadingLabel3.Text += ".";
-            }
-
         }
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -201,11 +191,11 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timer4.Start();
             }
             else
-            {
                 loadingLabel4.Text += ".";
-            }
         }
+        #endregion
 
+        #region Switch Buttons
         /* event for switching buttons click */
         private void shopButton_Click(object sender, EventArgs e)
         {
@@ -299,32 +289,25 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 progressLabel4.Visible = true;
             }
         }
+        #endregion
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */
         private void ShopCaView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done[0])
-            {
                 Properties.Settings.Default.ShopCaBagTable = table[0];
-            }
             if (done[1])
-            {
                 Properties.Settings.Default.ShopCaBaseDataTable = table[1];
-            }
             if (done[2])
-            {
                 Properties.Settings.Default.ShopCaPriceTable = table[2];
-            }
             if (done[3])
-            {
                 Properties.Settings.Default.ShopCaInventoryTable = table[3];
-            }
 
             Properties.Settings.Default.Save();
         }

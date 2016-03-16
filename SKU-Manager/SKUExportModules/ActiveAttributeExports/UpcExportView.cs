@@ -17,10 +17,10 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
 
         // supporting fields
         private int timeLeft;
-        private bool complete = false;  // default set to false
+        private bool complete;  // default set to false
 
         // initialize bestbuyTable object
-        private UpcExportTable upcTable = new UpcExportTable();
+        private readonly UpcExportTable upcTable = new UpcExportTable();
 
         /* constructor that initialize graphic components */
         public UpcExportView()
@@ -36,9 +36,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
 
             // call background worker adding data on data grid view
             if (!backgroundWorkerTable.IsBusy)
-            {
                 backgroundWorkerTable.RunWorkerAsync();
-            }
         }
 
         /* background worker that get the upc export table and send it to data grid view */
@@ -74,15 +72,13 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
                 timer.Start();
             }
             else
-            {
                 loadingLabel.Text += ".";
-            }
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* save the data when the form is closing */
