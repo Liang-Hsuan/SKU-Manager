@@ -305,7 +305,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[42] = list[24];                                                 // shippable width cm  
                 row[43] = list[25];                                                 // shippable height cm
                 row[44] = list[26];                                                 // shippable depth cm
-                if (!list[24].Equals(DBNull.Value))
+                if (!list[24].Equals(DBNull.Value) && !list[26].Equals(DBNull.Value))
                 {
                     row[45] = Math.Round(Convert.ToDouble(list[24]) / 2.54, 2);     // shippable width in
                     row[46] = Math.Round(Convert.ToDouble(list[25]) / 2.54, 2);     // shippable height in

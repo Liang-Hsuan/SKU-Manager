@@ -16,7 +16,12 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         protected readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
         // field for sku data
-        private List<string> skuList = new List<string>();
+        private struct Sku
+        {
+            public string ashlinSku;
+            public string searsSku;
+        }
+        private List<Sku> skuList = new List<Sku>();
 
         // fields for progress 
         public readonly int Total;
@@ -27,11 +32,16 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         {
             using (connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_SEARS_CA != '';", connection);
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_SEARS_CA FROM master_SKU_Attributes WHERE SKU_SEARS_CA != '';", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                    skuList.Add(reader.GetString(0));
+                {
+                    Sku sku = new Sku();
+                    sku.ashlinSku = reader.GetString(0);
+                    sku.searsSku = reader.GetString(1);
+                    skuList.Add(sku);
+                }
             }
 
             // initialize progress
@@ -46,7 +56,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.Reset();
             Current = 0;
 
-            addColumn(mainTable, "SKU", false);
+            addColumn(mainTable, "Ashlin SKU", false);
+            addColumn(mainTable, "Sears SKU", false);
             addColumn(mainTable, "BP Item ID", false);
             addColumn(mainTable, "On Hand", false);
             addColumn(mainTable, "Purchase Order", true);
@@ -60,23 +71,23 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.BeginLoadData();
 
             // add data to each row
-            foreach (string sku in skuList)
+            foreach (Sku sku in skuList)
             {
                 row = mainTable.NewRow();
+                Current++;
 
+                row[0] = sku.ashlinSku;                                 // ashlin sku
+                row[1] = sku.searsSku;                                  // sears sku
                 try
                 {
-                    row[0] = sku;                                           // sku
-                    row[1] = table.Select("SKU = \'" + sku + "\'")[0][1];   // bp item id
-                    row[2] = table.Select("SKU = \'" + sku + "\'")[0][2];   // on hand
+                    row[2] = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0][1];   // bp item id
+                    row[3] = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0][2];   // on hand
                 }
-                catch
-                {
-                    continue;
-                }
+                catch { }
+                row[4] = false;                                         // purchase order
+                row[5] = false;                                         // discontinue
 
                 mainTable.Rows.Add(row);
-                Current++;
             }
 
             // finish loading data

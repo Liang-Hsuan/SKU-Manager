@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace SKU_Manager.SupportingClasses.Photo
@@ -17,23 +16,15 @@ namespace SKU_Manager.SupportingClasses.Photo
         /* constructor that initilize that store all sku data */
         public UpdatePhoto()
         {
-            // local supporting fields
-            int count = 0;
-            DataTable table = new DataTable();
-
             // getting sku data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL", connection);
-                SqlCommand command = new SqlCommand("SELECT COUNT(*) FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL", connection);
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL", connection);
                 connection.Open();
-                adapter.Fill(table);
-                count = (int)command.ExecuteScalar();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                    skuList.Add(reader.GetString(0));
             }
-
-            // store sku data name in the list
-            for (int i = 0; i < count; i++)
-                skuList.Add(table.Rows[i][0].ToString());
         }
 
         /* update all photo and put them in database */

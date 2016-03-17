@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading;
 
 namespace SKU_Manager.SupportingClasses.ProductDetail
@@ -13,15 +14,16 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
      */
     public class Product
     {
-        // get request object for geting information from Brightpearl
+        // fields for brightpearl integration
         private GetRequest get;
+        private PostRequest post;
 
         /* constructor that initilize GetRequest class */
         public Product()
         {
             using (SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
-                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl Testing\';", authenticationConnection);
+                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl\';", authenticationConnection);
                 authenticationConnection.Open();
                 SqlDataReader reader = getAuthetication.ExecuteReader();
                 reader.Read();
@@ -83,9 +85,9 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             while (textJSON != "404")
             {
                 // check if there is item left
-                while (textJSON.Contains("id") && textJSON.Contains("sku"))
+                while (textJSON.Contains("\"id\"") && textJSON.Contains("\"sku\""))
                 {
-                    int index = textJSON.IndexOf("sku") + 6;
+                    int index = textJSON.IndexOf("\"sku\"") + 7;
 
                     if (textJSON[index] != '"')
                     {
@@ -96,7 +98,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                         string sku = textJSON.Substring(index, length - index);
 
                         // get id number
-                        index = textJSON.IndexOf("id") + 4;
+                        index = textJSON.IndexOf("\"id\"") + 5;
                         length = index;
                         while (char.IsNumber(textJSON[length]))
                             length++;
@@ -143,9 +145,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 // get product id number
                 int length = index;
                 while (textJSON[length] != '"')
-                {
                     length--;
-                }
                 string productId = textJSON.Substring(length + 1, index - length);
 
                 // get quantity of the product
@@ -164,14 +164,34 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                 // proceed the text to the next token
                 textJSON = textJSON.Substring(textJSON.IndexOf("allocated") + 10);
-                textJSON = textJSON.Substring(textJSON.IndexOf("allocated") + 10);
+                textJSON = textJSON.Substring(textJSON.IndexOf("warehouses") + 13);
+                if (textJSON[0] != '}')
+                    textJSON = textJSON.Substring(textJSON.IndexOf("allocated") + 10);
             }
 
             return list;
         }
 
-        /*
-         * A class that get JSON response
+        #region Supporting Methods
+        /* a method that substring the given string */
+        private static string substringMethod(string original, string startingString, int additionIndex)
+        {
+            return original.Substring(original.IndexOf(startingString) + additionIndex);
+        }
+
+        /* a method that get the next target token */
+        private static string getTarget(string text)
+        {
+            int i = 0;
+            while (text[i] != '"' && text[i] != ',' && text[i] != '}')
+                i++;
+
+            return text.Substring(0, i);
+        }
+        #endregion
+
+        /* 
+         * A class that Get request from brightpearl
          */
         private class GetRequest
         {
@@ -190,7 +210,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             /* get the product id from the sku */
             public string getProductId(string sku)
             {
-                string uriSearch = "https://ws-use.brightpearl.com/2.0.0/ashlintest/product-service/product-search?SKU=" + sku;
+                string uriSearch = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product-search?SKU=" + sku;
 
                 // post request to uri
                 request = WebRequest.Create(uriSearch);
@@ -213,17 +233,15 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     return "Error";     // server 503 error
                 }
 
-                // the case there is no product exists
-                if (textJSON[textJSON.IndexOf("resultsReturned") + 17] - '0' < 1)
+                // check if there is result return or not
+                textJSON = substringMethod(textJSON, "resultsReturned", 17);
+                if (Convert.ToInt32(getTarget(textJSON)) < 1)
                     return null;
 
-                // starting getting product id
-                int index = textJSON.LastIndexOf("results") + 11;
-                int length = index;
-                while (char.IsNumber(textJSON[length]))
-                    length++;
+                // getting product id
+                textJSON = substringMethod(textJSON, "\"results\":", 12);
 
-                return textJSON.Substring(index, length - index);
+                return getTarget(textJSON);
             }
 
             /* a method that return the quantity of specific sku */
@@ -237,7 +255,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     return -1;
 
                 // generate search uri
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/warehouse-service/product-availability/" + id;
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/warehouse-service/product-availability/" + id;
 
                 // post request to uri
                 request = WebRequest.Create(uri);
@@ -280,7 +298,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             public string productTextResponse(int starting)
             {
                 // uri for getting all item on brightpearl
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/product-service/product/" + starting + "-" + (starting + 199);
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product/" + starting + "-" + (starting + 199);
 
                 // post request to uri
                 request = WebRequest.Create(uri);
@@ -296,9 +314,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                     // read all the text from JSON response
                     using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                    {
                         textJSON = streamReader.ReadToEnd();
-                    }
                 }
                 catch (WebException e)
                 {
@@ -319,7 +335,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             public string quantityTextResponse(int starting, int ending)
             {
                 // generate search uri
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/warehouse-service/product-availability/" + starting + "-" + ending;
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/warehouse-service/product-availability/" + starting + "-" + ending;
 
                 // post request to uri
                 request = WebRequest.Create(uri);
@@ -348,6 +364,79 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 }
 
                 return textJSON;
+            }
+        }
+
+        /* 
+         * A class that Post request to brightpearl 
+         */
+        private class PostRequest
+        {
+            // fields for web request
+            private HttpWebRequest request;
+            private HttpWebResponse response;
+
+            // fields for credentials
+            private readonly string appRef;
+            private readonly string appToken;
+
+            /* constructor to initialize the web request of app reference and app token */
+            public PostRequest(string appRef, string appToken)
+            {
+                this.appRef = appRef;
+                this.appToken = appToken;
+            }
+
+            /* post purchase order to API */
+            public string postPurchaseOrder(string channelId, string reference)
+            {
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order";
+
+                request = (HttpWebRequest)WebRequest.Create(uri);
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                request.Headers.Add("brightpearl-app-ref", appRef);
+                request.Headers.Add("brightpearl-account-token", appToken);
+
+                // generate JSON file for order post
+                string textJSON = "{\"orderTypeCode\":\"PO\",\"reference\":\"" + reference + "\",\"priceListId\":1,\"placeOn\":\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T') + "+00:00\",\"orderStatus\":{\"orderStatusId\":6},\"delivery\":{\"deliveryDate\":\"" + DateTime.Today.AddDays(12).ToString("yyyy-MM-dd") + "T00:00:00+00:00\",\"shippingMethodId\":9}," + 
+                                  "\"currency\":{\"orderCurrencyCode\":\"CAD\"},\"parties\":{\"supplier\":{\"contactId\":204}},\"assignment\":{\"current\":{\"channelId\":" + channelId + ",\"staffOwnerContactId\":4}}}";
+
+                // turn request string into a byte stream
+                byte[] postBytes = Encoding.UTF8.GetBytes(textJSON);
+
+                // send request
+                using (Stream requestStream = request.GetRequestStream())
+                    requestStream.Write(postBytes, 0, postBytes.Length);
+
+                // get the response from the server
+                try    // might have server internal error, so do it in try and catch
+                {
+                    response = (HttpWebResponse)request.GetResponse();
+                }
+                catch    // HTTP response 500
+                {
+                    return "Error";    // cannot post order, return error instead
+                }
+
+                string result;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    result = streamReader.ReadToEnd();
+
+                result = substringMethod(result, ":", 1);
+                return getTarget(result);  //return the order ID
+            }
+
+            public string postOrderRow(string orderId, string productId)
+            {
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/order-service/order/" + orderId + "/row";
+                request = (HttpWebRequest)WebRequest.Create(uri);
+                request.Method = "POST";
+                request.ContentType = "application/json";
+                request.Headers.Add("brightpearl-app-ref", appRef);
+                request.Headers.Add("brightpearl-account-token", appToken);
+
+                return "";
             }
         }
     }

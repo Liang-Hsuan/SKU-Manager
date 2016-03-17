@@ -6,7 +6,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     /*
      * An abstract class that inherient ExportTable class and override getSKU for all Brightpearl subclasses
      */
-    abstract class BPexportTable : ExportTable
+    public abstract class BPexportTable : ExportTable
     {
         /* override the method getSKU() */
         protected override string[] getSKU()
@@ -44,9 +44,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 2; i++)
-            {
                 list[i] = reader.GetValue(i);
-            }
             connection.Close();
 
             return list;

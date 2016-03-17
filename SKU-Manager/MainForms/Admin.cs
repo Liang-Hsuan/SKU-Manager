@@ -107,7 +107,7 @@ namespace SKU_Manager.MainForms
         {   
             Close();
 
-            new ExcelExport(parent).Show((parent));
+            new ExcelExport(parent).Show(parent);
         }
 
         /* the event when the top 3 button is clicked (view sku exports) */

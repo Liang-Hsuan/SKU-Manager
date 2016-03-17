@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses;
 using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
@@ -52,15 +51,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                     {
                         row[1] = value.ProductId;
                         row[2] = value.Quantity;
+                        list.Remove(value);
                         found = true;
                         break;
                     }
                 }
 
                 if (!found)
-                {
                     row[2] = -1;
-                }
 
                 found = false;
 
@@ -85,9 +83,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

@@ -69,9 +69,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

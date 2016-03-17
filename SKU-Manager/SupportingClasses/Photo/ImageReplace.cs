@@ -12,28 +12,22 @@ namespace SKU_Manager.SupportingClasses.Photo
     class ImageReplace
     {
         // fields for searching image, sku, and upc
-        private readonly string startDirectory;
+        private const string START_DIR = @"Z:\Public\Product Media Content";
         private List<string> skuList = new List<string>();
         
         // field for database connection
         private string connectionString = Properties.Settings.Default.Designcs;
-
-        /* constructor that initialize the starting directory */
-        public ImageReplace()
-        {
-            startDirectory = @"Z:\Public\Product Media Content";
-        }
 
         /* method that add existing sku image with upc code */
         public void addUPC(string sku, string upc)
         {
             // local supporting fields
             string prefix = sku.Substring(0, sku.IndexOf('-'));
-            string targetDirectory = startDirectory;
+            string targetDirectory = START_DIR;
             int i = 1;    // for naming file
 
             // check if directory exists
-            if (Directory.Exists(startDirectory + "/" + prefix))
+            if (Directory.Exists(START_DIR + "/" + prefix))
                 targetDirectory += "/" + prefix;
             else // no image for this design, return it
                 return;

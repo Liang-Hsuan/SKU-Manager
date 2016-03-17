@@ -35,6 +35,7 @@
             this.loadingLabel = new System.Windows.Forms.Label();
             this.backgroundWorkerTable = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             this.dataGridView.GridColor = System.Drawing.Color.Purple;
             this.dataGridView.Location = new System.Drawing.Point(0, 0);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(762, 653);
+            this.dataGridView.Size = new System.Drawing.Size(1330, 622);
             this.dataGridView.TabIndex = 0;
             // 
             // progressLabel
@@ -59,7 +60,7 @@
             this.progressLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progressLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progressLabel.ForeColor = System.Drawing.Color.Purple;
-            this.progressLabel.Location = new System.Drawing.Point(317, 402);
+            this.progressLabel.Location = new System.Drawing.Point(601, 402);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(100, 23);
             this.progressLabel.TabIndex = 2;
@@ -71,7 +72,7 @@
             this.loadingLabel.BackColor = System.Drawing.Color.Transparent;
             this.loadingLabel.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadingLabel.ForeColor = System.Drawing.Color.Purple;
-            this.loadingLabel.Location = new System.Drawing.Point(230, 310);
+            this.loadingLabel.Location = new System.Drawing.Point(514, 310);
             this.loadingLabel.Name = "loadingLabel";
             this.loadingLabel.Size = new System.Drawing.Size(323, 92);
             this.loadingLabel.TabIndex = 1;
@@ -88,12 +89,30 @@
             this.timer.Interval = 600;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // updateButton
+            // 
+            this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.updateButton.BackColor = System.Drawing.Color.Purple;
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.ForeColor = System.Drawing.Color.White;
+            this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
+            this.updateButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.updateButton.Location = new System.Drawing.Point(570, 652);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(184, 80);
+            this.updateButton.TabIndex = 3;
+            this.updateButton.Text = "Update Inventory";
+            this.updateButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // SearsInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(762, 786);
+            this.ClientSize = new System.Drawing.Size(1330, 755);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.loadingLabel);
             this.Controls.Add(this.dataGridView);
@@ -115,5 +134,6 @@
         private System.Windows.Forms.Label loadingLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTable;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button updateButton;
     }
 }

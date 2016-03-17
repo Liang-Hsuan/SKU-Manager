@@ -377,6 +377,7 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             designCodeTextbox.Text = designServiceCode;
+            upcLabel.Text = upcCode9;
             materialTextbox.Text = material;
             colorCodeTextbox.Text = colorCode;
             basesPriceTextbox.Text = basePrice;
@@ -1105,9 +1106,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[0] = newAlt.altText;
-            }
         }
         private void image2AltButton_Click(object sender, EventArgs e)
         {
@@ -1115,9 +1114,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[1] = newAlt.altText;
-            }
         }
         private void image3AltButton_Click(object sender, EventArgs e)
         {
@@ -1125,9 +1122,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[2] = newAlt.altText;
-            }
         }
         private void image4AltButton_Click(object sender, EventArgs e)
         {
@@ -1135,9 +1130,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[3] = newAlt.altText;
-            }
         }
         private void image5AltButton_Click(object sender, EventArgs e)
         {
@@ -1145,9 +1138,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[4] = newAlt.altText;
-            }
         }
         private void image6AltButton_Click(object sender, EventArgs e)
         {
@@ -1155,9 +1146,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[5] = newAlt.altText;
-            }
         }
         private void image7AltButton_Click(object sender, EventArgs e)
         {
@@ -1165,9 +1154,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[6] = newAlt.altText;
-            }
         }
         private void image8AltButton_Click(object sender, EventArgs e)
         {
@@ -1175,9 +1162,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[7] = newAlt.altText;
-            }
         }
         private void image9AltButton_Click(object sender, EventArgs e)
         {
@@ -1185,9 +1170,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[8] = newAlt.altText;
-            }
         }
         private void image10AltButton_Click(object sender, EventArgs e)
         {
@@ -1195,9 +1178,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 imageAlt[9] = newAlt.altText;
-            }
         }
         #endregion
 

@@ -199,8 +199,16 @@ namespace SKU_Manager.MainForms
                 {
                     ds.Tables.Add(Properties.Settings.Default.ActivePriceTable);
 
-                    // export the excel files    
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    try
+                    {
+                        // export the excel files    
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else    // load the tables
                 {
@@ -214,8 +222,16 @@ namespace SKU_Manager.MainForms
                         // get the data
                         ds = form.Tables;
 
-                        // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        try
+                        {
+                            // export the excel files   
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else // user close the form early 
                         return;
@@ -247,8 +263,16 @@ namespace SKU_Manager.MainForms
                 {
                     ds.Tables.Add(Properties.Settings.Default.UpcTable);
 
-                    // export the excel files    
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    try
+                    {
+                        // export the excel files    
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else    // load the tables
                 {
@@ -262,8 +286,16 @@ namespace SKU_Manager.MainForms
                         // get the data
                         ds = form.Tables;
 
-                        // export the excel files 
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        try
+                        {
+                            // export the excel files 
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else // user close the form early 
 
@@ -295,8 +327,16 @@ namespace SKU_Manager.MainForms
                 {
                     ds.Tables.Add(Properties.Settings.Default.StockQuantityTable);
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    try
+                    {
+                        // export the excel files      
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else    // load the tables
                 {
@@ -310,8 +350,16 @@ namespace SKU_Manager.MainForms
                         // get the data
                         ds = form.Tables;
 
-                        // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        try
+                        {
+                            // export the excel files   
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
                     else // user close the form early 
 
@@ -837,6 +885,32 @@ namespace SKU_Manager.MainForms
 
                 showExportMessage(saveFileDialog.FileName);
             }
+        }
+        #endregion
+
+        #region Top Buttons
+        /* the event when the top 1 button is clicked (view sku management) */
+        private void topButton1_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            new Splash(parent).Show(parent);
+        }
+
+        /* the event when the top 2 button is clicked (view sku export) */
+        private void topButton2_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            new SKUExport(parent).Show(parent);
+        }
+
+        /* the event when the top 3 button is clicked (admin table) */
+        private void topButton3_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            new Admin(parent).Show(parent);
         }
         #endregion
 

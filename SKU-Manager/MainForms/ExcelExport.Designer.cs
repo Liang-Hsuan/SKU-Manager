@@ -654,6 +654,7 @@
             this.topButton3.TabIndex = 4;
             this.topButton3.Text = "MODIFY DISCOUNT\r\n";
             this.topButton3.UseVisualStyleBackColor = false;
+            this.topButton3.Click += new System.EventHandler(this.topButton3_Click);
             // 
             // topButton2
             // 
@@ -667,6 +668,7 @@
             this.topButton2.TabIndex = 3;
             this.topButton2.Text = "VIEW SKU EXPORT TABLE";
             this.topButton2.UseVisualStyleBackColor = false;
+            this.topButton2.Click += new System.EventHandler(this.topButton2_Click);
             // 
             // topButton1
             // 
@@ -681,6 +683,7 @@
             this.topButton1.TabIndex = 2;
             this.topButton1.Text = "VIEW SKU MANAGEMENT\r\n";
             this.topButton1.UseVisualStyleBackColor = false;
+            this.topButton1.Click += new System.EventHandler(this.topButton1_Click);
             // 
             // applicationTitle
             // 

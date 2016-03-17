@@ -183,6 +183,7 @@
             this.leftButton = new System.Windows.Forms.Button();
             this.rightButton = new System.Windows.Forms.Button();
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
+            this.upcLabel = new System.Windows.Forms.Label();
             this.autoManualPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1840,6 +1841,16 @@
             this.giftCheckbox.Text = "Gift Box";
             this.giftCheckbox.UseVisualStyleBackColor = true;
             // 
+            // upcLabel
+            // 
+            this.upcLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upcLabel.ForeColor = System.Drawing.Color.Gray;
+            this.upcLabel.Location = new System.Drawing.Point(673, 170);
+            this.upcLabel.Name = "upcLabel";
+            this.upcLabel.Size = new System.Drawing.Size(97, 23);
+            this.upcLabel.TabIndex = 148;
+            this.upcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // UpdateSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1847,6 +1858,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.upcLabel);
             this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
@@ -2164,5 +2176,6 @@
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.CheckBox giftCheckbox;
+        private System.Windows.Forms.Label upcLabel;
     }
 }
