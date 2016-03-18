@@ -447,3 +447,7 @@ C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.DirectUpdate.UpdateHTS.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.Online.resources
 C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.SearsInventory.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\Tamir.SharpSSH.dll
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\DiffieHellman.dll
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\bin\Debug\Org.Mentalis.Security.dll
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Login.resources

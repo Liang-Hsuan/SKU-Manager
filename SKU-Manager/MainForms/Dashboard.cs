@@ -5,13 +5,17 @@ namespace SKU_Manager.MainForms
 {
     public partial class dashboard : Form
     {
+        // fields for children
         private Splash splash;
         private ExcelExport excelExport;
         private SKUExport skuExport;
         private Admin admin;
 
+        // field for parent
+        private Form parent;
+
         /* constructor that initialize graphic components */
-        public dashboard()
+        public dashboard(Form parent)
         {
             InitializeComponent();
 
@@ -19,6 +23,8 @@ namespace SKU_Manager.MainForms
             excelExport = new ExcelExport(this);
             skuExport = new SKUExport(this);
             admin = new Admin(this);
+
+            this.parent = parent;
         }
 
         /* event for button1 (view sku management) click -> open Splash form */
@@ -59,6 +65,12 @@ namespace SKU_Manager.MainForms
                 admin = new Admin(this);
                 admin.Show(this);
             }
+        }
+
+        /* close dashboard will also close login board */
+        private void dashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parent.Close();
         }
     }
 }

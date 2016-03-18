@@ -25,9 +25,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU");           // 1
-            addColumn(mainTable, "BP Item#");      // 2
-            addColumn(mainTable, "Quantity");      // 3
+            addColumn(mainTable, "SKU");                // 1
+            addColumn(mainTable, "BP Item#");           // 2
+            addColumn(mainTable, "Quantity");           // 3
+            addColumn(mainTable, "Reorder Quantity");   // 4 
 
             // local field for inserting data to table
             DataRow row;
@@ -51,6 +52,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                     {
                         row[1] = value.ProductId;
                         row[2] = value.Quantity;
+                        row[3] = value.ReorderQuantity;
                         list.Remove(value);
                         found = true;
                         break;
@@ -58,7 +60,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 }
 
                 if (!found)
+                {
                     row[2] = -1;
+                    row[3] = -1;
+                }
 
                 found = false;
 

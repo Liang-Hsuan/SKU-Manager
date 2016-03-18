@@ -25,9 +25,7 @@ namespace SKU_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source = kpjvpp867r.database.windows.net; Initial Catalog = Design_Database;" +
-            " Integrated Security = False; User ID = database_admin; Password = AshlinData1; " +
-            "Connect Timeout = 60; Encrypt = False; TrustServerCertificate = False;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Designcs {
             get {
                 return ((string)(this["Designcs"]));
@@ -127,9 +125,7 @@ namespace SKU_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=kpjvpp867r.database.windows.net;Initial Catalog=ChannelPartner_Databa" +
-            "se;Integrated Security=False;User ID=database_admin;Password=AshlinData1;Connect" +
-            " Timeout=60;Encrypt=False;TrustServerCertificate=False;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string ASCMcs {
             get {
                 return ((string)(this["ASCMcs"]));
@@ -334,6 +330,42 @@ namespace SKU_Manager.Properties {
             }
             set {
                 this["DistributorCentralTable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Username {
+            get {
+                return ((string)(this["Username"]));
+            }
+            set {
+                this["Username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Password {
+            get {
+                return ((string)(this["Password"]));
+            }
+            set {
+                this["Password"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Remember {
+            get {
+                return ((bool)(this["Remember"]));
+            }
+            set {
+                this["Remember"] = value;
             }
         }
     }

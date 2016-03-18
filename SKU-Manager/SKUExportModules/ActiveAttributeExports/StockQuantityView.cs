@@ -1,5 +1,4 @@
-﻿using SKU_Manager.SKUExportModules.Tables;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;

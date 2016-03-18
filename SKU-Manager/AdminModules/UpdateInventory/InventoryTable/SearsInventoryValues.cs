@@ -20,6 +20,9 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         public DateTime NextAvailableDate { get; set; }
         public int NextAvailableQty { get; set; }
 
+        // additional field for convenience
+        public string BpItemNumber { get; set; }
+
         /* first constructor that takes no argument */
         public SearsInventoryValues()
         {
@@ -32,11 +35,13 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 
             NextAvailableDate = DateTime.Today;
             NextAvailableQty = 0;
+
+            BpItemNumber = "";
         }
 
         /* second constructor that accept all parameters as argument */
         public SearsInventoryValues(string vendorSku, int qtyOnHand, string merchantSku, bool purchaseOrder, bool discontinued,
-                                    DateTime nextAvailableDate, int nextAvailableQty, DateTime discontinuedDate)
+                                    DateTime nextAvailableDate, int nextAvailableQty, DateTime discontinuedDate, string bpItemNumber)
         {
             VendorSku = vendorSku;
             QtyOnHand = qtyOnHand;
@@ -47,6 +52,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 
             NextAvailableDate = nextAvailableDate;
             NextAvailableQty = nextAvailableQty;
+
+            BpItemNumber = bpItemNumber;
         }
     }
 }

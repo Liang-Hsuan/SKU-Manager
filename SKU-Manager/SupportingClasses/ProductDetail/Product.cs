@@ -21,16 +21,24 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         /* constructor that initilize GetRequest class */
         public Product()
         {
+            string appRef;
+            string appToken;
+
             using (SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
                 SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl\';", authenticationConnection);
                 authenticationConnection.Open();
                 SqlDataReader reader = getAuthetication.ExecuteReader();
                 reader.Read();
-                get = new GetRequest(reader.GetString(0), reader.GetString(1));
+                appRef = reader.GetString(0);
+                appToken = reader.GetString(1);
             }
+
+            get = new GetRequest(appRef, appToken);
+            post = new PostRequest(appRef, appToken);
         }
 
+        #region Get Methods
         /* a method that return the quantity of specific sku */
         public int getQuantity(string sku)
         {
@@ -87,29 +95,22 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 // check if there is item left
                 while (textJSON.Contains("\"id\"") && textJSON.Contains("\"sku\""))
                 {
-                    int index = textJSON.IndexOf("\"sku\"") + 7;
+                    // get product id
+                    textJSON = substringMethod(textJSON, "\"id\"", 5);
+                    string productId = getTarget(textJSON);
 
-                    if (textJSON[index] != '"')
-                    {
-                        // get sku number
-                        int length = index;
-                        while (textJSON[length] != '"')
-                            length++;
-                        string sku = textJSON.Substring(index, length - index);
+                    // get sku number
+                    textJSON = substringMethod(textJSON, "\"sku\"", 7);
+                    string sku = getTarget(textJSON);
 
-                        // get id number
-                        index = textJSON.IndexOf("\"id\"") + 5;
-                        length = index;
-                        while (char.IsNumber(textJSON[length]))
-                            length++;
-                        string productId = textJSON.Substring(index, length - index);
+                    // get reorder quantity
+                    textJSON = substringMethod(textJSON, "reorderQuantity", 17);
+                    int reorderQuantity = Convert.ToInt32(getTarget(textJSON));
 
-                        // add sku and id to the list
-                        list.Add(new Values(sku, productId));
-                    }
+                    list.Add(new Values(sku, productId, 0, reorderQuantity));
 
                     // proceed the text to next token
-                    textJSON = textJSON.Substring(textJSON.IndexOf("reporting") + 10);
+                    textJSON = substringMethod(textJSON, "reporting", 10);
                 }
 
                 // proceed the request to next set of result
@@ -158,7 +159,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 // allocate quantity to the corresponding product
                 foreach (Values value in list.Where(value => productId == value.ProductId))
                 {
-                    value.Quantity = quantity;
+                    value.Quantity = Convert.ToInt32(quantity);
                     break;
                 }
 
@@ -171,8 +172,48 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
             return list;
         }
+        #endregion
+
+        /* a method that post purchase order */
+        public void postOrder(Dictionary<string,int> list, int channelId, string reference)
+        {
+            // post order and get the order id
+            string orderId = post.postPurchaseOrder(channelId, reference);
+
+            // post row row into the order
+            foreach (var item in list)
+            {
+                string orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
+                if (orderRowId == "Error")
+                {
+                    do
+                        orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
+                    while (orderRowId == "Error");
+                }
+            }
+        }
 
         #region Supporting Methods
+        /* a method that get price from the given sku */
+        private static double getPrice(string sku)
+        {
+            // field for return
+            double price;
+
+            // connect to database and get the base price of the sku
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            {
+                SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                price = Convert.ToDouble(reader.GetValue(0));
+            }
+
+            return price;
+        }
+
         /* a method that substring the given string */
         private static string substringMethod(string original, string startingString, int additionIndex)
         {
@@ -388,7 +429,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             }
 
             /* post purchase order to API */
-            public string postPurchaseOrder(string channelId, string reference)
+            public string postPurchaseOrder(int channelId, string reference)
             {
                 string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order";
 
@@ -427,16 +468,42 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 return getTarget(result);  //return the order ID
             }
 
-            public string postOrderRow(string orderId, string productId)
+            /* post order row to API */
+            public string postOrderRow(string orderId, string productId, int quantity)
             {
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlintest/order-service/order/" + orderId + "/row";
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order/" + orderId + "/row";
                 request = (HttpWebRequest)WebRequest.Create(uri);
                 request.Method = "POST";
                 request.ContentType = "application/json";
                 request.Headers.Add("brightpearl-app-ref", appRef);
                 request.Headers.Add("brightpearl-account-token", appToken);
 
-                return "";
+                // generate json file
+                string textJSON = "{\"productId\":\"" + productId + "\",\"quantity\":{\"magnitude\":\"" + quantity + "\"},\"rowValue\":{\"taxCode\":\"ON\",\"rowNet\":{\"value\":\"" + 0 + "\"},\"rowTax\":{\"value\":\"" + 0 + "\"}}}";
+
+                // turn request string into a byte stream
+                byte[] postBytes = Encoding.UTF8.GetBytes(textJSON);
+
+                // send request
+                using (Stream requestStream = request.GetRequestStream())
+                    requestStream.Write(postBytes, 0, postBytes.Length);
+
+                // get the response from server
+                try
+                {
+                    response = (HttpWebResponse)request.GetResponse();
+                }
+                catch
+                {
+                    return "Error";     // 503 Server Unabailable
+                }
+
+                string result;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    result = streamReader.ReadToEnd();
+
+                result = substringMethod(result, ":", 1);
+                return getTarget(result);  //return the order row ID
             }
         }
     }

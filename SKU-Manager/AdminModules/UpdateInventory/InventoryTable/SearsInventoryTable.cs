@@ -60,6 +60,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             addColumn(mainTable, "Sears SKU", false);
             addColumn(mainTable, "BP Item ID", false);
             addColumn(mainTable, "On Hand", false);
+            addColumn(mainTable, "Reorder Quantity", false);
             addColumn(mainTable, "Purchase Order", true);
             addColumn(mainTable, "Discontinue", true);
 
@@ -80,12 +81,14 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 row[1] = sku.searsSku;                                  // sears sku
                 try
                 {
-                    row[2] = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0][1];   // bp item id
-                    row[3] = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0][2];   // on hand
+                    DataRow rowCopy = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0];
+                    row[2] = rowCopy[1];                                // bp item id
+                    row[3] = rowCopy[2];                                // on hand
+                    row[4] = rowCopy[3];                                // reorder quantity
                 }
                 catch { }
-                row[4] = false;                                         // purchase order
-                row[5] = false;                                         // discontinue
+                row[5] = false;                                         // purchase order
+                row[6] = false;                                         // discontinue
 
                 mainTable.Rows.Add(row);
             }

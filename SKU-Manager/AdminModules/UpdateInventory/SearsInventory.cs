@@ -75,18 +75,31 @@ namespace SKU_Manager.AdminModules.UpdateInventory
         /* button event for update that refresh the inventory data in sears */
         private void updateButton_Click(object sender, EventArgs e)
         {
-            // fields for storing data
+            processingLabel.Visible = true;
+
+            #region Processing
+            // local fields
             List<SearsInventoryValues> list = new List<SearsInventoryValues>();
+            Sears sears = new Sears();
 
             foreach (DataRow row in table.Rows)
             {
-                if (row[3].ToString() == "" || row[3].ToString() == "-1") continue;
-                SearsInventoryValues value = new SearsInventoryValues(row[0].ToString(), Convert.ToInt32(row[3]), row[1].ToString(), Convert.ToBoolean(row[4]),
-                                                                      Convert.ToBoolean(row[5]), DateTime.Today.AddDays(14), 0, DateTime.Today);
+                // check the discontinue item to udpate database
+                bool discontinue = Convert.ToBoolean(row[6]);
+                if (discontinue)
+                    sears.discontinue(row[0].ToString());
+
+                if (row[2].ToString() == "") continue;
+                SearsInventoryValues value = new SearsInventoryValues(row[0].ToString(), Convert.ToInt32(row[3]), row[1].ToString(), Convert.ToBoolean(row[5]),
+                                                                      discontinue, DateTime.Today.AddDays(14), Convert.ToInt32(row[4]), DateTime.Today, row[2].ToString());
                 list.Add(value);
             }
 
-            new Sears().update(list.ToArray());
+            // start updating
+            sears.update(list.ToArray());
+            #endregion
+
+            processingLabel.Visible = false;
         }
     }
 }
