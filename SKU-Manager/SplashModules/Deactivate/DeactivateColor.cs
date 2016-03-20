@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SplashModules.Update;
 
 namespace SKU_Manager.SplashModules.Deactivate
 {
@@ -21,10 +20,10 @@ namespace SKU_Manager.SplashModules.Deactivate
         private string extendedEnglishDescription;
 
         // fields for combobox
-        ArrayList colorCodeList = new ArrayList();
+        private readonly ArrayList colorCodeList = new ArrayList();
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
         public DeactivateColor()
@@ -35,11 +34,10 @@ namespace SKU_Manager.SplashModules.Deactivate
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -49,16 +47,16 @@ namespace SKU_Manager.SplashModules.Deactivate
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
-                {
                     colorCodeList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             colorCodeCombobox.DataSource = colorCodeList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void colorCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -72,9 +70,7 @@ namespace SKU_Manager.SplashModules.Deactivate
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -107,7 +103,9 @@ namespace SKU_Manager.SplashModules.Deactivate
             shortEnglishDescriptionTextbox.Text = shortEnglishDescription;
             extendedEnglishDescriptionTextbox.Text = extendedEnglishDescription;
         }
+        #endregion
 
+        #region Deactivate
         /* the event when deactivate color button is clicked */
         private void deactivateColorButton_Click(object sender, EventArgs e)
         {
@@ -116,9 +114,7 @@ namespace SKU_Manager.SplashModules.Deactivate
 
             // call background worker, the update button will only be activated if vaild color has been selected, so no need to check
             if (!backgroundWorkerDeactivate.IsBusy)
-            {
                 backgroundWorkerDeactivate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerDeactivate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -132,7 +128,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             // connect to database and activate the color
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Now.ToString() + "\' "
+                SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                   + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -149,17 +145,18 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive
         /* the event for active and inactive list button that open the table of active color list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveColorList activeColorList = new ActiveColorList();
-            activeColorList.ShowDialog(this);
+            new ActiveColorList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveColorList inactiveColorList = new InactiveColorList();
-            inactiveColorList.ShowDialog(this);
+            new InactiveColorList().ShowDialog(this);
         }
+        #endregion
     }
 }

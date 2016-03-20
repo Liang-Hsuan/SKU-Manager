@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SplashModules.Update;
 
 namespace SKU_Manager.SplashModules.Deactivate
 {
@@ -24,10 +23,10 @@ namespace SKU_Manager.SplashModules.Deactivate
         private string extendedDescription;
 
         // fields for combobox
-        ArrayList designCodeList = new ArrayList();
+        private readonly ArrayList designCodeList = new ArrayList();
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
         public DeactivateDesign()
@@ -37,11 +36,10 @@ namespace SKU_Manager.SplashModules.Deactivate
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -51,16 +49,16 @@ namespace SKU_Manager.SplashModules.Deactivate
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
-                {
                     designCodeList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             designCodeCombobox.DataSource = designCodeList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void designCodeCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -74,9 +72,7 @@ namespace SKU_Manager.SplashModules.Deactivate
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -120,7 +116,9 @@ namespace SKU_Manager.SplashModules.Deactivate
             shortDescriptionTextbox.Text = shortDescription;
             extendedDescriptionTextbox.Text = extendedDescription;
         }
+        #endregion
 
+        #region Deactivate
         /* the event when activate design button is clicked */
         private void deactivateDesignButton_Click(object sender, EventArgs e)
         {
@@ -129,9 +127,7 @@ namespace SKU_Manager.SplashModules.Deactivate
 
             // call background worker, the update button will only be activated if vaild color has been selected, so no need to check
             if (!backgroundWorkerDeactivate.IsBusy)
-            {
                 backgroundWorkerDeactivate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerDeactivate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -145,7 +141,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             // connect to database and activate the color
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Now.ToString() + "\' "
+                SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                   + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -162,17 +158,18 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active and Inactive
         /* the event for active and inactive list button that open the table of active and inactive design list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveDesignList activeDesignList = new ActiveDesignList();
-            activeDesignList.ShowDialog(this);
+            new ActiveDesignList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveDesignList inactiveDesignList = new InactiveDesignList();
-            inactiveDesignList.ShowDialog(this);
+            new InactiveDesignList().ShowDialog(this);
         }
+        #endregion
     }
 }
