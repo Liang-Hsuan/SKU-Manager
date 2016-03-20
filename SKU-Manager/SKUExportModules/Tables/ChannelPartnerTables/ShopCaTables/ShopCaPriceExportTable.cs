@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     /*
      * A class that return shop ca price export table
      */
-    class ShopCaPriceExportTable : ShopCaExportTable
+    public class ShopCaPriceExportTable : ShopCaExportTable
     {
         /* constructor that initialize fields */
         public ShopCaPriceExportTable()
@@ -53,7 +53,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "yt tax exempt");                       // 26
 
             // local field for inserting data to table
-            DataRow row;
             double multiplier = getMultiplier();
 
             // start loading data
@@ -64,7 +63,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             {
                 double basePrice = getBasePrice(sku);
 
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                                           // brand
                 row[1] = "nishis_boutique";                                      // store name
@@ -85,15 +84,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
         private double getBasePrice(string sku)
         {
-            double basePrice;
-
             // start grabbing data              
             // [0] for all related to price      
             SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            basePrice = Convert.ToDouble(reader.GetValue(0));
+            double basePrice = Convert.ToDouble(reader.GetValue(0));
             connection.Close();
 
             return basePrice;

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses;
 
 namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 {
     /*
      * A class that return bestbuy export table
      */
-    class UpcExportTable : ExportTable
+    public class UpcExportTable : ExportTable
     {
         /* constructor that initialize fields */
         public UpcExportTable()
@@ -28,11 +27,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             addColumn(mainTable, "SKU Number");                   // 3
             addColumn(mainTable, "Short Description");            // 4
 
-
-            // local field for inserting data to table
-            DataRow row;
-            AltText alt = new AltText();
-
             // start loading data
             mainTable.BeginLoadData();
 
@@ -41,7 +35,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = list[1];                                 // upc code 9
                 row[1] = list[2];                                 // upc code check digit
@@ -59,7 +53,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -91,9 +85,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 2; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;

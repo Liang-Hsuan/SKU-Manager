@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
     /*
      * A class that return giant tiger export table
      */
-    class GiantTigerExportTable : ExportTableFast
+    public class GiantTigerExportTable : ExportTableFast
     {
         /* constructor that initialize fields */
         public GiantTigerExportTable()
@@ -49,7 +49,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "Image 10 Path");                             // 23
 
             // local field for inserting data to table
-            DataRow newRow;
             DataTable table = getDataTable();
             double multiplier = getMultiplier();
 
@@ -59,7 +58,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                newRow = mainTable.NewRow();
+                var newRow = mainTable.NewRow();
 
                 newRow[0] = row[20];                                                   // sku number
                 newRow[1] = "Ashlin®";                                                 // brand
@@ -106,9 +105,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

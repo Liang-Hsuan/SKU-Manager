@@ -21,7 +21,7 @@ namespace SKU_Manager.MainForms
     public partial class ExcelExport : Form
     {
         // field for storing the root form
-        private IWin32Window parent;
+        private readonly IWin32Window parent;
 
         // field for storing table 
         private DataSet ds = new DataSet();
@@ -915,7 +915,7 @@ namespace SKU_Manager.MainForms
         #endregion
 
         /* method that showing messagebox for sucessfully export an Excel file */
-        private void showExportMessage(string filePath)
+        private static void showExportMessage(string filePath)
         {
             MessageBox.Show("Excel file has been successfully exported in \n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

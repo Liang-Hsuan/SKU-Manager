@@ -9,7 +9,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
     /*
      * A class that return magento export table
      */
-    class DistributorCentralExportTable : ExportTable
+    public class DistributorCentralExportTable : ExportTable
     {
         /* constructor that initialize fields */
         public DistributorCentralExportTable()
@@ -121,7 +121,6 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             addColumn(mainTable, "Updated");                        // 94
 
             // local field for inserting data to table
-            DataRow row;
             double[] discountList = getDiscount();
 
             // start loading data
@@ -130,7 +129,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
                 ArrayList list = getData(sku);
 
                 row[0] = list[1];                                                       // supplier item guid
@@ -219,7 +218,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -231,9 +230,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();
@@ -265,9 +262,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 22; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;
@@ -286,9 +281,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 15; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
             // [16] multiplier
             command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);

@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
     /*
      * A class that return walmart price export table
      */
-    class WalmartPriceExportTable : WalmartExportTable
+    public class WalmartPriceExportTable : WalmartExportTable
     {
         /* constructor that initialize fields */
         public WalmartPriceExportTable()
@@ -44,7 +44,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             addColumn(mainTable, "New Margin");                           // 17
 
             // local field for inserting data to table
-            DataRow row;
             double multiplier = getMultiplier();
 
             // start loading data
@@ -55,7 +54,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = sku;                                            // item number
                 double msrp = Convert.ToDouble(list[0]) * multiplier;

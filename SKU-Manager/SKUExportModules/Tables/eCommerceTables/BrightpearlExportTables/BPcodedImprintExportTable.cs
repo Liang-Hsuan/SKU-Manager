@@ -7,7 +7,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     /*
      * A class that return Brightpearl coded imprinted price list export table
      */
-    class BPcodedImprintExportTable : BPexportTable
+    public class BPcodedImprintExportTable : BPexportTable
     {
         /* constructor that initialize fields */
         public BPcodedImprintExportTable()
@@ -30,7 +30,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             addColumn(mainTable, "COSTS breaks");         // 5
 
             // local field for inserting data to table
-            DataRow row;
             DataTable table = Properties.Settings.Default.StockQuantityTable;
             double[] discountList = getDiscount();
 
@@ -40,7 +39,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             // add data to each row 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
                 object[] list = getData(sku);
 
                 row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];       // BP item id#
@@ -52,13 +51,9 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                 {
                     double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[1]) - 1;
                     if (runCharge > 8)
-                    {
                         runCharge = 8;
-                    }
                     else if (runCharge < 1)
-                    {
                         runCharge = 1;
-                    }
                     msrp = msrp + runCharge;
                 }
                 // costs breaks
@@ -88,9 +83,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 8; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
             // [9] multiplier
             command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);

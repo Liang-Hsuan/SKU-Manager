@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
     /*
      * A class that return staples export table
      */
-    class StaplesExportTable : ExportTableFast
+    public class StaplesExportTable : ExportTableFast
     {
         /* constructor that initialize fields */
         public StaplesExportTable()
@@ -69,7 +69,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "Customization_Logo_Charge");                              // 43
 
             // local field for inserting data to table
-            DataRow newRow;
             DataTable table = getDataTable();
             double[] discountList = getDiscount();
 
@@ -79,7 +78,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                newRow = mainTable.NewRow();
+                DataRow newRow = mainTable.NewRow();
 
                 newRow[0] = "Ashlin Leather";                                          // vendor
                 newRow[1] = "juanne.kochhar@ashlinbpg.com";                            // vendor name
@@ -95,9 +94,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                     newRow[16] = Math.Round(Convert.ToDouble(row[3]) / 2.54, 2);       // height
                 }
                 if (!row[4].Equals(DBNull.Value))
-                {
-                    newRow[17] = Math.Round(Convert.ToDouble(row[4]) / 453.952, 2);    // weight
-                }
+                    newRow[17] = Math.Round(Convert.ToDouble(row[4])/453.952, 2); // weight
                 newRow[18] = Convert.ToDouble(row[18]) * discountList[0] * discountList[1];    // wholesale cost
                 newRow[19] = Convert.ToDouble(row[18]) * discountList[1];              // retail price
                 newRow[23] = "Ashlin®";                                                // brand

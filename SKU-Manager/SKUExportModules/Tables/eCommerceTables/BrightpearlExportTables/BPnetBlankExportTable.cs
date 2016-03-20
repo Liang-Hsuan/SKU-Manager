@@ -7,7 +7,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     /*
      * A class that return Brightpearl net blank price list export table
      */
-    class BPnetBlankExportTable : BPexportTable
+    public class BPnetBlankExportTable : BPexportTable
     {
         /* constructor that initialize fields */
         public BPnetBlankExportTable()
@@ -30,7 +30,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             addColumn(mainTable, "COSTS breaks");   // 5
 
             // local field for inserting data to table
-            DataRow row;
             DataTable table = Properties.Settings.Default.StockQuantityTable;
             double[] discountList = getDiscount();
             string[] skuList = getSKU();
@@ -41,7 +40,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             // add data to each row 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
                 object[] list = getData(sku);
 
                 row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];   // BP item id#
@@ -75,9 +74,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 8; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
             // [9] multiplier
             command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);

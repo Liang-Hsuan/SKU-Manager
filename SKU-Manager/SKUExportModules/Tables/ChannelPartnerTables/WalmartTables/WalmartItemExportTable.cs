@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
     /*
      * A class that return walmart item export table
      */
-    class WalmartItemExportTable : WalmartExportTable
+    public class WalmartItemExportTable : WalmartExportTable
     {
         /* constructor that initialize fields */
         public WalmartItemExportTable()
@@ -139,7 +138,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             addColumn(mainTable, "Consideration Code");
 
             // local field for inserting data to table
-            DataRow row;
             double[] price = getPrice();
 
             // start loading data
@@ -150,7 +148,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = list[0];                                 // upc/gtin
                 row[2] = sku;                                     // supplier stock number
@@ -203,9 +201,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 11; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;

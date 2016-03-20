@@ -12,7 +12,7 @@ namespace SKU_Manager.MainForms
         private Admin admin;
 
         // field for parent
-        private Form parent;
+        private readonly Form parent;
 
         /* constructor that initialize graphic components */
         public dashboard(Form parent)

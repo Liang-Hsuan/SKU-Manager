@@ -9,7 +9,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
     /*
      * A class that return active price list export table
      */
-    class ActivePriceListTable : ExportTable
+    public class ActivePriceListTable : ExportTable
     {
         /* constructor that initialize fields */
         public ActivePriceListTable()
@@ -238,7 +238,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             addColumn(mainTable, "Alt_Text_Model_5_Path");                                 // 213
 
             // local field for inserting data to table
-            DataRow row;
             double[] discountList = getDiscount();
 
             // start loading data
@@ -249,7 +248,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "Ashlin®";                                                 // brand
                 row[1] = "Ashlin® is a boutique quality brand, featuring elegant leathergoods for your fashion needs";         // brand description
@@ -361,25 +360,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[90] = msrp;                                                     // msrp
                 double runCharge;
                 if (!list[51].Equals(DBNull.Value))
-                {
                     runCharge = Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[51]) - 1;
-                }
                 else
-                {
                     runCharge = Math.Round(msrp*0.05)/0.6;
-                }
                 if (runCharge > 8)
-                {
                     row[91] = 8;
-                }
                 else if (runCharge < 1)
-                {
                     row[91] = 1;
-                }
                 else
-                {
-                    row[91] = runCharge;                                            // run charge
-                }
+                    row[91] = runCharge; // run charge
                 row[92] = msrp * discountList[1];                                   // price 1 c
                 row[93] = msrp * discountList[2];                                   // price 6 c        
                 row[94] = msrp * discountList[3];                                   // price 24 c
@@ -513,7 +502,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -579,7 +568,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* method that add swatch image url */
-        private string getSwatch(string sku)
+        private static string getSwatch(string sku)
         {
             // get material + color code
             string node = sku.Substring(sku.IndexOf('-'));

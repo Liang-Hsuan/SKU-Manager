@@ -7,7 +7,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     /*
      * A class that return Brightpearl rush coded blank price list export table
      */
-    class BPrushCodedBlankExportTable : BPexportTable
+    public class BPrushCodedBlankExportTable : BPexportTable
     {
         /* constructor that initialize fields */
         public BPrushCodedBlankExportTable()
@@ -30,7 +30,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             addColumn(mainTable, "COSTS breaks");         // 5
 
             // local field for inserting data to table
-            DataRow row;
             DataTable table = Properties.Settings.Default.StockQuantityTable;
             double[] discountList = getDiscount();
 
@@ -40,7 +39,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             // add data to each row 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
                 object[] list = getData(sku);
 
                 row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];       // BP item id#

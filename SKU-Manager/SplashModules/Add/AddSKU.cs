@@ -103,15 +103,11 @@ namespace SKU_Manager.SplashModules.Add
         /* the backgound workder for adding items to comboBoxes*/
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            // local fields for comboBoxes
-            SqlCommand command;
-            SqlDataReader reader;
-
             // make comboBox for Design Service Code
             SqlConnection connection = new SqlConnection(connectionString);
-            command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);    
+            var command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);    
             connection.Open();
-            reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             while (reader.Read())
                 designServiceCodeList.Add(reader.GetString(0));
             reader.Close();

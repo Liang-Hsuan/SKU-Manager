@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
     /*
      * A class that return bestbuy export table
      */
-    class BestbuyExportTable : ExportTableFast
+    public class BestbuyExportTable : ExportTableFast
     {
         /* constructor that initialize fields */
         public BestbuyExportTable()
@@ -71,7 +71,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "SKU_BESTBUY_CA");                                      // 44
 
             // local field for inserting data to table
-            DataRow newRow;
             DataTable table = getDataTable();
             double[] price = getPrice();
 
@@ -81,7 +80,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                newRow = mainTable.NewRow();
+                var newRow = mainTable.NewRow();
 
                 newRow[0] = row[13];                                  // sku
                 newRow[1] = "104";                                    // department
@@ -162,9 +161,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

@@ -6,7 +6,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
     /*
      * An abstract class that inherient ExportTable class and override getSKU for all Amazon subclasses
      */
-    abstract class AmazonExportTable : ExportTable
+    public abstract class AmazonExportTable : ExportTable
     {
         /* method that get the data from given sku */
         protected ArrayList getData(string sku)
@@ -27,9 +27,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 35; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;

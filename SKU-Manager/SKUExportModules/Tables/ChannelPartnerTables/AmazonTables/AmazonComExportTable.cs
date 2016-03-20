@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
     /*
      * A class that return amazon com export table
      */
-    class AmazonComExportTable : AmazonExportTable
+    public class AmazonComExportTable : AmazonExportTable
     {
         /* constructor that initialize fields */
         public AmazonComExportTable()
@@ -271,9 +271,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

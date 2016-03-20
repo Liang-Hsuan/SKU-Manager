@@ -56,8 +56,8 @@ namespace SKU_Manager.SplashModules.Add
         private bool active = true;    // default set to true
 
         // supporting boolean flag -> set to default
-        private bool isFlat = false;
-        private bool isFolded = false;
+        private bool isFlat;
+        private bool isFolded;
 
         // field for lists
         private readonly ArrayList productFamilyList = new ArrayList();

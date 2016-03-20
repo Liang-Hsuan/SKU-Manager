@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
     /*
      * A class that return amazon ca export table
      */
-    class AmazonCAExportTable : AmazonExportTable
+    public class AmazonCAExportTable : AmazonExportTable
     {
         /* constructor that initialize fields */
         public AmazonCAExportTable()
@@ -165,7 +165,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             addColumn(mainTable, "battery_type");                                   // 136
 
             // local field for inserting data to table
-            DataRow row;
             Product product = new Product();
             double multiplier = getMultiplier();
 
@@ -177,7 +176,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = "Ashlin®" + list[0];                      // item name
                 row[2] = "Ashlin®";                                // brand name
@@ -264,7 +263,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -274,9 +273,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

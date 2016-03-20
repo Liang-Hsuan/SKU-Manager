@@ -51,6 +51,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         }
 
         /* define a crucial method that require for all Brightpearl classes */
-        abstract protected double[] getDiscount();
+        protected abstract double[] getDiscount();
     }
 }

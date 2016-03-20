@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     /*
      * A class that return shop ca bag export table
      */
-    class ShopCaBagExportTable : ShopCaExportTable
+    public class ShopCaBagExportTable : ShopCaExportTable
     {
         /* constructor that initialize fields */
         public ShopCaBagExportTable()
@@ -76,9 +76,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "generic size");                            // 49
             addColumn(mainTable, "features");                                // 50
 
-            // local field for inserting data to table
-            DataRow newRow;
-
             // start loading data
             mainTable.BeginLoadData();
 
@@ -88,7 +85,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             {
                 ArrayList list = getData(sku);
 
-                newRow = mainTable.NewRow();
+                var newRow = mainTable.NewRow();
 
                 newRow[0] = "ashlin_bpg";                                // supplier id
                 newRow[1] = "nishis_boutique";                           // store name
@@ -135,22 +132,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 newRow[43] = list[22];                                   // colour
                 newRow[44] = list[0];                                    // style
                 newRow[45] = list[12];                                   // trend
-                if ((bool)list[6] && (bool)list[7])                      // strap type
-                {
+                if ((bool) list[6] && (bool) list[7]) // strap type
+
                     newRow[46] = true + " Detachable strap";
-                }
-                else if ((bool)list[6])
-                {
+                else if ((bool) list[6])
                     newRow[46] = true;
-                }
                 else
-                {
                     newRow[46] = false;
-                }
-                if ((bool)list[8])                                         // colsure type
-                {
+                if ((bool) list[8]) // colsure type
                     newRow[47] = "Zippered enclosure";
-                }
                 newRow[48] = list[9] + "cm x " + list[10] + "cm x " + list[11] + "cm";                         // generic size
                 newRow[49] = list[13] + " " + list[14] + " " + list[15] + " " + list[16] + " " + list[17];     // features
 
@@ -193,9 +183,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 37; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;
@@ -203,7 +191,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
         #region Deprecated Area
         /* new version of getData that directly return the desired table -> exporting excel issue will be runtime expire so deprecated */
-        private DataTable getDataTable()
+        /* private DataTable getDataTable()
         {
             // local field for storing data
             DataTable table = new DataTable();
@@ -233,11 +221,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             connection.Close();
 
             return table;
-        }
+        } */
         #endregion
 
         /* a method that get all the sku that is active and have on bestbuy */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -249,9 +237,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

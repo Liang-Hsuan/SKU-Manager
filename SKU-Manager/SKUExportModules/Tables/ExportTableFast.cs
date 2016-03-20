@@ -9,6 +9,6 @@ namespace SKU_Manager.SKUExportModules.Tables
     public abstract class ExportTableFast : ExportTable
     {
         /* method that return the table that have all desired data */
-        abstract protected DataTable getDataTable();
+        protected abstract DataTable getDataTable();
     }
 }

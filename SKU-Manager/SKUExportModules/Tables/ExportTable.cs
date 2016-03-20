@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace SKU_Manager.SKUExportModules.Tables
 {
-    abstract public class ExportTable : Table
+    public abstract class ExportTable : Table
     {
         // field for the main table
         protected DataTable mainTable;
@@ -16,26 +16,19 @@ namespace SKU_Manager.SKUExportModules.Tables
         protected string[] skuList;
 
         /* inherient the return table method -> the most import one */
-        abstract public DataTable getTable();
+        public abstract DataTable getTable();
 
         /* return the total number of sku */
-        public int Total
-        {
-            get
-            {
-                return skuList.Length;
-            }
-        }
+        public int Total => skuList.Length;
 
         /* some supporting private method that will help building the table */
         /* a method that will return all desired SKUs */
-        abstract protected string[] getSKU();
+        protected abstract string[] getSKU();
         /* method that add new column to table */
         protected void addColumn(DataTable table, string name)
         {
             // set up column
-            DataColumn column = new DataColumn();
-            column.ColumnName = name;
+            DataColumn column = new DataColumn {ColumnName = name};
 
             // add column to table
             table.Columns.Add(column);

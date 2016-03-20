@@ -9,7 +9,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     /*
      * A class that return shop ca inventory export table
      */
-    class ShopCaInventoryExportTable : ShopCaExportTable
+    public class ShopCaInventoryExportTable : ShopCaExportTable
     {
         /* constructor that initialize fields */
         public ShopCaInventoryExportTable()
@@ -41,7 +41,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "shipping comments");                              // 13
 
             // local field for inserting data to table
-            DataRow row;
             Product product = new Product();
 
             // start loading data
@@ -50,7 +49,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                // brand
                 row[1] = "nishis_boutique";           // store name

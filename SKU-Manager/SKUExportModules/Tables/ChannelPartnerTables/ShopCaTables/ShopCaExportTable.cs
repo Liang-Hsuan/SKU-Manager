@@ -7,7 +7,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     /*
      * An abstract class that inherient ExportTable class and override getSKU for all ShopCa subclasses
      */
-    abstract class ShopCaExportTable : ExportTable
+    public abstract class ShopCaExportTable : ExportTable
     {
         /* a method that get all the sku that is active */
         protected override string[] getSKU()
@@ -20,15 +20,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();
         }
 
         /* define other getData() method */
-        abstract protected ArrayList getData(string sku);
+        protected abstract ArrayList getData(string sku);
     }
 }

@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
     /*
      * A class that return magento export table
      */
-    class MagentoExportTable : ExportTable
+    public class MagentoExportTable : ExportTable
     {
         /* constructor that initialize fields */
         public MagentoExportTable()
@@ -173,7 +173,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
 
 
             // local field for inserting data to table
-            DataRow row;
             double[] discountList = getDiscount();
 
             // start loading data
@@ -184,7 +183,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = sku;                                            // SKU ashlin
                 row[1] = list[0];                                        // design service code 
@@ -230,13 +229,9 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[34] = msrp * discountList[9];                        // price 2500 c blank
                 double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[24]) - 1;
                 if (runCharge > 8)
-                {
                     runCharge = 8;
-                }
                 else if (runCharge < 1)
-                {
                     runCharge = 1;
-                }
                 row[35] = (msrp + runCharge) * discountList[1];                             // price 1 c im
                 row[36] = (msrp + runCharge) * discountList[2];                             // price 6 c im
                 row[37] = (msrp + runCharge) * discountList[3];                             // price 24 c im
@@ -358,7 +353,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
@@ -415,16 +410,14 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 64; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;
         }
 
         /* method that add swatch image url */
-        private string getSwatch(string sku)
+        private static string getSwatch(string sku)
         {
             // get material + color code
             string node = sku.Substring(sku.IndexOf('-'));
@@ -445,9 +438,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 20; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
             // [21] multiplier
             command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);

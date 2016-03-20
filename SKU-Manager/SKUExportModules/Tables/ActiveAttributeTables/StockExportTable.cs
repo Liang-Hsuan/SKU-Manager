@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
     /*
      * A class that return stock export table
      */
-    class StockExportTable : ExportTable
+    public class StockExportTable : ExportTable
     {
         /* constructor that initializes fields */
         public StockExportTable()
@@ -78,7 +78,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

@@ -8,7 +8,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     /*
      * A class that return shop ca base data export table
      */
-    class ShopCaBaseExportTable : ShopCaExportTable
+    public class ShopCaBaseExportTable : ShopCaExportTable
     {
         /* constructor that initialize fields */
         public ShopCaBaseExportTable()
@@ -69,7 +69,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "video location");                          // 42
 
             // local field for inserting data to table
-            DataRow row;
             AltText alt = new AltText();
 
             // start loading data
@@ -81,7 +80,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                       // supplier id
                 row[1] = "nishis_boutique";                  // store name
@@ -129,58 +128,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 progress++;
             }
 
-
-
-            /*foreach (DataRow row in table.Rows)
-            {
-                newRow = mainTable.NewRow();
-
-                newRow[0] = "ashlin_bpg";                      // supplier id
-                newRow[1] = "nishis_boutique";                 // store name
-                newRow[2] = row[8];                                // sku
-                newRow[3] = "Ashlin® " + row[0] + " " + row[22] + " " + row[23];                    // title
-                newRow[4] = row[1];                            // description
-                newRow[5] = row[2];                            // shipping weight
-                newRow[6] = "GM";                              // shipping weight unit of measure
-                newRow[7] = 151048;                            // primary product category id
-                newRow[8] = row[6];                            // product type
-                newRow[9] = row[8];                            // main image location
-                newRow[10] = row[21];                          // standard product id
-                newRow[11] = "UPC";                            // standard product id type
-                newRow[12] = true;                             // availability
-                newRow[13] = "Ashlin®";                        // brand
-                newRow[14] = row[10];                          // launch date
-                newRow[15] = row[20];                          // release date
-                newRow[16] = "NEW";                            // product condition
-                newRow[17] = 1;                                // item package quantity
-                newRow[18] = 1;                                // number of items
-                newRow[19] = "Ashlin®";                        // designer
-                newRow[20] = row[3];                           // package height
-                newRow[21] = row[4];                           // package length
-                newRow[22] = row[5];                           // package width
-                newRow[23] = "CM";                             // package dimension unit of measure
-                newRow[24] = 100;                              // max order quantity
-                newRow[25] = "";                               // legal disclaimer
-                newRow[26] = "Ashlin BPG Marketing INC";       // manufacturer
-                newRow[27] = row[8];                           // mfr part number
-                newRow[28] = row[7];                           // search term
-                newRow[29] = row[8].ToString().Substring(0, row[8].ToString().IndexOf('-')); ;       // parent sku
-                newRow[30] = 620977;                           // secondary product category id
-                newRow[31] = true;                             // is new product
-                newRow[32] = row[11];                          // alt iamge location 1
-                newRow[33] = row[12];                          // alt iamge location 2
-                newRow[34] = row[13];                          // alt iamge location 3
-                newRow[35] = row[14];                          // alt iamge location 4
-                newRow[36] = row[15];                          // alt iamge location 5
-                newRow[37] = row[16];                          // alt iamge location 6
-                newRow[38] = row[17];                          // alt iamge location 7
-                newRow[39] = row[18];                          // alt iamge location 8
-                newRow[40] = row[19];                          // alt iamge location 9
-
-                mainTable.Rows.Add(row);           
-                progress++;
-            } */
-
             // finish loading data
             mainTable.EndLoadData();
 
@@ -207,9 +154,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 20; i++)
-            {
                 list.Add(reader.GetValue(i));
-            }
             connection.Close();
 
             return list;
@@ -217,7 +162,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
         #region Deprecated Area
         /* new version of getData that directly return the desired table -> fixing issue right now */
-        private DataTable getData()
+        /* private DataTable getData()
         {
             // local field for storing data
             DataTable table = new DataTable();
@@ -243,7 +188,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             connection.Close();
 
             return table;
-        }
+        } */
         #endregion
     }
 }

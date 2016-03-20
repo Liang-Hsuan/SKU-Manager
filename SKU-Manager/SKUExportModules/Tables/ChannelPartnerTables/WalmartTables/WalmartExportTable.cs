@@ -7,7 +7,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
     /*
      * An abstract class that inherient ExportTable class and override getSKU for all Walmart subclasses
      */
-    abstract class WalmartExportTable : ExportTable
+    public abstract class WalmartExportTable : ExportTable
     {
         /* the method getSKU() */
         protected override string[] getSKU()
@@ -20,15 +20,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();
         }
 
         /* define getData method */
-        abstract protected ArrayList getData(string sku);
+        protected abstract ArrayList getData(string sku);
     }
 }
