@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using Tamir.SharpSsh;
@@ -24,7 +25,7 @@ namespace SKU_Manager.AdminModules.importUpdate
 
         // field for showing the progress
         private int total = 1;
-        private int current = 0;
+        private int current;
 
         // constructor that initialize sftp object
         public Sears()
@@ -147,8 +148,7 @@ namespace SKU_Manager.AdminModules.importUpdate
             #region Email
             // generating email body
             string body = "SKU need to be purchased: (Po Number = " + poNumber + ")\n\r";
-            foreach (string sku in skuList)
-                body += sku + "\n";
+            body = skuList.Aggregate(body, (current1, sku) => current1 + sku + "\n");
 
             // send email
             MailMessage mail = new MailMessage();

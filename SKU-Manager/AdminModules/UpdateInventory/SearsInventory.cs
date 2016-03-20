@@ -91,7 +91,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
 
                 if (row[2].ToString() == "") continue;
                 SearsInventoryValues value = new SearsInventoryValues(row[0].ToString(), Convert.ToInt32(row[3]), row[1].ToString(), Convert.ToBoolean(row[5]),
-                                                                      discontinue, DateTime.Today.AddDays(14), Convert.ToInt32(row[4]), DateTime.Today, row[2].ToString());
+                                                                      discontinue, DateTime.Today.AddDays(14), Convert.ToInt32(row[4]), row[2].ToString());
                 list.Add(value);
             }
 

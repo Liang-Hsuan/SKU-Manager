@@ -27,13 +27,13 @@ namespace SKU_Manager.SplashModules.Update
         {
             // update alt text field
             altText = altTextbox.Text;
-            this.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         /* the event when cancel button is clicked */
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

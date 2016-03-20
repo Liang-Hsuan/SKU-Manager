@@ -15,8 +15,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
     public class Product
     {
         // fields for brightpearl integration
-        private GetRequest get;
-        private PostRequest post;
+        private readonly GetRequest get;
+        private readonly PostRequest post;
 
         /* constructor that initilize GetRequest class */
         public Product()
@@ -44,19 +44,16 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         {
             int quantity = get.getQuantity(sku);
 
-            switch (quantity)
+            if (quantity == -2)
             {
-                case -2:
-                    do
-                    {
-                        Thread.Sleep(5000);
-                        quantity = getQuantity(sku);
-                    } while (quantity == -2);
-                    break;
-                case -3:
-                    quantity = -1;
-                    break;
+                do
+                {
+                    Thread.Sleep(5000);
+                    quantity = getQuantity(sku);
+                } while (quantity == -2);
             }
+            else if (quantity == -3)
+                quantity = -1;
 
             return quantity;
         }
@@ -194,26 +191,6 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         }
 
         #region Supporting Methods
-        /* a method that get price from the given sku */
-        private static double getPrice(string sku)
-        {
-            // field for return
-            double price;
-
-            // connect to database and get the base price of the sku
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
-            {
-                SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-
-                price = Convert.ToDouble(reader.GetValue(0));
-            }
-
-            return price;
-        }
-
         /* a method that substring the given string */
         private static string substringMethod(string original, string startingString, int additionIndex)
         {
@@ -238,8 +215,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         {
             private WebRequest request;
             private HttpWebResponse response;
-            private string appRef;
-            private string appToken;
+            private readonly string appRef;
+            private readonly string appToken;
 
             /* constructor to initialize the web request of app reference and app token */
             public GetRequest(string appRef, string appToken)
@@ -281,7 +258,6 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                 // getting product id
                 textJSON = substringMethod(textJSON, "\"results\":", 12);
-
                 return getTarget(textJSON);
             }
 
@@ -327,12 +303,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 }
 
                 // starting getting product quantity
-                int index = textJSON.LastIndexOf("inStock") + 9;
-                int length = index;
-                while (char.IsNumber(textJSON[length]))
-                    length++;
-
-                return Convert.ToInt32(textJSON.Substring(index, length - index));
+                textJSON = substringMethod(textJSON, "inStock", 9);
+                return Convert.ToInt32(getTarget(textJSON));
             }
 
             /* a method that get the text response from product search */

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SKU_Manager.SupportingClasses.Photo;
 
@@ -17,7 +11,7 @@ namespace SKU_Manager.SplashModules.UploadImage
     public partial class UpdatePhotoForm : Form
     {
         // field for couting time
-        int timeLeft;
+        private int timeLeft;
 
         /* constructor that initialize all the graphic components */
         public UpdatePhotoForm()
@@ -40,15 +34,13 @@ namespace SKU_Manager.SplashModules.UploadImage
 
             // start background worker to update image uri
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
 
         /* the event for no button click */
         private void noButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         /* background worker for updating image */
@@ -61,7 +53,7 @@ namespace SKU_Manager.SplashModules.UploadImage
         /* after updating completed, close the form */
         private void backgroundWorkerUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /* the event for timer that make the visual of loading promopt */
@@ -76,9 +68,7 @@ namespace SKU_Manager.SplashModules.UploadImage
                 timer.Start();
             }
             else
-            {
                 promptLabel.Text += ".";
-            }
         }
     }
 }

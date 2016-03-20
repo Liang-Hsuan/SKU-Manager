@@ -52,7 +52,7 @@ namespace SKU_Manager.SplashModules.Update
         private string[] htsList = new string[4];
 
         // fields for storing uri path and alt text of images
-        ImageSearch imageSearch = new ImageSearch();
+        private readonly ImageSearch imageSearch = new ImageSearch();
         private string[] image = new string[10];
         private string[] group = new string[5];
         private string[] model = new string[5];
@@ -64,19 +64,19 @@ namespace SKU_Manager.SplashModules.Update
         private string[] imageAlt = new string[10];
         private string[] groupAlt = new string[5];
         private string[] modelAlt = new string[5];
-        AltText alt = new AltText();
+        private AltText alt = new AltText();
 
         // fields for comboBoxes
-        private ArrayList skuCodeList = new ArrayList();
-        private ArrayList warehouseList = new ArrayList();
-        private ArrayList rackList = new ArrayList();
-        private ArrayList shelfList = new ArrayList();
-        private ArrayList columnIndexList = new ArrayList();
-        private ArrayList caHtsList = new ArrayList();
-        private ArrayList usHtsList = new ArrayList();
+        private readonly ArrayList skuCodeList = new ArrayList();
+        private readonly ArrayList warehouseList = new ArrayList();
+        private readonly ArrayList rackList = new ArrayList();
+        private readonly ArrayList shelfList = new ArrayList();
+        private readonly ArrayList columnIndexList = new ArrayList();
+        private readonly ArrayList caHtsList = new ArrayList();
+        private readonly ArrayList usHtsList = new ArrayList();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public UpdateSKU()
@@ -92,9 +92,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Comboboxes Generation
@@ -102,72 +100,56 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // local fields for comboBoxes
-            SqlCommand command;
-            SqlDataReader reader;
 
             // make combobox for Ashlin SKU
             SqlConnection connection = new SqlConnection(connectionString);
-            command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL;", connection);  
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL;", connection);  
             connection.Open();
-            reader = command.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuCodeList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Warehouse
             command = new SqlCommand("SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 warehouseList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Rack
             command = new SqlCommand("SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 rackList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Shelf
             command = new SqlCommand("SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 shelfList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Column index
             command = new SqlCommand("SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 columnIndexList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for Canadian HTS
             command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 caHtsList.Add(reader.GetValue(0));
-            }
             reader.Close();
 
             // make comboBox for US HTS
             command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);
             reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 usHtsList.Add(reader.GetValue(0));
-            }
             reader.Close();
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -308,7 +290,7 @@ namespace SKU_Manager.SplashModules.Update
             location[1] = table.Rows[0][5].ToString();
             location[2] = table.Rows[0][6].ToString();
             location[3] = table.Rows[0][7].ToString();
-            active = table.Rows[0][8].ToString() == "False" ? false : true;
+            active = table.Rows[0][8].ToString() != "False";
             ashlin = table.Rows[0][9].ToString();
             magento = table.Rows[0][10].ToString();
             tsc = table.Rows[0][11].ToString();
@@ -390,7 +372,7 @@ namespace SKU_Manager.SplashModules.Update
             caDutyTextbox.Text = caDuty;
             usDutyTextbox.Text = usDuty;
             skuCodeTextbox.Text = ashlinSKUCombobox.SelectedItem.ToString();
-            activeCheckbox.Checked = active ? true : false;
+            activeCheckbox.Checked = active;
             ashlinTextbox.Text = ashlin;
             magentoTextbox.Text = magento;
             tscTextbox.Text = tsc;
@@ -438,18 +420,14 @@ namespace SKU_Manager.SplashModules.Update
         {
             int i = ashlinSKUCombobox.SelectedIndex;
             if (i > 0)
-            {
                 i--;
-            }
             ashlinSKUCombobox.SelectedIndex = i;
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
             int i = ashlinSKUCombobox.SelectedIndex;
             if (i < skuCodeList.Count - 1)
-            {
                 i++;
-            }
             ashlinSKUCombobox.SelectedIndex = i;
         }
         #endregion
@@ -585,7 +563,7 @@ namespace SKU_Manager.SplashModules.Update
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -593,9 +571,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-            {
                 caDutyTextbox.Text = "";
-            }
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -603,7 +579,7 @@ namespace SKU_Manager.SplashModules.Update
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand commmand = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand commmand = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = commmand.ExecuteReader();
                     reader.Read();
@@ -611,9 +587,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-            {
                 usDutyTextbox.Text = "";
-            }
         }
         #endregion
 
@@ -661,99 +635,95 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for radio buttons checked change that determine if user update the image path manually or computer does it automatically */
         private void manualRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (manualRadioButton.Checked)
-            {
-                image1Textbox.Enabled = true;
-                image2Textbox.Enabled = true;
-                image3Textbox.Enabled = true;
-                image4Textbox.Enabled = true;
-                image5Textbox.Enabled = true;
-                image6Textbox.Enabled = true;
-                image7Textbox.Enabled = true;
-                image8Textbox.Enabled = true;
-                image9Textbox.Enabled = true;
-                image10Textbox.Enabled = true;
-                group1Textbox.Enabled = true;
-                group2Textbox.Enabled = true;
-                group3Textbox.Enabled = true;
-                group4Textbox.Enabled = true;
-                group5Textbox.Enabled = true;
-                model1Textbox.Enabled = true;
-                model2Textbox.Enabled = true;
-                model3Textbox.Enabled = true;
-                model4Textbox.Enabled = true;
-                model5Textbox.Enabled = true;
-                template1Textbox.Enabled = true;
-                template2Textbox.Enabled = true;
-                image1AltButton.Enabled = true;
-                image2AltButton.Enabled = true;
-                image3AltButton.Enabled = true;
-                image4AltButton.Enabled = true;
-                image5AltButton.Enabled = true;
-                image6AltButton.Enabled = true;
-                image7AltButton.Enabled = true;
-                image8AltButton.Enabled = true;
-                image9AltButton.Enabled = true;
-                image10AltButton.Enabled = true;
-                group1AltButton.Enabled = true;
-                group2AltButton.Enabled = true;
-                group3AltButton.Enabled = true;
-                group4AltButton.Enabled = true;
-                group5AltButton.Enabled = true;
-                model1AltButton.Enabled = true;
-                model2AltButton.Enabled = true;
-                model3AltButton.Enabled = true;
-                model4AltButton.Enabled = true;
-                model5AltButton.Enabled = true;
-            }
+            if (!manualRadioButton.Checked) return;
+            image1Textbox.Enabled = true;
+            image2Textbox.Enabled = true;
+            image3Textbox.Enabled = true;
+            image4Textbox.Enabled = true;
+            image5Textbox.Enabled = true;
+            image6Textbox.Enabled = true;
+            image7Textbox.Enabled = true;
+            image8Textbox.Enabled = true;
+            image9Textbox.Enabled = true;
+            image10Textbox.Enabled = true;
+            group1Textbox.Enabled = true;
+            group2Textbox.Enabled = true;
+            group3Textbox.Enabled = true;
+            group4Textbox.Enabled = true;
+            group5Textbox.Enabled = true;
+            model1Textbox.Enabled = true;
+            model2Textbox.Enabled = true;
+            model3Textbox.Enabled = true;
+            model4Textbox.Enabled = true;
+            model5Textbox.Enabled = true;
+            template1Textbox.Enabled = true;
+            template2Textbox.Enabled = true;
+            image1AltButton.Enabled = true;
+            image2AltButton.Enabled = true;
+            image3AltButton.Enabled = true;
+            image4AltButton.Enabled = true;
+            image5AltButton.Enabled = true;
+            image6AltButton.Enabled = true;
+            image7AltButton.Enabled = true;
+            image8AltButton.Enabled = true;
+            image9AltButton.Enabled = true;
+            image10AltButton.Enabled = true;
+            group1AltButton.Enabled = true;
+            group2AltButton.Enabled = true;
+            group3AltButton.Enabled = true;
+            group4AltButton.Enabled = true;
+            group5AltButton.Enabled = true;
+            model1AltButton.Enabled = true;
+            model2AltButton.Enabled = true;
+            model3AltButton.Enabled = true;
+            model4AltButton.Enabled = true;
+            model5AltButton.Enabled = true;
         }
         private void autoRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (autoRadioButton.Checked)
-            {
-                image1Textbox.Enabled = false;
-                image2Textbox.Enabled = false;
-                image3Textbox.Enabled = false;
-                image4Textbox.Enabled = false;
-                image5Textbox.Enabled = false;
-                image6Textbox.Enabled = false;
-                image7Textbox.Enabled = false;
-                image8Textbox.Enabled = false;
-                image9Textbox.Enabled = false;
-                image10Textbox.Enabled = false;
-                group1Textbox.Enabled = false;
-                group2Textbox.Enabled = false;
-                group3Textbox.Enabled = false;
-                group4Textbox.Enabled = false;
-                group5Textbox.Enabled = false;
-                model1Textbox.Enabled = false;
-                model2Textbox.Enabled = false;
-                model3Textbox.Enabled = false;
-                model4Textbox.Enabled = false;
-                model5Textbox.Enabled = false;
-                template1Textbox.Enabled = false;
-                template2Textbox.Enabled = false;
-                image1AltButton.Enabled = false;
-                image2AltButton.Enabled = false;
-                image3AltButton.Enabled = false;
-                image4AltButton.Enabled = false;
-                image5AltButton.Enabled = false;
-                image6AltButton.Enabled = false;
-                image7AltButton.Enabled = false;
-                image8AltButton.Enabled = false;
-                image9AltButton.Enabled = false;
-                image10AltButton.Enabled = false;
-                group1AltButton.Enabled = false;
-                group2AltButton.Enabled = false;
-                group3AltButton.Enabled = false;
-                group4AltButton.Enabled = false;
-                group5AltButton.Enabled = false;
-                model1AltButton.Enabled = false;
-                model2AltButton.Enabled = false;
-                model3AltButton.Enabled = false;
-                model4AltButton.Enabled = false;
-                model5AltButton.Enabled = false;
-            }
+            if (!autoRadioButton.Checked) return;
+            image1Textbox.Enabled = false;
+            image2Textbox.Enabled = false;
+            image3Textbox.Enabled = false;
+            image4Textbox.Enabled = false;
+            image5Textbox.Enabled = false;
+            image6Textbox.Enabled = false;
+            image7Textbox.Enabled = false;
+            image8Textbox.Enabled = false;
+            image9Textbox.Enabled = false;
+            image10Textbox.Enabled = false;
+            group1Textbox.Enabled = false;
+            group2Textbox.Enabled = false;
+            group3Textbox.Enabled = false;
+            group4Textbox.Enabled = false;
+            group5Textbox.Enabled = false;
+            model1Textbox.Enabled = false;
+            model2Textbox.Enabled = false;
+            model3Textbox.Enabled = false;
+            model4Textbox.Enabled = false;
+            model5Textbox.Enabled = false;
+            template1Textbox.Enabled = false;
+            template2Textbox.Enabled = false;
+            image1AltButton.Enabled = false;
+            image2AltButton.Enabled = false;
+            image3AltButton.Enabled = false;
+            image4AltButton.Enabled = false;
+            image5AltButton.Enabled = false;
+            image6AltButton.Enabled = false;
+            image7AltButton.Enabled = false;
+            image8AltButton.Enabled = false;
+            image9AltButton.Enabled = false;
+            image10AltButton.Enabled = false;
+            group1AltButton.Enabled = false;
+            group2AltButton.Enabled = false;
+            group3AltButton.Enabled = false;
+            group4AltButton.Enabled = false;
+            group5AltButton.Enabled = false;
+            model1AltButton.Enabled = false;
+            model2AltButton.Enabled = false;
+            model3AltButton.Enabled = false;
+            model4AltButton.Enabled = false;
+            model5AltButton.Enabled = false;
         }
         #endregion
 
@@ -1088,13 +1058,11 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for active list button that open the table of active sku list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveSKUList activeSKUList = new ActiveSKUList();
-            activeSKUList.ShowDialog(this);
+            new ActiveSKUList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveSKUList inactiveSKUList = new InactiveSKUList();
-            inactiveSKUList.ShowDialog(this);
+            new InactiveSKUList().ShowDialog(this);
         }
         #endregion
 
@@ -1190,9 +1158,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 groupAlt[0] = newAlt.altText;
-            }
         }
         private void group2AltButton_Click(object sender, EventArgs e)
         {
@@ -1200,9 +1166,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 groupAlt[1] = newAlt.altText;
-            }
         }
         private void group3AltButton_Click(object sender, EventArgs e)
         {
@@ -1210,9 +1174,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 groupAlt[2] = newAlt.altText;
-            }
         }
         private void group4AltButton_Click(object sender, EventArgs e)
         {
@@ -1220,9 +1182,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 groupAlt[3] = newAlt.altText;
-            }
         }
         private void group5AltButton_Click(object sender, EventArgs e)
         {
@@ -1230,9 +1190,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 groupAlt[4] = newAlt.altText;
-            }
         }
         #endregion
 
@@ -1244,9 +1202,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 modelAlt[0] = newAlt.altText;
-            }
         }
         private void model2AltButton_Click(object sender, EventArgs e)
         {
@@ -1254,9 +1210,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 modelAlt[1] = newAlt.altText;
-            }
         }
         private void model3AltButton_Click(object sender, EventArgs e)
         {
@@ -1264,9 +1218,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 modelAlt[2] = newAlt.altText;
-            }
         }
         private void model4AltButton_Click(object sender, EventArgs e)
         {
@@ -1274,9 +1226,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 modelAlt[3] = newAlt.altText;
-            }
         }
         private void model5AltButton_Click(object sender, EventArgs e)
         {
@@ -1284,9 +1234,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-            {
                 modelAlt[4] = newAlt.altText;
-            }
         }
         #endregion
     }

@@ -37,18 +37,18 @@ namespace SKU_Manager.SplashModules.Update
         private bool active = true;    // default is set to true
 
         // supporting boolean flag
-        bool firstTime = true;
+        private bool firstTime = true;
 
         // fields for comboBoxes
-        private ArrayList familyCodeList = new ArrayList();
-        private ArrayList canadianHtsList = new ArrayList();
-        private ArrayList usHtsList = new ArrayList();
-        private ArrayList sageCategoryList = new ArrayList();
-        private ArrayList sageThemeList = new ArrayList();
-        private ArrayList espList = new ArrayList();
-        private ArrayList promoMarketingList = new ArrayList();
-        private ArrayList uducatList = new ArrayList();
-        private ArrayList distributorCentralList = new ArrayList();
+        private readonly ArrayList familyCodeList = new ArrayList();
+        private readonly ArrayList canadianHtsList = new ArrayList();
+        private readonly ArrayList usHtsList = new ArrayList();
+        private readonly ArrayList sageCategoryList = new ArrayList();
+        private readonly ArrayList sageThemeList = new ArrayList();
+        private readonly ArrayList espList = new ArrayList();
+        private readonly ArrayList promoMarketingList = new ArrayList();
+        private readonly ArrayList uducatList = new ArrayList();
+        private readonly ArrayList distributorCentralList = new ArrayList();
 
         // connection string to the database
         private string connectionString = Properties.Settings.Default.Designcs;
@@ -69,9 +69,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Combobox Generation
@@ -194,9 +192,7 @@ namespace SKU_Manager.SplashModules.Update
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -274,7 +270,7 @@ namespace SKU_Manager.SplashModules.Update
 
             if (firstTime)
             {
-                this.AutoScrollPosition = new Point(0, 0);
+                AutoScrollPosition = new Point(0, 0);
                 firstTime = false;
             }
         }
@@ -305,14 +301,7 @@ namespace SKU_Manager.SplashModules.Update
             amazonCaNode[1] = table.Rows[0][9].ToString();
             amazonComNode[0] = table.Rows[0][10].ToString();
             amazonComNode[1] = table.Rows[0][11].ToString();
-            if (table.Rows[0][12].ToString() != "True")
-            {
-                active = false;
-            }
-            else
-            {
-                active = true;
-            }
+            active = table.Rows[0][12].ToString() == "True";
             sageCategory = table.Rows[0][13].ToString();
             sageTheme = table.Rows[0][14].ToString();
             esp = table.Rows[0][15].ToString();
@@ -339,14 +328,7 @@ namespace SKU_Manager.SplashModules.Update
             amazonComTextbox2.Text = amazonComNode[1];
             canadianHtsCombobox.Text = caHts;
             usHtsCombobox.Text = usHts;
-            if (active)
-            {
-                activeCheckbox.Checked = true;
-            }
-            else
-            {
-                activeCheckbox.Checked = false;
-            }
+            activeCheckbox.Checked = active;
             sageCategoryTextbox.Text = sageCategory;
             sageThemeTextbox.Text = sageTheme;
             espTextbox.Text = esp;
@@ -362,18 +344,14 @@ namespace SKU_Manager.SplashModules.Update
         {
             int i = productFamilyCombobox.SelectedIndex;
             if (i > 0)
-            {
                 i--;
-            }
             productFamilyCombobox.SelectedIndex = i;
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
             int i = productFamilyCombobox.SelectedIndex;
             if (i < familyCodeList.Count - 1)
-            {
                 i++;
-            }
             productFamilyCombobox.SelectedIndex = i;
         }
         #endregion
@@ -383,9 +361,7 @@ namespace SKU_Manager.SplashModules.Update
         private void translateButton_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate.IsBusy)
-            {
                 backgroundWorkerTranslate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -417,7 +393,7 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database to get the info about this material code
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -425,9 +401,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-            {
                 caDutyTextbox.Text = "";
-            }
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -436,7 +410,7 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database to get the info about this material code
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem.ToString() + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -444,9 +418,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-            {
                 usDutyTextbox.Text = "";
-            }
         }
         #endregion
 
@@ -461,9 +433,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker, the update button will only be activated if vaild family code has been selected, so no need to check
             if (!backgroundWorkerUpdate.IsBusy)
-            {
                 backgroundWorkerUpdate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -552,13 +522,11 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for active and inactive list button that open the table of active family list */
         private void activeFamilyButton_Click(object sender, EventArgs e)
         {
-            ActiveFamilyList activeFamilyList = new ActiveFamilyList();
-            activeFamilyList.ShowDialog(this); 
+            new ActiveFamilyList().ShowDialog(this); 
         }
         private void inactiveFamilyButton_Click(object sender, EventArgs e)
         {
-            InactiveFamilyList inactiveFamilyList = new InactiveFamilyList();
-            inactiveFamilyList.ShowDialog(this);
+            new InactiveFamilyList().ShowDialog(this);
         }
         #endregion
 
@@ -567,18 +535,10 @@ namespace SKU_Manager.SplashModules.Update
         private void addSageCategoryButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (sageCategoryTextbox.Text.Contains(sageCategoryCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (sageCategoryTextbox.Text == "")
-            {
+            if (sageCategoryTextbox.Text == "")
                 sageCategoryTextbox.Text = sageCategoryCombobox.SelectedItem.ToString();
-            }
-            else
-            {
-                sageCategoryTextbox.Text += "; " + sageCategoryCombobox.SelectedItem.ToString();
-            }
+            else if (!sageCategoryTextbox.Text.Contains(sageCategoryCombobox.SelectedItem.ToString()))
+                sageCategoryTextbox.Text += "; " + sageCategoryCombobox.SelectedItem;
         }
         private void removeSageCategoryButton_Click(object sender, EventArgs e)
         {
@@ -588,27 +548,17 @@ namespace SKU_Manager.SplashModules.Update
                 sageCategoryTextbox.Text = sageCategoryTextbox.Text.Substring(0, index);
             }
             else
-            {
                 sageCategoryTextbox.Text = "";
-            }
         }
 
         /* the event for sage theme add and remove button click */
         private void addSageThemeButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (sageThemeTextbox.Text.Contains(sageThemeCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (sageThemeTextbox.Text == "")
-            {
+            if (sageThemeTextbox.Text == "")
                 sageThemeTextbox.Text = sageThemeCombobox.SelectedItem.ToString();
-            }
-            else
-            {
-                sageThemeTextbox.Text += "; " + sageThemeCombobox.SelectedItem.ToString();
-            }
+            else if (!sageThemeTextbox.Text.Contains(sageThemeCombobox.SelectedItem.ToString()))
+                sageThemeTextbox.Text += "; " + sageThemeCombobox.SelectedItem;
         }
         private void removeSageThemeButton_Click(object sender, EventArgs e)
         {
@@ -618,27 +568,17 @@ namespace SKU_Manager.SplashModules.Update
                 sageThemeTextbox.Text = sageThemeTextbox.Text.Substring(0, index);
             }
             else
-            {
                 sageThemeTextbox.Text = "";
-            }
         }
 
         /* the event for ESP add and remove button click */
         private void addEspButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (espTextbox.Text.Contains(espCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (espTextbox.Text == "")
-            {
+            if (espTextbox.Text == "")
                 espTextbox.Text = espCombobox.SelectedItem.ToString();
-            }
-            else
-            {
-                espTextbox.Text += "; " + espCombobox.SelectedItem.ToString();
-            }
+            else if (!espTextbox.Text.Contains(espCombobox.SelectedItem.ToString()))
+                espTextbox.Text += "; " + espCombobox.SelectedItem;
         }
         private void removeEspButton_Click(object sender, EventArgs e)
         {
@@ -648,27 +588,19 @@ namespace SKU_Manager.SplashModules.Update
                 espTextbox.Text = espTextbox.Text.Substring(0, index);
             }
             else
-            {
                 espTextbox.Text = "";
-            }
         }
 
         /* the event for promo marketing add and remove button click */
         private void addPromoMarketingButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (promoMarketingTextbox.Text.Contains(promoMarketingCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (promoMarketingTextbox.Text == "")
+            if (promoMarketingTextbox.Text == "")
             {
                 promoMarketingTextbox.Text = promoMarketingCombobox.SelectedItem.ToString();
             }
-            else
-            {
-                promoMarketingTextbox.Text += "; " + promoMarketingCombobox.SelectedItem.ToString();
-            }
+            else if (!promoMarketingTextbox.Text.Contains(promoMarketingCombobox.SelectedItem.ToString()))
+                promoMarketingTextbox.Text += "; " + promoMarketingCombobox.SelectedItem;
         }
         private void removePromoMarketingButton_Click(object sender, EventArgs e)
         {
@@ -678,27 +610,17 @@ namespace SKU_Manager.SplashModules.Update
                 promoMarketingTextbox.Text = promoMarketingTextbox.Text.Substring(0, index);
             }
             else
-            {
                 promoMarketingTextbox.Text = "";
-            }
         }
 
         /* the event for UDUCAT add and remove button click */
         private void addUducatButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (uducatTextbox.Text.Contains(uducatCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (uducatTextbox.Text == "")
-            {
+            if (uducatTextbox.Text == "")
                 uducatTextbox.Text = uducatCombobox.SelectedItem.ToString();
-            }
-            else
-            {
-                uducatTextbox.Text += "; " + uducatCombobox.SelectedItem.ToString();
-            }
+            else if (!uducatTextbox.Text.Contains(uducatCombobox.SelectedItem.ToString()))
+                uducatTextbox.Text += "; " + uducatCombobox.SelectedItem;
         }
         private void removeUducatButton_Click(object sender, EventArgs e)
         {
@@ -708,27 +630,17 @@ namespace SKU_Manager.SplashModules.Update
                 uducatTextbox.Text = uducatTextbox.Text.Substring(0, index);
             }
             else
-            {
                 uducatTextbox.Text = "";
-            }
         }
 
         /* the event for distributor central add and remove button click */
         private void addDistributorCentralButton_Click(object sender, EventArgs e)
         {
             // add selected item to the textbox
-            if (distributorCentralTextbox.Text.Contains(distributorCentralCombobox.SelectedItem.ToString()))
-            {
-                return;
-            }
-            else if (distributorCentralTextbox.Text == "")
-            {
+            if (distributorCentralTextbox.Text == "")
                 distributorCentralTextbox.Text = distributorCentralCombobox.SelectedItem.ToString();
-            }
-            else
-            {
-                distributorCentralTextbox.Text += "; " + distributorCentralCombobox.SelectedItem.ToString();
-            }
+            else if (!distributorCentralTextbox.Text.Contains(distributorCentralCombobox.SelectedItem.ToString()))
+                distributorCentralTextbox.Text += "; " + distributorCentralCombobox.SelectedItem;
         }
         private void removeDistributorCentralButton_Click(object sender, EventArgs e)
         {
@@ -738,9 +650,7 @@ namespace SKU_Manager.SplashModules.Update
                 distributorCentralTextbox.Text = distributorCentralTextbox.Text.Substring(0, index);
             }
             else
-            {
                 distributorCentralTextbox.Text = "";
-            }
         }
         #endregion
     }

@@ -68,7 +68,7 @@ namespace SKU_Manager
         }
 
         /* a supporting method that see if the connection is valid or not */
-        private bool isConnected(SqlConnection connection)
+        private static bool isConnected(SqlConnection connection)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace SKU_Manager
         /* rememeber me checkbox event that determine if the program has to remember the credentials */
         private void rememberCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            remember = rememberCheckbox.Checked ? true : false;
+            remember = rememberCheckbox.Checked;
         }
     }
 }

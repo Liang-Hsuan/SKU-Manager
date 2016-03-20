@@ -3,15 +3,15 @@ using System.Data.SqlClient;
 
 namespace SKU_Manager.SupportingClasses.Photo
 {
-   /*
-    * A class that update all photos found in dropbox to sku database
-    */
-    class UpdatePhoto
+    /*
+     * A class that update all photos found in dropbox to sku database
+     */
+    public class UpdatePhoto
     {
         // field that finds and store all sku
         private readonly string connectionString = Properties.Settings.Default.Designcs;
-        private List<string> skuList = new List<string>();
-        private ImageSearch imageSearch = new ImageSearch();
+        private readonly List<string> skuList = new List<string>();
+        private readonly ImageSearch imageSearch = new ImageSearch();
 
         /* constructor that initilize that store all sku data */
         public UpdatePhoto()
@@ -30,14 +30,11 @@ namespace SKU_Manager.SupportingClasses.Photo
         /* update all photo and put them in database */
         public void startUpdate()
         {
-            // local field for storing found uri
-            string[] image;
-
             // puting uri to database by looping through the list (getting sku name list)
             foreach (string sku in skuList)
             {
                 // get image uri and put them in database, if not found eliminate them in database
-                image = imageSearch.getImageUri(sku);
+                string[] image = imageSearch.getImageUri(sku);
                 putImageInDatabase(sku, image);
 
                 // get group uri and put them in database, if not found eliminate them in database

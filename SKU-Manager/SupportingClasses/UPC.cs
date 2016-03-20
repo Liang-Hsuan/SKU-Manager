@@ -52,7 +52,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that generate the check digit for the given upc code */
-        private string getCheckNum(string upcCode)
+        private int getCheckNum(string upcCode)
         {
             // local fieds for calculation
             int indexOdd = 0;
@@ -78,7 +78,7 @@ namespace SKU_Manager.SupportingClasses
             total[0] += total[1];
 
             // return check digit
-            return (10 - total[0] % 10).ToString();
+            return 10 - total[0] % 10;
         }
     }
 }

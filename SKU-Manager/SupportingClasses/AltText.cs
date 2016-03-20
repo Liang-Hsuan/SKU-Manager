@@ -9,13 +9,7 @@ namespace SKU_Manager.SupportingClasses
     public class AltText
     {
         // fields for database connection
-        private readonly SqlConnection connection;
-
-        /* constructor that initialize database connection */
-        public AltText()
-        {
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
-        }
+        private readonly SqlConnection connection =  new SqlConnection(Properties.Settings.Default.Designcs);
 
         /* method that return the alt text from the given sku -> the sku already exist */
         public string getAltWithSkuExist(string sku)

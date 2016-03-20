@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -18,7 +16,7 @@ namespace SKU_Manager.SupportingClasses
         private string textJSON;
 
         // fields for translation
-        private List<char> englishList = new List<char>();
+        private readonly List<char> englishList = new List<char>();
 
         /* translate the english string provided */
         public void nowTranslate(string englishString)
@@ -32,9 +30,7 @@ namespace SKU_Manager.SupportingClasses
                     englishList.Add('2');
                     englishList.Add('0');
                 }
-                else if (ch == '\'')
-                    continue;
-                else
+                else if (ch != '\'')
                     englishList.Add(ch);
             }
 
@@ -52,9 +48,7 @@ namespace SKU_Manager.SupportingClasses
       
             // read all the text from JSON response
             using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-            {
                 textJSON = streamReader.ReadToEnd();
-            }
 
             // reset 
             englishList.Clear();

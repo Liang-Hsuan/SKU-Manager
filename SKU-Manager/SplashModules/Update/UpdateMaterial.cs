@@ -7,7 +7,6 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
-using SKU_Manager.SplashModules.Add;
 using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Update
@@ -28,10 +27,10 @@ namespace SKU_Manager.SplashModules.Update
         private bool active = true;    // default is set to true
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         // fields for combobox
-        ArrayList materialCodeList = new ArrayList();
+        private readonly ArrayList materialCodeList = new ArrayList();
 
         /* constructor that initialize graphic component */
         public UpdateMaterial()
@@ -41,9 +40,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Combobox Generation
@@ -57,9 +54,7 @@ namespace SKU_Manager.SplashModules.Update
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
-                {
                     materialCodeList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -137,8 +132,7 @@ namespace SKU_Manager.SplashModules.Update
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
             extendedEnglishDescriptionTextbox.Text = extendedEnglishDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
-            if (active)
-                activeCheckbox.Checked = true;
+            activeCheckbox.Checked = active;
         }
         #endregion
 

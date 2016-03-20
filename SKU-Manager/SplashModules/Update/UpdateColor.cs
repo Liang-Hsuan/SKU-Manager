@@ -7,7 +7,6 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
-using SKU_Manager.SplashModules.Add;
 using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Update
@@ -28,10 +27,10 @@ namespace SKU_Manager.SplashModules.Update
         private bool active = true;    // default is set to true
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         // fields for combobox
-        ArrayList colorCodeList = new ArrayList();
+        private readonly ArrayList colorCodeList = new ArrayList();
 
         /* constructor that initialize graphic component */
         public UpdateColor()
@@ -41,9 +40,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
         #region Combobox Generation
@@ -280,13 +277,11 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for active and inactive list button that open the table of active color list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            ActiveColorList activeColorList = new ActiveColorList();
-            activeColorList.ShowDialog(this);
+            new ActiveColorList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            InactiveColorList inactiveColorList = new InactiveColorList();
-            inactiveColorList.ShowDialog(this);
+            new InactiveColorList().ShowDialog(this);
         }
         #endregion
     }

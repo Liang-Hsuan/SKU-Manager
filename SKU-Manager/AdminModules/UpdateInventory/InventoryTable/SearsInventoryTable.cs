@@ -21,7 +21,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             public string ashlinSku;
             public string searsSku;
         }
-        private List<Sku> skuList = new List<Sku>();
+        private readonly List<Sku> skuList = new List<Sku>();
 
         // fields for progress 
         public readonly int Total;
@@ -66,7 +66,6 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
-            DataRow row;
 
             // start loading data
             mainTable.BeginLoadData();
@@ -74,7 +73,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             // add data to each row
             foreach (Sku sku in skuList)
             {
-                row = mainTable.NewRow();
+                var row = mainTable.NewRow();
                 Current++;
 
                 row[0] = sku.ashlinSku;                                 // ashlin sku

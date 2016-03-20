@@ -9,7 +9,6 @@ using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
 using System.Collections.Generic;
 using System.Drawing;
-using SKU_Manager.SplashModules.Add;
 
 namespace SKU_Manager.SplashModules.Update
 {
@@ -59,16 +58,16 @@ namespace SKU_Manager.SplashModules.Update
         private bool active = true;    // default set to true
 
         // supporting boolean flag fields -> set to default
-        private bool isFlat = false;
-        private bool isFolded = false;
+        private bool isFlat;
+        private bool isFolded;
 
         // field for comboBox
-        private ArrayList designCodeList = new ArrayList();
-        private ArrayList productFamilyList = new ArrayList();
-        private HashSet<string> internalNameList = new HashSet<string>();
+        private readonly ArrayList designCodeList = new ArrayList();
+        private readonly ArrayList productFamilyList = new ArrayList();
+        private readonly HashSet<string> internalNameList = new HashSet<string>();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public UpdateDesign()
@@ -87,14 +86,12 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // local fields for comboBoxes
-            SqlCommand command;
-            SqlDataReader reader;
 
             // make comboBox for Design Service Code
             SqlConnection connection = new SqlConnection(connectionString);
-            command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);   
+            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);   
             connection.Open();
-            reader = command.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 designCodeList.Add(reader.GetValue(0));
             reader.Close();
@@ -319,7 +316,7 @@ namespace SKU_Manager.SplashModules.Update
             englishOption[4] = table.Rows[0][41].ToString();
             frenchOption[4] = table.Rows[0][42].ToString();
             boolean[7] = table.Rows[0][43].ToString();
-            active = table.Rows[0][44].ToString() == "False" ? false : true;
+            active = table.Rows[0][44].ToString() != "False";
             boolean[8] = table.Rows[0][51].ToString();
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -373,7 +370,7 @@ namespace SKU_Manager.SplashModules.Update
             option4FrenchTextbox.Text = frenchOption[3];
             option5FrenchTextbox.Text = frenchOption[4];
             displayedOnWebsiteCombobox.Text = boolean[7];
-            activeCheckbox.Checked = active ? true : false;
+            activeCheckbox.Checked = active;
             designServiceFlagCombobox.Text = designServiceFlag;
         }
         #endregion
@@ -439,18 +436,14 @@ namespace SKU_Manager.SplashModules.Update
         {
             int i = designCodeCombobox.SelectedIndex;
             if (i > 0)
-            {
                 i--;
-            }
             designCodeCombobox.SelectedIndex = i;
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
             int i = designCodeCombobox.SelectedIndex;
             if (i < designCodeList.Count - 1)
-            {
                 i++;
-            }
             designCodeCombobox.SelectedIndex = i;
         }
         #endregion
@@ -477,9 +470,7 @@ namespace SKU_Manager.SplashModules.Update
         private void translateButton1_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate1.IsBusy)
-            {
                 backgroundWorkerTranslate1.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -714,19 +705,15 @@ namespace SKU_Manager.SplashModules.Update
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void imprintWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         #endregion
 
@@ -734,32 +721,22 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for product dimension textbox text changed that show the correspond value in shippable deimension textbox */
         private void productHeightTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFolded)    // normal situation
-            {
+            if (!isFolded) // normal situation
                 shippableHeightTextbox.Text = productHeightTextbox.Text;
-            }
         }
         private void productWidthTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFlat && !isFolded)    // normal situation
-            {
+            if (!isFlat && !isFolded) // normal situation
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
-            }
-            else if (isFlat && productWidthTextbox.Text != "")    // is flat, calculate the flat value of width
-            {
-                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text) * 1.2).ToString();
-            }
+            else if (isFlat && productWidthTextbox.Text != "") // is flat, calculate the flat value of width
+                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString();
         }
         private void productDepthTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (!isFlat && !isFolded)    // normal situation
-            {
+            if (!isFlat && !isFolded) // normal situation
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
-            }
-            else if (isFlat && productDepthTextbox.Text != "")    // is flat, calculate the flat value of depth
-            {
-                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text) * 0.3).ToString();
-            }
+            else if (isFlat && productDepthTextbox.Text != "") // is flat, calculate the flat value of depth
+                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString();
         }
         #endregion
 
@@ -769,28 +746,22 @@ namespace SKU_Manager.SplashModules.Update
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void productWidthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         private void productDepthTextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
-            {
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
                 e.Handled = true;
-            }
         }
         #endregion
 
@@ -799,21 +770,21 @@ namespace SKU_Manager.SplashModules.Update
         private void shippableHeightTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
             else
                 shippableWeightTextbox.Text = "";
         }
         private void shippableWidthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
             else
                 shippableWeightTextbox.Text = "";
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = ((Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text)) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
             else
                 shippableWeightTextbox.Text = "";
         }
