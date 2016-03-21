@@ -43,10 +43,18 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new ActiveColorTable().Table);
+                ds.Tables.Add(new ActiveColorTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Active Color Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -55,10 +63,18 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new ActiveMaterialTable().Table);
+                ds.Tables.Add(new ActiveMaterialTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Active Material Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -67,41 +83,102 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new ActiveFamilyTable().Table);
+                ds.Tables.Add(new ActiveFamilyTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Active Family Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
         private void activeDesignButton_Click(object sender, EventArgs e)
         {
+            // local field for excel export
+            XlExport export = new XlExport();
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
-                ds.Tables.Add(new ActiveDesignTable().Table);
                 string[] names = new string[1];
                 names[0] = "Active Design Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
+
+                exportTables = new ExportTable[1];
+                exportTables[0] = new ActiveDesignTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete) // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
+
+                    try
+                    {
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else // user close the form early 
+                    return;
+
                 showExportMessage(saveFileDialog.FileName);
             }
         }
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
+            // local field for excel export
+            XlExport export = new XlExport();
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
-                try
-                {
-                    ds.Tables.Add(new ActiveSkuTable().Table);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
                 string[] names = new string[1];
                 names[0] = "Active SKU Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                int[][] textIndex = new int[1][];
+                int[] index = { 1, 2, 3, 4, 13, 14 };
+                textIndex[0] = index;
+
+                exportTables = new ExportTable[1];
+                exportTables[0] = new ActiveSkuTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete) // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
+
+                    try
+                    {
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else // user close the form early 
+                    return;
+
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -114,7 +191,7 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new InactiveColorTable().Table);
+                ds.Tables.Add(new InactiveColorTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Color Export Sheet";
                 new XlExport().nowExport(saveFileDialog.FileName, ds, names);
@@ -126,7 +203,7 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new InactiveMaterialTable().Table);
+                ds.Tables.Add(new InactiveMaterialTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Material Export Sheet";
                 new XlExport().nowExport(saveFileDialog.FileName, ds, names);
@@ -138,7 +215,7 @@ namespace SKU_Manager.MainForms
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 ds.Reset();
-                ds.Tables.Add(new InactiveFamilyTable().Table);
+                ds.Tables.Add(new InactiveFamilyTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Family Export Sheet";
                 new XlExport().nowExport(saveFileDialog.FileName, ds, names);
@@ -147,32 +224,85 @@ namespace SKU_Manager.MainForms
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
         {
+            // local field for excel export
+            XlExport export = new XlExport();
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
-                ds.Tables.Add(new InactiveDesignTable().Table);
                 string[] names = new string[1];
-                names[0] = "Inactive Design Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                names[0] = "Active Design Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
+
+                exportTables = new ExportTable[1];
+                exportTables[0] = new InactiveDesignTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete) // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
+
+                    try
+                    {
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else // user close the form early 
+                    return;
+
                 showExportMessage(saveFileDialog.FileName);
             }
         }
         private void inactiveSkuButton_Click(object sender, EventArgs e)
         {
+            // local field for excel export
+            XlExport export = new XlExport();
+
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
+                // formatting fields
                 ds.Reset();
-                try
-                {
-                    ds.Tables.Add(new InactiveSkuTable().Table);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
                 string[] names = new string[1];
-                names[0] = "Inactive SKU Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                names[0] = "Active SKU Export Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1, 2, 3, 4, 13, 14 };
+                textIndex[0] = index;
+
+                exportTables = new ExportTable[1];
+                exportTables[0] = new InactiveSkuTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete) // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
+
+                    try
+                    {
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else // user close the form early 
+                    return;
+
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -256,7 +386,7 @@ namespace SKU_Manager.MainForms
                 string[] names = new string[1];
                 names[0] = "UPC Export Sheet";
                 int[][] textIndex = new int[1][];
-                int[] index = { 3 };
+                int[] index = { 1, 2, 3 };
                 textIndex[0] = index;
 
                 if (Properties.Settings.Default.UpcTable != null)   // tables have already been saved

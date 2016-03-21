@@ -1,28 +1,12 @@
-﻿using System.Data;
+﻿using SKU_Manager.SKUExportModules.Tables;
 
 namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 {
     /* 
-     * a abstract class that define methods for all active and inactive list classes
+     * A class for convenience for all active and inactive export ative classes that do not need to add namespace
      */
-    public abstract class ActiveInactiveTable
+    public abstract class ActiveInactiveTable : ExportTable
     {
-        // field for database connection
-        protected string connectionString = Properties.Settings.Default.Designcs;
-
-        // field for storing data and return 
-        protected DataTable mainTable;
-
-        /* return the table */
-        public DataTable Table
-        {
-            get
-            {
-                return getTable();
-            }
-        }
-
-        /* method that get the table */
-        abstract protected DataTable getTable();
+        //protected abstract ArrayList getData(string sku);
     }
 }

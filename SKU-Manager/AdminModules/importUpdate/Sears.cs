@@ -138,9 +138,9 @@ namespace SKU_Manager.AdminModules.importUpdate
             writer.Close();
 
             // upload file to sftp server
-            // sftp.Connect();
-            // sftp.Put(path, "incoming/inventory/searscanada");
-            // sftp.Close();
+            sftp.Connect();
+            sftp.Put(path, "incoming/inventory/searscanada");
+            sftp.Close();
             #endregion
 
             if (purchaseList.Count < 1) return;

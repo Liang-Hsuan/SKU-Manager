@@ -486,39 +486,48 @@ namespace SKU_Manager.SplashModules.Update
 
             // down to business, this is for short description
             if (shortEnglishDescriptionTextbox.Text != "")
-            {
-                translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
-                shortFrenchDescription = translate.getFrench();
-            }
+                shortFrenchDescription = translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
 
             // this is for extended description
             if (extendedEnglishDescriptionTextbox.Text != "")
-            {
-                translate.nowTranslate(extendedEnglishDescriptionTextbox.Text);
-                extendedFrenchDescription = translate.getFrench();
-            }
+                extendedFrenchDescription = translate.nowTranslate(extendedEnglishDescriptionTextbox.Text);
 
             // this is for trend short description
             if (trendEnglishShortTextbox.Text != "")
-            {
-                translate.nowTranslate(trendEnglishShortTextbox.Text);
-                trendShortFrenchDescription = translate.getFrench();
-            }
+                trendShortFrenchDescription = translate.nowTranslate(trendEnglishShortTextbox.Text);
 
             // this is for trend extended description
             if (trendEnglishExtendedTextbox.Text != "")
-            {
-                translate.nowTranslate(trendEnglishExtendedTextbox.Text);
-                trendExtendedFrenchDescription = translate.getFrench();
-            }
+                trendExtendedFrenchDescription = translate.nowTranslate(trendEnglishExtendedTextbox.Text);
         }
         private void backgroundWorkerTranslate1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
-            extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
-            trendFrenchShortTextbox.Text = trendShortFrenchDescription;
-            trendFrenchExtendedTextbox.Text = trendExtendedFrenchDescription;
+            if (shortFrenchDescription.Contains("Error:"))
+            {
+                MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+            if (extendedFrenchDescription.Contains("Error:"))
+            {
+                MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
+            if (trendShortFrenchDescription.Contains("Error:"))
+            {
+                MessageBox.Show(trendShortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                trendFrenchShortTextbox.Text = trendShortFrenchDescription;
+            if (trendExtendedFrenchDescription.Contains("Error:"))
+                MessageBox.Show(trendExtendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                trendFrenchExtendedTextbox.Text = trendExtendedFrenchDescription;
         }
         #endregion
 
@@ -541,9 +550,7 @@ namespace SKU_Manager.SplashModules.Update
         private void translateButton2_Click(object sender, EventArgs e)
         {
             if (!backgroundWorkerTranslate2.IsBusy)
-            {
                 backgroundWorkerTranslate2.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerTranslate2_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -559,47 +566,59 @@ namespace SKU_Manager.SplashModules.Update
 
             // down to business, this is for the first option
             if (option1EnglishTextbox.Text != "")
-            {
-                translate.nowTranslate(option1EnglishTextbox.Text);
-                englishOption[0] = translate.getFrench();
-            }
+                frenchOption[0] = translate.nowTranslate(option1EnglishTextbox.Text);
 
             // this is for the second option
             if (option2EnglishTextbox.Text != "")
-            {
-                translate.nowTranslate(option2EnglishTextbox.Text);
-                englishOption[1] = translate.getFrench();
-            }
+                frenchOption[1] = translate.nowTranslate(option2EnglishTextbox.Text);
 
             // this is for the third option
             if (option3EnglishTextbox.Text != "")
-            {
-                translate.nowTranslate(option3EnglishTextbox.Text);
-                englishOption[2] = translate.getFrench();
-            }
+                frenchOption[2] = translate.nowTranslate(option3EnglishTextbox.Text);
 
             // this is for the fourth option
             if (option4EnglishTextbox.Text != "")
-            {
-                translate.nowTranslate(option4EnglishTextbox.Text);
-                englishOption[3] = translate.getFrench();
-            }
+                frenchOption[3] = translate.nowTranslate(option4EnglishTextbox.Text);
 
             // this is for the fifth option
             if (option5EnglishTextbox.Text != "")
-            {
-                translate.nowTranslate(option5EnglishTextbox.Text);
-                englishOption[4] = translate.getFrench();
-            }
+                frenchOption[4] = translate.nowTranslate(option5EnglishTextbox.Text);
         }
         private void backgroundWorkerTranslate2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            option1FrenchTextbox.Text = englishOption[0];
-            option2FrenchTextbox.Text = englishOption[1];
-            option3FrenchTextbox.Text = englishOption[2];
-            option4FrenchTextbox.Text = englishOption[3];
-            option5FrenchTextbox.Text = englishOption[4];
+            if (frenchOption[0].Contains("Error:"))
+            {
+                MessageBox.Show(frenchOption[0], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                option1FrenchTextbox.Text = frenchOption[0];
+            if (frenchOption[1].Contains("Error:"))
+            {
+                MessageBox.Show(frenchOption[1], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                option2FrenchTextbox.Text = frenchOption[1];
+            if (frenchOption[2].Contains("Error:"))
+            {
+                MessageBox.Show(frenchOption[2], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                option3FrenchTextbox.Text = frenchOption[2];
+            if (frenchOption[3].Contains("Error:"))
+            {
+                MessageBox.Show(frenchOption[3], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+                option4FrenchTextbox.Text = frenchOption[3];
+            if (frenchOption[4].Contains("Error:"))
+                MessageBox.Show(frenchOption[4], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                option5FrenchTextbox.Text = frenchOption[4];
         }
         #endregion
 

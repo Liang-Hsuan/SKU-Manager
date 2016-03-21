@@ -18,14 +18,13 @@ namespace SKU_Manager.ActiveInactiveList
         /* load the data from database and show them on the grid view */
         private void InactiveMaterialList_Load(object sender, EventArgs e)
         {
-            InactiveMaterialTable inactiveMaterialTable = new InactiveMaterialTable();
-            dataGridView.DataSource = inactiveMaterialTable.Table;
+            dataGridView.DataSource = new InactiveMaterialTable().getTable();
         }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

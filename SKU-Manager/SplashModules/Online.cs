@@ -43,12 +43,14 @@ namespace SKU_Manager.SplashModules
             Translate translate = new Translate();
 
             // translate and get the french
-            translate.nowTranslate(englishTextbox.Text);
-            French = translate.getFrench();
+            French = translate.nowTranslate(englishTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            frenchTextbox.Text = French;
+            if (French.Contains("Error:"))
+                MessageBox.Show(French, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                frenchTextbox.Text = French;
         }
         #endregion
 

@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActiveSKUList));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.exitButton = new System.Windows.Forms.Button();
+            this.progressLabel = new System.Windows.Forms.Label();
+            this.loadingLabel = new System.Windows.Forms.Label();
+            this.backgroundWorkerTable = new System.ComponentModel.BackgroundWorker();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,11 +67,45 @@
             this.exitButton.Location = new System.Drawing.Point(302, 685);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(142, 76);
-            this.exitButton.TabIndex = 1;
+            this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit List";
             this.exitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
+            // progressLabel
+            // 
+            this.progressLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.progressLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progressLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.progressLabel.Location = new System.Drawing.Point(317, 402);
+            this.progressLabel.Name = "progressLabel";
+            this.progressLabel.Size = new System.Drawing.Size(100, 23);
+            this.progressLabel.TabIndex = 2;
+            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // loadingLabel
+            // 
+            this.loadingLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.loadingLabel.BackColor = System.Drawing.Color.Transparent;
+            this.loadingLabel.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.loadingLabel.Location = new System.Drawing.Point(230, 310);
+            this.loadingLabel.Name = "loadingLabel";
+            this.loadingLabel.Size = new System.Drawing.Size(323, 92);
+            this.loadingLabel.TabIndex = 1;
+            this.loadingLabel.Text = "Please Wait";
+            this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // backgroundWorkerTable
+            // 
+            this.backgroundWorkerTable.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTable_DoWork);
+            this.backgroundWorkerTable.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTable_RunWorkerCompleted);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 600;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // ActiveSKUList
             // 
@@ -75,6 +114,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(762, 790);
+            this.Controls.Add(this.progressLabel);
+            this.Controls.Add(this.loadingLabel);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.dataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -83,7 +124,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Active SKU List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.ActiveSKUList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -93,5 +133,9 @@
 
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Label progressLabel;
+        private System.Windows.Forms.Label loadingLabel;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerTable;
+        private System.Windows.Forms.Timer timer;
     }
 }

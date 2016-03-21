@@ -15,13 +15,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public ActivePriceListTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable getTable()
         {
+            // reset table just in case
+            mainTable.Reset();
+
             // add column to table
             addColumn(mainTable, "Brand");                                                 // 1
             addColumn(mainTable, "Brand Description");                                     // 2
@@ -247,7 +249,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             foreach (string sku in skuList)
             {
                 ArrayList list = getData(sku);
-
                 DataRow row = mainTable.NewRow();
 
                 row[0] = "Ashlin®";                                                 // brand
@@ -512,9 +513,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();
@@ -559,9 +558,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 120; i++)
-            {
-                list.Add(reader.GetValue(i));
-            }   
+                list.Add(reader.GetValue(i));   
             connection.Close();
 
             return list;
