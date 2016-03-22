@@ -13,13 +13,17 @@ namespace SKU_Manager.SupportingClasses.Photo
         private readonly List<string> skuList = new List<string>();
         private readonly ImageSearch imageSearch = new ImageSearch();
 
+        // fields for getting progress
+        public int Progress { get; private set; } = 0;
+        public int Total => skuList.Count;
+
         /* constructor that initilize that store all sku data */
         public UpdatePhoto()
         {
             // getting sku data
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL", connection);
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -33,137 +37,94 @@ namespace SKU_Manager.SupportingClasses.Photo
             // puting uri to database by looping through the list (getting sku name list)
             foreach (string sku in skuList)
             {
-                // get image uri and put them in database, if not found eliminate them in database
+                // get uri array
                 string[] image = imageSearch.getImageUri(sku);
-                putImageInDatabase(sku, image);
+                string[] group = imageSearch.getGroupUri(sku);
+                string[] model = imageSearch.getModelUri(sku);
+                string[] template = imageSearch.getTemplateUri(sku);
 
-                // get group uri and put them in database, if not found eliminate them in database
-                image = imageSearch.getGroupUri(sku);
-                putGroupInDatabase(sku, image);
+                // start update
+                putImageInDatabase(sku, image, group, model, template);
 
-                // get model uri and put them in database, if not found eliminate them in database
-                image = imageSearch.getModelUri(sku);
-                putModelInDatabase(sku, image);
-
-                // get template uri and put them in database, if not found eliminate them in database
-                image = imageSearch.getTemplateUri(sku);
-                putTemplateInDatabase(sku, image);
+                Progress++;
             }
         }
 
         /* put the given image uri to database */
-        private void putImageInDatabase(string sku, string[] imageUri)
+        private void putImageInDatabase(string sku, string[] imageUri, string[] groupUri, string[] modelUri, string[] templateUri)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 // local field for looping through column in table to add uri
+                string commandString = "UPDATE master_SKU_Attributes SET ";
                 int i = 1;
 
-                // start adding
+                #region Image
                 foreach (string uri in imageUri)
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_" + i + "_Path = \'" + uri + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    if (i > 10)
+                        break;
+                    commandString += "Image_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
 
-                // assign null to the columns left
                 for (; i <= 10; i++)
-                {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_" + i + "_Path = NULL WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-        }
+                    commandString += "Image_" + i + "_Path = NULL,";
+                #endregion
 
-        /* put the given group image uri to database */
-        private void putGroupInDatabase(string sku, string[] groupUri)
-        { 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                // local field for looping through column in table to add uri
-                int i = 1;
+                i = 1;
 
-                // start adding
+                #region Group
                 foreach (string uri in groupUri)
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_Group_" + i + "_Path = \'" + uri + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    if (i > 5)
+                        break;
+                    commandString += "Image_Group_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
 
-                // assign null to the columns left
                 for (; i <= 5; i++)
-                {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_Group_" + i + "_Path = NULL WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-        }
+                    commandString += "Image_Group_" + i + "_Path = NULL,";
+                #endregion
 
-        /* put the given model image uri to database */
-        private void putModelInDatabase(string sku, string[] modelUri)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                // local field for looping through column in table to add uri
-                int i = 1;
+                i = 1;
 
-                // start adding
+                #region Model
                 foreach (string uri in modelUri)
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_Model_" + i + "_Path = \'" + uri + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    if (i > 5)
+                        break;
+                    commandString += "Image_Model_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
 
-                // assign null to the columns left
                 for (; i <= 5; i++)
-                {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Image_Model_" + i + "_Path = NULL WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
-            }
-        }
+                    commandString += "Image_Model_" + i + "_Path = NULL,";
+                #endregion
 
-        /* put the given template image uri to database */
-        private void putTemplateInDatabase(string sku, string[] templateUri)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                // local field for looping through column in table to add uri
-                int i = 1;
+                i = 1;
 
-                // start adding
+                #region Template
                 foreach (string uri in templateUri)
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Template_URL_" + i + " = \'" + uri + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    if (i > 2)
+                        break;
+                    commandString += "Template_URL_" + i + " = \'" + uri + "\',";
                     i++;
                 }
 
-                // assign null to the columns left
                 for (; i <= 2; i++)
-                {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Template_URL_" + i + " = NULL WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                }
+                    commandString += "Template_URL_" + i + " = NULL,";
+                #endregion
+
+                // remove last comma
+                commandString = commandString.Remove(commandString.Length - 1);
+                commandString += " WHERE SKU_Ashlin = \'" + sku + "\';";
+
+                // start update
+                SqlCommand command = new SqlCommand(commandString, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
             }
         }
     }

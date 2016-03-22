@@ -73,12 +73,12 @@
             this.promptLabel.Size = new System.Drawing.Size(269, 80);
             this.promptLabel.TabIndex = 0;
             this.promptLabel.Text = "Are you sure you want to update all the image URL to database and add all the UPC" +
-    " code image to Dropbox ? \r\n( this process might take a few minutes ) \r\n";
+    " code image to Dropbox ? \r\n( this process might take serveral minutes ) \r\n";
             this.promptLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer
             // 
-            this.timer.Interval = 600;
+            this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // backgroundWorkerUpdate

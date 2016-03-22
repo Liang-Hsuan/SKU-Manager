@@ -1549,7 +1549,7 @@
             this.MaximizeBox = false;
             this.Name = "UpdateDesign";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "73";
+            this.Text = "Update Design";
             this.ResumeLayout(false);
             this.PerformLayout();
 

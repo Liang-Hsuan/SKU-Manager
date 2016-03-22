@@ -4,6 +4,8 @@ using SKU_Manager.AdminModules.importUpdate;
 using System.Threading;
 using SKU_Manager.AdminModules.DirectUpdate;
 using SKU_Manager.AdminModules.UpdateInventory;
+using System.Data;
+using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 
 namespace SKU_Manager.MainForms
 {
@@ -52,6 +54,7 @@ namespace SKU_Manager.MainForms
         private void searsButton_Click(object sender, EventArgs e)
         {
             excelButton.Visible = false;
+            refreshButton.Visible = false;
             inventoryButton.Visible = false;
             loadingLabel.Visible = false;
         }
@@ -62,6 +65,7 @@ namespace SKU_Manager.MainForms
             loadingLabel.Text = "Sears";
             loadingLabel.Visible = true;
             excelButton.Visible = true;
+            refreshButton.Visible = true;
             inventoryButton.Visible = true;
         }
         #endregion
@@ -80,16 +84,28 @@ namespace SKU_Manager.MainForms
             }
         }
 
+        #region Refresh Button
+        /* refresh buuton mouse hover that show the tooltip */
+        private void refreshButton_MouseHover(object sender, EventArgs e)
+        {
+            new ToolTip().SetToolTip(refreshButton, "Refresh Button");
+        }
+
+        /* refresh button clicks that load the stock quantity table */
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            DataTable table = new StockExportTable().getTable();
+            Properties.Settings.Default.StockQuantityTable = table;
+        }
+        #endregion
+
         /* the event for inventory button clicks that manage the inventory for eCommerce channel */
         private void inventoryButton_Click(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.StockQuantityTable != null)
-            {
-                SearsInventory bpInventoryView = new SearsInventory();
-                bpInventoryView.ShowDialog(this);
-            }
+                new SearsInventory().ShowDialog(this);
             else
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please click refresh button first", "Sorry", MessageBoxButtons.OK);
         }
         #endregion
 
@@ -130,6 +146,12 @@ namespace SKU_Manager.MainForms
             }
             else
                 loadingLabel.Text = sears.Current + " / " + sears.Total;
+        }
+
+        /* save data when form is closing */
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
     }
 }

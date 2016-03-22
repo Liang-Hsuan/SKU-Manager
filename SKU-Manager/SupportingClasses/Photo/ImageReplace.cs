@@ -18,6 +18,10 @@ namespace SKU_Manager.SupportingClasses.Photo
         // field for database connection
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
+        // fields for getting progress
+        public int Progress { get; private set; } = 0;
+        public int Total => skuList.Count;
+
         /* method that add existing sku image with upc code */
         public void addUPC(string sku, string upc)
         {
@@ -45,11 +49,12 @@ namespace SKU_Manager.SupportingClasses.Photo
         {
             // clear the list first
             skuList.Clear();
+            Progress = 0;
 
             // get all the sku from database
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin");
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -68,6 +73,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                     // add image for 9 and 10 digit upc
                     addUPC(sku, upcCode[0]);
                     addUPC(sku, upcCode[1]);
+
+                    Progress++;
                 }
             }
         }

@@ -29,6 +29,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             addColumn(mainTable, "BP Item#");           // 2
             addColumn(mainTable, "Quantity");           // 3
             addColumn(mainTable, "Reorder Quantity");   // 4 
+            addColumn(mainTable, "Reorder Level");      // 5
 
             // local field for inserting data to table
             DataRow row;
@@ -53,6 +54,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                         row[1] = value.ProductId;
                         row[2] = value.Quantity;
                         row[3] = value.ReorderQuantity;
+                        row[4] = value.ReorderLevel;
                         list.Remove(value);
                         found = true;
                         break;
@@ -63,6 +65,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 {
                     row[2] = -1;
                     row[3] = -1;
+                    row[4] = -1;
                 }
 
                 found = false;
@@ -84,7 +87,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'TRUE\' ORDER BY SKU_Ashlin;", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

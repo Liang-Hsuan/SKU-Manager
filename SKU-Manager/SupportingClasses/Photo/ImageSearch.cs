@@ -26,10 +26,17 @@ namespace SKU_Manager.SupportingClasses.Photo
 
             // get the path to the target directory
             if (Directory.GetDirectories(targetDirectory).Any(directory => directory.Contains(prefix)))
-                targetDirectory += "/" + prefix;
+                targetDirectory += "\\" + prefix;
 
             // add found images to the list
-            return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && !image.Contains("GROUP") && !image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            try
+            {
+                return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && !image.Contains("GROUP") && !image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            }
+            catch
+            {
+                return new string[0];
+            }
         }
 
         /* return all group product image */
@@ -46,7 +53,14 @@ namespace SKU_Manager.SupportingClasses.Photo
                 targetDirectory += "\\" + prefix;
 
             // add found group images to the list
-            return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && image.Contains("GROUP") && !image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            try
+            {
+                return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && image.Contains("GROUP") && !image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            }
+            catch
+            {
+                return new string[0];
+            }
         }
 
         /* return all model product image */
@@ -60,10 +74,17 @@ namespace SKU_Manager.SupportingClasses.Photo
 
             // get the path to the target directory
             if (Directory.GetDirectories(targetDirectory).Any(directory => directory.Contains(prefix)))
-                targetDirectory += "/" + prefix;
+                targetDirectory += "\\" + prefix;
 
             // add found model images to the list
-            return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && !image.Contains("GROUP") && image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            try
+            {
+                return (from image in Directory.GetFiles(targetDirectory, "*.jpg") where image.Contains(sku) && !image.Contains("GROUP") && image.Contains("MODEL") select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();
+            }
+            catch
+            {
+                return new string[0];
+            }
         }
 
         /* return all template product image */
@@ -118,6 +139,5 @@ namespace SKU_Manager.SupportingClasses.Photo
             return getTemplate(sku).Select(name => DROPBOX_URI + "1_DESIGN%20TEMPLATE%20LAYOUTS" + prefix + "/" + name).ToArray();
         }
         #endregion
-
     }
 }

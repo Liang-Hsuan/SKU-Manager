@@ -153,6 +153,7 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
+            this.onWebsiteCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -666,7 +667,7 @@
             this.inactiveSkuButton.Location = new System.Drawing.Point(379, 949);
             this.inactiveSkuButton.Name = "inactiveSkuButton";
             this.inactiveSkuButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveSkuButton.TabIndex = 73;
+            this.inactiveSkuButton.TabIndex = 74;
             this.inactiveSkuButton.Text = "Inactive SKU";
             this.inactiveSkuButton.UseVisualStyleBackColor = false;
             this.inactiveSkuButton.Click += new System.EventHandler(this.inactiveSkuButton_Click);
@@ -679,7 +680,7 @@
             this.activeSkuButton.Location = new System.Drawing.Point(193, 949);
             this.activeSkuButton.Name = "activeSkuButton";
             this.activeSkuButton.Size = new System.Drawing.Size(180, 39);
-            this.activeSkuButton.TabIndex = 72;
+            this.activeSkuButton.TabIndex = 73;
             this.activeSkuButton.Text = "Active SKU";
             this.activeSkuButton.UseVisualStyleBackColor = false;
             this.activeSkuButton.Click += new System.EventHandler(this.activeSkuButton_Click);
@@ -692,7 +693,7 @@
             this.addSkuButton.Location = new System.Drawing.Point(193, 867);
             this.addSkuButton.Name = "addSkuButton";
             this.addSkuButton.Size = new System.Drawing.Size(370, 76);
-            this.addSkuButton.TabIndex = 71;
+            this.addSkuButton.TabIndex = 72;
             this.addSkuButton.Text = "Add SKU";
             this.addSkuButton.UseVisualStyleBackColor = false;
             this.addSkuButton.Click += new System.EventHandler(this.addSkuButton_Click);
@@ -750,7 +751,7 @@
             this.template2Textbox.MaxLength = 100;
             this.template2Textbox.Name = "template2Textbox";
             this.template2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template2Textbox.TabIndex = 118;
+            this.template2Textbox.TabIndex = 119;
             // 
             // label24
             // 
@@ -760,7 +761,7 @@
             this.label24.Location = new System.Drawing.Point(0, 1002);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(770, 29);
-            this.label24.TabIndex = 74;
+            this.label24.TabIndex = 75;
             this.label24.Text = "Image Paths";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -772,7 +773,7 @@
             this.image1Label.Location = new System.Drawing.Point(5, 1043);
             this.image1Label.Name = "image1Label";
             this.image1Label.Size = new System.Drawing.Size(86, 16);
-            this.image1Label.TabIndex = 75;
+            this.image1Label.TabIndex = 76;
             this.image1Label.Text = "Image 1 Path";
             // 
             // image1Textbox
@@ -782,7 +783,7 @@
             this.image1Textbox.MaxLength = 100;
             this.image1Textbox.Name = "image1Textbox";
             this.image1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image1Textbox.TabIndex = 76;
+            this.image1Textbox.TabIndex = 77;
             // 
             // image2Textbox
             // 
@@ -791,7 +792,7 @@
             this.image2Textbox.MaxLength = 100;
             this.image2Textbox.Name = "image2Textbox";
             this.image2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image2Textbox.TabIndex = 78;
+            this.image2Textbox.TabIndex = 79;
             // 
             // image3Textbox
             // 
@@ -800,7 +801,7 @@
             this.image3Textbox.MaxLength = 100;
             this.image3Textbox.Name = "image3Textbox";
             this.image3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image3Textbox.TabIndex = 80;
+            this.image3Textbox.TabIndex = 81;
             // 
             // image4Textbox
             // 
@@ -809,7 +810,7 @@
             this.image4Textbox.MaxLength = 100;
             this.image4Textbox.Name = "image4Textbox";
             this.image4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image4Textbox.TabIndex = 82;
+            this.image4Textbox.TabIndex = 83;
             // 
             // image5Textbox
             // 
@@ -818,7 +819,7 @@
             this.image5Textbox.MaxLength = 100;
             this.image5Textbox.Name = "image5Textbox";
             this.image5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image5Textbox.TabIndex = 84;
+            this.image5Textbox.TabIndex = 85;
             // 
             // image6Textbox
             // 
@@ -827,7 +828,7 @@
             this.image6Textbox.MaxLength = 100;
             this.image6Textbox.Name = "image6Textbox";
             this.image6Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image6Textbox.TabIndex = 86;
+            this.image6Textbox.TabIndex = 87;
             // 
             // image7Textbox
             // 
@@ -836,7 +837,7 @@
             this.image7Textbox.MaxLength = 100;
             this.image7Textbox.Name = "image7Textbox";
             this.image7Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image7Textbox.TabIndex = 88;
+            this.image7Textbox.TabIndex = 89;
             // 
             // image8Textbox
             // 
@@ -845,7 +846,7 @@
             this.image8Textbox.MaxLength = 100;
             this.image8Textbox.Name = "image8Textbox";
             this.image8Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image8Textbox.TabIndex = 90;
+            this.image8Textbox.TabIndex = 91;
             // 
             // image2Label
             // 
@@ -855,7 +856,7 @@
             this.image2Label.Location = new System.Drawing.Point(5, 1069);
             this.image2Label.Name = "image2Label";
             this.image2Label.Size = new System.Drawing.Size(86, 16);
-            this.image2Label.TabIndex = 77;
+            this.image2Label.TabIndex = 78;
             this.image2Label.Text = "Image 2 Path";
             // 
             // image3Label
@@ -866,7 +867,7 @@
             this.image3Label.Location = new System.Drawing.Point(5, 1095);
             this.image3Label.Name = "image3Label";
             this.image3Label.Size = new System.Drawing.Size(86, 16);
-            this.image3Label.TabIndex = 79;
+            this.image3Label.TabIndex = 80;
             this.image3Label.Text = "Image 3 Path";
             // 
             // image4Label
@@ -877,7 +878,7 @@
             this.image4Label.Location = new System.Drawing.Point(5, 1121);
             this.image4Label.Name = "image4Label";
             this.image4Label.Size = new System.Drawing.Size(86, 16);
-            this.image4Label.TabIndex = 81;
+            this.image4Label.TabIndex = 82;
             this.image4Label.Text = "Image 4 Path";
             // 
             // image5Label
@@ -888,7 +889,7 @@
             this.image5Label.Location = new System.Drawing.Point(5, 1147);
             this.image5Label.Name = "image5Label";
             this.image5Label.Size = new System.Drawing.Size(86, 16);
-            this.image5Label.TabIndex = 83;
+            this.image5Label.TabIndex = 84;
             this.image5Label.Text = "Image 5 Path";
             // 
             // image6Label
@@ -899,7 +900,7 @@
             this.image6Label.Location = new System.Drawing.Point(5, 1173);
             this.image6Label.Name = "image6Label";
             this.image6Label.Size = new System.Drawing.Size(86, 16);
-            this.image6Label.TabIndex = 85;
+            this.image6Label.TabIndex = 86;
             this.image6Label.Text = "Image 6 Path";
             // 
             // image7Label
@@ -910,7 +911,7 @@
             this.image7Label.Location = new System.Drawing.Point(5, 1199);
             this.image7Label.Name = "image7Label";
             this.image7Label.Size = new System.Drawing.Size(86, 16);
-            this.image7Label.TabIndex = 87;
+            this.image7Label.TabIndex = 88;
             this.image7Label.Text = "Image 7 Path";
             // 
             // image8Label
@@ -921,7 +922,7 @@
             this.image8Label.Location = new System.Drawing.Point(5, 1225);
             this.image8Label.Name = "image8Label";
             this.image8Label.Size = new System.Drawing.Size(86, 16);
-            this.image8Label.TabIndex = 89;
+            this.image8Label.TabIndex = 90;
             this.image8Label.Text = "Image 8 Path";
             // 
             // image9Textbox
@@ -931,7 +932,7 @@
             this.image9Textbox.MaxLength = 100;
             this.image9Textbox.Name = "image9Textbox";
             this.image9Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image9Textbox.TabIndex = 92;
+            this.image9Textbox.TabIndex = 93;
             // 
             // image10Textbox
             // 
@@ -940,7 +941,7 @@
             this.image10Textbox.MaxLength = 100;
             this.image10Textbox.Name = "image10Textbox";
             this.image10Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image10Textbox.TabIndex = 94;
+            this.image10Textbox.TabIndex = 95;
             // 
             // image9Label
             // 
@@ -950,7 +951,7 @@
             this.image9Label.Location = new System.Drawing.Point(5, 1250);
             this.image9Label.Name = "image9Label";
             this.image9Label.Size = new System.Drawing.Size(86, 16);
-            this.image9Label.TabIndex = 91;
+            this.image9Label.TabIndex = 92;
             this.image9Label.Text = "Image 9 Path";
             // 
             // image10Label
@@ -961,7 +962,7 @@
             this.image10Label.Location = new System.Drawing.Point(5, 1276);
             this.image10Label.Name = "image10Label";
             this.image10Label.Size = new System.Drawing.Size(93, 16);
-            this.image10Label.TabIndex = 93;
+            this.image10Label.TabIndex = 94;
             this.image10Label.Text = "Image 10 Path";
             // 
             // group1Textbox
@@ -971,7 +972,7 @@
             this.group1Textbox.MaxLength = 100;
             this.group1Textbox.Name = "group1Textbox";
             this.group1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group1Textbox.TabIndex = 96;
+            this.group1Textbox.TabIndex = 97;
             // 
             // group2Textbox
             // 
@@ -980,7 +981,7 @@
             this.group2Textbox.MaxLength = 100;
             this.group2Textbox.Name = "group2Textbox";
             this.group2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group2Textbox.TabIndex = 98;
+            this.group2Textbox.TabIndex = 99;
             // 
             // group3Textbox
             // 
@@ -989,7 +990,7 @@
             this.group3Textbox.MaxLength = 100;
             this.group3Textbox.Name = "group3Textbox";
             this.group3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group3Textbox.TabIndex = 100;
+            this.group3Textbox.TabIndex = 101;
             // 
             // group4Textbox
             // 
@@ -998,7 +999,7 @@
             this.group4Textbox.MaxLength = 100;
             this.group4Textbox.Name = "group4Textbox";
             this.group4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group4Textbox.TabIndex = 102;
+            this.group4Textbox.TabIndex = 103;
             // 
             // group5Textbox
             // 
@@ -1007,7 +1008,7 @@
             this.group5Textbox.MaxLength = 100;
             this.group5Textbox.Name = "group5Textbox";
             this.group5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group5Textbox.TabIndex = 104;
+            this.group5Textbox.TabIndex = 405;
             // 
             // model1Textbox
             // 
@@ -1016,7 +1017,7 @@
             this.model1Textbox.MaxLength = 100;
             this.model1Textbox.Name = "model1Textbox";
             this.model1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model1Textbox.TabIndex = 106;
+            this.model1Textbox.TabIndex = 107;
             // 
             // group1Label
             // 
@@ -1026,7 +1027,7 @@
             this.group1Label.Location = new System.Drawing.Point(5, 1303);
             this.group1Label.Name = "group1Label";
             this.group1Label.Size = new System.Drawing.Size(125, 16);
-            this.group1Label.TabIndex = 95;
+            this.group1Label.TabIndex = 96;
             this.group1Label.Text = "Group Image 1 path";
             // 
             // group2Label
@@ -1037,7 +1038,7 @@
             this.group2Label.Location = new System.Drawing.Point(5, 1329);
             this.group2Label.Name = "group2Label";
             this.group2Label.Size = new System.Drawing.Size(125, 16);
-            this.group2Label.TabIndex = 97;
+            this.group2Label.TabIndex = 98;
             this.group2Label.Text = "Group Image 2 path";
             // 
             // group3Label
@@ -1048,7 +1049,7 @@
             this.group3Label.Location = new System.Drawing.Point(5, 1355);
             this.group3Label.Name = "group3Label";
             this.group3Label.Size = new System.Drawing.Size(125, 16);
-            this.group3Label.TabIndex = 99;
+            this.group3Label.TabIndex = 100;
             this.group3Label.Text = "Group Image 3 path";
             // 
             // group4Label
@@ -1059,7 +1060,7 @@
             this.group4Label.Location = new System.Drawing.Point(5, 1381);
             this.group4Label.Name = "group4Label";
             this.group4Label.Size = new System.Drawing.Size(125, 16);
-            this.group4Label.TabIndex = 101;
+            this.group4Label.TabIndex = 102;
             this.group4Label.Text = "Group Image 4 path";
             // 
             // group5Label
@@ -1070,7 +1071,7 @@
             this.group5Label.Location = new System.Drawing.Point(5, 1407);
             this.group5Label.Name = "group5Label";
             this.group5Label.Size = new System.Drawing.Size(125, 16);
-            this.group5Label.TabIndex = 103;
+            this.group5Label.TabIndex = 104;
             this.group5Label.Text = "Group Image 5 path";
             // 
             // model2Textbox
@@ -1080,7 +1081,7 @@
             this.model2Textbox.MaxLength = 100;
             this.model2Textbox.Name = "model2Textbox";
             this.model2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model2Textbox.TabIndex = 108;
+            this.model2Textbox.TabIndex = 109;
             // 
             // model3Textbox
             // 
@@ -1089,7 +1090,7 @@
             this.model3Textbox.MaxLength = 100;
             this.model3Textbox.Name = "model3Textbox";
             this.model3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model3Textbox.TabIndex = 110;
+            this.model3Textbox.TabIndex = 111;
             // 
             // model4Textbox
             // 
@@ -1098,7 +1099,7 @@
             this.model4Textbox.MaxLength = 100;
             this.model4Textbox.Name = "model4Textbox";
             this.model4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model4Textbox.TabIndex = 112;
+            this.model4Textbox.TabIndex = 113;
             // 
             // model5Textbox
             // 
@@ -1107,7 +1108,7 @@
             this.model5Textbox.MaxLength = 100;
             this.model5Textbox.Name = "model5Textbox";
             this.model5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model5Textbox.TabIndex = 114;
+            this.model5Textbox.TabIndex = 115;
             // 
             // model1Label
             // 
@@ -1117,7 +1118,7 @@
             this.model1Label.Location = new System.Drawing.Point(5, 1433);
             this.model1Label.Name = "model1Label";
             this.model1Label.Size = new System.Drawing.Size(126, 16);
-            this.model1Label.TabIndex = 105;
+            this.model1Label.TabIndex = 106;
             this.model1Label.Text = "Model Image 1 path";
             // 
             // model2Label
@@ -1128,7 +1129,7 @@
             this.model2Label.Location = new System.Drawing.Point(5, 1459);
             this.model2Label.Name = "model2Label";
             this.model2Label.Size = new System.Drawing.Size(126, 16);
-            this.model2Label.TabIndex = 107;
+            this.model2Label.TabIndex = 108;
             this.model2Label.Text = "Model Image 2 path";
             // 
             // model3Label
@@ -1139,7 +1140,7 @@
             this.model3Label.Location = new System.Drawing.Point(5, 1485);
             this.model3Label.Name = "model3Label";
             this.model3Label.Size = new System.Drawing.Size(126, 16);
-            this.model3Label.TabIndex = 109;
+            this.model3Label.TabIndex = 110;
             this.model3Label.Text = "Model Image 3 path";
             // 
             // model4Label
@@ -1150,7 +1151,7 @@
             this.model4Label.Location = new System.Drawing.Point(5, 1511);
             this.model4Label.Name = "model4Label";
             this.model4Label.Size = new System.Drawing.Size(126, 16);
-            this.model4Label.TabIndex = 111;
+            this.model4Label.TabIndex = 112;
             this.model4Label.Text = "Model Image 4 path";
             // 
             // model5Label
@@ -1161,7 +1162,7 @@
             this.model5Label.Location = new System.Drawing.Point(5, 1537);
             this.model5Label.Name = "model5Label";
             this.model5Label.Size = new System.Drawing.Size(126, 16);
-            this.model5Label.TabIndex = 113;
+            this.model5Label.TabIndex = 114;
             this.model5Label.Text = "Model Image 5 path";
             // 
             // template1Textbox
@@ -1171,7 +1172,7 @@
             this.template1Textbox.MaxLength = 100;
             this.template1Textbox.Name = "template1Textbox";
             this.template1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template1Textbox.TabIndex = 116;
+            this.template1Textbox.TabIndex = 117;
             // 
             // template1Label
             // 
@@ -1181,7 +1182,7 @@
             this.template1Label.Location = new System.Drawing.Point(5, 1563);
             this.template1Label.Name = "template1Label";
             this.template1Label.Size = new System.Drawing.Size(106, 16);
-            this.template1Label.TabIndex = 115;
+            this.template1Label.TabIndex = 116;
             this.template1Label.Text = "Template URL 1";
             // 
             // template2Label
@@ -1192,7 +1193,7 @@
             this.template2Label.Location = new System.Drawing.Point(5, 1589);
             this.template2Label.Name = "template2Label";
             this.template2Label.Size = new System.Drawing.Size(106, 16);
-            this.template2Label.TabIndex = 117;
+            this.template2Label.TabIndex = 118;
             this.template2Label.Text = "Template URL 2";
             // 
             // backgroundWorkerCombobox
@@ -1388,7 +1389,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 70;
+            this.progressBar.TabIndex = 71;
             // 
             // duplicateLabel
             // 
@@ -1414,6 +1415,19 @@
             this.giftCheckbox.Text = "Gift Box";
             this.giftCheckbox.UseVisualStyleBackColor = true;
             // 
+            // onWebsiteCheckbox
+            // 
+            this.onWebsiteCheckbox.AutoSize = true;
+            this.onWebsiteCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onWebsiteCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.onWebsiteCheckbox.Location = new System.Drawing.Point(50, 919);
+            this.onWebsiteCheckbox.Name = "onWebsiteCheckbox";
+            this.onWebsiteCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.onWebsiteCheckbox.Size = new System.Drawing.Size(125, 24);
+            this.onWebsiteCheckbox.TabIndex = 70;
+            this.onWebsiteCheckbox.Text = "?On Website";
+            this.onWebsiteCheckbox.UseVisualStyleBackColor = true;
+            // 
             // AddSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1421,6 +1435,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.onWebsiteCheckbox);
             this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
@@ -1678,5 +1693,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
         private System.Windows.Forms.CheckBox giftCheckbox;
+        private System.Windows.Forms.CheckBox onWebsiteCheckbox;
     }
 }

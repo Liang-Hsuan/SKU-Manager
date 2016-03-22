@@ -47,6 +47,7 @@
             // editButton
             // 
             this.editButton.BackColor = System.Drawing.Color.Green;
+            this.editButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editButton.ForeColor = System.Drawing.Color.White;
@@ -61,6 +62,7 @@
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.Maroon;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
@@ -74,9 +76,11 @@
             // 
             // EditAlt
             // 
+            this.AcceptButton = this.editButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.editButton);

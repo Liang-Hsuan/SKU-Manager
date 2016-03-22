@@ -70,6 +70,7 @@ namespace SKU_Manager.MainForms
         /* close dashboard will also close login board */
         private void dashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Properties.Settings.Default.Save();
             parent.Close();
         }
     }

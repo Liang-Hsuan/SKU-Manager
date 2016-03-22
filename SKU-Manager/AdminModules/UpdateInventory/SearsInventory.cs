@@ -3,6 +3,7 @@ using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SKU_Manager.AdminModules.UpdateInventory
@@ -52,6 +53,15 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             timer.Stop();
             loadingLabel.Visible = false;
             progressLabel.Visible = false;
+
+            // change color for order that are in low quantity
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[3].Value) < Convert.ToInt32(row.Cells[5].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
         }
 
         /* the event for timer that make the visual of loading promopt */
@@ -91,12 +101,19 @@ namespace SKU_Manager.AdminModules.UpdateInventory
 
                 if (row[2].ToString() == "") continue;
                 SearsInventoryValues value = new SearsInventoryValues(row[0].ToString(), Convert.ToInt32(row[3]), row[1].ToString(), Convert.ToBoolean(row[5]),
-                                                                      discontinue, DateTime.Today.AddDays(14), Convert.ToInt32(row[4]), row[2].ToString());
+                                                                      discontinue, DateTime.Today.AddDays(Convert.ToInt32(availableDaysUpdown.Value)), Convert.ToInt32(row[4]), row[2].ToString());
                 list.Add(value);
             }
 
             // start updating
-            sears.update(list.ToArray());
+            try
+            {
+                sears.update(list.ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             #endregion
 
             processingLabel.Visible = false;

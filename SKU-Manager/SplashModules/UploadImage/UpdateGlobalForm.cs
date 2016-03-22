@@ -10,17 +10,17 @@ namespace SKU_Manager.SplashModules.UploadImage
      */
     public partial class UpdateGlobalForm : Form
     {
-        // field for couting time
-        private int timeLeft;
+        // field for photo update
+        private UpdatePhoto photo = new UpdatePhoto();
+        private ImageReplace upc = new ImageReplace();
 
         /* constructor that initialize all the graphic components */
         public UpdateGlobalForm()
         {
             InitializeComponent();
-
-            timeLeft = 4;
         }
 
+        #region Yes & No
         /* the event for yes button click */
         private void yesButton_Click(object sender, EventArgs e)
         {
@@ -28,8 +28,8 @@ namespace SKU_Manager.SplashModules.UploadImage
             yesButton.Visible = false;
             noButton.Visible = false;
 
-            // make the loading prompt
-            promptLabel.Text = "Please wait";
+            // set progress
+            promptLabel.Text = "Stage 1:\n" + 0 + " / " + photo.Total;
             timer.Start();
 
             // call background worker to add upc image
@@ -42,17 +42,15 @@ namespace SKU_Manager.SplashModules.UploadImage
         {
             DialogResult = DialogResult.Cancel;
         }
+        #endregion
 
+        #region Update Thread
         /* background worker for updating image and add upc code image */
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
-            // fields for updating existing image to database and adding upc code image to dropbox
-            UpdatePhoto updatePhoto = new UpdatePhoto();
-            ImageReplace imageReplace = new ImageReplace();
-
             // start doing work
-            updatePhoto.startUpdate();
-            imageReplace.addGlobalUPC();
+            photo.startUpdate();
+            upc.addGlobalUPC();
         }
 
         /* after updating completed, close the form */
@@ -60,20 +58,16 @@ namespace SKU_Manager.SplashModules.UploadImage
         {
             Close();
         }
+        #endregion
 
         /* the event for timer that make the visual of loading promopt */
         private void timer_Tick(object sender, EventArgs e)
         {
-            timeLeft--;
-
-            if (timeLeft <= 0)
-            {
-                promptLabel.Text = "Please wait";
-                timeLeft = 4;
-                timer.Start();
-            }
+            // set progress
+            if (photo.Progress <= photo.Total)
+                promptLabel.Text = "Stage 1:\n" + photo.Progress + " / " + photo.Total;
             else
-                promptLabel.Text += ".";
+                promptLabel.Text = "Stage 2:\n" + upc.Progress + " / " + upc.Total;
         }
     }
 }

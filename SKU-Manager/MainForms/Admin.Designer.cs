@@ -49,6 +49,7 @@
             this.excelButton = new System.Windows.Forms.Button();
             this.inventoryButton = new System.Windows.Forms.Button();
             this.modifyChannelPricingButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -154,7 +155,7 @@
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(442, 13);
             this.noteLabel.TabIndex = 12;
-            this.noteLabel.Text = "PLEASE NOTE - ONLY ADMINISTRATOR LEVEL USER IS ABLE TO ENTER THIS PAGE";
+            this.noteLabel.Text = "PLEASE NOTE - ONLY ADMINISTRATOR LEVEL USER IS ABLE TO ENTER THIS PAGE\r\n";
             // 
             // topButton3
             // 
@@ -277,12 +278,30 @@
             this.modifyChannelPricingButton.UseVisualStyleBackColor = false;
             this.modifyChannelPricingButton.Click += new System.EventHandler(this.modifyChannelPricingButton_Click);
             // 
+            // refreshButton
+            // 
+            this.refreshButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.refreshButton.BackColor = System.Drawing.Color.Purple;
+            this.refreshButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshButton.FlatAppearance.BorderSize = 0;
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
+            this.refreshButton.Location = new System.Drawing.Point(663, 543);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(41, 41);
+            this.refreshButton.TabIndex = 9;
+            this.refreshButton.UseVisualStyleBackColor = false;
+            this.refreshButton.Visible = false;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            this.refreshButton.MouseHover += new System.EventHandler(this.refreshButton_MouseHover);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.modifyChannelPricingButton);
             this.Controls.Add(this.inventoryButton);
             this.Controls.Add(this.excelButton);
@@ -306,6 +325,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Admin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -336,5 +356,6 @@
         private System.Windows.Forms.Button excelButton;
         private System.Windows.Forms.Button inventoryButton;
         private System.Windows.Forms.Button modifyChannelPricingButton;
+        private System.Windows.Forms.Button refreshButton;
     }
 }

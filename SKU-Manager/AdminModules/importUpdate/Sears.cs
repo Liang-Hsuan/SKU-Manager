@@ -18,7 +18,7 @@ namespace SKU_Manager.AdminModules.importUpdate
     public class Sears
     {
         // field for database connection
-        private static readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
+        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
         // field for sftp connection
         private readonly Sftp sftp;
@@ -38,8 +38,7 @@ namespace SKU_Manager.AdminModules.importUpdate
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
 
-                // sftp = new Sftp(reader.GetString(2), reader.GetString(0), reader.GetString(1));
-                sftp = new Sftp("ashlinbpg.sftp-test.commercehub.com", "ashlinbpg", "Pay4Examine9Rather$");
+                sftp = new Sftp(reader.GetString(2), reader.GetString(0), reader.GetString(1));
             }
         }
 
@@ -121,7 +120,7 @@ namespace SKU_Manager.AdminModules.importUpdate
                            "<next_available_date>" + value.NextAvailableDate.ToString("yyyyMMdd") + "</next_available_date>" +
                            "<next_available_qty>" + value.NextAvailableQty + "</next_available_qty>";
                 }
-                xml += "<merchantSKU>" + value.MerchantSku + "</merchantSKU>" +
+                xml += "<merchantSKU>" + changeMerchantSku(value.MerchantSku) + "</merchantSKU>" +
                        "</product>";
             }
             xml += "<advice_file_count>" + list.Length + "</advice_file_count>" +
@@ -132,15 +131,15 @@ namespace SKU_Manager.AdminModules.importUpdate
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
             string poNumber = createPoNumber("2002");
-            path += "\\" + poNumber + ".xsd";
+            path += "\\" + poNumber + DateTime.Now.ToString("HHmm") + ".xsd";
             StreamWriter writer = new StreamWriter(path);
             writer.WriteLine(xml);
             writer.Close();
 
             // upload file to sftp server
-            sftp.Connect();
-            sftp.Put(path, "incoming/inventory/searscanada");
-            sftp.Close();
+            //sftp.Connect();
+            //sftp.Put(path, "incoming/inventory/searscanada");
+            //sftp.Close();
             #endregion
 
             if (purchaseList.Count < 1) return;
@@ -169,15 +168,28 @@ namespace SKU_Manager.AdminModules.importUpdate
         }
 
         #region Supporting Method
-        /* a supporting method that set the given sku to discontine in database for sears */
+        /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
         public void discontinue(string sku)
         {
-            using (connection)
-            {
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
-            }
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /* a supporting method that convert to sears required merchant sku format */
+        public string changeMerchantSku(string originalSku)
+        {
+            // first occurence of '-'
+            int pos = originalSku.IndexOf('-');
+            string merchantSku = originalSku.Substring(0, pos) + '_' + originalSku.Substring(pos + 1);
+
+            // second occurence of '-'
+            if (merchantSku.Contains('-'))
+                pos = merchantSku.IndexOf('-');
+            else
+                return merchantSku;
+            return merchantSku.Substring(0, pos) + "[_" + merchantSku.Substring(pos + 1) + ']'; 
         }
 
         /* a supporting method that create the po number for the channel */

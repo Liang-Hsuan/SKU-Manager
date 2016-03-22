@@ -100,11 +100,15 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     textJSON = substringMethod(textJSON, "\"sku\"", 7);
                     string sku = getTarget(textJSON);
 
+                    // get reorder level
+                    textJSON = substringMethod(textJSON, "reorderLevel", 14);
+                    int reorderLevel = Convert.ToInt32(getTarget(textJSON));
+
                     // get reorder quantity
                     textJSON = substringMethod(textJSON, "reorderQuantity", 17);
                     int reorderQuantity = Convert.ToInt32(getTarget(textJSON));
 
-                    list.Add(new Values(sku, productId, 0, reorderQuantity));
+                    list.Add(new Values(sku, productId, 0, reorderQuantity, reorderLevel));
 
                     // proceed the text to next token
                     textJSON = substringMethod(textJSON, "reporting", 10);
@@ -225,6 +229,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 this.appToken = appToken;
             }
 
+            #region Deprecated
             /* get the product id from the sku */
             public string getProductId(string sku)
             {
@@ -306,6 +311,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 textJSON = substringMethod(textJSON, "inStock", 9);
                 return Convert.ToInt32(getTarget(textJSON));
             }
+            #endregion
 
             /* a method that get the text response from product search */
             public string productTextResponse(int starting)

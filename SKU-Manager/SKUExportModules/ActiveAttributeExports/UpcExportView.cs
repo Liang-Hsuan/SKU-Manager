@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using SKU_Manager.SKUExportModules.Tables;
 using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 
 namespace SKU_Manager.SKUExportModules.ActiveAttributeExport

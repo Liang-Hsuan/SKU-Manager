@@ -61,6 +61,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             addColumn(mainTable, "BP Item ID", false);
             addColumn(mainTable, "On Hand", false);
             addColumn(mainTable, "Reorder Quantity", false);
+            addColumn(mainTable, "Reorder Level", false);
             addColumn(mainTable, "Purchase Order", true);
             addColumn(mainTable, "Discontinue", true);
 
@@ -73,7 +74,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             // add data to each row
             foreach (Sku sku in skuList)
             {
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
                 Current++;
 
                 row[0] = sku.ashlinSku;                                 // ashlin sku
@@ -84,10 +85,11 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                     row[2] = rowCopy[1];                                // bp item id
                     row[3] = rowCopy[2];                                // on hand
                     row[4] = rowCopy[3];                                // reorder quantity
+                    row[5] = rowCopy[4];                                // reorder level
                 }
                 catch { }
-                row[5] = false;                                         // purchase order
-                row[6] = false;                                         // discontinue
+                row[6] = false;                                         // purchase order
+                row[7] = false;                                         // discontinue
 
                 mainTable.Rows.Add(row);
             }
