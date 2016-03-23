@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void BestbuyView1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done)
-            {
                 Properties.Settings.Default.BestbuyTable1 = table;
-                Properties.Settings.Default.Save();
-            }
         }
     } 
 }

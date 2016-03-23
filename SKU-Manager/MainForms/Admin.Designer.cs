@@ -50,6 +50,7 @@
             this.inventoryButton = new System.Windows.Forms.Button();
             this.modifyChannelPricingButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.modifyChannelListingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -122,7 +123,7 @@
             this.modifyDiscountButton.BackColor = System.Drawing.Color.Purple;
             this.modifyDiscountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modifyDiscountButton.ForeColor = System.Drawing.Color.White;
-            this.modifyDiscountButton.Location = new System.Drawing.Point(230, 384);
+            this.modifyDiscountButton.Location = new System.Drawing.Point(91, 384);
             this.modifyDiscountButton.Name = "modifyDiscountButton";
             this.modifyDiscountButton.Size = new System.Drawing.Size(222, 142);
             this.modifyDiscountButton.TabIndex = 5;
@@ -136,10 +137,10 @@
             this.modifyHtsButton.BackColor = System.Drawing.Color.Purple;
             this.modifyHtsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modifyHtsButton.ForeColor = System.Drawing.Color.White;
-            this.modifyHtsButton.Location = new System.Drawing.Point(907, 384);
+            this.modifyHtsButton.Location = new System.Drawing.Point(1030, 384);
             this.modifyHtsButton.Name = "modifyHtsButton";
             this.modifyHtsButton.Size = new System.Drawing.Size(222, 142);
-            this.modifyHtsButton.TabIndex = 7;
+            this.modifyHtsButton.TabIndex = 8;
             this.modifyHtsButton.Text = "Modify HTS Tables";
             this.modifyHtsButton.UseVisualStyleBackColor = false;
             this.modifyHtsButton.Click += new System.EventHandler(this.modifyHtsButton_Click);
@@ -154,7 +155,7 @@
             this.noteLabel.Location = new System.Drawing.Point(463, 689);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(442, 13);
-            this.noteLabel.TabIndex = 12;
+            this.noteLabel.TabIndex = 13;
             this.noteLabel.Text = "PLEASE NOTE - ONLY ADMINISTRATOR LEVEL USER IS ABLE TO ENTER THIS PAGE\r\n";
             // 
             // topButton3
@@ -211,7 +212,7 @@
             this.searsButton.Location = new System.Drawing.Point(589, 613);
             this.searsButton.Name = "searsButton";
             this.searsButton.Size = new System.Drawing.Size(179, 61);
-            this.searsButton.TabIndex = 11;
+            this.searsButton.TabIndex = 12;
             this.searsButton.UseVisualStyleBackColor = false;
             this.searsButton.Click += new System.EventHandler(this.searsButton_Click);
             this.searsButton.MouseHover += new System.EventHandler(this.searsButton_MouseHover);
@@ -243,7 +244,7 @@
             this.excelButton.Location = new System.Drawing.Point(513, 565);
             this.excelButton.Name = "excelButton";
             this.excelButton.Size = new System.Drawing.Size(114, 42);
-            this.excelButton.TabIndex = 8;
+            this.excelButton.TabIndex = 9;
             this.excelButton.Text = "Import Excel";
             this.excelButton.UseVisualStyleBackColor = false;
             this.excelButton.Visible = false;
@@ -258,7 +259,7 @@
             this.inventoryButton.Location = new System.Drawing.Point(739, 565);
             this.inventoryButton.Name = "inventoryButton";
             this.inventoryButton.Size = new System.Drawing.Size(114, 42);
-            this.inventoryButton.TabIndex = 10;
+            this.inventoryButton.TabIndex = 11;
             this.inventoryButton.Text = "Update Inventory";
             this.inventoryButton.UseVisualStyleBackColor = false;
             this.inventoryButton.Visible = false;
@@ -270,7 +271,7 @@
             this.modifyChannelPricingButton.BackColor = System.Drawing.Color.Purple;
             this.modifyChannelPricingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modifyChannelPricingButton.ForeColor = System.Drawing.Color.White;
-            this.modifyChannelPricingButton.Location = new System.Drawing.Point(568, 384);
+            this.modifyChannelPricingButton.Location = new System.Drawing.Point(408, 384);
             this.modifyChannelPricingButton.Name = "modifyChannelPricingButton";
             this.modifyChannelPricingButton.Size = new System.Drawing.Size(222, 142);
             this.modifyChannelPricingButton.TabIndex = 6;
@@ -289,11 +290,25 @@
             this.refreshButton.Location = new System.Drawing.Point(663, 543);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(41, 41);
-            this.refreshButton.TabIndex = 9;
+            this.refreshButton.TabIndex = 10;
             this.refreshButton.UseVisualStyleBackColor = false;
             this.refreshButton.Visible = false;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             this.refreshButton.MouseHover += new System.EventHandler(this.refreshButton_MouseHover);
+            // 
+            // modifyChannelListingButton
+            // 
+            this.modifyChannelListingButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.modifyChannelListingButton.BackColor = System.Drawing.Color.Purple;
+            this.modifyChannelListingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modifyChannelListingButton.ForeColor = System.Drawing.Color.White;
+            this.modifyChannelListingButton.Location = new System.Drawing.Point(725, 384);
+            this.modifyChannelListingButton.Name = "modifyChannelListingButton";
+            this.modifyChannelListingButton.Size = new System.Drawing.Size(222, 142);
+            this.modifyChannelListingButton.TabIndex = 7;
+            this.modifyChannelListingButton.Text = "Modify Channles\' Listing";
+            this.modifyChannelListingButton.UseVisualStyleBackColor = false;
+            this.modifyChannelListingButton.Click += new System.EventHandler(this.modifyChannelListingButton_Click);
             // 
             // Admin
             // 
@@ -301,6 +316,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.modifyChannelListingButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.modifyChannelPricingButton);
             this.Controls.Add(this.inventoryButton);
@@ -325,7 +341,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Admin";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -357,5 +372,6 @@
         private System.Windows.Forms.Button inventoryButton;
         private System.Windows.Forms.Button modifyChannelPricingButton;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button modifyChannelListingButton;
     }
 }

@@ -7,14 +7,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
     /*
      * A class that for creating sears inventory table for inventory management
      */
-    public class SearsInventoryTable
+    public class SearsInventoryTable : AdminTable
     {
-        // the main table that will be return to client
-        protected DataTable mainTable = new DataTable();
-
-        // field for database connection
-        protected readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
-
         // field for sku data
         private struct Sku
         {
@@ -22,10 +16,6 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             public string searsSku;
         }
         private readonly List<Sku> skuList = new List<Sku>();
-
-        // fields for progress 
-        public readonly int Total;
-        public int Current;
 
         /* constructor that get all the sku that are on sears */
         public SearsInventoryTable()
@@ -50,7 +40,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         }
 
         /* the most major method for the class -> return table to the client */
-        public DataTable getTable()
+        public override DataTable getTable()
         {
             // reset table just in case and set current to zero
             mainTable.Reset();
@@ -98,19 +88,6 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.EndLoadData();
 
             return mainTable;
-        }
-
-        /* method that add new column to table */
-        private void addColumn(DataTable table, string name, bool checkbox)
-        {
-            // set up column
-            DataColumn column = new DataColumn();
-            column.ColumnName = name;
-            if (checkbox)
-                column.DataType = typeof(bool);
-
-            // add column to table
-            table.Columns.Add(column);
         }
     }
 }

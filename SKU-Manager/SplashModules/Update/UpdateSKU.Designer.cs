@@ -216,9 +216,9 @@
             this.label4.ForeColor = System.Drawing.Color.Green;
             this.label4.Location = new System.Drawing.Point(353, 359);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 36;
-            this.label4.Text = "US Duty (%)";
+            this.label4.Text = "US Duty";
             // 
             // label3
             // 
@@ -258,9 +258,9 @@
             this.label2.ForeColor = System.Drawing.Color.Green;
             this.label2.Location = new System.Drawing.Point(352, 306);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 32;
-            this.label2.Text = "CA Duty (%)";
+            this.label2.Text = "CA Duty";
             // 
             // label1
             // 
@@ -1847,11 +1847,11 @@
             // 
             this.upcLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.upcLabel.ForeColor = System.Drawing.Color.Gray;
-            this.upcLabel.Location = new System.Drawing.Point(673, 170);
+            this.upcLabel.Location = new System.Drawing.Point(592, 170);
             this.upcLabel.Name = "upcLabel";
-            this.upcLabel.Size = new System.Drawing.Size(97, 23);
+            this.upcLabel.Size = new System.Drawing.Size(169, 23);
             this.upcLabel.TabIndex = 148;
-            this.upcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.upcLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // onWebsiteCheckbox
             // 

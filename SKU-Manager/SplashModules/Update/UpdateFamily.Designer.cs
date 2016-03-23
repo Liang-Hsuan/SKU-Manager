@@ -865,7 +865,7 @@
             // 
             this.activeCheckbox.AutoSize = true;
             this.activeCheckbox.Enabled = false;
-            this.activeCheckbox.Location = new System.Drawing.Point(245, 727);
+            this.activeCheckbox.Location = new System.Drawing.Point(245, 726);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
             this.activeCheckbox.TabIndex = 35;

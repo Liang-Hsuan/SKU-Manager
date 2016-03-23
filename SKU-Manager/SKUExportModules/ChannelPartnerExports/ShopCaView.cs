@@ -308,8 +308,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 Properties.Settings.Default.ShopCaPriceTable = table[2];
             if (done[3])
                 Properties.Settings.Default.ShopCaInventoryTable = table[3];
-
-            Properties.Settings.Default.Save();
         }
     }
 }

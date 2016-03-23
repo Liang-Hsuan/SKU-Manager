@@ -207,7 +207,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this design code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -216,6 +216,7 @@ namespace SKU_Manager.SplashModules.Add
             brandTextbox.Text = table.Rows[0][0].ToString();
             designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
             designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
+            giftCheckbox.Checked = Convert.ToBoolean(table.Rows[0][3]);
 
             // show the sku code on the textbox
             if (skuCodeTextbox.Text == "")    // nothing, add directly
@@ -244,7 +245,7 @@ namespace SKU_Manager.SplashModules.Add
         {
             // connect to database to get hts
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, GiftBox FROM ref_Families family JOIN master_Design_Attributes design " +
+            SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty FROM ref_Families family JOIN master_Design_Attributes design " +
                                                 "ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
             connection.Open();
@@ -254,7 +255,6 @@ namespace SKU_Manager.SplashModules.Add
             // put the found taxes to the list
             for (int i = 0; i < 4; i++)
               htsList[i] = reader.GetValue(i).ToString();
-            e.Result = reader.GetBoolean(4);
             connection.Close();
         }
         private void backgroundWorkerHTS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -263,7 +263,6 @@ namespace SKU_Manager.SplashModules.Add
             caDutyTextbox.Text = htsList[1];
             usHtsCombobox.Text = htsList[2];
             usDutyTextbox.Text = htsList[3];
-            giftCheckbox.Checked = (bool)e.Result ? true : false;
         }
         #endregion
 

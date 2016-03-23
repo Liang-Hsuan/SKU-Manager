@@ -93,6 +93,12 @@ namespace SKU_Manager.MainForms
         #endregion
 
         #region Channel Partners
+        /* the event for multi channel listing button click */
+        private void multichannelListingButton_Click(object sender, EventArgs e)
+        {
+            new ChannelListingView().ShowDialog(this);
+        }
+
         /* the event for bestbest button click */
         private void bestbuyButton_Click(object sender, EventArgs e)
         {
@@ -102,13 +108,19 @@ namespace SKU_Manager.MainForms
         /* the event for amazon.ca button click */
         private void amazonCaButton_Click(object sender, EventArgs e)
         {
-            new AmazonCaView().ShowDialog(this);
+            if (Properties.Settings.Default.StockQuantityTable != null)
+                new AmazonCaView().ShowDialog(this);
+            else
+                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for amazon.com button click */
         private void amazonComButton_Click(object sender, EventArgs e)
         {
-            new AmazonComView().ShowDialog(this);
+            if (Properties.Settings.Default.StockQuantityTable != null)
+                new AmazonComView().ShowDialog(this);
+            else
+                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for staples.ca button click */
@@ -136,6 +148,7 @@ namespace SKU_Manager.MainForms
         }
         #endregion
 
+        #region eCommerce ERP
         /* the event for magento button click */
         private void magentoButton_Click(object sender, EventArgs e)
         {
@@ -147,7 +160,9 @@ namespace SKU_Manager.MainForms
         {
             new SelectionViewTable(this).ShowDialog(this);
         }
+        #endregion
 
+        #region Promotional Association
         /* the event for uducat button click */
         private void uducatButton_Click(object sender, EventArgs e)
         {
@@ -159,6 +174,7 @@ namespace SKU_Manager.MainForms
         {
             new DistributorCentralView().ShowDialog(this);
         }
+        #endregion
 
         #region Top Buttons
         /* the event for top 1 button click (view sku management) */

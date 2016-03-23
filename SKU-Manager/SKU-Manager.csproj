@@ -127,6 +127,14 @@
     <Compile Include="ActiveInactiveList\InactiveSKUList.Designer.cs">
       <DependentUpon>InactiveSKUList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModules\AdminTable.cs" />
+    <Compile Include="AdminModules\DirectUpdate\ChannelListing\ChannelListingUpdateTable.cs" />
+    <Compile Include="AdminModules\DirectUpdate\ModifyChannelListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModules\DirectUpdate\ModifyChannelListing.Designer.cs">
+      <DependentUpon>ModifyChannelListing.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminModules\DirectUpdate\ModifyChannelPricing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +193,12 @@
     <Compile Include="MainForms\ExcelExport.Designer.cs">
       <DependentUpon>ExcelExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.Designer.cs">
+      <DependentUpon>ChannelListingView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +224,7 @@
       <DependentUpon>UducatView.cs</DependentUpon>
     </Compile>
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonExportTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListingTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPexportTable.cs" />
@@ -515,6 +530,9 @@
     <EmbeddedResource Include="ActiveInactiveList\InactiveSKUList.resx">
       <DependentUpon>InactiveSKUList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyChannelListing.resx">
+      <DependentUpon>ModifyChannelListing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyChannelPricing.resx">
       <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
     </EmbeddedResource>
@@ -571,6 +589,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\BestbuyView.resx">
       <DependentUpon>BestbuyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.resx">
+      <DependentUpon>ChannelListingView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\GiantTigerView.resx">
       <DependentUpon>GiantTigerView.cs</DependentUpon>

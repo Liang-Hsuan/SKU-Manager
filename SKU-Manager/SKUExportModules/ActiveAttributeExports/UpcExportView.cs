@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
         private void UpcExportView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.UpcTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

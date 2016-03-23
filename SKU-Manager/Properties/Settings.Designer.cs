@@ -368,5 +368,16 @@ namespace SKU_Manager.Properties {
                 this["Remember"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable ChannelListingTable {
+            get {
+                return ((global::System.Data.DataTable)(this["ChannelListingTable"]));
+            }
+            set {
+                this["ChannelListingTable"] = value;
+            }
+        }
     }
 }

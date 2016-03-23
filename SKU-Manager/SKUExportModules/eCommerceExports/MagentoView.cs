@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
         private void MagentoView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.MagentoTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

@@ -76,6 +76,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.channelPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.stockButton = new System.Windows.Forms.Button();
             this.brightPearlButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -384,10 +385,10 @@
             this.bestbuyButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bestbuyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bestbuyButton.ForeColor = System.Drawing.Color.White;
-            this.bestbuyButton.Location = new System.Drawing.Point(0, 0);
+            this.bestbuyButton.Location = new System.Drawing.Point(0, 63);
             this.bestbuyButton.Name = "bestbuyButton";
             this.bestbuyButton.Size = new System.Drawing.Size(199, 57);
-            this.bestbuyButton.TabIndex = 23;
+            this.bestbuyButton.TabIndex = 24;
             this.bestbuyButton.Text = "BestBuy.ca";
             this.bestbuyButton.UseVisualStyleBackColor = false;
             this.bestbuyButton.Click += new System.EventHandler(this.bestbuyButton_Click);
@@ -398,10 +399,10 @@
             this.shopCaButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.shopCaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shopCaButton.ForeColor = System.Drawing.Color.White;
-            this.shopCaButton.Location = new System.Drawing.Point(0, 378);
+            this.shopCaButton.Location = new System.Drawing.Point(0, 441);
             this.shopCaButton.Name = "shopCaButton";
             this.shopCaButton.Size = new System.Drawing.Size(199, 57);
-            this.shopCaButton.TabIndex = 29;
+            this.shopCaButton.TabIndex = 30;
             this.shopCaButton.Text = "Shop.ca";
             this.shopCaButton.UseVisualStyleBackColor = false;
             this.shopCaButton.Click += new System.EventHandler(this.shopCaButton_Click);
@@ -412,10 +413,10 @@
             this.tscButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.tscButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tscButton.ForeColor = System.Drawing.Color.White;
-            this.tscButton.Location = new System.Drawing.Point(0, 756);
+            this.tscButton.Location = new System.Drawing.Point(0, 819);
             this.tscButton.Name = "tscButton";
             this.tscButton.Size = new System.Drawing.Size(199, 57);
-            this.tscButton.TabIndex = 35;
+            this.tscButton.TabIndex = 36;
             this.tscButton.Text = "TheShoppingChannel.com";
             this.tscButton.UseVisualStyleBackColor = false;
             // 
@@ -425,10 +426,10 @@
             this.searsButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.searsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searsButton.ForeColor = System.Drawing.Color.White;
-            this.searsButton.Location = new System.Drawing.Point(0, 441);
+            this.searsButton.Location = new System.Drawing.Point(0, 504);
             this.searsButton.Name = "searsButton";
             this.searsButton.Size = new System.Drawing.Size(199, 57);
-            this.searsButton.TabIndex = 30;
+            this.searsButton.TabIndex = 31;
             this.searsButton.Text = "Sears.ca";
             this.searsButton.UseVisualStyleBackColor = false;
             // 
@@ -438,10 +439,10 @@
             this.amazonCaButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.amazonCaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amazonCaButton.ForeColor = System.Drawing.Color.White;
-            this.amazonCaButton.Location = new System.Drawing.Point(0, 63);
+            this.amazonCaButton.Location = new System.Drawing.Point(0, 126);
             this.amazonCaButton.Name = "amazonCaButton";
             this.amazonCaButton.Size = new System.Drawing.Size(199, 57);
-            this.amazonCaButton.TabIndex = 24;
+            this.amazonCaButton.TabIndex = 25;
             this.amazonCaButton.Text = "Amazon.ca";
             this.amazonCaButton.UseVisualStyleBackColor = false;
             this.amazonCaButton.Click += new System.EventHandler(this.amazonCaButton_Click);
@@ -452,10 +453,10 @@
             this.amazonComButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.amazonComButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amazonComButton.ForeColor = System.Drawing.Color.White;
-            this.amazonComButton.Location = new System.Drawing.Point(0, 126);
+            this.amazonComButton.Location = new System.Drawing.Point(0, 189);
             this.amazonComButton.Name = "amazonComButton";
             this.amazonComButton.Size = new System.Drawing.Size(199, 57);
-            this.amazonComButton.TabIndex = 25;
+            this.amazonComButton.TabIndex = 26;
             this.amazonComButton.Text = "Amazon.com";
             this.amazonComButton.UseVisualStyleBackColor = false;
             this.amazonComButton.Click += new System.EventHandler(this.amazonComButton_Click);
@@ -466,10 +467,10 @@
             this.staplesButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.staplesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staplesButton.ForeColor = System.Drawing.Color.White;
-            this.staplesButton.Location = new System.Drawing.Point(0, 189);
+            this.staplesButton.Location = new System.Drawing.Point(0, 252);
             this.staplesButton.Name = "staplesButton";
             this.staplesButton.Size = new System.Drawing.Size(199, 57);
-            this.staplesButton.TabIndex = 26;
+            this.staplesButton.TabIndex = 27;
             this.staplesButton.Text = "Staples.ca";
             this.staplesButton.UseVisualStyleBackColor = false;
             this.staplesButton.Click += new System.EventHandler(this.staplesButton_Click);
@@ -480,10 +481,10 @@
             this.walmartButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.walmartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.walmartButton.ForeColor = System.Drawing.Color.White;
-            this.walmartButton.Location = new System.Drawing.Point(0, 315);
+            this.walmartButton.Location = new System.Drawing.Point(0, 378);
             this.walmartButton.Name = "walmartButton";
             this.walmartButton.Size = new System.Drawing.Size(199, 57);
-            this.walmartButton.TabIndex = 38;
+            this.walmartButton.TabIndex = 29;
             this.walmartButton.Text = "Walmart.ca";
             this.walmartButton.UseVisualStyleBackColor = false;
             this.walmartButton.Click += new System.EventHandler(this.walmartButton_Click);
@@ -494,10 +495,10 @@
             this.staplesAdvantageButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.staplesAdvantageButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staplesAdvantageButton.ForeColor = System.Drawing.Color.White;
-            this.staplesAdvantageButton.Location = new System.Drawing.Point(0, 252);
+            this.staplesAdvantageButton.Location = new System.Drawing.Point(0, 315);
             this.staplesAdvantageButton.Name = "staplesAdvantageButton";
             this.staplesAdvantageButton.Size = new System.Drawing.Size(199, 57);
-            this.staplesAdvantageButton.TabIndex = 27;
+            this.staplesAdvantageButton.TabIndex = 28;
             this.staplesAdvantageButton.Text = "Staples-advantage.ca";
             this.staplesAdvantageButton.UseVisualStyleBackColor = false;
             // 
@@ -522,10 +523,10 @@
             this.theBayButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.theBayButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.theBayButton.ForeColor = System.Drawing.Color.White;
-            this.theBayButton.Location = new System.Drawing.Point(0, 567);
+            this.theBayButton.Location = new System.Drawing.Point(0, 630);
             this.theBayButton.Name = "theBayButton";
             this.theBayButton.Size = new System.Drawing.Size(199, 57);
-            this.theBayButton.TabIndex = 32;
+            this.theBayButton.TabIndex = 33;
             this.theBayButton.Text = "TheBay.ca";
             this.theBayButton.UseVisualStyleBackColor = false;
             // 
@@ -535,10 +536,10 @@
             this.giantTigerButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.giantTigerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.giantTigerButton.ForeColor = System.Drawing.Color.White;
-            this.giantTigerButton.Location = new System.Drawing.Point(0, 504);
+            this.giantTigerButton.Location = new System.Drawing.Point(0, 567);
             this.giantTigerButton.Name = "giantTigerButton";
             this.giantTigerButton.Size = new System.Drawing.Size(199, 57);
-            this.giantTigerButton.TabIndex = 31;
+            this.giantTigerButton.TabIndex = 32;
             this.giantTigerButton.Text = "GiantTiger.ca";
             this.giantTigerButton.UseVisualStyleBackColor = false;
             this.giantTigerButton.Click += new System.EventHandler(this.giantTigerButton_Click);
@@ -549,10 +550,10 @@
             this.ebayCaButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.ebayCaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ebayCaButton.ForeColor = System.Drawing.Color.White;
-            this.ebayCaButton.Location = new System.Drawing.Point(0, 630);
+            this.ebayCaButton.Location = new System.Drawing.Point(0, 693);
             this.ebayCaButton.Name = "ebayCaButton";
             this.ebayCaButton.Size = new System.Drawing.Size(199, 57);
-            this.ebayCaButton.TabIndex = 33;
+            this.ebayCaButton.TabIndex = 34;
             this.ebayCaButton.Text = "eBay.ca";
             this.ebayCaButton.UseVisualStyleBackColor = false;
             // 
@@ -562,10 +563,10 @@
             this.ebayComButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.ebayComButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ebayComButton.ForeColor = System.Drawing.Color.White;
-            this.ebayComButton.Location = new System.Drawing.Point(-2, 693);
+            this.ebayComButton.Location = new System.Drawing.Point(0, 756);
             this.ebayComButton.Name = "ebayComButton";
             this.ebayComButton.Size = new System.Drawing.Size(199, 57);
-            this.ebayComButton.TabIndex = 34;
+            this.ebayComButton.TabIndex = 35;
             this.ebayComButton.Text = "eBay.com";
             this.ebayComButton.UseVisualStyleBackColor = false;
             // 
@@ -581,7 +582,7 @@
             this.magentoButton.Location = new System.Drawing.Point(788, 292);
             this.magentoButton.Name = "magentoButton";
             this.magentoButton.Size = new System.Drawing.Size(217, 57);
-            this.magentoButton.TabIndex = 36;
+            this.magentoButton.TabIndex = 37;
             this.magentoButton.Text = "Magento";
             this.magentoButton.UseVisualStyleBackColor = false;
             this.magentoButton.Click += new System.EventHandler(this.magentoButton_Click);
@@ -596,7 +597,7 @@
             this.uducatButton.Location = new System.Drawing.Point(1020, 292);
             this.uducatButton.Name = "uducatButton";
             this.uducatButton.Size = new System.Drawing.Size(217, 57);
-            this.uducatButton.TabIndex = 38;
+            this.uducatButton.TabIndex = 39;
             this.uducatButton.Text = "UDUCAT";
             this.uducatButton.UseVisualStyleBackColor = false;
             this.uducatButton.Click += new System.EventHandler(this.uducatButton_Click);
@@ -611,7 +612,7 @@
             this.distributorCentralButton.Location = new System.Drawing.Point(1020, 355);
             this.distributorCentralButton.Name = "distributorCentralButton";
             this.distributorCentralButton.Size = new System.Drawing.Size(217, 57);
-            this.distributorCentralButton.TabIndex = 39;
+            this.distributorCentralButton.TabIndex = 40;
             this.distributorCentralButton.Text = "DistributorCentral";
             this.distributorCentralButton.UseVisualStyleBackColor = false;
             this.distributorCentralButton.Click += new System.EventHandler(this.distributorCentralButton_Click);
@@ -626,7 +627,7 @@
             this.promoMarketingButton.Location = new System.Drawing.Point(1020, 418);
             this.promoMarketingButton.Name = "promoMarketingButton";
             this.promoMarketingButton.Size = new System.Drawing.Size(217, 57);
-            this.promoMarketingButton.TabIndex = 40;
+            this.promoMarketingButton.TabIndex = 41;
             this.promoMarketingButton.Text = "PromoMarketing";
             this.promoMarketingButton.UseVisualStyleBackColor = false;
             // 
@@ -640,7 +641,7 @@
             this.aslEspButton.Location = new System.Drawing.Point(1020, 481);
             this.aslEspButton.Name = "aslEspButton";
             this.aslEspButton.Size = new System.Drawing.Size(217, 57);
-            this.aslEspButton.TabIndex = 41;
+            this.aslEspButton.TabIndex = 42;
             this.aslEspButton.Text = "ASI-ESP";
             this.aslEspButton.UseVisualStyleBackColor = false;
             // 
@@ -654,7 +655,7 @@
             this.sageButton.Location = new System.Drawing.Point(1020, 544);
             this.sageButton.Name = "sageButton";
             this.sageButton.Size = new System.Drawing.Size(217, 57);
-            this.sageButton.TabIndex = 42;
+            this.sageButton.TabIndex = 43;
             this.sageButton.Text = "SAGE";
             this.sageButton.UseVisualStyleBackColor = false;
             // 
@@ -668,7 +669,7 @@
             this.pppcButton.Location = new System.Drawing.Point(1021, 607);
             this.pppcButton.Name = "pppcButton";
             this.pppcButton.Size = new System.Drawing.Size(217, 57);
-            this.pppcButton.TabIndex = 42;
+            this.pppcButton.TabIndex = 44;
             this.pppcButton.Text = "PPPC";
             this.pppcButton.UseVisualStyleBackColor = false;
             // 
@@ -715,6 +716,7 @@
             // 
             this.channelPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.channelPanel.AutoScroll = true;
+            this.channelPanel.Controls.Add(this.button1);
             this.channelPanel.Controls.Add(this.shopCaButton);
             this.channelPanel.Controls.Add(this.tscButton);
             this.channelPanel.Controls.Add(this.bestbuyButton);
@@ -732,6 +734,20 @@
             this.channelPanel.Name = "channelPanel";
             this.channelPanel.Size = new System.Drawing.Size(216, 372);
             this.channelPanel.TabIndex = 56;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 57);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Multi-Channel Listing";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.multichannelListingButton_Click);
             // 
             // stockButton
             // 
@@ -760,7 +776,7 @@
             this.brightPearlButton.Location = new System.Drawing.Point(788, 355);
             this.brightPearlButton.Name = "brightPearlButton";
             this.brightPearlButton.Size = new System.Drawing.Size(217, 57);
-            this.brightPearlButton.TabIndex = 37;
+            this.brightPearlButton.TabIndex = 38;
             this.brightPearlButton.Text = "BrightPearl";
             this.brightPearlButton.UseVisualStyleBackColor = false;
             this.brightPearlButton.Click += new System.EventHandler(this.brightPearlButton_Click);
@@ -874,5 +890,6 @@
         private System.Windows.Forms.Panel channelPanel;
         private System.Windows.Forms.Button stockButton;
         private System.Windows.Forms.Button brightPearlButton;
+        private System.Windows.Forms.Button button1;
     }
 }

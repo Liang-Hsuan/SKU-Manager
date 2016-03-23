@@ -95,6 +95,7 @@ namespace SKU_Manager.SplashModules.Update
                 extendedFrenchDescriptionTextbox.Enabled = true;
                 onlineButton.Enabled = true;
                 updateColorButton.Enabled = true;
+                activeCheckbox.Enabled = true;
 
                 // set colorCode field from the selected item 
                 colorCode = colorCodeCombobox.SelectedItem.ToString();
@@ -119,6 +120,7 @@ namespace SKU_Manager.SplashModules.Update
                 onlineButton.Enabled = false;
                 activeCheckbox.Checked = false;
                 updateColorButton.Enabled = false;
+                activeCheckbox.Enabled = false;
             }
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -208,8 +210,8 @@ namespace SKU_Manager.SplashModules.Update
             // set color online 
             if (online.DialogResult == DialogResult.OK)
             {
-                colorOnlineEnglish = online.English.Replace("'", "''");
-                colorOnlineFrench = online.French.Replace("'", "''");
+                colorOnlineEnglish = online.English;
+                colorOnlineFrench = online.French;
             }
         }
 
@@ -238,6 +240,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedEnglishDescription = extendedEnglishDescriptionTextbox.Text.Replace("'", "''");
             shortFrenchDescription = shortFrenchDescriptionTextbox.Text.Replace("'", "''");
             extendedFrenchDescription = extendedFrenchDescriptionTextbox.Text.Replace("'", "''");
+            active = activeCheckbox.Checked;
 
             // simulate progress 30% ~ 60%
             for (int i = 30; i <= 60; i++)
@@ -252,7 +255,7 @@ namespace SKU_Manager.SplashModules.Update
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Colour_Description_Extended = \'" + extendedEnglishDescription + "\', Colour_Description_Short = \'" + shortEnglishDescription + "\', Colour_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Colour_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
-                                                        "Colour_Online = \'" + colorOnlineEnglish + "\', Colour_Online_FR = \'" + colorOnlineFrench + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                                                        "Colour_Online = \'" + colorOnlineEnglish.Replace("'", "''") + "\', Colour_Online_FR = \'" + colorOnlineFrench.Replace("'", "''") + "\', Active = \'" + active + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

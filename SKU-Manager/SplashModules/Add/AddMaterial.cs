@@ -112,8 +112,8 @@ namespace SKU_Manager.SplashModules.Add
             // set color online 
             if (online.DialogResult == DialogResult.OK)
             {
-                materialOnlineEnglish = online.English.Replace("'", "''");
-                materialOnlineFrench = online.French.Replace("'", "''");
+                materialOnlineEnglish = online.English;
+                materialOnlineFrench = online.French;
             }
         }
 
@@ -161,7 +161,7 @@ namespace SKU_Manager.SplashModules.Add
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO ref_Materials (Material_Code, Material_Description_Extended, Material_Description_Short, Material_Description_Extended_FR, Material_Description_Short_FR, Material_Online, Material_Online_FR, Active, Date_Added) " +
-                                                        "VALUES (\'" + materialCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + materialOnlineEnglish + "\', \'" + materialOnlineFrench + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
+                                                        "VALUES (\'" + materialCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + materialOnlineEnglish.Replace("'", "''") + "\', \'" + materialOnlineFrench.Replace("'", "''") + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

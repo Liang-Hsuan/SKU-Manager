@@ -178,6 +178,7 @@ namespace SKU_Manager.SplashModules.Update
                 addDistributorCentralButton.Enabled = true;
                 removeDistributorCentralButton.Enabled = true;
                 updateFamilyButton.Enabled = true;
+                activeCheckbox.Enabled = true;
 
                 // set the comboboxes' text to first item
                 sageCategoryCombobox.SelectedIndex = 1;
@@ -266,6 +267,7 @@ namespace SKU_Manager.SplashModules.Update
                 addDistributorCentralButton.Enabled = false;
                 removeDistributorCentralButton.Enabled = false;
                 updateFamilyButton.Enabled = false;
+                activeCheckbox.Enabled = false;
             }
 
             if (firstTime)
@@ -467,6 +469,7 @@ namespace SKU_Manager.SplashModules.Update
             distributorCentral = distributorCentralTextbox.Text.Replace("'", "''");
             caDuty = caDutyTextbox.Text;
             usDuty = usDutyTextbox.Text;
+            active = activeCheckbox.Checked;
 
             // simulate progress 30% ~ 60%
             for (int i = 30; i <= 60; i++)
@@ -483,8 +486,8 @@ namespace SKU_Manager.SplashModules.Update
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         SqlCommand command = new SqlCommand("UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
-                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', HTS_CA = \'" + caHts + "\', HTS_US = \'" + usHts + "\', CA_Duty = " + caDuty + ", US_Duty = " + usDuty +
-                                                           " WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
+                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', HTS_CA = \'" + caHts + "\', HTS_US = \'" + usHts + "\', CA_Duty = " + caDuty + ", US_Duty = " + usDuty + ", Active = \'" + active + "\' "
+                                                          + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
@@ -494,7 +497,7 @@ namespace SKU_Manager.SplashModules.Update
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         SqlCommand command = new SqlCommand("UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
-                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\' "
+                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', Active = \'" + active + "\' "
                                                           + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
                         connection.Open();
                         command.ExecuteNonQuery();

@@ -80,12 +80,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             mainTable.BeginLoadData();
 
             // add data to each row 
-
             foreach (string sku in skuList)
             {
                 ArrayList list = getData(sku);
-
-                var newRow = mainTable.NewRow();
+                DataRow newRow = mainTable.NewRow();
 
                 newRow[0] = "ashlin_bpg";                                // supplier id
                 newRow[1] = "nishis_boutique";                           // store name
@@ -224,7 +222,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         } */
         #endregion
 
-        /* a method that get all the sku that is active and have on bestbuy */
+        /* a method that get all the sku that is active and have on shop ca with bag design */
         protected sealed override string[] getSKU()
         {
             // local field for storing data

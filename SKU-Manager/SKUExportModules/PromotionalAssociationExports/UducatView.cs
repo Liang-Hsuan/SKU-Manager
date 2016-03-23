@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private void UducatView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done)
-            {
                 Properties.Settings.Default.UducatTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

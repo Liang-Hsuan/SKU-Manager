@@ -1272,9 +1272,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.label2.Location = new System.Drawing.Point(352, 282);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 29;
-            this.label2.Text = "CA Duty (%)";
+            this.label2.Text = "CA Duty";
             // 
             // canadianHtsCombobox
             // 
@@ -1313,9 +1313,9 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.label4.Location = new System.Drawing.Point(353, 335);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.Size = new System.Drawing.Size(72, 20);
             this.label4.TabIndex = 33;
-            this.label4.Text = "US Duty (%)";
+            this.label4.Text = "US Duty";
             // 
             // usHtsCombobox
             // 

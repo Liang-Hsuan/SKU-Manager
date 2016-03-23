@@ -173,6 +173,7 @@
             // 
             // backgroundWorkerDeactivate
             // 
+            this.backgroundWorkerDeactivate.WorkerReportsProgress = true;
             this.backgroundWorkerDeactivate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDeactivate_DoWork);
             this.backgroundWorkerDeactivate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerDeactivate_ProgressChanged);
             // 

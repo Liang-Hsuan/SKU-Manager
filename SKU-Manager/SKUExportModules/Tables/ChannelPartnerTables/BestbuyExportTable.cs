@@ -80,7 +80,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                var newRow = mainTable.NewRow();
+                DataRow newRow = mainTable.NewRow();
 
                 newRow[0] = row[13];                                  // sku
                 newRow[1] = "104";                                    // department

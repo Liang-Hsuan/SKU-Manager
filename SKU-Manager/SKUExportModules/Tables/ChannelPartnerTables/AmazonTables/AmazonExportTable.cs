@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
@@ -8,6 +9,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
      */
     public abstract class AmazonExportTable : ExportTable
     {
+        // field for getting product's quantity
+        protected DataTable minorTable = Properties.Settings.Default.StockQuantityTable;
+
         /* method that get the data from given sku */
         protected ArrayList getData(string sku)
         {

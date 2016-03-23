@@ -89,10 +89,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private void DistributorCentralView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (done)
-            {
                 Properties.Settings.Default.DistributorCentralTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

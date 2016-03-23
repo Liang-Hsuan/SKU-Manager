@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
         private void ActivePriceView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.ActivePriceTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

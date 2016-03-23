@@ -47,9 +47,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 int[][] textIndex = new int[8][];
                 int[] index = {2};
                 for (int i = 0; i < 8; i++)
-                {
                     textIndex[i] = index;
-                }
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {

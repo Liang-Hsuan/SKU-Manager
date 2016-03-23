@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
 {
@@ -165,7 +164,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             addColumn(mainTable, "battery_type");                                   // 136
 
             // local field for inserting data to table
-            Product product = new Product();
             double multiplier = getMultiplier();
 
             // start loading data
@@ -191,7 +189,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[11] = "CAD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note
-                row[16] = product.getQuantity(sku);                // quantity
+                row[16] = minorTable.Select("SKU='"+sku+"'")[0][2];// quantity
                 row[17] = 1;                                       // max aggregate ship quantity
                 row[18] = 1;                                       // item package quantity
                 row[19] = 1;                                       // number_of_items
@@ -269,7 +267,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'TRUE\' AND SKU_AMAZON_CA != \'\' ORDER BY SKU_Ashlin", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' AND SKU_AMAZON_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

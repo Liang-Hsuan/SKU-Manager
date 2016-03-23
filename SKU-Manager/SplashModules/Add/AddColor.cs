@@ -112,8 +112,8 @@ namespace SKU_Manager.SplashModules.Add
             // set color online 
             if (online.DialogResult == DialogResult.OK)
             {
-                colorOnlineEnglish = online.English.Replace("'", "''");
-                colorOnlineFrench = online.French.Replace("'", "''");
+                colorOnlineEnglish = online.English;
+                colorOnlineFrench = online.French;
             }
         }
 
@@ -161,7 +161,7 @@ namespace SKU_Manager.SplashModules.Add
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO ref_Colours (Colour_Code, Colour_Description_Extended, Colour_Description_Short, Colour_Description_Extended_FR, Colour_Description_Short_FR, Colour_Online, Colour_Online_FR, Active, Date_Added) " +
-                                                        "VALUES (\'" + colorCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + colorOnlineEnglish + "\', \'" + colorOnlineFrench + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
+                                                        "VALUES (\'" + colorCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + colorOnlineEnglish.Replace("'", "''") + "\', \'" + colorOnlineFrench.Replace("'", "''") + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

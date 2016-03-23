@@ -77,6 +77,7 @@ namespace SKU_Manager.SplashModules.Update
                 extendedFrenchDescriptionTextbox.Enabled = true;
                 onlineButton.Enabled = true;
                 updateMaterialButton.Enabled = true;
+                activeCheckbox.Enabled = true;
 
                 // set materialCode field from the selected item 
                 materialCode = materialCodeCombobox.SelectedItem.ToString();
@@ -101,6 +102,7 @@ namespace SKU_Manager.SplashModules.Update
                 onlineButton.Enabled = false;
                 activeCheckbox.Checked = false;
                 updateMaterialButton.Enabled = false;
+                activeCheckbox.Enabled = false;
             }
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -207,8 +209,8 @@ namespace SKU_Manager.SplashModules.Update
             // set color online 
             if (online.DialogResult == DialogResult.OK)
             {
-                materialOnlineEnglish = online.English.Replace("'", "''");
-                materialOnlineFrench = online.French.Replace("'", "''");
+                materialOnlineEnglish = online.English;
+                materialOnlineFrench = online.French;
             }
         }
 
@@ -237,6 +239,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedEnglishDescription = extendedEnglishDescriptionTextbox.Text.Replace("'", "''");
             shortFrenchDescription = shortFrenchDescriptionTextbox.Text.Replace("'", "''");
             extendedFrenchDescription = extendedFrenchDescriptionTextbox.Text.Replace("'", "''");
+            active = activeCheckbox.Checked;
 
             // simulate progress 30% ~ 60%
             for (int i = 30; i <= 60; i++)
@@ -251,7 +254,7 @@ namespace SKU_Manager.SplashModules.Update
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
-                                                        "Material_Online = \'" + materialOnlineEnglish + "\', Material_Online_FR = \'" + materialOnlineFrench + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd"") + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
+                                                        "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

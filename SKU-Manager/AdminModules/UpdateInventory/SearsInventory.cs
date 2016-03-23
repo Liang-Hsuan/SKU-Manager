@@ -57,7 +57,9 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             // change color for order that are in low quantity
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                if (Convert.ToInt32(row.Cells[3].Value) < Convert.ToInt32(row.Cells[5].Value))
+                if (row.Cells[3].Value != DBNull.Value && Convert.ToInt32(row.Cells[3].Value) == 0)
+                    row.DefaultCellStyle.BackColor = Color.Pink;
+                else if (row.Cells[3].Value != DBNull.Value && row.Cells[5].Value != DBNull.Value && Convert.ToInt32(row.Cells[3].Value) < Convert.ToInt32(row.Cells[5].Value))
                     row.DefaultCellStyle.BackColor = Color.Yellow;
             }
         }

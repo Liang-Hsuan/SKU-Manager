@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
         private void StockQuantityView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.StockQuantityTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

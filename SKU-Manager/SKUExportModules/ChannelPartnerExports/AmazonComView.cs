@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void AmazonComView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.AmazonComTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

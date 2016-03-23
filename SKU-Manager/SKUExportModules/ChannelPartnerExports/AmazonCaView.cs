@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void AmazonCaView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.AmazonCaTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

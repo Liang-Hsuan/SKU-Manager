@@ -686,8 +686,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 Properties.Settings.Default.BPrushNetBlankTable = table[6];
             if (done[7])
                 Properties.Settings.Default.BPrushNetImprintTable = table[7];
-
-            Properties.Settings.Default.Save();
         }
     }
 }

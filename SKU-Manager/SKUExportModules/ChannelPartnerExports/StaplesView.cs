@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void StaplesView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.StaplesTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

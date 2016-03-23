@@ -42,6 +42,12 @@ namespace SKU_Manager.MainForms
             new ModifyChannelPricing().ShowDialog(this);
         }
 
+        /* the event when modify channel listing button is clicked */
+        private void modifyChannelListingButton_Click(object sender, EventArgs e)
+        {
+            new ModifyChannelListing().ShowDialog(this);
+        }
+
         /* the event when update hts button is clicked */
         private void modifyHtsButton_Click(object sender, EventArgs e)
         {
@@ -146,12 +152,6 @@ namespace SKU_Manager.MainForms
             }
             else
                 loadingLabel.Text = sears.Current + " / " + sears.Total;
-        }
-
-        /* save data when form is closing */
-        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Save();
         }
     }
 }

@@ -84,10 +84,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void GiantTigerView_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (complete)
-            {
                 Properties.Settings.Default.GiantTigerTable = table;
-                Properties.Settings.Default.Save();
-            }
         }
     }
 }

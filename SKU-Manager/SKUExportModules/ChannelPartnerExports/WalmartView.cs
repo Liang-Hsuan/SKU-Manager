@@ -169,8 +169,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 Properties.Settings.Default.WalmartItemTable = table[0];
             if (done[1])
                 Properties.Settings.Default.WalmartPriceTable = table[1];
-
-            Properties.Settings.Default.Save();
         }
     }
 }

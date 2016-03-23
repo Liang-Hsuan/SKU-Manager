@@ -554,97 +554,107 @@ namespace SKU_Manager.MainForms
         /* the event for amazon ca button click that export amazon ca export table */
         private void amazonCaButton_Click(object sender, EventArgs e)
         {
-            // local field for excel export
-            XlExport export = new XlExport();
-
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            if (Properties.Settings.Default.StockQuantityTable != null)
             {
-                // fields for formatting
-                ds.Reset();
-                string[] names = new string[1];
-                names[0] = "Amazon.ca Export Sheet";
-                int[][] textIndex = new int[1][];
-                int[] index = { 7 };
-                textIndex[0] = index;
+                // local field for excel export
+                XlExport export = new XlExport();
 
-                if (Properties.Settings.Default.AmazonCaTable != null)   // tables have already been saved
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    ds.Tables.Add(Properties.Settings.Default.AmazonCaTable);
+                    // fields for formatting
+                    ds.Reset();
+                    string[] names = new string[1];
+                    names[0] = "Amazon.ca Export Sheet";
+                    int[][] textIndex = new int[1][];
+                    int[] index = { 5, 7 };
+                    textIndex[0] = index;
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
-                }
-                else    // load the tables
-                {
-                    exportTables = new ExportTable[1];
-                    exportTables[0] = new AmazonCAExportTable();
-                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
-                    form.ShowDialog(this);
-
-                    if (form.Complete)  // the tables have complete
+                    if (Properties.Settings.Default.AmazonCaTable != null)   // tables have already been saved
                     {
-                        // get the data
-                        ds = form.Tables;
+                        ds.Tables.Add(Properties.Settings.Default.AmazonCaTable);
 
-                        // export the excel files   
+                        // export the excel files      
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                        return;
+                    else    // load the tables
+                    {
+                        exportTables = new ExportTable[1];
+                        exportTables[0] = new AmazonCAExportTable();
+                        ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                        form.ShowDialog(this);
 
-                    Properties.Settings.Default.AmazonCaTable = ds.Tables[0];
+                        if (form.Complete)  // the tables have complete
+                        {
+                            // get the data
+                            ds = form.Tables;
+
+                            // export the excel files   
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        else    // user close the form early 
+                            return;
+
+                        Properties.Settings.Default.AmazonCaTable = ds.Tables[0];
+                    }
+
+                    showExportMessage(saveFileDialog.FileName);
                 }
-
-                showExportMessage(saveFileDialog.FileName);
             }
+            else 
+                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for amazon com button click that export amazon com export table */
         private void amazonComButton_Click(object sender, EventArgs e)
         {
-            // local field for excel export
-            XlExport export = new XlExport();
-
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            if (Properties.Settings.Default.StockQuantityTable != null)
             {
-                // fields for formatting
-                ds.Reset();
-                string[] names = new string[1];
-                names[0] = "Amazon.com Export Sheet";
-                int[][] textIndex = new int[1][];
-                int[] index = { 7 };
-                textIndex[0] = index;
+                // local field for excel export
+                XlExport export = new XlExport();
 
-                if (Properties.Settings.Default.AmazonComTable != null)   // tables have already been saved
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    ds.Tables.Add(Properties.Settings.Default.AmazonComTable);
+                    // fields for formatting
+                    ds.Reset();
+                    string[] names = new string[1];
+                    names[0] = "Amazon.com Export Sheet";
+                    int[][] textIndex = new int[1][];
+                    int[] index = { 5, 7 };
+                    textIndex[0] = index;
 
-                    // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
-                }
-                else    // load the tables
-                {
-                    exportTables = new ExportTable[1];
-                    exportTables[0] = new AmazonComExportTable();
-                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
-                    form.ShowDialog(this);
-
-                    if (form.Complete)  // the tables have complete
+                    if (Properties.Settings.Default.AmazonComTable != null)   // tables have already been saved
                     {
-                        // get the data
-                        ds = form.Tables;
+                        ds.Tables.Add(Properties.Settings.Default.AmazonComTable);
 
-                        // export the excel files   
+                        // export the excel files      
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                        return;
+                    else    // load the tables
+                    {
+                        exportTables = new ExportTable[1];
+                        exportTables[0] = new AmazonComExportTable();
+                        ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                        form.ShowDialog(this);
 
-                    Properties.Settings.Default.AmazonComTable = ds.Tables[0];
+                        if (form.Complete)  // the tables have complete
+                        {
+                            // get the data
+                            ds = form.Tables;
+
+                            // export the excel files   
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        else    // user close the form early 
+                            return;
+
+                        Properties.Settings.Default.AmazonComTable = ds.Tables[0];
+                    }
+
+                    showExportMessage(saveFileDialog.FileName);
                 }
-
-                showExportMessage(saveFileDialog.FileName);
             }
+            else
+                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for staples button click that export staples export table */
@@ -1048,12 +1058,6 @@ namespace SKU_Manager.MainForms
         private static void showExportMessage(string filePath)
         {
             MessageBox.Show("Excel file has been successfully exported in \n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        /* save data when form is closing */
-        private void ExcelExport_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Save();
         }
     }
 }
