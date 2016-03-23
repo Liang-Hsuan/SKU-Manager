@@ -165,10 +165,10 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 }
 
                 // proceed the text to the next token
-                textJSON = textJSON.Substring(textJSON.IndexOf("allocated") + 10);
-                textJSON = textJSON.Substring(textJSON.IndexOf("warehouses") + 13);
+                textJSON = substringMethod(textJSON, "allocated", 10);
+                textJSON = substringMethod(textJSON, "warehouses", 13);
                 if (textJSON[0] != '}')
-                    textJSON = textJSON.Substring(textJSON.IndexOf("allocated") + 10);
+                    textJSON = substringMethod(textJSON, "allocated", 10);
             }
 
             return list;

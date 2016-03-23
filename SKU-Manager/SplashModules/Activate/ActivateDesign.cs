@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SplashModules.Update;
 
 namespace SKU_Manager.SplashModules.Activate
 {
@@ -140,12 +139,23 @@ namespace SKU_Manager.SplashModules.Activate
             }
 
             // connect to database and activate the color
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  \'True\', Date_Activated = \'" + DateTime.Now.ToString() + "\' "
-                                                  + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command =
+                        new SqlCommand(
+                            "UPDATE master_Design_Attributes SET Active =  \'True\', Date_Activated = \'" +
+                            DateTime.Now.ToString("yyyy-MM-dd") + "\' "
+                            + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

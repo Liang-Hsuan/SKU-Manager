@@ -49,13 +49,13 @@
             this.editButton.BackColor = System.Drawing.Color.Green;
             this.editButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editButton.ForeColor = System.Drawing.Color.White;
             this.editButton.Location = new System.Drawing.Point(0, 226);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(140, 33);
             this.editButton.TabIndex = 1;
-            this.editButton.Text = "Edit";
+            this.editButton.Text = "Save";
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
@@ -64,7 +64,7 @@
             this.cancelButton.BackColor = System.Drawing.Color.Maroon;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.White;
             this.cancelButton.Location = new System.Drawing.Point(146, 226);
             this.cancelButton.Name = "cancelButton";

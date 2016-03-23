@@ -116,12 +116,23 @@ namespace SKU_Manager.SplashModules.Activate
             }
 
             // connect to database and activate the family
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("UPDATE ref_Families SET Active =  \'True\', Date_Activated = \'" + DateTime.Now.ToString() + "\' "
-                                                  + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command =
+                        new SqlCommand(
+                            "UPDATE ref_Families SET Active =  \'True\', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") +
+                            "\' "
+                            + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

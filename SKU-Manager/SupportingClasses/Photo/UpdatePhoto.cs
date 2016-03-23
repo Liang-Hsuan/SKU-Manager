@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace SKU_Manager.SupportingClasses.Photo
 {
@@ -60,10 +61,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                 int i = 1;
 
                 #region Image
-                foreach (string uri in imageUri)
+                foreach (string uri in imageUri.TakeWhile(uri => i <= 10))
                 {
-                    if (i > 10)
-                        break;
                     commandString += "Image_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
@@ -75,10 +74,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                 i = 1;
 
                 #region Group
-                foreach (string uri in groupUri)
+                foreach (string uri in groupUri.TakeWhile(uri => i <= 5))
                 {
-                    if (i > 5)
-                        break;
                     commandString += "Image_Group_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
@@ -90,10 +87,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                 i = 1;
 
                 #region Model
-                foreach (string uri in modelUri)
+                foreach (string uri in modelUri.TakeWhile(uri => i <= 5))
                 {
-                    if (i > 5)
-                        break;
                     commandString += "Image_Model_" + i + "_Path = \'" + uri + "\',";
                     i++;
                 }
@@ -105,10 +100,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                 i = 1;
 
                 #region Template
-                foreach (string uri in templateUri)
+                foreach (string uri in templateUri.TakeWhile(uri => i <= 2))
                 {
-                    if (i > 2)
-                        break;
                     commandString += "Template_URL_" + i + " = \'" + uri + "\',";
                     i++;
                 }

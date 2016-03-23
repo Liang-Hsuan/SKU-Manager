@@ -91,7 +91,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         public string[] getTemplate(string sku)
         {
             // initialize the template directory 
-            string templateDirectory = START_DIR + @"\1_DESIGN TEMPLATE LAYOUTS";
+            const string templateDirectory = START_DIR + @"\1_DESIGN TEMPLATE LAYOUTS";
 
             // add found model images to the list
             return (from image in Directory.GetFiles(templateDirectory, "*.jpg") where image.Contains(sku) select image.Substring(image.LastIndexOf('\\') + 1)).ToArray();

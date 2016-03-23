@@ -6,7 +6,6 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SplashModules.Update;
 
 namespace SKU_Manager.SplashModules.Activate
 {
@@ -28,10 +27,10 @@ namespace SKU_Manager.SplashModules.Activate
         private string colorDescription;
 
         // fields for combobox
-        ArrayList skuList = new ArrayList();
+        private readonly ArrayList skuList = new ArrayList();
 
         // field for database connection
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
         public ActivateSKU()
@@ -41,11 +40,10 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
-            {
                 backgroundWorkerCombobox.RunWorkerAsync();
-            }
         }
 
+        #region Combobox Generation
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -55,16 +53,16 @@ namespace SKU_Manager.SplashModules.Activate
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
-                {
                     skuList.Add(reader.GetString(0));
-                }
             }
         }
         private void backgroundWorkerCombobox_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             skuCombobox.DataSource = skuList;
         }
+        #endregion
 
+        #region Info Generation
         /* the event when user change an item in combobox */
         private void skuCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -78,9 +76,7 @@ namespace SKU_Manager.SplashModules.Activate
 
                 // call background worker for showing information of the selected item in combobox
                 if (!backgroundWorkerInfo.IsBusy)
-                {
                     backgroundWorkerInfo.RunWorkerAsync();
-                }
             }
             else
             {
@@ -107,54 +103,28 @@ namespace SKU_Manager.SplashModules.Activate
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Code, Material_Code, Colour_Code FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT sku.Design_Service_Code, sku.Material_Code, sku.Colour_Code, " +
+                                                            "Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, " +
+                                                            "Material_Description_Short, Colour_Description_Short " +
+                                                            "FROM master_SKU_Attributes sku " +
+                                                            "INNER JOIN master_Design_Attributes design ON (design.Design_Service_Code = sku.Design_Service_Code) " +
+                                                            "INNER JOIN ref_Materials material ON (material.Material_Code = sku.Material_Code) " +
+                                                            "INNER JOIN ref_Colours color ON (color.Colour_Code = sku.Colour_Code) " +
+                                                            "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
-            // get the codes
+            // assign data
             designCode = table.Rows[0][0].ToString();
             materialCode = table.Rows[0][1].ToString();
             colorCode = table.Rows[0][2].ToString();
-            table.Reset();    // reset table for later use
-
-            // seek information for design
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
-                connection.Open();
-                adapter.Fill(table);
-            }
-
-            // assign data to design fields
-            productFamily = table.Rows[0][0].ToString();
-            designServiceFlag = table.Rows[0][1].ToString();
-            internalName = table.Rows[0][2].ToString();
-            designDescription = table.Rows[0][3].ToString();
-            table.Reset();    // reset the table for later use
-
-            // seek information for material
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
-                connection.Open();
-                adapter.Fill(table);
-            }
-
-            // assign data to material fields
-            materialDescription = table.Rows[0][0].ToString();
-            table.Reset();    // reset the table for later use
-
-            // seek information for material
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
-                connection.Open();
-                adapter.Fill(table);
-            }
-
-            // assign data to color fields
-            colorDescription = table.Rows[0][0].ToString();
+            productFamily = table.Rows[0][3].ToString();
+            designServiceFlag = table.Rows[0][4].ToString();
+            internalName = table.Rows[0][5].ToString();
+            designDescription = table.Rows[0][6].ToString();
+            materialDescription = table.Rows[0][7].ToString();
+            colorDescription = table.Rows[0][8].ToString();
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -169,7 +139,9 @@ namespace SKU_Manager.SplashModules.Activate
             colorCodeTextbox.Text = colorCode;
             colorDescriptionTextbox.Text = colorDescription;
         }
+        #endregion
 
+        #region Activate
         /* the event when activate sku button is clicked */
         private void activateSKUButton_Click(object sender, EventArgs e)
         {
@@ -178,9 +150,7 @@ namespace SKU_Manager.SplashModules.Activate
 
             // call background worker, the update button will only be activated if vaild color has been selected, so no need to check
             if (!backgroundWorkerActivate.IsBusy)
-            {
                 backgroundWorkerActivate.RunWorkerAsync();
-            }
         }
         private void backgroundWorkerActivate_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -211,17 +181,18 @@ namespace SKU_Manager.SplashModules.Activate
         {
             progressBar.Value = e.ProgressPercentage;
         }
+        #endregion
 
+        #region Active & Inactive
         /* the event for active and inactive list button that open the table of active sku list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            InactiveSKUList inactiveSKUList = new InactiveSKUList();
-            inactiveSKUList.ShowDialog(this);
+            new InactiveSKUList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            ActiveSKUList activeSKUList = new ActiveSKUList();
-            activeSKUList.ShowDialog(this);
+            new ActiveSKUList().ShowDialog(this);
         }
+        #endregion
     }
 }

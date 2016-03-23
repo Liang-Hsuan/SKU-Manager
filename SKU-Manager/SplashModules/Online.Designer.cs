@@ -100,7 +100,7 @@
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(92, 40);
             this.editButton.TabIndex = 6;
-            this.editButton.Text = "EDIT";
+            this.editButton.Text = "SAVE";
             this.editButton.UseVisualStyleBackColor = false;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
