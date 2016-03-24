@@ -38,6 +38,7 @@
             this.backgroundWorkerTable = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorkerModify = new System.ComponentModel.BackgroundWorker();
+            this.sortButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             this.modifyButton.Location = new System.Drawing.Point(585, 643);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(184, 80);
-            this.modifyButton.TabIndex = 4;
+            this.modifyButton.TabIndex = 5;
             this.modifyButton.Text = "Modify Listing";
             this.modifyButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.modifyButton.UseVisualStyleBackColor = false;
@@ -83,14 +84,14 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1346, 153);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 3;
+            this.progressBar.TabIndex = 4;
             // 
             // progressLabel
             // 
             this.progressLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.progressLabel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progressLabel.ForeColor = System.Drawing.Color.Purple;
-            this.progressLabel.Location = new System.Drawing.Point(601, 402);
+            this.progressLabel.Location = new System.Drawing.Point(611, 402);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(100, 23);
             this.progressLabel.TabIndex = 2;
@@ -102,9 +103,9 @@
             this.loadingLabel.BackColor = System.Drawing.Color.Transparent;
             this.loadingLabel.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadingLabel.ForeColor = System.Drawing.Color.Purple;
-            this.loadingLabel.Location = new System.Drawing.Point(542, 310);
+            this.loadingLabel.Location = new System.Drawing.Point(580, 310);
             this.loadingLabel.Name = "loadingLabel";
-            this.loadingLabel.Size = new System.Drawing.Size(238, 92);
+            this.loadingLabel.Size = new System.Drawing.Size(159, 92);
             this.loadingLabel.TabIndex = 1;
             this.loadingLabel.Text = "Stage 1";
             this.loadingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -125,12 +126,30 @@
             this.backgroundWorkerModify.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerModify_DoWork);
             this.backgroundWorkerModify.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerModify_ProgressChanged);
             // 
+            // sortButton
+            // 
+            this.sortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.sortButton.BackColor = System.Drawing.Color.Transparent;
+            this.sortButton.Enabled = false;
+            this.sortButton.FlatAppearance.BorderSize = 0;
+            this.sortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sortButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortButton.ForeColor = System.Drawing.Color.Purple;
+            this.sortButton.Location = new System.Drawing.Point(12, 616);
+            this.sortButton.Name = "sortButton";
+            this.sortButton.Size = new System.Drawing.Size(82, 34);
+            this.sortButton.TabIndex = 3;
+            this.sortButton.Text = "Sort";
+            this.sortButton.UseVisualStyleBackColor = false;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
             // ModifyChannelListing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 755);
+            this.Controls.Add(this.sortButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.loadingLabel);
             this.Controls.Add(this.dataGridView);
@@ -159,5 +178,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerTable;
         private System.Windows.Forms.Timer timer;
         private System.ComponentModel.BackgroundWorker backgroundWorkerModify;
+        private System.Windows.Forms.Button sortButton;
     }
 }

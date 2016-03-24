@@ -16,10 +16,10 @@ namespace SKU_Manager.SplashModules.Add
     {
         // fields for storing adding material data
         private string materialCode;
-        private string shortEnglishDescription;
-        private string extendedEnglishDescription;
-        private string shortFrenchDescription;
-        private string extendedFrenchDescription;
+        private string shortEnglishDescription = "";
+        private string extendedEnglishDescription = "";
+        private string shortFrenchDescription = "";
+        private string extendedFrenchDescription = "";
         private string materialOnlineEnglish = "";
         private string materialOnlineFrench = "";
         private bool active = true;    // default is set to true

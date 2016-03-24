@@ -379,5 +379,27 @@ namespace SKU_Manager.Properties {
                 this["ChannelListingTable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable ChannelHasListingTable {
+            get {
+                return ((global::System.Data.DataTable)(this["ChannelHasListingTable"]));
+            }
+            set {
+                this["ChannelHasListingTable"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable ChannelNewListingTable {
+            get {
+                return ((global::System.Data.DataTable)(this["ChannelNewListingTable"]));
+            }
+            set {
+                this["ChannelNewListingTable"] = value;
+            }
+        }
     }
 }

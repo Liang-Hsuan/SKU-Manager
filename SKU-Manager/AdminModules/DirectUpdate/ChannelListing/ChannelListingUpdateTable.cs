@@ -77,7 +77,15 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
                 DataRow row = mainTable.NewRow();
                 Current++;
 
-                DataRow rowCopy = table.Select("SKU = \'" + sku + "\'")[0];
+                DataRow rowCopy;
+                try
+                {
+                    rowCopy = table.Select("SKU = \'" + sku + "\'")[0];
+                }
+                catch
+                {
+                    continue;
+                }
                 row[0] = sku;                           // sku
                 row[1] = rowCopy[1];                    // bestbuy
                 row[2] = rowCopy[2];                    // bestbuy net

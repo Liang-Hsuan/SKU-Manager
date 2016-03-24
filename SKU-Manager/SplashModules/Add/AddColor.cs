@@ -16,10 +16,10 @@ namespace SKU_Manager.SplashModules.Add
     {
         // fields for storing adding color data
         private string colorCode;
-        private string shortEnglishDescription;
-        private string extendedEnglishDescription;
-        private string shortFrenchDescription;
-        private string extendedFrenchDescription;
+        private string shortEnglishDescription = "";
+        private string extendedEnglishDescription = "";
+        private string shortFrenchDescription = "";
+        private string extendedFrenchDescription = "";
         private string colorOnlineEnglish = "";
         private string colorOnlineFrench = "";
         private bool active = true;    // default is set to true

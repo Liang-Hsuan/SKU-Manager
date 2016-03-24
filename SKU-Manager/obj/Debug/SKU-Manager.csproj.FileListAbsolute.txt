@@ -591,3 +591,7 @@ E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashMod
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+V:\Project\Real Projects\SKU-Manager\SKU-Manager\bin\Debug\SKU-Manager.exe.config
+V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.ResolveComReference.cache
+V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
+V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb

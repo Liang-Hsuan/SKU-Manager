@@ -1,4 +1,5 @@
 ﻿using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
+using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListing;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +14,18 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
     public partial class ChannelListingView : Form
     {
         // field for storing data
-        private DataTable table;
+        private readonly DataTable[] table = new DataTable[3];
 
-        // supporting fields
-        private int timeLeft;
-        private bool done;  // default set to false
+        // field for countdown
+        private readonly int[] timeLeft = new int[3];
 
-        // initialize BestbuyExportTable object
-        private readonly ChannelListingTable listingTable = new ChannelListingTable();
+        // supporting field
+        private readonly bool[] done = new bool[3];
+
+        // initialize Channel Listing objects
+        private readonly ChannelListingTable allTable = new ChannelListingTable();
+        private readonly ChannelHasListingTable hasTable = new ChannelHasListingTable();
+        private readonly ChannelNewListingTable newTable = new ChannelNewListingTable();
 
         /* constructor that initialize graphic components */
         public ChannelListingView()
@@ -28,67 +33,215 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             InitializeComponent();
 
             // set up timer
-            timeLeft = 4;
-            timer.Start();
+            timeLeft[0] = 4; timeLeft[1] = 4; timeLeft[2] = 4;
+            timer1.Start(); timer2.Start(); timer3.Start();
 
             // set progress
-            progressLabel.Text = 0 + " / " + listingTable.Total;
+            progressLabel1.Text = 0 + " / " + allTable.Total;
+            progressLabel2.Text = 0 + " / " + hasTable.Total;
+            progressLabel3.Text = 0 + " / " + newTable.Total;
+
+            // set up boolean flag
+            done[0] = false; done[1] = false; done[2] = false;
 
             // call background worker adding data on data grid view
-            if (!backgroundWorkerTable.IsBusy)
-                backgroundWorkerTable.RunWorkerAsync();
+            if (!backgroundWorkerTable1.IsBusy)
+                backgroundWorkerTable1.RunWorkerAsync();
+            if (!backgroundWorkerTable2.IsBusy)
+                backgroundWorkerTable2.RunWorkerAsync();
+            if (!backgroundWorkerTable3.IsBusy)
+                backgroundWorkerTable3.RunWorkerAsync();
         }
 
-        /* background worker that get the bestbuy export table */
-        private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
+        #region Table Generation
+        /* background worker that get the channel listing export tables */
+        private void backgroundWorkerTable1_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = listingTable.getTable();
+            table[0] = allTable.getTable();
         }
-        private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void backgroundWorkerTable2_DoWork(object sender, DoWorkEventArgs e)
         {
-            dataGridView.DataSource = table;
-            changeColor();
+            // send table to table field
+            table[1] = hasTable.getTable();
+        }
+        private void backgroundWorkerTable3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // send table to table field
+            table[2] = newTable.getTable();
+        }
+        #endregion
+
+        #region Complete Table
+        /* put tables to data grid views */
+        private void backgroundWorkerTable1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dataGridView1.DataSource = table[0];
+            changeColor(0);
 
             // stop the loading promopt
-            timer.Stop();
-            loadingLabel.Visible = false;
-            progressLabel.Visible = false;
+            timer1.Stop();
+            loadingLabel1.Visible = false;
+            progressLabel1.Visible = false;
 
-            done = true;
+            done[0] = true;
         }
-
-        /* the event for timer that make the visual of loading promopt */
-        private void timer_Tick(object sender, EventArgs e)
+        private void backgroundWorkerTable2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timeLeft--;
+            dataGridView2.DataSource = table[1];
+            changeColor(1);
+
+            // stop the loading promopt
+            timer2.Stop();
+            loadingLabel2.Visible = false;
+            progressLabel2.Visible = false;
+
+            done[1] = true;
+        }
+        private void backgroundWorkerTable3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dataGridView3.DataSource = table[2];
+            changeColor(2);
+
+            // stop the loading promopt
+            timer3.Stop();
+            loadingLabel3.Visible = false;
+            progressLabel3.Visible = false;
+
+            done[2] = true;
+        }
+        #endregion
+
+        #region Timers
+        /* the event for timer that make the visual of loading promopt */
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timeLeft[0]--;
 
             // set progress
-            progressLabel.Text = listingTable.progress + " / " + listingTable.Total;
+            progressLabel1.Text = allTable.progress + " / " + allTable.Total;
 
-            if (timeLeft <= 0)
+            if (timeLeft[0] <= 0)
             {
-                loadingLabel.Text = "Please Wait";
-                timeLeft = 4;
-                timer.Start();
+                loadingLabel1.Text = "Please Wait";
+                timeLeft[0] = 4;
+                timer1.Start();
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel1.Text += ".";
         }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timeLeft[1]--;
+
+            // set progress
+            progressLabel2.Text = hasTable.progress + " / " + hasTable.Total;
+
+            if (timeLeft[1] <= 0)
+            {
+                loadingLabel2.Text = "Please Wait";
+                timeLeft[1] = 4;
+                timer2.Start();
+            }
+            else
+                loadingLabel2.Text += ".";
+        }
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            timeLeft[2]--;
+
+            // set progress
+            progressLabel3.Text = newTable.progress + " / " + newTable.Total;
+
+            if (timeLeft[2] <= 0)
+            {
+                loadingLabel3.Text = "Please Wait";
+                timeLeft[2] = 4;
+                timer3.Start();
+            }
+            else
+                loadingLabel3.Text += ".";
+        }
+        #endregion
+
+        #region Switch Buttons
+        /* event for switching buttons click */
+        private void allButton_Click(object sender, EventArgs e)
+        {
+            allButton.Enabled = false;
+            hasButton.Enabled = true;
+            noButton.Enabled = true;
+            dataGridView1.Visible = true;
+            dataGridView2.Visible = false;
+            dataGridView3.Visible = false;
+            loadingLabel2.Visible = false;
+            loadingLabel3.Visible = false;
+            progressLabel2.Visible = false;
+            progressLabel3.Visible = false;
+
+            if (!done[0])
+            {
+                loadingLabel1.Visible = true;
+                progressLabel1.Visible = true;
+            }
+        }
+        private void hasButton_Click(object sender, EventArgs e)
+        {
+            allButton.Enabled = true;
+            hasButton.Enabled = false;
+            noButton.Enabled = true;
+            dataGridView1.Visible = false;
+            dataGridView2.Visible = true;
+            dataGridView3.Visible = false;
+            loadingLabel1.Visible = false;
+            loadingLabel3.Visible = false;
+            progressLabel1.Visible = false;
+            progressLabel3.Visible = false;
+
+            if (!done[1])
+            {
+                loadingLabel2.Visible = true;
+                progressLabel2.Visible = true;
+            }
+        }
+        private void noButton_Click(object sender, EventArgs e)
+        {
+            allButton.Enabled = true;
+            hasButton.Enabled = true;
+            noButton.Enabled = false;
+            dataGridView1.Visible = false;
+            dataGridView2.Visible = false;
+            dataGridView3.Visible = true;
+            loadingLabel1.Visible = false;
+            loadingLabel2.Visible = false;
+            progressLabel1.Visible = false;
+            progressLabel2.Visible = false;
+
+            if (!done[2])
+            {
+                loadingLabel3.Visible = true;
+                progressLabel3.Visible = true;
+            }
+        }
+        #endregion
 
         /* a mehtod that change coloumn color for data grid view */
-        private void changeColor()
+        private void changeColor(int i)
         {
-            dataGridView.Columns[1].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[2].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[5].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[6].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[9].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[10].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[13].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[14].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[17].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
-            dataGridView.Columns[18].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            // add data grid view to the list
+            DataGridView[] viewList = { dataGridView1, dataGridView2, dataGridView3};
+
+            // start changing color
+            viewList[i].Columns[1].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[2].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[5].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[6].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[9].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[10].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[13].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[14].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[17].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
+            viewList[i].Columns[18].DefaultCellStyle.BackColor = Color.FromArgb(236, 253, 255);
         }
 
         /* the event for exit button click */
@@ -100,8 +253,12 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         /* save the data when the form is closing */
         private void ChannelListingView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (done)
-                Properties.Settings.Default.ChannelListingTable = table;
+            if (done[0])
+                Properties.Settings.Default.ChannelListingTable = table[0];
+            if (done[1])
+                Properties.Settings.Default.ChannelHasListingTable = table[1];
+            if (done[2])
+                Properties.Settings.Default.ChannelNewListingTable = table[2];
         }
     }
 }

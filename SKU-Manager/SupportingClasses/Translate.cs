@@ -15,9 +15,12 @@ namespace SKU_Manager.SupportingClasses
         /* translate the english string provided */
         public string nowTranslate(string englishString)
         {
-            // replace space with %20 and single quotation to nothing
-            string copy = englishString.Trim().Replace(" ", "%20");
+            // format translate string
+            string copy = englishString.Trim();
             copy = copy.Replace("'", string.Empty);
+            copy = copy.Replace("\n", " ");
+            copy = copy.Replace("\r", " ");
+            copy = copy.Replace(" ", "%20");
 
             // create uri
             string uri = "https://www.googleapis.com/language/translate/v2?key=AIzaSyD9Ea5kxACuae1vnxo9C4MDkg4IXZkbVI8&source=en&target=fr&q=" + copy;
@@ -48,7 +51,7 @@ namespace SKU_Manager.SupportingClasses
             while (textJSON[length] != '\"')
                 length++;
 
-            return textJSON.Substring(index, length - index);
+            return textJSON.Substring(index, length - index).Replace("&#39;", "'");
         }
     }
 }

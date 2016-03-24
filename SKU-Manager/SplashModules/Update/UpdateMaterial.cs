@@ -254,7 +254,7 @@ namespace SKU_Manager.SplashModules.Update
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
-                                                        "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
+                                                        "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

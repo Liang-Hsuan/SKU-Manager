@@ -224,7 +224,10 @@
       <DependentUpon>UducatView.cs</DependentUpon>
     </Compile>
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListingTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelHasListingTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingExportTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelNewListingTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPexportTable.cs" />

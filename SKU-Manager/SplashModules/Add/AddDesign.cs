@@ -20,14 +20,14 @@ namespace SKU_Manager.SplashModules.Add
         private string productFamily;
         private string designServiceFlag;
         private string internalName;
-        private string shortEnglishDescription;
-        private string shortFrenchDescription;
-        private string extendedEnglishDescription;
-        private string extendedFrenchDescription;
-        private string trendShortEnglishDescription;
-        private string trendShortFrenchDescription;
-        private string trendExtendedEnglishDescription;
-        private string trendExtendedFrenchDescription;
+        private string shortEnglishDescription = "";
+        private string shortFrenchDescription = "";
+        private string extendedEnglishDescription = "";
+        private string extendedFrenchDescription = "";
+        private string trendShortEnglishDescription = "";
+        private string trendShortFrenchDescription = "";
+        private string trendExtendedEnglishDescription = "";
+        private string trendExtendedFrenchDescription = "";
         private string designOnlineEnglish = "";
         private string designOnlineFrench = "";
         private readonly string[] boolean = new string[8];    // [0] for monogrammed, [1] for imprinted, [2] for strap, [3] for detachable, [4] for zipped, [5] for shipped flat, [6] for shipped folded, [7] for displayed website, [8] for gift box

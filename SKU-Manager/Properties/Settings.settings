@@ -98,5 +98,11 @@
     <Setting Name="ChannelListingTable" Type="System.Data.DataTable" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ChannelHasListingTable" Type="System.Data.DataTable" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ChannelNewListingTable" Type="System.Data.DataTable" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

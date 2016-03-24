@@ -17,8 +17,8 @@ namespace SKU_Manager.SplashModules.Add
     {
         // fields for storing adding color data
         private string familyCode;
-        private string shortEnglishDescription;
-        private string shortFrenchDescription;
+        private string shortEnglishDescription = "";
+        private string shortFrenchDescription = "";
         private string generalKeywords;
         private readonly string[] amazonKeywords = new string[5];
         private readonly string[] amazonCaNode = new string[2];

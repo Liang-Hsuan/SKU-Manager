@@ -1,8 +1,10 @@
 ﻿using SKU_Manager.AdminModules.DirectUpdate.ChannelListing;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -17,9 +19,9 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         // field for storing data
         private DataTable table;
 
-        // supporting fields
-        private int timeLeft;
+        // supporting boolean flag
         private bool hasLoaded;
+        private bool strangeSort;
 
         // initialize ChannelListingUpdateTable and ChannelListingTable object
         private readonly ChannelListingUpdateTable channelUpdateTable = new ChannelListingUpdateTable();
@@ -30,8 +32,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         {
             InitializeComponent();
 
-            // set up timer
-            timeLeft = 4;
+            // start timer
             timer.Start();
 
             // set boolean flag
@@ -80,28 +81,20 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             timer.Stop();
             loadingLabel.Visible = false;
             progressLabel.Visible = false;
+            sortButton.Enabled = true;
         }
         #endregion
 
         /* the event for timer that make the visual of loading promopt */
         private void timer_Tick(object sender, EventArgs e)
         {
-            timeLeft--;
-
             // set progress
             if (hasLoaded)
                 progressLabel.Text = channelUpdateTable.Current + " / " + channelUpdateTable.Total;
             else
                 progressLabel.Text = channelTable.progress + " / " + channelTable.Total;
 
-            if (timeLeft <= 0)
-            {
-                loadingLabel.Text = hasLoaded ? "Stage 2" : "Stage 1";
-                timeLeft = 4;
-                timer.Start();
-            }
-            else
-                loadingLabel.Text += ".";
+            loadingLabel.Text = hasLoaded ? "Stage 2" : "Stage 1";
         }
 
         /* a method that change color for data grid view */
@@ -152,7 +145,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
 
                 // bestbuy
                 bool listed = Convert.ToBoolean(row[3]);
-                if (listed && row[1].ToString() != "")
+                if (listed && row[1].ToString() == "")
                 {
                     command += "SKU_BESTBUY_CA = 'NEW',";
                     change++;
@@ -160,56 +153,69 @@ namespace SKU_Manager.AdminModules.DirectUpdate
 
                 // amazon ca
                 listed = Convert.ToBoolean(row[6]);
-                if (listed && row[5].ToString() != "")
+                if (listed && row[4].ToString() == "")
                 {
                     command += "SKU_AMAZON_CA = 'NEW',";
                     change++;
                 }
 
                 // amazon com
-                listed = Convert.ToBoolean(row[11]);
-                if (listed && row[9].ToString() != "")
+                listed = Convert.ToBoolean(row[9]);
+                if (listed && row[7].ToString() == "")
                 {
                     command += "SKU_AMAZON_COM = 'NEW',";
                     change++;
                 }
 
                 // staples
-                listed = Convert.ToBoolean(row[15]);
-                if (listed && row[13].ToString() != "")
+                listed = Convert.ToBoolean(row[12]);
+                if (listed && row[10].ToString() == "")
                 {
                     command += "SKU_STAPLES = 'NEW',";
                     change++;
                 }
 
                 // walmart 
-                listed = Convert.ToBoolean(row[23]);
-                if (listed && row[21].ToString() != "")
+                listed = Convert.ToBoolean(row[18]);
+                if (listed && row[16].ToString() == "")
                 {
                     command += "SKU_WALMART_CA = 'NEW',";
                     change++;
                 }
 
                 // shop.ca
-                listed = Convert.ToBoolean(row[27]);
-                if (listed && row[25].ToString() != "")
+                listed = Convert.ToBoolean(row[21]);
+                if (listed && row[19].ToString() == "")
                 {
                     command += "SKU_SHOP_CA = 'NEW',";
                     change++;
                 }
 
                 // sears
-                listed = Convert.ToBoolean(row[31]);
-                if (listed && row[29].ToString() != "")
+                listed = Convert.ToBoolean(row[24]);
+                if (listed && row[22].ToString() == "")
                 {
                     command += "SKU_SEARS_CA = 'NEW',";
                     change++;
                 }
 
-                // the case if there is any changes in the row
+                // the case if there is any changes in the row -> update database
                 if (change > 0)
                 {
-                    MessageBox.Show(command.Remove(command.Length - 1) + " WHERE SKU_Ashlin = '" + row[0] + "';");
+                    try
+                    {
+                        using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+                        {
+                            SqlCommand updateCommand = new SqlCommand(command.Remove(command.Length - 1) + " WHERE SKU_Ashlin = \'" + row[0] + "\';", connection);
+                            connection.Open();
+                            updateCommand.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occurs during updating database:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             #endregion
@@ -226,5 +232,51 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             progressBar.Value = e.ProgressPercentage;
         }
         #endregion
+
+        /* sort button click that sort the table in different ways */
+        private void sortButton_Click(object sender, EventArgs e)
+        {
+            if (strangeSort)
+            {   
+                // create dataview
+                DataView view = new DataView(table);
+
+                // sort by sku
+                view.Sort = "SKU ASC";
+                table = view.ToTable();
+                dataGridView.DataSource = table;
+
+                // set boolean flag to false;
+                strangeSort = false;
+            }
+            else
+            {
+                // get datarow list
+                DataTable copy = table.Copy();
+                List<DataRow>[] rows = { new List<DataRow>(copy.Select()), new List<DataRow>(), new List<DataRow>() };
+
+                // start sorting
+                foreach (DataRow row in rows[0])
+                {
+                    // the case if the product has at least one listing
+                    if (row["Bestbuy"].ToString() != "" || row["Amazon CA"].ToString() != "" || row["Amazon US"].ToString() != "" || row["Staples"].ToString() != ""
+                        || row["Walmart"].ToString() != "" || row["Shop.ca"].ToString() != "" || row["Sears"].ToString() != "")
+                        rows[1].Add(row);
+                    else
+                        rows[2].Add(row);
+                }
+
+                // add rows to table
+                table.Clear();
+                foreach (DataRow row in rows[1])
+                    table.ImportRow(row);
+                foreach (DataRow row in rows[2])
+                    table.ImportRow(row);
+                dataGridView.DataSource = table;
+
+                // set boolean flag to true;
+                strangeSort = true;
+            }
+        }
     }
 }

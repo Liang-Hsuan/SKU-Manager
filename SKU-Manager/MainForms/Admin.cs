@@ -85,7 +85,15 @@ namespace SKU_Manager.MainForms
                 sears = new Sears();
 
                 // start updating database
-                new Thread(() => sears.update(openFileDialog.FileName)).Start();
+                try
+                {
+                    new Thread(() => sears.update(openFileDialog.FileName)).Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 timer.Start();
             }
         }

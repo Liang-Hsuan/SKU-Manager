@@ -586,9 +586,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 20; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
             // [21] multiplier
             command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);

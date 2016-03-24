@@ -5,6 +5,7 @@ using SKU_Manager.SKUExportModules.Tables;
 using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables;
+using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListing;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables;
 using SKU_Manager.SKUExportModules.Tables.eCommerceTables;
@@ -591,6 +592,61 @@ namespace SKU_Manager.MainForms
         #endregion
 
         #region Channel Partners
+        /* the event for multi channel listing button click that export multi channel listing export table */
+        private void channelListingButton_Click(object sender, EventArgs e)
+        {
+            // local field for excel export and formatting
+            XlExport export = new XlExport();
+            string[] names = new string[3];
+            names[0] = "All Channel Listing Sheet";
+            names[1] = "Has Channel Listing Sheet";
+            names[2] = "New Channel Listing Sheet";
+            int[][] textIndex = new int[3][];
+            int[] index = { 1, 2, 6, 8, 10, 12, 14, 16, 18};
+            textIndex[0] = index;
+            textIndex[1] = index;
+            textIndex[2] = index;
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                ds.Reset();
+
+                if (Properties.Settings.Default.ChannelListingTable != null && Properties.Settings.Default.ChannelHasListingTable != null && Properties.Settings.Default.ChannelNewListingTable != null)   // tables have already been saved
+                {
+                    ds.Tables.Add(Properties.Settings.Default.ChannelListingTable);
+                    ds.Tables.Add(Properties.Settings.Default.ChannelHasListingTable);
+                    ds.Tables.Add(Properties.Settings.Default.ChannelNewListingTable);
+
+                    // export the excel files               
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                }
+                else    // load the tables
+                {
+                    exportTables = new ExportTable[3];
+                    exportTables[0] = new ChannelListingTable();
+                    exportTables[1] = new ChannelHasListingTable();
+                    exportTables[2] = new ChannelNewListingTable();
+                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                    form.ShowDialog(this);
+
+                    if (form.Complete)  // the tables have complete
+                    {
+                        // get the data
+                        ds = form.Tables;
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    else    // user close the form early 
+                        return;
+
+                    Properties.Settings.Default.ChannelListingTable = ds.Tables[0];
+                    Properties.Settings.Default.ChannelHasListingTable = ds.Tables[1];
+                    Properties.Settings.Default.ChannelNewListingTable = ds.Tables[2];
+                }
+
+                showExportMessage(saveFileDialog.FileName);
+            }
+        }
+
         /* the event for bestbuy button click that export bestbuy export table */
         private void bestbuyButton_Click(object sender, EventArgs e)
         {
@@ -1008,8 +1064,7 @@ namespace SKU_Manager.MainForms
         /* the event for shop ca button click that will show the selection view for brightpearl */
         private void brightPearlButton_Click(object sender, EventArgs e)
         {
-            SelectionViewExcel view = new SelectionViewExcel(this);
-            view.ShowDialog(this);
+            new SelectionViewExcel().ShowDialog(this);
         }
         #endregion
 
