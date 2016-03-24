@@ -306,7 +306,7 @@
             this.modifyChannelListingButton.Name = "modifyChannelListingButton";
             this.modifyChannelListingButton.Size = new System.Drawing.Size(222, 142);
             this.modifyChannelListingButton.TabIndex = 7;
-            this.modifyChannelListingButton.Text = "Modify Channles\' Listing";
+            this.modifyChannelListingButton.Text = "Modify Channel Listing";
             this.modifyChannelListingButton.UseVisualStyleBackColor = false;
             this.modifyChannelListingButton.Click += new System.EventHandler(this.modifyChannelListingButton_Click);
             // 

@@ -10,7 +10,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
     public class ChannelListingUpdateTable : AdminTable
     {
         // field for sku data
-        private List<string> skuList = new List<string>();
+        private readonly List<string> skuList = new List<string>();
 
         /* constructor that adding sku list */
         public ChannelListingUpdateTable()

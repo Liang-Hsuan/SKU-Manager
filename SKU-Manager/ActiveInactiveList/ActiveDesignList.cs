@@ -73,7 +73,7 @@ namespace SKU_Manager.ActiveInactiveList
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

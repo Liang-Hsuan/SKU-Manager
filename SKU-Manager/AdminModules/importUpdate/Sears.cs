@@ -18,7 +18,7 @@ namespace SKU_Manager.AdminModules.importUpdate
     public class Sears
     {
         // field for database connection
-        private SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
+        private readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
         // field for sftp connection
         private readonly Sftp sftp;

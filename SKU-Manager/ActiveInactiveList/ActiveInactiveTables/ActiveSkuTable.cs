@@ -86,7 +86,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSKU()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

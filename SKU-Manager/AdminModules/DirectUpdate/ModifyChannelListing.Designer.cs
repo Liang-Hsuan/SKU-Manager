@@ -142,7 +142,7 @@
             this.MinimizeBox = false;
             this.Name = "ModifyChannelListing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Modify Channels\' Listing";
+            this.Text = "Modify Channel Listing";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

@@ -96,10 +96,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
 
             if (timeLeft <= 0)
             {
-                if (hasLoaded)
-                    loadingLabel.Text = "Stage 2";
-                else
-                    loadingLabel.Text = "Stage 1";
+                loadingLabel.Text = hasLoaded ? "Stage 2" : "Stage 1";
                 timeLeft = 4;
                 timer.Start();
             }

@@ -101,7 +101,16 @@ namespace SKU_Manager.MainForms
         private void activeDesignButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -143,7 +152,16 @@ namespace SKU_Manager.MainForms
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -194,7 +212,15 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(new InactiveColorTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Color Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -206,7 +232,15 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(new InactiveMaterialTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Material Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
@@ -218,14 +252,31 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(new InactiveFamilyTable().getTable());
                 string[] names = new string[1];
                 names[0] = "Inactive Family Export Sheet";
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                try
+                {
+                    new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 showExportMessage(saveFileDialog.FileName);
             }
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -267,7 +318,16 @@ namespace SKU_Manager.MainForms
         private void inactiveSkuButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -313,7 +373,16 @@ namespace SKU_Manager.MainForms
         private void activePriceListButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -377,7 +446,16 @@ namespace SKU_Manager.MainForms
         private void upcButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -442,7 +520,16 @@ namespace SKU_Manager.MainForms
         private void stockButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
