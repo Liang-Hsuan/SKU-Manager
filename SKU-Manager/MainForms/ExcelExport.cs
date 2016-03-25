@@ -596,7 +596,16 @@ namespace SKU_Manager.MainForms
         private void channelListingButton_Click(object sender, EventArgs e)
         {
             // local field for excel export and formatting
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string[] names = new string[3];
             names[0] = "All Channel Listing Sheet";
             names[1] = "Has Channel Listing Sheet";
@@ -651,7 +660,16 @@ namespace SKU_Manager.MainForms
         private void bestbuyButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -700,7 +718,16 @@ namespace SKU_Manager.MainForms
             if (Properties.Settings.Default.StockQuantityTable != null)
             {
                 // local field for excel export
-                XlExport export = new XlExport();
+                XlExport export;
+                try
+                {
+                    export = new XlExport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
@@ -753,7 +780,16 @@ namespace SKU_Manager.MainForms
             if (Properties.Settings.Default.StockQuantityTable != null)
             {
                 // local field for excel export
-                XlExport export = new XlExport();
+                XlExport export;
+                try
+                {
+                    export = new XlExport();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
@@ -804,7 +840,16 @@ namespace SKU_Manager.MainForms
         private void staplesButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -852,7 +897,16 @@ namespace SKU_Manager.MainForms
         private void walmartButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -906,7 +960,16 @@ namespace SKU_Manager.MainForms
         private void shopCaButton_Click(object sender, EventArgs e)
         {
             // local field for excel export and formatting
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string[] names = new string[4];
             names[0] = "Shop.ca Bag Attributes Sheet";
             names[1] = "Shop.ca Base Data Sheet";
@@ -967,7 +1030,16 @@ namespace SKU_Manager.MainForms
         private void giantTigerButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -1017,7 +1089,16 @@ namespace SKU_Manager.MainForms
         private void magentoButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -1073,7 +1154,16 @@ namespace SKU_Manager.MainForms
         private void uducatButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -1123,7 +1213,16 @@ namespace SKU_Manager.MainForms
         private void distributorCentralButton_Click(object sender, EventArgs e)
         {
             // local field for excel export
-            XlExport export = new XlExport();
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {

@@ -82,11 +82,10 @@ namespace SKU_Manager.MainForms
         {
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                sears = new Sears();
-
                 // start updating database
                 try
                 {
+                    sears = new Sears();
                     new Thread(() => sears.update(openFileDialog.FileName)).Start();
                 }
                 catch (Exception ex)
