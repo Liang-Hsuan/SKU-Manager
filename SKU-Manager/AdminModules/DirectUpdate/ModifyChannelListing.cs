@@ -1,5 +1,4 @@
 ﻿using SKU_Manager.AdminModules.DirectUpdate.ChannelListing;
-using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +7,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListing;
 
 namespace SKU_Manager.AdminModules.DirectUpdate
 {
@@ -239,10 +239,9 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             if (strangeSort)
             {   
                 // create dataview
-                DataView view = new DataView(table);
+                DataView view = new DataView(table) {Sort = "SKU ASC"};
 
                 // sort by sku
-                view.Sort = "SKU ASC";
                 table = view.ToTable();
                 dataGridView.DataSource = table;
 

@@ -44,6 +44,7 @@
             this.backgroundWorkerCombobox = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerActivate = new System.ComponentModel.BackgroundWorker();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // colorCodeLabel
@@ -126,6 +127,7 @@
             this.shortEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.shortEnglishDescriptionTextbox.Enabled = false;
             this.shortEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 215);
+            this.shortEnglishDescriptionTextbox.MaxLength = 50;
             this.shortEnglishDescriptionTextbox.Multiline = true;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(481, 59);
@@ -136,6 +138,7 @@
             this.extendedEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedEnglishDescriptionTextbox.Enabled = false;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 295);
+            this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(481, 190);
@@ -148,7 +151,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 8;
+            this.progressBar.TabIndex = 9;
             // 
             // inactiveListButton
             // 
@@ -159,7 +162,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(362, 627);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 11;
+            this.inactiveListButton.TabIndex = 12;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -173,7 +176,7 @@
             this.activeListButton.Location = new System.Drawing.Point(176, 627);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 10;
+            this.activeListButton.TabIndex = 11;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -188,7 +191,7 @@
             this.activateColorButton.Location = new System.Drawing.Point(176, 545);
             this.activateColorButton.Name = "activateColorButton";
             this.activateColorButton.Size = new System.Drawing.Size(370, 76);
-            this.activateColorButton.TabIndex = 9;
+            this.activateColorButton.TabIndex = 10;
             this.activateColorButton.Text = "Activate Color";
             this.activateColorButton.UseVisualStyleBackColor = false;
             this.activateColorButton.Click += new System.EventHandler(this.activateColorButton_Click);
@@ -209,6 +212,19 @@
             this.backgroundWorkerActivate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerActivate_DoWork);
             this.backgroundWorkerActivate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerActivate_ProgressChanged);
             // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(222)))), ((int)(((byte)(67)))));
+            this.onlineButton.Enabled = false;
+            this.onlineButton.ForeColor = System.Drawing.Color.Black;
+            this.onlineButton.Location = new System.Drawing.Point(25, 455);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 8;
+            this.onlineButton.Text = "Colour Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
             // ActivateColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +232,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveListButton);
             this.Controls.Add(this.activeListButton);
@@ -255,5 +272,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerCombobox;
         private System.ComponentModel.BackgroundWorker backgroundWorkerInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerActivate;
+        private System.Windows.Forms.Button onlineButton;
     }
 }

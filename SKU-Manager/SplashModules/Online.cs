@@ -15,7 +15,7 @@ namespace SKU_Manager.SplashModules
         public string English;
         public string French;
 
-        /* constructor that initialize graphic components and the title of the online description belongs to */
+        /* first constructor that initialize graphic components and the title of the online description belongs to */
         public Online(string title, string english, string french, Color color)
         {
             InitializeComponent();
@@ -27,6 +27,29 @@ namespace SKU_Manager.SplashModules
             // set fields
             englishTextbox.Text = english;
             frenchTextbox.Text = french;
+        }
+
+        /* second constructor that has tow more fields to determine if user can change text and the fore color of button */
+        public Online(string title, string english, string french, Color color, Color foreColor, bool enable)
+        {
+            InitializeComponent();
+
+            // set the title and color
+            Text = title;
+            editButton.BackColor = color;
+            editButton.ForeColor = foreColor;
+
+            // set fields
+            englishTextbox.Text = english;
+            frenchTextbox.Text = french;
+
+            // the case is disable -> set controls to disabled
+            if (!enable)
+            {
+                translateButton.Enabled = false;
+                englishTextbox.Enabled = false;
+                frenchTextbox.Enabled = false;
+            }
         }
 
         #region Translate

@@ -52,6 +52,9 @@
             this.backgroundWorkerCombobox = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDeactivate = new System.ComponentModel.BackgroundWorker();
+            this.giftboxLabel = new System.Windows.Forms.Label();
+            this.onlineButton = new System.Windows.Forms.Button();
+            this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // progressBar
@@ -61,7 +64,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 36;
+            this.progressBar.TabIndex = 20;
             // 
             // inactiveListButton
             // 
@@ -72,7 +75,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(374, 618);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 39;
+            this.inactiveListButton.TabIndex = 23;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -86,7 +89,7 @@
             this.activeListButton.Location = new System.Drawing.Point(188, 618);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 38;
+            this.activeListButton.TabIndex = 22;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -101,7 +104,7 @@
             this.deactivateDesignButton.Location = new System.Drawing.Point(188, 536);
             this.deactivateDesignButton.Name = "deactivateDesignButton";
             this.deactivateDesignButton.Size = new System.Drawing.Size(370, 76);
-            this.deactivateDesignButton.TabIndex = 37;
+            this.deactivateDesignButton.TabIndex = 21;
             this.deactivateDesignButton.Text = "Deactivate Design";
             this.deactivateDesignButton.UseVisualStyleBackColor = false;
             this.deactivateDesignButton.Click += new System.EventHandler(this.deactivateDesignButton_Click);
@@ -115,7 +118,7 @@
             this.extendedDescriptionLabel.Location = new System.Drawing.Point(23, 340);
             this.extendedDescriptionLabel.Name = "extendedDescriptionLabel";
             this.extendedDescriptionLabel.Size = new System.Drawing.Size(169, 20);
-            this.extendedDescriptionLabel.TabIndex = 34;
+            this.extendedDescriptionLabel.TabIndex = 14;
             this.extendedDescriptionLabel.Text = "Extended Description";
             // 
             // shortDescriptionLabel
@@ -127,7 +130,7 @@
             this.shortDescriptionLabel.Location = new System.Drawing.Point(23, 291);
             this.shortDescriptionLabel.Name = "shortDescriptionLabel";
             this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
-            this.shortDescriptionLabel.TabIndex = 32;
+            this.shortDescriptionLabel.TabIndex = 12;
             this.shortDescriptionLabel.Text = "Short Description";
             // 
             // internalNameLabel
@@ -139,7 +142,7 @@
             this.internalNameLabel.Location = new System.Drawing.Point(23, 262);
             this.internalNameLabel.Name = "internalNameLabel";
             this.internalNameLabel.Size = new System.Drawing.Size(176, 20);
-            this.internalNameLabel.TabIndex = 30;
+            this.internalNameLabel.TabIndex = 10;
             this.internalNameLabel.Text = "Internal (Ashlin) Name";
             // 
             // designServiceFlagLabel
@@ -151,7 +154,7 @@
             this.designServiceFlagLabel.Location = new System.Drawing.Point(23, 233);
             this.designServiceFlagLabel.Name = "designServiceFlagLabel";
             this.designServiceFlagLabel.Size = new System.Drawing.Size(161, 20);
-            this.designServiceFlagLabel.TabIndex = 28;
+            this.designServiceFlagLabel.TabIndex = 8;
             this.designServiceFlagLabel.Text = "Design-Service Flag";
             // 
             // brandLabel
@@ -163,7 +166,7 @@
             this.brandLabel.Location = new System.Drawing.Point(23, 204);
             this.brandLabel.Name = "brandLabel";
             this.brandLabel.Size = new System.Drawing.Size(54, 20);
-            this.brandLabel.TabIndex = 26;
+            this.brandLabel.TabIndex = 6;
             this.brandLabel.Text = "Brand";
             // 
             // productFamilyLabel
@@ -175,7 +178,7 @@
             this.productFamilyLabel.Location = new System.Drawing.Point(23, 175);
             this.productFamilyLabel.Name = "productFamilyLabel";
             this.productFamilyLabel.Size = new System.Drawing.Size(121, 20);
-            this.productFamilyLabel.TabIndex = 24;
+            this.productFamilyLabel.TabIndex = 4;
             this.productFamilyLabel.Text = "Product Family";
             // 
             // extendedDescriptionTextbox
@@ -185,7 +188,7 @@
             this.extendedDescriptionTextbox.Multiline = true;
             this.extendedDescriptionTextbox.Name = "extendedDescriptionTextbox";
             this.extendedDescriptionTextbox.Size = new System.Drawing.Size(481, 120);
-            this.extendedDescriptionTextbox.TabIndex = 35;
+            this.extendedDescriptionTextbox.TabIndex = 17;
             // 
             // shortDescriptionTextbox
             // 
@@ -194,7 +197,7 @@
             this.shortDescriptionTextbox.Multiline = true;
             this.shortDescriptionTextbox.Name = "shortDescriptionTextbox";
             this.shortDescriptionTextbox.Size = new System.Drawing.Size(481, 40);
-            this.shortDescriptionTextbox.TabIndex = 33;
+            this.shortDescriptionTextbox.TabIndex = 13;
             // 
             // internalNameTextbox
             // 
@@ -202,7 +205,7 @@
             this.internalNameTextbox.Location = new System.Drawing.Point(218, 262);
             this.internalNameTextbox.Name = "internalNameTextbox";
             this.internalNameTextbox.Size = new System.Drawing.Size(481, 20);
-            this.internalNameTextbox.TabIndex = 31;
+            this.internalNameTextbox.TabIndex = 11;
             // 
             // designServiceFlagTextbox
             // 
@@ -210,7 +213,7 @@
             this.designServiceFlagTextbox.Location = new System.Drawing.Point(218, 233);
             this.designServiceFlagTextbox.Name = "designServiceFlagTextbox";
             this.designServiceFlagTextbox.Size = new System.Drawing.Size(481, 20);
-            this.designServiceFlagTextbox.TabIndex = 29;
+            this.designServiceFlagTextbox.TabIndex = 9;
             // 
             // brandTextbox
             // 
@@ -218,7 +221,7 @@
             this.brandTextbox.Location = new System.Drawing.Point(218, 204);
             this.brandTextbox.Name = "brandTextbox";
             this.brandTextbox.Size = new System.Drawing.Size(481, 20);
-            this.brandTextbox.TabIndex = 27;
+            this.brandTextbox.TabIndex = 7;
             // 
             // productFamilyTextbox
             // 
@@ -226,7 +229,7 @@
             this.productFamilyTextbox.Location = new System.Drawing.Point(218, 175);
             this.productFamilyTextbox.Name = "productFamilyTextbox";
             this.productFamilyTextbox.Size = new System.Drawing.Size(481, 20);
-            this.productFamilyTextbox.TabIndex = 25;
+            this.productFamilyTextbox.TabIndex = 5;
             // 
             // designCodeCombobox
             // 
@@ -236,7 +239,7 @@
             this.designCodeCombobox.Location = new System.Drawing.Point(218, 134);
             this.designCodeCombobox.Name = "designCodeCombobox";
             this.designCodeCombobox.Size = new System.Drawing.Size(481, 21);
-            this.designCodeCombobox.TabIndex = 23;
+            this.designCodeCombobox.TabIndex = 3;
             this.designCodeCombobox.SelectedValueChanged += new System.EventHandler(this.designCodeCombobox_SelectedValueChanged);
             // 
             // designCodeLabel
@@ -248,7 +251,7 @@
             this.designCodeLabel.Location = new System.Drawing.Point(23, 135);
             this.designCodeLabel.Name = "designCodeLabel";
             this.designCodeLabel.Size = new System.Drawing.Size(168, 20);
-            this.designCodeLabel.TabIndex = 22;
+            this.designCodeLabel.TabIndex = 2;
             this.designCodeLabel.Text = "Design-Service Code";
             // 
             // detailLabel
@@ -261,7 +264,7 @@
             this.detailLabel.Location = new System.Drawing.Point(-4, 73);
             this.detailLabel.Name = "detailLabel";
             this.detailLabel.Size = new System.Drawing.Size(754, 29);
-            this.detailLabel.TabIndex = 21;
+            this.detailLabel.TabIndex = 1;
             this.detailLabel.Text = "Design Details";
             this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -275,7 +278,7 @@
             this.titleLabel.Location = new System.Drawing.Point(-7, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
-            this.titleLabel.TabIndex = 20;
+            this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Deactivate Design";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -295,6 +298,42 @@
             this.backgroundWorkerDeactivate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDeactivate_DoWork);
             this.backgroundWorkerDeactivate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerDeactivate_ProgressChanged);
             // 
+            // giftboxLabel
+            // 
+            this.giftboxLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.giftboxLabel.AutoSize = true;
+            this.giftboxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftboxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.giftboxLabel.Location = new System.Drawing.Point(129, 470);
+            this.giftboxLabel.Name = "giftboxLabel";
+            this.giftboxLabel.Size = new System.Drawing.Size(70, 20);
+            this.giftboxLabel.TabIndex = 18;
+            this.giftboxLabel.Text = "Gift Box";
+            // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(34, 431);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 16;
+            this.onlineButton.Text = "Design Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
+            // giftCheckbox
+            // 
+            this.giftCheckbox.AutoSize = true;
+            this.giftCheckbox.Enabled = false;
+            this.giftCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftCheckbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(162)))), ((int)(((byte)(56)))));
+            this.giftCheckbox.Location = new System.Drawing.Point(218, 474);
+            this.giftCheckbox.Name = "giftCheckbox";
+            this.giftCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.giftCheckbox.TabIndex = 19;
+            this.giftCheckbox.UseVisualStyleBackColor = true;
+            // 
             // DeactivateDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,6 +341,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.giftboxLabel);
+            this.Controls.Add(this.onlineButton);
+            this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveListButton);
             this.Controls.Add(this.activeListButton);
@@ -358,5 +400,8 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerCombobox;
         private System.ComponentModel.BackgroundWorker backgroundWorkerInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerDeactivate;
+        private System.Windows.Forms.Label giftboxLabel;
+        private System.Windows.Forms.Button onlineButton;
+        private System.Windows.Forms.CheckBox giftCheckbox;
     }
 }

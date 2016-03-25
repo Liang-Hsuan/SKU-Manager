@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Deactivate
 {
@@ -18,6 +19,8 @@ namespace SKU_Manager.SplashModules.Deactivate
         private string materialCode;
         private string shortEnglishDescription;
         private string extendedEnglishDescription;
+        private string materialOnlineEnglish;
+        private string materialOnlineFrench;
 
         // fields for combobox
         private readonly ArrayList materialList = new ArrayList();
@@ -63,6 +66,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             if (materialCombobox.SelectedItem.ToString() != "")
             {
                 deactivateMaterialButton.Enabled = true;
+                onlineButton.Enabled = true;
 
                 // set materialCode field from the selected item 
                 materialCode = materialCombobox.SelectedItem.ToString();
@@ -78,6 +82,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 extendedEnglishDescriptionTextbox.Text = "";
 
                 deactivateMaterialButton.Enabled = false;
+                onlineButton.Enabled = false;
             }
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -88,7 +93,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended Material_Online, Material_Online_FR " 
+                                                          + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -96,6 +102,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             // assign data to the fields
             shortEnglishDescription = table.Rows[0][0].ToString();
             extendedEnglishDescription = table.Rows[0][1].ToString();
+            materialOnlineEnglish = table.Rows[0][2].ToString();
+            materialOnlineFrench = table.Rows[0][3].ToString();
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -157,5 +165,12 @@ namespace SKU_Manager.SplashModules.Deactivate
             new InactiveMaterialList().ShowDialog(this);
         }
         #endregion
+
+        /* online button clicks that shows material online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Material Online Description", materialOnlineEnglish, materialOnlineFrench, Color.FromArgb(94,94,94), Color.White, false);
+            online.ShowDialog(this);
+        }
     }
 }

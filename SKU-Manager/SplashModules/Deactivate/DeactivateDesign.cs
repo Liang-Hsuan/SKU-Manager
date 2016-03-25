@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Deactivate
 {
@@ -21,6 +22,9 @@ namespace SKU_Manager.SplashModules.Deactivate
         private string internalName;
         private string shortDescription;
         private string extendedDescription;
+        private string designOnlineEnglish;
+        private string designOnlineFrench;
+        private bool giftbox;
 
         // fields for combobox
         private readonly ArrayList designCodeList = new ArrayList();
@@ -66,6 +70,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             if (designCodeCombobox.SelectedItem.ToString() != "")
             {
                 deactivateDesignButton.Enabled = true;
+                onlineButton.Enabled = true;
 
                 // set designCode field from the selected item 
                 designCode = designCodeCombobox.SelectedItem.ToString();
@@ -83,8 +88,10 @@ namespace SKU_Manager.SplashModules.Deactivate
                 internalNameTextbox.Text = "";
                 shortDescriptionTextbox.Text = "";
                 extendedDescriptionTextbox.Text = "";
+                giftCheckbox.Checked = false;
 
                 deactivateDesignButton.Enabled = false;
+                onlineButton.Enabled = false;
             }
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -95,7 +102,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Design_Online, Design_Online_FR, GiftBox " 
+                                                          + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -106,6 +114,9 @@ namespace SKU_Manager.SplashModules.Deactivate
             internalName = table.Rows[0][2].ToString();
             shortDescription = table.Rows[0][3].ToString();
             extendedDescription = table.Rows[0][4].ToString();
+            designOnlineEnglish = table.Rows[0][5].ToString();
+            designOnlineFrench = table.Rows[0][6].ToString();
+            giftbox = Convert.ToBoolean(table.Rows[0][7]);
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -115,6 +126,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             internalNameTextbox.Text = internalName;
             shortDescriptionTextbox.Text = shortDescription;
             extendedDescriptionTextbox.Text = extendedDescription;
+            giftCheckbox.Checked = giftbox;
         }
         #endregion
 
@@ -171,5 +183,12 @@ namespace SKU_Manager.SplashModules.Deactivate
             new InactiveDesignList().ShowDialog(this);
         }
         #endregion
+
+        /* online button clicks that shows design online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Design Online Description", designOnlineEnglish, designOnlineFrench, Color.FromArgb(64,64,64), Color.White, false);
+            online.ShowDialog(this);
+        }
     }
 }

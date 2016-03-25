@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
+using System.Drawing;
 
 namespace SKU_Manager.SplashModules.Deactivate
 {
@@ -18,6 +19,8 @@ namespace SKU_Manager.SplashModules.Deactivate
         private string colorCode;
         private string shortEnglishDescription;
         private string extendedEnglishDescription;
+        private string colorOnlineEnglish;
+        private string colorOnlineFrench;
 
         // fields for combobox
         private readonly ArrayList colorCodeList = new ArrayList();
@@ -64,6 +67,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             if (colorCodeCombobox.SelectedItem.ToString() != "")
             {
                 deactivateColorButton.Enabled = true;
+                onlineButton.Enabled = true;
 
                 // set colorCode field from the selected item 
                 colorCode = colorCodeCombobox.SelectedItem.ToString();
@@ -79,6 +83,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 extendedEnglishDescriptionTextbox.Text = "";
 
                 deactivateColorButton.Enabled = false;
+                onlineButton.Enabled = false;
             }
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
@@ -89,7 +94,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended, Colour_Online, Colour_Online_FR " 
+                                                          + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -97,6 +103,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             // assign data to the fields
             shortEnglishDescription = table.Rows[0][0].ToString();
             extendedEnglishDescription = table.Rows[0][1].ToString();
+            colorOnlineEnglish = table.Rows[0][2].ToString();
+            colorOnlineFrench = table.Rows[0][3].ToString();
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -158,5 +166,12 @@ namespace SKU_Manager.SplashModules.Deactivate
             new InactiveColorList().ShowDialog(this);
         }
         #endregion
+
+        /* online button clicks that show color online description */
+        private void onlineButton_Click(object sender, EventArgs e)
+        {
+            Online online = new Online("Colour Online Description", colorOnlineEnglish, colorOnlineFrench, Color.FromArgb(64,64,64), Color.White, false);
+            online.ShowDialog(this);
+        }
     }
 }

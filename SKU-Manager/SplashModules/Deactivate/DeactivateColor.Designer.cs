@@ -44,6 +44,7 @@
             this.backgroundWorkerCombobox = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerInfo = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerDeactivate = new System.ComponentModel.BackgroundWorker();
+            this.onlineButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // progressBar
@@ -53,7 +54,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 20;
+            this.progressBar.TabIndex = 9;
             // 
             // inactiveListButton
             // 
@@ -64,7 +65,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(362, 627);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 23;
+            this.inactiveListButton.TabIndex = 12;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -78,7 +79,7 @@
             this.activeListButton.Location = new System.Drawing.Point(176, 627);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 22;
+            this.activeListButton.TabIndex = 11;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -93,7 +94,7 @@
             this.deactivateColorButton.Location = new System.Drawing.Point(176, 545);
             this.deactivateColorButton.Name = "deactivateColorButton";
             this.deactivateColorButton.Size = new System.Drawing.Size(370, 76);
-            this.deactivateColorButton.TabIndex = 21;
+            this.deactivateColorButton.TabIndex = 10;
             this.deactivateColorButton.Text = "Deactivate Color";
             this.deactivateColorButton.UseVisualStyleBackColor = false;
             this.deactivateColorButton.Click += new System.EventHandler(this.deactivateColorButton_Click);
@@ -103,20 +104,22 @@
             this.extendedEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.extendedEnglishDescriptionTextbox.Enabled = false;
             this.extendedEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 295);
+            this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
             this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(481, 190);
-            this.extendedEnglishDescriptionTextbox.TabIndex = 19;
+            this.extendedEnglishDescriptionTextbox.TabIndex = 7;
             // 
             // shortEnglishDescriptionTextbox
             // 
             this.shortEnglishDescriptionTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.shortEnglishDescriptionTextbox.Enabled = false;
             this.shortEnglishDescriptionTextbox.Location = new System.Drawing.Point(218, 215);
+            this.shortEnglishDescriptionTextbox.MaxLength = 50;
             this.shortEnglishDescriptionTextbox.Multiline = true;
             this.shortEnglishDescriptionTextbox.Name = "shortEnglishDescriptionTextbox";
             this.shortEnglishDescriptionTextbox.Size = new System.Drawing.Size(481, 59);
-            this.shortEnglishDescriptionTextbox.TabIndex = 17;
+            this.shortEnglishDescriptionTextbox.TabIndex = 5;
             // 
             // extendedDescriptionLabel
             // 
@@ -127,7 +130,7 @@
             this.extendedDescriptionLabel.Location = new System.Drawing.Point(21, 295);
             this.extendedDescriptionLabel.Name = "extendedDescriptionLabel";
             this.extendedDescriptionLabel.Size = new System.Drawing.Size(169, 20);
-            this.extendedDescriptionLabel.TabIndex = 18;
+            this.extendedDescriptionLabel.TabIndex = 6;
             this.extendedDescriptionLabel.Text = "Extended Description";
             // 
             // shortDescriptionLabel
@@ -139,7 +142,7 @@
             this.shortDescriptionLabel.Location = new System.Drawing.Point(21, 215);
             this.shortDescriptionLabel.Name = "shortDescriptionLabel";
             this.shortDescriptionLabel.Size = new System.Drawing.Size(140, 20);
-            this.shortDescriptionLabel.TabIndex = 16;
+            this.shortDescriptionLabel.TabIndex = 4;
             this.shortDescriptionLabel.Text = "Short Description";
             // 
             // colorCodeCombobox
@@ -150,7 +153,7 @@
             this.colorCodeCombobox.Location = new System.Drawing.Point(218, 134);
             this.colorCodeCombobox.Name = "colorCodeCombobox";
             this.colorCodeCombobox.Size = new System.Drawing.Size(481, 21);
-            this.colorCodeCombobox.TabIndex = 15;
+            this.colorCodeCombobox.TabIndex = 3;
             this.colorCodeCombobox.SelectedValueChanged += new System.EventHandler(this.colorCodeCombobox_SelectedValueChanged);
             // 
             // colorCodeLabel
@@ -162,7 +165,7 @@
             this.colorCodeLabel.Location = new System.Drawing.Point(23, 135);
             this.colorCodeLabel.Name = "colorCodeLabel";
             this.colorCodeLabel.Size = new System.Drawing.Size(93, 20);
-            this.colorCodeLabel.TabIndex = 14;
+            this.colorCodeLabel.TabIndex = 2;
             this.colorCodeLabel.Text = "Color Code";
             // 
             // detailLabel
@@ -175,7 +178,7 @@
             this.detailLabel.Location = new System.Drawing.Point(-4, 73);
             this.detailLabel.Name = "detailLabel";
             this.detailLabel.Size = new System.Drawing.Size(754, 29);
-            this.detailLabel.TabIndex = 13;
+            this.detailLabel.TabIndex = 1;
             this.detailLabel.Text = "Color Details";
             this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -189,7 +192,7 @@
             this.titleLabel.Location = new System.Drawing.Point(-7, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(761, 60);
-            this.titleLabel.TabIndex = 12;
+            this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Deactivate Color";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -209,6 +212,19 @@
             this.backgroundWorkerDeactivate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerDeactivate_DoWork);
             this.backgroundWorkerDeactivate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerDeactivate_ProgressChanged);
             // 
+            // onlineButton
+            // 
+            this.onlineButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.onlineButton.Enabled = false;
+            this.onlineButton.ForeColor = System.Drawing.Color.White;
+            this.onlineButton.Location = new System.Drawing.Point(25, 455);
+            this.onlineButton.Name = "onlineButton";
+            this.onlineButton.Size = new System.Drawing.Size(165, 29);
+            this.onlineButton.TabIndex = 8;
+            this.onlineButton.Text = "Colour Online Description";
+            this.onlineButton.UseVisualStyleBackColor = false;
+            this.onlineButton.Click += new System.EventHandler(this.onlineButton_Click);
+            // 
             // DeactivateColor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +232,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 751);
+            this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.inactiveListButton);
             this.Controls.Add(this.activeListButton);
@@ -256,5 +273,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerCombobox;
         private System.ComponentModel.BackgroundWorker backgroundWorkerInfo;
         private System.ComponentModel.BackgroundWorker backgroundWorkerDeactivate;
+        private System.Windows.Forms.Button onlineButton;
     }
 }
