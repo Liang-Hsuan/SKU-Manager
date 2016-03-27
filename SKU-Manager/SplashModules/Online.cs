@@ -62,11 +62,8 @@ namespace SKU_Manager.SplashModules
         }
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
-            // initialize translate object 
-            Translate translate = new Translate();
-
             // translate and get the french
-            French = translate.nowTranslate(englishTextbox.Text);
+            French = Translate.nowTranslate(englishTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

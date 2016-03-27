@@ -69,7 +69,6 @@ namespace SKU_Manager.SplashModules.Add
         private readonly string[] imageAlt = new string[10];
         private readonly string[] groupAlt = new string[5];
         private readonly string[] modelAlt = new string[5];
-        private readonly AltText alt = new AltText();
 
         // fields for lists
         private readonly ArrayList designServiceCodeList = new ArrayList();
@@ -684,7 +683,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (image[i] == "")
                     imageAlt[i] = "";
                 else
-                    imageAlt[i] = alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    imageAlt[i] = AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -694,7 +693,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (group[i] == "")
                     groupAlt[i] = "";
                 else
-                    groupAlt[i] = "Group " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    groupAlt[i] = "Group " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -704,7 +703,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (model[i] == "")
                     modelAlt[i] = "";
                 else
-                    modelAlt[i] = "Model " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    modelAlt[i] = "Model " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // simulate progress 70% ~ 90%

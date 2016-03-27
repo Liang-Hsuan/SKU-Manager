@@ -65,7 +65,6 @@ namespace SKU_Manager.SplashModules.Update
         private string[] imageAlt = new string[10];
         private string[] groupAlt = new string[5];
         private string[] modelAlt = new string[5];
-        private AltText alt = new AltText();
 
         // fields for comboBoxes
         private readonly ArrayList skuCodeList = new ArrayList();
@@ -870,7 +869,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (image[index] == "")
                     imageAlt[index] = "";
                 else
-                    imageAlt[index] = alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    imageAlt[index] = AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -880,7 +879,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (group[index] == "")
                     groupAlt[index] = "";
                 else
-                    groupAlt[index] = "Group " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    groupAlt[index] = "Group " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -890,7 +889,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (model[index] == "")
                     modelAlt[index] = "";
                 else
-                    modelAlt[index] = "Model " + alt.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    modelAlt[index] = "Model " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // simulate progress 20% ~ 30%

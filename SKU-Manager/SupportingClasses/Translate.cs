@@ -4,16 +4,16 @@ using System.Net;
 namespace SKU_Manager.SupportingClasses
 {
     /*
-     * A class that translate English to French via Google translate
+     * A static class that translate English to French via Google translate
      */ 
-    public class Translate
+    public static class Translate
     {
         // fields for web request
-        private WebRequest request;
-        private HttpWebResponse response;
+        private static WebRequest request;
+        private static HttpWebResponse response;
 
         /* translate the english string provided */
-        public string nowTranslate(string englishString)
+        public static string nowTranslate(string englishString)
         {
             // format translate string
             string copy = englishString.Trim();

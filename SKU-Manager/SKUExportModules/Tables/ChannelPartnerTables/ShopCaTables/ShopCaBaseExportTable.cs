@@ -68,13 +68,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "alt image location 9");                    // 41
             addColumn(mainTable, "video location");                          // 42
 
-            // local field for inserting data to table
-            AltText alt = new AltText();
-
             // start loading data
             mainTable.BeginLoadData();
 
-            // add data to each row 
             // add data to each row 
             foreach (string sku in skuList)
             {
@@ -85,7 +81,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[0] = "ashlin_bpg";                       // supplier id
                 row[1] = "nishis_boutique";                  // store name
                 row[2] = sku;                                // sku
-                row[3] = alt.getAltWithSkuExist(sku);        // title
+                row[3] = AltText.getAltWithSkuExist(sku);    // title
                 row[4] = list[1];                            // description
                 row[5] = list[2];                            // shipping weight
                 row[6] = "GM";                               // shipping weight unit of measure

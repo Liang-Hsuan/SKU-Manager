@@ -6,13 +6,13 @@ namespace SKU_Manager.SupportingClasses
     /* 
      * A class that receive sku and return the alt text for it
      */
-    public class AltText
+    public static class AltText
     {
         // fields for database connection
-        private readonly SqlConnection connection =  new SqlConnection(Properties.Settings.Default.Designcs);
+        private static readonly SqlConnection connection =  new SqlConnection(Properties.Settings.Default.Designcs);
 
         /* method that return the alt text from the given sku -> the sku already exist */
-        public string getAltWithSkuExist(string sku)
+        public static string getAltWithSkuExist(string sku)
         {
             // local fields for generating alt text
             string alt = "Ashlin® ";
@@ -33,7 +33,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* method that return alt text from the given sku -> the sku does not exist */
-        public string getAltWithSkuNotExist(string sku)
+        public static string getAltWithSkuNotExist(string sku)
         {
             // local fields for storing data
             DataTable table = new DataTable();

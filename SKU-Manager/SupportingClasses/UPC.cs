@@ -52,7 +52,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that generate the check digit for the given upc code */
-        private int getCheckNum(string upcCode)
+        private static int getCheckNum(string upcCode)
         {
             // local fieds for calculation
             int indexOdd = 0;

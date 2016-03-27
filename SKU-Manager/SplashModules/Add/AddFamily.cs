@@ -152,11 +152,8 @@ namespace SKU_Manager.SplashModules.Add
                 return;
             }
 
-            // initialize a Translation class for translation
-            Translate translate = new Translate();
-
             // down to business, this is for short description
-            shortFrenchDescription = translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
+            shortFrenchDescription = Translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
