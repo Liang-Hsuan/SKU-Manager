@@ -17,7 +17,6 @@ namespace SKU_Manager.SupportingClasses
         {
             // format translate string
             string copy = englishString.Trim();
-            copy = copy.Replace("'", string.Empty);
             copy = copy.Replace("\n", " ");
             copy = copy.Replace("\r", " ");
             copy = copy.Replace(" ", "%20");
