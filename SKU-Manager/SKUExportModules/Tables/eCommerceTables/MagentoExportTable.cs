@@ -212,11 +212,14 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[21] = list[17];                                      // imprintable
                 if (!list[19].Equals(DBNull.Value))
                 {
-                    row[22] = list[18] + "cm x " + list[19] + " cm";                                                                                             // imprint area cm
-                    row[23] = Convert.ToDouble(list[18]) / 2.54 + "in x " + Convert.ToDouble(list[19]) / 2.54 + " in";                                           // imprint area in
+                    row[22] = list[18] + "cm x " + list[19] + " cm";                                                                                                 // imprint area cm
+                    row[23] = Convert.ToDouble(list[18]) / 2.54 + "in x " + Convert.ToDouble(list[19]) / 2.54 + " in";                                               // imprint area in
                 }
-                row[24] = list[20] + "cm x " + list[21] + "cm x " + list[22] + "cm";                                                                             // finished dimensions (cm)
-                row[25] = Convert.ToDouble(list[20]) / 2.54 + "in x " + Convert.ToDouble(list[21]) / 2.54 + "in x " + Convert.ToDouble(list[22]) / 2.54 + "in";  // finished dimensions (in)
+                if (!list[20].Equals(DBNull.Value) && !list[21].Equals(DBNull.Value) && !list[22].Equals(DBNull.Value))
+                {
+                    row[24] = list[20] + "cm x " + list[21] + "cm x " + list[22] + "cm";                                                                             // finished dimensions (cm)
+                    row[25] = Convert.ToDouble(list[20]) / 2.54 + "in x " + Convert.ToDouble(list[21]) / 2.54 + "in x " + Convert.ToDouble(list[22]) / 2.54 + "in";  // finished dimensions (in)
+                }
                 double msrp = discountList[21] * Convert.ToDouble(list[27]);
                 row[26] = msrp * discountList[1];                        // price 1 c blank
                 row[27] = msrp * discountList[2];                        // price 6 c blank
