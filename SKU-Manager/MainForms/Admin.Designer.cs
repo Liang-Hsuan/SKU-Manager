@@ -51,6 +51,7 @@
             this.modifyChannelPricingButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
             this.modifyChannelListingButton = new System.Windows.Forms.Button();
+            this.shopCaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -155,7 +156,7 @@
             this.noteLabel.Location = new System.Drawing.Point(463, 689);
             this.noteLabel.Name = "noteLabel";
             this.noteLabel.Size = new System.Drawing.Size(442, 13);
-            this.noteLabel.TabIndex = 13;
+            this.noteLabel.TabIndex = 14;
             this.noteLabel.Text = "PLEASE NOTE - ONLY ADMINISTRATOR LEVEL USER IS ABLE TO ENTER THIS PAGE\r\n";
             // 
             // topButton3
@@ -209,7 +210,7 @@
             this.searsButton.FlatAppearance.BorderSize = 0;
             this.searsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searsButton.Image = ((System.Drawing.Image)(resources.GetObject("searsButton.Image")));
-            this.searsButton.Location = new System.Drawing.Point(589, 613);
+            this.searsButton.Location = new System.Drawing.Point(490, 613);
             this.searsButton.Name = "searsButton";
             this.searsButton.Size = new System.Drawing.Size(179, 61);
             this.searsButton.TabIndex = 12;
@@ -310,12 +311,29 @@
             this.modifyChannelListingButton.UseVisualStyleBackColor = false;
             this.modifyChannelListingButton.Click += new System.EventHandler(this.modifyChannelListingButton_Click);
             // 
+            // shopCaButton
+            // 
+            this.shopCaButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.shopCaButton.BackColor = System.Drawing.Color.Transparent;
+            this.shopCaButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.shopCaButton.FlatAppearance.BorderSize = 0;
+            this.shopCaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shopCaButton.Image = ((System.Drawing.Image)(resources.GetObject("shopCaButton.Image")));
+            this.shopCaButton.Location = new System.Drawing.Point(699, 613);
+            this.shopCaButton.Name = "shopCaButton";
+            this.shopCaButton.Size = new System.Drawing.Size(179, 61);
+            this.shopCaButton.TabIndex = 13;
+            this.shopCaButton.UseVisualStyleBackColor = false;
+            this.shopCaButton.Click += new System.EventHandler(this.shopCaButton_Click);
+            this.shopCaButton.MouseHover += new System.EventHandler(this.shopCaButton_MouseHover);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.shopCaButton);
             this.Controls.Add(this.modifyChannelListingButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.modifyChannelPricingButton);
@@ -373,5 +391,6 @@
         private System.Windows.Forms.Button modifyChannelPricingButton;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button modifyChannelListingButton;
+        private System.Windows.Forms.Button shopCaButton;
     }
 }

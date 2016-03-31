@@ -142,13 +142,21 @@
       <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminModules\ImportUpdate\Sears.cs" />
+    <Compile Include="AdminModules\ImportUpdate\ShopCa.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryTable.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryValues.cs" />
+    <Compile Include="AdminModules\UpdateInventory\InventoryTable\ShopCaInventoryTable.cs" />
     <Compile Include="AdminModules\UpdateInventory\SearsInventory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminModules\UpdateInventory\SearsInventory.Designer.cs">
       <DependentUpon>SearsInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModules\UpdateInventory\ShopCaInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModules\UpdateInventory\ShopCaInventory.Designer.cs">
+      <DependentUpon>ShopCaInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.cs">
       <SubType>Form</SubType>
@@ -541,6 +549,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModules\UpdateInventory\SearsInventory.resx">
       <DependentUpon>SearsInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModules\UpdateInventory\ShopCaInventory.resx">
+      <DependentUpon>ShopCaInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.resx">
       <DependentUpon>SelectionViewExcel.cs</DependentUpon>

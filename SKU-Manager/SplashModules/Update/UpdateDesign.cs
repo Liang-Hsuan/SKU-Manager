@@ -89,7 +89,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // make comboBox for Design Service Code
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);   
+            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code", connection);   
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -97,14 +97,14 @@ namespace SKU_Manager.SplashModules.Update
             reader.Close();
 
             // make comboBox for Product Family
-            command = new SqlCommand("SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Description is not NULL ORDER BY Design_Service_Family_Description;", connection);
+            command.CommandText = "SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Description is not NULL ORDER BY Design_Service_Family_Description";
             reader = command.ExecuteReader();
             while (reader.Read())
                 productFamilyList.Add(reader.GetValue(0));
             reader.Close();
 
             // additional addition for ashlin internal name checking
-            command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;", connection);
+            command.CommandText = "SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes";
             reader = command.ExecuteReader();
             while (reader.Read())
                 internalNameList.Add(reader.GetString(0));

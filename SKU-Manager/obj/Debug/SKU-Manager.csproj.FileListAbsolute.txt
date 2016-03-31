@@ -597,3 +597,5 @@ V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.exe
 V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.pdb
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.DirectUpdate.ModifyChannelListing.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ChannelListingView.resources
+C:\Users\Intern1001\Desktop\F15_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.ShopCaInventory.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.ShopCaInventory.resources

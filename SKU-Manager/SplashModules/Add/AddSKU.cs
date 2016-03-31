@@ -105,22 +105,22 @@ namespace SKU_Manager.SplashModules.Add
         {
             // make comboBox for Design Service Code
             SqlConnection connection = new SqlConnection(connectionString);
-            var command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code;", connection);    
+            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code", connection);    
             connection.Open();
-            var reader = command.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 designServiceCodeList.Add(reader.GetString(0));
             reader.Close();
 
             // make comboBox for Material
-            command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code;", connection);    
+            command.CommandText = "SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code";
             reader = command.ExecuteReader();
             while (reader.Read())
                 materialList.Add(reader.GetString(0));
             reader.Close();
 
             // make comboBox for Colour Code
-            command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code;", connection);   
+            command.CommandText = "SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 colorCodeList.Add(reader.GetString(0));
@@ -128,49 +128,49 @@ namespace SKU_Manager.SplashModules.Add
 
 
             // make comboBox for Warehouse
-            command = new SqlCommand("SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL;", connection);  
+            command.CommandText = "SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 warehouseList.Add(reader.GetValue(0));
             reader.Close();
 
             // make comboBox for Rack
-            command = new SqlCommand("SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL;", connection);  
+            command.CommandText = "SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL";  
             reader = command.ExecuteReader();
             while (reader.Read())
                 rackList.Add(reader.GetValue(0));
             reader.Close(); ;
 
             // make comboBox for Shelf
-            command = new SqlCommand("SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL;", connection);  
+            command.CommandText = "SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL";  
             reader = command.ExecuteReader();
             while (reader.Read())
                 shelfList.Add(reader.GetValue(0));
             reader.Close(); ;
 
             // make comboBox for Column index
-            command = new SqlCommand("SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL;", connection); 
+            command.CommandText = "SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 columnIndexList.Add(reader.GetValue(0));
             reader.Close(); ;
 
             // make comboBox for Canadian HTS
-            command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);   
+            command.CommandText = "SELECT HTS_CA FROM HTS_CA";   
             reader = command.ExecuteReader();
             while (reader.Read())
                 caHtsList.Add(reader.GetValue(0));
             reader.Close(); 
 
             // make comboBox for US HTS
-            command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);   
+            command.CommandText = "SELECT HTS_US FROM HTS_US";   
             reader = command.ExecuteReader();
             while (reader.Read())
                 usHtsList.Add(reader.GetValue(0));
             reader.Close();
 
             // add all sku list
-            command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes;", connection);
+            command.CommandText = "SELECT SKU_Ashlin FROM master_SKU_Attributes;";
             reader = command.ExecuteReader();
             while (reader.Read())
                 skuList.Add(reader.GetString(0));

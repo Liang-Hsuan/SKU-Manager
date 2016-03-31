@@ -92,13 +92,13 @@ namespace SKU_Manager.SplashModules.Add
                 reader.Close();
 
                 // additional addition for design service code and ashlin internal name checking
-                command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes;", connection);
+                command.CommandText = "SELECT Design_Service_Code FROM master_Design_Attributes;";
                 reader = command.ExecuteReader();
                 while (reader.Read())
                     designCodeList.Add(reader.GetString(0));
                 reader.Close();
 
-                command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;", connection);
+                command.CommandText = "SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;";
                 reader = command.ExecuteReader();
                 while (reader.Read())
                     internalNameList.Add(reader.GetString(0));

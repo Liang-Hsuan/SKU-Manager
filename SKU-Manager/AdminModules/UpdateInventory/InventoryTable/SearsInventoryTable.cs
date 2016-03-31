@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 {
     /*
-     * A class that for creating sears inventory table for inventory management
+     * A class for creating sears inventory table for inventory management
      */
     public class SearsInventoryTable : AdminTable
     {

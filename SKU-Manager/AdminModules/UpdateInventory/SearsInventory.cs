@@ -1,4 +1,4 @@
-﻿using SKU_Manager.AdminModules.importUpdate;
+﻿using SKU_Manager.AdminModules.ImportUpdate;
 using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
 using System;
 using System.Collections.Generic;

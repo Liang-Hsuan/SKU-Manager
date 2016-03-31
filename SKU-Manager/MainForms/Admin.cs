@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using SKU_Manager.AdminModules.importUpdate;
+using SKU_Manager.AdminModules.ImportUpdate;
 using System.Threading;
 using SKU_Manager.AdminModules.DirectUpdate;
 using SKU_Manager.AdminModules.UpdateInventory;
@@ -19,6 +19,7 @@ namespace SKU_Manager.MainForms
 
         // field for channel new import 
         private Sears sears;
+        private ShopCa shopCa;
 
         /* constructor that initialize all graphic components */
         public Admin(IWin32Window parent)
@@ -76,23 +77,64 @@ namespace SKU_Manager.MainForms
         }
         #endregion
 
+        #region ShopCa Event
+        /* shop.ca button clicks that update the new import of inventory for shop.ca */
+        private void shopCaButton_Click(object sender, EventArgs e)
+        {
+            excelButton.Visible = false;
+            refreshButton.Visible = false;
+            inventoryButton.Visible = false;
+            loadingLabel.Visible = false;
+        }
+
+        /* shop.ca button hover that show shop.ca's functions */
+        private void shopCaButton_MouseHover(object sender, EventArgs e)
+        {
+            loadingLabel.Text = "Shop.ca";
+            loadingLabel.Visible = true;
+            excelButton.Visible = true;
+            refreshButton.Visible = true;
+            inventoryButton.Visible = true;
+        }
+        #endregion
+
         #region Channel Mangement
         /* the event for excel button clicks that update the merchant sku */
         private void excelButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                // start updating database
-                try
+                if (loadingLabel.Text == "Sears")
                 {
-                    sears = new Sears();
+                    // sears case
+                    try
+                    {
+                        sears = new Sears();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    new Thread(() => sears.update(openFileDialog.FileName)).Start();
+                    shopCa = null;
                 }
-                catch (Exception ex)
+                else if (loadingLabel.Text == "Shop.ca")
                 {
-                    MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    // shop.ca case
+                    try
+                    {
+                        shopCa = new ShopCa();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    new Thread(() => shopCa.update(openFileDialog.FileName)).Start();
+                    sears = null;
                 }
-                new Thread(() => sears.update(openFileDialog.FileName)).Start();
+
                 timer.Start();
             }
         }
@@ -116,7 +158,12 @@ namespace SKU_Manager.MainForms
         private void inventoryButton_Click(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.StockQuantityTable != null)
-                new SearsInventory().ShowDialog(this);
+            {
+                if (loadingLabel.Text == "Sears")
+                    new SearsInventory().ShowDialog(this);
+                else if (loadingLabel.Text == "Shop.ca")
+                    new ShopCaInventory().ShowDialog(this);
+            }
             else
                 MessageBox.Show("For performance purpose, please click refresh button first", "Sorry", MessageBoxButtons.OK);
         }
@@ -151,14 +198,30 @@ namespace SKU_Manager.MainForms
         /* timer event that show the progress of import update */
         private void timer_Tick(object sender, EventArgs e)
         {
-            // check if updating is finish -> stop the timer and set text to nothing
-            if (sears.Current >= sears.Total)
+            if (sears != null)
             {
-                timer.Stop();
-                loadingLabel.Text = "";
+                // sears case
+                // check if updating is finish -> stop the timer and set text to nothing
+                if (sears.Current >= sears.Total)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = "Sears";
+                }
+                else
+                    loadingLabel.Text = sears.Current + " / " + sears.Total;
             }
-            else
-                loadingLabel.Text = sears.Current + " / " + sears.Total;
+            else if (shopCa != null)
+            {
+                // shop.ca case
+                // check if updating is finish -> stop the timer and set text to nothing
+                if (shopCa.Current >= shopCa.Total)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = "Shop.ca";
+                }
+                else
+                    loadingLabel.Text = shopCa.Current + " / " + shopCa.Total;
+            }
         }
     }
 }

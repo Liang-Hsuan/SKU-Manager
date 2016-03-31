@@ -10,7 +10,7 @@ using System.Net.Mail;
 using Tamir.SharpSsh;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace SKU_Manager.AdminModules.importUpdate
+namespace SKU_Manager.AdminModules.ImportUpdate
 {
     /* 
      * A class that deal with sears inventory import and update the database
@@ -24,10 +24,10 @@ namespace SKU_Manager.AdminModules.importUpdate
         private readonly Sftp sftp;
 
         // field for showing the progress
-        private int total = 1;
-        private int current;
+        public int Total { get; private set; } = 1;
+        public int Current { get; private set; }
 
-        // constructor that initialize sftp object
+        /* constructor that initialize sftp object */
         public Sears()
         {
             // get credentials for sears sftp log on and initialize the field
@@ -57,8 +57,7 @@ namespace SKU_Manager.AdminModules.importUpdate
 
             // declare range in sheet
             range = xlWorkSheet.UsedRange;
-
-            total = range.Rows.Count;
+            Total = range.Rows.Count;
 
             // start updating database for new sears sku
             connection.Open();
@@ -71,7 +70,7 @@ namespace SKU_Manager.AdminModules.importUpdate
                 // update database
                 SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\';", connection);
                 command.ExecuteNonQuery();
-                current = row;
+                Current = row;
             }
             connection.Close();
 
@@ -82,10 +81,6 @@ namespace SKU_Manager.AdminModules.importUpdate
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
         }
-
-        /* Get methods for the progress to client */
-        public int Total => total;
-        public int Current => current;
 
         /* a method that update sears inventory data and create purchase order if necessary, also send email for notification*/
         public void update(SearsInventoryValues[] list)
@@ -206,10 +201,9 @@ namespace SKU_Manager.AdminModules.importUpdate
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch
             {
                 obj = null;
-                Console.WriteLine("Error: " + ex.Message);
             }
             finally
             {

@@ -73,16 +73,16 @@ namespace SKU_Manager.SplashModules.Add
             reader.Close();
 
             // make comboBox for us HTS
-            command = new SqlCommand("SELECT HTS_US FROM HTS_US;", connection);
+            command.CommandText = "SELECT HTS_US FROM HTS_US;";
             reader = command.ExecuteReader();
             while (reader.Read())
                 usHtsList.Add(reader.GetValue(0));
             reader.Close();
 
             // make lists for CATEGORY comboboxes
-            command = new SqlCommand("SELECT Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, " +
-                                     "Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral " +
-                                     "FROM list_online_product_categories;", connection);
+            command.CommandText = "SELECT Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, " +
+                                  "Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral " +
+                                  "FROM list_online_product_categories;";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -101,7 +101,7 @@ namespace SKU_Manager.SplashModules.Add
             }
             reader.Close();
 
-            command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families;", connection);
+            command.CommandText = "SELECT Design_Service_Family_Code FROM ref_Families;";
             reader = command.ExecuteReader();
             while (reader.Read())
                 familyCodeList.Add(reader.GetString(0));
