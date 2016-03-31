@@ -86,13 +86,13 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     sears = new Sears();
-                    new Thread(() => sears.update(openFileDialog.FileName)).Start();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                new Thread(() => sears.update(openFileDialog.FileName)).Start();
                 timer.Start();
             }
         }
