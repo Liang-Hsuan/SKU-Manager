@@ -1,12 +1,10 @@
-﻿using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
+﻿using SKU_Manager.AdminModules.ImportUpdate;
+using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SKU_Manager.AdminModules.UpdateInventory
@@ -83,6 +81,37 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             }
             else
                 loadingLabel.Text += ".";
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            processingLabel.Visible = true;
+
+            #region Processing
+            // local fields
+            List<ShopCaInventoryValues> list = new List<ShopCaInventoryValues>();
+            ShopCa shopCa = new ShopCa();
+
+            foreach (DataRow row in table.Rows)
+            {
+                if (row[1].ToString() == "") continue;
+                ShopCaInventoryValues value = new ShopCaInventoryValues(row[0].ToString(), Convert.ToInt32(row[2]), Convert.ToBoolean(row[5]), 
+                                              DateTime.Today.AddDays(Convert.ToInt32(availableDaysUpdown.Value)), Convert.ToInt32(row[3]), row[1].ToString());
+                list.Add(value);
+            }
+
+            // start updating
+            try
+            {
+                shopCa.update(list.ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            #endregion
+
+            processingLabel.Visible = false;
         }
     }
 }

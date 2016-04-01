@@ -99,6 +99,7 @@
             this.updateButton.Text = "Update Inventory";
             this.updateButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.updateButton.UseVisualStyleBackColor = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // progressLabel
             // 

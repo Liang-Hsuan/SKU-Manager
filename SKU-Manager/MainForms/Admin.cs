@@ -148,8 +148,14 @@ namespace SKU_Manager.MainForms
         /* refresh button clicks that load the stock quantity table */
         private void refreshButton_Click(object sender, EventArgs e)
         {
+            // set wait cursor
+            Cursor.Current = Cursors.WaitCursor;
+
             DataTable table = new StockExportTable().getTable();
             Properties.Settings.Default.StockQuantityTable = table;
+
+            // set default cursor after complete
+            Cursor.Current = Cursors.Default;
         }
         #endregion
 

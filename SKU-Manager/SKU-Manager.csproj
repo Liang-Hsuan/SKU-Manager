@@ -146,6 +146,7 @@
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryTable.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryValues.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\ShopCaInventoryTable.cs" />
+    <Compile Include="AdminModules\UpdateInventory\InventoryTable\ShopCaInventoryValues.cs" />
     <Compile Include="AdminModules\UpdateInventory\SearsInventory.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -82,7 +82,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             releaseObject(xlApp);
         }
 
-        /* a method that update sears inventory data and create purchase order if necessary, also send email for notification*/
+        /* a method that update sears inventory data and create purchase order if necessary, also send email for notification */
         public void update(SearsInventoryValues[] list)
         {
             // local fields for storing data
@@ -115,7 +115,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                            "<next_available_date>" + value.NextAvailableDate.ToString("yyyyMMdd") + "</next_available_date>" +
                            "<next_available_qty>" + value.NextAvailableQty + "</next_available_qty>";
                 }
-                xml += "<merchantSKU>" + changeMerchantSku(value.MerchantSku) + "</merchantSKU>" +
+                xml += "<merchantSKU>" + value.MerchantSku.Replace('-', '_') + "</merchantSKU>" +
                        "</product>";
             }
             xml += "<advice_file_count>" + list.Length + "</advice_file_count>" +
@@ -170,21 +170,6 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-        }
-
-        /* a supporting method that convert to sears required merchant sku format */
-        public string changeMerchantSku(string originalSku)
-        {
-            // first occurence of '-'
-            int pos = originalSku.IndexOf('-');
-            string merchantSku = originalSku.Substring(0, pos) + '_' + originalSku.Substring(pos + 1);
-
-            // second occurence of '-'
-            if (merchantSku.Contains('-'))
-                pos = merchantSku.IndexOf('-');
-            else
-                return merchantSku;
-            return merchantSku.Substring(0, pos) + "[_" + merchantSku.Substring(pos + 1) + ']'; 
         }
 
         /* a supporting method that create the po number for the channel */
