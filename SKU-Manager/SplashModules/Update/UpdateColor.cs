@@ -189,8 +189,9 @@ namespace SKU_Manager.SplashModules.Update
                 MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+
+            shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+
             if (extendedFrenchDescription.Contains("Error:"))
                 MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else

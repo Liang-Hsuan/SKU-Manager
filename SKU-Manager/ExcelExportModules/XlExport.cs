@@ -10,10 +10,10 @@ namespace SKU_Manager.ExcelExportModules
     public class XlExport
     {
         // fields for excel export
-        Excel.Application xlApp;
-        Excel.Workbook xlWorkBook;
-        Excel.Worksheet xlWorkSheet;
-        object misValue = System.Reflection.Missing.Value;
+        private Excel.Application xlApp;
+        private Excel.Workbook xlWorkBook;
+        private Excel.Worksheet xlWorkSheet;
+        private readonly object misValue = System.Reflection.Missing.Value;
 
         /* constructor that initialize Excel fields */
         public XlExport()

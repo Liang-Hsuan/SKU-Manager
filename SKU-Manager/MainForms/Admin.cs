@@ -102,41 +102,40 @@ namespace SKU_Manager.MainForms
         /* the event for excel button clicks that update the merchant sku */
         private void excelButton_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK) return;
+            switch (loadingLabel.Text)
             {
-                if (loadingLabel.Text == "Sears")
-                {
+                case "Sears":
                     // sears case
                     try
                     {
                         sears = new Sears();
+                        new Thread(() => sears.update(openFileDialog.FileName)).Start();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    new Thread(() => sears.update(openFileDialog.FileName)).Start();
                     shopCa = null;
-                }
-                else if (loadingLabel.Text == "Shop.ca")
-                {
+                    break;
+                case "Shop.ca":
                     // shop.ca case
                     try
                     {
                         shopCa = new ShopCa();
+                        new Thread(() => shopCa.update(openFileDialog.FileName)).Start();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    new Thread(() => shopCa.update(openFileDialog.FileName)).Start();
                     sears = null;
-                }
-
-                timer.Start();
+                    break;
             }
+
+            timer.Start();
         }
 
         #region Refresh Button
@@ -159,10 +158,15 @@ namespace SKU_Manager.MainForms
         {
             if (Properties.Settings.Default.StockQuantityTable != null)
             {
-                if (loadingLabel.Text == "Sears")
-                    new SearsInventory().ShowDialog(this);
-                else if (loadingLabel.Text == "Shop.ca")
-                    new ShopCaInventory().ShowDialog(this);
+                switch (loadingLabel.Text)
+                {
+                    case "Sears":
+                        new SearsInventory().ShowDialog(this);
+                        break;
+                    case "Shop.ca":
+                        new ShopCaInventory().ShowDialog(this);
+                        break;
+                }
             }
             else
                 MessageBox.Show("For performance purpose, please click refresh button first", "Sorry", MessageBoxButtons.OK);

@@ -12,7 +12,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         protected SqlCommand command = new SqlCommand();
 
         /* constructor that initaillize SqlCommand's connection */
-        public BPexportTable()
+        protected BPexportTable()
         {
             // set the connection to command
             command.Connection = connection;
@@ -29,9 +29,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            {
                 skuList.Add(reader.GetString(0));
-            }
             connection.Close();
 
             return skuList.ToArray();

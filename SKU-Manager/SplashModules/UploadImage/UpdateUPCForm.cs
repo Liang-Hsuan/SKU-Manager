@@ -11,7 +11,7 @@ namespace SKU_Manager.SplashModules.UploadImage
     public partial class UpdateUPCForm : Form
     {
         // field for updating
-        private ImageReplace image = new ImageReplace();
+        private readonly ImageReplace image = new ImageReplace();
 
         /* constructor that initialize all the graphic components */
         public UpdateUPCForm()

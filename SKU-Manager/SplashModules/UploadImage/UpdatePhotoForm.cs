@@ -11,7 +11,7 @@ namespace SKU_Manager.SplashModules.UploadImage
     public partial class UpdatePhotoForm : Form
     {
         // field for photo update
-        private UpdatePhoto photo = new UpdatePhoto();
+        private readonly UpdatePhoto photo = new UpdatePhoto();
 
         /* constructor that initialize all the graphic components */
         public UpdatePhotoForm()

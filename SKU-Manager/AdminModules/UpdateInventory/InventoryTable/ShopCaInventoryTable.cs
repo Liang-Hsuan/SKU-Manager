@@ -11,7 +11,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
     public class ShopCaInventoryTable : AdminTable
     {
         // field for storing sku data
-        private List<string> skuList = new List<string>();
+        private readonly List<string> skuList = new List<string>();
 
         /* constructor that get all the sku that are on shop.ca */
         public ShopCaInventoryTable()

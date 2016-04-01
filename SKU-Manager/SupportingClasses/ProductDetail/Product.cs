@@ -63,14 +63,10 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         {
             // get product id
             string id = get.getProductId(sku);
-            if (id == "Error")
+            while (id == "Error")
             {
-                do
-                {
-                    Thread.Sleep(5000);
-                    id = get.getProductId(sku);
-                }
-                while (id == "Error");
+                Thread.Sleep(5000);
+                id = get.getProductId(sku);
             }
 
             return id;
@@ -409,7 +405,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             /* post purchase order to API */
             public string postPurchaseOrder(int channelId, string reference)
             {
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order";
+                const string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order";
 
                 request = (HttpWebRequest)WebRequest.Create(uri);
                 request.Method = "POST";
