@@ -23,8 +23,7 @@ namespace SKU_Manager.AdminModules
         protected void addColumn(DataTable table, string name, bool checkbox)
         {
             // set up column
-            DataColumn column = new DataColumn();
-            column.ColumnName = name;
+            DataColumn column = new DataColumn {ColumnName = name};
             if (checkbox)
                 column.DataType = typeof(bool);
 
