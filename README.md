@@ -1,5 +1,5 @@
 # SKU-Manager
-##An enterprise application that manage comanpy's products | my 2nd C# program
+##An enterprise application that manage comanpy's products | my 2nd C# application
 
 **The main function of this enterprise application:**
 
