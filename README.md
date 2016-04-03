@@ -7,7 +7,7 @@
 
 -> Direct inventory update to all online shopping channels and allow purchase order creation.
 
--> Convenient program to manage company's SKUs and all inventory on eCommerce platforms.
+-> Convenient program to manage company's SKUs and all inventory on online shopping channels.
 
 -------------
 
