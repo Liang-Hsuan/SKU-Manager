@@ -1,5 +1,6 @@
 ﻿using SKU_Manager.MainForms;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -67,7 +68,7 @@ namespace SKU_Manager
         }
 
         /* a supporting method that see if the connection is valid or not */
-        private static bool isConnected(SqlConnection connection)
+        private static bool isConnected(IDbConnection connection)
         {
             try
             {

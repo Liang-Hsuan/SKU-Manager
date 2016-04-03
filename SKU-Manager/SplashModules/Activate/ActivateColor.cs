@@ -137,11 +137,8 @@ namespace SKU_Manager.SplashModules.Activate
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command =
-                        new SqlCommand(
-                            "UPDATE ref_Colours SET Active =  \'True\', Date_Activated = \'" +
-                            DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                            + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                    SqlCommand command = new SqlCommand( "UPDATE ref_Colours SET Active =  \'True\', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
+                                                       + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

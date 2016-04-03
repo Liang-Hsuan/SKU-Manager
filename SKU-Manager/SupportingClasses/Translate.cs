@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Web.Script.Serialization;
 
 namespace SKU_Manager.SupportingClasses
 {
@@ -40,17 +42,14 @@ namespace SKU_Manager.SupportingClasses
             }
 
             // read all the text from JSON response
-            string textJSON;
+            string textJson;
             using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                textJSON = streamReader.ReadToEnd();
+                textJson = streamReader.ReadToEnd();
 
-            // get translated text
-            int index = textJSON.IndexOf("translatedText") + 18;
-            int length = index;
-            while (textJSON[length] != '\"')
-                length++;
+            // deserialize json to key value
+            var info = new JavaScriptSerializer().Deserialize<Dictionary<string, dynamic>>(textJson);
 
-            return textJSON.Substring(index, length - index).Replace("&#39;", "'");
+            return info["data"]["translations"][0]["translatedText"].Replace("&#39;", "'");
         }
     }
 }

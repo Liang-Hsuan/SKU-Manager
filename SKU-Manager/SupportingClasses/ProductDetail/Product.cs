@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
+using System.Web.Script.Serialization;
 
 namespace SKU_Manager.SupportingClasses.ProductDetail
 {
@@ -44,16 +45,19 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         {
             int quantity = get.getQuantity(sku);
 
-            if (quantity == -2)
+            switch (quantity)
             {
-                do
-                {
-                    Thread.Sleep(5000);
-                    quantity = getQuantity(sku);
-                } while (quantity == -2);
+                case -2:
+                    do
+                    {
+                        Thread.Sleep(5000);
+                        quantity = getQuantity(sku);
+                    } while (quantity == -2);
+                    break;
+                case -3:
+                    quantity = -1;
+                    break;
             }
-            else if (quantity == -3)
-                quantity = -1;
 
             return quantity;
         }
@@ -75,96 +79,68 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         /* a method that return all the SkUs' stock information */
         public List<Values> getStockList()
         {
-            // local field for sotring data and getting data
+            // local field for sotring data, getting data, and parsing data
             List<Values> list = new List<Values>();
             int starting = 1000;
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             // first step get response for all the sku - product id relation
-            string textJSON = get.productTextResponse(starting);
+            string textJson = get.productTextResponse(starting);
 
             // check if there is more item
-            while (textJSON != "404")
+            while (textJson != "404")
             {
-                // check if there is item left
-                while (textJSON.Contains("\"id\"") && textJSON.Contains("\"sku\""))
+                // deserialize json to key value
+                var productInfo = serializer.Deserialize<Dictionary<string, dynamic>>(textJson);
+
+                // looping through each product from the response
+                foreach (var product in productInfo["response"])
                 {
-                    // get product id
-                    textJSON = substringMethod(textJSON, "\"id\"", 5);
-                    string productId = getTarget(textJSON);
-
-                    // get sku number
-                    textJSON = substringMethod(textJSON, "\"sku\"", 7);
-                    string sku = getTarget(textJSON);
-
-                    // get reorder level
-                    textJSON = substringMethod(textJSON, "reorderLevel", 14);
-                    int reorderLevel = Convert.ToInt32(getTarget(textJSON));
-
-                    // get reorder quantity
-                    textJSON = substringMethod(textJSON, "reorderQuantity", 17);
-                    int reorderQuantity = Convert.ToInt32(getTarget(textJSON));
+                    // get data for the product
+                    string productId = product["id"];
+                    string sku = product["identity"]["sku"];
+                    int reorderLevel = product["warehouses"]["2"]["reorderLevel"];
+                    int reorderQuantity = product["warehouses"]["2"]["reorderQuantity"];
 
                     list.Add(new Values(sku, productId, 0, reorderQuantity, reorderLevel));
-
-                    // proceed the text to next token
-                    textJSON = substringMethod(textJSON, "reporting", 10);
                 }
 
                 // proceed the request to next set of result
                 starting += 200;
-                textJSON = get.productTextResponse(starting);
-                if (textJSON == "503")
+                textJson = get.productTextResponse(starting);
+                while (textJson == "503")
                 {
-                    do
-                    {
-                        Thread.Sleep(5000);
-                        textJSON = get.productTextResponse(starting);
-                    } while (textJSON == "503");
+                    Thread.Sleep(5000);
+                    textJson = get.productTextResponse(starting);
                 }
             }
 
             // get the last item's product id in order to get the stock we need for request
             string lastProductId = list[list.Count - 1].ProductId;
-            textJSON = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
-            if (textJSON == "503")
+            textJson = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
+            while (textJson == "503")
             {
-                do
-                {
-                    Thread.Sleep(5000);
-                    textJSON = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
-                } while (textJSON == "503");
+                Thread.Sleep(5000);
+                textJson = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
             }
 
-            // check if there is item left
-            while (textJSON.Contains("total") && textJSON.Contains("warehouses"))
-            {
-                int index = textJSON.IndexOf("total") - 5;
+            // deserialize json to key value
+            var qtyInfo = serializer.Deserialize<Dictionary<string, dynamic>>(textJson);
 
+            foreach (var product in qtyInfo["response"])
+            {
                 // get product id number
-                int length = index;
-                while (textJSON[length] != '"')
-                    length--;
-                string productId = textJSON.Substring(length + 1, index - length);
+                string productId = product.Key;
 
                 // get quantity of the product
-                index = textJSON.IndexOf("inStock") + 9;
-                length = index;
-                while (char.IsNumber(textJSON[length]))
-                    length++;
-                string quantity = textJSON.Substring(index, length - index);
+                int quantity = product.Value["total"]["inStock"];
 
                 // allocate quantity to the corresponding product
                 foreach (Values value in list.Where(value => productId == value.ProductId))
                 {
-                    value.Quantity = Convert.ToInt32(quantity);
+                    value.Quantity = quantity;
                     break;
                 }
-
-                // proceed the text to the next token
-                textJSON = substringMethod(textJSON, "allocated", 10);
-                textJSON = substringMethod(textJSON, "warehouses", 13);
-                if (textJSON[0] != '}')
-                    textJSON = substringMethod(textJSON, "allocated", 10);
             }
 
             return list;
@@ -181,11 +157,10 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             foreach (var item in list)
             {
                 string orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
-                if (orderRowId == "Error")
+                while (orderRowId == "Error")
                 {
-                    do
-                        orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
-                    while (orderRowId == "Error");
+                    Thread.Sleep(5000);
+                    orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
                 }
             }
         }
@@ -238,28 +213,25 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Method = "GET";
 
                 // get the response from the server
-                string textJSON;
                 try
                 {
                     response = (HttpWebResponse)request.GetResponse();
-
-                    // read all the text from JSON response
-                    using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                        textJSON = streamReader.ReadToEnd();
                 }
                 catch
                 {
                     return "Error";     // server 503 error
                 }
 
-                // check if there is result return or not
-                textJSON = substringMethod(textJSON, "resultsReturned", 17);
-                if (Convert.ToInt32(getTarget(textJSON)) < 1)
-                    return null;
+                // read all the text from JSON response
+                string textJson;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    textJson = streamReader.ReadToEnd();
 
-                // getting product id
-                textJSON = substringMethod(textJSON, "\"results\":", 12);
-                return getTarget(textJSON);
+                // deserialize json to key value
+                var info = new JavaScriptSerializer().Deserialize<Dictionary<string, dynamic>>(textJson);
+
+                // the case there is no product exists
+                return info["response"]["metaData"]["resultsAvailable"] < 1 ? null : info["response"]["results"][0][0].ToString();
             }
 
             /* a method that return the quantity of specific sku */
@@ -282,14 +254,9 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Method = "GET";
 
                 // get the response from the server
-                string textJSON = "";
                 try
                 {
                     response = (HttpWebResponse)request.GetResponse();
-
-                    // read all the text from JSON response
-                    using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                        textJSON = streamReader.ReadToEnd();
                 }
                 catch (WebException e)
                 {
@@ -303,9 +270,15 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     }
                 }
 
-                // starting getting product quantity
-                textJSON = substringMethod(textJSON, "inStock", 9);
-                return Convert.ToInt32(getTarget(textJSON));
+                // read all the text from JSON response
+                string textJson;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    textJson = streamReader.ReadToEnd();
+
+                // deserialize json to key value
+                var info = new JavaScriptSerializer().Deserialize<Dictionary<string, dynamic>>(textJson);
+
+                return info["response"][id]["total"]["inStock"];
             }
             #endregion
 
@@ -322,28 +295,25 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Method = "GET";
 
                 // get the response from the server
-                string textJSON = "";
                 try
                 {
                     response = (HttpWebResponse)request.GetResponse();
-
-                    // read all the text from JSON response
-                    using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                        textJSON = streamReader.ReadToEnd();
                 }
                 catch (WebException e)
                 {
                     if (e.Status == WebExceptionStatus.ProtocolError)
                     {
                         response = e.Response as HttpWebResponse;
-                        if ((int)response.StatusCode == 404)
-                            return "404";    // web server 404 not found
-
-                        return "503";        // server unavailable
+                        return (int)response.StatusCode == 404 ? "404" : "503";
                     }
                 }
 
-                return textJSON;
+                // read all the text from JSON response
+                string textJson;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    textJson = streamReader.ReadToEnd();
+
+                return textJson;
             }
 
             /* a method that get the text response form quantity search */
@@ -359,14 +329,9 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Method = "GET";
 
                 // get the response from the server
-                string textJSON = "";
                 try
                 {
                     response = (HttpWebResponse)request.GetResponse();
-
-                    // read all the text from JSON response
-                    using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
-                        textJSON = streamReader.ReadToEnd();
                 }
                 catch (WebException e)
                 {
@@ -378,7 +343,12 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     }
                 }
 
-                return textJSON;
+                // read all the text from JSON response
+                string textJson;
+                using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
+                    textJson = streamReader.ReadToEnd();
+
+                return textJson;
             }
         }
 

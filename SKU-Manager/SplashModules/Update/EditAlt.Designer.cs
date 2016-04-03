@@ -90,6 +90,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditAlt";
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit Alt";
             this.ResumeLayout(false);
