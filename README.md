@@ -1,9 +1,9 @@
 # SKU-Manager
-##An enterprise application that manage comanpy's products | my 2nd C# application
+## An enterprise application that manage company's products | my 2nd C# application
 
 **The main function of this enterprise application:**
 
--> Managing company’s products, pricings and various eCommerce platform exports.
+-> Managing company’s products, pricing and various eCommerce platform exports.
 
 -> Direct inventory update to all online shopping channels and allow purchase order creation.
 
@@ -11,7 +11,7 @@
 
 -------------
 
-**The safty of this application:**
+**The safety of this application:**
 
 -> The user will need to log in which accept the credentials for database connection, so the connection string will only be complete if the user type in the correct username and password.
 
