@@ -97,7 +97,6 @@ namespace SKU_Manager.ExcelExportModules
             {
                 loadingLabel.Text = "Generating Table";
                 timeLeft = 4;
-                timer.Start();
             }
             else
                 loadingLabel.Text += ".";

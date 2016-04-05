@@ -1063,6 +1063,7 @@
             this.productFamilyCombobox.Name = "productFamilyCombobox";
             this.productFamilyCombobox.Size = new System.Drawing.Size(481, 21);
             this.productFamilyCombobox.TabIndex = 7;
+            this.productFamilyCombobox.SelectedIndexChanged += new System.EventHandler(this.productFamilyCombobox_SelectedIndexChanged);
             // 
             // brandLabel
             // 

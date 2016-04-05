@@ -254,6 +254,13 @@ namespace SKU_Manager.SplashModules.Update
                                                         "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
+
+                    // the case if the material is not active -> set all the SKUs' active and website flag to false that associate with this material
+                    if (!active)
+                    {
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Material_Code = \'" + materialCode + "\'";
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)

@@ -82,6 +82,9 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             loadingLabel.Visible = false;
             progressLabel.Visible = false;
             sortButton.Enabled = true;
+
+            // set first column to freeze
+            dataGridView.Columns[0].Frozen = true;
         }
         #endregion
 

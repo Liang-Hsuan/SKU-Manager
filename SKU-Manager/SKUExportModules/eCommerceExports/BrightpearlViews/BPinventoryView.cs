@@ -218,7 +218,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel1.Text = "Please Wait";
                 timeLeft[0] = 4;
-                timer1.Start();
             }
             else
                 loadingLabel1.Text += ".";
@@ -234,7 +233,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel2.Text = "Please Wait";
                 timeLeft[1] = 4;
-                timer2.Start();
             }
             else
                 loadingLabel2.Text += ".";
@@ -250,7 +248,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel3.Text = "Please Wait";
                 timeLeft[2] = 4;
-                timer3.Start();
             }
             else
                 loadingLabel3.Text += ".";
@@ -266,7 +263,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel4.Text = "Please Wait";
                 timeLeft[3] = 4;
-                timer4.Start();
             }
             else
                 loadingLabel4.Text += ".";
@@ -282,7 +278,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel5.Text = "Please Wait";
                 timeLeft[4] = 4;
-                timer5.Start();
             }
             else
                 loadingLabel5.Text += ".";
@@ -298,7 +293,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel6.Text = "Please Wait";
                 timeLeft[5] = 4;
-                timer6.Start();
             }
             else
                 loadingLabel6.Text += ".";
@@ -314,7 +308,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel7.Text = "Please Wait";
                 timeLeft[6] = 4;
-                timer7.Start();
             }
             else
                 loadingLabel7.Text += ".";
@@ -330,7 +323,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             {
                 loadingLabel8.Text = "Please Wait";
                 timeLeft[7] = 4;
-                timer8.Start();
             }
             else
                 loadingLabel8.Text += ".";

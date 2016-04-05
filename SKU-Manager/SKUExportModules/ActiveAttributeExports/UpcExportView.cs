@@ -68,7 +68,6 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
                 loadingLabel.Text += ".";

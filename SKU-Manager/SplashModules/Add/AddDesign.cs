@@ -195,6 +195,34 @@ namespace SKU_Manager.SplashModules.Add
             }
         }
 
+        /* the event for product family combobox change that determine the active and website flag for the design */
+        private void productFamilyCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem + "\'", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                // the case of inactive family -> set design to inactive and website to false
+                if (!reader.GetBoolean(0))
+                {
+                    activeDesignButton.Enabled = false;
+                    inactiveDesignButton.Enabled = false;
+                    displayedOnWebsiteCombobox.Enabled = false;
+                    displayedOnWebsiteCombobox.SelectedIndex = 1;
+                    active = false;
+                }
+                else
+                {
+                    activeDesignButton.Enabled = true;
+                    inactiveDesignButton.Enabled = true;
+                    displayedOnWebsiteCombobox.Enabled = true;
+                }
+            }
+        }
+
         #region Translate Button 1 Event
         /* the event for the first translate button that translate English to French */
         private void translateButton1_Click(object sender, EventArgs e)

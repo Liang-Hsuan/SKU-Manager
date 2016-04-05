@@ -157,6 +157,9 @@ namespace SKU_Manager.SplashModules.Deactivate
                                                   + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
+
+                command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designCode + "\'";
+                command.ExecuteNonQuery();
             }
 
             // simulate progress 60% ~ 100%

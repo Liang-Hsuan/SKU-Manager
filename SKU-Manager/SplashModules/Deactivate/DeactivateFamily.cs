@@ -122,6 +122,15 @@ namespace SKU_Manager.SplashModules.Deactivate
                                                   + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();
+
+                // design deactivation
+                command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                command.ExecuteNonQuery();
+
+                // sku deactivation
+                command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code IN (" +
+                                      "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code = \'" + familyCode + "\')";
+                command.ExecuteNonQuery();
             }
 
             // simulate progress 60% ~ 100%

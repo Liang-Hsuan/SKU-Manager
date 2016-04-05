@@ -466,6 +466,35 @@ namespace SKU_Manager.SplashModules.Update
             }
         }
 
+        /* the event for product family combobox change that determine the active and website flag for the design */
+        private void productFamilyCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // the case if the selection is nothing
+            if (productFamilyCombobox.SelectedIndex < 1) return; 
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem.ToString().Replace("'", "''") + "\'", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                // the case of inactive family -> set design to inactive and website to false
+                if (!reader.GetBoolean(0))
+                {
+                    activeCheckbox.Enabled = false;
+                    activeCheckbox.Checked = false;
+                    displayedOnWebsiteCombobox.Enabled = false;
+                    displayedOnWebsiteCombobox.SelectedIndex = 1;
+                }
+                else
+                {
+                    activeCheckbox.Enabled = true;
+                    displayedOnWebsiteCombobox.Enabled = true;
+                }
+            }
+        }
+
         #region Translate Button 1 Event
         /* the event for the first translate button that translate English to French */
         private void translateButton1_Click(object sender, EventArgs e)
@@ -960,12 +989,12 @@ namespace SKU_Manager.SplashModules.Update
                     // the case if the design is not active or not on website -> set all the SKUs' website flag to false that associate with this design
                     if (!active)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE SKU_Ashlin LIKE \'" + designServiceCode + "-%\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + "\'";
                         command.ExecuteNonQuery();
                     }
                     else if (integer[7] == 0)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET SKU_Website = 'False' WHERE SKU_Ashlin LIKE \'" + designServiceCode + "-%\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + "\'";
                         command.ExecuteNonQuery();
                     }
                 }

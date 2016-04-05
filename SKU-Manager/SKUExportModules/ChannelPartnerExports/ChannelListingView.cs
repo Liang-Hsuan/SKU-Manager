@@ -1,5 +1,4 @@
-﻿using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables;
-using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListing;
+﻿using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListing;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -85,6 +84,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel1.Visible = false;
 
             done[0] = true;
+
+            // set first column to freeze
+            dataGridView1.Columns[0].Frozen = true;
         }
         private void backgroundWorkerTable2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -97,6 +99,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel2.Visible = false;
 
             done[1] = true;
+
+            // set first column to freeze
+            dataGridView2.Columns[0].Frozen = true;
         }
         private void backgroundWorkerTable3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -109,6 +114,9 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel3.Visible = false;
 
             done[2] = true;
+
+            // set first column to freeze
+            dataGridView3.Columns[0].Frozen = true;
         }
         #endregion
 
@@ -125,7 +133,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel1.Text = "Please Wait";
                 timeLeft[0] = 4;
-                timer1.Start();
             }
             else
                 loadingLabel1.Text += ".";
@@ -141,7 +148,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel2.Text = "Please Wait";
                 timeLeft[1] = 4;
-                timer2.Start();
             }
             else
                 loadingLabel2.Text += ".";
@@ -157,7 +163,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel3.Text = "Please Wait";
                 timeLeft[2] = 4;
-                timer3.Start();
             }
             else
                 loadingLabel3.Text += ".";
@@ -187,6 +192,12 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         }
         private void hasButton_Click(object sender, EventArgs e)
         {
+            if (!done[1])
+            {
+                loadingLabel2.Visible = true;
+                progressLabel2.Visible = true;
+            }
+
             allButton.Enabled = true;
             hasButton.Enabled = false;
             noButton.Enabled = true;
@@ -197,12 +208,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             loadingLabel3.Visible = false;
             progressLabel1.Visible = false;
             progressLabel3.Visible = false;
-
-            if (!done[1])
-            {
-                loadingLabel2.Visible = true;
-                progressLabel2.Visible = true;
-            }
         }
         private void noButton_Click(object sender, EventArgs e)
         {

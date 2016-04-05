@@ -49,7 +49,9 @@ namespace SKU_Manager.SplashModules.Activate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = \'False\' ORDER BY Design_Service_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'False' AND " +
+                                                    "Design_Service_Family_Code IN (SELECT Design_Service_Family_Code FROM ref_Families WHERE Active = 'True') " +
+                                                    "ORDER BY Design_Service_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -155,7 +157,7 @@ namespace SKU_Manager.SplashModules.Activate
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  \'True\', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\' "
+                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  'True', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\' "
                                                       + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();

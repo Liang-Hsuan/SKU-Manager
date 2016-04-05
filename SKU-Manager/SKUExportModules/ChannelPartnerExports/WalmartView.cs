@@ -100,7 +100,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel1.Text = "Please Wait";
                 timeLeft[0] = 4;
-                timer1.Start();
             }
             else
                 loadingLabel1.Text += ".";
@@ -116,7 +115,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel2.Text = "Please Wait";
                 timeLeft[1] = 4;
-                timer2.Start();
             }
             else
                 loadingLabel2.Text += ".";

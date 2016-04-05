@@ -54,6 +54,9 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
             progressLabel.Visible = false;
 
             complete = true;
+
+            // set thrid column to freeze 
+            dataGridView.Columns[2].Frozen = true;
         }
 
         /* the event for timer that make the visual of loading promopt */
@@ -68,7 +71,6 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
                 loadingLabel.Text += ".";

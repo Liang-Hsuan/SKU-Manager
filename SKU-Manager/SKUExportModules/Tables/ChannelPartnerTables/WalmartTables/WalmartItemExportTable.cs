@@ -24,117 +24,117 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "UPC/GTIN");                         // 1
-            addColumn(mainTable, "UPC CK Digit");                     // 2
-            addColumn(mainTable, "Supplier Stock Number");            // 3
-            addColumn(mainTable, "Item Description 1");               // 4
-            addColumn(mainTable, "French Item Description 1");
-            addColumn(mainTable, "Shelf 1 / Color");
-            addColumn(mainTable, "French Shelf 1 / Color");
-            addColumn(mainTable, "Shelf 2 / Size");
-            addColumn(mainTable, "French Shelf 2 / Size");
-            addColumn(mainTable, "Unit Size UOM");
-            addColumn(mainTable, "Unit Size/Sell Qty");
-            addColumn(mainTable, "Item Description 2");
-            addColumn(mainTable, "French Item Description 2");
-            addColumn(mainTable, "UPC Description");
-            addColumn(mainTable, "French UPC Description");
-            addColumn(mainTable, "Signing Desc");
-            addColumn(mainTable, "French Signing Desc");
-            addColumn(mainTable, "Brand");
-            addColumn(mainTable, "Shop/Ticket Description");
-            addColumn(mainTable, "French Shop/Ticket Description");
-            addColumn(mainTable, "Plu Number");
-            addColumn(mainTable, "Case UPC Supplier Pack");
-            addColumn(mainTable, "Supplier Pack Qty");
-            addColumn(mainTable, "Supplier Pack Length");
-            addColumn(mainTable, "Supplier Pack Width");
-            addColumn(mainTable, "Supplier Pack Height");
-            addColumn(mainTable, "Supplier Pack Weight");
-            addColumn(mainTable, "Supplier Min Order Qty");
-            addColumn(mainTable, "Warehouse Pack UPC Number");
-            addColumn(mainTable, "Whse Pack Qty");
-            addColumn(mainTable, "Whse Pack Length");
-            addColumn(mainTable, "Whse Pack Width");
-            addColumn(mainTable, "Whse Pack Height");
-            addColumn(mainTable, "Whse Pack Weight");
-            addColumn(mainTable, "Whse Max Order Qty");
-            addColumn(mainTable, "Special Handling Instructions");
-            addColumn(mainTable, "Pallet Ti");
-            addColumn(mainTable, "pallet Hi");
-            addColumn(mainTable, "Pallet Rount Pct");
-            addColumn(mainTable, "Whse Area");
-            addColumn(mainTable, "Marshal ID");
-            addColumn(mainTable, "Conveyable");
-            addColumn(mainTable, "Master Carton Ind");
-            addColumn(mainTable, "Crush Factor");
-            addColumn(mainTable, "Whse Rotation");
-            addColumn(mainTable, "unit Cost");
-            addColumn(mainTable, "Base Unit Retail");
-            addColumn(mainTable, "Supplier Pack Cost");
-            addColumn(mainTable, "Mfgr Pre Price");
-            addColumn(mainTable, "Mfgr Suggested Price");
-            addColumn(mainTable, "Item Opp");
-            addColumn(mainTable, "Whse Pacck Calc Method");
-            addColumn(mainTable, "Department");
-            addColumn(mainTable, "Supplier Number");
-            addColumn(mainTable, "item Type");
-            addColumn(mainTable, "Sub type");
-            addColumn(mainTable, "Subclass");
-            addColumn(mainTable, "Fineline");
-            addColumn(mainTable, "Shelf Number");
-            addColumn(mainTable, "Product Number");
-            addColumn(mainTable, "Projected yearly Sales Qty");
-            addColumn(mainTable, "Send to Store Date");
-            addColumn(mainTable, "Item Effective Date");
-            addColumn(mainTable, "Item Expiration Date");
-            addColumn(mainTable, "Performance Rating");
-            addColumn(mainTable, "Corporate Orderbook");
-            addColumn(mainTable, "eCommerce Orderbook");
-            addColumn(mainTable, "Variety Pack Ind");
-            addColumn(mainTable, "intangible Ind");
-            addColumn(mainTable, "Country of Origin");
-            addColumn(mainTable, "Place of Manufacture");
-            addColumn(mainTable, "Factory ID");
-            addColumn(mainTable, "Whse Aligment");
-            addColumn(mainTable, "Warehouses Stocked");
-            addColumn(mainTable, "Wal-Mart");
-            addColumn(mainTable, "Supercenter");
-            addColumn(mainTable, "Neighborhood Market/Amigo");
-            addColumn(mainTable, "Online");
-            addColumn(mainTable, "Send Traits");
-            addColumn(mainTable, "Omit Traits");
-            addColumn(mainTable, "replaces Item");
-            addColumn(mainTable, "Change Reason Code");
-            addColumn(mainTable, "Comment");
-            addColumn(mainTable, "Item Length");
-            addColumn(mainTable, "Item Width");
-            addColumn(mainTable, "Item Height");
-            addColumn(mainTable, "Item Weight");
-            addColumn(mainTable, "Guaranteed sales");
-            addColumn(mainTable, "Eletronic Article Serveillance Ind");
-            addColumn(mainTable, "Temp sensitive Ind");
-            addColumn(mainTable, "Modular Batch Print");
-            addColumn(mainTable, "Retail Unit Measurement");
-            addColumn(mainTable, "Item Scannable Ind");
-            addColumn(mainTable, "Scalable at Register Ind");
-            addColumn(mainTable, "Backroom Scale Ind");
-            addColumn(mainTable, "Sold by Weight/Repl by Unit");
-            addColumn(mainTable, "Shelf Life Days");
-            addColumn(mainTable, "Min Whse Life Qty");
-            addColumn(mainTable, "Variance Days");
-            addColumn(mainTable, "Ideal Temp Lo");
-            addColumn(mainTable, "Ideal Temp Hi");
-            addColumn(mainTable, "Acceptable Temp Lo");
-            addColumn(mainTable, "Acceptable Temp hi");
-            addColumn(mainTable, "Vnpk Netwgt");
-            addColumn(mainTable, "Acctg Dept Nbr");
-            addColumn(mainTable, "Supplier Pack Weight Format");
-            addColumn(mainTable, "Variable Comp Ind");
-            addColumn(mainTable, "Season Code");
-            addColumn(mainTable, "Season Year");
-            addColumn(mainTable, "Hazmat Ind");
-            addColumn(mainTable, "Consideration Code");
+            addColumn(mainTable, "UPC/GTIN");                       // 1
+            addColumn(mainTable, "UPC CK Digit");                   // 2
+            addColumn(mainTable, "Supplier Stock Number");          // 3
+            addColumn(mainTable, "Item Description 1");             // 4
+            addColumn(mainTable, "French Item Description 1");      // 5
+            addColumn(mainTable, "Shelf 1 / Color");                // 6
+            addColumn(mainTable, "French Shelf 1 / Color");         // 7
+            addColumn(mainTable, "Shelf 2 / Size");                 // 8
+            addColumn(mainTable, "French Shelf 2 / Size");          // 9
+            addColumn(mainTable, "Unit Size UOM");                  // 10
+            addColumn(mainTable, "Unit Size/Sell Qty");             // 11
+            addColumn(mainTable, "Item Description 2");             // 12
+            addColumn(mainTable, "French Item Description 2");      // 13
+            addColumn(mainTable, "UPC Description");                // 14
+            addColumn(mainTable, "French UPC Description");         // 15
+            addColumn(mainTable, "Signing Desc");                   // 16
+            addColumn(mainTable, "French Signing Desc");            // 17
+            addColumn(mainTable, "Brand");                          // 18
+            addColumn(mainTable, "Shop/Ticket Description");        // 19
+            addColumn(mainTable, "French Shop/Ticket Description"); // 20
+            addColumn(mainTable, "Plu Number");                     // 21
+            addColumn(mainTable, "Case UPC Supplier Pack");         // 22
+            addColumn(mainTable, "Supplier Pack Qty");              // 23
+            addColumn(mainTable, "Supplier Pack Length");           // 24
+            addColumn(mainTable, "Supplier Pack Width");            // 25
+            addColumn(mainTable, "Supplier Pack Height");           // 26
+            addColumn(mainTable, "Supplier Pack Weight");           // 27
+            addColumn(mainTable, "Supplier Min Order Qty");         // 28
+            addColumn(mainTable, "Warehouse Pack UPC Number");      // 29
+            addColumn(mainTable, "Whse Pack Qty");                  // 30
+            addColumn(mainTable, "Whse Pack Length");               // 31
+            addColumn(mainTable, "Whse Pack Width");                // 32
+            addColumn(mainTable, "Whse Pack Height");               // 33
+            addColumn(mainTable, "Whse Pack Weight");               // 34
+            addColumn(mainTable, "Whse Max Order Qty");             // 35
+            addColumn(mainTable, "Special Handling Instructions");  // 36
+            addColumn(mainTable, "Pallet Ti");                      // 37
+            addColumn(mainTable, "pallet Hi");                      // 38
+            addColumn(mainTable, "Pallet Rount Pct");               // 39
+            addColumn(mainTable, "Whse Area");                      // 40
+            addColumn(mainTable, "Marshal ID");                     // 41
+            addColumn(mainTable, "Conveyable");                     // 42
+            addColumn(mainTable, "Master Carton Ind");              // 43
+            addColumn(mainTable, "Crush Factor");                   // 44
+            addColumn(mainTable, "Whse Rotation");                  // 45
+            addColumn(mainTable, "unit Cost");                      // 46
+            addColumn(mainTable, "Base Unit Retail");               // 47
+            addColumn(mainTable, "Supplier Pack Cost");             // 48
+            addColumn(mainTable, "Mfgr Pre Price");                 // 49
+            addColumn(mainTable, "Mfgr Suggested Price");           // 50
+            addColumn(mainTable, "Item Opp");                       // 51
+            addColumn(mainTable, "Whse Pacck Calc Method");         // 52
+            addColumn(mainTable, "Department");                     // 53
+            addColumn(mainTable, "Supplier Number");                // 54
+            addColumn(mainTable, "item Type");                      // 55
+            addColumn(mainTable, "Sub type");                       // 56
+            addColumn(mainTable, "Subclass");                       // 57
+            addColumn(mainTable, "Fineline");                       // 58
+            addColumn(mainTable, "Shelf Number");                   // 59
+            addColumn(mainTable, "Product Number");                 // 60
+            addColumn(mainTable, "Projected yearly Sales Qty");     // 61
+            addColumn(mainTable, "Send to Store Date");             // 62
+            addColumn(mainTable, "Item Effective Date");            // 63
+            addColumn(mainTable, "Item Expiration Date");           // 64
+            addColumn(mainTable, "Performance Rating");             // 65
+            addColumn(mainTable, "Corporate Orderbook");            // 66
+            addColumn(mainTable, "eCommerce Orderbook");            // 67
+            addColumn(mainTable, "Variety Pack Ind");               // 68
+            addColumn(mainTable, "intangible Ind");                 // 69
+            addColumn(mainTable, "Country of Origin");              // 70
+            addColumn(mainTable, "Place of Manufacture");           // 71
+            addColumn(mainTable, "Factory ID");                     // 72
+            addColumn(mainTable, "Whse Aligment");                  // 73
+            addColumn(mainTable, "Warehouses Stocked");             // 74
+            addColumn(mainTable, "Wal-Mart");                       // 75
+            addColumn(mainTable, "Supercenter");                    // 76
+            addColumn(mainTable, "Neighborhood Market/Amigo");      // 77
+            addColumn(mainTable, "Online");                         // 78
+            addColumn(mainTable, "Send Traits");                    // 79
+            addColumn(mainTable, "Omit Traits");                    // 80
+            addColumn(mainTable, "replaces Item");                  // 81
+            addColumn(mainTable, "Change Reason Code");             // 82
+            addColumn(mainTable, "Comment");                        // 83
+            addColumn(mainTable, "Item Length");                    // 84
+            addColumn(mainTable, "Item Width");                     // 85
+            addColumn(mainTable, "Item Height");                    // 86
+            addColumn(mainTable, "Item Weight");                    // 87
+            addColumn(mainTable, "Guaranteed sales");               // 88
+            addColumn(mainTable, "Eletronic Article Serveillance Ind"); // 89
+            addColumn(mainTable, "Temp sensitive Ind");             // 90
+            addColumn(mainTable, "Modular Batch Print");            // 91
+            addColumn(mainTable, "Retail Unit Measurement");        // 92
+            addColumn(mainTable, "Item Scannable Ind");             // 93
+            addColumn(mainTable, "Scalable at Register Ind");       // 94
+            addColumn(mainTable, "Backroom Scale Ind");             // 95
+            addColumn(mainTable, "Sold by Weight/Repl by Unit");    // 96
+            addColumn(mainTable, "Shelf Life Days");                // 97
+            addColumn(mainTable, "Min Whse Life Qty");              // 98
+            addColumn(mainTable, "Variance Days");                  // 99
+            addColumn(mainTable, "Ideal Temp Lo");                  // 100
+            addColumn(mainTable, "Ideal Temp Hi");                  // 101  
+            addColumn(mainTable, "Acceptable Temp Lo");             // 102
+            addColumn(mainTable, "Acceptable Temp hi");             // 103
+            addColumn(mainTable, "Vnpk Netwgt");                    // 104
+            addColumn(mainTable, "Acctg Dept Nbr");                 // 105
+            addColumn(mainTable, "Supplier Pack Weight Format");    // 106
+            addColumn(mainTable, "Variable Comp Ind");              // 107
+            addColumn(mainTable, "Season Code");                    // 108
+            addColumn(mainTable, "Season Year");                    // 109
+            addColumn(mainTable, "Hazmat Ind");                     // 110
+            addColumn(mainTable, "Consideration Code");             // 111
 
             // local field for inserting data to table
             double[] price = getPrice();

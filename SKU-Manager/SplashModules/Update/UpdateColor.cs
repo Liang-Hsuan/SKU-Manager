@@ -256,6 +256,13 @@ namespace SKU_Manager.SplashModules.Update
                                                         "Colour_Online = \'" + colorOnlineEnglish.Replace("'", "''") + "\', Colour_Online_FR = \'" + colorOnlineFrench.Replace("'", "''") + "\', Active = \'" + active + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
+
+                    // the case if the color is not active -> set all the SKUs' active and website flag to false that associate with this color
+                    if (!active)
+                    {
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + "\'";
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)

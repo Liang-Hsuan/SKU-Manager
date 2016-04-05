@@ -50,6 +50,9 @@ namespace SKU_Manager.ActiveInactiveList
             timer.Stop();
             loadingLabel.Visible = false;
             progressLabel.Visible = false;
+
+            // set first column to freeze
+            dataGridView.Columns[0].Frozen = true;
         }
 
         /* the event for timer that make the visual of loading promopt */
@@ -64,7 +67,6 @@ namespace SKU_Manager.ActiveInactiveList
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
                 loadingLabel.Text += ".";

@@ -73,7 +73,6 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
                 loadingLabel.Text += ".";

@@ -479,26 +479,39 @@ namespace SKU_Manager.SplashModules.Update
 
             try
             {
-                // connect to database and update the family
-                if (caHts != "" && usHts != "")
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    SqlCommand command = new SqlCommand();
+                    command.Connection = connection;
+
+                    // connect to database and update the family
+                    if (caHts != "" && usHts != "")
                     {
-                        SqlCommand command = new SqlCommand("UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
-                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', HTS_CA = \'" + caHts + "\', HTS_US = \'" + usHts + "\', CA_Duty = " + caDuty + ", US_Duty = " + usDuty + ", Active = \'" + active + "\' "
-                                                          + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
+                        command.CommandText = "UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
+                                            + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', HTS_CA = \'" + caHts + "\', HTS_US = \'" + usHts + "\', CA_Duty = " + caDuty + ", US_Duty = " + usDuty + ", Active = \'" + active + "\' "
+                                            + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
-                }
-                else
-                {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    else
                     {
-                        SqlCommand command = new SqlCommand("UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
-                                                          + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', Active = \'" + active + "\' "
-                                                          + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
+                        command.CommandText = "UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\', "
+                                            + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', Active = \'" + active + "\' "
+                                            + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
                         connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
+                    // the case if the family is not active -> set all the design and SKUs' active and website flag to false that associate with this color
+                    if (!active)
+                    {
+                        // design deactivation
+                        command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                        command.ExecuteNonQuery();
+
+                        // sku deactivation
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code IN (" +
+                                              "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code = \'" + familyCode + "\')";
                         command.ExecuteNonQuery();
                     }
                 }

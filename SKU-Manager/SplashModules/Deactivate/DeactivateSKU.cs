@@ -164,7 +164,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             // connect to database and activate the color
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Now.ToString() + "\' "
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  'False', SKU_Website = 'False', Date_Deactivated = \'" + DateTime.Now.ToString() + "\' "
                                                   + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();

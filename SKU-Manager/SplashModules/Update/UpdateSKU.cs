@@ -44,13 +44,14 @@ namespace SKU_Manager.SplashModules.Update
         private string promoMarketing;
         private string wmManufacturer;
         private string wmMerchant;
-        private bool onWebsite;
+        private bool[] onWebsite = new bool[2];
         private bool active = true;    // default set to true
         private string upcCode9;
         private string upcCode10;
 
         // supporting fields
         private string[] htsList = new string[4];
+        private bool[] activeList = new bool[3];
 
         // fields for storing uri path and alt text of images
         private readonly ImageSearch imageSearch = new ImageSearch();
@@ -184,7 +185,6 @@ namespace SKU_Manager.SplashModules.Update
                 manualRadioButton.Enabled = true;
                 autoRadioButton.Enabled = true;
                 autoRadioButton.Checked = true;
-                activeCheckbox.Enabled = true;
 
                 // set sku field from the selected item 
                 sku = ashlinSKUCombobox.SelectedItem.ToString();
@@ -359,7 +359,7 @@ namespace SKU_Manager.SplashModules.Update
             modelAlt[2] = table.Rows[0][70].ToString();
             modelAlt[3] = table.Rows[0][71].ToString();
             modelAlt[4] = table.Rows[0][72].ToString();
-            onWebsite = Convert.ToBoolean(table.Rows[0][73]);
+            onWebsite[1] = Convert.ToBoolean(table.Rows[0][73]);
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -378,7 +378,7 @@ namespace SKU_Manager.SplashModules.Update
             usDutyTextbox.Text = usDuty;
             skuCodeTextbox.Text = ashlinSKUCombobox.SelectedItem.ToString();
             activeCheckbox.Checked = active;
-            onWebsiteCheckbox.Checked = onWebsite;
+            onWebsiteCheckbox.Checked = onWebsite[1];
             ashlinTextbox.Text = ashlin;
             magentoTextbox.Text = magento;
             tscTextbox.Text = tsc;
@@ -447,12 +447,11 @@ namespace SKU_Manager.SplashModules.Update
         
             // lacal fields for storing information
             DataTable table = new DataTable();
-            string currentDesignCode = designCodeTextbox.Text;
 
             // connect to database to get the info about this design code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox, Active, Website_Flag FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -462,6 +461,20 @@ namespace SKU_Manager.SplashModules.Update
             designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
             designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
             giftCheckbox.Checked = table.Rows[0][3].ToString() == "True" ? true : false;
+            activeList[0] = Convert.ToBoolean(table.Rows[0][4]);
+            onWebsite[0] = Convert.ToBoolean(table.Rows[0][5]);
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeCheckbox.Enabled = true;
+                activeCheckbox.Checked = active;
+            }
+            else
+            {
+                activeCheckbox.Enabled = false;
+                activeCheckbox.Checked = false;
+            }
         }
 
         /* the event for material textbox text changed that show the information about the selected item */
@@ -476,13 +489,26 @@ namespace SKU_Manager.SplashModules.Update
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Active FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
             // show the info on the textboxes
             materialShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+            activeList[1] = Convert.ToBoolean(table.Rows[0][1]);
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeCheckbox.Enabled = true;
+                activeCheckbox.Checked = active;
+            }
+            else
+            {
+                activeCheckbox.Enabled = false;
+                activeCheckbox.Checked = false;
+            }
         }
 
         /* the event for color textbox text changed that show the information about the selected item */
@@ -497,13 +523,26 @@ namespace SKU_Manager.SplashModules.Update
             // connect to database to get the info about this color code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Active FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
             // show the info on the textboxes
             colorShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+            activeList[2] = Convert.ToBoolean(table.Rows[0][1]);
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeCheckbox.Enabled = true;
+                activeCheckbox.Checked = active;
+            }
+            else
+            {
+                activeCheckbox.Enabled = false;
+                activeCheckbox.Checked = false;
+            }
         }
 
         /* the event for design service flag textbox text change that will determine some controls' enabilibty */
@@ -597,9 +636,9 @@ namespace SKU_Manager.SplashModules.Update
         /* active checkbox checked changed event that determine if the product can be on website or not */
         private void activeCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (activeCheckbox.Checked)
+            if (activeCheckbox.Checked && onWebsite[0])
             {
-                onWebsiteCheckbox.Checked = onWebsite;
+                onWebsiteCheckbox.Checked = onWebsite[1];
                 onWebsiteCheckbox.Enabled = true;
             }
             else
@@ -626,7 +665,7 @@ namespace SKU_Manager.SplashModules.Update
             caDuty = caDutyTextbox.Text;
             usDuty = usDutyTextbox.Text;
             sku = skuCodeTextbox.Text;
-            onWebsite = onWebsiteCheckbox.Checked;
+            onWebsite[1] = onWebsiteCheckbox.Checked;
             active = activeCheckbox.Checked;
 
             // connect to database and update the sku
@@ -639,12 +678,12 @@ namespace SKU_Manager.SplashModules.Update
                     {
 
                         command = new SqlCommand("UPDATE master_SKU_Attributes SET Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', "
-                                               + "SKU_Website = \'" + onWebsite + "\', Active = \'" + active + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                               + "SKU_Website = \'" + onWebsite[1] + "\', Active = \'" + active + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
                     }
                     else
                     {
                         command = new SqlCommand("UPDATE master_SKU_Attributes SET Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', "
-                                               + "SKU_Website = \'" + onWebsite + "\', Active = \'" + active + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                               + "SKU_Website = \'" + onWebsite[1] + "\', Active = \'" + active + "\' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
                     }
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -770,7 +809,7 @@ namespace SKU_Manager.SplashModules.Update
             location[3] = columnIndexCombobox.SelectedItem.ToString();
             caHts = canadianHtsCombobox.SelectedItem.ToString();
             usHts = usHtsCombobox.SelectedItem.ToString();
-            onWebsite = onWebsiteCheckbox.Checked;
+            onWebsite[1] = onWebsiteCheckbox.Checked;
 
             // call background worker
             if (autoRadioButton.Checked)     // case if auto image update
@@ -1044,13 +1083,13 @@ namespace SKU_Manager.SplashModules.Update
                     SqlCommand command;
                     if (!caHts.Equals("") && !usHts.Equals(""))
                     {
-                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', SKU_Website = \'" + onWebsite + "\', Active = \'" + active + "\', "
+                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', HTS_CDN = \'" + caHts + "\', HTS_US = \'" + usHts + "\', Duty_CDN = " + caDuty + ", Duty_US = " + usDuty + ", Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', SKU_Website = \'" + onWebsite[1] + "\', Active = \'" + active + "\', "
                                                + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
                                                + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
                     }
                     else
                     {
-                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', SKU_Website = \'" + onWebsite + "\', Active = \'" + active + "\', "
+                        command = new SqlCommand("UPDATE master_SKU_Attributes SET Ashlin_URL = \'" + ashlin + "\', SKU_MAGENTO = \'" + magento + "\', SKU_SEARS_CA = \'" + sears + "\', SKU_TSC_CA = \'" + tsc + "\', SKU_COSTCO_CA = \'" + costco + "\', SKU_BESTBUY_CA = \'" + bestbuy + "\', SKU_AMAZON_CA = \'" + amazonCa + "\', SKU_AMAZON_COM = \'" + amazonCom + "\', SKU_SHOP_CA = \'" + shopCa + "\', SKU_STAPLES_CA = \'" + staples + "\', SKU_WALMART_CA = \'" + walmartCa + "\', SKU_WALMART_COM = \'" + walmartCom + "\', SKU_DistributorCentral = \'" + distributorCentral + "\', SKU_PromoMarketing = \'" + promoMarketing + "\', SKU_WALMART_MANUFACTURER = \'" + wmManufacturer + "\', SKU_WALMART_MERCHANT = \'" + wmMerchant + "\', Location_WH = \'" + location[0] + "\', Location_Rack = \'" + location[1] + "\', Location_Shelf = \'" + location[2] + "\', Location_ColIndex = \'" + location[3] + "\', Location_Full = \'" + locationFull + "\', Base_Price = \'" + basePrice + "\', UPC_Code_9 = \'" + upcCode9 + "\', UPC_Code_10 = \'" + upcCode10 + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', SKU_Website = \'" + onWebsite[1] + "\', Active = \'" + active + "\', "
                                               + "Image_1_Path = \'" + image[0] + "\', Image_2_Path = \'" + image[1] + "\', Image_3_Path = \'" + image[2] + "\', Image_4_Path = \'" + image[3] + "\', Image_5_Path = \'" + image[4] + "\', Image_6_Path = \'" + image[5] + "\', Image_7_Path = \'" + image[6] + "\', Image_8_Path = \'" + image[7] + "\', Image_9_Path = \'" + image[8] + "\', Image_10_Path = \'" + image[9] + "\', Image_Group_1_Path = \'" + group[0] + "\', Image_Group_2_Path = \'" + group[1] + "\', Image_Group_3_Path = \'" + group[2] + "\', Image_Group_4_Path = \'" + group[3] + "\', Image_Group_5_Path = \'" + group[4] + "\', Image_Model_1_Path = \'" + model[0] + "\', Image_Model_2_Path = \'" + model[1] + "\', Image_Model_3_Path = \'" + model[2] + "\', Image_Model_4_Path = \'" + model[3] + "\', Image_Model_5_Path = \'" + model[4] + "\', Alt_Text_Image_1_Path = \'" + imageAlt[0].Replace("'", "''") + "\', Alt_Text_Image_2_Path = \'" + imageAlt[1].Replace("'", "''") + "\', Alt_Text_Image_3_Path = \'" + imageAlt[2].Replace("'", "''") + "\', Alt_Text_Image_4_Path = \'" + imageAlt[3].Replace("'", "''") + "\', Alt_Text_Image_5_Path = \'" + imageAlt[4].Replace("'", "''") + "\', Alt_Text_Image_6_Path = \'" + imageAlt[5].Replace("'", "''") + "\', Alt_Text_Image_7_Path = \'" + imageAlt[6].Replace("'", "''") + "\', Alt_Text_Image_8_Path = \'" + imageAlt[7].Replace("'", "''") + "\', Alt_Text_Image_9_Path = \'" + imageAlt[8].Replace("'", "''") + "\', Alt_Text_Image_10_Path = \'" + imageAlt[9].Replace("'", "''") + "\', Alt_Text_Image_Group_1_Path = \'" + groupAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Group_2_Path = \'" + groupAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Group_3_Path = \'" + groupAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Group_4_Path = \'" + groupAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Group_5_Path = \'" + groupAlt[4].Replace("'", "''") + "\', Alt_Text_Image_Model_1_Path = \'" + modelAlt[0].Replace("'", "''") + "\', Alt_Text_Image_Model_2_Path = \'" + modelAlt[1].Replace("'", "''") + "\', Alt_Text_Image_Model_3_Path = \'" + modelAlt[2].Replace("'", "''") + "\', Alt_Text_Image_Model_4_Path = \'" + modelAlt[3].Replace("'", "''") + "\', Alt_Text_Image_Model_5_Path = \'" + modelAlt[4].Replace("'", "''") + "\', Template_URL_1 = \'" + template[0] + "\', Template_URL_2 = \'" + template[1] + "\' "
                                               + "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
                     }

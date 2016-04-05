@@ -49,7 +49,11 @@ namespace SKU_Manager.SplashModules.Activate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'False\' ORDER BY SKU_Ashlin;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'False' AND " +
+                                                    "Design_Service_Code IN (SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'True') AND " +
+                                                    "Material_Code IN (SELECT Material_Code FROM ref_Materials WHERE Active = 'True') AND " +
+                                                    "Colour_Code IN (SELECT Colour_Code FROM ref_Colours WHERE Active = 'True') " +
+                                                    "ORDER BY SKU_Ashlin", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())

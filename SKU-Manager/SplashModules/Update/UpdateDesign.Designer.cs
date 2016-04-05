@@ -278,6 +278,7 @@
             this.productFamilyCombobox.Name = "productFamilyCombobox";
             this.productFamilyCombobox.Size = new System.Drawing.Size(481, 21);
             this.productFamilyCombobox.TabIndex = 7;
+            this.productFamilyCombobox.SelectedIndexChanged += new System.EventHandler(this.productFamilyCombobox_SelectedIndexChanged);
             // 
             // productFamilyLabel
             // 
@@ -1416,6 +1417,7 @@
             // giftCheckbox
             // 
             this.giftCheckbox.AutoSize = true;
+            this.giftCheckbox.Enabled = false;
             this.giftCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.giftCheckbox.ForeColor = System.Drawing.Color.Green;
             this.giftCheckbox.Location = new System.Drawing.Point(380, 206);

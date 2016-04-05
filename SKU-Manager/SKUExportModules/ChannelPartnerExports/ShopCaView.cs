@@ -140,7 +140,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel1.Text = "Please Wait";
                 timeLeft[0] = 4;
-                timer1.Start();
             }
             else
                 loadingLabel1.Text += ".";
@@ -156,7 +155,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel2.Text = "Please Wait";
                 timeLeft[1] = 4;
-                timer2.Start();
             }
             else
                 loadingLabel2.Text += ".";
@@ -172,7 +170,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel3.Text = "Please Wait";
                 timeLeft[2] = 4;
-                timer3.Start();
             }
             else
                 loadingLabel3.Text += ".";
@@ -188,7 +185,6 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             {
                 loadingLabel4.Text = "Please Wait";
                 timeLeft[3] = 4;
-                timer4.Start();
             }
             else
                 loadingLabel4.Text += ".";
