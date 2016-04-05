@@ -59,6 +59,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -105,6 +106,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -140,12 +142,10 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                                                 "Trend_Extended_Description, Design_Online, GiftBox, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Width_cm, Height_cm, Depth_cm, Weight_grams, Flat_Shippable, Fold_Shippable, Shippable_Width_cm, " +
                                                 "Shippable_Height_cm, Shippable_Depth_cm, Shippable_Weight_grams, Detachable_Strap, Zippered_Enclosure, Option_1, Option_2, Option_3, Option_4, Option_5, Active " +
                                                 "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 31; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }

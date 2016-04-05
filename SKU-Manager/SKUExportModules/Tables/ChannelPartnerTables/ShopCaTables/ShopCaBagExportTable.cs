@@ -14,7 +14,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaBagExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -78,6 +77,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -148,6 +148,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -177,12 +178,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 37; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }

@@ -27,12 +27,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             //                                                                         & statples            & giant tiger
             SqlCommand command = new SqlCommand("SELECT Base_Price, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_SHOP_CA, SKU_SEARS_CA " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 7; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }

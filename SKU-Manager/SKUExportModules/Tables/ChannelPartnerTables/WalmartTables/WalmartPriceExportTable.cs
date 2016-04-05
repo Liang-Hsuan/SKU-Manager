@@ -14,7 +14,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
         public WalmartPriceExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -48,6 +47,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -68,6 +68,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -80,11 +81,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             // start grabbing data              
             // [0] for all related to price       
             SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));
-            connection.Close();
 
             return list;
         }

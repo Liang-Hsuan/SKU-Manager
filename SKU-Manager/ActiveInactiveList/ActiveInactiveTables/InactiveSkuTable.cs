@@ -47,6 +47,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -81,6 +82,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -114,12 +116,10 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, " +
                                                 "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Active " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 19; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }

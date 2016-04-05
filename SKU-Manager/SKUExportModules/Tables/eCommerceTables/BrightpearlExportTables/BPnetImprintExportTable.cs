@@ -35,6 +35,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -64,6 +65,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -74,8 +76,8 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             double[] list = new double[10];
 
             //  [0] 1 net standard, [1] 6 net standard, [2] 24 net standard, [3] 50 net standard, [4] 100 net standard, [5] 250 net standard, [6] 500 net standard, [7] 1000 net standard, [8] 2500 net standard
-            command.CommandText = "SELECT [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery] "
-                                + "FROM ref_discount_matrix;";
+            SqlCommand command = new SqlCommand("SELECT [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery] "
+                                              + "FROM ref_discount_matrix;", connection);
 
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();

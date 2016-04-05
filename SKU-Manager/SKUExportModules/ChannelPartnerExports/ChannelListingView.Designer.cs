@@ -251,7 +251,7 @@
             this.loadingLabel3.BackColor = System.Drawing.Color.Transparent;
             this.loadingLabel3.Font = new System.Drawing.Font("Arial", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadingLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.loadingLabel3.Location = new System.Drawing.Point(230, 309);
+            this.loadingLabel3.Location = new System.Drawing.Point(230, 310);
             this.loadingLabel3.Name = "loadingLabel3";
             this.loadingLabel3.Size = new System.Drawing.Size(323, 92);
             this.loadingLabel3.TabIndex = 7;
@@ -286,7 +286,6 @@
             this.Controls.Add(this.loadingLabel3);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.progressLabel2);
-            this.Controls.Add(this.loadingLabel2);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.noButton);
             this.Controls.Add(this.hasButton);
@@ -295,6 +294,7 @@
             this.Controls.Add(this.loadingLabel1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.loadingLabel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

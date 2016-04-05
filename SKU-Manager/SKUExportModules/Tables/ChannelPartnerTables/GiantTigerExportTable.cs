@@ -101,7 +101,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data ( use the ones that have on walmart )
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_WALMART_CA != \'\' ORDER BY SKU_Ashlin;", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_WALMART_CA != '' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

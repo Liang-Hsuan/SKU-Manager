@@ -14,7 +14,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaPriceExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -57,11 +56,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
             {
-                double basePrice = getBasePrice(sku);
+                double basePrice = Convert.ToDouble(getData(sku)[0]);
 
                 var row = mainTable.NewRow();
 
@@ -78,22 +78,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // finish loading data
             mainTable.EndLoadData();
-
-            return mainTable;
-        }
-
-        private double getBasePrice(string sku)
-        {
-            // start grabbing data              
-            // [0] for all related to price      
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            double basePrice = Convert.ToDouble(reader.GetValue(0));
             connection.Close();
 
-            return basePrice;
+            return mainTable;
         }
 
         /* method that get the data from given sku */
@@ -104,11 +91,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // start grabbing data              
             // [0] for all related to price      
             SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));
-            connection.Close();
 
             return list;
         }

@@ -123,7 +123,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
 
             // upload file to sftp server
             // sftp.Connect();
-            // sftp.Put(path, "incoming/inventory/searscanada");
+            // sftp.Put(path, "/fromclient/inventory");
             // sftp.Close();
             #endregion
 

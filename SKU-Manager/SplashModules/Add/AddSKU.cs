@@ -54,6 +54,7 @@ namespace SKU_Manager.SplashModules.Add
         private bool frontHasAdded = false;
         private bool middleHasAdded = false;
         private bool lastHasAdded = false;
+        private bool[] activeList = new bool[3];
         private readonly string[] htsList = new string[4];
 
         // fields for storing uri path and alt text of images
@@ -206,7 +207,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this design code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox, Website_Flag, Active FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -216,6 +217,8 @@ namespace SKU_Manager.SplashModules.Add
             designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
             designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
             giftCheckbox.Checked = Convert.ToBoolean(table.Rows[0][3]);
+            onWebsiteCheckbox.Enabled = Convert.ToBoolean(table.Rows[0][4]);
+            activeList[0] = Convert.ToBoolean(table.Rows[0][5]);   
 
             // show the sku code on the textbox
             if (skuCodeTextbox.Text == "")    // nothing, add directly
@@ -224,7 +227,6 @@ namespace SKU_Manager.SplashModules.Add
                 frontHasAdded = true;
             }
             else if (frontHasAdded) // has it self, replace it 
-
                 skuCodeTextbox.Text = skuCodeTextbox.Text.Replace(designServiceCode, currentDesignCode);
             else // has something behind
             {
@@ -235,6 +237,19 @@ namespace SKU_Manager.SplashModules.Add
 
             // update design service code
             designServiceCode = currentDesignCode;
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeSkuButton.Enabled = true;
+                inactiveSkuButton.Enabled = true;
+            }
+            else
+            {
+                activeSkuButton.Enabled = false;
+                inactiveSkuButton.Enabled = false;
+                active = false;
+            }
 
             // call background worker
             if (!backgroundWorkerHTS.IsBusy)
@@ -367,13 +382,14 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Active FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
             // show the info on the textboxes
             materialShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+            activeList[1] = Convert.ToBoolean(table.Rows[0][1]);
 
             // show the sku code on the textbox
             if (skuCodeTextbox.Text == "")    // nothing, add directly
@@ -414,6 +430,19 @@ namespace SKU_Manager.SplashModules.Add
 
             // update material
             material = currentMaterial;
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeSkuButton.Enabled = true;
+                inactiveSkuButton.Enabled = true;
+            }
+            else
+            {
+                activeSkuButton.Enabled = false;
+                inactiveSkuButton.Enabled = false;
+                active = false;
+            }
         }
 
         /* the event for color combobox selected item changed that show the information about the selected item */
@@ -426,13 +455,14 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this color code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Active FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
             // show the info on the textboxes
             colorShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+            activeList[2] = Convert.ToBoolean(table.Rows[0][1]);
 
             // show the sku code on the textbox
             if (skuCodeTextbox.Text == "")    // nothing, add directly
@@ -456,6 +486,19 @@ namespace SKU_Manager.SplashModules.Add
 
             // update color code
             colorCode = currentColorCode;
+
+            // active determination
+            if (activeList[0] && activeList[1] && activeList[2])
+            {
+                activeSkuButton.Enabled = true;
+                inactiveSkuButton.Enabled = true;
+            }
+            else
+            {
+                activeSkuButton.Enabled = false;
+                inactiveSkuButton.Enabled = false;
+                active = false;
+            }
         }
 
         #region Taxes Comboboxes
@@ -757,11 +800,14 @@ namespace SKU_Manager.SplashModules.Add
         /* the event for active and inactive sku button click */
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
-            active = true;    // make active true
+            active = true;  // make active true
 
             // set buttons enability
             activeSkuButton.Enabled = false;
             inactiveSkuButton.Enabled = true;
+
+            // set checkbox enability
+            onWebsiteCheckbox.Enabled = true;
 
             AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
@@ -772,6 +818,10 @@ namespace SKU_Manager.SplashModules.Add
             // set buttons enability
             inactiveSkuButton.Enabled = false;
             activeSkuButton.Enabled = true;
+
+            // set checkbox enability
+            onWebsiteCheckbox.Checked = false;
+            onWebsiteCheckbox.Enabled = false;
 
             AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }

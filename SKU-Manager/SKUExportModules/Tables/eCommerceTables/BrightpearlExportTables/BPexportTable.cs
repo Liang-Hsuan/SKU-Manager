@@ -8,16 +8,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
      */
     public abstract class BPexportTable : ExportTable
     {
-        // field for SqlCommand
-        protected SqlCommand command = new SqlCommand();
-
-        /* constructor that initaillize SqlCommand's connection */
-        protected BPexportTable()
-        {
-            // set the connection to command
-            command.Connection = connection;
-        }
-
         /* override the method getSKU() */
         protected override string[] getSKU()
         {
@@ -25,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            command.CommandText = "SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin";
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -44,18 +34,16 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             // grab data from design database
             // [0] field that related to price
             // [1] for price calculation, [2] description, [3] description, [4] description
-            command.CommandText = "SELECT Base_Price, Components, Short_Description, Material_Description_Short, Colour_Description_Short " +
-                                  "FROM master_SKU_Attributes sku " +
-                                  "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                  "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
-                                  "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                  "WHERE SKU_Ashlin = \'" + sku + "\'";
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT Base_Price, Components, Short_Description, Material_Description_Short, Colour_Description_Short " +
+                                                "FROM master_SKU_Attributes sku " +
+                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
+                                                "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
+                                                "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 4; i++)
                 list[i] = reader.GetValue(i);
-            connection.Close();
 
             return list;
         }

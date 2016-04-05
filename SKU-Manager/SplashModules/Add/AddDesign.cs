@@ -517,6 +517,9 @@ namespace SKU_Manager.SplashModules.Add
             activeDesignButton.Enabled = false;
             inactiveDesignButton.Enabled = true;
 
+            // set website flag enability
+            displayedOnWebsiteCombobox.Enabled = true;
+
             AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
@@ -526,6 +529,10 @@ namespace SKU_Manager.SplashModules.Add
             // set buttons enability
             inactiveDesignButton.Enabled = false;
             activeDesignButton.Enabled = true;
+
+            // set website flag enability
+            displayedOnWebsiteCombobox.SelectedIndex = 1;
+            displayedOnWebsiteCombobox.Enabled = false;
 
             AutoScrollPosition = new Point(HorizontalScroll.Value, VerticalScroll.Value);
         }

@@ -136,7 +136,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_STAPLES_CA != \'\' ORDER BY SKU_Ashlin", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -180,14 +180,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             double[] list = new double[2];
 
             // [0] wholesale
-            SqlCommand command = new SqlCommand("SELECT [Wholesale_Net] FROM ref_discount_matrix;", connection);
+            SqlCommand command = new SqlCommand("SELECT [Wholesale_Net] FROM ref_discount_matrix", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
             reader.Close();
+
             // [1] multiplier
-            command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
             list[1] = reader.GetDouble(0);

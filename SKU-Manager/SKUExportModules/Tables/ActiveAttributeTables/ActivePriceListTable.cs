@@ -244,6 +244,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -498,6 +499,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -554,12 +556,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 120; i++)
-                list.Add(reader.GetValue(i));   
-            connection.Close();
+                list.Add(reader.GetValue(i)); 
 
             return list;
         }

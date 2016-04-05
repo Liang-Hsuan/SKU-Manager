@@ -130,6 +130,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -194,6 +195,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -238,12 +240,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 7; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }
@@ -255,15 +255,16 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 
             // [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 2500 c standard
             SqlCommand command = new SqlCommand("SELECT [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery] "
-                                                     + "FROM ref_discount_matrix;", connection);
+                                                     + "FROM ref_discount_matrix", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 8; i++)
                 list[i] = reader.GetDouble(i);
             reader.Close();
+
             // [9] multiplier
-            command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
             list[9] = reader.GetDouble(0);

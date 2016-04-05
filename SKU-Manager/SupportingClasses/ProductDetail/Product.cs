@@ -97,7 +97,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 foreach (var product in productInfo["response"])
                 {
                     // get data for the product
-                    string productId = product["id"];
+                    string productId = product["id"].ToString();
                     string sku = product["identity"]["sku"];
                     int reorderLevel = product["warehouses"]["2"]["reorderLevel"];
                     int reorderQuantity = product["warehouses"]["2"]["reorderQuantity"];

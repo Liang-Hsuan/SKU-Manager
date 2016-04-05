@@ -554,6 +554,7 @@
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
             this.activeCheckbox.TabIndex = 41;
             this.activeCheckbox.UseVisualStyleBackColor = true;
+            this.activeCheckbox.CheckedChanged += new System.EventHandler(this.activeCheckbox_CheckedChanged);
             // 
             // progressBar
             // 

@@ -14,7 +14,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public UpcExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
             skuList = getSKU();
         }
 
@@ -22,13 +21,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public override DataTable getTable()
         {
             // add column to table
-            addColumn(mainTable, "UPC Code 9");                   // 1
-            addColumn(mainTable, "UPC Code Check Digit");         // 2
-            addColumn(mainTable, "SKU Number");                   // 3
-            addColumn(mainTable, "Short Description");            // 4
+            addColumn(mainTable, "UPC Code 9");                  // 1
+            addColumn(mainTable, "UPC Code Check Digit");        // 2
+            addColumn(mainTable, "SKU Number");                  // 3
+            addColumn(mainTable, "Short Description");           // 4
 
             // start loading data
             mainTable.BeginLoadData();
+            connection.Open();
 
             // add data to each row 
             foreach (string sku in skuList)
@@ -48,6 +48,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
             // finish loading data
             mainTable.EndLoadData();
+            connection.Close();
 
             return mainTable;
         }
@@ -59,7 +60,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'TRUE\' ORDER BY SKU_Ashlin", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -77,16 +78,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
             // grab data from design
             // [0] short description, [1] upc code 10, [2] upc code check digit
-            SqlCommand command = new SqlCommand("SELECT Short_Description, UPC_Code_9, UPC_Code_10 " +
-                                                "FROM master_SKU_Attributes sku " +
-                                                "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
-            connection.Open();
+            SqlCommand command  = new SqlCommand("SELECT Short_Description, UPC_Code_9, UPC_Code_10 " +
+                                                 "FROM master_SKU_Attributes sku " +
+                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
+                                                 "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 2; i++)
                 list.Add(reader.GetValue(i));
-            connection.Close();
 
             return list;
         }
