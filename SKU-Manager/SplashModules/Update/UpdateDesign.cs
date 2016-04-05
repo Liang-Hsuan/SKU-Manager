@@ -506,22 +506,22 @@ namespace SKU_Manager.SplashModules.Update
                 MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+            shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+
             if (extendedFrenchDescription.Contains("Error:"))
             {
                 MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
+            extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
+
             if (trendShortFrenchDescription.Contains("Error:"))
             {
                 MessageBox.Show(trendShortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                trendFrenchShortTextbox.Text = trendShortFrenchDescription;
+            trendFrenchShortTextbox.Text = trendShortFrenchDescription;
+
             if (trendExtendedFrenchDescription.Contains("Error:"))
                 MessageBox.Show(trendExtendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
@@ -536,11 +536,10 @@ namespace SKU_Manager.SplashModules.Update
             online.ShowDialog(this);
 
             // set color online 
-            if (online.DialogResult == DialogResult.OK)
-            {
-                designOnlineEnglish = online.English;
-                designOnlineFrench = online.French;
-            }
+            if (online.DialogResult != DialogResult.OK) return;
+
+            designOnlineEnglish = online.English;
+            designOnlineFrench = online.French;
         }
 
         #region Translate Button 2 Event
@@ -587,29 +586,29 @@ namespace SKU_Manager.SplashModules.Update
                 MessageBox.Show(frenchOption[0], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                option1FrenchTextbox.Text = frenchOption[0];
+            option1FrenchTextbox.Text = frenchOption[0];
+
             if (frenchOption[1].Contains("Error:"))
             {
                 MessageBox.Show(frenchOption[1], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                option2FrenchTextbox.Text = frenchOption[1];
+            option2FrenchTextbox.Text = frenchOption[1];
+
             if (frenchOption[2].Contains("Error:"))
             {
                 MessageBox.Show(frenchOption[2], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                option3FrenchTextbox.Text = frenchOption[2];
+            option3FrenchTextbox.Text = frenchOption[2];
+
             if (frenchOption[3].Contains("Error:"))
             {
                 MessageBox.Show(frenchOption[3], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                option4FrenchTextbox.Text = frenchOption[3];
+            option4FrenchTextbox.Text = frenchOption[3];
+
             if (frenchOption[4].Contains("Error:"))
                 MessageBox.Show(frenchOption[4], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
@@ -958,10 +957,15 @@ namespace SKU_Manager.SplashModules.Update
                                                       + "\' WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
                     command.ExecuteNonQuery();
 
-                    // the case if the design is not active -> set all the SKUs' website flag to false that associate with this design
+                    // the case if the design is not active or not on website -> set all the SKUs' website flag to false that associate with this design
                     if (!active)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE SKU_Ashlin LIKE \'" + designServiceCode + "%\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE SKU_Ashlin LIKE \'" + designServiceCode + "-%\'";
+                        command.ExecuteNonQuery();
+                    }
+                    else if (integer[7] == 0)
+                    {
+                        command.CommandText = "UPDATE master_SKU_Attributes SET SKU_Website = 'False' WHERE SKU_Ashlin LIKE \'" + designServiceCode + "-%\'";
                         command.ExecuteNonQuery();
                     }
                 }

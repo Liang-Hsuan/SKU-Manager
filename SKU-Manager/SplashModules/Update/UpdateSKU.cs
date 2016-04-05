@@ -441,72 +441,69 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for design service code textbox text changed that show information about the design and the change in skuCode textbox */
         private void designCodeTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (designCodeTextbox.Text != "")
-            {
-                designServiceCode = designCodeTextbox.Text;
+            if (designCodeTextbox.Text == "") return;
+
+            designServiceCode = designCodeTextbox.Text;
         
-                // lacal fields for storing information
-                DataTable table = new DataTable();
-                string currentDesignCode = designCodeTextbox.Text;
+            // lacal fields for storing information
+            DataTable table = new DataTable();
+            string currentDesignCode = designCodeTextbox.Text;
 
-                // connect to database to get the info about this design code
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
-                    connection.Open();
-                    adapter.Fill(table);
-                }
-
-                // show the info on the textboxes
-                brandTextbox.Text = table.Rows[0][0].ToString();
-                designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
-                designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
-                giftCheckbox.Checked = table.Rows[0][3].ToString() == "True" ? true : false;
+            // connect to database to get the info about this design code
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                connection.Open();
+                adapter.Fill(table);
             }
+
+            // show the info on the textboxes
+            brandTextbox.Text = table.Rows[0][0].ToString();
+            designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
+            designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
+            giftCheckbox.Checked = table.Rows[0][3].ToString() == "True" ? true : false;
         }
 
         /* the event for material textbox text changed that show the information about the selected item */
         private void materialTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (materialTextbox.Text != "")
+            if (materialTextbox.Text == "") return;
+
+            // lacal fields for storing information
+            DataTable table = new DataTable();
+            string currentMaterial = materialTextbox.Text;
+
+            // connect to database to get the info about this material code
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // lacal fields for storing information
-                DataTable table = new DataTable();
-                string currentMaterial = materialTextbox.Text;
-
-                // connect to database to get the info about this material code
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
-                    connection.Open();
-                    adapter.Fill(table);
-                }
-
-                // show the info on the textboxes
-                materialShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
+                connection.Open();
+                adapter.Fill(table);
             }
+
+            // show the info on the textboxes
+            materialShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
         }
 
         /* the event for color textbox text changed that show the information about the selected item */
         private void colorCodeTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (colorCodeTextbox.Text != "")
+            if (colorCodeTextbox.Text == "") return;
+
+            // lacal fields for storing information
+            DataTable table = new DataTable();
+            string currentColorCode = colorCodeTextbox.Text;
+
+            // connect to database to get the info about this color code
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // lacal fields for storing information
-                DataTable table = new DataTable();
-                string currentColorCode = colorCodeTextbox.Text;
-
-                // connect to database to get the info about this color code
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
-                    connection.Open();
-                    adapter.Fill(table);
-                }
-
-                // show the info on the textboxes
-                colorShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
+                connection.Open();
+                adapter.Fill(table);
             }
+
+            // show the info on the textboxes
+            colorShortDescriptionTextbox.Text = table.Rows[0][0].ToString();
         }
 
         /* the event for design service flag textbox text change that will determine some controls' enabilibty */

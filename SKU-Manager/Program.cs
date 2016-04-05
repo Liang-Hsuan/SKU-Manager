@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using SKU_Manager.MainForms;
 
 namespace SKU_Manager
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
