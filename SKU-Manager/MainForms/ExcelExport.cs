@@ -959,71 +959,76 @@ namespace SKU_Manager.MainForms
         /* the event for shop ca button click that export shop ca export tables */
         private void shopCaButton_Click(object sender, EventArgs e)
         {
-            // local field for excel export and formatting
-            XlExport export;
-            try
+            if (Properties.Settings.Default.StockQuantityTable != null)
             {
-                export = new XlExport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string[] names = new string[4];
-            names[0] = "Shop.ca Bag Attributes Sheet";
-            names[1] = "Shop.ca Base Data Sheet";
-            names[2] = "Shop.ca Inventory Sheet";
-            names[3] = "Shop.ca Price List Sheet";
-            int[][] textIndex = new int[4][];
-            int[] index1 = { 3, 28 };
-            textIndex[0] = index1;
-            textIndex[1] = index1;
-            int[] index2 = { 3 };
-            textIndex[2] = index2;
-            textIndex[3] = index2;
-
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                ds.Reset();
-
-                if (Properties.Settings.Default.ShopCaBagTable != null && Properties.Settings.Default.ShopCaBaseDataTable != null && Properties.Settings.Default.ShopCaInventoryTable != null &&  Properties.Settings.Default.ShopCaPriceTable != null)   // tables have already been saved
+                // local field for excel export and formatting
+                XlExport export;
+                try
                 {
-                    ds.Tables.Add(Properties.Settings.Default.ShopCaBagTable);
-                    ds.Tables.Add(Properties.Settings.Default.ShopCaBaseDataTable);
-                    ds.Tables.Add(Properties.Settings.Default.ShopCaInventoryTable);
-                    ds.Tables.Add(Properties.Settings.Default.ShopCaPriceTable);
-
-                    // export the excel files               
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export = new XlExport();
                 }
-                else    // load the tables
+                catch (Exception ex)
                 {
-                    exportTables = new ExportTable[4];
-                    exportTables[0] = new ShopCaBagExportTable();
-                    exportTables[1] = new ShopCaBaseExportTable();
-                    exportTables[2] = new ShopCaInventoryExportTable();
-                    exportTables[3] = new ShopCaPriceExportTable();
-                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
-                    form.ShowDialog(this);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string[] names = new string[4];
+                names[0] = "Shop.ca Bag Attributes Sheet";
+                names[1] = "Shop.ca Base Data Sheet";
+                names[2] = "Shop.ca Inventory Sheet";
+                names[3] = "Shop.ca Price List Sheet";
+                int[][] textIndex = new int[4][];
+                int[] index1 = { 3, 28 };
+                textIndex[0] = index1;
+                textIndex[1] = index1;
+                int[] index2 = { 3 };
+                textIndex[2] = index2;
+                textIndex[3] = index2;
 
-                    if (form.Complete)  // the tables have complete
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    ds.Reset();
+
+                    if (Properties.Settings.Default.ShopCaBagTable != null && Properties.Settings.Default.ShopCaBaseDataTable != null && Properties.Settings.Default.ShopCaInventoryTable != null && Properties.Settings.Default.ShopCaPriceTable != null)   // tables have already been saved
                     {
-                        // get the data
-                        ds = form.Tables;
+                        ds.Tables.Add(Properties.Settings.Default.ShopCaBagTable);
+                        ds.Tables.Add(Properties.Settings.Default.ShopCaBaseDataTable);
+                        ds.Tables.Add(Properties.Settings.Default.ShopCaInventoryTable);
+                        ds.Tables.Add(Properties.Settings.Default.ShopCaPriceTable);
+
+                        // export the excel files               
                         export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
-                    else    // user close the form early 
-                        return;
+                    else    // load the tables
+                    {
+                        exportTables = new ExportTable[4];
+                        exportTables[0] = new ShopCaBagExportTable();
+                        exportTables[1] = new ShopCaBaseExportTable();
+                        exportTables[2] = new ShopCaInventoryExportTable();
+                        exportTables[3] = new ShopCaPriceExportTable();
+                        ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                        form.ShowDialog(this);
 
-                    Properties.Settings.Default.ShopCaBagTable = ds.Tables[0];
-                    Properties.Settings.Default.ShopCaBaseDataTable = ds.Tables[1];
-                    Properties.Settings.Default.ShopCaInventoryTable = ds.Tables[2];
-                    Properties.Settings.Default.ShopCaPriceTable = ds.Tables[3];
+                        if (form.Complete)  // the tables have complete
+                        {
+                            // get the data
+                            ds = form.Tables;
+                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        }
+                        else    // user close the form early 
+                            return;
+
+                        Properties.Settings.Default.ShopCaBagTable = ds.Tables[0];
+                        Properties.Settings.Default.ShopCaBaseDataTable = ds.Tables[1];
+                        Properties.Settings.Default.ShopCaInventoryTable = ds.Tables[2];
+                        Properties.Settings.Default.ShopCaPriceTable = ds.Tables[3];
+                    }
+
+                    showExportMessage(saveFileDialog.FileName);
                 }
-
-                showExportMessage(saveFileDialog.FileName);
             }
+            else
+                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         } 
 
         /* the event for giant tiger button click that export ginat tiger export table */
@@ -1262,6 +1267,65 @@ namespace SKU_Manager.MainForms
                     }
 
                     Properties.Settings.Default.DistributorCentralTable = ds.Tables[0];
+                }
+
+                showExportMessage(saveFileDialog.FileName);
+            }
+        }
+
+        /* the event for sage button click that export sage table */
+        private void sageButton_Click(object sender, EventArgs e)
+        {
+            // local field for excel export
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // local fields for formatting
+                ds.Reset();
+                string[] names = new string[1];
+                names[0] = "Sage Sheet";
+                int[][] textIndex = new int[1][];
+                int[] index = { 1 };
+                textIndex[0] = index;
+
+                if (Properties.Settings.Default.SageTable != null)   // tables have already been saved
+                {
+                    ds.Tables.Add(Properties.Settings.Default.SageTable);
+
+                    // export the excel files      
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                }
+                else    // load the tables
+                {
+                    exportTables = new ExportTable[1];
+                    exportTables[0] = new SageExportTable();
+                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                    form.ShowDialog(this);
+
+                    if (form.Complete)  // the tables have complete
+                    {
+                        // get the data
+                        ds = form.Tables;
+
+                        // export the excel files   
+                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    }
+                    else    // user close the form early 
+                    {
+                        return;
+                    }
+
+                    Properties.Settings.Default.SageTable = ds.Tables[0];
                 }
 
                 showExportMessage(saveFileDialog.FileName);

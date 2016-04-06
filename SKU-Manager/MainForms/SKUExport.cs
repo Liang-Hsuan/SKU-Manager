@@ -138,7 +138,10 @@ namespace SKU_Manager.MainForms
         /* the event for shop.ca button click */
         private void shopCaButton_Click(object sender, EventArgs e)
         {
-            new ShopCaView().ShowDialog(this);
+            if (Properties.Settings.Default.StockQuantityTable != null)
+                new ShopCaView().ShowDialog(this);
+            else
+                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for giant tiger button click */
@@ -173,6 +176,12 @@ namespace SKU_Manager.MainForms
         private void distributorCentralButton_Click(object sender, EventArgs e)
         {
             new DistributorCentralView().ShowDialog(this);
+        }
+
+        /* the event for sage button click */
+        private void sageButton_Click(object sender, EventArgs e)
+        {
+            new SageView().ShowDialog(this);
         }
         #endregion
 

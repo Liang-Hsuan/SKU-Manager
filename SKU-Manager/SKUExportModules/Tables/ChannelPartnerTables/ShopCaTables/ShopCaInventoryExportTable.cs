@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
-using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 {
@@ -39,7 +38,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "shipping comments");                              // 13
 
             // local field for inserting data to table
-            Product product = new Product();
+            DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
             mainTable.BeginLoadData();
@@ -49,11 +48,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             {
                 var row = mainTable.NewRow();
 
-                row[0] = "ashlin_bpg";                // brand
-                row[1] = "nishis_boutique";           // store name
-                row[2] = sku;                         // sku
-                row[3] = product.GetQuantity(sku);    // quantity
-                row[8] = true;                        // backorderable
+                row[0] = "ashlin_bpg";                               // brand
+                row[1] = "nishis_boutique";                          // store name
+                row[2] = sku;                                        // sku
+                row[3] = table.Select("SKU='" + sku + "'")[0][2];    // quantity
+                row[8] = true;                                       // backorderable
 
                 mainTable.Rows.Add(row);         
                 progress++;

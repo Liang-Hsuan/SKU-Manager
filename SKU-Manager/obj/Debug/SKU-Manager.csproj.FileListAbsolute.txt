@@ -677,3 +677,4 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdatePhotoForm.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUPCForm.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
+C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.SageView.resources

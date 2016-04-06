@@ -142,6 +142,8 @@
     <Compile Include="AdminModules\DirectUpdate\ModifyChannelPricing.Designer.cs">
       <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminModules\ImportUpdate\Amazon.cs" />
+    <Compile Include="AdminModules\ImportUpdate\ImportUpdate.cs" />
     <Compile Include="AdminModules\ImportUpdate\Sears.cs" />
     <Compile Include="AdminModules\ImportUpdate\ShopCa.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryTable.cs" />
@@ -227,6 +229,12 @@
     <Compile Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.Designer.cs">
       <DependentUpon>DistributorCentralView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SKUExportModules\PromotionalAssociationExports\SageView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SKUExportModules\PromotionalAssociationExports\SageView.Designer.cs">
+      <DependentUpon>SageView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SKUExportModules\PromotionalAssociationExports\UducatView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +259,7 @@
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetImprintExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ExportTableFast.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
+    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\SageExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
     <Compile Include="SplashModules\Online.cs">
       <SubType>Form</SubType>
@@ -635,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.resx">
       <DependentUpon>DistributorCentralView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\SageView.resx">
+      <DependentUpon>SageView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\UducatView.resx">
       <DependentUpon>UducatView.cs</DependentUpon>

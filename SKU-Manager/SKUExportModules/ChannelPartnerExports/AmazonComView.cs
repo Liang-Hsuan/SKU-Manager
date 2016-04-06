@@ -19,7 +19,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private bool complete;  // default set to false
 
         // initialize AmazonCATable object
-        private readonly AmazonCAExportTable amazonComTable = new AmazonCAExportTable();
+        private readonly AmazonComExportTable amazonComTable = new AmazonComExportTable();
 
         /* constructor that initialize graphic components */
         public AmazonComView()

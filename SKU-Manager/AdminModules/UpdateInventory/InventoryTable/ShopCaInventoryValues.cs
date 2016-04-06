@@ -17,6 +17,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 
         // minor fields
         public bool PurchaseOrder { get; set; }
+        public bool Discontinued { get; set; }
         public DateTime RestockDate { get; set; }
         public int ReorderQuantity { get; set; }
 
@@ -30,6 +31,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             Quantity = 0;
 
             PurchaseOrder = false;
+            Discontinued = false;
             RestockDate = DateTime.Today;
             ReorderQuantity = 0;
 
@@ -37,12 +39,13 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         }
 
         /* second constructor that accept all parameters as argument */
-        public ShopCaInventoryValues(string sku, int quantity, bool purchaseOrder, DateTime restockDate, int reorderQuantity, string bpItemNumber)
+        public ShopCaInventoryValues(string sku, int quantity, bool purchaseOrder, bool discontinued, DateTime restockDate, int reorderQuantity, string bpItemNumber)
         {
             Sku = sku;
             Quantity = quantity;
 
             PurchaseOrder = purchaseOrder;
+            Discontinued = discontinued;
             RestockDate = restockDate;
             ReorderQuantity = reorderQuantity;
 

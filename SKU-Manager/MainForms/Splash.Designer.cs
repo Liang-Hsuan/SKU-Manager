@@ -138,7 +138,7 @@
             this.topButton3.Name = "topButton3";
             this.topButton3.Size = new System.Drawing.Size(179, 61);
             this.topButton3.TabIndex = 7;
-            this.topButton3.Text = "MODIFY DISCOUNT MATRIX";
+            this.topButton3.Text = "ADMIN TABLE";
             this.topButton3.UseVisualStyleBackColor = false;
             this.topButton3.Click += new System.EventHandler(this.topButton3_Click);
             // 

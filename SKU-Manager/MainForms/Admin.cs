@@ -20,6 +20,7 @@ namespace SKU_Manager.MainForms
         // field for channel new import 
         private Sears sears;
         private ShopCa shopCa;
+        private Amazon amazon;
 
         /* constructor that initialize all graphic components */
         public Admin(IWin32Window parent)
@@ -53,6 +54,25 @@ namespace SKU_Manager.MainForms
         private void modifyHtsButton_Click(object sender, EventArgs e)
         {
             new UpdateHTS().ShowDialog(this);
+        }
+        #endregion
+
+        #region Amazon Event
+        private void amazonButton_Click(object sender, EventArgs e)
+        {
+            excelButton.Visible = false;
+            refreshButton.Visible = false;
+            inventoryButton.Visible = false;
+            loadingLabel.Visible = false;
+        }
+
+        private void amazonButton_MouseHover(object sender, EventArgs e)
+        {
+            loadingLabel.Text = "Amazon";
+            loadingLabel.Visible = true;
+            excelButton.Visible = true;
+            refreshButton.Visible = true;
+            inventoryButton.Visible = true;
         }
         #endregion
 
@@ -103,6 +123,7 @@ namespace SKU_Manager.MainForms
         private void excelButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog(this) != DialogResult.OK) return;
+
             switch (loadingLabel.Text)
             {
                 case "Sears":
@@ -118,6 +139,7 @@ namespace SKU_Manager.MainForms
                         return;
                     }
                     shopCa = null;
+                    amazon = null;
                     break;
                 case "Shop.ca":
                     // shop.ca case
@@ -132,6 +154,22 @@ namespace SKU_Manager.MainForms
                         return;
                     }
                     sears = null;
+                    amazon = null;
+                    break;
+                case "Amazon":
+                    // amazon case
+                    try
+                    {
+                        amazon = new Amazon();
+                        new Thread(() => amazon.update(openFileDialog.FileName)).Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    sears = null;
+                    shopCa = null;
                     break;
             }
 
@@ -171,6 +209,8 @@ namespace SKU_Manager.MainForms
                         break;
                     case "Shop.ca":
                         new ShopCaInventory().ShowDialog(this);
+                        break;
+                    case "Amazon":
                         break;
                 }
             }
@@ -231,6 +271,18 @@ namespace SKU_Manager.MainForms
                 }
                 else
                     loadingLabel.Text = shopCa.Current + " / " + shopCa.Total;
+            }
+            else if (amazon != null)
+            {
+                // amazon case
+                // check if updating is finish -> stop the timer and set text to nothing
+                if (amazon.Current >= amazon.Total)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = "Amazon";
+                }
+                else
+                    loadingLabel.Text = amazon.Current + " / " + amazon.Total;
             }
         }
     }

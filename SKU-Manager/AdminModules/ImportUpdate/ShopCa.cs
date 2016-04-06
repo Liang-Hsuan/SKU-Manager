@@ -15,18 +15,8 @@ namespace SKU_Manager.AdminModules.ImportUpdate
     /* 
      * A class that deal with shop.ca inventory import and update the database
      */
-    public class ShopCa
+    public class ShopCa : ImportUpdate
     {
-        // field for database connection
-        private readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
-
-        // field for sftp connection
-        private readonly Sftp sftp;
-
-        // field for showing the progress
-        public int Total { get; private set; } = 1;
-        public int Current { get; private set; }
-
         /* constructor that initialize sftp object */
         public ShopCa()
         {
@@ -44,7 +34,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update new shop.ca merchant sku from the excel import */
-        public void update(string xlPath)
+        public override void update(string xlPath)
         {
             // fields for excel sheet reading
             Excel.Application xlApp;
@@ -96,19 +86,23 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                          "supplier_id\tstore_name\tsku\tquantity\tout_of_stock_quantity\trestock_date\tstandard_fulfillment_latency\tpriority_fulfillment_latency\tbackorderable\treturn_not_desired\tinventory_as_of_date\texternal_inventory_id\tshipping_comments\n";
             foreach (ShopCaInventoryValues value in list)
             {
-                csv += value.SupplierId + '\t' + value.StoreName + '\t' + value.Sku + '\t' + value.Quantity + '\t';
+                csv += value.SupplierId + '\t' + value.StoreName + '\t' + value.Sku + '\t';
 
-                // the case if it has been purchase ordered
-                if (value.PurchaseOrder)
+                if (value.Discontinued)
                 {
-                    csv += '\t' + value.RestockDate.ToString("yyyy-MM-dd") + "\t\t\t\t\t\t\t\n";
+                    // dicontinue the sku
+                    csv += "-1\t\n"; 
+                }
+                else if (value.PurchaseOrder)
+                {
+                    csv += value.Quantity + "\t\t" + value.RestockDate.ToString("yyyy-MM-dd") + "\t\t\t\t\t\t\t\n";
 
                     // adding item to the lists
                     purchaseList.Add(value.BpItemNumber, value.ReorderQuantity);
                     skuList.Add(value.Sku);
                 }
                 else
-                    csv += "\t\t\t\t\t\t\t\t\n";
+                    csv += "\t\t\t\t\t\t\t\t\t\n";
             }
 
             // export xml file
@@ -152,30 +146,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             new Product().postOrder(purchaseList, 15, poNumber);
         }
 
-        #region Supporting Methods
-        /* a supporting method that release the excel object */
-        private static void releaseObject(object obj)
+        /* a PUBLIC supporting method that set the given sku to discontine in database for shop.ca */
+        public override void discontinue(string sku)
         {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch
-            {
-                obj = null;
-            }
-            finally
-            {
-                GC.Collect();
-            }
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
-
-        /* a supporting method that create the po number for the channel */
-        private static string createPoNumber(string channelNo)
-        {
-            return channelNo + '-' + DateTime.Today.ToString("yyyyMMdd");
-        }
-        #endregion
     }
 }

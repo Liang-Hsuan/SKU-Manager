@@ -174,7 +174,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             {
                 ArrayList list = getData(sku);
 
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "Ashlin®" + list[0];                      // item name
                 row[2] = "Ashlin®";                                // brand name

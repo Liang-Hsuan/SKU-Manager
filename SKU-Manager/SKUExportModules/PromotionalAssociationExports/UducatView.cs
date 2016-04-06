@@ -54,6 +54,9 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             progressLabel.Visible = false;
 
             done = true;
+
+            // set first column to freeze 
+            dataGridView.Columns[0].Frozen = true;
         }
 
         /* the event for timer that make the visual of loading promopt */

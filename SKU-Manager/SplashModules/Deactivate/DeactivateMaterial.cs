@@ -93,7 +93,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             // store data to the table
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended Material_Online, Material_Online_FR " 
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended, Material_Online, Material_Online_FR " 
                                                           + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
                 connection.Open();
                 adapter.Fill(table);

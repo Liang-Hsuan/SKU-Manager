@@ -42,6 +42,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             addColumn(mainTable, "Reorder Quantity", false);
             addColumn(mainTable, "Reorder Level", false);
             addColumn(mainTable, "Purchase Order", true);
+            addColumn(mainTable, "Discontinue", true);
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
@@ -66,6 +67,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 }
                 catch { }
                 row[5] = false;                               // purchase order
+                row[6] = false;                               // discontinue
 
                 mainTable.Rows.Add(row);
             }

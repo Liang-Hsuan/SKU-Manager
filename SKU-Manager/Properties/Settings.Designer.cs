@@ -401,5 +401,16 @@ namespace SKU_Manager.Properties {
                 this["ChannelNewListingTable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable SageTable {
+            get {
+                return ((global::System.Data.DataTable)(this["SageTable"]));
+            }
+            set {
+                this["SageTable"] = value;
+            }
+        }
     }
 }

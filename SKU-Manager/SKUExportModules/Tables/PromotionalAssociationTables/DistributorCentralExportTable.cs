@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 {
     /*
-     * A class that return magento export table
+     * A class that return distributor central export table
      */
     public class DistributorCentralExportTable : ExportTable
     {

@@ -47,16 +47,19 @@ namespace SKU_Manager.SupportingClasses
             SqlCommand command = new SqlCommand("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\'", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
             alt += reader.GetString(0) + " ";
             reader.Close();
 
             command.CommandText = "SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\'";
             reader = command.ExecuteReader();
+            reader.Read();
             alt += reader.GetString(0) + ", ";
             reader.Close();
 
             command.CommandText = "SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\'";
             reader = command.ExecuteReader();
+            reader.Read();
             alt += reader.GetString(0);
             connection.Close();
 

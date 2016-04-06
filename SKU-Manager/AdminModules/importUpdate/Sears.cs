@@ -15,18 +15,8 @@ namespace SKU_Manager.AdminModules.ImportUpdate
     /* 
      * A class that deal with sears inventory import and update the database
      */
-    public class Sears
+    public class Sears : ImportUpdate
     {
-        // field for database connection
-        private readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
-
-        // field for sftp connection
-        private readonly Sftp sftp;
-
-        // field for showing the progress
-        public int Total { get; private set; } = 1;
-        public int Current { get; private set; }
-
         /* constructor that initialize sftp object */
         public Sears()
         {
@@ -43,7 +33,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update new sears merchant sku from the excel import */
-        public void update(string xlPath)
+        public override void update(string xlPath)
         {
             // fields for excel sheet reading
             Excel.Application xlApp;
@@ -101,7 +91,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                        "<qtyonhand>" + value.QtyOnHand + "</qtyonhand>";
                 if (value.Discontinued)
                 {
-                    // dicontinue the sku in database
+                    // dicontinue the sku
                     xml += "<available>No</available>" +
                            "<discontinued_date>" + DateTime.Today.ToString("yyyyMMdd") + "</discontinued_date>";
                 }
@@ -162,39 +152,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             new Product().postOrder(purchaseList, 1, poNumber);
         }
 
-        #region Supporting Method
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
-        public void discontinue(string sku)
+        public override void discontinue(string sku)
         {
             SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
         }
-
-        /* a supporting method that create the po number for the channel */
-        private static string createPoNumber(string channelNo)
-        {
-            return channelNo + '-' + DateTime.Today.ToString("yyyyMMdd");
-        }
-
-        /* a supporting method that release the excel object */
-        private static void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch
-            {
-                obj = null;
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
-        #endregion
     }
 }

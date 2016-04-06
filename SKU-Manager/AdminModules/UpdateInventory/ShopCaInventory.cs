@@ -94,8 +94,13 @@ namespace SKU_Manager.AdminModules.UpdateInventory
 
             foreach (DataRow row in table.Rows)
             {
+                // check the discontinue item to udpate database
+                bool discontinue = Convert.ToBoolean(row[6]);
+                if (discontinue)
+                    shopCa.discontinue(row[0].ToString());
+
                 if (row[1].ToString() == "") continue;
-                ShopCaInventoryValues value = new ShopCaInventoryValues(row[0].ToString(), Convert.ToInt32(row[2]), Convert.ToBoolean(row[5]), 
+                ShopCaInventoryValues value = new ShopCaInventoryValues(row[0].ToString(), Convert.ToInt32(row[2]), Convert.ToBoolean(row[5]), discontinue,
                                               DateTime.Today.AddDays(Convert.ToInt32(availableDaysUpdown.Value)), Convert.ToInt32(row[3]), row[1].ToString());
                 list.Add(value);
             }
