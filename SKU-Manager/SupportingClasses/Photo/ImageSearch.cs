@@ -16,7 +16,7 @@ namespace SKU_Manager.SupportingClasses.Photo
 
         #region Get Image
         /* return all pure product image */
-        public string[] getImage(string sku)
+        public string[] GetImage(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
@@ -40,7 +40,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* return all group product image */
-        public string[] getGroup(string sku)
+        public string[] GetGroup(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
@@ -64,7 +64,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* return all model product image */
-        public string[] getModel(string sku)
+        public string[] GetModel(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
@@ -88,7 +88,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* return all template product image */
-        public string[] getTemplate(string sku)
+        public string[] GetTemplate(string sku)
         {
             // initialize the template directory 
             const string templateDirectory = START_DIR + @"\1_DESIGN TEMPLATE LAYOUTS";
@@ -100,43 +100,43 @@ namespace SKU_Manager.SupportingClasses.Photo
 
         #region Get URI
         /* return all pure product image in uri form */
-        public string[] getImageUri(string sku)
+        public string[] GetImageUri(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return getImage(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetImage(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
         }
 
         /* return all group product image in uri form */
-        public string[] getGroupUri(string sku)
+        public string[] GetGroupUri(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return getGroup(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetGroup(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
         }
 
         /* return all model product image in uri form */
-        public string[] getModelUri(string sku)
+        public string[] GetModelUri(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return getModel(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetModel(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
         }
 
         /* return all template product image in uri form */
-        public string[] getTemplateUri(string sku)
+        public string[] GetTemplateUri(string sku)
         {
             // get the design service code for the product
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return getTemplate(sku).Select(name => DROPBOX_URI + "1_DESIGN%20TEMPLATE%20LAYOUTS" + prefix + "/" + name).ToArray();
+            return GetTemplate(sku).Select(name => DROPBOX_URI + "1_DESIGN%20TEMPLATE%20LAYOUTS" + prefix + "/" + name).ToArray();
         }
         #endregion
     }

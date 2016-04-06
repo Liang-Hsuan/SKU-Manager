@@ -34,7 +34,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // local field for inserting data to table
             DataRow row;
             Product product = new Product();
-            List<Values> list = product.getStockList();
+            List<Values> list = product.GetStockList();
             bool found = false;
 
             // start load data

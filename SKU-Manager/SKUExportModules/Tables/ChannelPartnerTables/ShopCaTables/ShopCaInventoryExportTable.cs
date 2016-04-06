@@ -52,7 +52,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[0] = "ashlin_bpg";                // brand
                 row[1] = "nishis_boutique";           // store name
                 row[2] = sku;                         // sku
-                row[3] = product.getQuantity(sku);    // quantity
+                row[3] = product.GetQuantity(sku);    // quantity
                 row[8] = true;                        // backorderable
 
                 mainTable.Rows.Add(row);         

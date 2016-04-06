@@ -19,11 +19,11 @@ namespace SKU_Manager.SupportingClasses.Photo
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         // fields for getting progress
-        public int Progress { get; private set; } = 0;
+        public int Progress { get; private set; }
         public int Total => skuList.Count;
 
         /* method that add existing sku image with upc code */
-        public void addUPC(string sku, string upc)
+        public void AddUpc(string sku, string upc)
         {
             // local supporting fields
             string prefix = sku.Substring(0, sku.IndexOf('-'));
@@ -45,7 +45,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* update all the current existing sku image with a upc code image */
-        public void addGlobalUPC()
+        public void AddGlobalUpc()
         {
             // clear the list first
             skuList.Clear();
@@ -71,8 +71,8 @@ namespace SKU_Manager.SupportingClasses.Photo
                 if (upcCode[0] != "" && upcCode[1] != "")
                 {
                     // add image for 9 and 10 digit upc
-                    addUPC(sku, upcCode[0]);
-                    addUPC(sku, upcCode[1]);
+                    AddUpc(sku, upcCode[0]);
+                    AddUpc(sku, upcCode[1]);
 
                     Progress++;
                 }

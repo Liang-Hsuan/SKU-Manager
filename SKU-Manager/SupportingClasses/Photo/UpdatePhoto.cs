@@ -33,16 +33,16 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* update all photo and put them in database */
-        public void startUpdate()
+        public void StartUpdate()
         {
             // puting uri to database by looping through the list (getting sku name list)
             foreach (string sku in skuList)
             {
                 // get uri array
-                string[] image = imageSearch.getImageUri(sku);
-                string[] group = imageSearch.getGroupUri(sku);
-                string[] model = imageSearch.getModelUri(sku);
-                string[] template = imageSearch.getTemplateUri(sku);
+                string[] image = imageSearch.GetImageUri(sku);
+                string[] group = imageSearch.GetGroupUri(sku);
+                string[] model = imageSearch.GetModelUri(sku);
+                string[] template = imageSearch.GetTemplateUri(sku);
 
                 // start update
                 putImageInDatabase(sku, image, group, model, template);
@@ -52,7 +52,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* put the given image uri to database */
-        private void putImageInDatabase(string sku, string[] imageUri, string[] groupUri, string[] modelUri, string[] templateUri)
+        private void putImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

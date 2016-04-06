@@ -575,28 +575,28 @@ namespace SKU_Manager.SplashModules.Add
             sku = skuCodeTextbox.Text;
 
             // search images and generate uri that assign to image fields
-            string[] imageCopy = imageSearch.getImageUri(sku);
+            string[] imageCopy = imageSearch.GetImageUri(sku);
             foreach (string uri in imageCopy) // get the value that exist
                 image.Add(uri);
             int j = 10 - imageCopy.Length;    // get the number of value missing, add them
             for (int i = 0; i < j; i++)
                 image.Add("");
 
-            string[] groupCopy = imageSearch.getGroupUri(sku);
+            string[] groupCopy = imageSearch.GetGroupUri(sku);
             foreach (string uri in groupCopy) // get the value that exist
                 group.Add(uri);
             j = 5 - groupCopy.Length;        // get the number of value missing, add them
             for (int i = 0; i < j; i++)
                 group.Add("");
 
-            string[] modelCopy = imageSearch.getModelUri(sku);
+            string[] modelCopy = imageSearch.GetModelUri(sku);
             foreach (string uri in modelCopy) // get the value that exist
                 model.Add(uri);
             j = 5 - modelCopy.Length;         // get the number of value missing, add them
             for (int i = 0; i < j; i++)
                 model.Add("");
 
-            string[] templateCopy = imageSearch.getTemplateUri(sku);
+            string[] templateCopy = imageSearch.GetTemplateUri(sku);
             foreach (string uri in templateCopy) // get the value that exist
                 template.Add(uri);
             j = 2 - templateCopy.Length;         // get the number of value missing, add them
@@ -611,14 +611,14 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // addition fields for adding upc image
-            UPC upc = new UPC();
+            Upc upc = new Upc();
             upcCode9 = upc.getUPC();
             upcCode10 = upc.getUPC10(upcCode9);
 
             // adding upc image
             ImageReplace imageReplace = new ImageReplace();
-            imageReplace.addUPC(sku, upcCode9);
-            imageReplace.addUPC(sku, upcCode10);
+            imageReplace.AddUpc(sku, upcCode9);
+            imageReplace.AddUpc(sku, upcCode10);
 
             // assign textboxes to textbox holders
             imageTextbox[0] = image1Textbox;
@@ -732,7 +732,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (image[i] == "")
                     imageAlt[i] = "";
                 else
-                    imageAlt[i] = AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    imageAlt[i] = AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -742,7 +742,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (group[i] == "")
                     groupAlt[i] = "";
                 else
-                    groupAlt[i] = "Group " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    groupAlt[i] = "Group " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -752,7 +752,7 @@ namespace SKU_Manager.SplashModules.Add
                 if (model[i] == "")
                     modelAlt[i] = "";
                 else
-                    modelAlt[i] = "Model " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    modelAlt[i] = "Model " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // simulate progress 70% ~ 90%

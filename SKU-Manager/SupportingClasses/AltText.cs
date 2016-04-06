@@ -12,7 +12,7 @@ namespace SKU_Manager.SupportingClasses
         private static readonly SqlConnection connection =  new SqlConnection(Properties.Settings.Default.Designcs);
 
         /* method that return the alt text from the given sku -> the sku already exist */
-        public static string getAltWithSkuExist(string sku)
+        public static string GetAltWithSkuExist(string sku)
         {
             // local fields for generating alt text
             string alt = "Ashlin® ";
@@ -33,10 +33,9 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* method that return alt text from the given sku -> the sku does not exist */
-        public static string getAltWithSkuNotExist(string sku)
+        public static string GetAltWithSkuNotExist(string sku)
         {
             // local fields for storing data
-            DataTable table = new DataTable();
             string alt = "Ashlin® ";
 
             // allocating elemets from sku
@@ -45,21 +44,21 @@ namespace SKU_Manager.SupportingClasses
             string material = firstTwo.Substring(firstTwo.IndexOf('-') + 1);
             string color = sku.Substring(sku.LastIndexOf('-') + 1);
 
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\'", connection);
             connection.Open();
-            adapter.Fill(table);
-            alt += table.Rows[0][0] + " ";
-            table.Reset();
+            SqlDataReader reader = command.ExecuteReader();
+            alt += reader.GetString(0) + " ";
+            reader.Close();
 
-            adapter = new SqlDataAdapter("SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\';", connection);
-            adapter.Fill(table);
-            alt += table.Rows[0][0] + ", ";
-            table.Reset();
+            command.CommandText = "SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\'";
+            reader = command.ExecuteReader();
+            alt += reader.GetString(0) + ", ";
+            reader.Close();
 
-            adapter = new SqlDataAdapter("SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\';", connection);
-            adapter.Fill(table);
+            command.CommandText = "SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\'";
+            reader = command.ExecuteReader();
+            alt += reader.GetString(0);
             connection.Close();
-            alt += table.Rows[0][0].ToString();
 
             return alt;
         }

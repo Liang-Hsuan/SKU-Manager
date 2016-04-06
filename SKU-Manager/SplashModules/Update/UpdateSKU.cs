@@ -838,7 +838,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // search images and generate uri that assign to image fields
             int index = 0;
-            string[] imageCopy = imageSearch.getImageUri(sku);
+            string[] imageCopy = imageSearch.GetImageUri(sku);
             foreach (string uri in imageCopy)    // get the value that exist
             {
                 image[index] = uri;
@@ -849,7 +849,7 @@ namespace SKU_Manager.SplashModules.Update
                 image[i] = "";
 
             index = 0;
-            string[] groupCopy = imageSearch.getGroupUri(sku);
+            string[] groupCopy = imageSearch.GetGroupUri(sku);
             foreach (string uri in groupCopy)    // get the value that exist
             {
                 group[index] = uri;
@@ -860,7 +860,7 @@ namespace SKU_Manager.SplashModules.Update
                 group[i] = "";
 
             index = 0;
-            string[] modelCopy = imageSearch.getModelUri(sku);
+            string[] modelCopy = imageSearch.GetModelUri(sku);
             foreach (string uri in modelCopy)    // get the value that exist
             {
                 model[index] = uri;
@@ -871,7 +871,7 @@ namespace SKU_Manager.SplashModules.Update
                 model[i] = "";
 
             index = 0;
-            string[] templateCopy = imageSearch.getTemplateUri(sku);
+            string[] templateCopy = imageSearch.GetTemplateUri(sku);
             foreach (string uri in templateCopy)    // get the value that exist
             {
                 template[index] = uri;
@@ -919,7 +919,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (image[index] == "")
                     imageAlt[index] = "";
                 else
-                    imageAlt[index] = AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    imageAlt[index] = AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -929,7 +929,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (group[index] == "")
                     groupAlt[index] = "";
                 else
-                    groupAlt[index] = "Group " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    groupAlt[index] = "Group " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
@@ -939,7 +939,7 @@ namespace SKU_Manager.SplashModules.Update
                 if (model[index] == "")
                     modelAlt[index] = "";
                 else
-                    modelAlt[index] = "Model " + AltText.getAltWithSkuNotExist(sku).Replace("'", "''");
+                    modelAlt[index] = "Model " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // simulate progress 20% ~ 30%
@@ -1067,13 +1067,13 @@ namespace SKU_Manager.SplashModules.Update
             // adding upc image
             if (upcCode9.Length < 11 && upcCode10.Length < 12)
             {
-                UPC upcCode = new UPC();
+                Upc upcCode = new Upc();
                 upcCode9 = upcCode.getUPC();
                 upcCode10 = upcCode.getUPC10(upcCode9);
             }
             ImageReplace imageReplace = new ImageReplace();
-            imageReplace.addUPC(sku, upcCode9);
-            imageReplace.addUPC(sku, upcCode10);
+            imageReplace.AddUpc(sku, upcCode9);
+            imageReplace.AddUpc(sku, upcCode10);
 
             try
             {

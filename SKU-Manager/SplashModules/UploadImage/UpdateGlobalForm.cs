@@ -49,8 +49,8 @@ namespace SKU_Manager.SplashModules.UploadImage
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
             // start doing work
-            photo.startUpdate();
-            upc.addGlobalUPC();
+            photo.StartUpdate();
+            upc.AddGlobalUpc();
         }
 
         /* after updating completed, close the form */

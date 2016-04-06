@@ -47,7 +47,7 @@ namespace SKU_Manager.SplashModules.UploadImage
         /* background worker for adding all upc photos */
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
-            image.addGlobalUPC();
+            image.AddGlobalUpc();
         }
 
         /* after adding completed, close the form */

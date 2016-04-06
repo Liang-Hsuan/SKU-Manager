@@ -47,7 +47,7 @@ namespace SKU_Manager.SplashModules.UploadImage
         /* background worker for updating image */
         private void backgroundWorkerUpdate_DoWork(object sender, DoWorkEventArgs e)
         {
-            photo.startUpdate();
+            photo.StartUpdate();
         }
 
         /* after updating completed, close the form */

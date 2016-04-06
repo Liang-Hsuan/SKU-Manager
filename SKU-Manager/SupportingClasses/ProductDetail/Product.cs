@@ -41,9 +41,9 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
         #region Get Methods
         /* a method that return the quantity of specific sku */
-        public int getQuantity(string sku)
+        public int GetQuantity(string sku)
         {
-            int quantity = get.getQuantity(sku);
+            int quantity = get.GetQuantity(sku);
 
             switch (quantity)
             {
@@ -51,7 +51,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                     do
                     {
                         Thread.Sleep(5000);
-                        quantity = getQuantity(sku);
+                        quantity = GetQuantity(sku);
                     } while (quantity == -2);
                     break;
                 case -3:
@@ -63,21 +63,21 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         }
 
         /* a method that return product id for given sku */
-        public string getProductId(string sku)
+        public string GetProductId(string sku)
         {
             // get product id
-            string id = get.getProductId(sku);
+            string id = get.GetProductId(sku);
             while (id == "Error")
             {
                 Thread.Sleep(5000);
-                id = get.getProductId(sku);
+                id = get.GetProductId(sku);
             }
 
             return id;
         }
 
         /* a method that return all the SkUs' stock information */
-        public List<Values> getStockList()
+        public List<Values> GetStockList()
         {
             // local field for sotring data, getting data, and parsing data
             List<Values> list = new List<Values>();
@@ -85,7 +85,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             // first step get response for all the sku - product id relation
-            string textJson = get.productTextResponse(starting);
+            string textJson = get.ProductTextResponse(starting);
 
             // check if there is more item
             while (textJson != "404")
@@ -107,21 +107,21 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
                 // proceed the request to next set of result
                 starting += 200;
-                textJson = get.productTextResponse(starting);
+                textJson = get.ProductTextResponse(starting);
                 while (textJson == "503")
                 {
                     Thread.Sleep(5000);
-                    textJson = get.productTextResponse(starting);
+                    textJson = get.ProductTextResponse(starting);
                 }
             }
 
             // get the last item's product id in order to get the stock we need for request
             string lastProductId = list[list.Count - 1].ProductId;
-            textJson = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
+            textJson = get.QuantityTextResponse(1000, Convert.ToInt32(lastProductId));
             while (textJson == "503")
             {
                 Thread.Sleep(5000);
-                textJson = get.quantityTextResponse(1000, Convert.ToInt32(lastProductId));
+                textJson = get.QuantityTextResponse(1000, Convert.ToInt32(lastProductId));
             }
 
             // deserialize json to key value
@@ -151,16 +151,16 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         public void postOrder(Dictionary<string,int> list, int channelId, string reference)
         {
             // post order and get the order id
-            string orderId = post.postPurchaseOrder(channelId, reference);
+            string orderId = post.PostPurchaseOrder(channelId, reference);
 
             // post row row into the order
             foreach (var item in list)
             {
-                string orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
+                string orderRowId = post.PostOrderRow(orderId, item.Key, item.Value);
                 while (orderRowId == "Error")
                 {
                     Thread.Sleep(5000);
-                    orderRowId = post.postOrderRow(orderId, item.Key, item.Value);
+                    orderRowId = post.PostOrderRow(orderId, item.Key, item.Value);
                 }
             }
         }
@@ -202,7 +202,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
             #region Deprecated
             /* get the product id from the sku */
-            public string getProductId(string sku)
+            public string GetProductId(string sku)
             {
                 string uriSearch = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product-search?SKU=" + sku;
 
@@ -235,10 +235,10 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             }
 
             /* a method that return the quantity of specific sku */
-            public int getQuantity(string sku)
+            public int GetQuantity(string sku)
             {
                 // get product id
-                string id = getProductId(sku);
+                string id = GetProductId(sku);
 
                 // the case if there is no such product
                 if (id == null)
@@ -283,7 +283,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             #endregion
 
             /* a method that get the text response from product search */
-            public string productTextResponse(int starting)
+            public string ProductTextResponse(int starting)
             {
                 // uri for getting all item on brightpearl
                 string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product/" + starting + "-" + (starting + 199);
@@ -317,7 +317,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             }
 
             /* a method that get the text response form quantity search */
-            public string quantityTextResponse(int starting, int ending)
+            public string QuantityTextResponse(int starting, int ending)
             {
                 // generate search uri
                 string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/warehouse-service/product-availability/" + starting + "-" + ending;
@@ -373,7 +373,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             }
 
             /* post purchase order to API */
-            public string postPurchaseOrder(int channelId, string reference)
+            public string PostPurchaseOrder(int channelId, string reference)
             {
                 const string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order";
 
@@ -413,7 +413,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             }
 
             /* post order row to API */
-            public string postOrderRow(string orderId, string productId, int quantity)
+            public string PostOrderRow(string orderId, string productId, int quantity)
             {
                 string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/order-service/order/" + orderId + "/row";
                 request = (HttpWebRequest)WebRequest.Create(uri);

@@ -6,7 +6,7 @@ namespace SKU_Manager.SupportingClasses
    /*
     * A class that find the lowest available upc code 
     */
-    public class UPC
+    public class Upc
     {
         // field that store upc code list
         private readonly List<double> upcList = new List<double>();
@@ -15,7 +15,7 @@ namespace SKU_Manager.SupportingClasses
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that add all the used upc code in the list */
-        public UPC()
+        public Upc()
         {
             // connect to database and get the upc
             using (SqlConnection connection = new SqlConnection(connectionString))
