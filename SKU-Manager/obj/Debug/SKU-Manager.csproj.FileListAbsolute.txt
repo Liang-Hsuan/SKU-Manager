@@ -635,7 +635,6 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.SKUExport.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.ActivePriceView.resources
-C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.StockQuantityView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
@@ -646,7 +645,6 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.MagentoView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
-C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.UpcExportView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.DistributorCentralView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.UducatView.resources
@@ -680,3 +678,6 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.SageView.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.ShopCaInventory.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.SageView.resources
+C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.StockQuantityView.resources
+C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
+C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources

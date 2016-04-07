@@ -17,12 +17,12 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public void update(string xlPath)
         {
             // fields for excel sheet reading
-            Application xlApp = new Excel.Application();
-            Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             // declare range in sheet
-            Range range = xlWorkSheet.UsedRange;
+            Excel.Range range = xlWorkSheet.UsedRange;
             Total = range.Rows.Count;
 
             // start updating database for new amazon sku

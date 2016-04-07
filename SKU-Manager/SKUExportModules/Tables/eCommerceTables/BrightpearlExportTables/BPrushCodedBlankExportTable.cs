@@ -77,10 +77,9 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 9; i++)
-            {
                 list[i] = reader.GetDouble(i);
-            }
             reader.Close();
+
             // [10] multiplier
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();

@@ -65,7 +65,7 @@
             this.activeLabel = new System.Windows.Forms.Label();
             this.activeCheckbox = new System.Windows.Forms.CheckBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.wmMerchantLabel = new System.Windows.Forms.Label();
+            this.asiXidLabel = new System.Windows.Forms.Label();
             this.wmManufacturerLabel = new System.Windows.Forms.Label();
             this.staplesLabel = new System.Windows.Forms.Label();
             this.costcoLabel = new System.Windows.Forms.Label();
@@ -151,7 +151,7 @@
             this.wmManufacturerTextbox = new System.Windows.Forms.TextBox();
             this.distributorCentralTextbox = new System.Windows.Forms.TextBox();
             this.promoMarketingTextbox = new System.Windows.Forms.TextBox();
-            this.wmMerchantTextbox = new System.Windows.Forms.TextBox();
+            this.asiXidTextbox = new System.Windows.Forms.TextBox();
             this.image1Textbox = new System.Windows.Forms.TextBox();
             this.image2Textbox = new System.Windows.Forms.TextBox();
             this.image3Textbox = new System.Windows.Forms.TextBox();
@@ -566,16 +566,16 @@
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 79;
             // 
-            // wmMerchantLabel
+            // asiXidLabel
             // 
-            this.wmMerchantLabel.AutoSize = true;
-            this.wmMerchantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wmMerchantLabel.ForeColor = System.Drawing.Color.Gray;
-            this.wmMerchantLabel.Location = new System.Drawing.Point(4, 889);
-            this.wmMerchantLabel.Name = "wmMerchantLabel";
-            this.wmMerchantLabel.Size = new System.Drawing.Size(145, 20);
-            this.wmMerchantLabel.TabIndex = 77;
-            this.wmMerchantLabel.Text = "WM Merchant SKU";
+            this.asiXidLabel.AutoSize = true;
+            this.asiXidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.asiXidLabel.ForeColor = System.Drawing.Color.Gray;
+            this.asiXidLabel.Location = new System.Drawing.Point(4, 889);
+            this.asiXidLabel.Name = "asiXidLabel";
+            this.asiXidLabel.Size = new System.Drawing.Size(142, 20);
+            this.asiXidLabel.TabIndex = 77;
+            this.asiXidLabel.Text = "ASI XID NUMBER";
             // 
             // wmManufacturerLabel
             // 
@@ -1554,13 +1554,13 @@
             this.promoMarketingTextbox.Size = new System.Drawing.Size(574, 20);
             this.promoMarketingTextbox.TabIndex = 74;
             // 
-            // wmMerchantTextbox
+            // asiXidTextbox
             // 
-            this.wmMerchantTextbox.Enabled = false;
-            this.wmMerchantTextbox.Location = new System.Drawing.Point(187, 889);
-            this.wmMerchantTextbox.Name = "wmMerchantTextbox";
-            this.wmMerchantTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmMerchantTextbox.TabIndex = 78;
+            this.asiXidTextbox.Enabled = false;
+            this.asiXidTextbox.Location = new System.Drawing.Point(187, 889);
+            this.asiXidTextbox.Name = "asiXidTextbox";
+            this.asiXidTextbox.Size = new System.Drawing.Size(574, 20);
+            this.asiXidTextbox.TabIndex = 78;
             // 
             // image1Textbox
             // 
@@ -1916,7 +1916,7 @@
             this.Controls.Add(this.image3Textbox);
             this.Controls.Add(this.image2Textbox);
             this.Controls.Add(this.image1Textbox);
-            this.Controls.Add(this.wmMerchantTextbox);
+            this.Controls.Add(this.asiXidTextbox);
             this.Controls.Add(this.promoMarketingTextbox);
             this.Controls.Add(this.distributorCentralTextbox);
             this.Controls.Add(this.wmManufacturerTextbox);
@@ -1981,7 +1981,7 @@
             this.Controls.Add(this.image1Label);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.wmMerchantLabel);
+            this.Controls.Add(this.asiXidLabel);
             this.Controls.Add(this.wmManufacturerLabel);
             this.Controls.Add(this.staplesLabel);
             this.Controls.Add(this.costcoLabel);
@@ -2087,7 +2087,7 @@
         private System.Windows.Forms.Label activeLabel;
         private System.Windows.Forms.CheckBox activeCheckbox;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Label wmMerchantLabel;
+        private System.Windows.Forms.Label asiXidLabel;
         private System.Windows.Forms.Label wmManufacturerLabel;
         private System.Windows.Forms.Label staplesLabel;
         private System.Windows.Forms.Label costcoLabel;
@@ -2173,7 +2173,7 @@
         private System.Windows.Forms.TextBox wmManufacturerTextbox;
         private System.Windows.Forms.TextBox distributorCentralTextbox;
         private System.Windows.Forms.TextBox promoMarketingTextbox;
-        private System.Windows.Forms.TextBox wmMerchantTextbox;
+        private System.Windows.Forms.TextBox asiXidTextbox;
         private System.Windows.Forms.TextBox image1Textbox;
         private System.Windows.Forms.TextBox image2Textbox;
         private System.Windows.Forms.TextBox image3Textbox;

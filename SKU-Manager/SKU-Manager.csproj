@@ -223,6 +223,12 @@
     <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.Designer.cs">
       <DependentUpon>SelectionViewTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="SKUExportModules\PromotionalAssociationExports\AsiView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SKUExportModules\PromotionalAssociationExports\AsiView.Designer.cs">
+      <DependentUpon>AsiView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +264,7 @@
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetBlankExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetImprintExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ExportTableFast.cs" />
+    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\AsiExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\SageExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
@@ -641,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\WalmartView.resx">
       <DependentUpon>WalmartView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\AsiView.resx">
+      <DependentUpon>AsiView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.resx">
       <DependentUpon>DistributorCentralView.cs</DependentUpon>

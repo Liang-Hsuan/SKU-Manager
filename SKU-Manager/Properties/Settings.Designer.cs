@@ -412,5 +412,16 @@ namespace SKU_Manager.Properties {
                 this["SageTable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable AsiTable {
+            get {
+                return ((global::System.Data.DataTable)(this["AsiTable"]));
+            }
+            set {
+                this["AsiTable"] = value;
+            }
+        }
     }
 }

@@ -337,6 +337,7 @@
             this.aslEspButton.TabIndex = 42;
             this.aslEspButton.Text = "ASI-ESP";
             this.aslEspButton.UseVisualStyleBackColor = false;
+            this.aslEspButton.Click += new System.EventHandler(this.aslEspButton_Click);
             // 
             // promoMarketingButton
             // 

@@ -1247,6 +1247,64 @@ namespace SKU_Manager.MainForms
             showExportMessage(saveFileDialog.FileName);
         }
 
+        /* the event for asi button click that export asi table */
+        private void aslEspButton_Click(object sender, EventArgs e)
+        {
+            // local field for excel export
+            XlExport export;
+            try
+            {
+                export = new XlExport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (saveFileDialog.ShowDialog(this) != DialogResult.OK) return;
+
+            // local fields for formatting
+            ds.Reset();
+            string[] names = new string[1];
+            names[0] = "ASI Sheet";
+            int[][] textIndex = new int[1][];
+            int[] index = { 3 };
+            textIndex[0] = index;
+
+            if (Properties.Settings.Default.AsiTable != null)   // tables have already been saved
+            {
+                ds.Tables.Add(Properties.Settings.Default.AsiTable);
+
+                // export the excel files      
+                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+            }
+            else    // load the tables
+            {
+                exportTables = new ExportTable[1];
+                exportTables[0] = new AsiExportTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete)  // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
+
+                    // export the excel files   
+                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                }
+                else    // user close the form early 
+                {
+                    return;
+                }
+
+                Properties.Settings.Default.AsiTable = ds.Tables[0];
+            }
+
+            showExportMessage(saveFileDialog.FileName);
+        }
+
         /* the event for sage button click that export sage table */
         private void sageButton_Click(object sender, EventArgs e)
         {

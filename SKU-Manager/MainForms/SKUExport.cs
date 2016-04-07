@@ -177,6 +177,12 @@ namespace SKU_Manager.MainForms
             new DistributorCentralView().ShowDialog(this);
         }
 
+        /* the event for asi-esp button click */
+        private void aslEspButton_Click(object sender, EventArgs e)
+        {
+            new AsiView().ShowDialog(this);
+        }
+
         /* the event for sage button click */
         private void sageButton_Click(object sender, EventArgs e)
         {

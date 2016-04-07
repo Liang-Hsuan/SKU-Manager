@@ -644,6 +644,7 @@
             this.aslEspButton.TabIndex = 42;
             this.aslEspButton.Text = "ASI-ESP";
             this.aslEspButton.UseVisualStyleBackColor = false;
+            this.aslEspButton.Click += new System.EventHandler(this.aslEspButton_Click);
             // 
             // sageButton
             // 
@@ -782,7 +783,7 @@
             this.brightPearlButton.UseVisualStyleBackColor = false;
             this.brightPearlButton.Click += new System.EventHandler(this.brightPearlButton_Click);
             // 
-            // SKUExport
+            // SkuExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

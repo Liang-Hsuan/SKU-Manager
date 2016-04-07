@@ -147,9 +147,9 @@
             this.usDutyTextbox = new System.Windows.Forms.TextBox();
             this.backgroundWorkerHTS = new System.ComponentModel.BackgroundWorker();
             this.wmManufacturerTextbox = new System.Windows.Forms.TextBox();
-            this.wmMerchantTextbox = new System.Windows.Forms.TextBox();
+            this.asiXidTextbox = new System.Windows.Forms.TextBox();
             this.wmManufacturerLabel = new System.Windows.Forms.Label();
-            this.wmMerchantLabel = new System.Windows.Forms.Label();
+            this.asiXidLabel = new System.Windows.Forms.Label();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
@@ -1350,14 +1350,14 @@
             this.wmManufacturerTextbox.Size = new System.Drawing.Size(574, 20);
             this.wmManufacturerTextbox.TabIndex = 67;
             // 
-            // wmMerchantTextbox
+            // asiXidTextbox
             // 
-            this.wmMerchantTextbox.BackColor = System.Drawing.SystemColors.Window;
-            this.wmMerchantTextbox.Location = new System.Drawing.Point(187, 825);
-            this.wmMerchantTextbox.MaxLength = 50;
-            this.wmMerchantTextbox.Name = "wmMerchantTextbox";
-            this.wmMerchantTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmMerchantTextbox.TabIndex = 69;
+            this.asiXidTextbox.BackColor = System.Drawing.SystemColors.Window;
+            this.asiXidTextbox.Location = new System.Drawing.Point(187, 825);
+            this.asiXidTextbox.MaxLength = 50;
+            this.asiXidTextbox.Name = "asiXidTextbox";
+            this.asiXidTextbox.Size = new System.Drawing.Size(574, 20);
+            this.asiXidTextbox.TabIndex = 69;
             // 
             // wmManufacturerLabel
             // 
@@ -1370,16 +1370,16 @@
             this.wmManufacturerLabel.TabIndex = 66;
             this.wmManufacturerLabel.Text = "WM Manufacturer SKU";
             // 
-            // wmMerchantLabel
+            // asiXidLabel
             // 
-            this.wmMerchantLabel.AutoSize = true;
-            this.wmMerchantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wmMerchantLabel.ForeColor = System.Drawing.Color.Gray;
-            this.wmMerchantLabel.Location = new System.Drawing.Point(4, 825);
-            this.wmMerchantLabel.Name = "wmMerchantLabel";
-            this.wmMerchantLabel.Size = new System.Drawing.Size(145, 20);
-            this.wmMerchantLabel.TabIndex = 68;
-            this.wmMerchantLabel.Text = "WM Merchant SKU";
+            this.asiXidLabel.AutoSize = true;
+            this.asiXidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.asiXidLabel.ForeColor = System.Drawing.Color.Gray;
+            this.asiXidLabel.Location = new System.Drawing.Point(4, 825);
+            this.asiXidLabel.Name = "asiXidLabel";
+            this.asiXidLabel.Size = new System.Drawing.Size(142, 20);
+            this.asiXidLabel.TabIndex = 68;
+            this.asiXidLabel.Text = "ASI XID NUMBER";
             // 
             // progressBar
             // 
@@ -1439,9 +1439,9 @@
             this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.wmMerchantLabel);
+            this.Controls.Add(this.asiXidLabel);
             this.Controls.Add(this.wmManufacturerLabel);
-            this.Controls.Add(this.wmMerchantTextbox);
+            this.Controls.Add(this.asiXidTextbox);
             this.Controls.Add(this.wmManufacturerTextbox);
             this.Controls.Add(this.usDutyTextbox);
             this.Controls.Add(this.usHtsCombobox);
@@ -1687,9 +1687,9 @@
         private System.Windows.Forms.TextBox usDutyTextbox;
         private System.ComponentModel.BackgroundWorker backgroundWorkerHTS;
         private System.Windows.Forms.TextBox wmManufacturerTextbox;
-        private System.Windows.Forms.TextBox wmMerchantTextbox;
+        private System.Windows.Forms.TextBox asiXidTextbox;
         private System.Windows.Forms.Label wmManufacturerLabel;
-        private System.Windows.Forms.Label wmMerchantLabel;
+        private System.Windows.Forms.Label asiXidLabel;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
         private System.Windows.Forms.CheckBox giftCheckbox;

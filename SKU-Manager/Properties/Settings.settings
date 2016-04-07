@@ -107,5 +107,8 @@
     <Setting Name="SageTable" Type="System.Data.DataTable" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="AsiTable" Type="System.Data.DataTable" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

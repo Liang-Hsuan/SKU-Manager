@@ -222,7 +222,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         #endregion
 
         /* a method that get all the sku that is active and have on shop ca with bag design */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
