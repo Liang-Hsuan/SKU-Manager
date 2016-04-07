@@ -15,11 +15,11 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         public UducatExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -190,7 +190,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[98] = list[3];                                       // keywords
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -201,10 +201,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND Design_Service_Code in ( " +
@@ -213,10 +213,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* method that get the data from given sku */

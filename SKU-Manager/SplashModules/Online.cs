@@ -12,8 +12,8 @@ namespace SKU_Manager.SplashModules
     public partial class Online : Form
     {
         // fields for storing description
-        public string English;
-        public string French;
+        public string English { get; private set; }
+        public string French { get; private set; }
 
         /* first constructor that initialize graphic components and the title of the online description belongs to */
         public Online(string title, string english, string french, Color color)
@@ -44,12 +44,11 @@ namespace SKU_Manager.SplashModules
             frenchTextbox.Text = french;
 
             // the case is disable -> set controls to disabled
-            if (!enable)
-            {
-                translateButton.Enabled = false;
-                englishTextbox.Enabled = false;
-                frenchTextbox.Enabled = false;
-            }
+            if (enable) return;
+
+            translateButton.Enabled = false;
+            englishTextbox.Enabled = false;
+            frenchTextbox.Enabled = false;
         }
 
         #region Translate

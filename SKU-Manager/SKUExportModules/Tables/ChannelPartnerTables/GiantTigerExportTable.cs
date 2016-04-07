@@ -14,11 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         public GiantTigerExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset the table just in case
             mainTable.Reset();
@@ -49,7 +49,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "Image 10 Path");                             // 23
 
             // local field for inserting data to table
-            DataTable table = getDataTable();
+            DataTable table = GetDataTable();
             double multiplier = getMultiplier();
 
             // start loading data
@@ -85,7 +85,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[22] = row[19];                                                  // image 10 path
 
                 mainTable.Rows.Add(newRow);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -95,24 +95,24 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data ( use the ones that have on walmart )
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_WALMART_CA != '' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* method that get the data from given sku */
-        protected override DataTable getDataTable()
+        protected override DataTable GetDataTable()
         {
             // local field for storing data
             DataTable table = new DataTable();

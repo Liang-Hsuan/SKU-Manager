@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
-using SKU_Manager.SKUExportModules.ActiveAttributeExport;
 using SKU_Manager.SKUExportModules.ActiveAttributeExports;
 using SKU_Manager.SKUExportModules.ChannelPartnerExports;
 using SKU_Manager.SKUExportModules.eCommerceExports;
@@ -10,13 +9,13 @@ using SKU_Manager.SKUExportModules.PromotionalAssociationExports;
 
 namespace SKU_Manager.MainForms
 {
-    public partial class SKUExport : Form
+    public partial class SkuExport : Form
     {
         // field for getting the root form
         private readonly IWin32Window parent;
 
         /* constructor that initialize all graphic components and its root form */
-        public SKUExport(IWin32Window parent)
+        public SkuExport(IWin32Window parent)
         {
             InitializeComponent();
 

@@ -30,7 +30,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         }
 
         /* the most major method for the class -> return table to the client */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case and set current to zero
             mainTable.Reset();

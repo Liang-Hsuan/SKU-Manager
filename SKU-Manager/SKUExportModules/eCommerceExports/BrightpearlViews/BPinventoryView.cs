@@ -73,42 +73,42 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[0] = exportTable[0].getTable();
+            table[0] = exportTable[0].GetTable();
         }
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[1] = exportTable[1].getTable();
+            table[1] = exportTable[1].GetTable();
         }
         private void backgroundWorker3_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[2] = exportTable[2].getTable();
+            table[2] = exportTable[2].GetTable();
         }
         private void backgroundWorker4_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[3] = exportTable[3].getTable();
+            table[3] = exportTable[3].GetTable();
         }
         private void backgroundWorker5_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[4] = exportTable[4].getTable();
+            table[4] = exportTable[4].GetTable();
         }
         private void backgroundWorker6_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[5] = exportTable[5].getTable();
+            table[5] = exportTable[5].GetTable();
         }
         private void backgroundWorker7_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[6] = exportTable[6].getTable();
+            table[6] = exportTable[6].GetTable();
         }
         private void backgroundWorker8_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[7] = exportTable[7].getTable();
+            table[7] = exportTable[7].GetTable();
         }
         #endregion
 
@@ -212,7 +212,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[0]--;
 
             // set progress
-            progressLabel1.Text = exportTable[0].progress + " / " + exportTable[0].Total;
+            progressLabel1.Text = exportTable[0].Progress + " / " + exportTable[0].Total;
 
             if (timeLeft[0] <= 0)
             {
@@ -227,7 +227,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[1]--;
 
             // set progress
-            progressLabel2.Text = exportTable[1].progress + " / " + exportTable[1].Total;
+            progressLabel2.Text = exportTable[1].Progress + " / " + exportTable[1].Total;
 
             if (timeLeft[1] <= 0)
             {
@@ -242,7 +242,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[2]--;
 
             // set progress
-            progressLabel3.Text = exportTable[2].progress + " / " + exportTable[2].Total;
+            progressLabel3.Text = exportTable[2].Progress + " / " + exportTable[2].Total;
 
             if (timeLeft[2] <= 0)
             {
@@ -257,7 +257,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[3]--;
 
             // set progress
-            progressLabel4.Text = exportTable[3].progress + " / " + exportTable[3].Total;
+            progressLabel4.Text = exportTable[3].Progress + " / " + exportTable[3].Total;
 
             if (timeLeft[3] <= 0)
             {
@@ -272,7 +272,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[4]--;
 
             // set progress
-            progressLabel5.Text = exportTable[4].progress + " / " + exportTable[4].Total;
+            progressLabel5.Text = exportTable[4].Progress + " / " + exportTable[4].Total;
 
             if (timeLeft[4] <= 0)
             {
@@ -287,7 +287,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[5]--;
 
             // set progress
-            progressLabel6.Text = exportTable[5].progress + " / " + exportTable[5].Total;
+            progressLabel6.Text = exportTable[5].Progress + " / " + exportTable[5].Total;
 
             if (timeLeft[5] <= 0)
             {
@@ -302,7 +302,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[6]--;
 
             // set progress
-            progressLabel7.Text = exportTable[6].progress + " / " + exportTable[6].Total;
+            progressLabel7.Text = exportTable[6].Progress + " / " + exportTable[6].Total;
 
             if (timeLeft[6] <= 0)
             {
@@ -317,7 +317,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             timeLeft[7]--;
 
             // set progress
-            progressLabel8.Text = exportTable[7].progress + " / " + exportTable[7].Total;
+            progressLabel8.Text = exportTable[7].Progress + " / " + exportTable[7].Total;
 
             if (timeLeft[7] <= 0)
             {
@@ -644,12 +644,10 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel6.Visible = false;
             progressLabel7.Visible = false;
 
+            if (done[7]) return;
 
-            if (!done[7])
-            {
-                loadingLabel8.Visible = true;
-                progressLabel8.Visible = true;
-            }
+            loadingLabel8.Visible = true;
+            progressLabel8.Visible = true;
         }
         #endregion
 

@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     public abstract class ShopCaExportTable : ExportTable
     {
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

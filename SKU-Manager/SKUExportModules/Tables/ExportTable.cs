@@ -12,18 +12,18 @@ namespace SKU_Manager.SKUExportModules.Tables
         protected SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
         // supporting field
-        public int progress = 0;
+        public int Progress { get; protected set; } = 0;
         protected string[] skuList;
 
         /* inherient the return table method -> the most import one */
-        public abstract DataTable getTable();
+        public abstract DataTable GetTable();
 
         /* return the total number of sku */
         public int Total => skuList.Length;
 
         /* some supporting private method that will help building the table */
         /* a method that will return all desired SKUs */
-        protected abstract string[] getSKU();
+        protected abstract string[] getSku();
         /* method that add new column to table */
         protected void addColumn(DataTable table, string name)
         {

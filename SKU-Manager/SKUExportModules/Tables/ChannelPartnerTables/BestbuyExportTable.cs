@@ -14,11 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         public BestbuyExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -71,7 +71,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             addColumn(mainTable, "SKU_BESTBUY_CA");                                      // 44
 
             // local field for inserting data to table
-            DataTable table = getDataTable();
+            DataTable table = GetDataTable();
             double[] price = getPrice();
 
             // start load data
@@ -118,7 +118,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[44] = row[9];                                  // sku bestbuy ca
 
                 mainTable.Rows.Add(newRow);
-                progress++;
+                Progress++;
             }
 
             // end loading data
@@ -128,7 +128,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* new version of getData that directly return the desired table -> no issue */
-        protected override DataTable getDataTable()
+        protected override DataTable GetDataTable()
         {
             // local field for storing data
             DataTable table = new DataTable();
@@ -151,7 +151,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* a method that get all the sku that is active and have on bestbuy */
-        protected override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

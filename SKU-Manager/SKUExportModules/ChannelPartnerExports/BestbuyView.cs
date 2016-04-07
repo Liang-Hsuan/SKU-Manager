@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = bestbuyTable.getTable();
+            table = bestbuyTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = bestbuyTable.progress + " / " + bestbuyTable.Total;
+            progressLabel.Text = bestbuyTable.Progress + " / " + bestbuyTable.Total;
 
             if (timeLeft <= 0)
             {

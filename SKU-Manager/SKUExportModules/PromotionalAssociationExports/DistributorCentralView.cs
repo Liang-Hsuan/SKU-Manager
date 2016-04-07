@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = distributorCentralTable.getTable();
+            table = distributorCentralTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = distributorCentralTable.progress + " / " + distributorCentralTable.Total;
+            progressLabel.Text = distributorCentralTable.Progress + " / " + distributorCentralTable.Total;
 
             if (timeLeft <= 0)
             {

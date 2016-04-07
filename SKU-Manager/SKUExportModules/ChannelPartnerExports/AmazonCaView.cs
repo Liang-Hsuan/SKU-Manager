@@ -19,7 +19,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private bool complete;  // default set to false
 
         // initialize AmazonCATable object
-        private readonly AmazonCAExportTable amazonCATable = new AmazonCAExportTable();
+        private readonly AmazonCaExportTable amazonCATable = new AmazonCaExportTable();
 
         /* constructor that initialize graphic components */
         public AmazonCaView()
@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = amazonCATable.getTable();
+            table = amazonCATable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = amazonCATable.progress + " / " + amazonCATable.Total;
+            progressLabel.Text = amazonCATable.Progress + " / " + amazonCATable.Total;
 
             if (timeLeft <= 0)
             {

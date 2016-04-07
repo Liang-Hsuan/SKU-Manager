@@ -14,11 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaBagExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset the table just in case
             mainTable.Reset();
@@ -143,7 +143,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 newRow[49] = list[13] + " " + list[14] + " " + list[15] + " " + list[16] + " " + list[17];     // features
 
                 mainTable.Rows.Add(newRow);
-                progress++;
+                Progress++;
             } 
 
             // finish loading data

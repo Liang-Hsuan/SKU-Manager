@@ -40,7 +40,7 @@ namespace SKU_Manager.ActiveInactiveList
         private void backgroundWorkerTable_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             // send table to table field
-            table = designTable.getTable();
+            table = designTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
@@ -61,7 +61,7 @@ namespace SKU_Manager.ActiveInactiveList
             timeLeft--;
 
             // set progress
-            progressLabel.Text = designTable.progress + " / " + designTable.Total;
+            progressLabel.Text = designTable.Progress + " / " + designTable.Total;
 
             if (timeLeft <= 0)
             {

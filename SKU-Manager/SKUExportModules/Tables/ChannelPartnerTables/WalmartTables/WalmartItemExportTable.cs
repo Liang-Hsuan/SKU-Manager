@@ -14,11 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
         public WalmartItemExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -173,7 +173,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
                 row[86] = list[7];                                // item weight
 
                 mainTable.Rows.Add(row);  
-                progress++;
+                Progress++;
             }
 
             // finish loading data

@@ -17,7 +17,7 @@ namespace SKU_Manager.AdminModules
         public int Current { get; protected set; }
 
         /* the most major method for the class -> return table to the client */
-        public abstract DataTable getTable();
+        public abstract DataTable GetTable();
 
         /* method that add new column to table */
         protected void addColumn(DataTable table, string name, bool checkbox)

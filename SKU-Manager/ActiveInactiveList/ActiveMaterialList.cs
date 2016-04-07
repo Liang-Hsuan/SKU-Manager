@@ -18,7 +18,7 @@ namespace SKU_Manager.ActiveInactiveList
         /* load the data from database and show them on the grid view */
         private void ActiveMaterialList_Load(object sender, EventArgs e)
         {
-            dataGridView.DataSource = new ActiveMaterialTable().getTable();
+            dataGridView.DataSource = new ActiveMaterialTable().GetTable();
         }
 
         /* the event for exit button click */

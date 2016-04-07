@@ -44,7 +44,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = shopCaTable.getTable();
+            table = shopCaTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

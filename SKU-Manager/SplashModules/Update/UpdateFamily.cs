@@ -51,7 +51,7 @@ namespace SKU_Manager.SplashModules.Update
         private readonly ArrayList distributorCentralList = new ArrayList();
 
         // connection string to the database
-        private string connectionString = Properties.Settings.Default.Designcs;
+        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public UpdateFamily()
@@ -270,11 +270,10 @@ namespace SKU_Manager.SplashModules.Update
                 activeCheckbox.Enabled = false;
             }
 
-            if (firstTime)
-            {
-                AutoScrollPosition = new Point(0, 0);
-                firstTime = false;
-            }
+            if (!firstTime) return;
+
+            AutoScrollPosition = new Point(0, 0);
+            firstTime = false;
         }
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
         {

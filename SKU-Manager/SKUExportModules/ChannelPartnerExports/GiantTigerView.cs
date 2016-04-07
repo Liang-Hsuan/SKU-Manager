@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = giantTigerTable.getTable();
+            table = giantTigerTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = giantTigerTable.progress + " / " + giantTigerTable.Total;
+            progressLabel.Text = giantTigerTable.Progress + " / " + giantTigerTable.Total;
 
             if (timeLeft <= 0)
             {

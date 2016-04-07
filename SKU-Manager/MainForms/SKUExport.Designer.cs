@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.MainForms
 {
-    partial class SKUExport
+    partial class SkuExport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SKUExport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkuExport));
             this.applicationTitle = new System.Windows.Forms.Label();
             this.companyTitle = new System.Windows.Forms.Label();
             this.topButton3 = new System.Windows.Forms.Button();
@@ -827,7 +827,7 @@
             this.Controls.Add(this.channelPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1346, 789);
-            this.Name = "SKUExport";
+            this.Name = "SkuExport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SKU Export";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

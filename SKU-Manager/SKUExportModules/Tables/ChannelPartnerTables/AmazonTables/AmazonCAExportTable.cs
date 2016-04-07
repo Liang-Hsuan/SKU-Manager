@@ -9,17 +9,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
     /*
      * A class that return amazon ca export table
      */
-    public class AmazonCAExportTable : AmazonExportTable
+    public class AmazonCaExportTable : AmazonExportTable
     {
         /* constructor that initialize fields */
-        public AmazonCAExportTable()
+        public AmazonCaExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -251,7 +251,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[127] = "ASHLIN";                               // collection name 
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading table
@@ -262,20 +262,20 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' AND SKU_AMAZON_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
     }
 }

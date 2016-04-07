@@ -14,11 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public UpcExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // add column to table
             addColumn(mainTable, "UPC Code 9");                  // 1
@@ -43,7 +43,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[3] = "Ashlin® " + list[0];                    // short description
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -54,7 +54,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

@@ -37,17 +37,12 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public override void update(string xlPath)
         {
             // fields for excel sheet reading
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            Excel.Range range;
-
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Application xlApp = new Excel.Application();
+            Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             // declare range in sheet
-            range = xlWorkSheet.UsedRange;
+            Range range = xlWorkSheet.UsedRange;
             Total = range.Rows.Count;
 
             // start updating database for new sears sku

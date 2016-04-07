@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = sageTable.getTable();
+            table = sageTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -65,7 +65,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = sageTable.progress + " / " + sageTable.Total;
+            progressLabel.Text = sageTable.Progress + " / " + sageTable.Total;
 
             if (timeLeft <= 0)
             {

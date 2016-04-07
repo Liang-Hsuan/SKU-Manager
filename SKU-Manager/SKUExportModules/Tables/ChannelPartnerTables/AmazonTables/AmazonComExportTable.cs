@@ -15,11 +15,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         public AmazonComExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // add column to table
             addColumn(mainTable, "item_name");                                      // 1
@@ -249,7 +249,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[127] = "ASHLIN";                               // collection name 
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -260,7 +260,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         }
 
         /* a method that get all the sku that is active */
-        protected override string[] getSKU()
+        protected override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

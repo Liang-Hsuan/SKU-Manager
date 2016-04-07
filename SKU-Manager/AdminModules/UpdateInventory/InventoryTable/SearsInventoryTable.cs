@@ -12,8 +12,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         // field for sku data
         private struct Sku
         {
-            public string ashlinSku;
-            public string searsSku;
+            public string AshlinSku;
+            public string SearsSku;
         }
         private readonly List<Sku> skuList = new List<Sku>();
 
@@ -27,9 +27,11 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Sku sku = new Sku();
-                    sku.ashlinSku = reader.GetString(0);
-                    sku.searsSku = reader.GetString(1);
+                    Sku sku = new Sku
+                    {
+                        AshlinSku = reader.GetString(0),
+                        SearsSku = reader.GetString(1)
+                    };
                     skuList.Add(sku);
                 }
             }
@@ -40,7 +42,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         }
 
         /* the most major method for the class -> return table to the client */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case and set current to zero
             mainTable.Reset();
@@ -67,17 +69,17 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 DataRow row = mainTable.NewRow();
                 Current++;
 
-                row[0] = sku.ashlinSku;                                 // ashlin sku
-                row[1] = sku.searsSku;                                  // sears sku
+                row[0] = sku.AshlinSku;                                 // ashlin sku
+                row[1] = sku.SearsSku;                                  // sears sku
                 try
                 {
-                    DataRow rowCopy = table.Select("SKU = \'" + sku.ashlinSku + "\'")[0];
+                    DataRow rowCopy = table.Select("SKU = \'" + sku.AshlinSku + "\'")[0];
                     row[2] = rowCopy[1];                                // bp item id
                     row[3] = rowCopy[2];                                // on hand
                     row[4] = rowCopy[3];                                // reorder quantity
                     row[5] = rowCopy[4];                                // reorder level
                 }
-                catch { }
+                catch { /* ignore */ }
                 row[6] = false;                                         // purchase order
                 row[7] = false;                                         // discontinue
 

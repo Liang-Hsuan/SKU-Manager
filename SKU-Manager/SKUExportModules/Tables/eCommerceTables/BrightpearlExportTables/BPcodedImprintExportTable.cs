@@ -13,11 +13,11 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         public BPcodedImprintExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -63,7 +63,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                        + Math.Round(msrp * discountList[8], 4);
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data

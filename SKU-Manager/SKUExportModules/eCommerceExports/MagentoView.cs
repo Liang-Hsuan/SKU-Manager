@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = magentoTable.getTable();
+            table = magentoTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -65,7 +65,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = magentoTable.progress + " / " + magentoTable.Total;
+            progressLabel.Text = magentoTable.Progress + " / " + magentoTable.Total;
 
             if (timeLeft <= 0)
             {

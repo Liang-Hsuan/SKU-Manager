@@ -52,12 +52,12 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable1_DoWork(object sender, DoWorkEventArgs e)
         {
             // send item table to table field
-            table[0] = itemTable.getTable();
+            table[0] = itemTable.GetTable();
         }
         private void backgroundWorkerTable2_DoWork(object sender, DoWorkEventArgs e)
         {
             // send price table to table field
-            table[1] = priceTable.getTable();
+            table[1] = priceTable.GetTable();
         }
         #endregion
 
@@ -94,7 +94,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[0]--;
 
             // set progress
-            progressLabel1.Text = itemTable.progress + " / " + itemTable.Total;
+            progressLabel1.Text = itemTable.Progress + " / " + itemTable.Total;
 
             if (timeLeft[0] <= 0)
             {
@@ -109,7 +109,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[1]--;
 
             // set progress
-            progressLabel2.Text = priceTable.progress + " / " + priceTable.Total;
+            progressLabel2.Text = priceTable.Progress + " / " + priceTable.Total;
 
             if (timeLeft[1] <= 0)
             {
@@ -131,11 +131,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             loadingLabel2.Visible = false;
             progressLabel2.Visible = false;
 
-            if (!done[0])
-            {
-                loadingLabel1.Visible = true;
-                progressLabel1.Visible = true;
-            }
+            if (done[0]) return;
+
+            loadingLabel1.Visible = true;
+            progressLabel1.Visible = true;
         }
         private void priceButton_Click(object sender, EventArgs e)
         {
@@ -147,11 +146,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             loadingLabel1.Visible = false;
             progressLabel1.Visible = false;
 
-            if (!done[1])
-            {
-                loadingLabel2.Visible = true;
-                progressLabel2.Visible = true;
-            }
+            if (done[1]) return;
+
+            loadingLabel2.Visible = true;
+            progressLabel2.Visible = true;
         }
 
         /* the event for exit button click */

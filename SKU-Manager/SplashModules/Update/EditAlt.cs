@@ -8,7 +8,7 @@ namespace SKU_Manager.SplashModules.Update
     */
     public partial class EditAlt : Form
     {
-        public string altText;
+        public string AltText { get; private set; }
 
         /* constructor that initilize graphic components and the alt text of the selected image */
         public EditAlt(string altText)
@@ -19,14 +19,14 @@ namespace SKU_Manager.SplashModules.Update
             altTextbox.Text = altText;
 
             // initilize original alt text field
-            this.altText = altText;
+            AltText = altText;
         }
 
         /* the event for edit button click that update the alt text for the image */
         private void editButton_Click(object sender, EventArgs e)
         {
             // update alt text field
-            altText = altTextbox.Text;
+            AltText = altTextbox.Text;
             DialogResult = DialogResult.OK;
         }
 

@@ -9,7 +9,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     public abstract class BPexportTable : ExportTable
     {
         /* override the method getSKU() */
-        protected override string[] getSKU()
+        protected override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

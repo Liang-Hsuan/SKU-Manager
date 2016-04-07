@@ -1142,7 +1142,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[0] = newAlt.altText;
+                imageAlt[0] = newAlt.AltText;
         }
         private void image2AltButton_Click(object sender, EventArgs e)
         {
@@ -1150,7 +1150,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[1] = newAlt.altText;
+                imageAlt[1] = newAlt.AltText;
         }
         private void image3AltButton_Click(object sender, EventArgs e)
         {
@@ -1158,7 +1158,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[2] = newAlt.altText;
+                imageAlt[2] = newAlt.AltText;
         }
         private void image4AltButton_Click(object sender, EventArgs e)
         {
@@ -1166,7 +1166,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[3] = newAlt.altText;
+                imageAlt[3] = newAlt.AltText;
         }
         private void image5AltButton_Click(object sender, EventArgs e)
         {
@@ -1174,7 +1174,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[4] = newAlt.altText;
+                imageAlt[4] = newAlt.AltText;
         }
         private void image6AltButton_Click(object sender, EventArgs e)
         {
@@ -1182,7 +1182,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[5] = newAlt.altText;
+                imageAlt[5] = newAlt.AltText;
         }
         private void image7AltButton_Click(object sender, EventArgs e)
         {
@@ -1190,7 +1190,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[6] = newAlt.altText;
+                imageAlt[6] = newAlt.AltText;
         }
         private void image8AltButton_Click(object sender, EventArgs e)
         {
@@ -1198,7 +1198,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[7] = newAlt.altText;
+                imageAlt[7] = newAlt.AltText;
         }
         private void image9AltButton_Click(object sender, EventArgs e)
         {
@@ -1206,7 +1206,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[8] = newAlt.altText;
+                imageAlt[8] = newAlt.AltText;
         }
         private void image10AltButton_Click(object sender, EventArgs e)
         {
@@ -1214,7 +1214,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                imageAlt[9] = newAlt.altText;
+                imageAlt[9] = newAlt.AltText;
         }
         #endregion
 
@@ -1226,7 +1226,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                groupAlt[0] = newAlt.altText;
+                groupAlt[0] = newAlt.AltText;
         }
         private void group2AltButton_Click(object sender, EventArgs e)
         {
@@ -1234,7 +1234,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                groupAlt[1] = newAlt.altText;
+                groupAlt[1] = newAlt.AltText;
         }
         private void group3AltButton_Click(object sender, EventArgs e)
         {
@@ -1242,7 +1242,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                groupAlt[2] = newAlt.altText;
+                groupAlt[2] = newAlt.AltText;
         }
         private void group4AltButton_Click(object sender, EventArgs e)
         {
@@ -1250,7 +1250,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                groupAlt[3] = newAlt.altText;
+                groupAlt[3] = newAlt.AltText;
         }
         private void group5AltButton_Click(object sender, EventArgs e)
         {
@@ -1258,7 +1258,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                groupAlt[4] = newAlt.altText;
+                groupAlt[4] = newAlt.AltText;
         }
         #endregion
 
@@ -1270,7 +1270,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                modelAlt[0] = newAlt.altText;
+                modelAlt[0] = newAlt.AltText;
         }
         private void model2AltButton_Click(object sender, EventArgs e)
         {
@@ -1278,7 +1278,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                modelAlt[1] = newAlt.altText;
+                modelAlt[1] = newAlt.AltText;
         }
         private void model3AltButton_Click(object sender, EventArgs e)
         {
@@ -1286,7 +1286,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                modelAlt[2] = newAlt.altText;
+                modelAlt[2] = newAlt.AltText;
         }
         private void model4AltButton_Click(object sender, EventArgs e)
         {
@@ -1294,7 +1294,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                modelAlt[3] = newAlt.altText;
+                modelAlt[3] = newAlt.AltText;
         }
         private void model5AltButton_Click(object sender, EventArgs e)
         {
@@ -1302,7 +1302,7 @@ namespace SKU_Manager.SplashModules.Update
             newAlt.ShowDialog(this);
 
             if (newAlt.DialogResult == DialogResult.OK)
-                modelAlt[4] = newAlt.altText;
+                modelAlt[4] = newAlt.AltText;
         }
         #endregion
     }

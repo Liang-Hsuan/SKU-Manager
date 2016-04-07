@@ -144,7 +144,7 @@ namespace SKU_Manager.MainForms
         {
             Close();
 
-            new SKUExport(parent).Show(parent);
+            new SkuExport(parent).Show(parent);
         }
 
         /* the event for clicking top button 2 (export sku to excel) */

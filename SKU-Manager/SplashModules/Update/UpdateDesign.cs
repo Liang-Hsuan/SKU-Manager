@@ -85,8 +85,6 @@ namespace SKU_Manager.SplashModules.Update
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            // local fields for comboBoxes
-
             // make comboBox for Design Service Code
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code", connection);   

@@ -43,7 +43,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
         private void backgroundWorkerTable_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             // send table to table field
-            table = searsTable.getTable();
+            table = searsTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {

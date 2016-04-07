@@ -8,7 +8,7 @@ namespace SKU_Manager.MainForms
         // fields for children
         private Splash splash;
         private ExcelExport excelExport;
-        private SKUExport skuExport;
+        private SkuExport skuExport;
         private Admin admin;
 
         // field for parent
@@ -21,7 +21,7 @@ namespace SKU_Manager.MainForms
 
             splash = new Splash(this);
             excelExport = new ExcelExport(this);
-            skuExport = new SKUExport(this);
+            skuExport = new SkuExport(this);
             admin = new Admin(this);
 
             this.parent = parent;
@@ -52,7 +52,7 @@ namespace SKU_Manager.MainForms
         {
             if (!skuExport.Visible)
             {
-                skuExport = new SKUExport(this);
+                skuExport = new SkuExport(this);
                 skuExport.Show(this);
             }
         }

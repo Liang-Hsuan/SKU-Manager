@@ -60,22 +60,22 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable1_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[0] = bagTable.getTable();
+            table[0] = bagTable.GetTable();
         }
         private void backgroundWorkerTable2_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[1] = baseTable.getTable();
+            table[1] = baseTable.GetTable();
         }
         private void backgroundWorkerTable3_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[2] = priceTable.getTable();
+            table[2] = priceTable.GetTable();
         }
         private void backgroundWorkerTable4_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table[3] = inventoryTable.getTable();
+            table[3] = inventoryTable.GetTable();
         }
         #endregion
 
@@ -134,7 +134,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[0]--;
 
             // set progress
-            progressLabel1.Text = bagTable.progress + " / " + bagTable.Total;
+            progressLabel1.Text = bagTable.Progress + " / " + bagTable.Total;
 
             if (timeLeft[0] <= 0)
             {
@@ -149,7 +149,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[1]--;
 
             // set progress
-            progressLabel2.Text = baseTable.progress + " / " + baseTable.Total;
+            progressLabel2.Text = baseTable.Progress + " / " + baseTable.Total;
 
             if (timeLeft[1] <= 0)
             {
@@ -164,7 +164,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[2]--;
 
             // set progress
-            progressLabel3.Text = priceTable.progress + " / " + priceTable.Total;
+            progressLabel3.Text = priceTable.Progress + " / " + priceTable.Total;
 
             if (timeLeft[2] <= 0)
             {
@@ -179,7 +179,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft[3]--;
 
             // set progress
-            progressLabel4.Text = inventoryTable.progress + " / " + inventoryTable.Total;
+            progressLabel4.Text = inventoryTable.Progress + " / " + inventoryTable.Total;
 
             if (timeLeft[3] <= 0)
             {
@@ -210,11 +210,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel3.Visible = false;
             progressLabel4.Visible = false;
 
-            if (!done[0])
-            { 
-                loadingLabel1.Visible = true;
-                progressLabel1.Visible = true;
-            }
+            if (done[0]) return;
+
+            loadingLabel1.Visible = true;
+            progressLabel1.Visible = true;
         }
         private void baseButton_Click(object sender, EventArgs e)
         {
@@ -233,11 +232,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel3.Visible = false;
             progressLabel4.Visible = false;
 
-            if (!done[1])
-            {
-                loadingLabel2.Visible = true;
-                progressLabel2.Visible = true;
-            }
+            if (done[1]) return;
+
+            loadingLabel2.Visible = true;
+            progressLabel2.Visible = true;
         }
         private void priceButton_Click(object sender, EventArgs e)
         {
@@ -256,11 +254,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel2.Visible = false;
             progressLabel4.Visible = false;
 
-            if (!done[2])
-            {
-                loadingLabel3.Visible = true;
-                progressLabel3.Visible = true;
-            }
+            if (done[2]) return;
+
+            loadingLabel3.Visible = true;
+            progressLabel3.Visible = true;
         }
         private void inventoryButton_Click(object sender, EventArgs e)
         {
@@ -279,11 +276,10 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             progressLabel2.Visible = false;
             progressLabel3.Visible = false;
 
-            if (!done[3])
-            {
-                loadingLabel4.Visible = true;
-                progressLabel4.Visible = true;
-            }
+            if (done[3]) return;
+
+            loadingLabel4.Visible = true;
+            progressLabel4.Visible = true;
         }
         #endregion
 

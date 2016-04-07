@@ -14,12 +14,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public StockExportTable()
         {
             mainTable = new DataTable();
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -71,7 +70,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 found = false;
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // end loading data
@@ -81,7 +80,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

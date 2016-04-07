@@ -189,7 +189,7 @@ namespace SKU_Manager.MainForms
             // set wait cursor
             Cursor.Current = Cursors.WaitCursor;
 
-            DataTable table = new StockExportTable().getTable();
+            DataTable table = new StockExportTable().GetTable();
             Properties.Settings.Default.StockQuantityTable = table;
 
             // set default cursor after complete
@@ -241,7 +241,7 @@ namespace SKU_Manager.MainForms
         {
             Close();
 
-            new SKUExport(parent).Show(parent);
+            new SkuExport(parent).Show(parent);
         }
         #endregion
 

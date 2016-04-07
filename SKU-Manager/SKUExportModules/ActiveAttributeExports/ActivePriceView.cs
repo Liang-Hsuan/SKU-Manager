@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = activePriceTable.getTable();
+            table = activePriceTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -65,7 +65,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = activePriceTable.progress + " / " + activePriceTable.Total;
+            progressLabel.Text = activePriceTable.Progress + " / " + activePriceTable.Total;
 
             if (timeLeft <= 0)
             {

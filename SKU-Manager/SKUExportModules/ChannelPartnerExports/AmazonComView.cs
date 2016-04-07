@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = amazonComTable.getTable();
+            table = amazonComTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
             timeLeft--;
 
             // set progress
-            progressLabel.Text = amazonComTable.progress + " / " + amazonComTable.Total;
+            progressLabel.Text = amazonComTable.Progress + " / " + amazonComTable.Total;
 
             if (timeLeft <= 0)
             {

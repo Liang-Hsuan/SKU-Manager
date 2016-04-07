@@ -62,14 +62,14 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         {
             // retrieve table
             if (hasLoaded)
-                table = channelUpdateTable.getTable();
+                table = channelUpdateTable.GetTable();
             else
             {
                 // if channel listing table has not been loaded yet, do it now
-                Properties.Settings.Default.ChannelListingTable = channelTable.getTable();
+                Properties.Settings.Default.ChannelListingTable = channelTable.GetTable();
                 hasLoaded = true;
 
-                table = channelUpdateTable.getTable();
+                table = channelUpdateTable.GetTable();
             }
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -95,7 +95,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             if (hasLoaded)
                 progressLabel.Text = channelUpdateTable.Current + " / " + channelUpdateTable.Total;
             else
-                progressLabel.Text = channelTable.progress + " / " + channelTable.Total;
+                progressLabel.Text = channelTable.Progress + " / " + channelTable.Total;
 
             loadingLabel.Text = hasLoaded ? "Stage 2" : "Stage 1";
         }

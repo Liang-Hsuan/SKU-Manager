@@ -18,7 +18,7 @@ namespace SKU_Manager.ActiveInactiveList
         /* load the data from database and show them on the grid view */
         private void ActiveColorList_Load(object sender, EventArgs e)
         {
-            dataGridView.DataSource = new ActiveColorTable().getTable();
+            dataGridView.DataSource = new ActiveColorTable().GetTable();
         }
 
         /* the event for exit button click */

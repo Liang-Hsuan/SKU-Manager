@@ -13,11 +13,11 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         public BPnetBlankExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -32,7 +32,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             // local field for inserting data to table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
             double[] discountList = getDiscount();
-            string[] skuList = getSKU();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -55,7 +54,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                        + Math.Round(msrp * discountList[8], 4);
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data

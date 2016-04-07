@@ -13,13 +13,11 @@ namespace SKU_Manager.ExcelExportModules
     public partial class ExportTableLoadingForm : Form
     {
         // field for storing data
-        private readonly DataSet ds = new DataSet();
         private readonly DataTable[] dt; // in order to get the table in the same order the export tables came in we need to use datatable array
 
         // supporting fields
         private int timeLeft;
         private readonly int total;
-        private bool complete;           // default set to false
 
         // initialize AmazonCATable object
         private readonly ExportTable[] tables;
@@ -58,15 +56,15 @@ namespace SKU_Manager.ExcelExportModules
         }
 
         /* return tables to client */
-        public DataSet Tables => ds;
+        public DataSet Tables { get; } = new DataSet();
 
         /* return if the tables are complete */
-        public bool Complete => complete;
+        public bool Complete { get; private set; }
 
         /* method that get the tables from ExportTable */
         private void getTables(ExportTable table, int index)
         {
-            dt[index] = table.getTable();
+            dt[index] = table.GetTable();
         }
 
         /* the event for timer that make the visual of loading promopt */
@@ -75,7 +73,7 @@ namespace SKU_Manager.ExcelExportModules
             timeLeft--;
 
             // set progress
-            int progress = tables.Sum(table => table.progress);
+            int progress = tables.Sum(table => table.Progress);
             progress = progress / tables.Length;
             progressLabel.Text = progress + " / " + total;
 
@@ -85,11 +83,11 @@ namespace SKU_Manager.ExcelExportModules
                 try
                 {
                     foreach (DataTable table in dt)
-                        ds.Tables.Add(table);
+                        Tables.Tables.Add(table);
                 }
                 catch { }
 
-                complete = true;
+                Complete = true;
                 Close();
             }
 

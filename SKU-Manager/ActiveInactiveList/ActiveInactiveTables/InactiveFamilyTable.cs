@@ -16,7 +16,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* method that get the table */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -33,7 +33,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* not implement get sku method */
-        protected override string[] getSKU()
+        protected override string[] getSku()
         {
             throw new NotImplementedException();
         }

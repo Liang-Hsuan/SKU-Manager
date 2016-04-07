@@ -204,11 +204,10 @@ namespace SKU_Manager.SplashModules.Update
             online.ShowDialog(this);
 
             // set color online 
-            if (online.DialogResult == DialogResult.OK)
-            {
-                materialOnlineEnglish = online.English;
-                materialOnlineFrench = online.French;
-            }
+            if (online.DialogResult != DialogResult.OK) return;
+
+            materialOnlineEnglish = online.English;
+            materialOnlineFrench = online.French;
         }
 
         #region Update

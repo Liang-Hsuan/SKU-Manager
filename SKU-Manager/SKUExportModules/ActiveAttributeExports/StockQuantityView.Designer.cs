@@ -1,4 +1,4 @@
-﻿namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
+﻿namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
 {
     partial class StockQuantityView
     {

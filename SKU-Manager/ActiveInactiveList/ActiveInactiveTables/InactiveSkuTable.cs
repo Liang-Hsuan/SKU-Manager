@@ -14,11 +14,11 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         public InactiveSkuTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* method that get the table */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -77,7 +77,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                 row[19] = list[19];     // active
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -88,7 +88,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* a method that get all the sku that is inactive */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

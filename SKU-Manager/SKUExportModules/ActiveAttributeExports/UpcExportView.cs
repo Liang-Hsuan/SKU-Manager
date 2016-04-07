@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows.Forms;
 using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 
-namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
+namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
 {
     /* 
      * An application module for sku export that view the export sheet for upc
@@ -42,7 +42,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field
-            table = upcTable.getTable();
+            table = upcTable.GetTable();
         }
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExport
             timeLeft--;
 
             // set progress
-            progressLabel.Text = upcTable.progress + " / " + upcTable.Total;
+            progressLabel.Text = upcTable.Progress + " / " + upcTable.Total;
 
             if (timeLeft <= 0)
             {

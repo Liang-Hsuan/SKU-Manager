@@ -15,11 +15,11 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         public SageExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset the table just in case
             mainTable.Reset();
@@ -188,7 +188,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 if (!list[18].Equals(DBNull.Value))
                     row[24] = Math.Round(Convert.ToDouble(list[18]) / 2.54, 2) + " in x " + Math.Round(Convert.ToDouble(list[19]) / 2.54, 2) + " in x " + Math.Round(Convert.ToDouble(list[19]) / 2.54, 2) + " in";    // finished dimensions (in)
                 double msrp = Convert.ToDouble(list[22]) * discountList[21];
-                double runCharge = list[21].Equals(DBNull.Value) ? runCharge = Math.Round(msrp * 0.05) / 0.6 : runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[21]) - 1;
+                double runCharge = list[21].Equals(DBNull.Value) ? Math.Round(msrp * 0.05) / 0.6 : Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[21]) - 1;
                 if (runCharge > 8)
                     runCharge = 8;
                 else if (runCharge < 1)
@@ -291,7 +291,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[119] = list[46];                                               // keywords
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -302,10 +302,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND Design_Service_Code in (" +
@@ -314,10 +314,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* method that get the data from given sku */

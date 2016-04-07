@@ -18,7 +18,7 @@ namespace SKU_Manager.ActiveInactiveList
         /* load the data from database and show them on the grid view */
         private void InactiveFamilyList_Load(object sender, EventArgs e)
         {
-            dataGridView.DataSource = new InactiveFamilyTable().getTable();
+            dataGridView.DataSource = new InactiveFamilyTable().GetTable();
         }
 
         /* the event for exit button click */

@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
     public abstract class WalmartExportTable : ExportTable
     {
         /* the method getSKU() */
-        protected override string[] getSKU()
+        protected override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();

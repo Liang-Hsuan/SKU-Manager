@@ -15,11 +15,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public ActivePriceListTable()
         {
             mainTable = new DataTable();
-            skuList = getSKU();
+            skuList = getSku();
         }
 
         /* the real thing -> return the table !!! */
-        public override DataTable getTable()
+        public override DataTable GetTable()
         {
             // reset table just in case
             mainTable.Reset();
@@ -494,7 +494,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[212] = list[123];                                               // alt text image model 5 path
 
                 mainTable.Rows.Add(row);
-                progress++;
+                Progress++;
             }
 
             // finish loading data
@@ -505,7 +505,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSKU()
+        protected sealed override string[] getSku()
         {
             // local field for storing data
             List<string> skuList = new List<string>();
