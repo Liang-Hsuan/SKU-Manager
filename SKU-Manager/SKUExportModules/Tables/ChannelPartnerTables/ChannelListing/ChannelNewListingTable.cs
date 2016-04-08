@@ -86,8 +86,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
                 row[15] = list[7];          // sears
                 if (list[7].ToString() != "")
                     row[16] = Math.Ceiling(msrp * (1 - priceList[6].MsrpDisc / 100)) - (1 - priceList[6].SellCent);      // sears net
-                row[17] = list[5];          // giant tiger
-                if (list[5].ToString() != "")
+                row[17] = list[8];          // giant tiger
+                if (list[8].ToString() != "")
                     row[18] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100)) - (1 - priceList[11].SellCent);    // giant tiger net
 
                 mainTable.Rows.Add(row);

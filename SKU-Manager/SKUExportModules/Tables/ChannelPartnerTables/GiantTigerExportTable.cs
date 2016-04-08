@@ -50,7 +50,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
-            double multiplier = getMultiplier();
+            double[] priceList = getPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -58,7 +58,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                var newRow = mainTable.NewRow();
+                DataRow newRow = mainTable.NewRow();
+                double msrp = Convert.ToDouble(row[9]) * priceList[0];
 
                 newRow[0] = row[20];                                                   // sku number
                 newRow[1] = "Ashlin®";                                                 // brand
@@ -70,8 +71,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[7] = row[2] + "cm x " + row[3] + "cm x " + row[4] + "cm";       // size in cm
                 newRow[8] = row[5];                                                    // weight
                 newRow[9] = Convert.ToDouble(row[9]) * 0.6;                            // cost
-                newRow[10] = Convert.ToDouble(row[9]) * multiplier * 0.95;             // retail
-                newRow[11] = Convert.ToDouble(row[9]) * multiplier;                    // mrsp
+                newRow[10] = Math.Ceiling(msrp * (1 - priceList[1] / 100)) - (1 - priceList[2]);    // retail
+                newRow[11] = msrp;                                                     // mrsp
                 newRow[12] = "L5J 4S7";                                                // area code
                 newRow[13] = row[10];                                                  // image 1 path
                 newRow[14] = row[11];                                                  // image 2 path
@@ -101,7 +102,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> list = new List<string>();
 
             // connect to database and grab data ( use the ones that have on walmart )
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_WALMART_CA != '' ORDER BY SKU_Ashlin;", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_GIANT_TIGER != ''", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -133,7 +134,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                                                         "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " + 
                                                         "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " + 
                                                         "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "WHERE sku.Active = \'True\' AND SKU_WALMART_CA != \'\' ORDER BY SKU_Ashlin;", connection);
+                                                        "WHERE sku.Active = 'True' AND SKU_GIANT_TIGER != '' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             adapter.Fill(table);
             connection.Close();
@@ -141,18 +142,28 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             return table;
         }
 
-        /* method that give price multiplier */
-        private double getMultiplier()
+        /* method that give price list */
+        private double[] getPriceList()
         {
+            double[] list = new double[3];
+
             // get multiplier data
             SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            double multiplier = reader.GetDouble(0);
+            list[0] = reader.GetDouble(0);
+            reader.Close();
+
+            // get channel pricing
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_Name = 'gianttiger.com'";
+            reader = command.ExecuteReader();
+            reader.Read();
+            list[1] = reader.GetInt32(0);
+            list[2] = (double)reader.GetDecimal(1);
             connection.Close();
 
-            return multiplier;
+            return list;
         }
     }
 }

@@ -23,13 +23,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             ArrayList list = new ArrayList();
 
             // grab data from database
-            // [0] for price calculation, [1] bestbuy, [2] amazon ca, [3] amazon us, [4] statples advantage, [5] walmart, [6] shop.ca, [7] sears
-            //                                                                         & statples            & giant tiger
-            SqlCommand command = new SqlCommand("SELECT Base_Price, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_SHOP_CA, SKU_SEARS_CA " +
+            // [0] for price calculation, [1] bestbuy, [2] amazon ca, [3] amazon us, [4] statples advantage, [5] walmart, [6] shop.ca, [7] sears, [8] giant tiger
+            //                                                                         & statples            
+            SqlCommand command = new SqlCommand("SELECT Base_Price, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_SHOP_CA, SKU_SEARS_CA, SKU_GIANT_TIGER " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 8; i++)
                 list.Add(reader.GetValue(i));
 
             return list;

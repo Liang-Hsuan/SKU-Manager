@@ -146,7 +146,7 @@
             this.usHtsCombobox = new System.Windows.Forms.ComboBox();
             this.usDutyTextbox = new System.Windows.Forms.TextBox();
             this.backgroundWorkerHTS = new System.ComponentModel.BackgroundWorker();
-            this.wmManufacturerTextbox = new System.Windows.Forms.TextBox();
+            this.giantTigerTextbox = new System.Windows.Forms.TextBox();
             this.asiXidTextbox = new System.Windows.Forms.TextBox();
             this.wmManufacturerLabel = new System.Windows.Forms.Label();
             this.asiXidLabel = new System.Windows.Forms.Label();
@@ -1341,14 +1341,14 @@
             this.backgroundWorkerHTS.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerHTS_DoWork);
             this.backgroundWorkerHTS.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerHTS_RunWorkerCompleted);
             // 
-            // wmManufacturerTextbox
+            // giantTigerTextbox
             // 
-            this.wmManufacturerTextbox.BackColor = System.Drawing.SystemColors.Window;
-            this.wmManufacturerTextbox.Location = new System.Drawing.Point(187, 799);
-            this.wmManufacturerTextbox.MaxLength = 50;
-            this.wmManufacturerTextbox.Name = "wmManufacturerTextbox";
-            this.wmManufacturerTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmManufacturerTextbox.TabIndex = 67;
+            this.giantTigerTextbox.BackColor = System.Drawing.SystemColors.Window;
+            this.giantTigerTextbox.Location = new System.Drawing.Point(187, 799);
+            this.giantTigerTextbox.MaxLength = 50;
+            this.giantTigerTextbox.Name = "giantTigerTextbox";
+            this.giantTigerTextbox.Size = new System.Drawing.Size(574, 20);
+            this.giantTigerTextbox.TabIndex = 67;
             // 
             // asiXidTextbox
             // 
@@ -1366,9 +1366,9 @@
             this.wmManufacturerLabel.ForeColor = System.Drawing.Color.Gray;
             this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 799);
             this.wmManufacturerLabel.Name = "wmManufacturerLabel";
-            this.wmManufacturerLabel.Size = new System.Drawing.Size(173, 20);
+            this.wmManufacturerLabel.Size = new System.Drawing.Size(124, 20);
             this.wmManufacturerLabel.TabIndex = 66;
-            this.wmManufacturerLabel.Text = "WM Manufacturer SKU";
+            this.wmManufacturerLabel.Text = "Giant Tiger SKU";
             // 
             // asiXidLabel
             // 
@@ -1442,7 +1442,7 @@
             this.Controls.Add(this.asiXidLabel);
             this.Controls.Add(this.wmManufacturerLabel);
             this.Controls.Add(this.asiXidTextbox);
-            this.Controls.Add(this.wmManufacturerTextbox);
+            this.Controls.Add(this.giantTigerTextbox);
             this.Controls.Add(this.usDutyTextbox);
             this.Controls.Add(this.usHtsCombobox);
             this.Controls.Add(this.label4);
@@ -1686,7 +1686,7 @@
         private System.Windows.Forms.ComboBox usHtsCombobox;
         private System.Windows.Forms.TextBox usDutyTextbox;
         private System.ComponentModel.BackgroundWorker backgroundWorkerHTS;
-        private System.Windows.Forms.TextBox wmManufacturerTextbox;
+        private System.Windows.Forms.TextBox giantTigerTextbox;
         private System.Windows.Forms.TextBox asiXidTextbox;
         private System.Windows.Forms.Label wmManufacturerLabel;
         private System.Windows.Forms.Label asiXidLabel;

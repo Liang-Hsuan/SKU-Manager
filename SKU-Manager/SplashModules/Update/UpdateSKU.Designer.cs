@@ -148,7 +148,7 @@
             this.staplesTextbox = new System.Windows.Forms.TextBox();
             this.walmartCaTextbox = new System.Windows.Forms.TextBox();
             this.walmartComTextbox = new System.Windows.Forms.TextBox();
-            this.wmManufacturerTextbox = new System.Windows.Forms.TextBox();
+            this.giantTigerTextbox = new System.Windows.Forms.TextBox();
             this.distributorCentralTextbox = new System.Windows.Forms.TextBox();
             this.promoMarketingTextbox = new System.Windows.Forms.TextBox();
             this.asiXidTextbox = new System.Windows.Forms.TextBox();
@@ -584,9 +584,9 @@
             this.wmManufacturerLabel.ForeColor = System.Drawing.Color.Gray;
             this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 863);
             this.wmManufacturerLabel.Name = "wmManufacturerLabel";
-            this.wmManufacturerLabel.Size = new System.Drawing.Size(173, 20);
+            this.wmManufacturerLabel.Size = new System.Drawing.Size(124, 20);
             this.wmManufacturerLabel.TabIndex = 75;
-            this.wmManufacturerLabel.Text = "WM Manufacturer SKU";
+            this.wmManufacturerLabel.Text = "Giant Tiger SKU";
             // 
             // staplesLabel
             // 
@@ -1530,13 +1530,13 @@
             this.walmartComTextbox.Size = new System.Drawing.Size(574, 20);
             this.walmartComTextbox.TabIndex = 70;
             // 
-            // wmManufacturerTextbox
+            // giantTigerTextbox
             // 
-            this.wmManufacturerTextbox.Enabled = false;
-            this.wmManufacturerTextbox.Location = new System.Drawing.Point(187, 863);
-            this.wmManufacturerTextbox.Name = "wmManufacturerTextbox";
-            this.wmManufacturerTextbox.Size = new System.Drawing.Size(574, 20);
-            this.wmManufacturerTextbox.TabIndex = 76;
+            this.giantTigerTextbox.Enabled = false;
+            this.giantTigerTextbox.Location = new System.Drawing.Point(187, 863);
+            this.giantTigerTextbox.Name = "giantTigerTextbox";
+            this.giantTigerTextbox.Size = new System.Drawing.Size(574, 20);
+            this.giantTigerTextbox.TabIndex = 76;
             // 
             // distributorCentralTextbox
             // 
@@ -1919,7 +1919,7 @@
             this.Controls.Add(this.asiXidTextbox);
             this.Controls.Add(this.promoMarketingTextbox);
             this.Controls.Add(this.distributorCentralTextbox);
-            this.Controls.Add(this.wmManufacturerTextbox);
+            this.Controls.Add(this.giantTigerTextbox);
             this.Controls.Add(this.walmartComTextbox);
             this.Controls.Add(this.walmartCaTextbox);
             this.Controls.Add(this.staplesTextbox);
@@ -2170,7 +2170,7 @@
         private System.Windows.Forms.TextBox staplesTextbox;
         private System.Windows.Forms.TextBox walmartCaTextbox;
         private System.Windows.Forms.TextBox walmartComTextbox;
-        private System.Windows.Forms.TextBox wmManufacturerTextbox;
+        private System.Windows.Forms.TextBox giantTigerTextbox;
         private System.Windows.Forms.TextBox distributorCentralTextbox;
         private System.Windows.Forms.TextBox promoMarketingTextbox;
         private System.Windows.Forms.TextBox asiXidTextbox;

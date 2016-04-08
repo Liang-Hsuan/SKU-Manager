@@ -118,6 +118,27 @@ namespace SKU_Manager.MainForms
         }
         #endregion
 
+        #region Giant Tiger Event
+        /* giant tiger button clicks that update the new import of inventory for giant tiger */
+        private void giantTigerButton_Click(object sender, EventArgs e)
+        {
+            excelButton.Visible = false;
+            refreshButton.Visible = false;
+            inventoryButton.Visible = false;
+            loadingLabel.Visible = false;
+        }
+
+        /* giant tiger button hover that show giant tiger's functions */
+        private void giantTigerButton_MouseHover(object sender, EventArgs e)
+        {
+            loadingLabel.Text = "Giant Tiger";
+            loadingLabel.Visible = true;
+            excelButton.Visible = true;
+            refreshButton.Visible = true;
+            inventoryButton.Visible = true;
+        }
+        #endregion
+
         #region Channel Mangement
         /* the event for excel button clicks that update the merchant sku */
         private void excelButton_Click(object sender, EventArgs e)
