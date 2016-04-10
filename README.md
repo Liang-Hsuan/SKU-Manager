@@ -3,19 +3,19 @@
 
 **The main function of this enterprise application:**
 
--> Managing company’s products, pricing and various eCommerce platform exports.
+✔︎ Managing company’s products, pricing and various eCommerce platform exports.
 
--> Direct inventory update to all online shopping channels and allow purchase order creation.
+✔︎ Direct inventory update to all online shopping channels and allow purchase order creation.
 
--> Convenient program to manage company's SKUs and all inventory on online shopping channels.
+✔︎ Convenient program to manage company's SKUs and all inventory on online shopping channels.
 
 -------------
 
 **The safety of this application:**
 
--> The user will need to log in which accept the credentials for database connection, so the connection string will only be complete if the user type in the correct username and password.
+✔︎ The user will need to log in which accept the credentials for database connection, so the connection string will only be complete if the user type in the correct username and password.
 
--> Since all credentials are grabbed from database and even database connection string requires user input, there is no confidential data anywhere in the code
+✔︎ Since all credentials are grabbed from database and even database connection string requires user input, there is no confidential data anywhere in the code.
 
 -------------
 
