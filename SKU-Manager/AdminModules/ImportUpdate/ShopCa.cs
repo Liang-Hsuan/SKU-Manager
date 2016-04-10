@@ -34,7 +34,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update new shop.ca merchant sku from the excel import */
-        public override void update(string xlPath)
+        public override void Update(string xlPath)
         {
             // fields for excel sheet reading
             Excel.Application xlApp = new Excel.Application();
@@ -69,7 +69,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update shop.ca inventory data and create purchase order if necessary, also send email for notification */
-        public void update(ShopCaInventoryValues[] list)
+        public void Update(ShopCaInventoryValues[] list)
         {
             // local fields for storing data
             Dictionary<string, int> purchaseList = new Dictionary<string, int>();
@@ -111,9 +111,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             writer.Close();
 
             // upload file to sftp server
-            // sftp.Connect();
-            // sftp.Put(path, "/fromclient/inventory");
-            // sftp.Close();
+            sftp.Connect();
+            sftp.Put(path, "/fromclient/inventory");
+            sftp.Close();
             #endregion
 
             if (purchaseList.Count < 1) return;
@@ -142,7 +142,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a PUBLIC supporting method that set the given sku to discontine in database for shop.ca */
-        public override void discontinue(string sku)
+        public override void Discontinue(string sku)
         {
             SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();

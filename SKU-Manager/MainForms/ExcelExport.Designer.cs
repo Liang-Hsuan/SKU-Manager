@@ -786,7 +786,7 @@
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.Filter = "Excel File (*.xls)|*.xls";
+            this.saveFileDialog.Filter = "97 ~ 03 Excel File (*.xls)|*.xls|Excel Workbook (*.xlsx)|*.xlsx";
             // 
             // ExcelExport
             // 

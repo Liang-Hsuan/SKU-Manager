@@ -85,7 +85,7 @@ namespace SKU_Manager.ExcelExportModules
                     foreach (DataTable table in dt)
                         Tables.Tables.Add(table);
                 }
-                catch { }
+                catch { /* ignore */ }
 
                 Complete = true;
                 Close();

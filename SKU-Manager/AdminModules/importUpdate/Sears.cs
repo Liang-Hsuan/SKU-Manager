@@ -33,7 +33,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update new sears merchant sku from the excel import */
-        public override void update(string xlPath)
+        public override void Update(string xlPath)
         {
             // fields for excel sheet reading
             Excel.Application xlApp = new Excel.Application();
@@ -68,7 +68,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a method that update sears inventory data and create purchase order if necessary, also send email for notification */
-        public void update(SearsInventoryValues[] list)
+        public void Update(SearsInventoryValues[] list)
         {
             // local fields for storing data
             Dictionary<string, int> purchaseList = new Dictionary<string, int>();
@@ -148,7 +148,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         }
 
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
-        public override void discontinue(string sku)
+        public override void Discontinue(string sku)
         {
             SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             connection.Open();

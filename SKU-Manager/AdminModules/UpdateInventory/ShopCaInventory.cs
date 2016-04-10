@@ -97,7 +97,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
                 // check the discontinue item to udpate database
                 bool discontinue = Convert.ToBoolean(row[6]);
                 if (discontinue)
-                    shopCa.discontinue(row[0].ToString());
+                    shopCa.Discontinue(row[0].ToString());
 
                 if (row[1].ToString() == "") continue;
                 ShopCaInventoryValues value = new ShopCaInventoryValues(row[0].ToString(), Convert.ToInt32(row[2]), Convert.ToBoolean(row[5]), discontinue,
@@ -108,7 +108,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             // start updating
             try
             {
-                shopCa.update(list.ToArray());
+                shopCa.Update(list.ToArray());
             }
             catch (Exception ex)
             {

@@ -10,8 +10,8 @@ namespace SKU_Manager.ExcelExportModules
     public class XlExport
     {
         // fields for excel export
-        private Excel.Application xlApp;
-        private Excel.Workbook xlWorkBook;
+        private readonly Excel.Application xlApp;
+        private readonly Excel.Workbook xlWorkBook;
         private Excel.Worksheet xlWorkSheet;
         private readonly object misValue = System.Reflection.Missing.Value;
 
@@ -24,7 +24,7 @@ namespace SKU_Manager.ExcelExportModules
 
         #region Export Excel Methods
         /* methods that export excel file from the table and save path given */
-        public void nowExport(string path, DataSet ds, string[] names)
+        public void NowExport(string path, DataSet ds, string[] names)
         {
             // add worksheet for each table
             addSheet(ds);
@@ -41,7 +41,7 @@ namespace SKU_Manager.ExcelExportModules
             releaseObject(xlWorkBook);
             releaseObject(xlApp);
         }
-        public void nowExport(string path, DataSet ds, string[] names, int[][] textIndex)
+        public void NowExport(string path, DataSet ds, string[] names, int[][] textIndex)
         {
             // add worksheet for each table
             addSheet(ds);
@@ -167,7 +167,7 @@ namespace SKU_Manager.ExcelExportModules
         #endregion
 
         /* method that release the object */
-        private void releaseObject(object obj)
+        private static void releaseObject(object obj)
         {
             try
             {

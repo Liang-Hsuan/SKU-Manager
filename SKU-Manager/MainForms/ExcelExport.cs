@@ -49,7 +49,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Active Color Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Active Material Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Active Family Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -183,7 +183,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -210,7 +210,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Inactive Color Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -229,7 +229,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Inactive Material Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -248,7 +248,7 @@ namespace SKU_Manager.MainForms
             names[0] = "Inactive Family Export Sheet";
             try
             {
-                new XlExport().nowExport(saveFileDialog.FileName, ds, names);
+                new XlExport().NowExport(saveFileDialog.FileName, ds, names);
             }
             catch (Exception ex)
             {
@@ -294,7 +294,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -344,7 +344,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -392,7 +392,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files    
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -415,7 +415,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     catch (Exception ex)
                     {
@@ -464,7 +464,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files    
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -487,7 +487,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         // export the excel files 
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     catch (Exception ex)
                     {
@@ -536,7 +536,7 @@ namespace SKU_Manager.MainForms
                 try
                 {
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -559,7 +559,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     catch (Exception ex)
                     {
@@ -613,7 +613,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.ChannelNewListingTable);
 
                 // export the excel files               
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -628,7 +628,7 @@ namespace SKU_Manager.MainForms
                 {
                     // get the data
                     ds = form.Tables;
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -670,7 +670,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.BestbuyTable1);
 
                 // export the excel files         
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -685,7 +685,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -728,7 +728,7 @@ namespace SKU_Manager.MainForms
                     ds.Tables.Add(Properties.Settings.Default.AmazonCaTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -743,7 +743,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                         return;
@@ -789,7 +789,7 @@ namespace SKU_Manager.MainForms
                     ds.Tables.Add(Properties.Settings.Default.AmazonComTable);
 
                     // export the excel files      
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -804,7 +804,7 @@ namespace SKU_Manager.MainForms
                         ds = form.Tables;
 
                         // export the excel files   
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                         return;
@@ -848,7 +848,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.StaplesTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -863,7 +863,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -908,7 +908,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.WalmartPriceTable);
 
                 // export the excel files             
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -924,7 +924,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files               
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -976,7 +976,7 @@ namespace SKU_Manager.MainForms
                     ds.Tables.Add(Properties.Settings.Default.ShopCaPriceTable);
 
                     // export the excel files               
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // load the tables
                 {
@@ -992,7 +992,7 @@ namespace SKU_Manager.MainForms
                     {
                         // get the data
                         ds = form.Tables;
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     else    // user close the form early 
                         return;
@@ -1039,7 +1039,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.GiantTigerTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1054,7 +1054,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -1097,7 +1097,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.MagentoTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1112,7 +1112,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                     return;
@@ -1161,7 +1161,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.UducatTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1176,7 +1176,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                 {
@@ -1219,7 +1219,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.DistributorCentralTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1234,7 +1234,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                 {
@@ -1277,7 +1277,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.AsiTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1292,7 +1292,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                 {
@@ -1335,7 +1335,7 @@ namespace SKU_Manager.MainForms
                 ds.Tables.Add(Properties.Settings.Default.SageTable);
 
                 // export the excel files      
-                export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
             }
             else    // load the tables
             {
@@ -1350,7 +1350,7 @@ namespace SKU_Manager.MainForms
                     ds = form.Tables;
 
                     // export the excel files   
-                    export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                 }
                 else    // user close the form early 
                 {

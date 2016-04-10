@@ -97,7 +97,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
                 // check the discontinue item to udpate database
                 bool discontinue = Convert.ToBoolean(row[7]);
                 if (discontinue)
-                    sears.discontinue(row[0].ToString());
+                    sears.Discontinue(row[0].ToString());
 
                 if (row[2].ToString() == "") continue;
                 SearsInventoryValues value = new SearsInventoryValues(row[0].ToString(), Convert.ToInt32(row[3]), row[1].ToString(), Convert.ToBoolean(row[6]),
@@ -108,7 +108,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             // start updating
             try
             {
-                sears.update(list.ToArray());
+                sears.Update(list.ToArray());
             }
             catch (Exception ex)
             {

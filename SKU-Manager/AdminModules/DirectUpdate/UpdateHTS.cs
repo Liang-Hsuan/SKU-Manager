@@ -10,11 +10,11 @@ namespace SKU_Manager.AdminModules.DirectUpdate
     /*
      * An application module for admin table that can update hts tables directly 
      */
-    public partial class UpdateHTS : Form
+    public partial class UpdateHts : Form
     {
         // fields for database connection
         private SqlConnection connection;
-        private SqlDataAdapter[] adapter = new SqlDataAdapter[2];    // [0] for HTS_CA, [1] for HTS_US
+        private readonly SqlDataAdapter[] adapter = new SqlDataAdapter[2];    // [0] for HTS_CA, [1] for HTS_US
 
         // field for storing tables
         private DataSet dataSet;
@@ -23,7 +23,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic componenets */
-        public UpdateHTS()
+        public UpdateHts()
         {
             InitializeComponent();
         }

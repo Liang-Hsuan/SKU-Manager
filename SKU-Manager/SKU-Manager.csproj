@@ -754,7 +754,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ashlin Icon.ico" />
-    <Content Include="AshlinIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

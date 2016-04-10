@@ -14,7 +14,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public int Current { get; private set; }
 
         /* a method that update new amzon merchant sku from the excel import */
-        public void update(string xlPath)
+        public void Update(string xlPath)
         {
             // fields for excel sheet reading
             Excel.Application xlApp = new Excel.Application();

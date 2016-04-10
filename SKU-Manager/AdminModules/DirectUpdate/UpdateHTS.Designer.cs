@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.AdminModules.DirectUpdate
 {
-    partial class UpdateHTS
+    partial class UpdateHts
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateHTS));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateHts));
             this.dataGridViewCA = new System.Windows.Forms.DataGridView();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.udpateButton = new System.Windows.Forms.Button();
@@ -141,7 +141,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UpdateHTS";
+            this.Name = "UpdateHts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update HTS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

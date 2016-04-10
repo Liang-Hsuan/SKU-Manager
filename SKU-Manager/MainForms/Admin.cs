@@ -53,7 +53,7 @@ namespace SKU_Manager.MainForms
         /* the event when update hts button is clicked */
         private void modifyHtsButton_Click(object sender, EventArgs e)
         {
-            new UpdateHTS().ShowDialog(this);
+            new UpdateHts().ShowDialog(this);
         }
         #endregion
 
@@ -152,7 +152,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         sears = new Sears();
-                        new Thread(() => sears.update(openFileDialog.FileName)).Start();
+                        new Thread(() => sears.Update(openFileDialog.FileName)).Start();
                     }
                     catch (Exception ex)
                     {
@@ -167,7 +167,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         shopCa = new ShopCa();
-                        new Thread(() => shopCa.update(openFileDialog.FileName)).Start();
+                        new Thread(() => shopCa.Update(openFileDialog.FileName)).Start();
                     }
                     catch (Exception ex)
                     {
@@ -182,7 +182,7 @@ namespace SKU_Manager.MainForms
                     try
                     {
                         amazon = new Amazon();
-                        new Thread(() => amazon.update(openFileDialog.FileName)).Start();
+                        new Thread(() => amazon.Update(openFileDialog.FileName)).Start();
                     }
                     catch (Exception ex)
                     {

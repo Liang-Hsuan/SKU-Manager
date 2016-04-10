@@ -20,11 +20,11 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public int Current { get; protected set; }
 
         /* a method that update new channel's merchant sku from the excel import */
-        public abstract void update(string xlPath);
+        public abstract void Update(string xlPath);
 
         #region Supporting Method
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
-        public abstract void discontinue(string sku);
+        public abstract void Discontinue(string sku);
 
         /* a supporting method that create the po number for the channel */
         protected static string createPoNumber(string channelNo)
