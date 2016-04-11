@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using SKU_Manager.SupportingClasses.ProductDetail;
 
 namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
@@ -31,7 +32,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             addColumn(mainTable, "Reorder Level");      // 5
 
             // local field for inserting data to table
-            DataRow row;
             Product product = new Product();
             List<Values> list = product.GetStockList();
             bool found = false;
@@ -41,23 +41,20 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
             foreach (string sku in skuList)
             {
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = sku;
 
                 // looking for the data for this sku
-                foreach (Values value in list)
+                foreach (Values value in list.Where(value => sku == value.SKU))
                 {
-                    if (sku == value.SKU)
-                    {
-                        row[1] = value.ProductId;
-                        row[2] = value.Quantity;
-                        row[3] = value.ReorderQuantity;
-                        row[4] = value.ReorderLevel;
-                        list.Remove(value);
-                        found = true;
-                        break;
-                    }
+                    row[1] = value.ProductId;
+                    row[2] = value.Quantity;
+                    row[3] = value.ReorderQuantity;
+                    row[4] = value.ReorderLevel;
+                    list.Remove(value);
+                    found = true;
+                    break;
                 }
 
                 if (!found)
@@ -83,17 +80,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
     }
 }

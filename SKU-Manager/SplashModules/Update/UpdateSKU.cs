@@ -50,7 +50,6 @@ namespace SKU_Manager.SplashModules.Update
         private string upcCode10;
 
         // supporting fields
-        private string[] htsList = new string[4];
         private bool[] activeList = new bool[3];
 
         // fields for storing uri path and alt text of images

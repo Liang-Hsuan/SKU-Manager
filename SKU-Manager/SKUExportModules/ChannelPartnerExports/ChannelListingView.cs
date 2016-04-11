@@ -135,7 +135,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timeLeft[0] = 4;
             }
             else
-                loadingLabel1.Text += ".";
+                loadingLabel1.Text += '.';
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -150,7 +150,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timeLeft[1] = 4;
             }
             else
-                loadingLabel2.Text += ".";
+                loadingLabel2.Text += '.';
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -165,7 +165,7 @@ namespace SKU_Manager.SKUExportModules.ChannelPartnerExports
                 timeLeft[2] = 4;
             }
             else
-                loadingLabel3.Text += ".";
+                loadingLabel3.Text += '.';
         }
         #endregion
 

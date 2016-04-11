@@ -73,7 +73,7 @@ namespace SKU_Manager.SKUExportModules.ActiveAttributeExports
                 timeLeft = 4;
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel.Text += '.';
         }
 
         /* the event for exit button click */

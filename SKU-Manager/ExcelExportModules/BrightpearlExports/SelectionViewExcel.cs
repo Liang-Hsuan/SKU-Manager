@@ -82,7 +82,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     try
                     {
                         // export the excel files    
-                        export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     catch (Exception ex)
                     {
@@ -112,7 +112,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                         try
                         {
                             // export the excel files   
-                            export.nowExport(saveFileDialog.FileName, ds, names, textIndex);
+                            export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                         }
                         catch (Exception ex)
                         {

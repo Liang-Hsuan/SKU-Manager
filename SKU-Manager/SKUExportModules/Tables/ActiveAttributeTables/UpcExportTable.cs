@@ -57,17 +57,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         protected sealed override string[] getSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* method that get the data from given sku */

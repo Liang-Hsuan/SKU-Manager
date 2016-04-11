@@ -404,29 +404,29 @@ namespace SKU_Manager.SplashModules.Add
                 string original = skuCodeTextbox.Text;
                 if (original.Contains(designServiceCode) && !original.Contains(colorCode))
                     // has something in front but nothing behind
-                    skuCodeTextbox.Text = designServiceCode + "-" + currentMaterial;
+                    skuCodeTextbox.Text = designServiceCode + '-' + currentMaterial;
                 else if (!original.Contains(designServiceCode) && original.Contains(colorCode))
                     // has something behind but nothing infront
-                    skuCodeTextbox.Text = currentMaterial + "-" + colorCode;
+                    skuCodeTextbox.Text = currentMaterial + '-' + colorCode;
                 else if (original.Contains(designServiceCode) && original.Contains(colorCode))
                     // has both infront and behind
-                    skuCodeTextbox.Text = designServiceCode + "-" + currentMaterial + "-" + colorCode;
+                    skuCodeTextbox.Text = designServiceCode + '-' + currentMaterial + '-' + colorCode;
                 else // only it self
                     skuCodeTextbox.Text = skuCodeTextbox.Text.Replace(material, currentMaterial);
             }
             else if (skuCodeTextbox.Text.Contains(designServiceCode) && !skuCodeTextbox.Text.Contains(colorCode))    // has something in front but nothing behind, add behind it 
             {
-                skuCodeTextbox.Text += "-" + currentMaterial;
+                skuCodeTextbox.Text += '-' + currentMaterial;
                 middleHasAdded = true;
             }
             else if (!skuCodeTextbox.Text.Contains(designServiceCode) && skuCodeTextbox.Text.Contains(colorCode))    // has something behind but nothing infront, add infront of it
             {
-                skuCodeTextbox.Text = currentMaterial + "-" + colorCode;
+                skuCodeTextbox.Text = currentMaterial + '-' + colorCode;
                 middleHasAdded = true;
             }
             else    // has both behind and front, add it to the middle
             {
-                skuCodeTextbox.Text = designServiceCode + "-" + currentMaterial + "-" + colorCode;
+                skuCodeTextbox.Text = designServiceCode + '-' + currentMaterial + '-' + colorCode;
                 middleHasAdded = true;
             }
 
@@ -484,7 +484,7 @@ namespace SKU_Manager.SplashModules.Add
             }
             else    // has something in front
             {
-                skuCodeTextbox.Text += "-" + currentColorCode;
+                skuCodeTextbox.Text += '-' + currentColorCode;
                 lastHasAdded = true;
             }
 

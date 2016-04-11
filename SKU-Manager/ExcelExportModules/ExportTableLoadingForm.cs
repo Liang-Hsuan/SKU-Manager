@@ -97,7 +97,7 @@ namespace SKU_Manager.ExcelExportModules
                 timeLeft = 4;
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel.Text += '.';
         }
     }
 }

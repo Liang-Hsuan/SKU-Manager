@@ -220,7 +220,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[0] = 4;
             }
             else
-                loadingLabel1.Text += ".";
+                loadingLabel1.Text += '.';
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -235,7 +235,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[1] = 4;
             }
             else
-                loadingLabel2.Text += ".";
+                loadingLabel2.Text += '.';
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -250,7 +250,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[2] = 4;
             }
             else
-                loadingLabel3.Text += ".";
+                loadingLabel3.Text += '.';
         }
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -265,7 +265,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[3] = 4;
             }
             else
-                loadingLabel4.Text += ".";
+                loadingLabel4.Text += '.';
         }
         private void timer5_Tick(object sender, EventArgs e)
         {
@@ -280,7 +280,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[4] = 4;
             }
             else
-                loadingLabel5.Text += ".";
+                loadingLabel5.Text += '.';
         }
         private void timer6_Tick(object sender, EventArgs e)
         {
@@ -295,7 +295,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[5] = 4;
             }
             else
-                loadingLabel6.Text += ".";
+                loadingLabel6.Text += '.';
         }
         private void timer7_Tick(object sender, EventArgs e)
         {
@@ -310,7 +310,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[6] = 4;
             }
             else
-                loadingLabel7.Text += ".";
+                loadingLabel7.Text += '.';
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
@@ -325,7 +325,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 timeLeft[7] = 4;
             }
             else
-                loadingLabel8.Text += ".";
+                loadingLabel8.Text += '.';
         }
         #endregion
 
@@ -364,12 +364,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[0])
-            {
-                loadingLabel1.Visible = true;
-                progressLabel1.Visible = true;
-            }
+            if (done[0]) return;
+            loadingLabel1.Visible = true;
+            progressLabel1.Visible = true;
         }
         private void codedImprintButton_Click(object sender, EventArgs e)
         {
@@ -405,11 +402,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel8.Visible = false;
 
 
-            if (!done[1])
-            {
-                loadingLabel2.Visible = true;
-                progressLabel2.Visible = true;
-            }
+            if (done[1]) return;
+            loadingLabel2.Visible = true;
+            progressLabel2.Visible = true;
         }
         private void rushCodedBlankButton_Click(object sender, EventArgs e)
         {
@@ -444,12 +439,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[2])
-            {
-                loadingLabel3.Visible = true;
-                progressLabel3.Visible = true;
-            }
+            if (done[2]) return;
+            loadingLabel3.Visible = true;
+            progressLabel3.Visible = true;
         }
         private void rushCodedImprintButton_Click(object sender, EventArgs e)
         {
@@ -484,12 +476,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[3])
-            {
-                loadingLabel4.Visible = true;
-                progressLabel4.Visible = true;
-            }
+            if (done[3]) return;
+            loadingLabel4.Visible = true;
+            progressLabel4.Visible = true;
         }
         private void netBlankButton_Click(object sender, EventArgs e)
         {
@@ -524,12 +513,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[4])
-            {
-                loadingLabel5.Visible = true;
-                progressLabel5.Visible = true;
-            }
+            if (done[4]) return;
+            loadingLabel5.Visible = true;
+            progressLabel5.Visible = true;
         }
         private void netImprintButton_Click(object sender, EventArgs e)
         {
@@ -564,12 +550,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[5])
-            {
-                loadingLabel6.Visible = true;
-                progressLabel6.Visible = true;
-            }
+            if (done[5]) return;
+            loadingLabel6.Visible = true;
+            progressLabel6.Visible = true;
         }
         private void rushNetBlankButton_Click(object sender, EventArgs e)
         {
@@ -604,12 +587,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel6.Visible = false;
             progressLabel8.Visible = false;
 
-
-            if (!done[6])
-            {
-                loadingLabel7.Visible = true;
-                progressLabel7.Visible = true;
-            }
+            if (done[6]) return;
+            loadingLabel7.Visible = true;
+            progressLabel7.Visible = true;
         }
         private void rushNetImprintButton_Click(object sender, EventArgs e)
         {
@@ -645,7 +625,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel7.Visible = false;
 
             if (done[7]) return;
-
             loadingLabel8.Visible = true;
             progressLabel8.Visible = true;
         }

@@ -46,7 +46,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = \'True\' ORDER BY Colour_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = 'True' ORDER BY Colour_Code;", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -133,16 +133,24 @@ namespace SKU_Manager.SplashModules.Deactivate
                 backgroundWorkerDeactivate.ReportProgress(i);
             }
 
-            // connect to database and activate the color
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Active =  'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                  + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                // connect to database and activate the color
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Active =  'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
+                                                      + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
 
-                command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + "\'";
-                command.ExecuteNonQuery();
+                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + "\'";
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

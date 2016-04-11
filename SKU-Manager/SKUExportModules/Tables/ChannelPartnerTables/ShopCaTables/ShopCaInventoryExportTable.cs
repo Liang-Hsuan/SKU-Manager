@@ -46,7 +46,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                               // brand
                 row[1] = "nishis_boutique";                          // store name

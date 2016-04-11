@@ -161,13 +161,21 @@ namespace SKU_Manager.SplashModules.Deactivate
                 backgroundWorkerDeactivate.ReportProgress(i);
             }
 
-            // connect to database and activate the color
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  'False', SKU_Website = 'False', Date_Deactivated = \'" + DateTime.Now.ToString() + "\' "
-                                                  + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
-                connection.Open();
-                command.ExecuteNonQuery();
+                // connect to database and activate the color
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  'False', SKU_Website = 'False', Date_Deactivated = \'" +DateTime.Today.ToString("yyyy-MM-dd") + "\' "
+                                                      + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // simulate progress 60% ~ 100%

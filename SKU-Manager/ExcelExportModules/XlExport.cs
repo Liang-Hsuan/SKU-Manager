@@ -66,12 +66,10 @@ namespace SKU_Manager.ExcelExportModules
             int length = ds.Tables.Count;
 
             // the case when there are more than 1 table
-            if (length > 1)
-            {
-                // add worksheet for each table
-                for (int i = 2; i <= length; i++)
-                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Add();
-            }
+            if (length <= 1) return;
+            // add worksheet for each table
+            for (int i = 2; i <= length; i++)
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.Add();
         }
 
         #region Add Data Methods
@@ -99,9 +97,7 @@ namespace SKU_Manager.ExcelExportModules
                 for (int row = 0; row < rows; row++)
                 {
                     for (int column = 0; column < columns; column++)
-                    {
                         data[row + 1, column] = ds.Tables[i].Rows[row][column];
-                    }
                 }
 
                 // write data to the excel worksheet
@@ -147,9 +143,7 @@ namespace SKU_Manager.ExcelExportModules
                 for (int row = 0; row < rows; row++)
                 {
                     for (int column = 0; column < columns; column++)
-                    {
                         data[row + 1, column] = ds.Tables[i].Rows[row][column];
-                    }
                 }
 
                 // write data to the excel worksheet
