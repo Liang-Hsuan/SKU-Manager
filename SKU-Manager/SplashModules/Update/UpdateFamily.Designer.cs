@@ -105,6 +105,9 @@
             this.backgroundWorkerUpdate = new System.ComponentModel.BackgroundWorker();
             this.leftButton = new System.Windows.Forms.Button();
             this.rightButton = new System.Windows.Forms.Button();
+            this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
+            this.pricingTierLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar
@@ -115,7 +118,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 68;
+            this.progressBar.TabIndex = 70;
             // 
             // usDutyTextbox
             // 
@@ -676,7 +679,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(386, 1654);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 71;
+            this.inactiveListButton.TabIndex = 73;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveFamilyButton_Click);
@@ -689,7 +692,7 @@
             this.activeListButton.Location = new System.Drawing.Point(201, 1654);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 70;
+            this.activeListButton.TabIndex = 72;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeFamilyButton_Click);
@@ -703,7 +706,7 @@
             this.updateFamilyButton.Location = new System.Drawing.Point(201, 1572);
             this.updateFamilyButton.Name = "updateFamilyButton";
             this.updateFamilyButton.Size = new System.Drawing.Size(370, 76);
-            this.updateFamilyButton.TabIndex = 69;
+            this.updateFamilyButton.TabIndex = 71;
             this.updateFamilyButton.Text = "Update Product Family";
             this.updateFamilyButton.UseVisualStyleBackColor = false;
             this.updateFamilyButton.Click += new System.EventHandler(this.updateFamilyButton_Click);
@@ -927,6 +930,31 @@
             this.rightButton.UseVisualStyleBackColor = false;
             this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
+            // pricingTierUpdown
+            // 
+            this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pricingTierUpdown.Enabled = false;
+            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1588);
+            this.pricingTierUpdown.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.pricingTierUpdown.Name = "pricingTierUpdown";
+            this.pricingTierUpdown.Size = new System.Drawing.Size(91, 20);
+            this.pricingTierUpdown.TabIndex = 69;
+            // 
+            // pricingTierLabel
+            // 
+            this.pricingTierLabel.AutoSize = true;
+            this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricingTierLabel.ForeColor = System.Drawing.Color.Green;
+            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1565);
+            this.pricingTierLabel.Name = "pricingTierLabel";
+            this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
+            this.pricingTierLabel.TabIndex = 68;
+            this.pricingTierLabel.Text = "Pricing Tier";
+            // 
             // UpdateFamily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -934,6 +962,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.pricingTierUpdown);
+            this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.leftButton);
             this.Controls.Add(this.rightButton);
             this.Controls.Add(this.productFamilyCombobox);
@@ -1012,6 +1042,7 @@
             this.Name = "UpdateFamily";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Updata Family";
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1095,5 +1126,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerUpdate;
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.NumericUpDown pricingTierUpdown;
+        private System.Windows.Forms.Label pricingTierLabel;
     }
 }

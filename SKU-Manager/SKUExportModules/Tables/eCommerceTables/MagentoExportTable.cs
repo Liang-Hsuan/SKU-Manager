@@ -173,7 +173,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
 
 
             // local field for inserting data to table
-            double[] discountList = getDiscount();
+            double[][] discountList = getDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -183,7 +183,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             foreach (string sku in skuList)
             {
                 ArrayList list = getData(sku);
-
                 DataRow row = mainTable.NewRow();
 
                 row[0] = sku;                                            // SKU ashlin
@@ -221,84 +220,103 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                     row[24] = list[20] + "cm x " + list[21] + "cm x " + list[22] + "cm";                                                                                                                          // finished dimensions (cm)
                     row[25] = Math.Round(Convert.ToDouble(list[20]) / 2.54, 2) + "in x " + Math.Round(Convert.ToDouble(list[21]) / 2.54, 2) + "in x " + Math.Round(Convert.ToDouble(list[22]) / 2.54, 2) + "in";  // finished dimensions (in)
                 }
-                double msrp = discountList[21] * Convert.ToDouble(list[27]);
-                row[26] = Math.Round(msrp * discountList[1], 2);                        // price 1 c blank
-                row[27] = Math.Round(msrp * discountList[2], 2);                        // price 6 c blank
-                row[28] = Math.Round(msrp * discountList[3], 2);                        // price 24 c blank
-                row[29] = Math.Round(msrp * discountList[4], 2);                        // price 50 c blank
-                row[30] = Math.Round(msrp * discountList[5], 2);                        // price 100 c blank
-                row[31] = Math.Round(msrp * discountList[6], 2);                        // price 250 c blank
-                row[32] = Math.Round(msrp * discountList[7], 2);                        // price 500 c blank
-                row[33] = Math.Round(msrp * discountList[8], 2);                        // price 1000 c blank
-                row[34] = Math.Round(msrp * discountList[9], 2);                        // price 2500 c blank
+                double msrp = discountList[5][0] * Convert.ToDouble(list[27]);
+                int pricingTier;
+                switch (Convert.ToInt32(list[68]))
+                {
+                    case 1:
+                        pricingTier = 1;
+                        break;
+                    case 2:
+                        pricingTier = 2;
+                        break;
+                    case 3:
+                        pricingTier = 3;
+                        break;
+                    case 4:
+                        pricingTier = 4;
+                        break;
+                    default:
+                        pricingTier = 0;
+                        break;
+                }
+                row[26] = Math.Round(msrp * discountList[pricingTier][1], 2);                        // price 1 c blank
+                row[27] = Math.Round(msrp * discountList[pricingTier][2], 2);                        // price 6 c blank
+                row[28] = Math.Round(msrp * discountList[pricingTier][3], 2);                        // price 24 c blank
+                row[29] = Math.Round(msrp * discountList[pricingTier][4], 2);                        // price 50 c blank
+                row[30] = Math.Round(msrp * discountList[pricingTier][5], 2);                        // price 100 c blank
+                row[31] = Math.Round(msrp * discountList[pricingTier][6], 2);                        // price 250 c blank
+                row[32] = Math.Round(msrp * discountList[pricingTier][7], 2);                        // price 500 c blank
+                row[33] = Math.Round(msrp * discountList[pricingTier][8], 2);                        // price 1000 c blank
+                row[34] = Math.Round(msrp * discountList[pricingTier][9], 2);                        // price 2500 c blank
                 double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[24]) - 1;
                 if (runCharge > 8)
                     runCharge = 8;
                 else if (runCharge < 1)
                     runCharge = 1;
-                row[35] = Math.Round((msrp + runCharge) * discountList[1], 2);                             // price 1 c im
-                row[36] = Math.Round((msrp + runCharge) * discountList[2], 2);                             // price 6 c im
-                row[37] = Math.Round((msrp + runCharge) * discountList[3], 2);                             // price 24 c im
-                row[38] = Math.Round((msrp + runCharge) * discountList[4], 2);                             // price 50 c im
-                row[39] = Math.Round((msrp + runCharge) * discountList[5], 2);                             // price 100 c im
-                row[40] = Math.Round((msrp + runCharge) * discountList[6], 2);                             // price 250 c im
-                row[41] = Math.Round((msrp + runCharge) * discountList[7], 2);                             // price 500 c im
-                row[42] = Math.Round((msrp + runCharge) * discountList[8], 2);                             // price 1000 c im 
-                row[43] = Math.Round((msrp + runCharge) * discountList[9], 2);                             // price 2500 c im
-                row[44] = Math.Round(msrp * discountList[11], 2);                                          // price 1 net blank
-                row[45] = Math.Round(msrp * discountList[12], 2);                                          // price 6 net blank
-                row[46] = Math.Round(msrp * discountList[13], 2);                                          // price 24 net blank
-                row[47] = Math.Round(msrp * discountList[14], 2);                                          // price 50 net blank
-                row[48] = Math.Round(msrp * discountList[15], 2);                                          // price 100 net blank
-                row[49] = Math.Round(msrp * discountList[16], 2);                                          // price 250 net blank
-                row[50] = Math.Round(msrp * discountList[17], 2);                                          // price 500 net blank
-                row[51] = Math.Round(msrp * discountList[18], 2);                                          // price 1000 net blank
-                row[52] = Math.Round(msrp * discountList[19], 2);                                          // price 2500 net blank
-                row[53] = Math.Round((msrp + runCharge) * discountList[11], 2);                            // price 1 net im
-                row[54] = Math.Round((msrp + runCharge) * discountList[12], 2);                            // price 6 net im
-                row[55] = Math.Round((msrp + runCharge) * discountList[13], 2);                            // price 24 net im
-                row[56] = Math.Round((msrp + runCharge) * discountList[14], 2);                            // price 50 net im
-                row[57] = Math.Round((msrp + runCharge) * discountList[15], 2);                            // price 100 net im
-                row[58] = Math.Round((msrp + runCharge) * discountList[16], 2);                            // price 250 net im
-                row[59] = Math.Round((msrp + runCharge) * discountList[17], 2);                            // price 500 net im
-                row[60] = Math.Round((msrp + runCharge) * discountList[18], 2);                            // price 1000 net im
-                row[61] = Math.Round((msrp + runCharge) * discountList[19], 2);                            // price 2500 net im
-                row[62] = Math.Round(msrp * discountList[0] * discountList[1], 2);                         // price rush 1 c blank
-                row[63] = Math.Round(msrp * discountList[0] * discountList[2], 2);                         // price rush 6 c blank
-                row[64] = Math.Round(msrp * discountList[0] * discountList[3], 2);                         // price rush 24 c blank 
-                row[65] = Math.Round(msrp * discountList[0] * discountList[4], 2);                         // price rush 50 c blank
-                row[66] = Math.Round(msrp * discountList[0] * discountList[5], 2);                         // price rush 100 c blank
-                row[67] = Math.Round(msrp * discountList[0] * discountList[6], 2);                         // price rush 250 c blank
-                row[68] = Math.Round(msrp * discountList[0] * discountList[7], 2);                         // price rush 500 c blank
-                row[69] = Math.Round(msrp * discountList[0] * discountList[8], 2);                         // price rush 1000 c blank
-                row[70] = Math.Round(msrp * discountList[0] * discountList[9], 2);                         // price rush 2500 c blank
-                row[71] = Math.Round((msrp + runCharge) * discountList[0] * discountList[1], 2);           // price rush 1 c im
-                row[72] = Math.Round((msrp + runCharge) * discountList[0] * discountList[2], 2);           // price rush 6 c im
-                row[73] = Math.Round((msrp + runCharge) * discountList[0] * discountList[3], 2);           // price rush 24 c im
-                row[74] = Math.Round((msrp + runCharge) * discountList[0] * discountList[4], 2);           // price rush 50 c im
-                row[75] = Math.Round((msrp + runCharge) * discountList[0] * discountList[5], 2);           // price rush 100 c im
-                row[76] = Math.Round((msrp + runCharge) * discountList[0] * discountList[6], 2);           // price rush 250 c im
-                row[77] = Math.Round((msrp + runCharge) * discountList[0] * discountList[7], 2);           // price rush 500 c im
-                row[78] = Math.Round((msrp + runCharge) * discountList[0] * discountList[8], 2);           // price rush 1000 c im
-                row[79] = Math.Round((msrp + runCharge) * discountList[0] * discountList[9], 2);           // price rush 2500 c im
-                row[80] = Math.Round(msrp * discountList[10] * discountList[11], 2);                       // price rush 1 net blank
-                row[81] = Math.Round(msrp * discountList[10] * discountList[12], 2);                       // price rush 6 net blank
-                row[82] = Math.Round(msrp * discountList[10] * discountList[13], 2);                       // price rush 24 net blank
-                row[83] = Math.Round(msrp * discountList[10] * discountList[14], 2);                       // price rush 50 net blank
-                row[84] = Math.Round(msrp * discountList[10] * discountList[15], 2);                       // price rush 100 net blank
-                row[85] = Math.Round(msrp * discountList[10] * discountList[16], 2);                       // price rush 250 net blank
-                row[86] = Math.Round(msrp * discountList[10] * discountList[17], 2);                       // price rush 500 net blank
-                row[87] = Math.Round(msrp * discountList[10] * discountList[18], 2);                       // price rush 1000 net blank
-                row[88] = Math.Round(msrp * discountList[10] * discountList[19], 2);                       // price rush 2500 net blank
-                row[89] = Math.Round((msrp + runCharge) * discountList[10] * discountList[11], 2);         // price rush 1 net im
-                row[90] = Math.Round((msrp + runCharge) * discountList[10] * discountList[12], 2);         // price rush 6 net im
-                row[91] = Math.Round((msrp + runCharge) * discountList[10] * discountList[13], 2);         // price rush 24 net im
-                row[92] = Math.Round((msrp + runCharge) * discountList[10] * discountList[14], 2);         // price rush 50 net im        
-                row[93] = Math.Round((msrp + runCharge) * discountList[10] * discountList[15], 2);         // price rush 100 net im
-                row[94] = Math.Round((msrp + runCharge) * discountList[10] * discountList[16], 2);         // price rush 250 net im
-                row[95] = Math.Round((msrp + runCharge) * discountList[10] * discountList[17], 2);         // price rush 500 net im
-                row[96] = Math.Round((msrp + runCharge) * discountList[10] * discountList[18], 2);         // price rush 1000 net im
-                row[97] = Math.Round((msrp + runCharge) * discountList[10] * discountList[19], 2);         // price rush 2500 net im
+                row[35] = Math.Round((msrp + runCharge) * discountList[pricingTier][1], 2);                             // price 1 c im
+                row[36] = Math.Round((msrp + runCharge) * discountList[pricingTier][2], 2);                             // price 6 c im
+                row[37] = Math.Round((msrp + runCharge) * discountList[pricingTier][3], 2);                             // price 24 c im
+                row[38] = Math.Round((msrp + runCharge) * discountList[pricingTier][4], 2);                             // price 50 c im
+                row[39] = Math.Round((msrp + runCharge) * discountList[pricingTier][5], 2);                             // price 100 c im
+                row[40] = Math.Round((msrp + runCharge) * discountList[pricingTier][6], 2);                             // price 250 c im
+                row[41] = Math.Round((msrp + runCharge) * discountList[pricingTier][7], 2);                             // price 500 c im
+                row[42] = Math.Round((msrp + runCharge) * discountList[pricingTier][8], 2);                             // price 1000 c im 
+                row[43] = Math.Round((msrp + runCharge) * discountList[pricingTier][9], 2);                             // price 2500 c im
+                row[44] = Math.Round(msrp * discountList[pricingTier][11], 2);                                          // price 1 net blank
+                row[45] = Math.Round(msrp * discountList[pricingTier][12], 2);                                          // price 6 net blank
+                row[46] = Math.Round(msrp * discountList[pricingTier][13], 2);                                          // price 24 net blank
+                row[47] = Math.Round(msrp * discountList[pricingTier][14], 2);                                          // price 50 net blank
+                row[48] = Math.Round(msrp * discountList[pricingTier][15], 2);                                          // price 100 net blank
+                row[49] = Math.Round(msrp * discountList[pricingTier][16], 2);                                          // price 250 net blank
+                row[50] = Math.Round(msrp * discountList[pricingTier][17], 2);                                          // price 500 net blank
+                row[51] = Math.Round(msrp * discountList[pricingTier][18], 2);                                          // price 1000 net blank
+                row[52] = Math.Round(msrp * discountList[pricingTier][19], 2);                                          // price 2500 net blank
+                row[53] = Math.Round((msrp + runCharge) * discountList[pricingTier][11], 2);                            // price 1 net im
+                row[54] = Math.Round((msrp + runCharge) * discountList[pricingTier][12], 2);                            // price 6 net im
+                row[55] = Math.Round((msrp + runCharge) * discountList[pricingTier][13], 2);                            // price 24 net im
+                row[56] = Math.Round((msrp + runCharge) * discountList[pricingTier][14], 2);                            // price 50 net im
+                row[57] = Math.Round((msrp + runCharge) * discountList[pricingTier][15], 2);                            // price 100 net im
+                row[58] = Math.Round((msrp + runCharge) * discountList[pricingTier][16], 2);                            // price 250 net im
+                row[59] = Math.Round((msrp + runCharge) * discountList[pricingTier][17], 2);                            // price 500 net im
+                row[60] = Math.Round((msrp + runCharge) * discountList[pricingTier][18], 2);                            // price 1000 net im
+                row[61] = Math.Round((msrp + runCharge) * discountList[pricingTier][19], 2);                            // price 2500 net im
+                row[62] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][1], 2);                         // price rush 1 c blank
+                row[63] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][2], 2);                         // price rush 6 c blank
+                row[64] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][3], 2);                         // price rush 24 c blank 
+                row[65] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][4], 2);                         // price rush 50 c blank
+                row[66] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][5], 2);                         // price rush 100 c blank
+                row[67] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][6], 2);                         // price rush 250 c blank
+                row[68] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][7], 2);                         // price rush 500 c blank
+                row[69] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][8], 2);                         // price rush 1000 c blank
+                row[70] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][9], 2);                         // price rush 2500 c blank
+                row[71] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][1], 2);           // price rush 1 c im
+                row[72] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][2], 2);           // price rush 6 c im
+                row[73] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][3], 2);           // price rush 24 c im
+                row[74] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][4], 2);           // price rush 50 c im
+                row[75] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][5], 2);           // price rush 100 c im
+                row[76] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][6], 2);           // price rush 250 c im
+                row[77] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][7], 2);           // price rush 500 c im
+                row[78] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][8], 2);           // price rush 1000 c im
+                row[79] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][9], 2);           // price rush 2500 c im
+                row[80] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][11], 2);                       // price rush 1 net blank
+                row[81] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][12], 2);                       // price rush 6 net blank
+                row[82] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][13], 2);                       // price rush 24 net blank
+                row[83] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][14], 2);                       // price rush 50 net blank
+                row[84] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][15], 2);                       // price rush 100 net blank
+                row[85] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][16], 2);                       // price rush 250 net blank
+                row[86] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][17], 2);                       // price rush 500 net blank
+                row[87] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][18], 2);                       // price rush 1000 net blank
+                row[88] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][19], 2);                       // price rush 2500 net blank
+                row[89] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][11], 2);         // price rush 1 net im
+                row[90] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][12], 2);         // price rush 6 net im
+                row[91] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][13], 2);         // price rush 24 net im
+                row[92] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][14], 2);         // price rush 50 net im        
+                row[93] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][15], 2);         // price rush 100 net im
+                row[94] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][16], 2);         // price rush 250 net im
+                row[95] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][17], 2);         // price rush 500 net im
+                row[96] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][18], 2);         // price rush 1000 net im
+                row[97] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][19], 2);         // price rush 2500 net im
                 row[98] = list[28];                                      // image 1 path
                 row[99] = list[29];                                      // image 2 path
                 row[100] = list[30];                                     // image 3 path
@@ -342,7 +360,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[138] = list[67];                                     // alt text image model 5 path
                 row[139] = msrp;                                         // msrp
                 row[140] = Math.Round(msrp + runCharge, 2);              // msrp imprinted
-                row[141] = Math.Round(msrp * discountList[20], 2);       // wholesale
+                row[141] = Math.Round(msrp * discountList[pricingTier][20], 2);       // wholesale
                 row[142] = list[26];                                     // keywords
                 row[143] = list[23];                                     // monogram
 
@@ -397,13 +415,13 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             // [5] design service fashion name ashlin, [6] design short description, [7] design extended description, [8] ~ [12] options, [13] strap, [14] detachable strap, [15] zippered enclosure, [16] shippable weight grams, [17] imprintable,  [18] & [19] imprint area cm, [20] ~ [22] finished dimensions (cm), [23] monogram, [24] for price calculation
             //                                                                                                                                                                                           & shippable weight lb                                  & imprint area in            & finished dimensions (in)
             // [25] design servie family description, [26] keywords
-            // [27] all related to price, [28] ~ [37] iamge path, [38] ~ [42] group path, [43] ~ [47] model path, [48] ~ [57] alt image path, [58] ~ [62] alt group path, [63] ~ [67] alt model path
+            // [27] all related to price, [28] ~ [37] iamge path, [38] ~ [42] group path, [43] ~ [47] model path, [48] ~ [57] alt image path, [58] ~ [62] alt group path, [63] ~ [67] alt model path, [68] for price calculation
             SqlCommand command = new SqlCommand("SELECT Material_Description_Extended, " +
                                                 "Colour_Description_Extended, " +
                                                 "Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Option_1, Option_2, Option_3, Option_4, Option_5, Strap, Detachable_Strap, Zippered_Enclosure, Shippable_weight_grams, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Monogram, Components, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
-                                                "Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path " +
-                                                "FROM master_SKU_Attributes sku " +
+                                                "Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, " +
+                                                "sku.Pricing_Tier FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
@@ -411,7 +429,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 64; i++)
+            for (int i = 0; i <= 65; i++)
                 list.Add(reader.GetValue(i));
 
             return list;
@@ -427,29 +445,43 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         }
 
         /* a method that return the discount matrix */
-        private double[] getDiscount()
+        private double[][] getDiscount()
         {
-            double[] list = new double[22];
+            double[][] list = new double[6][];
 
             // [0] rush standard, [1] 1 c standard, [2] 6 c standard, [3] 24 c standard, [4] 50 c standard, [5] 100 c standard, [6] 250 c standard, [7] 500 c standard, [8] 1000 c standard, [9] 2500 c standard, [10] rush net, [11] 1 c net standard
             // [12] 6 c net standard, [13] 24 c net standard, [14] 50 c net standard, [15] 100 net standard, [16] 250 net standard, [17] 500 net standard, [18] 1000 net standard, [19] 2500 net standard, [20] wholesale net
             SqlCommand command = new SqlCommand("SELECT [RUSH_C_25_wks], [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], "
-                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM ref_discount_matrix", connection);
+                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 20; i++)
-                list[i] = reader.GetDouble(i);
+            for (int i = 0; i <= 4; i++)
+            {
+                double[] itemList = new double[21];
+                reader.Read();
+                for (int j = 0; j <= 20; j++)
+                {
+                    try
+                    {
+                        itemList[j] = reader.GetDouble(j);
+                    }
+                    catch
+                    {
+                        itemList[j] = 0;
+                    }
+                }
+                list[i] = itemList;
+            }
             reader.Close();
 
             // [21] multiplier
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[21] = reader.GetDouble(0);
+            list[5] = new double[] { reader.GetDouble(0) };
             connection.Close();
 
-            return list.ToArray();
+            return list;
         }
     }
 }

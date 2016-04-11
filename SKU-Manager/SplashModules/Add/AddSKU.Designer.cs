@@ -154,6 +154,9 @@
             this.duplicateLabel = new System.Windows.Forms.Label();
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.onWebsiteCheckbox = new System.Windows.Forms.CheckBox();
+            this.pricingTierLabel = new System.Windows.Forms.Label();
+            this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -295,7 +298,7 @@
             this.locationLabel.Location = new System.Drawing.Point(13, 254);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(73, 20);
-            this.locationLabel.TabIndex = 18;
+            this.locationLabel.TabIndex = 20;
             this.locationLabel.Text = "Location";
             // 
             // warehouseLabel
@@ -306,7 +309,7 @@
             this.warehouseLabel.Location = new System.Drawing.Point(184, 255);
             this.warehouseLabel.Name = "warehouseLabel";
             this.warehouseLabel.Size = new System.Drawing.Size(78, 16);
-            this.warehouseLabel.TabIndex = 19;
+            this.warehouseLabel.TabIndex = 21;
             this.warehouseLabel.Text = "Warehouse";
             // 
             // warehouseCombobox
@@ -317,7 +320,7 @@
             this.warehouseCombobox.Location = new System.Drawing.Point(285, 253);
             this.warehouseCombobox.Name = "warehouseCombobox";
             this.warehouseCombobox.Size = new System.Drawing.Size(61, 21);
-            this.warehouseCombobox.TabIndex = 20;
+            this.warehouseCombobox.TabIndex = 22;
             // 
             // rackCombobox
             // 
@@ -327,7 +330,7 @@
             this.rackCombobox.Location = new System.Drawing.Point(285, 280);
             this.rackCombobox.Name = "rackCombobox";
             this.rackCombobox.Size = new System.Drawing.Size(61, 21);
-            this.rackCombobox.TabIndex = 22;
+            this.rackCombobox.TabIndex = 24;
             // 
             // shelfCombobox
             // 
@@ -337,7 +340,7 @@
             this.shelfCombobox.Location = new System.Drawing.Point(285, 307);
             this.shelfCombobox.Name = "shelfCombobox";
             this.shelfCombobox.Size = new System.Drawing.Size(61, 21);
-            this.shelfCombobox.TabIndex = 24;
+            this.shelfCombobox.TabIndex = 26;
             // 
             // columnIndexCombobox
             // 
@@ -347,7 +350,7 @@
             this.columnIndexCombobox.Location = new System.Drawing.Point(285, 334);
             this.columnIndexCombobox.Name = "columnIndexCombobox";
             this.columnIndexCombobox.Size = new System.Drawing.Size(61, 21);
-            this.columnIndexCombobox.TabIndex = 26;
+            this.columnIndexCombobox.TabIndex = 28;
             // 
             // rackLabel
             // 
@@ -357,7 +360,7 @@
             this.rackLabel.Location = new System.Drawing.Point(184, 282);
             this.rackLabel.Name = "rackLabel";
             this.rackLabel.Size = new System.Drawing.Size(40, 16);
-            this.rackLabel.TabIndex = 21;
+            this.rackLabel.TabIndex = 23;
             this.rackLabel.Text = "Rack";
             // 
             // shelfLabel
@@ -368,7 +371,7 @@
             this.shelfLabel.Location = new System.Drawing.Point(184, 309);
             this.shelfLabel.Name = "shelfLabel";
             this.shelfLabel.Size = new System.Drawing.Size(38, 16);
-            this.shelfLabel.TabIndex = 13;
+            this.shelfLabel.TabIndex = 25;
             this.shelfLabel.Text = "Shelf";
             // 
             // columnIndexLabel
@@ -379,7 +382,7 @@
             this.columnIndexLabel.Location = new System.Drawing.Point(184, 336);
             this.columnIndexLabel.Name = "columnIndexLabel";
             this.columnIndexLabel.Size = new System.Drawing.Size(88, 16);
-            this.columnIndexLabel.TabIndex = 25;
+            this.columnIndexLabel.TabIndex = 27;
             this.columnIndexLabel.Text = "Column Index";
             // 
             // skuCodeLabel
@@ -390,7 +393,7 @@
             this.skuCodeLabel.Location = new System.Drawing.Point(0, 367);
             this.skuCodeLabel.Name = "skuCodeLabel";
             this.skuCodeLabel.Size = new System.Drawing.Size(174, 20);
-            this.skuCodeLabel.TabIndex = 35;
+            this.skuCodeLabel.TabIndex = 38;
             this.skuCodeLabel.Text = "SKU CODE:";
             this.skuCodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -404,7 +407,7 @@
             this.skuCodeTextbox.Multiline = true;
             this.skuCodeTextbox.Name = "skuCodeTextbox";
             this.skuCodeTextbox.Size = new System.Drawing.Size(581, 28);
-            this.skuCodeTextbox.TabIndex = 36;
+            this.skuCodeTextbox.TabIndex = 39;
             this.skuCodeTextbox.TextChanged += new System.EventHandler(this.skuCodeTextbox_TextChanged);
             // 
             // onlineDetailsLabel
@@ -415,7 +418,7 @@
             this.onlineDetailsLabel.Location = new System.Drawing.Point(0, 394);
             this.onlineDetailsLabel.Name = "onlineDetailsLabel";
             this.onlineDetailsLabel.Size = new System.Drawing.Size(770, 29);
-            this.onlineDetailsLabel.TabIndex = 37;
+            this.onlineDetailsLabel.TabIndex = 40;
             this.onlineDetailsLabel.Text = "Online Details";
             this.onlineDetailsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -427,7 +430,7 @@
             this.ashlinLabel.Location = new System.Drawing.Point(4, 435);
             this.ashlinLabel.Name = "ashlinLabel";
             this.ashlinLabel.Size = new System.Drawing.Size(89, 20);
-            this.ashlinLabel.TabIndex = 38;
+            this.ashlinLabel.TabIndex = 41;
             this.ashlinLabel.Text = "Ashlin URL";
             // 
             // ashlinTextbox
@@ -437,7 +440,7 @@
             this.ashlinTextbox.MaxLength = 50;
             this.ashlinTextbox.Name = "ashlinTextbox";
             this.ashlinTextbox.Size = new System.Drawing.Size(574, 20);
-            this.ashlinTextbox.TabIndex = 39;
+            this.ashlinTextbox.TabIndex = 42;
             // 
             // magentoTextbox
             // 
@@ -446,7 +449,7 @@
             this.magentoTextbox.MaxLength = 50;
             this.magentoTextbox.Name = "magentoTextbox";
             this.magentoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.magentoTextbox.TabIndex = 41;
+            this.magentoTextbox.TabIndex = 44;
             // 
             // tscTextbox
             // 
@@ -455,7 +458,7 @@
             this.tscTextbox.MaxLength = 50;
             this.tscTextbox.Name = "tscTextbox";
             this.tscTextbox.Size = new System.Drawing.Size(574, 20);
-            this.tscTextbox.TabIndex = 43;
+            this.tscTextbox.TabIndex = 46;
             // 
             // costcoTextbox
             // 
@@ -464,7 +467,7 @@
             this.costcoTextbox.MaxLength = 50;
             this.costcoTextbox.Name = "costcoTextbox";
             this.costcoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.costcoTextbox.TabIndex = 45;
+            this.costcoTextbox.TabIndex = 48;
             // 
             // bestbuyTextbox
             // 
@@ -473,7 +476,7 @@
             this.bestbuyTextbox.MaxLength = 50;
             this.bestbuyTextbox.Name = "bestbuyTextbox";
             this.bestbuyTextbox.Size = new System.Drawing.Size(574, 20);
-            this.bestbuyTextbox.TabIndex = 47;
+            this.bestbuyTextbox.TabIndex = 50;
             // 
             // shopCaTextbox
             // 
@@ -482,7 +485,7 @@
             this.shopCaTextbox.MaxLength = 50;
             this.shopCaTextbox.Name = "shopCaTextbox";
             this.shopCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.shopCaTextbox.TabIndex = 49;
+            this.shopCaTextbox.TabIndex = 52;
             // 
             // magentoLabel
             // 
@@ -492,7 +495,7 @@
             this.magentoLabel.Location = new System.Drawing.Point(4, 461);
             this.magentoLabel.Name = "magentoLabel";
             this.magentoLabel.Size = new System.Drawing.Size(126, 20);
-            this.magentoLabel.TabIndex = 40;
+            this.magentoLabel.TabIndex = 43;
             this.magentoLabel.Text = "MAGENTO SKU";
             // 
             // tscLabel
@@ -503,7 +506,7 @@
             this.tscLabel.Location = new System.Drawing.Point(4, 487);
             this.tscLabel.Name = "tscLabel";
             this.tscLabel.Size = new System.Drawing.Size(103, 20);
-            this.tscLabel.TabIndex = 42;
+            this.tscLabel.TabIndex = 45;
             this.tscLabel.Text = "TSC.CA SKU";
             // 
             // bestbuyLabel
@@ -514,7 +517,7 @@
             this.bestbuyLabel.Location = new System.Drawing.Point(4, 539);
             this.bestbuyLabel.Name = "bestbuyLabel";
             this.bestbuyLabel.Size = new System.Drawing.Size(148, 20);
-            this.bestbuyLabel.TabIndex = 46;
+            this.bestbuyLabel.TabIndex = 49;
             this.bestbuyLabel.Text = "BESTBUY.CA SKU";
             // 
             // shopcaLabel
@@ -525,7 +528,7 @@
             this.shopcaLabel.Location = new System.Drawing.Point(4, 565);
             this.shopcaLabel.Name = "shopcaLabel";
             this.shopcaLabel.Size = new System.Drawing.Size(117, 20);
-            this.shopcaLabel.TabIndex = 48;
+            this.shopcaLabel.TabIndex = 51;
             this.shopcaLabel.Text = "SHOP.CA SKU";
             // 
             // amazonCaLabel
@@ -536,7 +539,7 @@
             this.amazonCaLabel.Location = new System.Drawing.Point(4, 591);
             this.amazonCaLabel.Name = "amazonCaLabel";
             this.amazonCaLabel.Size = new System.Drawing.Size(144, 20);
-            this.amazonCaLabel.TabIndex = 50;
+            this.amazonCaLabel.TabIndex = 53;
             this.amazonCaLabel.Text = "AMAZON.CA  SKU";
             // 
             // amazonCaTextbox
@@ -546,7 +549,7 @@
             this.amazonCaTextbox.MaxLength = 50;
             this.amazonCaTextbox.Name = "amazonCaTextbox";
             this.amazonCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonCaTextbox.TabIndex = 51;
+            this.amazonCaTextbox.TabIndex = 54;
             // 
             // amazonComTextbox
             // 
@@ -555,7 +558,7 @@
             this.amazonComTextbox.MaxLength = 50;
             this.amazonComTextbox.Name = "amazonComTextbox";
             this.amazonComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonComTextbox.TabIndex = 53;
+            this.amazonComTextbox.TabIndex = 56;
             // 
             // searsTextbox
             // 
@@ -564,7 +567,7 @@
             this.searsTextbox.MaxLength = 50;
             this.searsTextbox.Name = "searsTextbox";
             this.searsTextbox.Size = new System.Drawing.Size(574, 20);
-            this.searsTextbox.TabIndex = 55;
+            this.searsTextbox.TabIndex = 58;
             // 
             // staplesTextbox
             // 
@@ -573,7 +576,7 @@
             this.staplesTextbox.MaxLength = 50;
             this.staplesTextbox.Name = "staplesTextbox";
             this.staplesTextbox.Size = new System.Drawing.Size(574, 20);
-            this.staplesTextbox.TabIndex = 57;
+            this.staplesTextbox.TabIndex = 60;
             // 
             // amazonComLabel
             // 
@@ -583,7 +586,7 @@
             this.amazonComLabel.Location = new System.Drawing.Point(3, 617);
             this.amazonComLabel.Name = "amazonComLabel";
             this.amazonComLabel.Size = new System.Drawing.Size(154, 20);
-            this.amazonComLabel.TabIndex = 52;
+            this.amazonComLabel.TabIndex = 55;
             this.amazonComLabel.Text = "AMAZON.COM SKU";
             // 
             // searsCaLabel
@@ -594,7 +597,7 @@
             this.searsCaLabel.Location = new System.Drawing.Point(4, 643);
             this.searsCaLabel.Name = "searsCaLabel";
             this.searsCaLabel.Size = new System.Drawing.Size(128, 20);
-            this.searsCaLabel.TabIndex = 54;
+            this.searsCaLabel.TabIndex = 57;
             this.searsCaLabel.Text = "SEARS.CA SKU";
             // 
             // walmartCaLabel
@@ -605,7 +608,7 @@
             this.walmartCaLabel.Location = new System.Drawing.Point(4, 695);
             this.walmartCaLabel.Name = "walmartCaLabel";
             this.walmartCaLabel.Size = new System.Drawing.Size(152, 20);
-            this.walmartCaLabel.TabIndex = 58;
+            this.walmartCaLabel.TabIndex = 61;
             this.walmartCaLabel.Text = "WALMART.CA SKU";
             // 
             // walmartComLabel
@@ -616,7 +619,7 @@
             this.walmartComLabel.Location = new System.Drawing.Point(3, 721);
             this.walmartComLabel.Name = "walmartComLabel";
             this.walmartComLabel.Size = new System.Drawing.Size(166, 20);
-            this.walmartComLabel.TabIndex = 60;
+            this.walmartComLabel.TabIndex = 63;
             this.walmartComLabel.Text = "WALMART.COM SKU";
             // 
             // walmartCaTextbox
@@ -626,7 +629,7 @@
             this.walmartCaTextbox.MaxLength = 50;
             this.walmartCaTextbox.Name = "walmartCaTextbox";
             this.walmartCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartCaTextbox.TabIndex = 59;
+            this.walmartCaTextbox.TabIndex = 62;
             // 
             // walmartComTextbox
             // 
@@ -635,7 +638,7 @@
             this.walmartComTextbox.MaxLength = 50;
             this.walmartComTextbox.Name = "walmartComTextbox";
             this.walmartComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartComTextbox.TabIndex = 61;
+            this.walmartComTextbox.TabIndex = 64;
             // 
             // distributorCentralLabel
             // 
@@ -645,7 +648,7 @@
             this.distributorCentralLabel.Location = new System.Drawing.Point(3, 747);
             this.distributorCentralLabel.Name = "distributorCentralLabel";
             this.distributorCentralLabel.Size = new System.Drawing.Size(174, 20);
-            this.distributorCentralLabel.TabIndex = 62;
+            this.distributorCentralLabel.TabIndex = 65;
             this.distributorCentralLabel.Text = "Distributor Central SKU";
             // 
             // promoMarketingLabel
@@ -656,7 +659,7 @@
             this.promoMarketingLabel.Location = new System.Drawing.Point(4, 773);
             this.promoMarketingLabel.Name = "promoMarketingLabel";
             this.promoMarketingLabel.Size = new System.Drawing.Size(162, 20);
-            this.promoMarketingLabel.TabIndex = 64;
+            this.promoMarketingLabel.TabIndex = 67;
             this.promoMarketingLabel.Text = "PromoMarketing SKU";
             // 
             // inactiveSkuButton
@@ -667,7 +670,7 @@
             this.inactiveSkuButton.Location = new System.Drawing.Point(379, 949);
             this.inactiveSkuButton.Name = "inactiveSkuButton";
             this.inactiveSkuButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveSkuButton.TabIndex = 74;
+            this.inactiveSkuButton.TabIndex = 77;
             this.inactiveSkuButton.Text = "Inactive SKU";
             this.inactiveSkuButton.UseVisualStyleBackColor = false;
             this.inactiveSkuButton.Click += new System.EventHandler(this.inactiveSkuButton_Click);
@@ -680,7 +683,7 @@
             this.activeSkuButton.Location = new System.Drawing.Point(193, 949);
             this.activeSkuButton.Name = "activeSkuButton";
             this.activeSkuButton.Size = new System.Drawing.Size(180, 39);
-            this.activeSkuButton.TabIndex = 73;
+            this.activeSkuButton.TabIndex = 76;
             this.activeSkuButton.Text = "Active SKU";
             this.activeSkuButton.UseVisualStyleBackColor = false;
             this.activeSkuButton.Click += new System.EventHandler(this.activeSkuButton_Click);
@@ -693,7 +696,7 @@
             this.addSkuButton.Location = new System.Drawing.Point(193, 867);
             this.addSkuButton.Name = "addSkuButton";
             this.addSkuButton.Size = new System.Drawing.Size(370, 76);
-            this.addSkuButton.TabIndex = 72;
+            this.addSkuButton.TabIndex = 74;
             this.addSkuButton.Text = "Add SKU";
             this.addSkuButton.UseVisualStyleBackColor = false;
             this.addSkuButton.Click += new System.EventHandler(this.addSkuButton_Click);
@@ -751,7 +754,7 @@
             this.template2Textbox.MaxLength = 100;
             this.template2Textbox.Name = "template2Textbox";
             this.template2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template2Textbox.TabIndex = 119;
+            this.template2Textbox.TabIndex = 122;
             // 
             // label24
             // 
@@ -761,7 +764,7 @@
             this.label24.Location = new System.Drawing.Point(0, 1002);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(770, 29);
-            this.label24.TabIndex = 75;
+            this.label24.TabIndex = 78;
             this.label24.Text = "Image Paths";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -773,7 +776,7 @@
             this.image1Label.Location = new System.Drawing.Point(5, 1043);
             this.image1Label.Name = "image1Label";
             this.image1Label.Size = new System.Drawing.Size(86, 16);
-            this.image1Label.TabIndex = 76;
+            this.image1Label.TabIndex = 79;
             this.image1Label.Text = "Image 1 Path";
             // 
             // image1Textbox
@@ -783,7 +786,7 @@
             this.image1Textbox.MaxLength = 100;
             this.image1Textbox.Name = "image1Textbox";
             this.image1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image1Textbox.TabIndex = 77;
+            this.image1Textbox.TabIndex = 80;
             // 
             // image2Textbox
             // 
@@ -792,7 +795,7 @@
             this.image2Textbox.MaxLength = 100;
             this.image2Textbox.Name = "image2Textbox";
             this.image2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image2Textbox.TabIndex = 79;
+            this.image2Textbox.TabIndex = 82;
             // 
             // image3Textbox
             // 
@@ -801,7 +804,7 @@
             this.image3Textbox.MaxLength = 100;
             this.image3Textbox.Name = "image3Textbox";
             this.image3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image3Textbox.TabIndex = 81;
+            this.image3Textbox.TabIndex = 84;
             // 
             // image4Textbox
             // 
@@ -810,7 +813,7 @@
             this.image4Textbox.MaxLength = 100;
             this.image4Textbox.Name = "image4Textbox";
             this.image4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image4Textbox.TabIndex = 83;
+            this.image4Textbox.TabIndex = 86;
             // 
             // image5Textbox
             // 
@@ -819,7 +822,7 @@
             this.image5Textbox.MaxLength = 100;
             this.image5Textbox.Name = "image5Textbox";
             this.image5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image5Textbox.TabIndex = 85;
+            this.image5Textbox.TabIndex = 88;
             // 
             // image6Textbox
             // 
@@ -828,7 +831,7 @@
             this.image6Textbox.MaxLength = 100;
             this.image6Textbox.Name = "image6Textbox";
             this.image6Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image6Textbox.TabIndex = 87;
+            this.image6Textbox.TabIndex = 90;
             // 
             // image7Textbox
             // 
@@ -837,7 +840,7 @@
             this.image7Textbox.MaxLength = 100;
             this.image7Textbox.Name = "image7Textbox";
             this.image7Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image7Textbox.TabIndex = 89;
+            this.image7Textbox.TabIndex = 92;
             // 
             // image8Textbox
             // 
@@ -846,7 +849,7 @@
             this.image8Textbox.MaxLength = 100;
             this.image8Textbox.Name = "image8Textbox";
             this.image8Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image8Textbox.TabIndex = 91;
+            this.image8Textbox.TabIndex = 94;
             // 
             // image2Label
             // 
@@ -856,7 +859,7 @@
             this.image2Label.Location = new System.Drawing.Point(5, 1069);
             this.image2Label.Name = "image2Label";
             this.image2Label.Size = new System.Drawing.Size(86, 16);
-            this.image2Label.TabIndex = 78;
+            this.image2Label.TabIndex = 81;
             this.image2Label.Text = "Image 2 Path";
             // 
             // image3Label
@@ -867,7 +870,7 @@
             this.image3Label.Location = new System.Drawing.Point(5, 1095);
             this.image3Label.Name = "image3Label";
             this.image3Label.Size = new System.Drawing.Size(86, 16);
-            this.image3Label.TabIndex = 80;
+            this.image3Label.TabIndex = 83;
             this.image3Label.Text = "Image 3 Path";
             // 
             // image4Label
@@ -878,7 +881,7 @@
             this.image4Label.Location = new System.Drawing.Point(5, 1121);
             this.image4Label.Name = "image4Label";
             this.image4Label.Size = new System.Drawing.Size(86, 16);
-            this.image4Label.TabIndex = 82;
+            this.image4Label.TabIndex = 85;
             this.image4Label.Text = "Image 4 Path";
             // 
             // image5Label
@@ -889,7 +892,7 @@
             this.image5Label.Location = new System.Drawing.Point(5, 1147);
             this.image5Label.Name = "image5Label";
             this.image5Label.Size = new System.Drawing.Size(86, 16);
-            this.image5Label.TabIndex = 84;
+            this.image5Label.TabIndex = 87;
             this.image5Label.Text = "Image 5 Path";
             // 
             // image6Label
@@ -900,7 +903,7 @@
             this.image6Label.Location = new System.Drawing.Point(5, 1173);
             this.image6Label.Name = "image6Label";
             this.image6Label.Size = new System.Drawing.Size(86, 16);
-            this.image6Label.TabIndex = 86;
+            this.image6Label.TabIndex = 89;
             this.image6Label.Text = "Image 6 Path";
             // 
             // image7Label
@@ -911,7 +914,7 @@
             this.image7Label.Location = new System.Drawing.Point(5, 1199);
             this.image7Label.Name = "image7Label";
             this.image7Label.Size = new System.Drawing.Size(86, 16);
-            this.image7Label.TabIndex = 88;
+            this.image7Label.TabIndex = 91;
             this.image7Label.Text = "Image 7 Path";
             // 
             // image8Label
@@ -922,7 +925,7 @@
             this.image8Label.Location = new System.Drawing.Point(5, 1225);
             this.image8Label.Name = "image8Label";
             this.image8Label.Size = new System.Drawing.Size(86, 16);
-            this.image8Label.TabIndex = 90;
+            this.image8Label.TabIndex = 93;
             this.image8Label.Text = "Image 8 Path";
             // 
             // image9Textbox
@@ -932,7 +935,7 @@
             this.image9Textbox.MaxLength = 100;
             this.image9Textbox.Name = "image9Textbox";
             this.image9Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image9Textbox.TabIndex = 93;
+            this.image9Textbox.TabIndex = 96;
             // 
             // image10Textbox
             // 
@@ -941,7 +944,7 @@
             this.image10Textbox.MaxLength = 100;
             this.image10Textbox.Name = "image10Textbox";
             this.image10Textbox.Size = new System.Drawing.Size(574, 20);
-            this.image10Textbox.TabIndex = 95;
+            this.image10Textbox.TabIndex = 98;
             // 
             // image9Label
             // 
@@ -951,7 +954,7 @@
             this.image9Label.Location = new System.Drawing.Point(5, 1250);
             this.image9Label.Name = "image9Label";
             this.image9Label.Size = new System.Drawing.Size(86, 16);
-            this.image9Label.TabIndex = 92;
+            this.image9Label.TabIndex = 95;
             this.image9Label.Text = "Image 9 Path";
             // 
             // image10Label
@@ -962,7 +965,7 @@
             this.image10Label.Location = new System.Drawing.Point(5, 1276);
             this.image10Label.Name = "image10Label";
             this.image10Label.Size = new System.Drawing.Size(93, 16);
-            this.image10Label.TabIndex = 94;
+            this.image10Label.TabIndex = 97;
             this.image10Label.Text = "Image 10 Path";
             // 
             // group1Textbox
@@ -972,7 +975,7 @@
             this.group1Textbox.MaxLength = 100;
             this.group1Textbox.Name = "group1Textbox";
             this.group1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group1Textbox.TabIndex = 97;
+            this.group1Textbox.TabIndex = 100;
             // 
             // group2Textbox
             // 
@@ -981,7 +984,7 @@
             this.group2Textbox.MaxLength = 100;
             this.group2Textbox.Name = "group2Textbox";
             this.group2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group2Textbox.TabIndex = 99;
+            this.group2Textbox.TabIndex = 102;
             // 
             // group3Textbox
             // 
@@ -990,7 +993,7 @@
             this.group3Textbox.MaxLength = 100;
             this.group3Textbox.Name = "group3Textbox";
             this.group3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group3Textbox.TabIndex = 101;
+            this.group3Textbox.TabIndex = 104;
             // 
             // group4Textbox
             // 
@@ -999,7 +1002,7 @@
             this.group4Textbox.MaxLength = 100;
             this.group4Textbox.Name = "group4Textbox";
             this.group4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group4Textbox.TabIndex = 103;
+            this.group4Textbox.TabIndex = 106;
             // 
             // group5Textbox
             // 
@@ -1008,7 +1011,7 @@
             this.group5Textbox.MaxLength = 100;
             this.group5Textbox.Name = "group5Textbox";
             this.group5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.group5Textbox.TabIndex = 405;
+            this.group5Textbox.TabIndex = 108;
             // 
             // model1Textbox
             // 
@@ -1017,7 +1020,7 @@
             this.model1Textbox.MaxLength = 100;
             this.model1Textbox.Name = "model1Textbox";
             this.model1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model1Textbox.TabIndex = 107;
+            this.model1Textbox.TabIndex = 110;
             // 
             // group1Label
             // 
@@ -1027,7 +1030,7 @@
             this.group1Label.Location = new System.Drawing.Point(5, 1303);
             this.group1Label.Name = "group1Label";
             this.group1Label.Size = new System.Drawing.Size(125, 16);
-            this.group1Label.TabIndex = 96;
+            this.group1Label.TabIndex = 99;
             this.group1Label.Text = "Group Image 1 path";
             // 
             // group2Label
@@ -1038,7 +1041,7 @@
             this.group2Label.Location = new System.Drawing.Point(5, 1329);
             this.group2Label.Name = "group2Label";
             this.group2Label.Size = new System.Drawing.Size(125, 16);
-            this.group2Label.TabIndex = 98;
+            this.group2Label.TabIndex = 101;
             this.group2Label.Text = "Group Image 2 path";
             // 
             // group3Label
@@ -1049,7 +1052,7 @@
             this.group3Label.Location = new System.Drawing.Point(5, 1355);
             this.group3Label.Name = "group3Label";
             this.group3Label.Size = new System.Drawing.Size(125, 16);
-            this.group3Label.TabIndex = 100;
+            this.group3Label.TabIndex = 103;
             this.group3Label.Text = "Group Image 3 path";
             // 
             // group4Label
@@ -1060,7 +1063,7 @@
             this.group4Label.Location = new System.Drawing.Point(5, 1381);
             this.group4Label.Name = "group4Label";
             this.group4Label.Size = new System.Drawing.Size(125, 16);
-            this.group4Label.TabIndex = 102;
+            this.group4Label.TabIndex = 105;
             this.group4Label.Text = "Group Image 4 path";
             // 
             // group5Label
@@ -1071,7 +1074,7 @@
             this.group5Label.Location = new System.Drawing.Point(5, 1407);
             this.group5Label.Name = "group5Label";
             this.group5Label.Size = new System.Drawing.Size(125, 16);
-            this.group5Label.TabIndex = 104;
+            this.group5Label.TabIndex = 107;
             this.group5Label.Text = "Group Image 5 path";
             // 
             // model2Textbox
@@ -1081,7 +1084,7 @@
             this.model2Textbox.MaxLength = 100;
             this.model2Textbox.Name = "model2Textbox";
             this.model2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model2Textbox.TabIndex = 109;
+            this.model2Textbox.TabIndex = 112;
             // 
             // model3Textbox
             // 
@@ -1090,7 +1093,7 @@
             this.model3Textbox.MaxLength = 100;
             this.model3Textbox.Name = "model3Textbox";
             this.model3Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model3Textbox.TabIndex = 111;
+            this.model3Textbox.TabIndex = 114;
             // 
             // model4Textbox
             // 
@@ -1099,7 +1102,7 @@
             this.model4Textbox.MaxLength = 100;
             this.model4Textbox.Name = "model4Textbox";
             this.model4Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model4Textbox.TabIndex = 113;
+            this.model4Textbox.TabIndex = 116;
             // 
             // model5Textbox
             // 
@@ -1108,7 +1111,7 @@
             this.model5Textbox.MaxLength = 100;
             this.model5Textbox.Name = "model5Textbox";
             this.model5Textbox.Size = new System.Drawing.Size(574, 20);
-            this.model5Textbox.TabIndex = 115;
+            this.model5Textbox.TabIndex = 118;
             // 
             // model1Label
             // 
@@ -1118,7 +1121,7 @@
             this.model1Label.Location = new System.Drawing.Point(5, 1433);
             this.model1Label.Name = "model1Label";
             this.model1Label.Size = new System.Drawing.Size(126, 16);
-            this.model1Label.TabIndex = 106;
+            this.model1Label.TabIndex = 109;
             this.model1Label.Text = "Model Image 1 path";
             // 
             // model2Label
@@ -1129,7 +1132,7 @@
             this.model2Label.Location = new System.Drawing.Point(5, 1459);
             this.model2Label.Name = "model2Label";
             this.model2Label.Size = new System.Drawing.Size(126, 16);
-            this.model2Label.TabIndex = 108;
+            this.model2Label.TabIndex = 111;
             this.model2Label.Text = "Model Image 2 path";
             // 
             // model3Label
@@ -1140,7 +1143,7 @@
             this.model3Label.Location = new System.Drawing.Point(5, 1485);
             this.model3Label.Name = "model3Label";
             this.model3Label.Size = new System.Drawing.Size(126, 16);
-            this.model3Label.TabIndex = 110;
+            this.model3Label.TabIndex = 113;
             this.model3Label.Text = "Model Image 3 path";
             // 
             // model4Label
@@ -1151,7 +1154,7 @@
             this.model4Label.Location = new System.Drawing.Point(5, 1511);
             this.model4Label.Name = "model4Label";
             this.model4Label.Size = new System.Drawing.Size(126, 16);
-            this.model4Label.TabIndex = 112;
+            this.model4Label.TabIndex = 115;
             this.model4Label.Text = "Model Image 4 path";
             // 
             // model5Label
@@ -1162,7 +1165,7 @@
             this.model5Label.Location = new System.Drawing.Point(5, 1537);
             this.model5Label.Name = "model5Label";
             this.model5Label.Size = new System.Drawing.Size(126, 16);
-            this.model5Label.TabIndex = 114;
+            this.model5Label.TabIndex = 117;
             this.model5Label.Text = "Model Image 5 path";
             // 
             // template1Textbox
@@ -1172,7 +1175,7 @@
             this.template1Textbox.MaxLength = 100;
             this.template1Textbox.Name = "template1Textbox";
             this.template1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template1Textbox.TabIndex = 117;
+            this.template1Textbox.TabIndex = 120;
             // 
             // template1Label
             // 
@@ -1182,7 +1185,7 @@
             this.template1Label.Location = new System.Drawing.Point(5, 1563);
             this.template1Label.Name = "template1Label";
             this.template1Label.Size = new System.Drawing.Size(106, 16);
-            this.template1Label.TabIndex = 116;
+            this.template1Label.TabIndex = 119;
             this.template1Label.Text = "Template URL 1";
             // 
             // template2Label
@@ -1193,7 +1196,7 @@
             this.template2Label.Location = new System.Drawing.Point(5, 1589);
             this.template2Label.Name = "template2Label";
             this.template2Label.Size = new System.Drawing.Size(106, 16);
-            this.template2Label.TabIndex = 118;
+            this.template2Label.TabIndex = 121;
             this.template2Label.Text = "Template URL 2";
             // 
             // backgroundWorkerCombobox
@@ -1222,7 +1225,7 @@
             this.costcoLabel.Location = new System.Drawing.Point(4, 513);
             this.costcoLabel.Name = "costcoLabel";
             this.costcoLabel.Size = new System.Drawing.Size(138, 20);
-            this.costcoLabel.TabIndex = 44;
+            this.costcoLabel.TabIndex = 47;
             this.costcoLabel.Text = "COSTCO.CA SKU";
             // 
             // staplesLabel
@@ -1233,7 +1236,7 @@
             this.staplesLabel.Location = new System.Drawing.Point(4, 669);
             this.staplesLabel.Name = "staplesLabel";
             this.staplesLabel.Size = new System.Drawing.Size(144, 20);
-            this.staplesLabel.TabIndex = 56;
+            this.staplesLabel.TabIndex = 59;
             this.staplesLabel.Text = "STAPLES.CA SKU";
             // 
             // distributorCentralTextbox
@@ -1243,7 +1246,7 @@
             this.distributorCentralTextbox.MaxLength = 50;
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
             this.distributorCentralTextbox.Size = new System.Drawing.Size(574, 20);
-            this.distributorCentralTextbox.TabIndex = 63;
+            this.distributorCentralTextbox.TabIndex = 66;
             // 
             // promoMarketingTextbox
             // 
@@ -1252,7 +1255,7 @@
             this.promoMarketingTextbox.MaxLength = 50;
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
             this.promoMarketingTextbox.Size = new System.Drawing.Size(574, 20);
-            this.promoMarketingTextbox.TabIndex = 65;
+            this.promoMarketingTextbox.TabIndex = 68;
             // 
             // label1
             // 
@@ -1262,7 +1265,7 @@
             this.label1.Location = new System.Drawing.Point(352, 254);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
-            this.label1.TabIndex = 27;
+            this.label1.TabIndex = 29;
             this.label1.Text = "Canadian HTS";
             // 
             // label2
@@ -1273,7 +1276,7 @@
             this.label2.Location = new System.Drawing.Point(352, 282);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 20);
-            this.label2.TabIndex = 29;
+            this.label2.TabIndex = 31;
             this.label2.Text = "CA Duty";
             // 
             // canadianHtsCombobox
@@ -1284,7 +1287,7 @@
             this.canadianHtsCombobox.Location = new System.Drawing.Point(496, 255);
             this.canadianHtsCombobox.Name = "canadianHtsCombobox";
             this.canadianHtsCombobox.Size = new System.Drawing.Size(265, 21);
-            this.canadianHtsCombobox.TabIndex = 28;
+            this.canadianHtsCombobox.TabIndex = 30;
             this.canadianHtsCombobox.SelectedValueChanged += new System.EventHandler(this.canadianHtsCombobox_SelectedValueChanged);
             // 
             // caDutyTextbox
@@ -1293,7 +1296,7 @@
             this.caDutyTextbox.Location = new System.Drawing.Point(496, 282);
             this.caDutyTextbox.Name = "caDutyTextbox";
             this.caDutyTextbox.Size = new System.Drawing.Size(265, 20);
-            this.caDutyTextbox.TabIndex = 30;
+            this.caDutyTextbox.TabIndex = 32;
             // 
             // label3
             // 
@@ -1303,7 +1306,7 @@
             this.label3.Location = new System.Drawing.Point(353, 308);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 20);
-            this.label3.TabIndex = 31;
+            this.label3.TabIndex = 33;
             this.label3.Text = "US HTS";
             // 
             // label4
@@ -1314,7 +1317,7 @@
             this.label4.Location = new System.Drawing.Point(353, 335);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 20);
-            this.label4.TabIndex = 33;
+            this.label4.TabIndex = 35;
             this.label4.Text = "US Duty";
             // 
             // usHtsCombobox
@@ -1325,7 +1328,7 @@
             this.usHtsCombobox.Location = new System.Drawing.Point(496, 308);
             this.usHtsCombobox.Name = "usHtsCombobox";
             this.usHtsCombobox.Size = new System.Drawing.Size(265, 21);
-            this.usHtsCombobox.TabIndex = 32;
+            this.usHtsCombobox.TabIndex = 34;
             this.usHtsCombobox.SelectedValueChanged += new System.EventHandler(this.usHtsCombobox_SelectedValueChanged);
             // 
             // usDutyTextbox
@@ -1334,7 +1337,7 @@
             this.usDutyTextbox.Location = new System.Drawing.Point(496, 334);
             this.usDutyTextbox.Name = "usDutyTextbox";
             this.usDutyTextbox.Size = new System.Drawing.Size(265, 20);
-            this.usDutyTextbox.TabIndex = 34;
+            this.usDutyTextbox.TabIndex = 36;
             // 
             // backgroundWorkerHTS
             // 
@@ -1348,7 +1351,7 @@
             this.giantTigerTextbox.MaxLength = 50;
             this.giantTigerTextbox.Name = "giantTigerTextbox";
             this.giantTigerTextbox.Size = new System.Drawing.Size(574, 20);
-            this.giantTigerTextbox.TabIndex = 67;
+            this.giantTigerTextbox.TabIndex = 70;
             // 
             // asiXidTextbox
             // 
@@ -1357,7 +1360,7 @@
             this.asiXidTextbox.MaxLength = 50;
             this.asiXidTextbox.Name = "asiXidTextbox";
             this.asiXidTextbox.Size = new System.Drawing.Size(574, 20);
-            this.asiXidTextbox.TabIndex = 69;
+            this.asiXidTextbox.TabIndex = 72;
             // 
             // wmManufacturerLabel
             // 
@@ -1367,7 +1370,7 @@
             this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 799);
             this.wmManufacturerLabel.Name = "wmManufacturerLabel";
             this.wmManufacturerLabel.Size = new System.Drawing.Size(124, 20);
-            this.wmManufacturerLabel.TabIndex = 66;
+            this.wmManufacturerLabel.TabIndex = 69;
             this.wmManufacturerLabel.Text = "Giant Tiger SKU";
             // 
             // asiXidLabel
@@ -1378,7 +1381,7 @@
             this.asiXidLabel.Location = new System.Drawing.Point(4, 825);
             this.asiXidLabel.Name = "asiXidLabel";
             this.asiXidLabel.Size = new System.Drawing.Size(142, 20);
-            this.asiXidLabel.TabIndex = 68;
+            this.asiXidLabel.TabIndex = 71;
             this.asiXidLabel.Text = "ASI XID NUMBER";
             // 
             // progressBar
@@ -1389,7 +1392,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 71;
+            this.progressBar.TabIndex = 73;
             // 
             // duplicateLabel
             // 
@@ -1398,7 +1401,7 @@
             this.duplicateLabel.Location = new System.Drawing.Point(48, 349);
             this.duplicateLabel.Name = "duplicateLabel";
             this.duplicateLabel.Size = new System.Drawing.Size(126, 13);
-            this.duplicateLabel.TabIndex = 119;
+            this.duplicateLabel.TabIndex = 37;
             this.duplicateLabel.Text = "duplicate SKU detected !";
             this.duplicateLabel.Visible = false;
             // 
@@ -1424,9 +1427,32 @@
             this.onWebsiteCheckbox.Name = "onWebsiteCheckbox";
             this.onWebsiteCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.onWebsiteCheckbox.Size = new System.Drawing.Size(125, 24);
-            this.onWebsiteCheckbox.TabIndex = 70;
+            this.onWebsiteCheckbox.TabIndex = 75;
             this.onWebsiteCheckbox.Text = "?On Website";
             this.onWebsiteCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // pricingTierLabel
+            // 
+            this.pricingTierLabel.AutoSize = true;
+            this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricingTierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.pricingTierLabel.Location = new System.Drawing.Point(352, 227);
+            this.pricingTierLabel.Name = "pricingTierLabel";
+            this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
+            this.pricingTierLabel.TabIndex = 18;
+            this.pricingTierLabel.Text = "Pricing Tier";
+            // 
+            // pricingTierUpdown
+            // 
+            this.pricingTierUpdown.Location = new System.Drawing.Point(496, 227);
+            this.pricingTierUpdown.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.pricingTierUpdown.Name = "pricingTierUpdown";
+            this.pricingTierUpdown.Size = new System.Drawing.Size(265, 20);
+            this.pricingTierUpdown.TabIndex = 19;
             // 
             // AddSKU
             // 
@@ -1435,6 +1461,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.pricingTierUpdown);
+            this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.onWebsiteCheckbox);
             this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.duplicateLabel);
@@ -1562,6 +1590,7 @@
             this.Name = "AddSKU";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add SKU";
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1694,5 +1723,7 @@
         private System.Windows.Forms.Label duplicateLabel;
         private System.Windows.Forms.CheckBox giftCheckbox;
         private System.Windows.Forms.CheckBox onWebsiteCheckbox;
+        private System.Windows.Forms.Label pricingTierLabel;
+        private System.Windows.Forms.NumericUpDown pricingTierUpdown;
     }
 }

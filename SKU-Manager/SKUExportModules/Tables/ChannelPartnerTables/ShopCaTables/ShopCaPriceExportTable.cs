@@ -52,7 +52,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             addColumn(mainTable, "yt tax exempt");                       // 26
 
             // local field for inserting data to table
-            double multiplier = getMultiplier();
+            double[] price = getPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -61,16 +61,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                double basePrice = Convert.ToDouble(getData(sku)[0]);
-
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                                           // brand
                 row[1] = "nishis_boutique";                                      // store name
                 row[2] = sku;                                                    // sku
-                row[3] = Math.Ceiling(basePrice * multiplier * 0.9) - 0.01;      // supplier suggested retail price
-                row[4] = basePrice * multiplier;                                 // msrp
-                row[5] = Math.Ceiling(basePrice * multiplier * 0.9) - 0.01;      // supplier list price
+                double msrp = Convert.ToDouble(getData(sku)[0]) * price[0];
+                row[3] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier suggested retail price
+                row[4] = msrp;                                                            // msrp
+                row[5] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier list price
 
                 mainTable.Rows.Add(row);        
                 Progress++;
@@ -98,21 +97,27 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             return list;
         }
 
-        /* a method that return the discount matrix */
-        private double getMultiplier()
+        /* a method that return the all fields for price calculation */
+        private double[] getPriceList()
         {
-            double multiplier;
+            // [0] multiplier, [1] msrp disc, [2] sell cents
+            double[] list = new double[3];
 
-            using (SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection))
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                multiplier = reader.GetDouble(0);
-                connection.Close();
-            }
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            list[0] = reader.GetDouble(0);
+            reader.Close();
 
-            return multiplier;
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_No = 1005";
+            reader = command.ExecuteReader();
+            reader.Read();
+            list[1] = Convert.ToDouble(reader.GetValue(0));
+            list[2] = Convert.ToDouble(reader.GetValue(1));
+            connection.Close();
+
+            return list;
         }
     }
 }

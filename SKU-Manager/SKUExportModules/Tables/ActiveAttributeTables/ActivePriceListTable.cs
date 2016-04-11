@@ -240,7 +240,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             addColumn(mainTable, "Alt_Text_Model_5_Path");                                 // 213
 
             // local field for inserting data to table
-            double[] discountList = getDiscount();
+            double[][] discountList = getDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -358,7 +358,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 double basePrice = Convert.ToDouble(list[78]);
                 row[88] = basePrice;                                                // base price
                 row[89] = list[51];                                                 // components
-                double msrp = discountList[21] * basePrice;
+                double msrp = discountList[5][0] * basePrice;
                 row[90] = msrp;                                                     // msrp
                 double runCharge;
                 if (!list[51].Equals(DBNull.Value))
@@ -371,78 +371,97 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                     row[91] = 1;
                 else
                     row[91] = runCharge; // run charge
-                row[92] = msrp * discountList[1];                                   // price 1 c
-                row[93] = msrp * discountList[2];                                   // price 6 c        
-                row[94] = msrp * discountList[3];                                   // price 24 c
-                row[95] = msrp * discountList[4];                                   // price 50 c
-                row[96] = msrp * discountList[5];                                   // price 100 c
-                row[97] = msrp * discountList[6];                                   // price 250 c
-                row[98] = msrp * discountList[7];                                   // price 500 c
-                row[99] = msrp * discountList[8];                                   // price 1000 c
-                row[100] = msrp * discountList[9];                                  // price 2500 c
-                row[101] = msrp * discountList[0] * discountList[1];                // price rush 1 c
-                row[102] = msrp * discountList[0] * discountList[2];                // price rush 6 c
-                row[103] = msrp * discountList[0] * discountList[3];                // price rush 24 c
-                row[104] = msrp * discountList[0] * discountList[4];                // price rush 50 c
-                row[105] = msrp * discountList[0] * discountList[5];                // price rush 100 c
-                row[106] = msrp * discountList[0] * discountList[6];                // price rush 250 c
-                row[107] = msrp * discountList[0] * discountList[7];                // price rush 500 c
-                row[108] = msrp * discountList[0] * discountList[8];                // price rush 1000 c
-                row[109] = msrp * discountList[0] * discountList[9];                // price rush 2500 c
-                row[110] = runCharge * discountList[1];                             // run charge 1 c
-                row[111] = runCharge * discountList[2];                             // run charge 6 c
-                row[112] = runCharge * discountList[3];                             // run charge 24 c 
-                row[113] = runCharge * discountList[4];                             // run charge 50 c
-                row[114] = runCharge * discountList[5];                             // run charge 100 c
-                row[115] = runCharge * discountList[6];                             // run charge 250 c
-                row[116] = runCharge * discountList[7];                             // run charge 500 c
-                row[117] = runCharge * discountList[8];                             // run charge 1000 c
-                row[118] = runCharge * discountList[9];                             // run charge 2500 c
-                row[119] = runCharge * discountList[0] * discountList[1];           // run charge rush 1 c
-                row[120] = runCharge * discountList[0] * discountList[2];           // run charge rush 6 c
-                row[121] = runCharge * discountList[0] * discountList[3];           // run charge rush 24 c
-                row[122] = runCharge * discountList[0] * discountList[4];           // run charge rush 50 c
-                row[123] = runCharge * discountList[0] * discountList[5];           // run charge rush 100 c
-                row[124] = runCharge * discountList[0] * discountList[6];           // run charge rush 250 c
-                row[125] = runCharge * discountList[0] * discountList[7];           // run charge rush 500 c
-                row[126] = runCharge * discountList[0] * discountList[8];           // run charge rush 1000 c
-                row[127] = runCharge * discountList[0] * discountList[9];           // run charge rush 2500 c
-                row[128] = msrp * discountList[11];                                 // price 1 net
-                row[129] = msrp * discountList[12];                                 // price 6 net
-                row[130] = msrp * discountList[13];                                 // price 24 net
-                row[131] = msrp * discountList[14];                                 // price 50 net
-                row[132] = msrp * discountList[15];                                 // price 100 net
-                row[133] = msrp * discountList[16];                                 // price 250 net
-                row[134] = msrp * discountList[17];                                 // price 500 net
-                row[135] = msrp * discountList[18];                                 // price 1000 net
-                row[136] = msrp * discountList[19];                                 // price 2500 net
-                row[137] = msrp * discountList[10] * discountList[11];              // price rush 1 net
-                row[138] = msrp * discountList[10] * discountList[12];              // price rush 6 net
-                row[139] = msrp * discountList[10] * discountList[13];              // price rush 24 net
-                row[140] = msrp * discountList[10] * discountList[14];              // price rush 50 net
-                row[141] = msrp * discountList[10] * discountList[15];              // price rush 100 net
-                row[142] = msrp * discountList[10] * discountList[16];              // price rush 250 net
-                row[143] = msrp * discountList[10] * discountList[17];              // price rush 500 net
-                row[144] = msrp * discountList[10] * discountList[18];              // price rush 1000 net
-                row[145] = msrp * discountList[10] * discountList[19];              // price rush 2500 net
-                row[146] = runCharge * discountList[11];                            // run charge 1 net
-                row[147] = runCharge * discountList[12];                            // run charge 6 net
-                row[148] = runCharge * discountList[13];                            // run charge 24 net
-                row[149] = runCharge * discountList[14];                            // run charge 50 net
-                row[150] = runCharge * discountList[15];                            // run charge 100 net
-                row[151] = runCharge * discountList[16];                            // run charge 250 net
-                row[152] = runCharge * discountList[17];                            // run charge 500 net 
-                row[153] = runCharge * discountList[18];                            // run charge 1000 net
-                row[154] = runCharge * discountList[19];                            // run charge 2500 net
-                row[155] = runCharge * discountList[10] * discountList[11];         // run charge rush 1 net
-                row[156] = runCharge * discountList[10] * discountList[12];         // run charge rush 6 net
-                row[157] = runCharge * discountList[10] * discountList[13];         // run charge rush 24 net
-                row[158] = runCharge * discountList[10] * discountList[14];         // run charge rush 50 net
-                row[159] = runCharge * discountList[10] * discountList[15];         // run charge rush 100 net
-                row[160] = runCharge * discountList[10] * discountList[16];         // run charge rush 250 net
-                row[161] = runCharge * discountList[10] * discountList[17];         // run charge rush 500 net
-                row[162] = runCharge * discountList[10] * discountList[18];         // run charge rush 1000 net
-                row[163] = runCharge * discountList[10] * discountList[19];         // run charge rush 2500 net
+                int pricingTier;
+                switch (Convert.ToInt32(list[124]))
+                {
+                    case 1:
+                        pricingTier = 1;
+                        break;
+                    case 2:
+                        pricingTier = 2;
+                        break;
+                    case 3:
+                        pricingTier = 3;
+                        break;
+                    case 4:
+                        pricingTier = 4;
+                        break;
+                    default:
+                        pricingTier = 0;
+                        break;
+                }
+                row[92] = msrp * discountList[pricingTier][1];                                   // price 1 c
+                row[93] = msrp * discountList[pricingTier][2];                                   // price 6 c        
+                row[94] = msrp * discountList[pricingTier][3];                                   // price 24 c
+                row[95] = msrp * discountList[pricingTier][4];                                   // price 50 c
+                row[96] = msrp * discountList[pricingTier][5];                                   // price 100 c
+                row[97] = msrp * discountList[pricingTier][6];                                   // price 250 c
+                row[98] = msrp * discountList[pricingTier][7];                                   // price 500 c
+                row[99] = msrp * discountList[pricingTier][8];                                   // price 1000 c
+                row[100] = msrp * discountList[pricingTier][9];                                  // price 2500 c
+                row[101] = msrp * discountList[pricingTier][0] * discountList[pricingTier][1];                // price rush 1 c
+                row[102] = msrp * discountList[pricingTier][0] * discountList[pricingTier][2];                // price rush 6 c
+                row[103] = msrp * discountList[pricingTier][0] * discountList[pricingTier][3];                // price rush 24 c
+                row[104] = msrp * discountList[pricingTier][0] * discountList[pricingTier][4];                // price rush 50 c
+                row[105] = msrp * discountList[pricingTier][0] * discountList[pricingTier][5];                // price rush 100 c
+                row[106] = msrp * discountList[pricingTier][0] * discountList[pricingTier][6];                // price rush 250 c
+                row[107] = msrp * discountList[pricingTier][0] * discountList[pricingTier][7];                // price rush 500 c
+                row[108] = msrp * discountList[pricingTier][0] * discountList[pricingTier][8];                // price rush 1000 c
+                row[109] = msrp * discountList[pricingTier][0] * discountList[pricingTier][9];                // price rush 2500 c
+                row[110] = runCharge * discountList[pricingTier][1];                             // run charge 1 c
+                row[111] = runCharge * discountList[pricingTier][2];                             // run charge 6 c
+                row[112] = runCharge * discountList[pricingTier][3];                             // run charge 24 c 
+                row[113] = runCharge * discountList[pricingTier][4];                             // run charge 50 c
+                row[114] = runCharge * discountList[pricingTier][5];                             // run charge 100 c
+                row[115] = runCharge * discountList[pricingTier][6];                             // run charge 250 c
+                row[116] = runCharge * discountList[pricingTier][7];                             // run charge 500 c
+                row[117] = runCharge * discountList[pricingTier][8];                             // run charge 1000 c
+                row[118] = runCharge * discountList[pricingTier][9];                             // run charge 2500 c
+                row[119] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][1];           // run charge rush 1 c
+                row[120] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][2];           // run charge rush 6 c
+                row[121] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][3];           // run charge rush 24 c
+                row[122] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][4];           // run charge rush 50 c
+                row[123] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][5];           // run charge rush 100 c
+                row[124] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][6];           // run charge rush 250 c
+                row[125] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][7];           // run charge rush 500 c
+                row[126] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][8];           // run charge rush 1000 c
+                row[127] = runCharge * discountList[pricingTier][0] * discountList[pricingTier][9];           // run charge rush 2500 c
+                row[128] = msrp * discountList[pricingTier][11];                                 // price 1 net
+                row[129] = msrp * discountList[pricingTier][12];                                 // price 6 net
+                row[130] = msrp * discountList[pricingTier][13];                                 // price 24 net
+                row[131] = msrp * discountList[pricingTier][14];                                 // price 50 net
+                row[132] = msrp * discountList[pricingTier][15];                                 // price 100 net
+                row[133] = msrp * discountList[pricingTier][16];                                 // price 250 net
+                row[134] = msrp * discountList[pricingTier][17];                                 // price 500 net
+                row[135] = msrp * discountList[pricingTier][18];                                 // price 1000 net
+                row[136] = msrp * discountList[pricingTier][19];                                 // price 2500 net
+                row[137] = msrp * discountList[pricingTier][10] * discountList[pricingTier][11];              // price rush 1 net
+                row[138] = msrp * discountList[pricingTier][10] * discountList[pricingTier][12];              // price rush 6 net
+                row[139] = msrp * discountList[pricingTier][10] * discountList[pricingTier][13];              // price rush 24 net
+                row[140] = msrp * discountList[pricingTier][10] * discountList[pricingTier][14];              // price rush 50 net
+                row[141] = msrp * discountList[pricingTier][10] * discountList[pricingTier][15];              // price rush 100 net
+                row[142] = msrp * discountList[pricingTier][10] * discountList[pricingTier][16];              // price rush 250 net
+                row[143] = msrp * discountList[pricingTier][10] * discountList[pricingTier][17];              // price rush 500 net
+                row[144] = msrp * discountList[pricingTier][10] * discountList[pricingTier][18];              // price rush 1000 net
+                row[145] = msrp * discountList[pricingTier][10] * discountList[pricingTier][19];              // price rush 2500 net
+                row[146] = runCharge * discountList[pricingTier][11];                            // run charge 1 net
+                row[147] = runCharge * discountList[pricingTier][12];                            // run charge 6 net
+                row[148] = runCharge * discountList[pricingTier][13];                            // run charge 24 net
+                row[149] = runCharge * discountList[pricingTier][14];                            // run charge 50 net
+                row[150] = runCharge * discountList[pricingTier][15];                            // run charge 100 net
+                row[151] = runCharge * discountList[pricingTier][16];                            // run charge 250 net
+                row[152] = runCharge * discountList[pricingTier][17];                            // run charge 500 net 
+                row[153] = runCharge * discountList[pricingTier][18];                            // run charge 1000 net
+                row[154] = runCharge * discountList[pricingTier][19];                            // run charge 2500 net
+                row[155] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][11];         // run charge rush 1 net
+                row[156] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][12];         // run charge rush 6 net
+                row[157] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][13];         // run charge rush 24 net
+                row[158] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][14];         // run charge rush 50 net
+                row[159] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][15];         // run charge rush 100 net
+                row[160] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][16];         // run charge rush 250 net
+                row[161] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][17];         // run charge rush 500 net
+                row[162] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][18];         // run charge rush 1000 net
+                row[163] = runCharge * discountList[pricingTier][10] * discountList[pricingTier][19];         // run charge rush 2500 net
                 row[164] = list[79];                                                // location wh
                 row[165] = list[80];                                                // location shelf
                 row[166] = list[81];                                                // location rack
@@ -544,13 +563,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // [7] colour description short, [8] colour description extended, [9] colour description short fr, [10] colour description extended fr
             // [11] design service flag, [12] design service family code, [13] design short description, [14] design extended description, [15] design short description fr, [16] design extended description fr, [17] imprintable, [18] imprint height cm, [19] imprint width cm, [20] depth cm, [21] width cm, [22] height cm, [23] weight grams. [24] shippable width cm, [25] shippable height cm, [26] shippable depth cm, [27] shippable weight grams, [28] strap, [29] detachable strap, [30] zipped enclosure, [31] design service fashion name ashlin, [32] design service fashion name tsc, [33] design service fashion name costco, [34] design service fashion name bestbuy, [35] design service fashion name shop ca, [36] design service fashion name amazon ca, [37] design service fashion name amazon com, [38] design service fashion name sears, [39] design service fashion name staples, [40] design service fashion name walmart, [41] option 1, [42] option 2, [43] option 3, [44] option 4, [45] option 5, [46] option 1 fr, [47] option 2 fr, [48] option 3 fr, [49] option 4 fr, [50] option 5 fr, [51] components, [52] flat shippable, [53] website flag
             // [54] design servie family description, [55] design service family description fr, [56] design service family keywords general, [57] design service family category sage, [58] design service family category esp, [59] design service family category promomarketing, [60] design service family category uducat, [61] design service family distributocentral, [62] design service family themes sage                                                                                                                                                                                                                  & imprint height in     & imprint width in     & depth in     & width in     & height in     & weight pounds    & shippable width in     & shippable height in     & shippable depth in     & shippalbe weight lb
-            // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path
+            // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path, [124] for price calculation
             SqlCommand commnad = new SqlCommand("SELECT Material_Description_Short, Material_Description_Extended, Material_Description_Short_FR, Material_Description_Extended_FR, " +
                                                 "Colour_Description_Short, Colour_Description_Extended, Colour_Description_Short_FR, Colour_Description_Extended_FR, " +
                                                 "Design_Service_Flag, design.Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Design_Service_Family_Themes_Sage, " +
-                                                "SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path " +
-                                                "FROM master_SKU_Attributes sku " +
+                                                "SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, " +
+                                                "sku.Pricing_Tier FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
@@ -558,7 +577,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 120; i++)
+            for (int i = 0; i <= 121; i++)
                 list.Add(reader.GetValue(i)); 
 
             return list;
@@ -574,26 +593,40 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that return the discount matrix */
-        private double[] getDiscount()
+        private double[][] getDiscount()
         {
-            double[] list = new double[22];
+            double[][] list = new double[6][];
 
             // [0] rush standard, [1] 1 c standard, [2] 6 c standard, [3] 24 c standard, [4] 50 c standard, [5] 100 c standard, [6] 250 c standard, [7] 500 c standard, [8] 1000 c standard, [9] 2500 c standard, [10] rush net, [11] 1 c net standard
             // [12] 6 c net standard, [13] 24 c net standard, [14] 50 c net standard, [15] 100 net standard, [16] 250 net standard, [17] 500 net standard, [18] 1000 net standard, [19] 2500 net standard, [20] wholesale net
             SqlCommand command = new SqlCommand("SELECT [RUSH_C_25_wks], [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], "
-                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM ref_discount_matrix", connection);         
+                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", connection);         
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 20; i++)
-                list[i] = reader.GetDouble(i);
+            for (int i = 0; i <= 4; i++)
+            { 
+                double[] itemList = new double[21];
+                reader.Read();
+                for (int j = 0; j <= 20; j++)
+                {
+                    try
+                    {
+                        itemList[j] = reader.GetDouble(j);
+                    }
+                    catch
+                    {
+                        itemList[j] = 0;
+                    }
+                }
+                list[i] = itemList;
+            }
             reader.Close();
 
-            // [21] multiplier
+            // [5] multiplier
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[21] = reader.GetDouble(0);
+            list[5] = new double[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;

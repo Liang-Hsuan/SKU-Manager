@@ -154,36 +154,5 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             return list;
         }
-
-        #region Deprecated Area
-        /* new version of getData that directly return the desired table -> fixing issue right now */
-        /* private DataTable getData()
-        {
-            // local field for storing data
-            DataTable table = new DataTable();
-
-            // grab data from database
-            // [0] title, [1] description, [2] shipping weight, [3] package height, [4] package length, [5] package width                                                                                                                 
-            // [6] product type, [7] search term
-            // [8] sku, [9] main image location, [10] launch date, [11] ~ [19] alt image location, [20] release date, [21] standard product id
-            // & mfr part number
-            // [22] & [23] title
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, " +
-                                                        "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
-                                                        "SKU_Ashlin, Image_1_Path, sku.Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, sku.Date_Activated, UPC_Code_9, " +
-                                                        "Colour_Description_Short, Material_Description_Short " +
-                                                        "FROM master_Design_Attributes design " +
-                                                        "INNER JOIN master_SKU_Attributes sku ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                        "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                        "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
-                                                        "WHERE SKU_SHOP_CA != \'\' AND sku.Active = \'True\' ORDER BY SKU_Ashlin;", connection);
-            connection.Open();
-            adapter.Fill(table);
-            connection.Close();
-
-            return table;
-        } */
-        #endregion
     }
 }

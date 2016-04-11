@@ -36,6 +36,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             addColumn(mainTable, "SKU Amazon.com");
             addColumn(mainTable, "SKU Shop.ca");
             addColumn(mainTable, "Base Price");
+            addColumn(mainTable, "Pricing Tier");
             addColumn(mainTable, "UPC Code 9");
             addColumn(mainTable, "UPC Code 10");
             addColumn(mainTable, "Location Full");
@@ -67,14 +68,15 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                 row[9] = list[9];       // sku amazon com
                 row[10] = list[10];     // sku shop ca
                 row[11] = list[11];     // base price
-                row[12] = list[12];     // upc code 9
-                row[13] = list[13];     // upc code 10
-                row[14] = list[14];     // location full
-                row[15] = list[15];     // hts ca
-                row[16] = list[16];     // hts us
-                row[17] = list[17];     // duty ca
-                row[18] = list[18];     // duty us
-                row[19] = list[19];     // active
+                row[12] = list[12];     // pricing tier
+                row[13] = list[13];     // upc code 9
+                row[14] = list[14];     // upc code 10
+                row[15] = list[15];     // location full
+                row[16] = list[16];     // hts ca
+                row[17] = list[17];     // hts us
+                row[18] = list[18];     // duty ca
+                row[19] = list[19];     // duty us
+                row[20] = list[20];     // active
 
                 mainTable.Rows.Add(row);
                 Progress++;
@@ -112,13 +114,13 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
 
             // grab data from database
             // [0] sku, [1] design service code, [2] material code, [3] colour code, [4] sku sears ca, [5] sku tsc ca, [6] sku costco ca, [7] sku bestbuy ca, [8] sku amazon ca 
-            // [9] sku amazon com, [10] sku shop ca, [11] base price, [12] upc code 9, [13] upc code 10, [14] location full, [15] hts ca, [16] hts us, [17] duty ca, [18] duty us, [19] active
+            // [9] sku amazon com, [10] sku shop ca, [11] base price, [12] Pricing_Tier, [13] upc code 9, [14] upc code 10, [15] location full, [16] hts ca, [17] hts us, [18] duty ca, [19] duty us, [20] active
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, " + 
-                                                "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Active " +
+                                                "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, Pricing_Tier, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Active " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 19; i++)
+            for (int i = 0; i <= 20; i++)
                 list.Add(reader.GetValue(i));
 
             return list;

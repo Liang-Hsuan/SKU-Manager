@@ -21,6 +21,7 @@ namespace SKU_Manager.MainForms
         private Sears sears;
         private ShopCa shopCa;
         private Amazon amazon;
+        private GiantTiger giantTiger;
 
         /* constructor that initialize all graphic components */
         public Admin(IWin32Window parent)
@@ -161,6 +162,7 @@ namespace SKU_Manager.MainForms
                     }
                     shopCa = null;
                     amazon = null;
+                    giantTiger = null;
                     break;
                 case "Shop.ca":
                     // shop.ca case
@@ -175,6 +177,7 @@ namespace SKU_Manager.MainForms
                         return;
                     }
                     sears = null;
+                    giantTiger = null;
                     amazon = null;
                     break;
                 case "Amazon":
@@ -191,6 +194,23 @@ namespace SKU_Manager.MainForms
                     }
                     sears = null;
                     shopCa = null;
+                    giantTiger = null;
+                    break;
+                case "Giant Tiger":
+                    // giant tiger case
+                    try
+                    {
+                        giantTiger = new GiantTiger();
+                        new Thread(() => giantTiger.Update(openFileDialog.FileName)).Start();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    sears = null;
+                    shopCa = null;
+                    amazon = null;
                     break;
             }
 
@@ -232,6 +252,8 @@ namespace SKU_Manager.MainForms
                         new ShopCaInventory().ShowDialog(this);
                         break;
                     case "Amazon":
+                        break;
+                    case "Giant Tiger":
                         break;
                 }
             }
@@ -304,6 +326,18 @@ namespace SKU_Manager.MainForms
                 }
                 else
                     loadingLabel.Text = amazon.Current + " / " + amazon.Total;
+            }
+            else if (giantTiger != null)
+            {
+                // giant tiger case
+                // check if updating is finish -> stop the timer and set text to nothing
+                if (giantTiger.Current >= giantTiger.Total)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = "Giant Tiger";
+                }
+                else
+                    loadingLabel.Text = giantTiger.Current + " / " + giantTiger.Total;
             }
         }
     }

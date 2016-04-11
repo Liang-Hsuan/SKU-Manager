@@ -177,7 +177,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             addColumn(mainTable, "Active_Date");                     // 150
 
             // local field for inserting data to table
-            double[] discountList = getDiscount();
+            double[][] discountList = getDiscount();
             string[] skuList = getSku();
             DateTime time = DateTime.Today;
 
@@ -198,10 +198,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[8] = list[3];                                                  // summary
                 row[9] = list[17];                                                 // prod image
                 row[10] = time.Year + " Ashlin Executive Catalog:" + time.Year;    // catagory imformation
-                row[11] = list[18];                                                // category
-                row[12] = list[19];                                                // keywords
-                row[13] = list[20];                                                // product color
-                row[14] = list[21];                                                // material
+                row[11] = list[19];                                                // category
+                row[12] = list[20];                                                // keywords
+                row[13] = list[21];                                                // product color
+                row[14] = list[22];                                                // material
                 row[15] = "Dimension";                                             // size group
                 if (!list[4].Equals(DBNull.Value) && !list[5].Equals(DBNull.Value) && !list[6].Equals(DBNull.Value))
                     row[16] = "Length:" + Math.Round(Convert.ToDouble(list[4]) / 2.54, 2) + ":in;Width:" + Math.Round(Convert.ToDouble(list[5]) / 2.54, 2) + ":in;Height:" + Math.Round(Convert.ToDouble(list[6]) / 2.54, 2) + ":in";    // size values
@@ -243,21 +243,40 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[65] = 500;               // q7
                 row[66] = 1000;              // q8
                 row[67] = 2500;              // q9
-                double msrp = Convert.ToDouble(list[16]) * discountList[10];
+                double msrp = Convert.ToDouble(list[16]) * discountList[5][0];
                 double runCharge = list[13].Equals(DBNull.Value) ? runCharge = Math.Round(msrp * 0.05) / 0.6 : runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[13]) - 1;
                 if (runCharge > 8)
                     runCharge = 8;
                 else if (runCharge < 1)
                     runCharge = 1;
-                row[69] = Math.Round(msrp * discountList[0], 2);            // p1
-                row[70] = Math.Round(msrp * discountList[1], 2);            // p2
-                row[71] = Math.Round(msrp * discountList[2], 2);            // p3
-                row[72] = Math.Round(msrp * discountList[3], 2);            // p4
-                row[73] = Math.Round(msrp * discountList[4], 2);            // p5
-                row[74] = Math.Round(msrp * discountList[5], 2);            // p6
-                row[75] = Math.Round(msrp * discountList[6], 2);            // p7
-                row[76] = Math.Round(msrp * discountList[7], 2);            // p8
-                row[77] = Math.Round(msrp * discountList[8], 2);            // p9
+                int k;
+                switch (Convert.ToInt32(list[18]))
+                {
+                    case 1:
+                        k = 1;
+                        break;
+                    case 2:
+                        k = 2;
+                        break;
+                    case 3:
+                        k = 3;
+                        break;
+                    case 4:
+                        k = 4;
+                        break;
+                    default:
+                        k = 0;
+                        break;
+                }
+                row[69] = Math.Round(msrp * discountList[k][0], 2);         // p1
+                row[70] = Math.Round(msrp * discountList[k][1], 2);         // p2
+                row[71] = Math.Round(msrp * discountList[k][2], 2);         // p3
+                row[72] = Math.Round(msrp * discountList[k][3], 2);         // p4
+                row[73] = Math.Round(msrp * discountList[k][4], 2);         // p5
+                row[74] = Math.Round(msrp * discountList[k][5], 2);         // p6
+                row[75] = Math.Round(msrp * discountList[k][6], 2);         // p7
+                row[76] = Math.Round(msrp * discountList[k][7], 2);         // p8
+                row[77] = Math.Round(msrp * discountList[k][8], 2);         // p9
                 row[79] = 'R';                                              // d1
                 row[80] = 'R';                                              // d2
                 row[81] = 'R';                                              // d3
@@ -302,16 +321,16 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[65] = 500;               // q7
                 row[66] = 1000;              // q8
                 row[67] = 2500;              // q9
-                msrp *= discountList[9];
-                row[69] = Math.Round(msrp * discountList[0], 2);            // p1
-                row[70] = Math.Round(msrp * discountList[1], 2);            // p2
-                row[71] = Math.Round(msrp * discountList[2], 2);            // p3
-                row[72] = Math.Round(msrp * discountList[3], 2);            // p4
-                row[73] = Math.Round(msrp * discountList[4], 2);            // p5
-                row[74] = Math.Round(msrp * discountList[5], 2);            // p6
-                row[75] = Math.Round(msrp * discountList[6], 2);            // p7
-                row[76] = Math.Round(msrp * discountList[7], 2);            // p8
-                row[77] = Math.Round(msrp * discountList[8], 2);            // p9
+                msrp *= discountList[k][9];
+                row[69] = Math.Round(msrp * discountList[k][0], 2);         // p1
+                row[70] = Math.Round(msrp * discountList[k][1], 2);         // p2
+                row[71] = Math.Round(msrp * discountList[k][2], 2);         // p3
+                row[72] = Math.Round(msrp * discountList[k][3], 2);         // p4
+                row[73] = Math.Round(msrp * discountList[k][4], 2);         // p5
+                row[74] = Math.Round(msrp * discountList[k][5], 2);         // p6
+                row[75] = Math.Round(msrp * discountList[k][6], 2);         // p7
+                row[76] = Math.Round(msrp * discountList[k][7], 2);         // p8
+                row[77] = Math.Round(msrp * discountList[k][8], 2);         // p9
                 row[79] = 'R';                                              // d1
                 row[80] = 'R';                                              // d2
                 row[81] = 'R';                                              // d3
@@ -351,16 +370,16 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[65] = 500;               // q7
                 row[66] = 1000;              // q8
                 row[67] = 2500;              // q9
-                msrp = (Convert.ToDouble(list[16]) + runCharge) * discountList[10];
-                row[69] = Math.Round(msrp * discountList[0], 2);            // p1
-                row[70] = Math.Round(msrp * discountList[1], 2);            // p2
-                row[71] = Math.Round(msrp * discountList[2], 2);            // p3
-                row[72] = Math.Round(msrp * discountList[3], 2);            // p4
-                row[73] = Math.Round(msrp * discountList[4], 2);            // p5
-                row[74] = Math.Round(msrp * discountList[5], 2);            // p6
-                row[75] = Math.Round(msrp * discountList[6], 2);            // p7
-                row[76] = Math.Round(msrp * discountList[7], 2);            // p8
-                row[77] = Math.Round(msrp * discountList[8], 2);            // p9
+                msrp = (Convert.ToDouble(list[16]) + runCharge) * discountList[5][0];
+                row[69] = Math.Round(msrp * discountList[k][0], 2);         // p1
+                row[70] = Math.Round(msrp * discountList[k][1], 2);         // p2
+                row[71] = Math.Round(msrp * discountList[k][2], 2);         // p3
+                row[72] = Math.Round(msrp * discountList[k][3], 2);         // p4
+                row[73] = Math.Round(msrp * discountList[k][4], 2);         // p5
+                row[74] = Math.Round(msrp * discountList[k][5], 2);         // p6
+                row[75] = Math.Round(msrp * discountList[k][6], 2);         // p7
+                row[76] = Math.Round(msrp * discountList[k][7], 2);         // p8
+                row[77] = Math.Round(msrp * discountList[k][8], 2);         // p9
                 row[79] = 'R';                                              // d1
                 row[80] = 'R';                                              // d2
                 row[81] = 'R';                                              // d3
@@ -395,16 +414,16 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[65] = 500;               // q7
                 row[66] = 1000;              // q8
                 row[67] = 2500;              // q9
-                msrp *= discountList[9];
-                row[69] = Math.Round(msrp * discountList[0], 2);            // p1
-                row[70] = Math.Round(msrp * discountList[1], 2);            // p2
-                row[71] = Math.Round(msrp * discountList[2], 2);            // p3
-                row[72] = Math.Round(msrp * discountList[3], 2);            // p4
-                row[73] = Math.Round(msrp * discountList[4], 2);            // p5
-                row[74] = Math.Round(msrp * discountList[5], 2);            // p6
-                row[75] = Math.Round(msrp * discountList[6], 2);            // p7
-                row[76] = Math.Round(msrp * discountList[7], 2);            // p8
-                row[77] = Math.Round(msrp * discountList[8], 2);            // p9
+                msrp *= discountList[k][9];
+                row[69] = Math.Round(msrp * discountList[k][0], 2);         // p1
+                row[70] = Math.Round(msrp * discountList[k][1], 2);         // p2
+                row[71] = Math.Round(msrp * discountList[k][2], 2);         // p3
+                row[72] = Math.Round(msrp * discountList[k][3], 2);         // p4
+                row[73] = Math.Round(msrp * discountList[k][4], 2);         // p5
+                row[74] = Math.Round(msrp * discountList[k][5], 2);         // p6
+                row[75] = Math.Round(msrp * discountList[k][6], 2);         // p7
+                row[76] = Math.Round(msrp * discountList[k][7], 2);         // p8
+                row[77] = Math.Round(msrp * discountList[k][8], 2);         // p9
                 row[79] = 'R';                                              // d1
                 row[80] = 'R';                                              // d2
                 row[81] = 'R';                                              // d3
@@ -470,10 +489,10 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // grab data from database
             // [0] product name, [1] description, [2] description, [3] summary, [4] ~ [6] size values, [7] & [8] imprint size, [9] ~ [11] shipping dimensions, [12] shipping weight, [13] for runcharge calculation
             //                     & tradename
-            // [14] xid, [15] product number, [16] for price calculation, [17] prod image
-            // [18] category, [19] keywords, [20] product color, [21] material
+            // [14] xid, [15] product number, [16] for price calculation, [17] prod image, [18] for price calculation
+            // [19] category, [20] keywords, [21] product color, [22] material
             SqlCommand commnad = new SqlCommand("SELECT Short_Description, Design_Service_Fashion_Name_Ashlin, Extended_Description, Design_Online, Height_cm, Width_cm, Depth_cm, Imprint_Height_cm, Imprint_Width_cm, Shippable_Height_cm, Shippable_Width_cm, Shippable_Depth_cm, Shippable_Weight_grams, Components, " +
-                                                "ASI_XID, SKU_Ashlin, Base_Price, Image_1_Path, " +
+                                                "ASI_XID, SKU_Ashlin, Base_Price, Image_1_Path, sku.Pricing_Tier, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
                                                 "Colour_Online, Material_Description_Short " +
                                                 "FROM master_SKU_Attributes sku " +
@@ -484,33 +503,47 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 21; i++)
+            for (int i = 0; i <= 22; i++)
                 list.Add(reader.GetValue(i));
 
             return list;
         }
 
         /* a method that return the discount matrix */
-        private double[] getDiscount()
+        private double[][] getDiscount()
         {
-            double[] list = new double[11];
+            double[][] list = new double[6][];
 
             //  [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 2500 c standard, [9] rush c
             SqlCommand command = new SqlCommand("SELECT [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], "
-                                              + "[RUSH_C_25_wks] FROM ref_discount_matrix", connection);
+                                              + "[RUSH_C_25_wks] FROM Discount_Matrix", connection);
 
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 9; i++)
-                list[i] = reader.GetDouble(i);
+            for (int i = 0; i <= 4; i++)
+            {
+                double[] itemList = new double[10];
+                reader.Read();
+                for (int j = 0; j <= 9; j++)
+                {
+                    try
+                    {
+                        itemList[j] = reader.GetDouble(j);
+                    }
+                    catch
+                    {
+                        itemList[j] = 0;
+                    }
+                }
+                list[i] = itemList;
+            }
             reader.Close();
 
-            // [10] multiplier
+            // [5] multiplier
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[10] = reader.GetDouble(0);
+            list[5] = new double[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;

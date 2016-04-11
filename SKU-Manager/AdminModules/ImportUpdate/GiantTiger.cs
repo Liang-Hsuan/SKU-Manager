@@ -4,7 +4,10 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SKU_Manager.AdminModules.ImportUpdate
 {
-    public class Amazon
+    /* 
+     * A class that deal with giant tiger inventory import and update the database
+     */
+    public class GiantTiger
     {
         // field for database connection
         private readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
@@ -25,26 +28,17 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             Excel.Range range = xlWorkSheet.UsedRange;
             Total = range.Rows.Count;
 
-            // start updating database for new amazon sku
+            // start updating database for new sears sku
             connection.Open();
             for (int row = 1; row <= range.Rows.Count; row++)
             {
-                // getting amazon's sku and our sku
+                // getting sears's sku and our sku
                 string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
                 string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
 
-                // update database - amazon.ca
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_AMAZON_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\'", connection);
+                // update database
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\';", connection);
                 command.ExecuteNonQuery();
-
-                // getting amazon's sku and our sku
-                merchantSku = (string)(range.Cells[row, 3] as Excel.Range).Value2;
-                vendorSku = (string)(range.Cells[row, 4] as Excel.Range).Value2;
-
-                // update database - amazon.ca
-                command.CommandText = "UPDATE master_SKU_Attributes SET SKU_AMAZON_COM = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\'";
-                command.ExecuteNonQuery();
-
                 Current = row;
             }
             connection.Close();

@@ -186,7 +186,10 @@
             this.upcLabel = new System.Windows.Forms.Label();
             this.onWebsiteCheckbox = new System.Windows.Forms.CheckBox();
             this.websiteLabel = new System.Windows.Forms.Label();
+            this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
+            this.pricingTierLabel = new System.Windows.Forms.Label();
             this.autoManualPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // usDutyTextbox
@@ -1878,6 +1881,30 @@
             this.websiteLabel.TabIndex = 42;
             this.websiteLabel.Text = "On Website?";
             // 
+            // pricingTierUpdown
+            // 
+            this.pricingTierUpdown.Enabled = false;
+            this.pricingTierUpdown.Location = new System.Drawing.Point(496, 251);
+            this.pricingTierUpdown.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.pricingTierUpdown.Name = "pricingTierUpdown";
+            this.pricingTierUpdown.Size = new System.Drawing.Size(265, 20);
+            this.pricingTierUpdown.TabIndex = 152;
+            // 
+            // pricingTierLabel
+            // 
+            this.pricingTierLabel.AutoSize = true;
+            this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricingTierLabel.ForeColor = System.Drawing.Color.Green;
+            this.pricingTierLabel.Location = new System.Drawing.Point(353, 251);
+            this.pricingTierLabel.Name = "pricingTierLabel";
+            this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
+            this.pricingTierLabel.TabIndex = 151;
+            this.pricingTierLabel.Text = "Pricing Tier";
+            // 
             // UpdateSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1885,6 +1912,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.pricingTierUpdown);
+            this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.websiteLabel);
             this.Controls.Add(this.onWebsiteCheckbox);
             this.Controls.Add(this.upcLabel);
@@ -2044,6 +2073,7 @@
             this.Text = "Update SKU";
             this.autoManualPanel.ResumeLayout(false);
             this.autoManualPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2208,5 +2238,7 @@
         private System.Windows.Forms.Label upcLabel;
         private System.Windows.Forms.CheckBox onWebsiteCheckbox;
         private System.Windows.Forms.Label websiteLabel;
+        private System.Windows.Forms.NumericUpDown pricingTierUpdown;
+        private System.Windows.Forms.Label pricingTierLabel;
     }
 }

@@ -160,8 +160,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             addColumn(mainTable, "battery_type");                                   // 127
 
             // local field for inserting data to table
-            DataRow row;
-            double multiplier = getMultiplier();
+            double[] price = getPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -172,7 +171,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             {
                 ArrayList list = getData(sku);
 
-                row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "Ashlin®" + list[0];                      // item name
                 row[2] = "Ashlin®";                                // brand name
@@ -183,7 +182,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[7] = "Ashlin®";                                // part number
                 row[8] = list[1];                                  // product description
                 row[9] = "PartiaUpdate";                           // update delete
-                row[10] = Math.Ceiling(Convert.ToDouble(list[25]) * multiplier) - 0.05; // standard price
+                double msrp = Convert.ToDouble(list[25]) * price[0];
+                row[10] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);     // standard price
                 row[11] = "USD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note

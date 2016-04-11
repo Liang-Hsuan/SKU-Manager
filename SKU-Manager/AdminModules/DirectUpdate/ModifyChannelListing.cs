@@ -202,6 +202,14 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                     change++;
                 }
 
+                // giant tiger
+                listed = Convert.ToBoolean(row[27]);
+                if (listed && row[25].ToString() == "")
+                {
+                    command += "SKU_GIANT_TIGER = 'NEW',";
+                    change++;
+                }
+
                 // the case if there is any changes in the row -> update database
                 if (change > 0)
                 {

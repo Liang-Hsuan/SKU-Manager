@@ -15,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             List<string> skuList = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
+            SqlCommand command = new SqlCommand("SELECT top 50 SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -29,12 +29,12 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         protected object[] getData(string sku)
         {
             // local fields for storing data
-            object[] list = new object[5];
+            object[] list = new object[6];
 
             // grab data from design database
             // [0] field that related to price
-            // [1] for price calculation, [2] description, [3] description, [4] description
-            SqlCommand command = new SqlCommand("SELECT Base_Price, Components, Short_Description, Material_Description_Short, Colour_Description_Short " +
+            // [1] for price calculation, [2] description, [3] description, [4] description, [5] for price calculation
+            SqlCommand command = new SqlCommand("SELECT Base_Price, Components, Short_Description, Material_Description_Short, Colour_Description_Short, Pricing_Tier " +
                                                 "FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
@@ -42,13 +42,13 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                                                 "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 5; i++)
                 list[i] = reader.GetValue(i);
 
             return list;
         }
 
         /* define a crucial method that require for all Brightpearl classes */
-        protected abstract double[] getDiscount();
+        protected abstract double[][] getDiscount();
     }
 }

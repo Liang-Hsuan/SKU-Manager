@@ -148,7 +148,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             {
                 ArrayList list = getData(sku);
 
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = list[0];                                 // upc/gtin
                 row[2] = sku;                                     // supplier stock number

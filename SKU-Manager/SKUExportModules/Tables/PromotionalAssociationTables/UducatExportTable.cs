@@ -126,7 +126,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             addColumn(mainTable, "Keywords");               // 100
 
             // local field for inserting data to table
-            double[] discountList = getDiscount();
+            double[][] discountList = getDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -141,7 +141,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
            
                 row[0] = sku;                                            // sku 
                 row[1] = list[1];                                        // category
-                row[12] = "Ashlin® " + list[0] + " " + list[1] + ", " + list[7];  // name en
+                row[12] = "Ashlin® " + list[0] + " " + list[1] + ", " + list[8];  // name en
                 row[14] = list[2];                                       // description en
                 row[16] = list[5];                                       // image
                 row[18] = DateTime.Now.Year;                             // catalog year
@@ -153,39 +153,58 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                           "DIE & SETUP: Blind debossing, hot foil stamping (in gold and silver) as well as Custom Colours"; 
                 row[26] = 1;                                             // cad min qty1
                 row[27] = 5;                                             // cad max qty1
-                double msrp = discountList[9] * Convert.ToDouble(list[4]);
-                row[28] = msrp * discountList[0];                        // cad price 1
+                double msrp = discountList[5][0] * Convert.ToDouble(list[4]);
+                int k;
+                switch (Convert.ToInt32(list[7]))
+                {
+                    case 1:
+                        k = 1;
+                        break;
+                    case 2:
+                        k = 2;
+                        break;
+                    case 3:
+                        k = 3;
+                        break;
+                    case 4:
+                        k = 4;
+                        break;
+                    default:
+                        k = 0;
+                        break;
+                }
+                row[28] = msrp * discountList[k][0];                     // cad price 1
                 row[30] = 'C';                                           // cad price code 1 
                 row[33] = 6;                                             // cad min qty 2
                 row[34] = 23;                                            // cad max qty 2
-                row[36] = msrp * discountList[1];                        // cad price 2
+                row[36] = msrp * discountList[k][1];                     // cad price 2
                 row[37] = 'C';                                           // cad price code 2
                 row[40] = 24;                                            // cad min qty 3
                 row[41] = 49;                                            // cad max qty 3
-                row[42] = msrp * discountList[2];                        // cad price 3
+                row[42] = msrp * discountList[k][2];                     // cad price 3
                 row[44] = 'C';                                           // cad price code 3
                 row[47] = 50;                                            // cad min qty 4
                 row[48] = 99;                                            // cad max qty 4
-                row[49] = msrp * discountList[3];                        // cad price 4
+                row[49] = msrp * discountList[k][3];                     // cad price 4
                 row[51] = 'C';                                           // cad price code 4
                 row[54] = 100;                                           // cad min qty 5
                 row[55] = 249;                                           // cad max qty 5
-                row[56] = msrp * discountList[4];                        // cad price 5
+                row[56] = msrp * discountList[k][4];                     // cad price 5
                 row[58] = 'C';                                           // cad price code 5
                 row[61] = 250;                                           // cad min qty 6
                 row[62] = 499;                                           // cad max qty 6
-                row[63] = msrp * discountList[5];                        // cad price 6
+                row[63] = msrp * discountList[k][5];                     // cad price 6
                 row[65] = 'C';                                           // cad price code 6
                 row[68] = 500;                                           // cad min qty 7
                 row[69] = 999;                                           // cad max qty 7
-                row[70] = msrp * discountList[6];                        // cad price 7
+                row[70] = msrp * discountList[k][6];                     // cad price 7
                 row[72] = 'C';                                           // cad price code 7
                 row[75] = 1000;                                          // cad min qty 8
                 row[76] = 2499;                                          // cad max qty 8
-                row[77] = msrp * discountList[7];                        // cad price 8
+                row[77] = msrp * discountList[k][7];                     // cad price 8
                 row[79] = 'C';                                           // cad price code 8
                 row[82] = 2500;                                          // cad min qty 8
-                row[84] = msrp * discountList[8];                        // cad price 9
+                row[84] = msrp * discountList[k][8];                     // cad price 9
                 row[86] = 'C';                                           // cad price code 9
                 row[98] = list[3];                                       // keywords
 
@@ -229,11 +248,11 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // [0] name en, [1] category, [2] description en
             //                & name en
             // [3] keywords
-            // [4] for all related to price, [5] image, [6] active
-            // [7] name En
+            // [4] for all related to price, [5] image, [6] active, [7] for price calculation
+            // [8] name En
             SqlCommand command = new SqlCommand("SELECT Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, " +
                                                 "Design_Service_family_Category_UDUCAT, " +
-                                                "Base_Price, Image_1_Path, sku.Active, " +
+                                                "Base_Price, Image_1_Path, sku.Active, sku.Pricing_Tier, " +
                                                 "Colour_Description_Short " +
                                                 "FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
@@ -242,32 +261,46 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                                 "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 7; i++)
+            for (int i = 0; i <= 8; i++)
                 list.Add(reader.GetValue(i));
 
             return list;
         }
 
         /* a method that return the discount matrix */
-        private double[] getDiscount()
+        private double[][] getDiscount()
         {
-            double[] list = new double[10];
+            double[][] list = new double[6][];
 
             // [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 2500 c standard
             SqlCommand command = new SqlCommand("SELECT [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery] "
-                                                     + "FROM ref_discount_matrix", connection);
+                                                     + "FROM Discount_Matrix", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            for (int i = 0; i <= 8; i++)
-                list[i] = reader.GetDouble(i);
+            for (int i = 0; i <= 4; i++)
+            {
+                double[] itemList = new double[9];
+                reader.Read();
+                for (int j = 0; j <= 8; j++)
+                {
+                    try
+                    {
+                        itemList[j] = reader.GetDouble(j);
+                    }
+                    catch
+                    {
+                        itemList[j] = 0;
+                    }
+                }
+                list[i] = itemList;
+            }
             reader.Close();
 
-            // [9] multiplier
+            // [5] multiplier
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[9] = reader.GetDouble(0);
+            list[5] = new double[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;

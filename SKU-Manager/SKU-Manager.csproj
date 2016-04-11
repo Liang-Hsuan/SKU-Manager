@@ -143,6 +143,7 @@
       <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminModules\ImportUpdate\Amazon.cs" />
+    <Compile Include="AdminModules\ImportUpdate\GiantTiger.cs" />
     <Compile Include="AdminModules\ImportUpdate\ImportUpdate.cs" />
     <Compile Include="AdminModules\ImportUpdate\Sears.cs" />
     <Compile Include="AdminModules\ImportUpdate\ShopCa.cs" />
@@ -359,7 +360,7 @@
       <DependentUpon>WalmartView.cs</DependentUpon>
     </Compile>
     <Compile Include="SKUExportModules\Tables\ActiveAttributeTables\ActivePriceListTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonCAExportTable.cs" />
+    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonCaExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonComExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\BestbuyExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\GiantTigerExportTable.cs" />

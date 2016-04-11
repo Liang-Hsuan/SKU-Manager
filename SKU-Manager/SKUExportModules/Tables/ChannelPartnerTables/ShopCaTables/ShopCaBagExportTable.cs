@@ -186,41 +186,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             return list;
         }
 
-        #region Deprecated Area
-        /* new version of getData that directly return the desired table -> exporting excel issue will be runtime expire so deprecated */
-        /* private DataTable getDataTable()
-        {
-            // local field for storing data
-            DataTable table = new DataTable();
-
-            // grab data from database
-            // [0] title, [1] description, [2] shipping weight, [3] package height, [4] package length, [5] package width, [6] & [7] strap type, [8] closure type, [9] ~ [11] generic size, [12] trend, [13] ~ [17] features            
-            //   & style                                                                                                                 
-            // [18] product type, [19] search term
-            // [20] material, [21] title
-            // [22] colour, [23] title
-            // [24] sku, [25] main image location, [26] launch date, [27] ~ [35] alt image location, [36] release date, [37] standard product id
-            // & mfr part number
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT Short_Description, Extended_Description, Shippable_Weight_grams, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, Strap, Detachable_Strap, Zippered_enclosure, Height_cm, Width_cm, Depth_cm, Trend_Short_Description, Option_1, Option_2, Option_3, Option_4, Option_5, " + 
-                                                        "Design_Service_Family_Description, Design_Service_Family_KeyWords_General, " +
-                                                        "Material_Description_Extended, Material_Description_Short, " + 
-                                                        "Colour_Description_Extended, Colour_Description_Short, " +
-                                                        "SKU_Ashlin, Image_1_Path, sku.Date_Added, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, sku.Date_Activated, UPC_Code_9 " +
-                                                        "FROM master_Design_Attributes design " +
-                                                        "INNER JOIN master_SKU_Attributes sku ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                        "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
-                                                        "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                        "WHERE SKU_SHOP_CA != \'\' and sku.Active = \'True\' AND family.Design_Service_Family_Code in ( " +
-                                                        "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE \'bag%\' OR LOWER(Design_Service_Family_Description) LIKE \'%bag%\' OR LOWER(Design_Service_Family_Description) LIKE \'%bag\') ORDER BY SKU_Ashlin;", connection);
-            connection.Open();
-            adapter.Fill(table);
-            connection.Close();
-
-            return table;
-        } */
-        #endregion
-
         /* a method that get all the sku that is active and have on shop ca with bag design */
         protected sealed override string[] getSku()
         {
@@ -228,9 +193,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_SHOP_CA != \'\' AND Design_Service_Code in ( " +
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_SHOP_CA != '' AND Design_Service_Code in (" +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code in ( " +
-                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE \'bag%\' OR LOWER(Design_Service_Family_Description) LIKE \'%bag%\' OR LOWER(Design_Service_Family_Description) LIKE \'%bag\'));", connection);
+                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE 'bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag'));", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

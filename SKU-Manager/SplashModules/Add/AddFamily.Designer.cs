@@ -101,6 +101,9 @@
             this.usDutyTextbox = new System.Windows.Forms.TextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.duplicateLabel = new System.Windows.Forms.Label();
+            this.pricingTierLabel = new System.Windows.Forms.Label();
+            this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // inactiveFamilyButton
@@ -111,7 +114,7 @@
             this.inactiveFamilyButton.Location = new System.Drawing.Point(386, 1625);
             this.inactiveFamilyButton.Name = "inactiveFamilyButton";
             this.inactiveFamilyButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveFamilyButton.TabIndex = 68;
+            this.inactiveFamilyButton.TabIndex = 70;
             this.inactiveFamilyButton.Text = "Inactive Family";
             this.inactiveFamilyButton.UseVisualStyleBackColor = false;
             this.inactiveFamilyButton.Click += new System.EventHandler(this.inactiveFamilyButton_Click);
@@ -124,7 +127,7 @@
             this.activeFamilyButton.Location = new System.Drawing.Point(201, 1625);
             this.activeFamilyButton.Name = "activeFamilyButton";
             this.activeFamilyButton.Size = new System.Drawing.Size(180, 39);
-            this.activeFamilyButton.TabIndex = 67;
+            this.activeFamilyButton.TabIndex = 69;
             this.activeFamilyButton.Text = "Active Family";
             this.activeFamilyButton.UseVisualStyleBackColor = false;
             this.activeFamilyButton.Click += new System.EventHandler(this.activeFamilyButton_Click);
@@ -137,7 +140,7 @@
             this.addProductFamilyButton.Location = new System.Drawing.Point(201, 1543);
             this.addProductFamilyButton.Name = "addProductFamilyButton";
             this.addProductFamilyButton.Size = new System.Drawing.Size(370, 76);
-            this.addProductFamilyButton.TabIndex = 66;
+            this.addProductFamilyButton.TabIndex = 68;
             this.addProductFamilyButton.Text = "Add Product Family";
             this.addProductFamilyButton.UseVisualStyleBackColor = false;
             this.addProductFamilyButton.Click += new System.EventHandler(this.addProductFamilyButton_Click);
@@ -836,7 +839,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 65;
+            this.progressBar.TabIndex = 67;
             // 
             // duplicateLabel
             // 
@@ -849,6 +852,30 @@
             this.duplicateLabel.Text = "duplicate product family code detected !";
             this.duplicateLabel.Visible = false;
             // 
+            // pricingTierLabel
+            // 
+            this.pricingTierLabel.AutoSize = true;
+            this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricingTierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1536);
+            this.pricingTierLabel.Name = "pricingTierLabel";
+            this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
+            this.pricingTierLabel.TabIndex = 65;
+            this.pricingTierLabel.Text = "Pricing Tier";
+            // 
+            // pricingTierUpdown
+            // 
+            this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1559);
+            this.pricingTierUpdown.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.pricingTierUpdown.Name = "pricingTierUpdown";
+            this.pricingTierUpdown.Size = new System.Drawing.Size(91, 20);
+            this.pricingTierUpdown.TabIndex = 66;
+            // 
             // AddFamily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -856,6 +883,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.pricingTierUpdown);
+            this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.duplicateLabel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.usDutyTextbox);
@@ -931,6 +960,7 @@
             this.Name = "AddFamily";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Product Family";
+            ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1010,5 +1040,7 @@
         private System.Windows.Forms.TextBox usDutyTextbox;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label duplicateLabel;
+        private System.Windows.Forms.Label pricingTierLabel;
+        private System.Windows.Forms.NumericUpDown pricingTierUpdown;
     }
 }
