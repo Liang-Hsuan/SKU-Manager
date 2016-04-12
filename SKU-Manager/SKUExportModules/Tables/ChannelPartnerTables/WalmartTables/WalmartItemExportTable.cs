@@ -137,7 +137,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             AddColumn(mainTable, "Consideration Code");             // 111
 
             // local field for inserting data to table
-            double[] price = GetPrice();
+            double[] price = GetPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -164,8 +164,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
                 row[15] = "Ashlin® " + list[2];                   // signing desc
                 row[16] = "Ashlin® " + list[3];                   // french signing desc
                 row[17] = 312999;                                 // brand 
-                row[45] = Convert.ToDouble(list[1]) * price[0];   // unit cost
-                row[46] = Convert.ToDouble(list[1]) * price[1];   // base unit retail
+                double sellMsrp = Math.Ceiling((Convert.ToDouble(list[1]) * price[0]) * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                row[45] = sellMsrp - (price[4] * sellMsrp) + price[3];   // unit cost
+                row[46] = sellMsrp;                               // base unit retail
                 row[83] = list[4];                                // item length
                 row[84] = list[5];                                // item width
                 row[85] = list[6];                                // item height
@@ -202,29 +203,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             for (int i = 0; i <= 11; i++)
                 list.Add(reader.GetValue(i));
 
-            return list;
-        }
-
-        /* a method that return the discount matrix -> [0] wholesale, [1] multiplier*/
-        private double[] GetPrice()
-        {
-            double[] list = new double[2];
-
-            // [0] wholesale
-            SqlCommand command = new SqlCommand("SELECT [Wholesale_Net] FROM ref_discount_matrix", connection);  
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            list[0] = reader.GetDouble(0);
-            reader.Close();
-
-            // [1] multiplier
-            command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";     
-            reader = command.ExecuteReader();
-            reader.Read();
-            list[1] = reader.GetDouble(0);
-            connection.Close();
-            
             return list;
         }
     }

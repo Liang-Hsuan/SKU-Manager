@@ -107,7 +107,13 @@
             this.rightButton = new System.Windows.Forms.Button();
             this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
             this.pricingTierLabel = new System.Windows.Forms.Label();
+            this.reorderQtyLabel = new System.Windows.Forms.Label();
+            this.reorderQtyUpdown = new System.Windows.Forms.NumericUpDown();
+            this.reorderLevelLabel = new System.Windows.Forms.Label();
+            this.reorderLevelUpdown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // progressBar
@@ -118,7 +124,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 70;
+            this.progressBar.TabIndex = 74;
             // 
             // usDutyTextbox
             // 
@@ -679,7 +685,7 @@
             this.inactiveListButton.Location = new System.Drawing.Point(386, 1654);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 73;
+            this.inactiveListButton.TabIndex = 77;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveFamilyButton_Click);
@@ -692,7 +698,7 @@
             this.activeListButton.Location = new System.Drawing.Point(201, 1654);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 72;
+            this.activeListButton.TabIndex = 76;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeFamilyButton_Click);
@@ -706,7 +712,7 @@
             this.updateFamilyButton.Location = new System.Drawing.Point(201, 1572);
             this.updateFamilyButton.Name = "updateFamilyButton";
             this.updateFamilyButton.Size = new System.Drawing.Size(370, 76);
-            this.updateFamilyButton.TabIndex = 71;
+            this.updateFamilyButton.TabIndex = 75;
             this.updateFamilyButton.Text = "Update Product Family";
             this.updateFamilyButton.UseVisualStyleBackColor = false;
             this.updateFamilyButton.Click += new System.EventHandler(this.updateFamilyButton_Click);
@@ -934,7 +940,7 @@
             // 
             this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pricingTierUpdown.Enabled = false;
-            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1588);
+            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1581);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -949,11 +955,56 @@
             this.pricingTierLabel.AutoSize = true;
             this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pricingTierLabel.ForeColor = System.Drawing.Color.Green;
-            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1565);
+            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1558);
             this.pricingTierLabel.Name = "pricingTierLabel";
             this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
             this.pricingTierLabel.TabIndex = 68;
             this.pricingTierLabel.Text = "Pricing Tier";
+            // 
+            // reorderQtyLabel
+            // 
+            this.reorderQtyLabel.AutoSize = true;
+            this.reorderQtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderQtyLabel.ForeColor = System.Drawing.Color.Green;
+            this.reorderQtyLabel.Location = new System.Drawing.Point(21, 1604);
+            this.reorderQtyLabel.Name = "reorderQtyLabel";
+            this.reorderQtyLabel.Size = new System.Drawing.Size(100, 20);
+            this.reorderQtyLabel.TabIndex = 70;
+            this.reorderQtyLabel.Text = "Reorder Qty";
+            // 
+            // reorderQtyUpdown
+            // 
+            this.reorderQtyUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reorderQtyUpdown.Enabled = false;
+            this.reorderQtyUpdown.Location = new System.Drawing.Point(25, 1627);
+            this.reorderQtyUpdown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.reorderQtyUpdown.Name = "reorderQtyUpdown";
+            this.reorderQtyUpdown.Size = new System.Drawing.Size(91, 20);
+            this.reorderQtyUpdown.TabIndex = 71;
+            // 
+            // reorderLevelLabel
+            // 
+            this.reorderLevelLabel.AutoSize = true;
+            this.reorderLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderLevelLabel.ForeColor = System.Drawing.Color.Green;
+            this.reorderLevelLabel.Location = new System.Drawing.Point(21, 1650);
+            this.reorderLevelLabel.Name = "reorderLevelLabel";
+            this.reorderLevelLabel.Size = new System.Drawing.Size(114, 20);
+            this.reorderLevelLabel.TabIndex = 72;
+            this.reorderLevelLabel.Text = "Reorder Level";
+            // 
+            // reorderLevelUpdown
+            // 
+            this.reorderLevelUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reorderLevelUpdown.Enabled = false;
+            this.reorderLevelUpdown.Location = new System.Drawing.Point(25, 1673);
+            this.reorderLevelUpdown.Name = "reorderLevelUpdown";
+            this.reorderLevelUpdown.Size = new System.Drawing.Size(91, 20);
+            this.reorderLevelUpdown.TabIndex = 73;
             // 
             // UpdateFamily
             // 
@@ -962,6 +1013,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.reorderLevelUpdown);
+            this.Controls.Add(this.reorderLevelLabel);
+            this.Controls.Add(this.reorderQtyUpdown);
+            this.Controls.Add(this.reorderQtyLabel);
             this.Controls.Add(this.pricingTierUpdown);
             this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.leftButton);
@@ -1043,6 +1098,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Updata Family";
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1128,5 +1185,9 @@
         private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.NumericUpDown pricingTierUpdown;
         private System.Windows.Forms.Label pricingTierLabel;
+        private System.Windows.Forms.Label reorderQtyLabel;
+        private System.Windows.Forms.NumericUpDown reorderQtyUpdown;
+        private System.Windows.Forms.Label reorderLevelLabel;
+        private System.Windows.Forms.NumericUpDown reorderLevelUpdown;
     }
 }

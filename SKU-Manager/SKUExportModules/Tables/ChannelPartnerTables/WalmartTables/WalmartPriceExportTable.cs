@@ -56,9 +56,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
                 row[0] = sku;                                                        // item number
                 double msrp = Convert.ToDouble(GetData(sku)[0]) * price[0];
-                row[1] = msrp * 0.6;                                                 // total VNPK case cost
-                row[2] = Math.Ceiling(msrp * 0.9) - 0.01;                            // unit retail
-                row[3] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]); // whse pack cost
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                row[1] = msrp;                                                       // total VNPK case cost
+                row[2] = sellMsrp;                                                   // unit retail
+                row[3] = sellMsrp - (price[4] * sellMsrp) + price[3];                // whse pack cost
 
                 mainTable.Rows.Add(row);
                 Progress++;
@@ -82,29 +83,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));
-
-            return list;
-        }
-
-        /* a method that return the all fields for price calculation */
-        private double[] GetPriceList()
-        {
-            // [0] multiplier, [1] msrp disc, [2] sell cents
-            double[] list = new double[3];
-
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            list[0] = reader.GetDouble(0);
-            reader.Close();
-
-            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_No = 1003";
-            reader = command.ExecuteReader();
-            reader.Read();
-            list[1] = Convert.ToDouble(reader.GetValue(0));
-            list[2] = Convert.ToDouble(reader.GetValue(1));
-            connection.Close();
 
             return list;
         }

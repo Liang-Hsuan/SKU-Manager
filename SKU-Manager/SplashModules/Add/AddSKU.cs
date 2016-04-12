@@ -50,6 +50,8 @@ namespace SKU_Manager.SplashModules.Add
         private string upcCode9;
         private string upcCode10;
         private int pricingTier;
+        private int reorderQty;
+        private int reorderLevel;
 
         // supporting boolean flags and other
         private bool frontHasAdded = false;
@@ -262,7 +264,7 @@ namespace SKU_Manager.SplashModules.Add
         {
             // connect to database to get hts
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, Pricing_Tier FROM ref_Families family JOIN master_Design_Attributes design " +
+            SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families family JOIN master_Design_Attributes design " +
                                                 "ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
             connection.Open();
@@ -273,6 +275,8 @@ namespace SKU_Manager.SplashModules.Add
             for (int i = 0; i < 4; i++)
               htsList[i] = reader.GetValue(i).ToString();
             pricingTier = reader.GetInt32(4);
+            reorderQty = reader.GetInt32(5);
+            reorderLevel = reader.GetInt32(6);
             connection.Close();
         }
         private void backgroundWorkerHTS_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -282,6 +286,8 @@ namespace SKU_Manager.SplashModules.Add
             usHtsCombobox.Text = htsList[2];
             usDutyTextbox.Text = htsList[3];
             pricingTierUpdown.Value = pricingTier;
+            reorderQtyUpdown.Value = reorderQty;
+            reorderLevelUpdown.Value = reorderLevel;
         }
         #endregion
 
@@ -327,6 +333,9 @@ namespace SKU_Manager.SplashModules.Add
                 promoMarketingTextbox.Enabled = false;
                 giantTigerTextbox.Enabled = false;
                 asiXidTextbox.Enabled = false;
+                pricingTierUpdown.Enabled = false;
+                reorderQtyUpdown.Enabled = false;
+                reorderLevelUpdown.Enabled = false;
 
                 materialCombobox.Text = "SVC";
                 colorCodeCombobox.Text = "SVC";
@@ -349,6 +358,7 @@ namespace SKU_Manager.SplashModules.Add
                 promoMarketingTextbox.Text = "";
                 giantTigerTextbox.Text = "";
                 asiXidTextbox.Text = "";
+                onWebsiteCheckbox.Checked = false;
             }
             else
             {
@@ -374,6 +384,9 @@ namespace SKU_Manager.SplashModules.Add
                 promoMarketingTextbox.Enabled = true;
                 giantTigerTextbox.Enabled = true;
                 asiXidTextbox.Enabled = true;
+                pricingTierUpdown.Enabled = true;
+                reorderQtyUpdown.Enabled = true;
+                reorderLevelUpdown.Enabled = true;
             }
         }
 
@@ -561,6 +574,8 @@ namespace SKU_Manager.SplashModules.Add
             // get on website flag and pricing tier
             onWebsite[1] = onWebsiteCheckbox.Checked;
             pricingTier = (int)pricingTierUpdown.Value;
+            reorderQty = (int)reorderQtyUpdown.Value;
+            reorderLevel = (int)reorderLevelUpdown.Value;
 
             // call background worker
             if (!backgroundWorkerImagePath.IsBusy)
@@ -773,15 +788,15 @@ namespace SKU_Manager.SplashModules.Add
                 {
                     if (!caHts.Equals("") && !usHts.Equals(""))
                     {
-                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier) "
-                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\', \'" + amazonCa + "\', \'" + amazonCom + "\', \'" + shopCa + "\', \'" + staples + "\', \'" + walmartCa + "\', \'" + walmartCom + "\', \'" + distributorCentral + "\', \'" + promoMarketing + "\', \'" + giantTiger + "\', \'" + asiXid + "\', \'" + location[0] + "\', \'" + location[2] + "\', \'" + location[3] + "\', \'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ", " + upcCode9 + ", " + upcCode10 + ", \'" + ashlin + "\', \'" + caHts + "\', \'" + usHts + "\', " + caDuty + ", " + usDuty + ", \'" + image[0] + "\', \'" + image[1] + "\', \'" + image[2] + "\', \'" + image[3] + "\', \'" + image[4] + "\', \'" + image[5] + "\', \'" + image[6] + "\', \'" + image[7] + "\', \'" + image[8] + "\', \'" + image[9] + "\', \'" + group[0] + "\', \'" + group[1] + "\', \'" + group[2] + "\', \'" + group[3] + "\', \'" + group[4] + "\', \'" + model[0] + "\', \'" + model[1] + "\', \'" + model[2] + "\', \'" + model[3] + "\', \'" + model[4] + "\', \'" + active.ToString() + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + imageAlt[0] + "\', \'" + imageAlt[1] + "\', \'" + imageAlt[2] + "\', \'" + imageAlt[3] + "\', \'" + imageAlt[4] + "\', \'" + imageAlt[5] + "\', \'" + imageAlt[6] + "\', \'" + imageAlt[7] + "\', \'" + imageAlt[8] + "\', \'" + imageAlt[9] + "\', \'" + groupAlt[0] + "\', \'" + groupAlt[1] + "\', \'" + groupAlt[2] + "\', \'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\', \'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\',\'" + modelAlt[2] + "\',\'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ')', connection);
+                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level) "
+                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\', \'" + amazonCa + "\', \'" + amazonCom + "\', \'" + shopCa + "\', \'" + staples + "\', \'" + walmartCa + "\', \'" + walmartCom + "\', \'" + distributorCentral + "\', \'" + promoMarketing + "\', \'" + giantTiger + "\', \'" + asiXid + "\', \'" + location[0] + "\', \'" + location[2] + "\', \'" + location[3] + "\', \'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ", " + upcCode9 + ", " + upcCode10 + ", \'" + ashlin + "\', \'" + caHts + "\', \'" + usHts + "\', " + caDuty + ", " + usDuty + ", \'" + image[0] + "\', \'" + image[1] + "\', \'" + image[2] + "\', \'" + image[3] + "\', \'" + image[4] + "\', \'" + image[5] + "\', \'" + image[6] + "\', \'" + image[7] + "\', \'" + image[8] + "\', \'" + image[9] + "\', \'" + group[0] + "\', \'" + group[1] + "\', \'" + group[2] + "\', \'" + group[3] + "\', \'" + group[4] + "\', \'" + model[0] + "\', \'" + model[1] + "\', \'" + model[2] + "\', \'" + model[3] + "\', \'" + model[4] + "\', \'" + active.ToString() + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + imageAlt[0] + "\', \'" + imageAlt[1] + "\', \'" + imageAlt[2] + "\', \'" + imageAlt[3] + "\', \'" + imageAlt[4] + "\', \'" + imageAlt[5] + "\', \'" + imageAlt[6] + "\', \'" + imageAlt[7] + "\', \'" + imageAlt[8] + "\', \'" + imageAlt[9] + "\', \'" + groupAlt[0] + "\', \'" + groupAlt[1] + "\', \'" + groupAlt[2] + "\', \'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\', \'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\',\'" + modelAlt[2] + "\',\'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ')', connection);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
                     else
                     {
-                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier) "
-                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\', \'" + shopCa + "\', \'" + staples + "\', \'" + walmartCa + "\', \'" + walmartCom + "\', \'" + distributorCentral + "\', \'" + promoMarketing + "\', \'" + giantTiger + "\', \'" + asiXid + "\', \'" + location[0] + "\', \'" + location[2] + "\', \'" + location[3] + "\', \'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ", " + upcCode9 + ", " + upcCode10 + ", \'" + ashlin + "\', \'" + image[0] + "\', \'" + image[1] + "\', \'" + image[2] + "\', \'" + image[3] + "\', \'" + image[4] + "\', \'" + image[5] + "\', \'" + image[6] + "\', \'" + image[7] + "\', \'" + image[8] + "\', \'" + image[9] + "\', \'" + group[0] + "\', \'" + group[1] + "\', \'" + group[2] + "\', \'" + group[3] + "\', \'" + group[4] + "\', \'" + model[0] + "\', \'" + model[1] + "\', \'" + model[2] + "\', \'" + model[3] + "\', \'" + model[4] + "\', \'" + active.ToString() + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + imageAlt[0] + "\', \'" + imageAlt[1] + "\', \'" + imageAlt[2] + "\', \'" + imageAlt[3] + "\', \'" + imageAlt[4] + "\', \'" + imageAlt[5] + "\', \'" + imageAlt[6] + "\', \'" + imageAlt[7] + "\', \'" + imageAlt[8] + "\', \'" + imageAlt[9] + "\', \'" + groupAlt[0] + "\', \'" + groupAlt[1] + "\', \'" + groupAlt[2] + "\', \'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\', \'" + modelAlt[0] + "\', \'" + modelAlt[1] + "\', \'" + modelAlt[2] + "\', \'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ')', connection);
+                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level) "
+                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\', \'" + shopCa + "\', \'" + staples + "\', \'" + walmartCa + "\', \'" + walmartCom + "\', \'" + distributorCentral + "\', \'" + promoMarketing + "\', \'" + giantTiger + "\', \'" + asiXid + "\', \'" + location[0] + "\', \'" + location[2] + "\', \'" + location[3] + "\', \'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ", " + upcCode9 + ", " + upcCode10 + ", \'" + ashlin + "\', \'" + image[0] + "\', \'" + image[1] + "\', \'" + image[2] + "\', \'" + image[3] + "\', \'" + image[4] + "\', \'" + image[5] + "\', \'" + image[6] + "\', \'" + image[7] + "\', \'" + image[8] + "\', \'" + image[9] + "\', \'" + group[0] + "\', \'" + group[1] + "\', \'" + group[2] + "\', \'" + group[3] + "\', \'" + group[4] + "\', \'" + model[0] + "\', \'" + model[1] + "\', \'" + model[2] + "\', \'" + model[3] + "\', \'" + model[4] + "\', \'" + active.ToString() + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', \'" + imageAlt[0] + "\', \'" + imageAlt[1] + "\', \'" + imageAlt[2] + "\', \'" + imageAlt[3] + "\', \'" + imageAlt[4] + "\', \'" + imageAlt[5] + "\', \'" + imageAlt[6] + "\', \'" + imageAlt[7] + "\', \'" + imageAlt[8] + "\', \'" + imageAlt[9] + "\', \'" + groupAlt[0] + "\', \'" + groupAlt[1] + "\', \'" + groupAlt[2] + "\', \'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\', \'" + modelAlt[0] + "\', \'" + modelAlt[1] + "\', \'" + modelAlt[2] + "\', \'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ')', connection);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }

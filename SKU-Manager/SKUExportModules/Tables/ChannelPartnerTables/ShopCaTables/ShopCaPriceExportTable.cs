@@ -67,9 +67,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[1] = "nishis_boutique";                                      // store name
                 row[2] = sku;                                                    // sku
                 double msrp = Convert.ToDouble(GetData(sku)[0]) * price[0];
-                row[3] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier suggested retail price
-                row[4] = msrp;                                                            // msrp
-                row[5] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier list price
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                row[3] = sellMsrp;                                               // supplier suggested retail price
+                row[4] = msrp;                                                   // msrp
+                row[5] = sellMsrp;                                               // supplier list price
 
                 mainTable.Rows.Add(row);        
                 Progress++;
@@ -100,8 +101,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         /* a method that return the all fields for price calculation */
         private double[] getPriceList()
         {
-            // [0] multiplier, [1] msrp disc, [2] sell cents
-            double[] list = new double[3];
+            // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
+            double[] list = new double[4];
 
             SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
             connection.Open();
@@ -110,11 +111,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             list[0] = reader.GetDouble(0);
             reader.Close();
 
-            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_No = 1005";
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents, Base_Ship FROM Channel_Pricing WHERE Channel_No = 1005";
             reader = command.ExecuteReader();
             reader.Read();
-            list[1] = Convert.ToDouble(reader.GetValue(0));
-            list[2] = Convert.ToDouble(reader.GetValue(1));
+            list[1] = reader.GetInt32(0);
+            list[2] = (double)reader.GetDecimal(1);
+            list[3] = (double)reader.GetDecimal(2);
             connection.Close();
 
             return list;

@@ -50,7 +50,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
-            double[] priceList = GetPriceList();
+            double[] price = GetPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -59,7 +59,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             foreach (DataRow row in table.Rows)
             {
                 DataRow newRow = mainTable.NewRow();
-                double msrp = Convert.ToDouble(row[9]) * priceList[0];
+                double msrp = Convert.ToDouble(row[9]) * price[0];
 
                 newRow[0] = row[20];                                                   // sku number
                 newRow[1] = "Ashlin®";                                                 // brand
@@ -70,8 +70,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[6] = row[7];                                                    // material
                 newRow[7] = row[2] + "cm x " + row[3] + "cm x " + row[4] + "cm";       // size in cm
                 newRow[8] = row[5];                                                    // weight
-                newRow[9] = Convert.ToDouble(row[9]) * 0.6;                            // cost
-                newRow[10] = Math.Ceiling(msrp * (1 - priceList[1] / 100)) - (1 - priceList[2]);    // retail
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                newRow[9] = sellMsrp - (price[4] * sellMsrp) + price[3];               // cost
+                newRow[10] = sellMsrp;                                                 // retail
                 newRow[11] = msrp;                                                     // mrsp
                 newRow[12] = "L5J 4S7";                                                // area code
                 newRow[13] = row[10];                                                  // image 1 path
@@ -145,9 +146,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         /* method that give price list */
         private double[] GetPriceList()
         {
-            double[] list = new double[3];
+            // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
+            double[] list = new double[5];
 
-            // get multiplier data
             SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -155,12 +156,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             list[0] = reader.GetDouble(0);
             reader.Close();
 
-            // get channel pricing
-            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_Name = 'gianttiger.com'";
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents, Base_Ship, Gross_Marg FROM Channel_Pricing WHERE Channel_No = 2001";
             reader = command.ExecuteReader();
             reader.Read();
             list[1] = reader.GetInt32(0);
             list[2] = (double)reader.GetDecimal(1);
+            list[3] = (double)reader.GetDecimal(2);
+            list[4] = (double)reader.GetDecimal(3);
             connection.Close();
 
             return list;

@@ -14,6 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         {
             public double MsrpDisc;
             public double SellCent;
+            public double BaseShip;
         }
 
         /* method that get the data from given sku */
@@ -44,16 +45,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             // get data 
             // [0] ebay, [1] amazon.com, [2] amazon.ca, [3] amazon.uk, [4] shop.ca, [5] giant tiger, [6] sears, [7] staples, [8] staples advantage, 
             // [9] the bay, [10] the shopping channel, [11] walmart, [12] bestbuy
-            SqlCommand command = new SqlCommand("SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing", connection);
+            SqlCommand command = new SqlCommand("SELECT Msrp_Disc, Sell_Cents, Base_Ship FROM Channel_Pricing", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 12; i++)
             {
-                Price price = new Price();
-
                 reader.Read();
-                price.MsrpDisc = Convert.ToDouble(reader.GetValue(0));
-                price.SellCent = Convert.ToDouble(reader.GetValue(1));
+
+                Price price = new Price();
+                price.MsrpDisc = reader.GetInt32(0);
+                price.SellCent = (double)reader.GetDecimal(1);
+                price.BaseShip = (double)reader.GetDecimal(2);
 
                 list[i] = price;
             }

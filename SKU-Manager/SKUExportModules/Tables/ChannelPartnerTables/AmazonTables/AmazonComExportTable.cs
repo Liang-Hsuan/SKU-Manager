@@ -170,7 +170,6 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             foreach (string sku in skuList)
             {
                 ArrayList list = GetData(sku);
-
                 DataRow row = mainTable.NewRow();
 
                 row[0] = "Ashlin®" + list[0];                      // item name
@@ -182,8 +181,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[7] = "Ashlin®";                                // part number
                 row[8] = list[1];                                  // product description
                 row[9] = "PartiaUpdate";                           // update delete
-                double msrp = Convert.ToDouble(list[25]) * price[0];
-                row[10] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);     // standard price
+                row[10] = Math.Ceiling(Convert.ToDouble(list[25]) * price[0] * (1 - price[1] / 100)) - (1 - price[2]) + price[3];     // standard price
                 row[11] = "USD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note
@@ -214,11 +212,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[49] = "unisex";                                // target audience base 5
                 row[51] = list[22];                                // recommended browse nodes 1
                 row[52] = list[23];                                // recommended browse nodes 2
-                row[53] = list[8];                                 // bullet point 1
-                row[54] = list[9];                                 // bullet point 2
-                row[55] = list[10];                                // bullet point 3
-                row[56] = list[11];                                // bullet point 4
-                row[57] = list[12];                                // bullet point 5
+                row[53] = list[7];                                 // bullet point 1
+                row[54] = list[8];                                 // bullet point 2
+                row[55] = list[9];                                 // bullet point 3
+                row[56] = list[10];                                // bullet point 4
+                row[57] = list[11];                                // bullet point 5
                 row[59] = list[26];                                // main image url
                 row[60] = GetSwatch(sku);                          // swatch image url
                 row[61] = list[27];                                // other image url 1
@@ -229,20 +227,20 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[66] = list[32];                                // other image url 6
                 row[67] = list[33];                                // other image url 7
                 row[68] = list[34];                                // other image url 8
-                row[70] = Convert.ToDouble(list[13]) / 2.54;       // package height
+                row[70] = Convert.ToDouble(list[12]) / 2.54;       // package height
                 row[71] = "IN";                                    // package height unit of measure
-                row[72] = Convert.ToDouble(list[14]) / 2.54;       // package length
+                row[72] = Convert.ToDouble(list[13]) / 2.54;       // package length
                 row[73] = "IN";                                    // package length unit of measure
-                row[74] = Convert.ToDouble(list[15]) / 2.54;       // package width
+                row[74] = Convert.ToDouble(list[14]) / 2.54;       // package width
                 row[75] = "IN";                                    // package width unit of measure
-                row[76] = Convert.ToDouble(list[6]) / 453.592;     // package weight
+                row[76] = Convert.ToDouble(list[15]) / 453.592;    // package weight
                 row[77] = "LB";                                    // package weight unit of measure
                 row[83] = "IN";                                    // country of region
                 row[86] = list[35];                                // color name 1
                 row[88] = list[35];                                // color map
-                row[90] = list[15];                                // outer material type   
-                row[93] = list[15];                                // material type
-                row[94] = list[15];                                // leather type      
+                row[90] = list[16];                                // outer material type   
+                row[93] = list[16];                                // material type
+                row[94] = list[16];                                // leather type      
                 row[95] = "Leather";                               // fabric type
                 row[125] = "All Seasons";                          // seasons
                 row[126] = "Casual, Formal, Travel, Executive";    // lifestyle

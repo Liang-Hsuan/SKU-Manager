@@ -103,7 +103,13 @@
             this.duplicateLabel = new System.Windows.Forms.Label();
             this.pricingTierLabel = new System.Windows.Forms.Label();
             this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
+            this.reorderQuantityLabel = new System.Windows.Forms.Label();
+            this.reorderQtyUpdown = new System.Windows.Forms.NumericUpDown();
+            this.reorderLevelLabel = new System.Windows.Forms.Label();
+            this.reorderLevelUpdown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // inactiveFamilyButton
@@ -114,7 +120,7 @@
             this.inactiveFamilyButton.Location = new System.Drawing.Point(386, 1625);
             this.inactiveFamilyButton.Name = "inactiveFamilyButton";
             this.inactiveFamilyButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveFamilyButton.TabIndex = 70;
+            this.inactiveFamilyButton.TabIndex = 74;
             this.inactiveFamilyButton.Text = "Inactive Family";
             this.inactiveFamilyButton.UseVisualStyleBackColor = false;
             this.inactiveFamilyButton.Click += new System.EventHandler(this.inactiveFamilyButton_Click);
@@ -127,7 +133,7 @@
             this.activeFamilyButton.Location = new System.Drawing.Point(201, 1625);
             this.activeFamilyButton.Name = "activeFamilyButton";
             this.activeFamilyButton.Size = new System.Drawing.Size(180, 39);
-            this.activeFamilyButton.TabIndex = 69;
+            this.activeFamilyButton.TabIndex = 73;
             this.activeFamilyButton.Text = "Active Family";
             this.activeFamilyButton.UseVisualStyleBackColor = false;
             this.activeFamilyButton.Click += new System.EventHandler(this.activeFamilyButton_Click);
@@ -140,7 +146,7 @@
             this.addProductFamilyButton.Location = new System.Drawing.Point(201, 1543);
             this.addProductFamilyButton.Name = "addProductFamilyButton";
             this.addProductFamilyButton.Size = new System.Drawing.Size(370, 76);
-            this.addProductFamilyButton.TabIndex = 68;
+            this.addProductFamilyButton.TabIndex = 72;
             this.addProductFamilyButton.Text = "Add Product Family";
             this.addProductFamilyButton.UseVisualStyleBackColor = false;
             this.addProductFamilyButton.Click += new System.EventHandler(this.addProductFamilyButton_Click);
@@ -839,7 +845,7 @@
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 67;
+            this.progressBar.TabIndex = 71;
             // 
             // duplicateLabel
             // 
@@ -857,7 +863,7 @@
             this.pricingTierLabel.AutoSize = true;
             this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pricingTierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1536);
+            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1529);
             this.pricingTierLabel.Name = "pricingTierLabel";
             this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
             this.pricingTierLabel.TabIndex = 65;
@@ -866,7 +872,7 @@
             // pricingTierUpdown
             // 
             this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1559);
+            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1552);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -876,6 +882,49 @@
             this.pricingTierUpdown.Size = new System.Drawing.Size(91, 20);
             this.pricingTierUpdown.TabIndex = 66;
             // 
+            // reorderQuantityLabel
+            // 
+            this.reorderQuantityLabel.AutoSize = true;
+            this.reorderQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderQuantityLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.reorderQuantityLabel.Location = new System.Drawing.Point(21, 1575);
+            this.reorderQuantityLabel.Name = "reorderQuantityLabel";
+            this.reorderQuantityLabel.Size = new System.Drawing.Size(100, 20);
+            this.reorderQuantityLabel.TabIndex = 67;
+            this.reorderQuantityLabel.Text = "Reorder Qty";
+            // 
+            // reorderQtyUpdown
+            // 
+            this.reorderQtyUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reorderQtyUpdown.Location = new System.Drawing.Point(25, 1598);
+            this.reorderQtyUpdown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.reorderQtyUpdown.Name = "reorderQtyUpdown";
+            this.reorderQtyUpdown.Size = new System.Drawing.Size(91, 20);
+            this.reorderQtyUpdown.TabIndex = 68;
+            // 
+            // reorderLevelLabel
+            // 
+            this.reorderLevelLabel.AutoSize = true;
+            this.reorderLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderLevelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.reorderLevelLabel.Location = new System.Drawing.Point(21, 1621);
+            this.reorderLevelLabel.Name = "reorderLevelLabel";
+            this.reorderLevelLabel.Size = new System.Drawing.Size(114, 20);
+            this.reorderLevelLabel.TabIndex = 69;
+            this.reorderLevelLabel.Text = "Reorder Level";
+            // 
+            // reorderLevelUpdown
+            // 
+            this.reorderLevelUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reorderLevelUpdown.Location = new System.Drawing.Point(25, 1644);
+            this.reorderLevelUpdown.Name = "reorderLevelUpdown";
+            this.reorderLevelUpdown.Size = new System.Drawing.Size(91, 20);
+            this.reorderLevelUpdown.TabIndex = 70;
+            // 
             // AddFamily
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -883,6 +932,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(746, 802);
+            this.Controls.Add(this.reorderLevelUpdown);
+            this.Controls.Add(this.reorderLevelLabel);
+            this.Controls.Add(this.reorderQtyUpdown);
+            this.Controls.Add(this.reorderQuantityLabel);
             this.Controls.Add(this.pricingTierUpdown);
             this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.duplicateLabel);
@@ -961,6 +1014,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Product Family";
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1042,5 +1097,9 @@
         private System.Windows.Forms.Label duplicateLabel;
         private System.Windows.Forms.Label pricingTierLabel;
         private System.Windows.Forms.NumericUpDown pricingTierUpdown;
+        private System.Windows.Forms.Label reorderQuantityLabel;
+        private System.Windows.Forms.NumericUpDown reorderQtyUpdown;
+        private System.Windows.Forms.Label reorderLevelLabel;
+        private System.Windows.Forms.NumericUpDown reorderLevelUpdown;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -19,7 +18,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             // local field for storing data
             ArrayList list = new ArrayList();
 
-            SqlCommand command = new SqlCommand("SELECT Short_Description, Extended_Description, Height_cm, Depth_cm, Width_cm, Weight_grams, Shippable_Weight_grams, Option_1, Option_2, Option_3, Option_4, Option_5, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Width_cm, Shippable_Weight_grams, Design_Service_Fashion_Name_AMAZON_CA, " +
+            // [0] item name, [1] product description, [2] item height, [3] item length, [4] item width, [5] item weight, [6] website shipping weight, [7] ~ [11] bullet points, [12] package height, [13] package length, [14] package width, [15] package weight, [16] outer material type
+            //                                                                                                              & package weight                                                                                                                       & material type,leather type
+            // [17] ~ [21] keyword amazon, [22] & [23] recommanded browse node, [24] external product id, [25] for field related to price, [26] main image url, [27] ~ [34] other image url, [35] color name 1 & color map
+            SqlCommand command = new SqlCommand("SELECT Short_Description, Extended_Description, Depth_cm, Height_cm, Width_cm, Weight_grams, Shippable_Weight_grams, Option_1, Option_2, Option_3, Option_4, Option_5, Shippable_Depth_cm, Shippable_Height_cm, Shippable_Width_cm, Shippable_Weight_grams, Design_Service_Fashion_Name_AMAZON_CA, " +
                                                 "KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, " +
                                                 "UPC_CODE_10, Base_Price, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, " +
                                                 "Colour_Description_Extended " +
@@ -39,8 +41,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         /* a method that return the all fields for price calculation */
         protected double[] GetPriceList()
         {
-            // [0] multiplier, [1] msrp disc, [2] sell cents
-            double[] list = new double[3];
+            // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
+            double[] list = new double[4];
 
             SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
             connection.Open();
@@ -49,11 +51,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             list[0] = reader.GetDouble(0);
             reader.Close();
 
-            command.CommandText = "SELECT Msrp_Disc, Sell_Cents FROM Channel_Pricing WHERE Channel_No = 1003";
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents, Base_Ship FROM Channel_Pricing WHERE Channel_No = 1003";
             reader = command.ExecuteReader();
             reader.Read();
-            list[1] = Convert.ToDouble(reader.GetValue(0));
-            list[2] = Convert.ToDouble(reader.GetValue(1));
+            list[1] = reader.GetInt32(0);
+            list[2] = (double)reader.GetDecimal(1);
+            list[3] = (double)reader.GetDecimal(2);
             connection.Close();
 
             return list;

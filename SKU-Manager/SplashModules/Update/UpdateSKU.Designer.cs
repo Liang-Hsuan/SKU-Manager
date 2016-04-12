@@ -188,8 +188,14 @@
             this.websiteLabel = new System.Windows.Forms.Label();
             this.pricingTierUpdown = new System.Windows.Forms.NumericUpDown();
             this.pricingTierLabel = new System.Windows.Forms.Label();
+            this.reorderQtyLabel = new System.Windows.Forms.Label();
+            this.reorderQtyUpdown = new System.Windows.Forms.NumericUpDown();
+            this.reorderLevelLabel = new System.Windows.Forms.Label();
+            this.reorderLevelUpdown = new System.Windows.Forms.NumericUpDown();
             this.autoManualPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // usDutyTextbox
@@ -1905,6 +1911,49 @@
             this.pricingTierLabel.TabIndex = 151;
             this.pricingTierLabel.Text = "Pricing Tier";
             // 
+            // reorderQtyLabel
+            // 
+            this.reorderQtyLabel.AutoSize = true;
+            this.reorderQtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderQtyLabel.ForeColor = System.Drawing.Color.Green;
+            this.reorderQtyLabel.Location = new System.Drawing.Point(48, 931);
+            this.reorderQtyLabel.Name = "reorderQtyLabel";
+            this.reorderQtyLabel.Size = new System.Drawing.Size(100, 20);
+            this.reorderQtyLabel.TabIndex = 153;
+            this.reorderQtyLabel.Text = "Reorder Qty";
+            // 
+            // reorderQtyUpdown
+            // 
+            this.reorderQtyUpdown.Enabled = false;
+            this.reorderQtyUpdown.Location = new System.Drawing.Point(52, 954);
+            this.reorderQtyUpdown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.reorderQtyUpdown.Name = "reorderQtyUpdown";
+            this.reorderQtyUpdown.Size = new System.Drawing.Size(96, 20);
+            this.reorderQtyUpdown.TabIndex = 154;
+            // 
+            // reorderLevelLabel
+            // 
+            this.reorderLevelLabel.AutoSize = true;
+            this.reorderLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reorderLevelLabel.ForeColor = System.Drawing.Color.Green;
+            this.reorderLevelLabel.Location = new System.Drawing.Point(48, 977);
+            this.reorderLevelLabel.Name = "reorderLevelLabel";
+            this.reorderLevelLabel.Size = new System.Drawing.Size(114, 20);
+            this.reorderLevelLabel.TabIndex = 155;
+            this.reorderLevelLabel.Text = "Reorder Level";
+            // 
+            // reorderLevelUpdown
+            // 
+            this.reorderLevelUpdown.Enabled = false;
+            this.reorderLevelUpdown.Location = new System.Drawing.Point(52, 1000);
+            this.reorderLevelUpdown.Name = "reorderLevelUpdown";
+            this.reorderLevelUpdown.Size = new System.Drawing.Size(96, 20);
+            this.reorderLevelUpdown.TabIndex = 156;
+            // 
             // UpdateSKU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1912,6 +1961,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.reorderLevelUpdown);
+            this.Controls.Add(this.reorderLevelLabel);
+            this.Controls.Add(this.reorderQtyUpdown);
+            this.Controls.Add(this.reorderQtyLabel);
             this.Controls.Add(this.pricingTierUpdown);
             this.Controls.Add(this.pricingTierLabel);
             this.Controls.Add(this.websiteLabel);
@@ -2074,6 +2127,8 @@
             this.autoManualPanel.ResumeLayout(false);
             this.autoManualPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2240,5 +2295,9 @@
         private System.Windows.Forms.Label websiteLabel;
         private System.Windows.Forms.NumericUpDown pricingTierUpdown;
         private System.Windows.Forms.Label pricingTierLabel;
+        private System.Windows.Forms.Label reorderQtyLabel;
+        private System.Windows.Forms.NumericUpDown reorderQtyUpdown;
+        private System.Windows.Forms.Label reorderLevelLabel;
+        private System.Windows.Forms.NumericUpDown reorderLevelUpdown;
     }
 }

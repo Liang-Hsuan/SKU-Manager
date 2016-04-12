@@ -359,7 +359,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[138] = list[67];                                     // alt text image model 5 path
                 row[139] = msrp;                                         // msrp
                 row[140] = Math.Round(msrp + runCharge, 2);              // msrp imprinted
-                row[141] = Math.Round(msrp * discountList[k][20], 2);       // wholesale
+                row[141] = Math.Round(msrp * discountList[k][20], 2);    // wholesale
                 row[142] = list[26];                                     // keywords
                 row[143] = list[23];                                     // monogram
 

@@ -260,6 +260,7 @@
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPcodedImprintExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetBlankExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetImprintExportTable.cs" />
+    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPproductExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedBlankExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedImprintExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetBlankExportTable.cs" />

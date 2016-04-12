@@ -295,7 +295,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 1 c net standard
             // [9] 6 c net standard, [10] 24 c net standard, [11] 50 c net standard, [12] 100 net standard, [13] 250 net standard, [14] 500 net standard, [15] 1000 net standard
             SqlCommand command = new SqlCommand("SELECT [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], "
-                                                     + "[1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery] FROM Discount_Matrix", connection);
+                                              + "[1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery] FROM Discount_Matrix", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 4; i++)

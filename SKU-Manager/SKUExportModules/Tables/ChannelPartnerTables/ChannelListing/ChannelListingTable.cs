@@ -64,31 +64,31 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
                 row[0] = sku;               // sku
                 row[1] = list[1];           // bestbuy
                 if (list[1].ToString() != "")
-                    row[2] = Math.Ceiling(msrp * (1 - priceList[12].MsrpDisc/100)) - (1-priceList[12].SellCent);         // bestbuy net
+                    row[2] = Math.Ceiling(msrp * (1 - priceList[12].MsrpDisc/100)) - (1-priceList[12].SellCent) + priceList[12].BaseShip;         // bestbuy net
                 row[3] = list[2];           // amazon ca
                 if (list[2].ToString() != "")
-                    row[4] = Math.Ceiling(msrp * (1 - priceList[2].MsrpDisc / 100)) - (1 - priceList[2].SellCent);       // amazon ca price
+                    row[4] = Math.Ceiling(msrp * (1 - priceList[2].MsrpDisc / 100)) - (1 - priceList[2].SellCent) + priceList[2].BaseShip;        // amazon ca price
                 row[5] = list[3];           // amazon us
                 if (list[3].ToString() != "")
-                    row[6] = Math.Ceiling(msrp * (1 - priceList[1].MsrpDisc / 100)) - (1 - priceList[1].SellCent);       // amaozn us price
+                    row[6] = Math.Ceiling(msrp * (1 - priceList[1].MsrpDisc / 100)) - (1 - priceList[1].SellCent) + priceList[1].BaseShip;        // amaozn us price
                 row[7] = list[4];           // staples
                 if (list[4].ToString() != "")
-                    row[8] = Math.Ceiling(msrp * (1 - priceList[7].MsrpDisc / 100)) - (1 - priceList[7].SellCent);       // staples net
+                    row[8] = Math.Ceiling(msrp * (1 - priceList[7].MsrpDisc / 100)) - (1 - priceList[7].SellCent) + priceList[7].BaseShip;        // staples net
                 row[9] = list[4];           // staples advantage
                 if (list[4].ToString() != "")
-                    row[10] = Math.Ceiling(msrp * (1 - priceList[7].MsrpDisc / 100)) - (1 - priceList[7].SellCent);      // staples advantage net
+                    row[10] = Math.Ceiling(msrp * (1 - priceList[7].MsrpDisc / 100)) - (1 - priceList[7].SellCent) + priceList[7].BaseShip;       // staples advantage net
                 row[11] = list[5];          // walmart
                 if (list[5].ToString() != "")
-                    row[12] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100)) - (1 - priceList[11].SellCent);    // walmart net
+                    row[12] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100)) - (1 - priceList[11].SellCent) + priceList[11].BaseShip;    // walmart net
                 row[13] = list[6];          // shop.ca
                 if (list[6].ToString() != "")
-                    row[14] = Math.Ceiling(msrp * (1 - priceList[4].MsrpDisc / 100)) - (1 - priceList[4].SellCent);      // shop.ca price
+                    row[14] = Math.Ceiling(msrp * (1 - priceList[4].MsrpDisc / 100)) - (1 - priceList[4].SellCent) + priceList[4].BaseShip;       // shop.ca price
                 row[15] = list[7];          // sears
                 if (list[7].ToString() != "")
-                    row[16] = Math.Ceiling(msrp * (1 - priceList[6].MsrpDisc / 100)) - (1 - priceList[6].SellCent);      // sears net
+                    row[16] = Math.Ceiling(msrp * (1 - priceList[6].MsrpDisc / 100)) - (1 - priceList[6].SellCent) + priceList[6].BaseShip;       // sears net
                 row[17] = list[8];          // giant tiger
                 if (list[8].ToString() != "")
-                    row[18] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100)) - (1 - priceList[11].SellCent);    // giant tiger net
+                    row[18] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100)) - (1 - priceList[11].SellCent) + priceList[11].BaseShip;    // giant tiger net
 
                 mainTable.Rows.Add(row);
                 Progress++;
