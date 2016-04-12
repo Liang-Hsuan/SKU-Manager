@@ -174,11 +174,11 @@ namespace SKU_Manager.SplashModules.Update
 
             // down to business, this is for short description
             if (shortEnglishDescriptionTextbox.Text != "")
-                shortFrenchDescription = Translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
+                shortFrenchDescription = Translate.NowTranslate(shortEnglishDescriptionTextbox.Text);
 
             // this is for extended description
             if (extendedEnglishDescriptionTextbox.Text != "")
-                extendedFrenchDescription = Translate.nowTranslate(extendedEnglishDescriptionTextbox.Text);
+                extendedFrenchDescription = Translate.NowTranslate(extendedEnglishDescriptionTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -188,8 +188,8 @@ namespace SKU_Manager.SplashModules.Update
                 MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            else
-                shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+            shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
+
             if (extendedFrenchDescription.Contains("Error:"))
                 MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else

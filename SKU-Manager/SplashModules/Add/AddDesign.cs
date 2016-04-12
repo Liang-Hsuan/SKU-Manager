@@ -241,19 +241,19 @@ namespace SKU_Manager.SplashModules.Add
 
             // down to business, this is for short description
             if (shortEnglishDescriptionTextbox.Text != "")
-                shortFrenchDescription = Translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
+                shortFrenchDescription = Translate.NowTranslate(shortEnglishDescriptionTextbox.Text);
 
             // this is for extended description
             if (extendedEnglishDescriptionTextbox.Text != "")
-                extendedFrenchDescription = Translate.nowTranslate(extendedEnglishDescriptionTextbox.Text);
+                extendedFrenchDescription = Translate.NowTranslate(extendedEnglishDescriptionTextbox.Text);
 
             // this is for trend short description
             if (trendShortEnglishTextbox.Text != "")
-                trendShortFrenchDescription = Translate.nowTranslate(trendShortEnglishTextbox.Text);
+                trendShortFrenchDescription = Translate.NowTranslate(trendShortEnglishTextbox.Text);
 
             // this is for trend extended description
             if (trendExtendedEnglishTextbox.Text != "")
-                trendExtendedFrenchDescription = Translate.nowTranslate(trendExtendedEnglishTextbox.Text);
+                trendExtendedFrenchDescription = Translate.NowTranslate(trendExtendedEnglishTextbox.Text);
         }
         private void backgroundWorkerTranslate1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -317,23 +317,23 @@ namespace SKU_Manager.SplashModules.Add
 
             // down to business, this is for the first option
             if (option1EnglishTextbox.Text != "")
-                frenchOption[0] = Translate.nowTranslate(option1EnglishTextbox.Text);
+                frenchOption[0] = Translate.NowTranslate(option1EnglishTextbox.Text);
 
             // this is for the second option
             if (option2EnglishTextbox.Text != "")
-                frenchOption[1] = Translate.nowTranslate(option2EnglishTextbox.Text);
+                frenchOption[1] = Translate.NowTranslate(option2EnglishTextbox.Text);
 
             // this is for the third option
             if (option3EnglishTextbox.Text != "")
-                frenchOption[2] = Translate.nowTranslate(option3EnglishTextbox.Text);
+                frenchOption[2] = Translate.NowTranslate(option3EnglishTextbox.Text);
 
             // this is for the fourth option
             if (option4EnglishTextbox.Text != "")
-                frenchOption[3] = Translate.nowTranslate(option4EnglishTextbox.Text);
+                frenchOption[3] = Translate.NowTranslate(option4EnglishTextbox.Text);
 
             // this is for the fifth option
             if (option5EnglishTextbox.Text != "")
-                frenchOption[4] = Translate.nowTranslate(option5EnglishTextbox.Text);
+                frenchOption[4] = Translate.NowTranslate(option5EnglishTextbox.Text);
         }
         private void backgroundWorkerTranslate2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

@@ -154,7 +154,7 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // down to business, this is for short description
-            shortFrenchDescription = Translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
+            shortFrenchDescription = Translate.NowTranslate(shortEnglishDescriptionTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

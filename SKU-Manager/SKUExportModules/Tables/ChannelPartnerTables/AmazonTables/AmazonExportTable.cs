@@ -14,7 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         protected DataTable minorTable = Properties.Settings.Default.StockQuantityTable;
 
         /* method that get the data from given sku */
-        protected ArrayList getData(string sku)
+        protected ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();
@@ -37,7 +37,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         }
 
         /* a method that return the all fields for price calculation */
-        protected double[] getPriceList()
+        protected double[] GetPriceList()
         {
             // [0] multiplier, [1] msrp disc, [2] sell cents
             double[] list = new double[3];
@@ -60,7 +60,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         }
 
         /* method that add swatch image url */
-        protected string getSwatch(string sku)
+        protected string GetSwatch(string sku)
         {
             // get material + color code
             string node = sku.Substring(sku.IndexOf('-'));

@@ -33,7 +33,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* not implement get sku method */
-        protected override string[] getSku()
+        protected override string[] GetSku()
         {
             throw new NotImplementedException();
         }

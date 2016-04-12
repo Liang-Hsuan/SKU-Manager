@@ -10,23 +10,23 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
     public abstract class ShopCaExportTable : ExportTable
     {
         /* a method that get all the sku that is active */
-        protected override string[] getSku()
+        protected override string[] GetSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_SHOP_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* define other getData() method */
-        protected abstract ArrayList getData(string sku);
+        protected abstract ArrayList GetData(string sku);
     }
 }

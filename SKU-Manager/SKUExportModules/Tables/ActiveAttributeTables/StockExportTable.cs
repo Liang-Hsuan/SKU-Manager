@@ -15,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public StockExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -25,11 +25,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU");                // 1
-            addColumn(mainTable, "BP Item#");           // 2
-            addColumn(mainTable, "Quantity");           // 3
-            addColumn(mainTable, "Reorder Quantity");   // 4 
-            addColumn(mainTable, "Reorder Level");      // 5
+            AddColumn(mainTable, "SKU");                // 1
+            AddColumn(mainTable, "BP Item#");           // 2
+            AddColumn(mainTable, "Quantity");           // 3
+            AddColumn(mainTable, "Reorder Quantity");   // 4 
+            AddColumn(mainTable, "Reorder Level");      // 5
 
             // local field for inserting data to table
             Product product = new Product();
@@ -77,7 +77,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();

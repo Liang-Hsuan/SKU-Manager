@@ -13,7 +13,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaInventoryExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -23,19 +23,19 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "supplier id");                                    // 1
-            addColumn(mainTable, "store name");                                     // 2
-            addColumn(mainTable, "sku");                                            // 3
-            addColumn(mainTable, "quantity");                                       // 4
-            addColumn(mainTable, "out of stock quantity");                          // 5
-            addColumn(mainTable, "restock date");                                   // 6
-            addColumn(mainTable, "standard fulfillment latency");                   // 7
-            addColumn(mainTable, "priority fulfillment latency");                   // 8
-            addColumn(mainTable, "backorderable");                                  // 9
-            addColumn(mainTable, "return not desired");                             // 10
-            addColumn(mainTable, "inventory as of date");                           // 11
-            addColumn(mainTable, "external inventory id");                          // 12
-            addColumn(mainTable, "shipping comments");                              // 13
+            AddColumn(mainTable, "supplier id");                                    // 1
+            AddColumn(mainTable, "store name");                                     // 2
+            AddColumn(mainTable, "sku");                                            // 3
+            AddColumn(mainTable, "quantity");                                       // 4
+            AddColumn(mainTable, "out of stock quantity");                          // 5
+            AddColumn(mainTable, "restock date");                                   // 6
+            AddColumn(mainTable, "standard fulfillment latency");                   // 7
+            AddColumn(mainTable, "priority fulfillment latency");                   // 8
+            AddColumn(mainTable, "backorderable");                                  // 9
+            AddColumn(mainTable, "return not desired");                             // 10
+            AddColumn(mainTable, "inventory as of date");                           // 11
+            AddColumn(mainTable, "external inventory id");                          // 12
+            AddColumn(mainTable, "shipping comments");                              // 13
 
             // local field for inserting data to table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
@@ -65,7 +65,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* override getData method */
-        protected override ArrayList getData(string sku)
+        protected override ArrayList GetData(string sku)
         {
             throw new NotImplementedException();
         }

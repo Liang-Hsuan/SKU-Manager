@@ -14,17 +14,17 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         public UpcExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // add column to table
-            addColumn(mainTable, "UPC Code 9");                  // 1
-            addColumn(mainTable, "UPC Code Check Digit");        // 2
-            addColumn(mainTable, "SKU Number");                  // 3
-            addColumn(mainTable, "Short Description");           // 4
+            AddColumn(mainTable, "UPC Code 9");                  // 1
+            AddColumn(mainTable, "UPC Code Check Digit");        // 2
+            AddColumn(mainTable, "SKU Number");                  // 3
+            AddColumn(mainTable, "Short Description");           // 4
 
             // start loading data
             mainTable.BeginLoadData();
@@ -33,7 +33,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
 
                 var row = mainTable.NewRow();
 
@@ -54,7 +54,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();
@@ -71,7 +71,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         }
 
         /* method that get the data from given sku */
-        private ArrayList getData(string sku)
+        private ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();

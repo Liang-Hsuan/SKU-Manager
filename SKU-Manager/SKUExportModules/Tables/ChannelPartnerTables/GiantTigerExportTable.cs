@@ -14,7 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         public GiantTigerExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -24,33 +24,33 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU number");                                // 1
-            addColumn(mainTable, "Brand");                                     // 2
-            addColumn(mainTable, "Style");                                     // 3
-            addColumn(mainTable, "Description");                               // 4
-            addColumn(mainTable, "Romance");                                   // 5
-            addColumn(mainTable, "Color");                                     // 6
-            addColumn(mainTable, "Material");                                  // 7
-            addColumn(mainTable, "Size in CM");                                // 8
-            addColumn(mainTable, "Weight");                                    // 9
-            addColumn(mainTable, "Cost");                                      // 10
-            addColumn(mainTable, "Retail");                                    // 11
-            addColumn(mainTable, "MSRP");                                      // 12
-            addColumn(mainTable, "Area Code");                                 // 13
-            addColumn(mainTable, "Image 1 Path");                              // 14
-            addColumn(mainTable, "Image 2 Path");                              // 15
-            addColumn(mainTable, "Image 3 Path");                              // 16
-            addColumn(mainTable, "Image 4 Path");                              // 17
-            addColumn(mainTable, "Image 5 Path");                              // 18
-            addColumn(mainTable, "Image 6 Path");                              // 19
-            addColumn(mainTable, "Image 7 Path");                              // 20
-            addColumn(mainTable, "Image 8 Path");                              // 21
-            addColumn(mainTable, "Image 9 Path");                              // 22
-            addColumn(mainTable, "Image 10 Path");                             // 23
+            AddColumn(mainTable, "SKU number");                                // 1
+            AddColumn(mainTable, "Brand");                                     // 2
+            AddColumn(mainTable, "Style");                                     // 3
+            AddColumn(mainTable, "Description");                               // 4
+            AddColumn(mainTable, "Romance");                                   // 5
+            AddColumn(mainTable, "Color");                                     // 6
+            AddColumn(mainTable, "Material");                                  // 7
+            AddColumn(mainTable, "Size in CM");                                // 8
+            AddColumn(mainTable, "Weight");                                    // 9
+            AddColumn(mainTable, "Cost");                                      // 10
+            AddColumn(mainTable, "Retail");                                    // 11
+            AddColumn(mainTable, "MSRP");                                      // 12
+            AddColumn(mainTable, "Area Code");                                 // 13
+            AddColumn(mainTable, "Image 1 Path");                              // 14
+            AddColumn(mainTable, "Image 2 Path");                              // 15
+            AddColumn(mainTable, "Image 3 Path");                              // 16
+            AddColumn(mainTable, "Image 4 Path");                              // 17
+            AddColumn(mainTable, "Image 5 Path");                              // 18
+            AddColumn(mainTable, "Image 6 Path");                              // 19
+            AddColumn(mainTable, "Image 7 Path");                              // 20
+            AddColumn(mainTable, "Image 8 Path");                              // 21
+            AddColumn(mainTable, "Image 9 Path");                              // 22
+            AddColumn(mainTable, "Image 10 Path");                             // 23
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
-            double[] priceList = getPriceList();
+            double[] priceList = GetPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -96,7 +96,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();
@@ -143,7 +143,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* method that give price list */
-        private double[] getPriceList()
+        private double[] GetPriceList()
         {
             double[] list = new double[3];
 

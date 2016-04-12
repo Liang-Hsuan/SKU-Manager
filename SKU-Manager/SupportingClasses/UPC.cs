@@ -30,7 +30,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that returns the lowest possible upc code */
-        public string getUPC()
+        public string GetUpc()
         {
             // local fields for seeking available upc code
             double iterator = 62618300000;
@@ -42,17 +42,17 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that returns upc code with check digit */
-        public string getUPC10(string upcCode)
+        public string GetUpc10(string upcCode)
         {
             // it already got check digit, no need to give
             if (upcCode.Length >= 12)
                 return upcCode;
 
-            return upcCode + getCheckNum(upcCode);
+            return upcCode + GetCheckNum(upcCode);
         }
 
         /* a method that generate the check digit for the given upc code */
-        private static int getCheckNum(string upcCode)
+        private static int GetCheckNum(string upcCode)
         {
             // local fieds for calculation
             int indexOdd = 0;

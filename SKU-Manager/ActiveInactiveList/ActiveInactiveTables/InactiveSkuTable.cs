@@ -14,7 +14,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         public InactiveSkuTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* method that get the table */
@@ -24,27 +24,27 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU");
-            addColumn(mainTable, "Design Service Code");
-            addColumn(mainTable, "Material Code");
-            addColumn(mainTable, "Colour Code");
-            addColumn(mainTable, "SKU Sears.ca");
-            addColumn(mainTable, "SKU TSC.ca");
-            addColumn(mainTable, "SKU COSTCO.ca");
-            addColumn(mainTable, "SKU Bestbuy.ca");
-            addColumn(mainTable, "SKU Amazon.ca");
-            addColumn(mainTable, "SKU Amazon.com");
-            addColumn(mainTable, "SKU Shop.ca");
-            addColumn(mainTable, "Base Price");
-            addColumn(mainTable, "Pricing Tier");
-            addColumn(mainTable, "UPC Code 9");
-            addColumn(mainTable, "UPC Code 10");
-            addColumn(mainTable, "Location Full");
-            addColumn(mainTable, "HTS CA");
-            addColumn(mainTable, "HTS US");
-            addColumn(mainTable, "Duty CA");
-            addColumn(mainTable, "Duty US");
-            addColumn(mainTable, "Active");
+            AddColumn(mainTable, "SKU");
+            AddColumn(mainTable, "Design Service Code");
+            AddColumn(mainTable, "Material Code");
+            AddColumn(mainTable, "Colour Code");
+            AddColumn(mainTable, "SKU Sears.ca");
+            AddColumn(mainTable, "SKU TSC.ca");
+            AddColumn(mainTable, "SKU COSTCO.ca");
+            AddColumn(mainTable, "SKU Bestbuy.ca");
+            AddColumn(mainTable, "SKU Amazon.ca");
+            AddColumn(mainTable, "SKU Amazon.com");
+            AddColumn(mainTable, "SKU Shop.ca");
+            AddColumn(mainTable, "Base Price");
+            AddColumn(mainTable, "Pricing Tier");
+            AddColumn(mainTable, "UPC Code 9");
+            AddColumn(mainTable, "UPC Code 10");
+            AddColumn(mainTable, "Location Full");
+            AddColumn(mainTable, "HTS CA");
+            AddColumn(mainTable, "HTS US");
+            AddColumn(mainTable, "Duty CA");
+            AddColumn(mainTable, "Duty US");
+            AddColumn(mainTable, "Active");
 
             // start loading data
             mainTable.BeginLoadData();
@@ -53,7 +53,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
                 DataRow row = mainTable.NewRow();
 
                 row[0] = list[0];       // sku
@@ -90,7 +90,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* a method that get all the sku that is inactive */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();
@@ -107,7 +107,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* method that get the data from given sku */
-        protected ArrayList getData(string sku)
+        protected ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();

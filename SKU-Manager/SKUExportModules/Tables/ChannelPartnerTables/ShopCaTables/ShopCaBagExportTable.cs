@@ -14,7 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaBagExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -24,56 +24,56 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "supplier id");                             // 1
-            addColumn(mainTable, "store name");                              // 2
-            addColumn(mainTable, "sku");                                     // 3
-            addColumn(mainTable, "title");                                   // 4
-            addColumn(mainTable, "description");                             // 5
-            addColumn(mainTable, "shipping weight");                         // 6
-            addColumn(mainTable, "shipping weight unit of measure");         // 7
-            addColumn(mainTable, "primary product category id");             // 8
-            addColumn(mainTable, "product type");                            // 9
-            addColumn(mainTable, "main image location");                     // 10
-            addColumn(mainTable, "standard product id");                     // 11
-            addColumn(mainTable, "standard product id type");                // 12
-            addColumn(mainTable, "availability");                            // 13
-            addColumn(mainTable, "brand");                                   // 14
-            addColumn(mainTable, "launch date");                             // 15
-            addColumn(mainTable, "release date");                            // 16
-            addColumn(mainTable, "product condition");                       // 17
-            addColumn(mainTable, "item package quantity");                   // 18
-            addColumn(mainTable, "number of items");                         // 19
-            addColumn(mainTable, "designer");                                // 20
-            addColumn(mainTable, "package height");                          // 21
-            addColumn(mainTable, "package length");                          // 22
-            addColumn(mainTable, "package width");                           // 23
-            addColumn(mainTable, "package dimension unit of measure");       // 24
-            addColumn(mainTable, "max order quantity");                      // 25
-            addColumn(mainTable, "legal disclaimer");                        // 26
-            addColumn(mainTable, "manufacturer");                            // 27
-            addColumn(mainTable, "mfr part number");                         // 28
-            addColumn(mainTable, "search terms");                            // 29
-            addColumn(mainTable, "parent sku");                              // 30
-            addColumn(mainTable, "secondary product category id");           // 31
-            addColumn(mainTable, "is new product");                          // 32
-            addColumn(mainTable, "alt image location 1");                    // 33
-            addColumn(mainTable, "alt image location 2");                    // 34
-            addColumn(mainTable, "alt image location 3");                    // 35
-            addColumn(mainTable, "alt image location 4");                    // 36
-            addColumn(mainTable, "alt image location 5");                    // 37
-            addColumn(mainTable, "alt image location 6");                    // 38
-            addColumn(mainTable, "alt image location 7");                    // 39
-            addColumn(mainTable, "alt image location 8");                    // 40
-            addColumn(mainTable, "alt image location 9");                    // 41
-            addColumn(mainTable, "video location");                          // 42
-            addColumn(mainTable, "material");                                // 43      
-            addColumn(mainTable, "color");                                   // 44
-            addColumn(mainTable, "style");                                   // 45
-            addColumn(mainTable, "trend");                                   // 47
-            addColumn(mainTable, "strap type");                              // 46
-            addColumn(mainTable, "closure type");                            // 48
-            addColumn(mainTable, "generic size");                            // 49
-            addColumn(mainTable, "features");                                // 50
+            AddColumn(mainTable, "supplier id");                             // 1
+            AddColumn(mainTable, "store name");                              // 2
+            AddColumn(mainTable, "sku");                                     // 3
+            AddColumn(mainTable, "title");                                   // 4
+            AddColumn(mainTable, "description");                             // 5
+            AddColumn(mainTable, "shipping weight");                         // 6
+            AddColumn(mainTable, "shipping weight unit of measure");         // 7
+            AddColumn(mainTable, "primary product category id");             // 8
+            AddColumn(mainTable, "product type");                            // 9
+            AddColumn(mainTable, "main image location");                     // 10
+            AddColumn(mainTable, "standard product id");                     // 11
+            AddColumn(mainTable, "standard product id type");                // 12
+            AddColumn(mainTable, "availability");                            // 13
+            AddColumn(mainTable, "brand");                                   // 14
+            AddColumn(mainTable, "launch date");                             // 15
+            AddColumn(mainTable, "release date");                            // 16
+            AddColumn(mainTable, "product condition");                       // 17
+            AddColumn(mainTable, "item package quantity");                   // 18
+            AddColumn(mainTable, "number of items");                         // 19
+            AddColumn(mainTable, "designer");                                // 20
+            AddColumn(mainTable, "package height");                          // 21
+            AddColumn(mainTable, "package length");                          // 22
+            AddColumn(mainTable, "package width");                           // 23
+            AddColumn(mainTable, "package dimension unit of measure");       // 24
+            AddColumn(mainTable, "max order quantity");                      // 25
+            AddColumn(mainTable, "legal disclaimer");                        // 26
+            AddColumn(mainTable, "manufacturer");                            // 27
+            AddColumn(mainTable, "mfr part number");                         // 28
+            AddColumn(mainTable, "search terms");                            // 29
+            AddColumn(mainTable, "parent sku");                              // 30
+            AddColumn(mainTable, "secondary product category id");           // 31
+            AddColumn(mainTable, "is new product");                          // 32
+            AddColumn(mainTable, "alt image location 1");                    // 33
+            AddColumn(mainTable, "alt image location 2");                    // 34
+            AddColumn(mainTable, "alt image location 3");                    // 35
+            AddColumn(mainTable, "alt image location 4");                    // 36
+            AddColumn(mainTable, "alt image location 5");                    // 37
+            AddColumn(mainTable, "alt image location 6");                    // 38
+            AddColumn(mainTable, "alt image location 7");                    // 39
+            AddColumn(mainTable, "alt image location 8");                    // 40
+            AddColumn(mainTable, "alt image location 9");                    // 41
+            AddColumn(mainTable, "video location");                          // 42
+            AddColumn(mainTable, "material");                                // 43      
+            AddColumn(mainTable, "color");                                   // 44
+            AddColumn(mainTable, "style");                                   // 45
+            AddColumn(mainTable, "trend");                                   // 47
+            AddColumn(mainTable, "strap type");                              // 46
+            AddColumn(mainTable, "closure type");                            // 48
+            AddColumn(mainTable, "generic size");                            // 49
+            AddColumn(mainTable, "features");                                // 50
 
             // start loading data
             mainTable.BeginLoadData();
@@ -82,7 +82,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
                 DataRow newRow = mainTable.NewRow();
 
                 newRow[0] = "ashlin_bpg";                                // supplier id
@@ -154,7 +154,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* method that get the data from given sku */
-        protected override ArrayList getData(string sku)
+        protected override ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();
@@ -187,7 +187,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* a method that get all the sku that is active and have on shop ca with bag design */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();

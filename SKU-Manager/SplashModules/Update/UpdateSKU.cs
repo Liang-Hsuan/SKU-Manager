@@ -1075,8 +1075,8 @@ namespace SKU_Manager.SplashModules.Update
             if (upcCode9.Length < 11 && upcCode10.Length < 12)
             {
                 Upc upcCode = new Upc();
-                upcCode9 = upcCode.getUPC();
-                upcCode10 = upcCode.getUPC10(upcCode9);
+                upcCode9 = upcCode.GetUpc();
+                upcCode10 = upcCode.GetUpc10(upcCode9);
             }
             ImageReplace imageReplace = new ImageReplace();
             imageReplace.AddUpc(sku, upcCode9);

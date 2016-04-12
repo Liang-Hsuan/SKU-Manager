@@ -144,7 +144,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             client.Send(mail);
             #endregion
 
-            new Product().postOrder(purchaseList, 1, poNumber);
+            new Product().PostOrder(purchaseList, 1, poNumber);
         }
 
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */

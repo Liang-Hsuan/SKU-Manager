@@ -148,7 +148,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
         #endregion
 
         /* a method that post purchase order */
-        public void postOrder(Dictionary<string,int> list, int channelId, string reference)
+        public void PostOrder(Dictionary<string,int> list, int channelId, string reference)
         {
             // post order and get the order id
             string orderId = post.PostPurchaseOrder(channelId, reference);
@@ -167,13 +167,13 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
         #region Supporting Methods
         /* a method that substring the given string */
-        private static string substringMethod(string original, string startingString, int additionIndex)
+        private static string SubstringMethod(string original, string startingString, int additionIndex)
         {
             return original.Substring(original.IndexOf(startingString) + additionIndex);
         }
 
         /* a method that get the next target token */
-        private static string getTarget(string text)
+        private static string GetTarget(string text)
         {
             int i = 0;
             while (text[i] != '"' && text[i] != ',' && text[i] != '}')
@@ -384,11 +384,11 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Headers.Add("brightpearl-account-token", appToken);
 
                 // generate JSON file for order post
-                string textJSON = "{\"orderTypeCode\":\"PO\",\"reference\":\"" + reference + "\",\"priceListId\":1,\"placeOn\":\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T') + "+00:00\",\"orderStatus\":{\"orderStatusId\":6},\"delivery\":{\"deliveryDate\":\"" + DateTime.Today.AddDays(12).ToString("yyyy-MM-dd") + "T00:00:00+00:00\",\"shippingMethodId\":9}," + 
+                string textJson = "{\"orderTypeCode\":\"PO\",\"reference\":\"" + reference + "\",\"priceListId\":1,\"placeOn\":\"" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T') + "+00:00\",\"orderStatus\":{\"orderStatusId\":6},\"delivery\":{\"deliveryDate\":\"" + DateTime.Today.AddDays(12).ToString("yyyy-MM-dd") + "T00:00:00+00:00\",\"shippingMethodId\":9}," + 
                                   "\"currency\":{\"orderCurrencyCode\":\"CAD\"},\"parties\":{\"supplier\":{\"contactId\":204}},\"assignment\":{\"current\":{\"channelId\":" + channelId + ",\"staffOwnerContactId\":4}}}";
 
                 // turn request string into a byte stream
-                byte[] postBytes = Encoding.UTF8.GetBytes(textJSON);
+                byte[] postBytes = Encoding.UTF8.GetBytes(textJson);
 
                 // send request
                 using (Stream requestStream = request.GetRequestStream())
@@ -408,8 +408,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
                     result = streamReader.ReadToEnd();
 
-                result = substringMethod(result, ":", 1);
-                return getTarget(result);  //return the order ID
+                result = SubstringMethod(result, ":", 1);
+                return GetTarget(result);  //return the order ID
             }
 
             /* post order row to API */
@@ -423,10 +423,10 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 request.Headers.Add("brightpearl-account-token", appToken);
 
                 // generate json file
-                string textJSON = "{\"productId\":\"" + productId + "\",\"quantity\":{\"magnitude\":\"" + quantity + "\"},\"rowValue\":{\"taxCode\":\"ON\",\"rowNet\":{\"value\":\"" + 0 + "\"},\"rowTax\":{\"value\":\"" + 0 + "\"}}}";
+                string textJson = "{\"productId\":\"" + productId + "\",\"quantity\":{\"magnitude\":\"" + quantity + "\"},\"rowValue\":{\"taxCode\":\"ON\",\"rowNet\":{\"value\":\"" + 0 + "\"},\"rowTax\":{\"value\":\"" + 0 + "\"}}}";
 
                 // turn request string into a byte stream
-                byte[] postBytes = Encoding.UTF8.GetBytes(textJSON);
+                byte[] postBytes = Encoding.UTF8.GetBytes(textJson);
 
                 // send request
                 using (Stream requestStream = request.GetRequestStream())
@@ -446,8 +446,8 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
                 using (StreamReader streamReader = new StreamReader(response.GetResponseStream()))
                     result = streamReader.ReadToEnd();
 
-                result = substringMethod(result, ":", 1);
-                return getTarget(result);  //return the order row ID
+                result = SubstringMethod(result, ":", 1);
+                return GetTarget(result);  //return the order row ID
             }
         }
     }

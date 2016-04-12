@@ -15,7 +15,7 @@ namespace SKU_Manager.SupportingClasses
         private static HttpWebResponse response;
 
         /* translate the english string provided */
-        public static string nowTranslate(string englishString)
+        public static string NowTranslate(string englishString)
         {
             // format translate string
             string copy = englishString.Trim();

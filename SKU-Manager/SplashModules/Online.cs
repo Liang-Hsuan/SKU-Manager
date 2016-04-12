@@ -62,7 +62,7 @@ namespace SKU_Manager.SplashModules
         private void backgroundWorkerTranslate_DoWork(object sender, DoWorkEventArgs e)
         {
             // translate and get the french
-            French = Translate.nowTranslate(englishTextbox.Text);
+            French = Translate.NowTranslate(englishTextbox.Text);
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

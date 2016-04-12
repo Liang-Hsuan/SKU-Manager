@@ -511,19 +511,19 @@ namespace SKU_Manager.SplashModules.Update
 
             // down to business, this is for short description
             if (shortEnglishDescriptionTextbox.Text != "")
-                shortFrenchDescription = Translate.nowTranslate(shortEnglishDescriptionTextbox.Text);
+                shortFrenchDescription = Translate.NowTranslate(shortEnglishDescriptionTextbox.Text);
 
             // this is for extended description
             if (extendedEnglishDescriptionTextbox.Text != "")
-                extendedFrenchDescription = Translate.nowTranslate(extendedEnglishDescriptionTextbox.Text);
+                extendedFrenchDescription = Translate.NowTranslate(extendedEnglishDescriptionTextbox.Text);
 
             // this is for trend short description
             if (trendEnglishShortTextbox.Text != "")
-                trendShortFrenchDescription = Translate.nowTranslate(trendEnglishShortTextbox.Text);
+                trendShortFrenchDescription = Translate.NowTranslate(trendEnglishShortTextbox.Text);
 
             // this is for trend extended description
             if (trendEnglishExtendedTextbox.Text != "")
-                trendExtendedFrenchDescription = Translate.nowTranslate(trendEnglishExtendedTextbox.Text);
+                trendExtendedFrenchDescription = Translate.NowTranslate(trendEnglishExtendedTextbox.Text);
         }
         private void backgroundWorkerTranslate1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -587,23 +587,23 @@ namespace SKU_Manager.SplashModules.Update
 
             // down to business, this is for the first option
             if (option1EnglishTextbox.Text != "")
-                frenchOption[0] = Translate.nowTranslate(option1EnglishTextbox.Text);
+                frenchOption[0] = Translate.NowTranslate(option1EnglishTextbox.Text);
 
             // this is for the second option
             if (option2EnglishTextbox.Text != "")
-                frenchOption[1] = Translate.nowTranslate(option2EnglishTextbox.Text);
+                frenchOption[1] = Translate.NowTranslate(option2EnglishTextbox.Text);
 
             // this is for the third option
             if (option3EnglishTextbox.Text != "")
-                frenchOption[2] = Translate.nowTranslate(option3EnglishTextbox.Text);
+                frenchOption[2] = Translate.NowTranslate(option3EnglishTextbox.Text);
 
             // this is for the fourth option
             if (option4EnglishTextbox.Text != "")
-                frenchOption[3] = Translate.nowTranslate(option4EnglishTextbox.Text);
+                frenchOption[3] = Translate.NowTranslate(option4EnglishTextbox.Text);
 
             // this is for the fifth option
             if (option5EnglishTextbox.Text != "")
-                frenchOption[4] = Translate.nowTranslate(option5EnglishTextbox.Text);
+                frenchOption[4] = Translate.NowTranslate(option5EnglishTextbox.Text);
         }
         private void backgroundWorkerTranslate2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -644,7 +644,7 @@ namespace SKU_Manager.SplashModules.Update
         #endregion
 
         /* a method that turn boolean from the user input to 1 or 0 */
-        private void calculateTrueAndFalse()
+        private void CalculateTrueAndFalse()
         {
             // get the selected true or false from comboboxes
             boolean[0] = monogrammedCombobox.SelectedItem.ToString();
@@ -878,7 +878,7 @@ namespace SKU_Manager.SplashModules.Update
             designServiceCode = designCodeCombobox.SelectedItem.ToString();
             productFamily = productFamilyCombobox.SelectedItem.ToString();
             designServiceFlag = designServiceFlagCombobox.SelectedItem.ToString();
-            calculateTrueAndFalse();
+            CalculateTrueAndFalse();
 
             // call background worker, the update button will only be activated if vaild design service code has been selected, so no need to check
             if (!backgroundWorkerUpdate.IsBusy)

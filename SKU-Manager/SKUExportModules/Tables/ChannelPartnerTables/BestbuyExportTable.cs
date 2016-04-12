@@ -14,7 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         public BestbuyExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -24,55 +24,55 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU");                                                 // 1
-            addColumn(mainTable, "DEPARTMENT");                                          // 2
-            addColumn(mainTable, "SHORT DESCRIPTION");                                   // 3
-            addColumn(mainTable, "LONG DESCRIPTION");                                    // 4
-            addColumn(mainTable, "UPC (PRIMARY)");                                       // 4
-            addColumn(mainTable, "UPC (ADDITIONAL)");                                    // 5
-            addColumn(mainTable, "BRAND NAME");                                          // 6
-            addColumn(mainTable, "MODEL NO");                                            // 7
-            addColumn(mainTable, "MANUFACTURER");                                        // 8
-            addColumn(mainTable, "SUPPLIER");                                            // 9
-            addColumn(mainTable, "VENDOR PART NO");                                      // 10
-            addColumn(mainTable, "UNIT COST");                                           // 11
-            addColumn(mainTable, "RETAIL PRICE");                                        // 12
-            addColumn(mainTable, "DIMENSION (CM) WIDTH (WITH BOX)");                     // 13
-            addColumn(mainTable, "DIMENSION (CM) HEIGHT (WITH BOX)");                    // 14
-            addColumn(mainTable, "DIMENSION (CM) LENGTH/DEPTH (WITH BOX)");              // 15
-            addColumn(mainTable, "DIMENSION (KG) WEIGHT (WITH BOX)");                    // 16
-            addColumn(mainTable, "DIMENSION (CM) WIDTH (NO BOX)");                       // 17
-            addColumn(mainTable, "DIMENSION (CM) HEIGHT (NO BOX)");                      // 18
-            addColumn(mainTable, "DIMENSION (CM) LENGTH/DEPTH (NO BOX)");                // 19
-            addColumn(mainTable, "DIMENSION (KG) WEIGHT (NO BOX)");                      // 20
-            addColumn(mainTable, "FRENCH COMPLIANT");                                    // 21
-            addColumn(mainTable, "ENERGY STAR");                                         // 22
-            addColumn(mainTable, "REFURBISHED");                                         // 23
-            addColumn(mainTable, "SOFTWARE PLATFORM");                                   // 24
-            addColumn(mainTable, "STREET DATE");                                         // 25
-            addColumn(mainTable, "SERIAL NO REQUIRED");                                  // 26
-            addColumn(mainTable, "SERIALIZED FORMAT");                                   // 27
-            addColumn(mainTable, "SUPPORT MANUFACTURER WARRANTY");                       // 28
-            addColumn(mainTable, "SERVICE UNDER MNF WARRANTY");                          // 29
-            addColumn(mainTable, "SERVICE OUTSIDE MNF WARRANTY");                        // 30
-            addColumn(mainTable, "SUPPLIER CONTACT");                                    // 31
-            addColumn(mainTable, "ALWAYS RTV");                                          // 32
-            addColumn(mainTable, "RETURN TO VENDOR DEFECTIVE DATE");                     // 33
-            addColumn(mainTable, "RETURN TO VENDOR OPEN BOX DAYS");                      // 34
-            addColumn(mainTable, "PRODUCT WARRANTY DAYS");                               // 35
-            addColumn(mainTable, "PRODUCT WARRANTY COVERAGE");                           // 36
-            addColumn(mainTable, "EXTENDED PARTS WARRANTY");                             // 37
-            addColumn(mainTable, "RETURN RESTRICTIONS");                                 // 38
-            addColumn(mainTable, "EMBARGO DATE");                                        // 39
-            addColumn(mainTable, "EXPIRATION DATE/LOT NUMBER");                          // 40
-            addColumn(mainTable, "SHELF LIFE");                                          // 41
-            addColumn(mainTable, "DATA FLAG");                                           // 42
-            addColumn(mainTable, "LESS THAN TRUCKLOAD");                                 // 43
-            addColumn(mainTable, "SKU_BESTBUY_CA");                                      // 44
+            AddColumn(mainTable, "SKU");                                                 // 1
+            AddColumn(mainTable, "DEPARTMENT");                                          // 2
+            AddColumn(mainTable, "SHORT DESCRIPTION");                                   // 3
+            AddColumn(mainTable, "LONG DESCRIPTION");                                    // 4
+            AddColumn(mainTable, "UPC (PRIMARY)");                                       // 4
+            AddColumn(mainTable, "UPC (ADDITIONAL)");                                    // 5
+            AddColumn(mainTable, "BRAND NAME");                                          // 6
+            AddColumn(mainTable, "MODEL NO");                                            // 7
+            AddColumn(mainTable, "MANUFACTURER");                                        // 8
+            AddColumn(mainTable, "SUPPLIER");                                            // 9
+            AddColumn(mainTable, "VENDOR PART NO");                                      // 10
+            AddColumn(mainTable, "UNIT COST");                                           // 11
+            AddColumn(mainTable, "RETAIL PRICE");                                        // 12
+            AddColumn(mainTable, "DIMENSION (CM) WIDTH (WITH BOX)");                     // 13
+            AddColumn(mainTable, "DIMENSION (CM) HEIGHT (WITH BOX)");                    // 14
+            AddColumn(mainTable, "DIMENSION (CM) LENGTH/DEPTH (WITH BOX)");              // 15
+            AddColumn(mainTable, "DIMENSION (KG) WEIGHT (WITH BOX)");                    // 16
+            AddColumn(mainTable, "DIMENSION (CM) WIDTH (NO BOX)");                       // 17
+            AddColumn(mainTable, "DIMENSION (CM) HEIGHT (NO BOX)");                      // 18
+            AddColumn(mainTable, "DIMENSION (CM) LENGTH/DEPTH (NO BOX)");                // 19
+            AddColumn(mainTable, "DIMENSION (KG) WEIGHT (NO BOX)");                      // 20
+            AddColumn(mainTable, "FRENCH COMPLIANT");                                    // 21
+            AddColumn(mainTable, "ENERGY STAR");                                         // 22
+            AddColumn(mainTable, "REFURBISHED");                                         // 23
+            AddColumn(mainTable, "SOFTWARE PLATFORM");                                   // 24
+            AddColumn(mainTable, "STREET DATE");                                         // 25
+            AddColumn(mainTable, "SERIAL NO REQUIRED");                                  // 26
+            AddColumn(mainTable, "SERIALIZED FORMAT");                                   // 27
+            AddColumn(mainTable, "SUPPORT MANUFACTURER WARRANTY");                       // 28
+            AddColumn(mainTable, "SERVICE UNDER MNF WARRANTY");                          // 29
+            AddColumn(mainTable, "SERVICE OUTSIDE MNF WARRANTY");                        // 30
+            AddColumn(mainTable, "SUPPLIER CONTACT");                                    // 31
+            AddColumn(mainTable, "ALWAYS RTV");                                          // 32
+            AddColumn(mainTable, "RETURN TO VENDOR DEFECTIVE DATE");                     // 33
+            AddColumn(mainTable, "RETURN TO VENDOR OPEN BOX DAYS");                      // 34
+            AddColumn(mainTable, "PRODUCT WARRANTY DAYS");                               // 35
+            AddColumn(mainTable, "PRODUCT WARRANTY COVERAGE");                           // 36
+            AddColumn(mainTable, "EXTENDED PARTS WARRANTY");                             // 37
+            AddColumn(mainTable, "RETURN RESTRICTIONS");                                 // 38
+            AddColumn(mainTable, "EMBARGO DATE");                                        // 39
+            AddColumn(mainTable, "EXPIRATION DATE/LOT NUMBER");                          // 40
+            AddColumn(mainTable, "SHELF LIFE");                                          // 41
+            AddColumn(mainTable, "DATA FLAG");                                           // 42
+            AddColumn(mainTable, "LESS THAN TRUCKLOAD");                                 // 43
+            AddColumn(mainTable, "SKU_BESTBUY_CA");                                      // 44
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
-            double[] price = getPrice();
+            double[] price = GetPrice();
 
             // start load data
             mainTable.BeginLoadData();
@@ -151,24 +151,24 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         }
 
         /* a method that get all the sku that is active and have on bestbuy */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_BESTBUY_CA != \'\' ORDER BY SKU_Ashlin;", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
-        /* a method that return the discount matrix -> [0] wholesale, [1] multiplier*/
-        private double[] getPrice()
+        /* a method that return the discount matrix -> [0] wholesale, [1] multiplier */
+        private double[] GetPrice()
         {
             double[] list = new double[2];
 

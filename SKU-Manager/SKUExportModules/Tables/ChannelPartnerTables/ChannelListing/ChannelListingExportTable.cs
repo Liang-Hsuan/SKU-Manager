@@ -17,7 +17,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         }
 
         /* method that get the data from given sku */
-        protected ArrayList getData(string sku)
+        protected ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();
@@ -36,7 +36,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         }
 
         /* a method that get the data for pricing */
-        protected Price[] getPrice()
+        protected Price[] GetPrice()
         {
             // declare Price struct list
             Price[] list = new Price[13];
@@ -63,7 +63,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         }
 
         /* a method that get multiplier */
-        protected double getMultiplier()
+        protected double GetMultiplier()
         {
             SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
             connection.Open();

@@ -9,24 +9,24 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
     public abstract class BPexportTable : ExportTable
     {
         /* override the method getSKU() */
-        protected override string[] getSku()
+        protected override string[] GetSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT top 50 SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* set a method for getting data from given sku */
-        protected object[] getData(string sku)
+        protected object[] GetData(string sku)
         {
             // local fields for storing data
             object[] list = new object[6];
@@ -49,6 +49,6 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         }
 
         /* define a crucial method that require for all Brightpearl classes */
-        protected abstract double[][] getDiscount();
+        protected abstract double[][] GetDiscount();
     }
 }

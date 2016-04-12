@@ -15,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         public ChannelHasListingTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -24,29 +24,29 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             // reset table just in case
             mainTable.Reset();
 
-            addColumn(mainTable, "SKU");                    // 1
-            addColumn(mainTable, "Bestbuy");                // 2
-            addColumn(mainTable, "Bestbuy Net");            // 3
-            addColumn(mainTable, "Amazon CA");              // 4
-            addColumn(mainTable, "Amazon CA Price");        // 5
-            addColumn(mainTable, "Amazon US");              // 6
-            addColumn(mainTable, "Amazon US Price");        // 7
-            addColumn(mainTable, "Staples");                // 8
-            addColumn(mainTable, "Staples Net");            // 9
-            addColumn(mainTable, "Staples Advantage");      // 10
-            addColumn(mainTable, "Staples Advantage Net");  // 11
-            addColumn(mainTable, "Walmart");                // 12
-            addColumn(mainTable, "Walmart Net");            // 13
-            addColumn(mainTable, "Shop.ca");                // 14
-            addColumn(mainTable, "Shop.ca Price");          // 15
-            addColumn(mainTable, "Sears");                  // 16
-            addColumn(mainTable, "Sears Net");              // 17
-            addColumn(mainTable, "Giant Tiger");            // 18
-            addColumn(mainTable, "Giant Tiger Net");        // 19
+            AddColumn(mainTable, "SKU");                    // 1
+            AddColumn(mainTable, "Bestbuy");                // 2
+            AddColumn(mainTable, "Bestbuy Net");            // 3
+            AddColumn(mainTable, "Amazon CA");              // 4
+            AddColumn(mainTable, "Amazon CA Price");        // 5
+            AddColumn(mainTable, "Amazon US");              // 6
+            AddColumn(mainTable, "Amazon US Price");        // 7
+            AddColumn(mainTable, "Staples");                // 8
+            AddColumn(mainTable, "Staples Net");            // 9
+            AddColumn(mainTable, "Staples Advantage");      // 10
+            AddColumn(mainTable, "Staples Advantage Net");  // 11
+            AddColumn(mainTable, "Walmart");                // 12
+            AddColumn(mainTable, "Walmart Net");            // 13
+            AddColumn(mainTable, "Shop.ca");                // 14
+            AddColumn(mainTable, "Shop.ca Price");          // 15
+            AddColumn(mainTable, "Sears");                  // 16
+            AddColumn(mainTable, "Sears Net");              // 17
+            AddColumn(mainTable, "Giant Tiger");            // 18
+            AddColumn(mainTable, "Giant Tiger Net");        // 19
 
             // fields for pricing calculation
-            double multiplier = getMultiplier();
-            Price[] priceList = getPrice();
+            double multiplier = GetMultiplier();
+            Price[] priceList = GetPrice();
 
             // start load data
             mainTable.BeginLoadData();
@@ -55,7 +55,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
                 DataRow row = mainTable.NewRow();
 
                 // calculate msrp
@@ -102,7 +102,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         }
 
         /* a method that get all the sku that is active and has at least one listing on channel*/
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();

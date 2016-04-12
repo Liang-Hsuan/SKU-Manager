@@ -65,22 +65,21 @@ namespace SKU_Manager.SupportingClasses.Photo
             foreach (string sku in skuList)
             {
                 // get the upc code
-                string[] upcCode = getUPC(sku);
+                string[] upcCode = GetUpc(sku);
 
-                // if no upc code assign yet, give them one and update to database
-                if (upcCode[0] != "" && upcCode[1] != "")
-                {
-                    // add image for 9 and 10 digit upc
-                    AddUpc(sku, upcCode[0]);
-                    AddUpc(sku, upcCode[1]);
+                // if no upc code assign yet -> skip it
+                if (upcCode[0] == "" || upcCode[1] == "") continue;
 
-                    Progress++;
-                }
+                // add image for 9 and 10 digit upc
+                AddUpc(sku, upcCode[0]);
+                AddUpc(sku, upcCode[1]);
+
+                Progress++;
             }
         }
 
         /* return upc code for the given sku */
-        private string[] getUPC(string sku)
+        private string[] GetUpc(string sku)
         {
             // local field for storing data
             DataTable table = new DataTable();

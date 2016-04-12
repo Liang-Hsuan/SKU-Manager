@@ -23,9 +23,9 @@ namespace SKU_Manager.SKUExportModules.Tables
 
         /* some supporting private method that will help building the table */
         /* a method that will return all desired SKUs */
-        protected abstract string[] getSku();
+        protected abstract string[] GetSku();
         /* method that add new column to table */
-        protected void addColumn(DataTable table, string name)
+        protected void AddColumn(DataTable table, string name)
         {
             // set up column
             DataColumn column = new DataColumn {ColumnName = name};

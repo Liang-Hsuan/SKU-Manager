@@ -138,7 +138,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             client.Send(mail);
             #endregion
 
-            new Product().postOrder(purchaseList, 15, poNumber);
+            new Product().PostOrder(purchaseList, 15, poNumber);
         }
 
         /* a PUBLIC supporting method that set the given sku to discontine in database for shop.ca */

@@ -14,7 +14,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         public ActiveDesignTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* method that get the table */
@@ -24,38 +24,38 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "Design Service Code");        // 1
-            addColumn(mainTable, "Brand");                      // 2
-            addColumn(mainTable, "Design Service Flag");        // 3
-            addColumn(mainTable, "Design Service Family Code"); // 4
-            addColumn(mainTable, "Ashlin Internal Name");       // 5
-            addColumn(mainTable, "Short Description");          // 6
-            addColumn(mainTable, "Extended Description");       // 7
-            addColumn(mainTable, "Trend Short Description");    // 8
-            addColumn(mainTable, "Trend Extended Description"); // 9
-            addColumn(mainTable, "Online Description");         // 10
-            addColumn(mainTable, "Gift Box");                   // 11
-            addColumn(mainTable, "Imprintable");                // 12
-            addColumn(mainTable, "Imprintable Height");         // 13
-            addColumn(mainTable, "Imprinttable Width");         // 14
-            addColumn(mainTable, "Width");                      // 15
-            addColumn(mainTable, "Height");                     // 16
-            addColumn(mainTable, "Depth");                      // 17
-            addColumn(mainTable, "Weight");                     // 18
-            addColumn(mainTable, "Flat Shippable");             // 19
-            addColumn(mainTable, "Fold Shippable");             // 20
-            addColumn(mainTable, "Shippable Width");            // 21
-            addColumn(mainTable, "Shippable Height");           // 22
-            addColumn(mainTable, "Shippable Depth");            // 23
-            addColumn(mainTable, "Shippable Weight");           // 24
-            addColumn(mainTable, "Detachable Strap");           // 25
-            addColumn(mainTable, "Zippered Enclosure");         // 26
-            addColumn(mainTable, "Option 1");                   // 27
-            addColumn(mainTable, "Option 2");                   // 28
-            addColumn(mainTable, "Option 3");                   // 29
-            addColumn(mainTable, "Option 4");                   // 30
-            addColumn(mainTable, "Option 5");                   // 31
-            addColumn(mainTable, "Active");                     // 32
+            AddColumn(mainTable, "Design Service Code");        // 1
+            AddColumn(mainTable, "Brand");                      // 2
+            AddColumn(mainTable, "Design Service Flag");        // 3
+            AddColumn(mainTable, "Design Service Family Code"); // 4
+            AddColumn(mainTable, "Ashlin Internal Name");       // 5
+            AddColumn(mainTable, "Short Description");          // 6
+            AddColumn(mainTable, "Extended Description");       // 7
+            AddColumn(mainTable, "Trend Short Description");    // 8
+            AddColumn(mainTable, "Trend Extended Description"); // 9
+            AddColumn(mainTable, "Online Description");         // 10
+            AddColumn(mainTable, "Gift Box");                   // 11
+            AddColumn(mainTable, "Imprintable");                // 12
+            AddColumn(mainTable, "Imprintable Height");         // 13
+            AddColumn(mainTable, "Imprinttable Width");         // 14
+            AddColumn(mainTable, "Width");                      // 15
+            AddColumn(mainTable, "Height");                     // 16
+            AddColumn(mainTable, "Depth");                      // 17
+            AddColumn(mainTable, "Weight");                     // 18
+            AddColumn(mainTable, "Flat Shippable");             // 19
+            AddColumn(mainTable, "Fold Shippable");             // 20
+            AddColumn(mainTable, "Shippable Width");            // 21
+            AddColumn(mainTable, "Shippable Height");           // 22
+            AddColumn(mainTable, "Shippable Depth");            // 23
+            AddColumn(mainTable, "Shippable Weight");           // 24
+            AddColumn(mainTable, "Detachable Strap");           // 25
+            AddColumn(mainTable, "Zippered Enclosure");         // 26
+            AddColumn(mainTable, "Option 1");                   // 27
+            AddColumn(mainTable, "Option 2");                   // 28
+            AddColumn(mainTable, "Option 3");                   // 29
+            AddColumn(mainTable, "Option 4");                   // 30
+            AddColumn(mainTable, "Option 5");                   // 31
+            AddColumn(mainTable, "Active");                     // 32
 
             // start loading data
             mainTable.BeginLoadData();
@@ -64,7 +64,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
                 DataRow row = mainTable.NewRow();
 
                 row[0] = list[0];       // design service code
@@ -112,7 +112,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* a method that get all the design service code that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();
@@ -129,7 +129,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         }
 
         /* method that get the data from given sku */
-        private ArrayList getData(string designCode)
+        private ArrayList GetData(string designCode)
         {
             // local field for storing data
             ArrayList list = new ArrayList();

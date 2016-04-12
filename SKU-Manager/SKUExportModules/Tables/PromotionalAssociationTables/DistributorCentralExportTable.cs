@@ -15,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         public DistributorCentralExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -25,103 +25,103 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SupplierItemGUID");               // 1
-            addColumn(mainTable, "Status");                         // 2
-            addColumn(mainTable, "SuplItemNo");                     // 3
-            addColumn(mainTable, "ItemName");                       // 4
-            addColumn(mainTable, "SupDisplayNo");                   // 5
-            addColumn(mainTable, "SupDisplayName");                 // 6
-            addColumn(mainTable, "CreatedDate");                    // 7
-            addColumn(mainTable, "LastUpdateDate");                 // 8
-            addColumn(mainTable, "Description");                    // 9
-            addColumn(mainTable, "AddInfo");                        // 10
-            addColumn(mainTable, "DistributorOnlyInfo");            // 11
-            addColumn(mainTable, "SuplInventoryNo");                // 12
-            addColumn(mainTable, "Categories");                     // 13
-            addColumn(mainTable, "Size");                           // 14
-            addColumn(mainTable, "DisplayWeight");                  // 15
-            addColumn(mainTable, "CountryOfManufactureGUID");       // 16
-            addColumn(mainTable, "CountryOfManufatureName");        // 17
-            addColumn(mainTable, "OptionsByOptionNumber");          // 18
-            addColumn(mainTable, "OptionsByOptionName");            // 19
-            addColumn(mainTable, "OptionsByOptionStyleNumber");     // 20
-            addColumn(mainTable, "ItemOptionGUIDList");             // 21
-            addColumn(mainTable, "ShipQty1");                       // 22
-            addColumn(mainTable, "ShipWeight1");                    // 23
-            addColumn(mainTable, "ShipLength1");                    // 24
-            addColumn(mainTable, "ShipWidth1");                     // 25
-            addColumn(mainTable, "ShipHeight1");                    // 26
-            addColumn(mainTable, "ShipQty2");                       // 27
-            addColumn(mainTable, "ShipWeigt2");                     // 28
-            addColumn(mainTable, "ShipLength2");                    // 29
-            addColumn(mainTable, "ShipWidth2");                     // 30
-            addColumn(mainTable, "ShipHeight2");                    // 31
-            addColumn(mainTable, "ShipQty3");                       // 32
-            addColumn(mainTable, "ShipWeight3");                    // 33
-            addColumn(mainTable, "ShipLength3");                    // 34
-            addColumn(mainTable, "ShipWidth3");                     // 35
-            addColumn(mainTable, "ShipHeight3");                    // 36
-            addColumn(mainTable, "ShipQty4");                       // 37
-            addColumn(mainTable, "ShipWeight4");                    // 38
-            addColumn(mainTable, "ShipLength4");                    // 39
-            addColumn(mainTable, "ShipWidth4");                     // 40
-            addColumn(mainTable, "ShipHeight4A");                   // 41
-            addColumn(mainTable, "HasImage");                       // 42
-            addColumn(mainTable, "ImageLink");                      // 43
-            addColumn(mainTable, "ProductVersionName");             // 44
-            addColumn(mainTable, "AcctProductVersionGUID");         // 45
-            addColumn(mainTable, "PriceTierName");                  // 46
-            addColumn(mainTable, "PriceTierGUID");                  // 47
-            addColumn(mainTable, "ShowCallForPricing");             // 48
-            addColumn(mainTable, "SetupQty1");                      // 49
-            addColumn(mainTable, "SetupNet1");                      // 50
-            addColumn(mainTable, "SetupRetail1");                   // 51
-            addColumn(mainTable, "SetupMargin1");                   // 52
-            addColumn(mainTable, "SetupDisplay1");                  // 53
-            addColumn(mainTable, "Qty1");                           // 54
-            addColumn(mainTable, "Qty2");                           // 55
-            addColumn(mainTable, "Qty3");                           // 56
-            addColumn(mainTable, "Qty4");                           // 57
-            addColumn(mainTable, "Qty5");                           // 58
-            addColumn(mainTable, "Qty6");                           // 59
-            addColumn(mainTable, "Qty7");                           // 60
-            addColumn(mainTable, "Qty8");                           // 61
-            addColumn(mainTable, "Net1");                           // 62
-            addColumn(mainTable, "Net2");                           // 63
-            addColumn(mainTable, "Net3");                           // 64
-            addColumn(mainTable, "Net4");                           // 65
-            addColumn(mainTable, "Net5");                           // 66
-            addColumn(mainTable, "Net6");                           // 67
-            addColumn(mainTable, "Net7");                           // 68
-            addColumn(mainTable, "Net8");                           // 69
-            addColumn(mainTable, "Retail1");                        // 70
-            addColumn(mainTable, "Retail2");                        // 71
-            addColumn(mainTable, "Retail3");                        // 72
-            addColumn(mainTable, "Retail4");                        // 73
-            addColumn(mainTable, "Retail5");                        // 74
-            addColumn(mainTable, "Retail6");                        // 75
-            addColumn(mainTable, "Retail7");                        // 76
-            addColumn(mainTable, "Retail8");                        // 77
-            addColumn(mainTable, "Margin1");                        // 78
-            addColumn(mainTable, "Margin2");                        // 79
-            addColumn(mainTable, "Margin3");                        // 80   
-            addColumn(mainTable, "Margin4");                        // 81
-            addColumn(mainTable, "Margin5");                        // 82
-            addColumn(mainTable, "Margin6");                        // 83
-            addColumn(mainTable, "Margin7");                        // 84
-            addColumn(mainTable, "Margin8");                        // 85
-            addColumn(mainTable, "Display1");                       // 86
-            addColumn(mainTable, "Display2");                       // 87
-            addColumn(mainTable, "Display3");                       // 88
-            addColumn(mainTable, "Display4");                       // 89
-            addColumn(mainTable, "Display5");                       // 90
-            addColumn(mainTable, "Display6");                       // 91
-            addColumn(mainTable, "Display7");                       // 92
-            addColumn(mainTable, "Display8");                       // 93
-            addColumn(mainTable, "Updated");                        // 94
+            AddColumn(mainTable, "SupplierItemGUID");               // 1
+            AddColumn(mainTable, "Status");                         // 2
+            AddColumn(mainTable, "SuplItemNo");                     // 3
+            AddColumn(mainTable, "ItemName");                       // 4
+            AddColumn(mainTable, "SupDisplayNo");                   // 5
+            AddColumn(mainTable, "SupDisplayName");                 // 6
+            AddColumn(mainTable, "CreatedDate");                    // 7
+            AddColumn(mainTable, "LastUpdateDate");                 // 8
+            AddColumn(mainTable, "Description");                    // 9
+            AddColumn(mainTable, "AddInfo");                        // 10
+            AddColumn(mainTable, "DistributorOnlyInfo");            // 11
+            AddColumn(mainTable, "SuplInventoryNo");                // 12
+            AddColumn(mainTable, "Categories");                     // 13
+            AddColumn(mainTable, "Size");                           // 14
+            AddColumn(mainTable, "DisplayWeight");                  // 15
+            AddColumn(mainTable, "CountryOfManufactureGUID");       // 16
+            AddColumn(mainTable, "CountryOfManufatureName");        // 17
+            AddColumn(mainTable, "OptionsByOptionNumber");          // 18
+            AddColumn(mainTable, "OptionsByOptionName");            // 19
+            AddColumn(mainTable, "OptionsByOptionStyleNumber");     // 20
+            AddColumn(mainTable, "ItemOptionGUIDList");             // 21
+            AddColumn(mainTable, "ShipQty1");                       // 22
+            AddColumn(mainTable, "ShipWeight1");                    // 23
+            AddColumn(mainTable, "ShipLength1");                    // 24
+            AddColumn(mainTable, "ShipWidth1");                     // 25
+            AddColumn(mainTable, "ShipHeight1");                    // 26
+            AddColumn(mainTable, "ShipQty2");                       // 27
+            AddColumn(mainTable, "ShipWeigt2");                     // 28
+            AddColumn(mainTable, "ShipLength2");                    // 29
+            AddColumn(mainTable, "ShipWidth2");                     // 30
+            AddColumn(mainTable, "ShipHeight2");                    // 31
+            AddColumn(mainTable, "ShipQty3");                       // 32
+            AddColumn(mainTable, "ShipWeight3");                    // 33
+            AddColumn(mainTable, "ShipLength3");                    // 34
+            AddColumn(mainTable, "ShipWidth3");                     // 35
+            AddColumn(mainTable, "ShipHeight3");                    // 36
+            AddColumn(mainTable, "ShipQty4");                       // 37
+            AddColumn(mainTable, "ShipWeight4");                    // 38
+            AddColumn(mainTable, "ShipLength4");                    // 39
+            AddColumn(mainTable, "ShipWidth4");                     // 40
+            AddColumn(mainTable, "ShipHeight4A");                   // 41
+            AddColumn(mainTable, "HasImage");                       // 42
+            AddColumn(mainTable, "ImageLink");                      // 43
+            AddColumn(mainTable, "ProductVersionName");             // 44
+            AddColumn(mainTable, "AcctProductVersionGUID");         // 45
+            AddColumn(mainTable, "PriceTierName");                  // 46
+            AddColumn(mainTable, "PriceTierGUID");                  // 47
+            AddColumn(mainTable, "ShowCallForPricing");             // 48
+            AddColumn(mainTable, "SetupQty1");                      // 49
+            AddColumn(mainTable, "SetupNet1");                      // 50
+            AddColumn(mainTable, "SetupRetail1");                   // 51
+            AddColumn(mainTable, "SetupMargin1");                   // 52
+            AddColumn(mainTable, "SetupDisplay1");                  // 53
+            AddColumn(mainTable, "Qty1");                           // 54
+            AddColumn(mainTable, "Qty2");                           // 55
+            AddColumn(mainTable, "Qty3");                           // 56
+            AddColumn(mainTable, "Qty4");                           // 57
+            AddColumn(mainTable, "Qty5");                           // 58
+            AddColumn(mainTable, "Qty6");                           // 59
+            AddColumn(mainTable, "Qty7");                           // 60
+            AddColumn(mainTable, "Qty8");                           // 61
+            AddColumn(mainTable, "Net1");                           // 62
+            AddColumn(mainTable, "Net2");                           // 63
+            AddColumn(mainTable, "Net3");                           // 64
+            AddColumn(mainTable, "Net4");                           // 65
+            AddColumn(mainTable, "Net5");                           // 66
+            AddColumn(mainTable, "Net6");                           // 67
+            AddColumn(mainTable, "Net7");                           // 68
+            AddColumn(mainTable, "Net8");                           // 69
+            AddColumn(mainTable, "Retail1");                        // 70
+            AddColumn(mainTable, "Retail2");                        // 71
+            AddColumn(mainTable, "Retail3");                        // 72
+            AddColumn(mainTable, "Retail4");                        // 73
+            AddColumn(mainTable, "Retail5");                        // 74
+            AddColumn(mainTable, "Retail6");                        // 75
+            AddColumn(mainTable, "Retail7");                        // 76
+            AddColumn(mainTable, "Retail8");                        // 77
+            AddColumn(mainTable, "Margin1");                        // 78
+            AddColumn(mainTable, "Margin2");                        // 79
+            AddColumn(mainTable, "Margin3");                        // 80   
+            AddColumn(mainTable, "Margin4");                        // 81
+            AddColumn(mainTable, "Margin5");                        // 82
+            AddColumn(mainTable, "Margin6");                        // 83
+            AddColumn(mainTable, "Margin7");                        // 84
+            AddColumn(mainTable, "Margin8");                        // 85
+            AddColumn(mainTable, "Display1");                       // 86
+            AddColumn(mainTable, "Display2");                       // 87
+            AddColumn(mainTable, "Display3");                       // 88
+            AddColumn(mainTable, "Display4");                       // 89
+            AddColumn(mainTable, "Display5");                       // 90
+            AddColumn(mainTable, "Display6");                       // 91
+            AddColumn(mainTable, "Display7");                       // 92
+            AddColumn(mainTable, "Display8");                       // 93
+            AddColumn(mainTable, "Updated");                        // 94
 
             // local field for inserting data to table
-            double[][] discountList = getDiscount();
+            double[][] discountList = GetDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -131,7 +131,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             foreach (string sku in skuList)
             {
                 DataRow row = mainTable.NewRow();
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
 
                 row[0] = list[1];                                                       // supplier item guid
                 row[2] = sku;                                                           // supl item no
@@ -239,7 +239,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
             List<string> list = new List<string>();
@@ -258,7 +258,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* method that get the data from given sku */
-        private ArrayList getData(string sku)
+        private ArrayList GetData(string sku)
         {
             // local fields for storing data
             ArrayList list = new ArrayList();
@@ -288,7 +288,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         }
 
         /* a method that return the discount matrix */
-        private double[][] getDiscount()
+        private double[][] GetDiscount()
         {
             double[][] list = new double[6][];
 
@@ -321,7 +321,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new double[] { reader.GetDouble(0) };
+            list[5] = new[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;

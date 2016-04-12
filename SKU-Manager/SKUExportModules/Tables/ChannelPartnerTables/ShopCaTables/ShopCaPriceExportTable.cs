@@ -14,7 +14,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         public ShopCaPriceExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -24,32 +24,32 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "supplier id");                         // 1
-            addColumn(mainTable, "store name");                          // 2
-            addColumn(mainTable, "sku");                                 // 3
-            addColumn(mainTable, "supplier suggested retail price");     // 4
-            addColumn(mainTable, "msrp");                                // 5
-            addColumn(mainTable, "supplier list price");                 // 6
-            addColumn(mainTable, "supplier cost");                       // 7
-            addColumn(mainTable, "effective");                           // 8
-            addColumn(mainTable, "effective end date");                  // 9
-            addColumn(mainTable, "is point");                            // 10
-            addColumn(mainTable, "currency");                            // 11
-            addColumn(mainTable, "standard ship cost");                  // 12
-            addColumn(mainTable, "priority shup cost");                  // 13
-            addColumn(mainTable, "ab tax exempt");                       // 14
-            addColumn(mainTable, "bc tax exempt");                       // 15
-            addColumn(mainTable, "mb tax exempt");                       // 16
-            addColumn(mainTable, "nb tax exempt");                       // 17
-            addColumn(mainTable, "nl tax exempt");                       // 18
-            addColumn(mainTable, "nt tax exempt");                       // 19
-            addColumn(mainTable, "ns tax exempt");                       // 20
-            addColumn(mainTable, "nu tax exempt");                       // 21
-            addColumn(mainTable, "on tax exempt");                       // 22
-            addColumn(mainTable, "pe tax exempt");                       // 23
-            addColumn(mainTable, "qc tax exempt");                       // 24
-            addColumn(mainTable, "sk tax exempt");                       // 25
-            addColumn(mainTable, "yt tax exempt");                       // 26
+            AddColumn(mainTable, "supplier id");                         // 1
+            AddColumn(mainTable, "store name");                          // 2
+            AddColumn(mainTable, "sku");                                 // 3
+            AddColumn(mainTable, "supplier suggested retail price");     // 4
+            AddColumn(mainTable, "msrp");                                // 5
+            AddColumn(mainTable, "supplier list price");                 // 6
+            AddColumn(mainTable, "supplier cost");                       // 7
+            AddColumn(mainTable, "effective");                           // 8
+            AddColumn(mainTable, "effective end date");                  // 9
+            AddColumn(mainTable, "is point");                            // 10
+            AddColumn(mainTable, "currency");                            // 11
+            AddColumn(mainTable, "standard ship cost");                  // 12
+            AddColumn(mainTable, "priority shup cost");                  // 13
+            AddColumn(mainTable, "ab tax exempt");                       // 14
+            AddColumn(mainTable, "bc tax exempt");                       // 15
+            AddColumn(mainTable, "mb tax exempt");                       // 16
+            AddColumn(mainTable, "nb tax exempt");                       // 17
+            AddColumn(mainTable, "nl tax exempt");                       // 18
+            AddColumn(mainTable, "nt tax exempt");                       // 19
+            AddColumn(mainTable, "ns tax exempt");                       // 20
+            AddColumn(mainTable, "nu tax exempt");                       // 21
+            AddColumn(mainTable, "on tax exempt");                       // 22
+            AddColumn(mainTable, "pe tax exempt");                       // 23
+            AddColumn(mainTable, "qc tax exempt");                       // 24
+            AddColumn(mainTable, "sk tax exempt");                       // 25
+            AddColumn(mainTable, "yt tax exempt");                       // 26
 
             // local field for inserting data to table
             double[] price = getPriceList();
@@ -66,7 +66,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[0] = "ashlin_bpg";                                           // brand
                 row[1] = "nishis_boutique";                                      // store name
                 row[2] = sku;                                                    // sku
-                double msrp = Convert.ToDouble(getData(sku)[0]) * price[0];
+                double msrp = Convert.ToDouble(GetData(sku)[0]) * price[0];
                 row[3] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier suggested retail price
                 row[4] = msrp;                                                            // msrp
                 row[5] = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]);      // supplier list price
@@ -83,7 +83,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* method that get the data from given sku */
-        protected override ArrayList getData(string sku)
+        protected override ArrayList GetData(string sku)
         {
             ArrayList list = new ArrayList();
 

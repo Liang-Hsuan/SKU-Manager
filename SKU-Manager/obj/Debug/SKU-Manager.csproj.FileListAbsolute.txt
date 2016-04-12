@@ -681,3 +681,6 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.StockQuantityView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.StockQuantityView.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources

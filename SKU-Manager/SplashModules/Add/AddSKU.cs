@@ -616,8 +616,8 @@ namespace SKU_Manager.SplashModules.Add
 
             // addition fields for adding upc image
             Upc upc = new Upc();
-            upcCode9 = upc.getUPC();
-            upcCode10 = upc.getUPC10(upcCode9);
+            upcCode9 = upc.GetUpc();
+            upcCode10 = upc.GetUpc10(upcCode9);
 
             // adding upc image
             ImageReplace imageReplace = new ImageReplace();

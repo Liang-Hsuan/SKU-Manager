@@ -45,14 +45,14 @@ namespace SKU_Manager.SupportingClasses.Photo
                 string[] template = imageSearch.GetTemplateUri(sku);
 
                 // start update
-                putImageInDatabase(sku, image, group, model, template);
+                PutImageInDatabase(sku, image, group, model, template);
 
                 Progress++;
             }
         }
 
         /* put the given image uri to database */
-        private void putImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
+        private void PutImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

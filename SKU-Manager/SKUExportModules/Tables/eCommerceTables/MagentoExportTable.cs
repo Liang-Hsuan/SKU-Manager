@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
 {
@@ -16,7 +15,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         public MagentoExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -26,154 +25,154 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "SKU Ashlin");                              // 1
-            addColumn(mainTable, "Design Service Code");                     // 2
-            addColumn(mainTable, "Design_Service_Fashion_Name_Ashlin");      // 3
-            addColumn(mainTable, "Design Short Description");                // 4
-            addColumn(mainTable, "Design Extended Description");             // 5
-            addColumn(mainTable, "Material Code");                           // 6
-            addColumn(mainTable, "Colour Code");                             // 7
-            addColumn(mainTable, "Colour Material Code");                    // 8
-            addColumn(mainTable, "Material Description Extended");           // 9
-            addColumn(mainTable, "Colour Description Extended");             // 10
-            addColumn(mainTable, "Design Service Family Description");       // 11
-            addColumn(mainTable, "Option 1");                                // 12
-            addColumn(mainTable, "Option 2");                                // 13
-            addColumn(mainTable, "Option 3");                                // 14
-            addColumn(mainTable, "Option 4");                                // 15
-            addColumn(mainTable, "Option 5");                                // 16
-            addColumn(mainTable, "Strap");                                   // 17
-            addColumn(mainTable, "Detachable Strap");                        // 18
-            addColumn(mainTable, "Zuooered Enclosure");                      // 19
-            addColumn(mainTable, "Shippable weight grams");                  // 20
-            addColumn(mainTable, "Shippable weight lb");                     // 21
-            addColumn(mainTable, "Imprintable");                             // 22
-            addColumn(mainTable, "Imprint Area cm");                         // 23
-            addColumn(mainTable, "Imprint Area in");                         // 24
-            addColumn(mainTable, "Finished Dimensions (cm)");                // 25
-            addColumn(mainTable, "Finished Dimensions (in)");                // 26
-            addColumn(mainTable, "price 1 c blank");                         // 27
-            addColumn(mainTable, "price 6 c blank");                         // 28
-            addColumn(mainTable, "price 24 c blank");                        // 29
-            addColumn(mainTable, "price 50 c blank");                        // 30
-            addColumn(mainTable, "price 100 c blank");                       // 31
-            addColumn(mainTable, "price 250 c blank");                       // 32
-            addColumn(mainTable, "price 500 c blank");                       // 33
-            addColumn(mainTable, "price 1000 c blank");                      // 34
-            addColumn(mainTable, "price 2500 c blank");                      // 35
-            addColumn(mainTable, "price 1 c im");                            // 36
-            addColumn(mainTable, "price 6 c im");                            // 37
-            addColumn(mainTable, "price 24 c im");                           // 38
-            addColumn(mainTable, "price 50 c im");                           // 39
-            addColumn(mainTable, "price 100 c im");                          // 40   
-            addColumn(mainTable, "price 250 c im");                          // 41
-            addColumn(mainTable, "price 500 c im");                          // 42
-            addColumn(mainTable, "price 1000 c im");                         // 43
-            addColumn(mainTable, "price 2500 c im");                         // 44
-            addColumn(mainTable, "price 1 net blank");                       // 45
-            addColumn(mainTable, "price 6 net blank");                       // 46
-            addColumn(mainTable, "price 24 net blank");                      // 47
-            addColumn(mainTable, "price 50 net blank");                      // 48
-            addColumn(mainTable, "price 100 net blank");                     // 49
-            addColumn(mainTable, "price 250 net blank");                     // 50
-            addColumn(mainTable, "price 500 net blank");                     // 51
-            addColumn(mainTable, "price 1000 net blank");                    // 52
-            addColumn(mainTable, "price 2500 net blank");                    // 53
-            addColumn(mainTable, "price 1 net im");                          // 54
-            addColumn(mainTable, "price 6 net im");                          // 55
-            addColumn(mainTable, "price 24 net im");                         // 56
-            addColumn(mainTable, "price 50 net im");                         // 57
-            addColumn(mainTable, "price 100 net im");                        // 58
-            addColumn(mainTable, "price 250 net im");                        // 59
-            addColumn(mainTable, "price 500 net im");                        // 60
-            addColumn(mainTable, "price 1000 net im");                       // 61
-            addColumn(mainTable, "price 2500 net im");                       // 62
-            addColumn(mainTable, "price rush 1 c blank");                    // 63
-            addColumn(mainTable, "price rush 6 c blank");                    // 64
-            addColumn(mainTable, "price rush 24 c blank");                   // 65
-            addColumn(mainTable, "price rush 50 c blank");                   // 66
-            addColumn(mainTable, "price rush 100 c blank");                  // 67
-            addColumn(mainTable, "price rush 250 c blank");                  // 68
-            addColumn(mainTable, "price rush 500 c blank");                  // 69
-            addColumn(mainTable, "price rush 1000 c blank");                 // 70
-            addColumn(mainTable, "price rush 2500 c blank");                 // 71
-            addColumn(mainTable, "price rush 1 c im");                       // 72
-            addColumn(mainTable, "price rush 6 c im");                       // 73
-            addColumn(mainTable, "price rush 24 c im");                      // 74
-            addColumn(mainTable, "price rush 50 c im");                      // 75   
-            addColumn(mainTable, "price rush 100 c im");                     // 76
-            addColumn(mainTable, "price rush 250 c im");                     // 77
-            addColumn(mainTable, "price rush 500 c im");                     // 78
-            addColumn(mainTable, "price rush 1000 c im");                    // 79
-            addColumn(mainTable, "price rush 2500 c im");                    // 80
-            addColumn(mainTable, "price rush 1 net blank");                  // 81
-            addColumn(mainTable, "price rush 6 net blank");                  // 82
-            addColumn(mainTable, "price rush 24 net blank");                 // 83
-            addColumn(mainTable, "price rush 50 net blank");                 // 84
-            addColumn(mainTable, "price rush 100 net blank");                // 85
-            addColumn(mainTable, "price rush 250 net blank");                // 86
-            addColumn(mainTable, "price rush 500 net blank");                // 87
-            addColumn(mainTable, "price rush 1000 net blank");               // 88
-            addColumn(mainTable, "price rush 2500 net blank");               // 89
-            addColumn(mainTable, "price rush 1 net im");                     // 90
-            addColumn(mainTable, "price rush 6 net im");                     // 91
-            addColumn(mainTable, "price rush 24 net im");                    // 92
-            addColumn(mainTable, "price rush 50 net im");                    // 93
-            addColumn(mainTable, "price rush 100 net im");                   // 94
-            addColumn(mainTable, "price rush 250 net im");                   // 95
-            addColumn(mainTable, "price rush 500 net im");                   // 96
-            addColumn(mainTable, "price rush 1000 net im");                  // 97
-            addColumn(mainTable, "price rush 2500 net im");                  // 98
-            addColumn(mainTable, "image 1 path");                            // 99
-            addColumn(mainTable, "image 2 path");                            // 100
-            addColumn(mainTable, "image 3 path");                            // 101
-            addColumn(mainTable, "image 4 path");                            // 102
-            addColumn(mainTable, "image 5 path");                            // 103
-            addColumn(mainTable, "image 6 path");                            // 104
-            addColumn(mainTable, "image 7 path");                            // 105
-            addColumn(mainTable, "image 8 path");                            // 106
-            addColumn(mainTable, "image 9 path");                            // 107
-            addColumn(mainTable, "image 10 path");                           // 108
-            addColumn(mainTable, "image group 1 path");                      // 109
-            addColumn(mainTable, "image group 2 path");                      // 110
-            addColumn(mainTable, "image group 3 path");                      // 111
-            addColumn(mainTable, "image group 4 path");                      // 112
-            addColumn(mainTable, "image group 5 path");                      // 113
-            addColumn(mainTable, "image model 1 path");                      // 114
-            addColumn(mainTable, "image model 2 path");                      // 115
-            addColumn(mainTable, "image model 3 path");                      // 116
-            addColumn(mainTable, "image model 4 path");                      // 117
-            addColumn(mainTable, "image model 5 path");                      // 118
-            addColumn(mainTable, "Swatch Path");                             // 119
-            addColumn(mainTable, "Alt Text Image 1 Path");                   // 120
-            addColumn(mainTable, "Alt Text Image 2 Path");                   // 121  
-            addColumn(mainTable, "Alt Text Image 3 Path");                   // 122
-            addColumn(mainTable, "Alt Text Image 4 Path");                   // 123
-            addColumn(mainTable, "Alt Text Image 5 Path");                   // 124
-            addColumn(mainTable, "Alt Text Image 6 Path");                   // 125
-            addColumn(mainTable, "Alt Text Image 7 Path");                   // 126
-            addColumn(mainTable, "Alt Text Image 8 Path");                   // 127
-            addColumn(mainTable, "Alt Text Image 9 Path");                   // 128
-            addColumn(mainTable, "Alt Text Image 10 Path");                  // 129
-            addColumn(mainTable, "Alt Text Image Group 1 Path");             // 130
-            addColumn(mainTable, "Alt Text Image Group 2 Path");             // 131
-            addColumn(mainTable, "Alt Text Image Group 3 Path");             // 132
-            addColumn(mainTable, "Alt Text Image Group 4 Path");             // 133
-            addColumn(mainTable, "Alt Text Image Group 5 Path");             // 134
-            addColumn(mainTable, "Alt Text Image Model 1 Path");             // 135
-            addColumn(mainTable, "Alt Text Image Model 2 Path");             // 136
-            addColumn(mainTable, "Alt Text Image Model 3 Path");             // 137
-            addColumn(mainTable, "Alt Text Image Model 4 Path");             // 138
-            addColumn(mainTable, "Alt Text Image Model 5 Path");             // 139
-            addColumn(mainTable, "MSRP");                                    // 140
-            addColumn(mainTable, "MSRP Imprinted");                          // 141
-            addColumn(mainTable, "Wholesale");                               // 142
-            addColumn(mainTable, "Keywords");                                // 143
-            addColumn(mainTable, "Monogram");                                // 144
+            AddColumn(mainTable, "SKU Ashlin");                              // 1
+            AddColumn(mainTable, "Design Service Code");                     // 2
+            AddColumn(mainTable, "Design_Service_Fashion_Name_Ashlin");      // 3
+            AddColumn(mainTable, "Design Short Description");                // 4
+            AddColumn(mainTable, "Design Extended Description");             // 5
+            AddColumn(mainTable, "Material Code");                           // 6
+            AddColumn(mainTable, "Colour Code");                             // 7
+            AddColumn(mainTable, "Colour Material Code");                    // 8
+            AddColumn(mainTable, "Material Description Extended");           // 9
+            AddColumn(mainTable, "Colour Description Extended");             // 10
+            AddColumn(mainTable, "Design Service Family Description");       // 11
+            AddColumn(mainTable, "Option 1");                                // 12
+            AddColumn(mainTable, "Option 2");                                // 13
+            AddColumn(mainTable, "Option 3");                                // 14
+            AddColumn(mainTable, "Option 4");                                // 15
+            AddColumn(mainTable, "Option 5");                                // 16
+            AddColumn(mainTable, "Strap");                                   // 17
+            AddColumn(mainTable, "Detachable Strap");                        // 18
+            AddColumn(mainTable, "Zuooered Enclosure");                      // 19
+            AddColumn(mainTable, "Shippable weight grams");                  // 20
+            AddColumn(mainTable, "Shippable weight lb");                     // 21
+            AddColumn(mainTable, "Imprintable");                             // 22
+            AddColumn(mainTable, "Imprint Area cm");                         // 23
+            AddColumn(mainTable, "Imprint Area in");                         // 24
+            AddColumn(mainTable, "Finished Dimensions (cm)");                // 25
+            AddColumn(mainTable, "Finished Dimensions (in)");                // 26
+            AddColumn(mainTable, "price 1 c blank");                         // 27
+            AddColumn(mainTable, "price 6 c blank");                         // 28
+            AddColumn(mainTable, "price 24 c blank");                        // 29
+            AddColumn(mainTable, "price 50 c blank");                        // 30
+            AddColumn(mainTable, "price 100 c blank");                       // 31
+            AddColumn(mainTable, "price 250 c blank");                       // 32
+            AddColumn(mainTable, "price 500 c blank");                       // 33
+            AddColumn(mainTable, "price 1000 c blank");                      // 34
+            AddColumn(mainTable, "price 2500 c blank");                      // 35
+            AddColumn(mainTable, "price 1 c im");                            // 36
+            AddColumn(mainTable, "price 6 c im");                            // 37
+            AddColumn(mainTable, "price 24 c im");                           // 38
+            AddColumn(mainTable, "price 50 c im");                           // 39
+            AddColumn(mainTable, "price 100 c im");                          // 40   
+            AddColumn(mainTable, "price 250 c im");                          // 41
+            AddColumn(mainTable, "price 500 c im");                          // 42
+            AddColumn(mainTable, "price 1000 c im");                         // 43
+            AddColumn(mainTable, "price 2500 c im");                         // 44
+            AddColumn(mainTable, "price 1 net blank");                       // 45
+            AddColumn(mainTable, "price 6 net blank");                       // 46
+            AddColumn(mainTable, "price 24 net blank");                      // 47
+            AddColumn(mainTable, "price 50 net blank");                      // 48
+            AddColumn(mainTable, "price 100 net blank");                     // 49
+            AddColumn(mainTable, "price 250 net blank");                     // 50
+            AddColumn(mainTable, "price 500 net blank");                     // 51
+            AddColumn(mainTable, "price 1000 net blank");                    // 52
+            AddColumn(mainTable, "price 2500 net blank");                    // 53
+            AddColumn(mainTable, "price 1 net im");                          // 54
+            AddColumn(mainTable, "price 6 net im");                          // 55
+            AddColumn(mainTable, "price 24 net im");                         // 56
+            AddColumn(mainTable, "price 50 net im");                         // 57
+            AddColumn(mainTable, "price 100 net im");                        // 58
+            AddColumn(mainTable, "price 250 net im");                        // 59
+            AddColumn(mainTable, "price 500 net im");                        // 60
+            AddColumn(mainTable, "price 1000 net im");                       // 61
+            AddColumn(mainTable, "price 2500 net im");                       // 62
+            AddColumn(mainTable, "price rush 1 c blank");                    // 63
+            AddColumn(mainTable, "price rush 6 c blank");                    // 64
+            AddColumn(mainTable, "price rush 24 c blank");                   // 65
+            AddColumn(mainTable, "price rush 50 c blank");                   // 66
+            AddColumn(mainTable, "price rush 100 c blank");                  // 67
+            AddColumn(mainTable, "price rush 250 c blank");                  // 68
+            AddColumn(mainTable, "price rush 500 c blank");                  // 69
+            AddColumn(mainTable, "price rush 1000 c blank");                 // 70
+            AddColumn(mainTable, "price rush 2500 c blank");                 // 71
+            AddColumn(mainTable, "price rush 1 c im");                       // 72
+            AddColumn(mainTable, "price rush 6 c im");                       // 73
+            AddColumn(mainTable, "price rush 24 c im");                      // 74
+            AddColumn(mainTable, "price rush 50 c im");                      // 75   
+            AddColumn(mainTable, "price rush 100 c im");                     // 76
+            AddColumn(mainTable, "price rush 250 c im");                     // 77
+            AddColumn(mainTable, "price rush 500 c im");                     // 78
+            AddColumn(mainTable, "price rush 1000 c im");                    // 79
+            AddColumn(mainTable, "price rush 2500 c im");                    // 80
+            AddColumn(mainTable, "price rush 1 net blank");                  // 81
+            AddColumn(mainTable, "price rush 6 net blank");                  // 82
+            AddColumn(mainTable, "price rush 24 net blank");                 // 83
+            AddColumn(mainTable, "price rush 50 net blank");                 // 84
+            AddColumn(mainTable, "price rush 100 net blank");                // 85
+            AddColumn(mainTable, "price rush 250 net blank");                // 86
+            AddColumn(mainTable, "price rush 500 net blank");                // 87
+            AddColumn(mainTable, "price rush 1000 net blank");               // 88
+            AddColumn(mainTable, "price rush 2500 net blank");               // 89
+            AddColumn(mainTable, "price rush 1 net im");                     // 90
+            AddColumn(mainTable, "price rush 6 net im");                     // 91
+            AddColumn(mainTable, "price rush 24 net im");                    // 92
+            AddColumn(mainTable, "price rush 50 net im");                    // 93
+            AddColumn(mainTable, "price rush 100 net im");                   // 94
+            AddColumn(mainTable, "price rush 250 net im");                   // 95
+            AddColumn(mainTable, "price rush 500 net im");                   // 96
+            AddColumn(mainTable, "price rush 1000 net im");                  // 97
+            AddColumn(mainTable, "price rush 2500 net im");                  // 98
+            AddColumn(mainTable, "image 1 path");                            // 99
+            AddColumn(mainTable, "image 2 path");                            // 100
+            AddColumn(mainTable, "image 3 path");                            // 101
+            AddColumn(mainTable, "image 4 path");                            // 102
+            AddColumn(mainTable, "image 5 path");                            // 103
+            AddColumn(mainTable, "image 6 path");                            // 104
+            AddColumn(mainTable, "image 7 path");                            // 105
+            AddColumn(mainTable, "image 8 path");                            // 106
+            AddColumn(mainTable, "image 9 path");                            // 107
+            AddColumn(mainTable, "image 10 path");                           // 108
+            AddColumn(mainTable, "image group 1 path");                      // 109
+            AddColumn(mainTable, "image group 2 path");                      // 110
+            AddColumn(mainTable, "image group 3 path");                      // 111
+            AddColumn(mainTable, "image group 4 path");                      // 112
+            AddColumn(mainTable, "image group 5 path");                      // 113
+            AddColumn(mainTable, "image model 1 path");                      // 114
+            AddColumn(mainTable, "image model 2 path");                      // 115
+            AddColumn(mainTable, "image model 3 path");                      // 116
+            AddColumn(mainTable, "image model 4 path");                      // 117
+            AddColumn(mainTable, "image model 5 path");                      // 118
+            AddColumn(mainTable, "Swatch Path");                             // 119
+            AddColumn(mainTable, "Alt Text Image 1 Path");                   // 120
+            AddColumn(mainTable, "Alt Text Image 2 Path");                   // 121  
+            AddColumn(mainTable, "Alt Text Image 3 Path");                   // 122
+            AddColumn(mainTable, "Alt Text Image 4 Path");                   // 123
+            AddColumn(mainTable, "Alt Text Image 5 Path");                   // 124
+            AddColumn(mainTable, "Alt Text Image 6 Path");                   // 125
+            AddColumn(mainTable, "Alt Text Image 7 Path");                   // 126
+            AddColumn(mainTable, "Alt Text Image 8 Path");                   // 127
+            AddColumn(mainTable, "Alt Text Image 9 Path");                   // 128
+            AddColumn(mainTable, "Alt Text Image 10 Path");                  // 129
+            AddColumn(mainTable, "Alt Text Image Group 1 Path");             // 130
+            AddColumn(mainTable, "Alt Text Image Group 2 Path");             // 131
+            AddColumn(mainTable, "Alt Text Image Group 3 Path");             // 132
+            AddColumn(mainTable, "Alt Text Image Group 4 Path");             // 133
+            AddColumn(mainTable, "Alt Text Image Group 5 Path");             // 134
+            AddColumn(mainTable, "Alt Text Image Model 1 Path");             // 135
+            AddColumn(mainTable, "Alt Text Image Model 2 Path");             // 136
+            AddColumn(mainTable, "Alt Text Image Model 3 Path");             // 137
+            AddColumn(mainTable, "Alt Text Image Model 4 Path");             // 138
+            AddColumn(mainTable, "Alt Text Image Model 5 Path");             // 139
+            AddColumn(mainTable, "MSRP");                                    // 140
+            AddColumn(mainTable, "MSRP Imprinted");                          // 141
+            AddColumn(mainTable, "Wholesale");                               // 142
+            AddColumn(mainTable, "Keywords");                                // 143
+            AddColumn(mainTable, "Monogram");                                // 144
 
 
             // local field for inserting data to table
-            double[][] discountList = getDiscount();
+            double[][] discountList = GetDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -182,7 +181,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             // add data to each row 
             foreach (string sku in skuList)
             {
-                ArrayList list = getData(sku);
+                ArrayList list = GetData(sku);
                 DataRow row = mainTable.NewRow();
 
                 row[0] = sku;                                            // SKU ashlin
@@ -221,102 +220,102 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                     row[25] = Math.Round(Convert.ToDouble(list[20]) / 2.54, 2) + "in x " + Math.Round(Convert.ToDouble(list[21]) / 2.54, 2) + "in x " + Math.Round(Convert.ToDouble(list[22]) / 2.54, 2) + "in";  // finished dimensions (in)
                 }
                 double msrp = discountList[5][0] * Convert.ToDouble(list[27]);
-                int pricingTier;
+                int k;
                 switch (Convert.ToInt32(list[68]))
                 {
                     case 1:
-                        pricingTier = 1;
+                        k = 1;
                         break;
                     case 2:
-                        pricingTier = 2;
+                        k = 2;
                         break;
                     case 3:
-                        pricingTier = 3;
+                        k = 3;
                         break;
                     case 4:
-                        pricingTier = 4;
+                        k = 4;
                         break;
                     default:
-                        pricingTier = 0;
+                        k = 0;
                         break;
                 }
-                row[26] = Math.Round(msrp * discountList[pricingTier][1], 2);                        // price 1 c blank
-                row[27] = Math.Round(msrp * discountList[pricingTier][2], 2);                        // price 6 c blank
-                row[28] = Math.Round(msrp * discountList[pricingTier][3], 2);                        // price 24 c blank
-                row[29] = Math.Round(msrp * discountList[pricingTier][4], 2);                        // price 50 c blank
-                row[30] = Math.Round(msrp * discountList[pricingTier][5], 2);                        // price 100 c blank
-                row[31] = Math.Round(msrp * discountList[pricingTier][6], 2);                        // price 250 c blank
-                row[32] = Math.Round(msrp * discountList[pricingTier][7], 2);                        // price 500 c blank
-                row[33] = Math.Round(msrp * discountList[pricingTier][8], 2);                        // price 1000 c blank
-                row[34] = Math.Round(msrp * discountList[pricingTier][9], 2);                        // price 2500 c blank
+                row[26] = Math.Round(msrp * discountList[k][1], 2);                        // price 1 c blank
+                row[27] = Math.Round(msrp * discountList[k][2], 2);                        // price 6 c blank
+                row[28] = Math.Round(msrp * discountList[k][3], 2);                        // price 24 c blank
+                row[29] = Math.Round(msrp * discountList[k][4], 2);                        // price 50 c blank
+                row[30] = Math.Round(msrp * discountList[k][5], 2);                        // price 100 c blank
+                row[31] = Math.Round(msrp * discountList[k][6], 2);                        // price 250 c blank
+                row[32] = Math.Round(msrp * discountList[k][7], 2);                        // price 500 c blank
+                row[33] = Math.Round(msrp * discountList[k][8], 2);                        // price 1000 c blank
+                row[34] = Math.Round(msrp * discountList[k][9], 2);                        // price 2500 c blank
                 double runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[24]) - 1;
                 if (runCharge > 8)
                     runCharge = 8;
                 else if (runCharge < 1)
                     runCharge = 1;
-                row[35] = Math.Round((msrp + runCharge) * discountList[pricingTier][1], 2);                             // price 1 c im
-                row[36] = Math.Round((msrp + runCharge) * discountList[pricingTier][2], 2);                             // price 6 c im
-                row[37] = Math.Round((msrp + runCharge) * discountList[pricingTier][3], 2);                             // price 24 c im
-                row[38] = Math.Round((msrp + runCharge) * discountList[pricingTier][4], 2);                             // price 50 c im
-                row[39] = Math.Round((msrp + runCharge) * discountList[pricingTier][5], 2);                             // price 100 c im
-                row[40] = Math.Round((msrp + runCharge) * discountList[pricingTier][6], 2);                             // price 250 c im
-                row[41] = Math.Round((msrp + runCharge) * discountList[pricingTier][7], 2);                             // price 500 c im
-                row[42] = Math.Round((msrp + runCharge) * discountList[pricingTier][8], 2);                             // price 1000 c im 
-                row[43] = Math.Round((msrp + runCharge) * discountList[pricingTier][9], 2);                             // price 2500 c im
-                row[44] = Math.Round(msrp * discountList[pricingTier][11], 2);                                          // price 1 net blank
-                row[45] = Math.Round(msrp * discountList[pricingTier][12], 2);                                          // price 6 net blank
-                row[46] = Math.Round(msrp * discountList[pricingTier][13], 2);                                          // price 24 net blank
-                row[47] = Math.Round(msrp * discountList[pricingTier][14], 2);                                          // price 50 net blank
-                row[48] = Math.Round(msrp * discountList[pricingTier][15], 2);                                          // price 100 net blank
-                row[49] = Math.Round(msrp * discountList[pricingTier][16], 2);                                          // price 250 net blank
-                row[50] = Math.Round(msrp * discountList[pricingTier][17], 2);                                          // price 500 net blank
-                row[51] = Math.Round(msrp * discountList[pricingTier][18], 2);                                          // price 1000 net blank
-                row[52] = Math.Round(msrp * discountList[pricingTier][19], 2);                                          // price 2500 net blank
-                row[53] = Math.Round((msrp + runCharge) * discountList[pricingTier][11], 2);                            // price 1 net im
-                row[54] = Math.Round((msrp + runCharge) * discountList[pricingTier][12], 2);                            // price 6 net im
-                row[55] = Math.Round((msrp + runCharge) * discountList[pricingTier][13], 2);                            // price 24 net im
-                row[56] = Math.Round((msrp + runCharge) * discountList[pricingTier][14], 2);                            // price 50 net im
-                row[57] = Math.Round((msrp + runCharge) * discountList[pricingTier][15], 2);                            // price 100 net im
-                row[58] = Math.Round((msrp + runCharge) * discountList[pricingTier][16], 2);                            // price 250 net im
-                row[59] = Math.Round((msrp + runCharge) * discountList[pricingTier][17], 2);                            // price 500 net im
-                row[60] = Math.Round((msrp + runCharge) * discountList[pricingTier][18], 2);                            // price 1000 net im
-                row[61] = Math.Round((msrp + runCharge) * discountList[pricingTier][19], 2);                            // price 2500 net im
-                row[62] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][1], 2);                         // price rush 1 c blank
-                row[63] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][2], 2);                         // price rush 6 c blank
-                row[64] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][3], 2);                         // price rush 24 c blank 
-                row[65] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][4], 2);                         // price rush 50 c blank
-                row[66] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][5], 2);                         // price rush 100 c blank
-                row[67] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][6], 2);                         // price rush 250 c blank
-                row[68] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][7], 2);                         // price rush 500 c blank
-                row[69] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][8], 2);                         // price rush 1000 c blank
-                row[70] = Math.Round(msrp * discountList[pricingTier][0] * discountList[pricingTier][9], 2);                         // price rush 2500 c blank
-                row[71] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][1], 2);           // price rush 1 c im
-                row[72] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][2], 2);           // price rush 6 c im
-                row[73] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][3], 2);           // price rush 24 c im
-                row[74] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][4], 2);           // price rush 50 c im
-                row[75] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][5], 2);           // price rush 100 c im
-                row[76] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][6], 2);           // price rush 250 c im
-                row[77] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][7], 2);           // price rush 500 c im
-                row[78] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][8], 2);           // price rush 1000 c im
-                row[79] = Math.Round((msrp + runCharge) * discountList[pricingTier][0] * discountList[pricingTier][9], 2);           // price rush 2500 c im
-                row[80] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][11], 2);                       // price rush 1 net blank
-                row[81] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][12], 2);                       // price rush 6 net blank
-                row[82] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][13], 2);                       // price rush 24 net blank
-                row[83] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][14], 2);                       // price rush 50 net blank
-                row[84] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][15], 2);                       // price rush 100 net blank
-                row[85] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][16], 2);                       // price rush 250 net blank
-                row[86] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][17], 2);                       // price rush 500 net blank
-                row[87] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][18], 2);                       // price rush 1000 net blank
-                row[88] = Math.Round(msrp * discountList[pricingTier][10] * discountList[pricingTier][19], 2);                       // price rush 2500 net blank
-                row[89] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][11], 2);         // price rush 1 net im
-                row[90] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][12], 2);         // price rush 6 net im
-                row[91] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][13], 2);         // price rush 24 net im
-                row[92] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][14], 2);         // price rush 50 net im        
-                row[93] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][15], 2);         // price rush 100 net im
-                row[94] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][16], 2);         // price rush 250 net im
-                row[95] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][17], 2);         // price rush 500 net im
-                row[96] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][18], 2);         // price rush 1000 net im
-                row[97] = Math.Round((msrp + runCharge) * discountList[pricingTier][10] * discountList[pricingTier][19], 2);         // price rush 2500 net im
+                row[35] = Math.Round((msrp + runCharge) * discountList[k][1], 2);                             // price 1 c im
+                row[36] = Math.Round((msrp + runCharge) * discountList[k][2], 2);                             // price 6 c im
+                row[37] = Math.Round((msrp + runCharge) * discountList[k][3], 2);                             // price 24 c im
+                row[38] = Math.Round((msrp + runCharge) * discountList[k][4], 2);                             // price 50 c im
+                row[39] = Math.Round((msrp + runCharge) * discountList[k][5], 2);                             // price 100 c im
+                row[40] = Math.Round((msrp + runCharge) * discountList[k][6], 2);                             // price 250 c im
+                row[41] = Math.Round((msrp + runCharge) * discountList[k][7], 2);                             // price 500 c im
+                row[42] = Math.Round((msrp + runCharge) * discountList[k][8], 2);                             // price 1000 c im 
+                row[43] = Math.Round((msrp + runCharge) * discountList[k][9], 2);                             // price 2500 c im
+                row[44] = Math.Round(msrp * discountList[k][11], 2);                                          // price 1 net blank
+                row[45] = Math.Round(msrp * discountList[k][12], 2);                                          // price 6 net blank
+                row[46] = Math.Round(msrp * discountList[k][13], 2);                                          // price 24 net blank
+                row[47] = Math.Round(msrp * discountList[k][14], 2);                                          // price 50 net blank
+                row[48] = Math.Round(msrp * discountList[k][15], 2);                                          // price 100 net blank
+                row[49] = Math.Round(msrp * discountList[k][16], 2);                                          // price 250 net blank
+                row[50] = Math.Round(msrp * discountList[k][17], 2);                                          // price 500 net blank
+                row[51] = Math.Round(msrp * discountList[k][18], 2);                                          // price 1000 net blank
+                row[52] = Math.Round(msrp * discountList[k][19], 2);                                          // price 2500 net blank
+                row[53] = Math.Round((msrp + runCharge) * discountList[k][11], 2);                            // price 1 net im
+                row[54] = Math.Round((msrp + runCharge) * discountList[k][12], 2);                            // price 6 net im
+                row[55] = Math.Round((msrp + runCharge) * discountList[k][13], 2);                            // price 24 net im
+                row[56] = Math.Round((msrp + runCharge) * discountList[k][14], 2);                            // price 50 net im
+                row[57] = Math.Round((msrp + runCharge) * discountList[k][15], 2);                            // price 100 net im
+                row[58] = Math.Round((msrp + runCharge) * discountList[k][16], 2);                            // price 250 net im
+                row[59] = Math.Round((msrp + runCharge) * discountList[k][17], 2);                            // price 500 net im
+                row[60] = Math.Round((msrp + runCharge) * discountList[k][18], 2);                            // price 1000 net im
+                row[61] = Math.Round((msrp + runCharge) * discountList[k][19], 2);                            // price 2500 net im
+                row[62] = Math.Round(msrp * discountList[k][0] * discountList[k][1], 2);                         // price rush 1 c blank
+                row[63] = Math.Round(msrp * discountList[k][0] * discountList[k][2], 2);                         // price rush 6 c blank
+                row[64] = Math.Round(msrp * discountList[k][0] * discountList[k][3], 2);                         // price rush 24 c blank 
+                row[65] = Math.Round(msrp * discountList[k][0] * discountList[k][4], 2);                         // price rush 50 c blank
+                row[66] = Math.Round(msrp * discountList[k][0] * discountList[k][5], 2);                         // price rush 100 c blank
+                row[67] = Math.Round(msrp * discountList[k][0] * discountList[k][6], 2);                         // price rush 250 c blank
+                row[68] = Math.Round(msrp * discountList[k][0] * discountList[k][7], 2);                         // price rush 500 c blank
+                row[69] = Math.Round(msrp * discountList[k][0] * discountList[k][8], 2);                         // price rush 1000 c blank
+                row[70] = Math.Round(msrp * discountList[k][0] * discountList[k][9], 2);                         // price rush 2500 c blank
+                row[71] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][1], 2);           // price rush 1 c im
+                row[72] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][2], 2);           // price rush 6 c im
+                row[73] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][3], 2);           // price rush 24 c im
+                row[74] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][4], 2);           // price rush 50 c im
+                row[75] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][5], 2);           // price rush 100 c im
+                row[76] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][6], 2);           // price rush 250 c im
+                row[77] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][7], 2);           // price rush 500 c im
+                row[78] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][8], 2);           // price rush 1000 c im
+                row[79] = Math.Round((msrp + runCharge) * discountList[k][0] * discountList[k][9], 2);           // price rush 2500 c im
+                row[80] = Math.Round(msrp * discountList[k][10] * discountList[k][11], 2);                       // price rush 1 net blank
+                row[81] = Math.Round(msrp * discountList[k][10] * discountList[k][12], 2);                       // price rush 6 net blank
+                row[82] = Math.Round(msrp * discountList[k][10] * discountList[k][13], 2);                       // price rush 24 net blank
+                row[83] = Math.Round(msrp * discountList[k][10] * discountList[k][14], 2);                       // price rush 50 net blank
+                row[84] = Math.Round(msrp * discountList[k][10] * discountList[k][15], 2);                       // price rush 100 net blank
+                row[85] = Math.Round(msrp * discountList[k][10] * discountList[k][16], 2);                       // price rush 250 net blank
+                row[86] = Math.Round(msrp * discountList[k][10] * discountList[k][17], 2);                       // price rush 500 net blank
+                row[87] = Math.Round(msrp * discountList[k][10] * discountList[k][18], 2);                       // price rush 1000 net blank
+                row[88] = Math.Round(msrp * discountList[k][10] * discountList[k][19], 2);                       // price rush 2500 net blank
+                row[89] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][11], 2);         // price rush 1 net im
+                row[90] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][12], 2);         // price rush 6 net im
+                row[91] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][13], 2);         // price rush 24 net im
+                row[92] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][14], 2);         // price rush 50 net im        
+                row[93] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][15], 2);         // price rush 100 net im
+                row[94] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][16], 2);         // price rush 250 net im
+                row[95] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][17], 2);         // price rush 500 net im
+                row[96] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][18], 2);         // price rush 1000 net im
+                row[97] = Math.Round((msrp + runCharge) * discountList[k][10] * discountList[k][19], 2);         // price rush 2500 net im
                 row[98] = list[28];                                      // image 1 path
                 row[99] = list[29];                                      // image 2 path
                 row[100] = list[30];                                     // image 3 path
@@ -337,7 +336,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[115] = list[45];                                     // image model 3 path
                 row[116] = list[46];                                     // image model 4 path
                 row[117] = list[47];                                     // image model 5 path
-                row[118] = getSwatch(sku);                               // swatch path
+                row[118] = GetSwatch(sku);                               // swatch path
                 row[119] = list[48];                                     // alt text image 1 path
                 row[120] = list[49];                                     // alt text image 2 path
                 row[121] = list[50];                                     // alt text image 3 path
@@ -360,7 +359,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[138] = list[67];                                     // alt text image model 5 path
                 row[139] = msrp;                                         // msrp
                 row[140] = Math.Round(msrp + runCharge, 2);              // msrp imprinted
-                row[141] = Math.Round(msrp * discountList[pricingTier][20], 2);       // wholesale
+                row[141] = Math.Round(msrp * discountList[k][20], 2);       // wholesale
                 row[142] = list[26];                                     // keywords
                 row[143] = list[23];                                     // monogram
 
@@ -376,24 +375,24 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         }
 
         /* a method that get all the sku that is active */
-        protected sealed override string[] getSku()
+        protected sealed override string[] GetSku()
         {
             // local field for storing data
-            List<string> skuList = new List<string>();
+            List<string> list = new List<string>();
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Website = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
-                skuList.Add(reader.GetString(0));
+                list.Add(reader.GetString(0));
             connection.Close();
 
-            return skuList.ToArray();
+            return list.ToArray();
         }
 
         /* method that get the data from given sku */
-        private ArrayList getData(string sku)
+        private ArrayList GetData(string sku)
         {
             // local field for storing data
             ArrayList list = new ArrayList();
@@ -436,7 +435,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         }
 
         /* method that add swatch image url */
-        private static string getSwatch(string sku)
+        private static string GetSwatch(string sku)
         {
             // get material + color code
             string node = sku.Substring(sku.IndexOf('-'));
@@ -445,7 +444,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
         }
 
         /* a method that return the discount matrix */
-        private double[][] getDiscount()
+        private double[][] GetDiscount()
         {
             double[][] list = new double[6][];
 
@@ -478,7 +477,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new double[] { reader.GetDouble(0) };
+            list[5] = new[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;

@@ -13,7 +13,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         public BPrushCodedBlankExportTable()
         {
             mainTable = new DataTable();
-            skuList = getSku();
+            skuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
@@ -23,15 +23,15 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             mainTable.Reset();
 
             // add column to table
-            addColumn(mainTable, "BP item ID#");          // 1
-            addColumn(mainTable, "SKU#");                 // 2
-            addColumn(mainTable, "Description");          // 3
-            addColumn(mainTable, "QTY breaks");           // 4
-            addColumn(mainTable, "COSTS breaks");         // 5
+            AddColumn(mainTable, "BP item ID#");          // 1
+            AddColumn(mainTable, "SKU#");                 // 2
+            AddColumn(mainTable, "Description");          // 3
+            AddColumn(mainTable, "QTY breaks");           // 4
+            AddColumn(mainTable, "COSTS breaks");         // 5
 
             // local field for inserting data to table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
-            double[][] discountList = getDiscount();
+            double[][] discountList = GetDiscount();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -41,36 +41,36 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             foreach (string sku in skuList)
             {
                 DataRow row = mainTable.NewRow();
-                object[] list = getData(sku);
+                object[] list = GetData(sku);
 
                 row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];       // BP item id#
                 row[1] = sku;                                               // sku#
                 row[2] = list[2] + " - " + list[3] + " - " + list[4];       // description
                 row[3] = "1; 6; 24; 50; 100; 250; 500; 1000; 2500";         // qty breaks
-                int pricingTier;
+                int k;
                 switch (Convert.ToInt32(list[5]))
                 {
                     case 1:
-                        pricingTier = 1;
+                        k = 1;
                         break;
                     case 2:
-                        pricingTier = 2;
+                        k = 2;
                         break;
                     case 3:
-                        pricingTier = 3;
+                        k = 3;
                         break;
                     case 4:
-                        pricingTier = 4;
+                        k = 4;
                         break;
                     default:
-                        pricingTier = 0;
+                        k = 0;
                         break;
                 }
-                double msrp = Convert.ToDouble(list[0]) * discountList[pricingTier][9] * discountList[5][0];
+                double msrp = Convert.ToDouble(list[0]) * discountList[k][9] * discountList[5][0];
                 // costs breaks
-                row[4] = Math.Round(msrp * discountList[pricingTier][0], 4) + "; " + Math.Round(msrp * discountList[pricingTier][1], 4) + "; " + Math.Round(msrp * discountList[pricingTier][2], 4) + "; " + Math.Round(msrp * discountList[pricingTier][3], 4) + "; "
-                       + Math.Round(msrp * discountList[pricingTier][4], 4) + "; " + Math.Round(msrp * discountList[pricingTier][5], 4) + "; " + Math.Round(msrp * discountList[pricingTier][6], 4) + "; " + Math.Round(msrp * discountList[pricingTier][7], 4) + "; "
-                       + Math.Round(msrp * discountList[pricingTier][8], 4);
+                row[4] = Math.Round(msrp * discountList[k][0], 4) + "; " + Math.Round(msrp * discountList[k][1], 4) + "; " + Math.Round(msrp * discountList[k][2], 4) + "; " + Math.Round(msrp * discountList[k][3], 4) + "; "
+                       + Math.Round(msrp * discountList[k][4], 4) + "; " + Math.Round(msrp * discountList[k][5], 4) + "; " + Math.Round(msrp * discountList[k][6], 4) + "; " + Math.Round(msrp * discountList[k][7], 4) + "; "
+                       + Math.Round(msrp * discountList[k][8], 4);
 
                 mainTable.Rows.Add(row);
                 Progress++;
@@ -84,7 +84,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         }
 
         /* a method that return the discount matrix */
-        protected override double[][] getDiscount()
+        protected override double[][] GetDiscount()
         {
             double[][] list = new double[6][];
 
@@ -117,7 +117,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new double[] { reader.GetDouble(0) };
+            list[5] = new[] { reader.GetDouble(0) };
             connection.Close();
 
             return list;
