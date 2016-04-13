@@ -93,7 +93,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[8] = "Ashlin®";                                // manufacturer
                 newRow[9] = "234326";                                 // supplier
                 newRow[10] = row[13];                                 // vendor
-                double sellMsrp = Math.Ceiling((Convert.ToDouble(row[12]) * price[0]) * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                double sellMsrp = Math.Ceiling((Convert.ToDouble(row[12]) * price[0]) * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
                 newRow[11] = sellMsrp - (price[4] * sellMsrp) + price[3];        // unit cost
                 newRow[12] = sellMsrp;                                // retail price
                 newRow[13] = row[3];                                  // dimension width (with box)

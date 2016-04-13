@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectionViewTable));
             this.inventoryButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.productButton = new System.Windows.Forms.Button();
             this.hintLabel = new System.Windows.Forms.Label();
             this.inventoryLabel = new System.Windows.Forms.Label();
-            this.amazonLabel = new System.Windows.Forms.Label();
+            this.productLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // inventoryButton
@@ -50,18 +50,19 @@
             this.inventoryButton.UseVisualStyleBackColor = false;
             this.inventoryButton.Click += new System.EventHandler(this.inventoryButton_Click);
             // 
-            // button1
+            // productButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(273, 92);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 106);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
+            this.productButton.BackColor = System.Drawing.Color.Transparent;
+            this.productButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productButton.FlatAppearance.BorderSize = 0;
+            this.productButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productButton.Image = ((System.Drawing.Image)(resources.GetObject("productButton.Image")));
+            this.productButton.Location = new System.Drawing.Point(274, 97);
+            this.productButton.Name = "productButton";
+            this.productButton.Size = new System.Drawing.Size(106, 106);
+            this.productButton.TabIndex = 2;
+            this.productButton.UseVisualStyleBackColor = false;
+            this.productButton.Click += new System.EventHandler(this.productButton_Click);
             // 
             // hintLabel
             // 
@@ -84,15 +85,15 @@
             this.inventoryLabel.Text = "Inventory Price List";
             this.inventoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // amazonLabel
+            // productLabel
             // 
-            this.amazonLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amazonLabel.Location = new System.Drawing.Point(270, 207);
-            this.amazonLabel.Name = "amazonLabel";
-            this.amazonLabel.Size = new System.Drawing.Size(109, 15);
-            this.amazonLabel.TabIndex = 4;
-            this.amazonLabel.Text = "Amazon Price List";
-            this.amazonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.productLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productLabel.Location = new System.Drawing.Point(266, 207);
+            this.productLabel.Name = "productLabel";
+            this.productLabel.Size = new System.Drawing.Size(109, 15);
+            this.productLabel.TabIndex = 4;
+            this.productLabel.Text = "Product List";
+            this.productLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SelectionViewTable
             // 
@@ -100,10 +101,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(490, 268);
-            this.Controls.Add(this.amazonLabel);
+            this.Controls.Add(this.productLabel);
             this.Controls.Add(this.inventoryLabel);
             this.Controls.Add(this.hintLabel);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.productButton);
             this.Controls.Add(this.inventoryButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,9 +121,9 @@
         #endregion
 
         private System.Windows.Forms.Button inventoryButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button productButton;
         private System.Windows.Forms.Label hintLabel;
         private System.Windows.Forms.Label inventoryLabel;
-        private System.Windows.Forms.Label amazonLabel;
+        private System.Windows.Forms.Label productLabel;
     }
 }

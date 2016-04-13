@@ -95,7 +95,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 }
                 if (!row[4].Equals(DBNull.Value))
                     newRow[17] = Math.Round(Convert.ToDouble(row[4])/453.952, 2);      // weight
-                double sellMsrp = Math.Ceiling((Convert.ToDouble(row[18]) * discountList[0]) * (1 - discountList[1] / 100)) - (1 - discountList[2]) + discountList[3];
+                double sellMsrp = Math.Ceiling((Convert.ToDouble(row[18]) * discountList[0]) * (1 - discountList[1] / 100) + discountList[3]) - (1 - discountList[2]);
                 newRow[18] = sellMsrp - (discountList[4] * sellMsrp) + discountList[3];// wholesale cost
                 newRow[19] = sellMsrp;                                                 // retail price
                 newRow[23] = "Ashlin®";                                                // brand

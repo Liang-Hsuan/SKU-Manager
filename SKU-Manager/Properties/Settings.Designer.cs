@@ -423,5 +423,16 @@ namespace SKU_Manager.Properties {
                 this["AsiTable"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Data.DataTable BPproductTable {
+            get {
+                return ((global::System.Data.DataTable)(this["BPproductTable"]));
+            }
+            set {
+                this["BPproductTable"] = value;
+            }
+        }
     }
 }

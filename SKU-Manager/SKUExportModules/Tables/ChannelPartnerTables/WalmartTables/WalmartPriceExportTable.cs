@@ -56,7 +56,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
                 row[0] = sku;                                                        // item number
                 double msrp = Convert.ToDouble(GetData(sku)[0]) * price[0];
-                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
                 row[1] = msrp;                                                       // total VNPK case cost
                 row[2] = sellMsrp;                                                   // unit retail
                 row[3] = sellMsrp - (price[4] * sellMsrp) + price[3];                // whse pack cost

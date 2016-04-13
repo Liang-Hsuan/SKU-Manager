@@ -549,7 +549,6 @@ E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.Properties.Resources.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.MainForms.SKUExport.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.ActivePriceView.resources
-E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.StockQuantityView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonCaView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.AmazonComView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.BestbuyView.resources
@@ -560,7 +559,6 @@ E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExport
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.MagentoView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.ShopCaView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.StaplesView.resources
-E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExport.UpcExportView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ChannelPartnerExports.WalmartView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.DistributorCentralView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.UducatView.resources
@@ -684,3 +682,9 @@ C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manag
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.StockQuantityView.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
 \\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources
+C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.BPproductView.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.StockQuantityView.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.BPproductView.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources
+E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.SageView.resources

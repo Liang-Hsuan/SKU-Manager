@@ -209,6 +209,7 @@ namespace SKU_Manager.SplashModules.Update
                 materialShortDescriptionTextbox.Text = "";
                 colorCodeTextbox.Text = "";
                 colorShortDescriptionTextbox.Text = "";
+                upcLabel.Text = "";
                 basesPriceTextbox.Text = "";
                 caDutyTextbox.Text = "";
                 usDutyTextbox.Text = "";

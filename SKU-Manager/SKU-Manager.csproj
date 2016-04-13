@@ -218,6 +218,12 @@
     <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.Designer.cs">
       <DependentUpon>BPinventoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.Designer.cs">
+      <DependentUpon>BPproductView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -632,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.resx">
       <DependentUpon>BPinventoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.resx">
+      <DependentUpon>BPproductView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.resx">
       <DependentUpon>SelectionViewTable.cs</DependentUpon>

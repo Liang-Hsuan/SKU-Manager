@@ -181,7 +181,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[7] = "Ashlin®";                                // part number
                 row[8] = list[1];                                  // product description
                 row[9] = "PartiaUpdate";                           // update delete
-                row[10] = Math.Ceiling(Convert.ToDouble(list[25]) * price[0] * (1 - price[1] / 100)) - (1 - price[2]) + price[3];     // standard price
+                row[10] = Math.Ceiling(Convert.ToDouble(list[25]) * price[0] * (1 - price[1] / 100) + price[3]) - (1 - price[2]);     // standard price
                 row[11] = "USD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note

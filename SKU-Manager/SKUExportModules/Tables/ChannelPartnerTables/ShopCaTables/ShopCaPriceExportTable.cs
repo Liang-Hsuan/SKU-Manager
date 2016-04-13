@@ -67,7 +67,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[1] = "nishis_boutique";                                      // store name
                 row[2] = sku;                                                    // sku
                 double msrp = Convert.ToDouble(GetData(sku)[0]) * price[0];
-                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
                 row[3] = sellMsrp;                                               // supplier suggested retail price
                 row[4] = msrp;                                                   // msrp
                 row[5] = sellMsrp;                                               // supplier list price

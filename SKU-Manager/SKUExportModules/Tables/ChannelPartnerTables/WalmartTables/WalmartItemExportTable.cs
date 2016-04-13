@@ -164,7 +164,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
                 row[15] = "Ashlin® " + list[2];                   // signing desc
                 row[16] = "Ashlin® " + list[3];                   // french signing desc
                 row[17] = 312999;                                 // brand 
-                double sellMsrp = Math.Ceiling((Convert.ToDouble(list[1]) * price[0]) * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                double sellMsrp = Math.Ceiling((Convert.ToDouble(list[1]) * price[0]) * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
                 row[45] = sellMsrp - (price[4] * sellMsrp) + price[3];   // unit cost
                 row[46] = sellMsrp;                               // base unit retail
                 row[83] = list[4];                                // item length

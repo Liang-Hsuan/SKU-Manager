@@ -26,7 +26,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         }
 
         /* set a method for getting data from given sku */
-        protected object[] GetData(string sku)
+        protected virtual object[] GetData(string sku)
         {
             // local fields for storing data
             object[] list = new object[6];

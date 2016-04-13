@@ -25,5 +25,11 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             else
                 MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
+
+        /* the event for product button click */
+        private void productButton_Click(object sender, EventArgs e)
+        {
+            new BPproductView().ShowDialog(parent);
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports
                 backgroundWorkerTable.RunWorkerAsync();
         }
 
-        /* background worker that get the bestbuy export table and send it to data grid view */
+        /* background worker that get the magento export table and send it to data grid view */
         private void backgroundWorkerTable_DoWork(object sender, DoWorkEventArgs e)
         {
             // send table to table field

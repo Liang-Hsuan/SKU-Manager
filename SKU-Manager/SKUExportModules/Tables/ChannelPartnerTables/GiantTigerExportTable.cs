@@ -70,7 +70,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[6] = row[7];                                                    // material
                 newRow[7] = row[2] + "cm x " + row[3] + "cm x " + row[4] + "cm";       // size in cm
                 newRow[8] = row[5];                                                    // weight
-                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100)) - (1 - price[2]) + price[3];
+                double sellMsrp = Math.Ceiling(msrp * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
                 newRow[9] = sellMsrp - (price[4] * sellMsrp) + price[3];               // cost
                 newRow[10] = sellMsrp;                                                 // retail
                 newRow[11] = msrp;                                                     // mrsp

@@ -174,7 +174,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 listed = Convert.ToBoolean(row[12]);
                 if (listed && row[10].ToString() == "")
                 {
-                    command += "SKU_STAPLES = 'NEW',";
+                    command += "SKU_STAPLES_CA = 'NEW',";
                     change++;
                 }
 

@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectionViewExcel));
-            this.amazonLabel = new System.Windows.Forms.Label();
+            this.productLabel = new System.Windows.Forms.Label();
             this.inventoryLabel = new System.Windows.Forms.Label();
             this.hintLabel = new System.Windows.Forms.Label();
-            this.amazonButton = new System.Windows.Forms.Button();
+            this.productButton = new System.Windows.Forms.Button();
             this.inventoryButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
-            // amazonLabel
+            // productLabel
             // 
-            this.amazonLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amazonLabel.Location = new System.Drawing.Point(270, 207);
-            this.amazonLabel.Name = "amazonLabel";
-            this.amazonLabel.Size = new System.Drawing.Size(109, 15);
-            this.amazonLabel.TabIndex = 4;
-            this.amazonLabel.Text = "Amazon Price List";
-            this.amazonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.productLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productLabel.Location = new System.Drawing.Point(266, 207);
+            this.productLabel.Name = "productLabel";
+            this.productLabel.Size = new System.Drawing.Size(109, 15);
+            this.productLabel.TabIndex = 4;
+            this.productLabel.Text = "Product List";
+            this.productLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // inventoryLabel
             // 
@@ -68,19 +68,19 @@
             this.hintLabel.TabIndex = 0;
             this.hintLabel.Text = "Please select the export for Brightpearl";
             // 
-            // amazonButton
+            // productButton
             // 
-            this.amazonButton.BackColor = System.Drawing.Color.Transparent;
-            this.amazonButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.amazonButton.FlatAppearance.BorderSize = 0;
-            this.amazonButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.amazonButton.Image = ((System.Drawing.Image)(resources.GetObject("amazonButton.Image")));
-            this.amazonButton.Location = new System.Drawing.Point(273, 92);
-            this.amazonButton.Name = "amazonButton";
-            this.amazonButton.Size = new System.Drawing.Size(106, 106);
-            this.amazonButton.TabIndex = 3;
-            this.amazonButton.UseVisualStyleBackColor = false;
-            this.amazonButton.Click += new System.EventHandler(this.amazonButton_Click);
+            this.productButton.BackColor = System.Drawing.Color.Transparent;
+            this.productButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.productButton.FlatAppearance.BorderSize = 0;
+            this.productButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.productButton.Image = ((System.Drawing.Image)(resources.GetObject("productButton.Image")));
+            this.productButton.Location = new System.Drawing.Point(274, 97);
+            this.productButton.Name = "productButton";
+            this.productButton.Size = new System.Drawing.Size(106, 106);
+            this.productButton.TabIndex = 3;
+            this.productButton.UseVisualStyleBackColor = false;
+            this.productButton.Click += new System.EventHandler(this.productButton_Click);
             // 
             // inventoryButton
             // 
@@ -98,7 +98,7 @@
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.Filter = "Excel File (*.xls)|*.xls";
+            this.saveFileDialog.Filter = "97 ~ 03 Excel File (*.xls)|*.xls|Excel Workbook (*.xlsx)|*.xlsx";
             // 
             // SelectionViewExcel
             // 
@@ -106,10 +106,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(490, 268);
-            this.Controls.Add(this.amazonLabel);
+            this.Controls.Add(this.productLabel);
             this.Controls.Add(this.inventoryLabel);
             this.Controls.Add(this.hintLabel);
-            this.Controls.Add(this.amazonButton);
+            this.Controls.Add(this.productButton);
             this.Controls.Add(this.inventoryButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -125,10 +125,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label amazonLabel;
+        private System.Windows.Forms.Label productLabel;
         private System.Windows.Forms.Label inventoryLabel;
         private System.Windows.Forms.Label hintLabel;
-        private System.Windows.Forms.Button amazonButton;
+        private System.Windows.Forms.Button productButton;
         private System.Windows.Forms.Button inventoryButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
