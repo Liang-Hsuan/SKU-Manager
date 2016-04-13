@@ -205,9 +205,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                 row[18] = list[15];                                      // zippered enclosure                                                                                                                                    
                 row[19] = list[16];                                      // shippable weight grams
                 if (!list[16].Equals(DBNull.Value))
-                {
-                    row[20] = Math.Round(Convert.ToDouble(list[16]) / 453.592, 2);      // shippable weight lb
-                }
+                    row[20] = Math.Round(Convert.ToDouble(list[16])/453.592, 2);        // shippable weight lb
                 row[21] = list[17];                                                     // imprintable
                 if (!list[19].Equals(DBNull.Value))
                 {

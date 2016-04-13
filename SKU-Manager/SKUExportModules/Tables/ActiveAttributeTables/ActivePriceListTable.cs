@@ -300,9 +300,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 }
                 row[40] = list[23];                                                 // weight grams
                 if (!list[23].Equals(DBNull.Value))
-                {
-                    row[41] = Math.Round(Convert.ToDouble(list[23]) / 453.592, 2);  // weight pounds
-                }
+                    row[41] = Math.Round(Convert.ToDouble(list[23])/453.592, 2);    // weight pounds
                 row[42] = list[24];                                                 // shippable width cm  
                 row[43] = list[25];                                                 // shippable height cm
                 row[44] = list[26];                                                 // shippable depth cm
@@ -314,9 +312,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 }
                 row[48] = list[27];                                                 // shippable weight grams
                 if (!list[27].Equals(DBNull.Value))
-                {
-                    row[49] = Math.Round(Convert.ToDouble(list[27]) / 453.592, 2);  // shippable weight lb
-                }
+                    row[49] = Math.Round(Convert.ToDouble(list[27])/453.592, 2);    // shippable weight lb
                 row[50] = list[28];                                                 // strap
                 row[51] = list[29];                                                 // detachable strap
                 row[52] = list[30];                                                 // zipped enclosure
@@ -360,17 +356,13 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[89] = list[51];                                                 // components
                 double msrp = discountList[5][0] * basePrice;
                 row[90] = msrp;                                                     // msrp
-                double runCharge;
-                if (!list[51].Equals(DBNull.Value))
-                    runCharge = Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[51]) - 1;
-                else
-                    runCharge = Math.Round(msrp*0.05)/0.6;
+                double runCharge = !list[51].Equals(DBNull.Value) ? Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[51]) - 1 : Math.Round(msrp*0.05)/0.6;
                 if (runCharge > 8)
                     row[91] = 8;
                 else if (runCharge < 1)
                     row[91] = 1;
                 else
-                    row[91] = runCharge; // run charge
+                    row[91] = runCharge;                                            // run charge
                 int k;
                 switch (Convert.ToInt32(list[124]))
                 {

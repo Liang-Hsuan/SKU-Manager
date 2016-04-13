@@ -42,7 +42,7 @@ namespace SKU_Manager.MainForms
         }
         private void addSkuButton_Click(object sender, EventArgs e)
         {
-            new AddSKU().ShowDialog(this);
+            new AddSku().ShowDialog(this);
         }
         #endregion
 
@@ -66,7 +66,7 @@ namespace SKU_Manager.MainForms
         }
         private void updateSkuButton_Click(object sender, EventArgs e)
         {
-            new UpdateSKU().ShowDialog(this);
+            new UpdateSku().ShowDialog(this);
         }
         #endregion
 

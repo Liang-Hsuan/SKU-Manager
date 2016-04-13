@@ -117,7 +117,7 @@
             this.inactiveFamilyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.inactiveFamilyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inactiveFamilyButton.ForeColor = System.Drawing.Color.White;
-            this.inactiveFamilyButton.Location = new System.Drawing.Point(386, 1625);
+            this.inactiveFamilyButton.Location = new System.Drawing.Point(386, 1658);
             this.inactiveFamilyButton.Name = "inactiveFamilyButton";
             this.inactiveFamilyButton.Size = new System.Drawing.Size(185, 39);
             this.inactiveFamilyButton.TabIndex = 74;
@@ -130,7 +130,7 @@
             this.activeFamilyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(222)))), ((int)(((byte)(67)))));
             this.activeFamilyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeFamilyButton.ForeColor = System.Drawing.Color.Black;
-            this.activeFamilyButton.Location = new System.Drawing.Point(201, 1625);
+            this.activeFamilyButton.Location = new System.Drawing.Point(201, 1658);
             this.activeFamilyButton.Name = "activeFamilyButton";
             this.activeFamilyButton.Size = new System.Drawing.Size(180, 39);
             this.activeFamilyButton.TabIndex = 73;
@@ -143,7 +143,7 @@
             this.addProductFamilyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.addProductFamilyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductFamilyButton.ForeColor = System.Drawing.Color.White;
-            this.addProductFamilyButton.Location = new System.Drawing.Point(201, 1543);
+            this.addProductFamilyButton.Location = new System.Drawing.Point(201, 1576);
             this.addProductFamilyButton.Name = "addProductFamilyButton";
             this.addProductFamilyButton.Size = new System.Drawing.Size(370, 76);
             this.addProductFamilyButton.TabIndex = 72;
@@ -157,10 +157,10 @@
             this.noteLabel3.BackColor = System.Drawing.Color.White;
             this.noteLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteLabel3.ForeColor = System.Drawing.Color.Gray;
-            this.noteLabel3.Location = new System.Drawing.Point(69, 729);
+            this.noteLabel3.Location = new System.Drawing.Point(69, 762);
             this.noteLabel3.Name = "noteLabel3";
             this.noteLabel3.Size = new System.Drawing.Size(612, 13);
-            this.noteLabel3.TabIndex = 33;
+            this.noteLabel3.TabIndex = 39;
             this.noteLabel3.Text = "PLEASE NOTE - DO NOT USE THE FOLLOWING SYMBOLS IN CODES, NAMES AND DESCRIPTIONS: " +
     "%, ?, *, #, $, @, >, <";
             // 
@@ -259,7 +259,7 @@
             this.productFamilyCodeTextbox.MaxLength = 10;
             this.productFamilyCodeTextbox.Name = "productFamilyCodeTextbox";
             this.productFamilyCodeTextbox.Size = new System.Drawing.Size(481, 20);
-            this.productFamilyCodeTextbox.TabIndex = 4;
+            this.productFamilyCodeTextbox.TabIndex = 3;
             this.productFamilyCodeTextbox.TextChanged += new System.EventHandler(this.productFamilyCodeTextbox_TextChanged);
             // 
             // productFamilyLabel
@@ -270,7 +270,7 @@
             this.productFamilyLabel.Location = new System.Drawing.Point(21, 129);
             this.productFamilyLabel.Name = "productFamilyLabel";
             this.productFamilyLabel.Size = new System.Drawing.Size(121, 20);
-            this.productFamilyLabel.TabIndex = 3;
+            this.productFamilyLabel.TabIndex = 2;
             this.productFamilyLabel.Text = "Product Family";
             // 
             // detailLabel
@@ -281,7 +281,7 @@
             this.detailLabel.Location = new System.Drawing.Point(0, 69);
             this.detailLabel.Name = "detailLabel";
             this.detailLabel.Size = new System.Drawing.Size(746, 29);
-            this.detailLabel.TabIndex = 2;
+            this.detailLabel.TabIndex = 1;
             this.detailLabel.Text = "Product Family Details";
             this.detailLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -293,7 +293,7 @@
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(746, 60);
-            this.titleLabel.TabIndex = 1;
+            this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Add Product Family";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -424,10 +424,10 @@
             this.onlineCategoriesLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.onlineCategoriesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onlineCategoriesLabel.ForeColor = System.Drawing.Color.White;
-            this.onlineCategoriesLabel.Location = new System.Drawing.Point(0, 752);
+            this.onlineCategoriesLabel.Location = new System.Drawing.Point(0, 785);
             this.onlineCategoriesLabel.Name = "onlineCategoriesLabel";
             this.onlineCategoriesLabel.Size = new System.Drawing.Size(746, 29);
-            this.onlineCategoriesLabel.TabIndex = 34;
+            this.onlineCategoriesLabel.TabIndex = 40;
             this.onlineCategoriesLabel.Text = "Online Categories";
             this.onlineCategoriesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -436,10 +436,10 @@
             this.sageCategoryLabel.AutoSize = true;
             this.sageCategoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sageCategoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.sageCategoryLabel.Location = new System.Drawing.Point(23, 793);
+            this.sageCategoryLabel.Location = new System.Drawing.Point(23, 826);
             this.sageCategoryLabel.Name = "sageCategoryLabel";
             this.sageCategoryLabel.Size = new System.Drawing.Size(162, 20);
-            this.sageCategoryLabel.TabIndex = 35;
+            this.sageCategoryLabel.TabIndex = 41;
             this.sageCategoryLabel.Text = "SAGE [CATEGORY]";
             // 
             // sageCategoryCombobox
@@ -447,18 +447,18 @@
             this.sageCategoryCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.sageCategoryCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.sageCategoryCombobox.FormattingEnabled = true;
-            this.sageCategoryCombobox.Location = new System.Drawing.Point(225, 793);
+            this.sageCategoryCombobox.Location = new System.Drawing.Point(225, 826);
             this.sageCategoryCombobox.Name = "sageCategoryCombobox";
             this.sageCategoryCombobox.Size = new System.Drawing.Size(301, 21);
-            this.sageCategoryCombobox.TabIndex = 36;
+            this.sageCategoryCombobox.TabIndex = 42;
             // 
             // addSageCategoryButton
             // 
             this.addSageCategoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addSageCategoryButton.Location = new System.Drawing.Point(538, 791);
+            this.addSageCategoryButton.Location = new System.Drawing.Point(538, 824);
             this.addSageCategoryButton.Name = "addSageCategoryButton";
             this.addSageCategoryButton.Size = new System.Drawing.Size(91, 23);
-            this.addSageCategoryButton.TabIndex = 37;
+            this.addSageCategoryButton.TabIndex = 43;
             this.addSageCategoryButton.Text = "ADD";
             this.addSageCategoryButton.UseVisualStyleBackColor = false;
             this.addSageCategoryButton.Click += new System.EventHandler(this.addSageCategoryButton_Click);
@@ -466,10 +466,10 @@
             // removeSageCategoryButton
             // 
             this.removeSageCategoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removeSageCategoryButton.Location = new System.Drawing.Point(635, 791);
+            this.removeSageCategoryButton.Location = new System.Drawing.Point(635, 824);
             this.removeSageCategoryButton.Name = "removeSageCategoryButton";
             this.removeSageCategoryButton.Size = new System.Drawing.Size(91, 23);
-            this.removeSageCategoryButton.TabIndex = 38;
+            this.removeSageCategoryButton.TabIndex = 44;
             this.removeSageCategoryButton.Text = "REMOVE";
             this.removeSageCategoryButton.UseVisualStyleBackColor = false;
             this.removeSageCategoryButton.Click += new System.EventHandler(this.removeSageCategoryButton_Click);
@@ -478,33 +478,33 @@
             // 
             this.sageCategoryTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.sageCategoryTextbox.Enabled = false;
-            this.sageCategoryTextbox.Location = new System.Drawing.Point(225, 820);
+            this.sageCategoryTextbox.Location = new System.Drawing.Point(225, 853);
             this.sageCategoryTextbox.MaxLength = 1000;
             this.sageCategoryTextbox.Multiline = true;
             this.sageCategoryTextbox.Name = "sageCategoryTextbox";
             this.sageCategoryTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sageCategoryTextbox.Size = new System.Drawing.Size(501, 81);
-            this.sageCategoryTextbox.TabIndex = 39;
+            this.sageCategoryTextbox.TabIndex = 45;
             // 
             // sageThemeTextbox
             // 
             this.sageThemeTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.sageThemeTextbox.Enabled = false;
-            this.sageThemeTextbox.Location = new System.Drawing.Point(225, 943);
+            this.sageThemeTextbox.Location = new System.Drawing.Point(225, 976);
             this.sageThemeTextbox.MaxLength = 1000;
             this.sageThemeTextbox.Multiline = true;
             this.sageThemeTextbox.Name = "sageThemeTextbox";
             this.sageThemeTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sageThemeTextbox.Size = new System.Drawing.Size(501, 81);
-            this.sageThemeTextbox.TabIndex = 44;
+            this.sageThemeTextbox.TabIndex = 50;
             // 
             // removeSageThemeButton
             // 
             this.removeSageThemeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removeSageThemeButton.Location = new System.Drawing.Point(635, 916);
+            this.removeSageThemeButton.Location = new System.Drawing.Point(635, 949);
             this.removeSageThemeButton.Name = "removeSageThemeButton";
             this.removeSageThemeButton.Size = new System.Drawing.Size(91, 23);
-            this.removeSageThemeButton.TabIndex = 43;
+            this.removeSageThemeButton.TabIndex = 49;
             this.removeSageThemeButton.Text = "REMOVE";
             this.removeSageThemeButton.UseVisualStyleBackColor = false;
             this.removeSageThemeButton.Click += new System.EventHandler(this.removeSageThemeButton_Click);
@@ -512,10 +512,10 @@
             // addSageThemeButton
             // 
             this.addSageThemeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addSageThemeButton.Location = new System.Drawing.Point(538, 914);
+            this.addSageThemeButton.Location = new System.Drawing.Point(538, 947);
             this.addSageThemeButton.Name = "addSageThemeButton";
             this.addSageThemeButton.Size = new System.Drawing.Size(91, 23);
-            this.addSageThemeButton.TabIndex = 42;
+            this.addSageThemeButton.TabIndex = 48;
             this.addSageThemeButton.Text = "ADD";
             this.addSageThemeButton.UseVisualStyleBackColor = false;
             this.addSageThemeButton.Click += new System.EventHandler(this.addSageThemeButton_Click);
@@ -525,41 +525,41 @@
             this.sageThemeCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.sageThemeCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.sageThemeCombobox.FormattingEnabled = true;
-            this.sageThemeCombobox.Location = new System.Drawing.Point(225, 914);
+            this.sageThemeCombobox.Location = new System.Drawing.Point(225, 947);
             this.sageThemeCombobox.Name = "sageThemeCombobox";
             this.sageThemeCombobox.Size = new System.Drawing.Size(301, 21);
-            this.sageThemeCombobox.TabIndex = 41;
+            this.sageThemeCombobox.TabIndex = 47;
             // 
             // sageThemeLabel
             // 
             this.sageThemeLabel.AutoSize = true;
             this.sageThemeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sageThemeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.sageThemeLabel.Location = new System.Drawing.Point(21, 919);
+            this.sageThemeLabel.Location = new System.Drawing.Point(21, 952);
             this.sageThemeLabel.Name = "sageThemeLabel";
             this.sageThemeLabel.Size = new System.Drawing.Size(129, 20);
-            this.sageThemeLabel.TabIndex = 40;
+            this.sageThemeLabel.TabIndex = 46;
             this.sageThemeLabel.Text = "SAGE [THEME]";
             // 
             // espTextbox
             // 
             this.espTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.espTextbox.Enabled = false;
-            this.espTextbox.Location = new System.Drawing.Point(225, 1066);
+            this.espTextbox.Location = new System.Drawing.Point(225, 1099);
             this.espTextbox.MaxLength = 1000;
             this.espTextbox.Multiline = true;
             this.espTextbox.Name = "espTextbox";
             this.espTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.espTextbox.Size = new System.Drawing.Size(501, 81);
-            this.espTextbox.TabIndex = 49;
+            this.espTextbox.TabIndex = 55;
             // 
             // removeEspButton
             // 
             this.removeEspButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removeEspButton.Location = new System.Drawing.Point(635, 1039);
+            this.removeEspButton.Location = new System.Drawing.Point(635, 1072);
             this.removeEspButton.Name = "removeEspButton";
             this.removeEspButton.Size = new System.Drawing.Size(91, 23);
-            this.removeEspButton.TabIndex = 48;
+            this.removeEspButton.TabIndex = 54;
             this.removeEspButton.Text = "REMOVE";
             this.removeEspButton.UseVisualStyleBackColor = false;
             this.removeEspButton.Click += new System.EventHandler(this.removeEspButton_Click);
@@ -567,10 +567,10 @@
             // addEspButton
             // 
             this.addEspButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addEspButton.Location = new System.Drawing.Point(538, 1039);
+            this.addEspButton.Location = new System.Drawing.Point(538, 1072);
             this.addEspButton.Name = "addEspButton";
             this.addEspButton.Size = new System.Drawing.Size(91, 23);
-            this.addEspButton.TabIndex = 47;
+            this.addEspButton.TabIndex = 53;
             this.addEspButton.Text = "ADD";
             this.addEspButton.UseVisualStyleBackColor = false;
             this.addEspButton.Click += new System.EventHandler(this.addEspButton_Click);
@@ -580,41 +580,41 @@
             this.espCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.espCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.espCombobox.FormattingEnabled = true;
-            this.espCombobox.Location = new System.Drawing.Point(225, 1039);
+            this.espCombobox.Location = new System.Drawing.Point(225, 1072);
             this.espCombobox.Name = "espCombobox";
             this.espCombobox.Size = new System.Drawing.Size(301, 21);
-            this.espCombobox.TabIndex = 46;
+            this.espCombobox.TabIndex = 52;
             // 
             // espLabel
             // 
             this.espLabel.AutoSize = true;
             this.espLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.espLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.espLabel.Location = new System.Drawing.Point(21, 1042);
+            this.espLabel.Location = new System.Drawing.Point(21, 1075);
             this.espLabel.Name = "espLabel";
             this.espLabel.Size = new System.Drawing.Size(42, 20);
-            this.espLabel.TabIndex = 45;
+            this.espLabel.TabIndex = 51;
             this.espLabel.Text = "ESP";
             // 
             // promoMarketingTextbox
             // 
             this.promoMarketingTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.promoMarketingTextbox.Enabled = false;
-            this.promoMarketingTextbox.Location = new System.Drawing.Point(225, 1189);
+            this.promoMarketingTextbox.Location = new System.Drawing.Point(225, 1222);
             this.promoMarketingTextbox.MaxLength = 1000;
             this.promoMarketingTextbox.Multiline = true;
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
             this.promoMarketingTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.promoMarketingTextbox.Size = new System.Drawing.Size(501, 81);
-            this.promoMarketingTextbox.TabIndex = 54;
+            this.promoMarketingTextbox.TabIndex = 60;
             // 
             // removingPromoMarketingButton
             // 
             this.removingPromoMarketingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removingPromoMarketingButton.Location = new System.Drawing.Point(635, 1160);
+            this.removingPromoMarketingButton.Location = new System.Drawing.Point(635, 1193);
             this.removingPromoMarketingButton.Name = "removingPromoMarketingButton";
             this.removingPromoMarketingButton.Size = new System.Drawing.Size(91, 23);
-            this.removingPromoMarketingButton.TabIndex = 53;
+            this.removingPromoMarketingButton.TabIndex = 59;
             this.removingPromoMarketingButton.Text = "REMOVE";
             this.removingPromoMarketingButton.UseVisualStyleBackColor = false;
             this.removingPromoMarketingButton.Click += new System.EventHandler(this.removingPromoMarketingButton_Click);
@@ -622,10 +622,10 @@
             // addPromoMarketingButton
             // 
             this.addPromoMarketingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addPromoMarketingButton.Location = new System.Drawing.Point(538, 1160);
+            this.addPromoMarketingButton.Location = new System.Drawing.Point(538, 1193);
             this.addPromoMarketingButton.Name = "addPromoMarketingButton";
             this.addPromoMarketingButton.Size = new System.Drawing.Size(91, 23);
-            this.addPromoMarketingButton.TabIndex = 52;
+            this.addPromoMarketingButton.TabIndex = 58;
             this.addPromoMarketingButton.Text = "ADD";
             this.addPromoMarketingButton.UseVisualStyleBackColor = false;
             this.addPromoMarketingButton.Click += new System.EventHandler(this.addPromoMarketingButton_Click);
@@ -635,41 +635,41 @@
             this.promoMarketingCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.promoMarketingCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.promoMarketingCombobox.FormattingEnabled = true;
-            this.promoMarketingCombobox.Location = new System.Drawing.Point(225, 1162);
+            this.promoMarketingCombobox.Location = new System.Drawing.Point(225, 1195);
             this.promoMarketingCombobox.Name = "promoMarketingCombobox";
             this.promoMarketingCombobox.Size = new System.Drawing.Size(301, 21);
-            this.promoMarketingCombobox.TabIndex = 51;
+            this.promoMarketingCombobox.TabIndex = 57;
             // 
             // promoMarketingLabel
             // 
             this.promoMarketingLabel.AutoSize = true;
             this.promoMarketingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.promoMarketingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.promoMarketingLabel.Location = new System.Drawing.Point(21, 1163);
+            this.promoMarketingLabel.Location = new System.Drawing.Point(21, 1196);
             this.promoMarketingLabel.Name = "promoMarketingLabel";
             this.promoMarketingLabel.Size = new System.Drawing.Size(136, 20);
-            this.promoMarketingLabel.TabIndex = 50;
+            this.promoMarketingLabel.TabIndex = 56;
             this.promoMarketingLabel.Text = "Promo Marketing";
             // 
             // uducatTextbox
             // 
             this.uducatTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.uducatTextbox.Enabled = false;
-            this.uducatTextbox.Location = new System.Drawing.Point(225, 1312);
+            this.uducatTextbox.Location = new System.Drawing.Point(225, 1345);
             this.uducatTextbox.MaxLength = 1000;
             this.uducatTextbox.Multiline = true;
             this.uducatTextbox.Name = "uducatTextbox";
             this.uducatTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.uducatTextbox.Size = new System.Drawing.Size(501, 81);
-            this.uducatTextbox.TabIndex = 59;
+            this.uducatTextbox.TabIndex = 65;
             // 
             // removeUducatButton
             // 
             this.removeUducatButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removeUducatButton.Location = new System.Drawing.Point(635, 1283);
+            this.removeUducatButton.Location = new System.Drawing.Point(635, 1316);
             this.removeUducatButton.Name = "removeUducatButton";
             this.removeUducatButton.Size = new System.Drawing.Size(91, 23);
-            this.removeUducatButton.TabIndex = 58;
+            this.removeUducatButton.TabIndex = 64;
             this.removeUducatButton.Text = "REMOVE";
             this.removeUducatButton.UseVisualStyleBackColor = false;
             this.removeUducatButton.Click += new System.EventHandler(this.removeUducatButton_Click);
@@ -677,10 +677,10 @@
             // addUducatButton
             // 
             this.addUducatButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addUducatButton.Location = new System.Drawing.Point(538, 1283);
+            this.addUducatButton.Location = new System.Drawing.Point(538, 1316);
             this.addUducatButton.Name = "addUducatButton";
             this.addUducatButton.Size = new System.Drawing.Size(91, 23);
-            this.addUducatButton.TabIndex = 57;
+            this.addUducatButton.TabIndex = 63;
             this.addUducatButton.Text = "ADD";
             this.addUducatButton.UseVisualStyleBackColor = false;
             this.addUducatButton.Click += new System.EventHandler(this.addUducatButton_Click);
@@ -690,41 +690,41 @@
             this.uducatCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.uducatCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.uducatCombobox.FormattingEnabled = true;
-            this.uducatCombobox.Location = new System.Drawing.Point(225, 1285);
+            this.uducatCombobox.Location = new System.Drawing.Point(225, 1318);
             this.uducatCombobox.Name = "uducatCombobox";
             this.uducatCombobox.Size = new System.Drawing.Size(301, 21);
-            this.uducatCombobox.TabIndex = 56;
+            this.uducatCombobox.TabIndex = 62;
             // 
             // uducatLabel
             // 
             this.uducatLabel.AutoSize = true;
             this.uducatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uducatLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.uducatLabel.Location = new System.Drawing.Point(21, 1286);
+            this.uducatLabel.Location = new System.Drawing.Point(21, 1319);
             this.uducatLabel.Name = "uducatLabel";
             this.uducatLabel.Size = new System.Drawing.Size(79, 20);
-            this.uducatLabel.TabIndex = 55;
+            this.uducatLabel.TabIndex = 61;
             this.uducatLabel.Text = "UDUCAT";
             // 
             // distributorCentralTextbox
             // 
             this.distributorCentralTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.distributorCentralTextbox.Enabled = false;
-            this.distributorCentralTextbox.Location = new System.Drawing.Point(225, 1435);
+            this.distributorCentralTextbox.Location = new System.Drawing.Point(225, 1468);
             this.distributorCentralTextbox.MaxLength = 1000;
             this.distributorCentralTextbox.Multiline = true;
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
             this.distributorCentralTextbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.distributorCentralTextbox.Size = new System.Drawing.Size(501, 81);
-            this.distributorCentralTextbox.TabIndex = 64;
+            this.distributorCentralTextbox.TabIndex = 70;
             // 
             // removeDistributorCentralButton
             // 
             this.removeDistributorCentralButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(149)))), ((int)(((byte)(123)))));
-            this.removeDistributorCentralButton.Location = new System.Drawing.Point(635, 1408);
+            this.removeDistributorCentralButton.Location = new System.Drawing.Point(635, 1441);
             this.removeDistributorCentralButton.Name = "removeDistributorCentralButton";
             this.removeDistributorCentralButton.Size = new System.Drawing.Size(91, 23);
-            this.removeDistributorCentralButton.TabIndex = 63;
+            this.removeDistributorCentralButton.TabIndex = 69;
             this.removeDistributorCentralButton.Text = "REMOVE";
             this.removeDistributorCentralButton.UseVisualStyleBackColor = false;
             this.removeDistributorCentralButton.Click += new System.EventHandler(this.removeDistributorCentralButton_Click);
@@ -732,10 +732,10 @@
             // addDistributorCentralButton
             // 
             this.addDistributorCentralButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(226)))), ((int)(((byte)(166)))));
-            this.addDistributorCentralButton.Location = new System.Drawing.Point(538, 1408);
+            this.addDistributorCentralButton.Location = new System.Drawing.Point(538, 1441);
             this.addDistributorCentralButton.Name = "addDistributorCentralButton";
             this.addDistributorCentralButton.Size = new System.Drawing.Size(91, 23);
-            this.addDistributorCentralButton.TabIndex = 62;
+            this.addDistributorCentralButton.TabIndex = 68;
             this.addDistributorCentralButton.Text = "ADD";
             this.addDistributorCentralButton.UseVisualStyleBackColor = false;
             this.addDistributorCentralButton.Click += new System.EventHandler(this.addDistributorCentralButton_Click);
@@ -745,20 +745,20 @@
             this.distributorCentralCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.distributorCentralCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.distributorCentralCombobox.FormattingEnabled = true;
-            this.distributorCentralCombobox.Location = new System.Drawing.Point(225, 1408);
+            this.distributorCentralCombobox.Location = new System.Drawing.Point(225, 1441);
             this.distributorCentralCombobox.Name = "distributorCentralCombobox";
             this.distributorCentralCombobox.Size = new System.Drawing.Size(301, 21);
-            this.distributorCentralCombobox.TabIndex = 61;
+            this.distributorCentralCombobox.TabIndex = 67;
             // 
             // distributorCentralLabel
             // 
             this.distributorCentralLabel.AutoSize = true;
             this.distributorCentralLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.distributorCentralLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.distributorCentralLabel.Location = new System.Drawing.Point(21, 1409);
+            this.distributorCentralLabel.Location = new System.Drawing.Point(21, 1442);
             this.distributorCentralLabel.Name = "distributorCentralLabel";
             this.distributorCentralLabel.Size = new System.Drawing.Size(147, 20);
-            this.distributorCentralLabel.TabIndex = 60;
+            this.distributorCentralLabel.TabIndex = 66;
             this.distributorCentralLabel.Text = "Distributor Central";
             // 
             // backgroundWorkerCombobox
@@ -803,6 +803,7 @@
             // 
             this.caDutyTextbox.Enabled = false;
             this.caDutyTextbox.Location = new System.Drawing.Point(493, 651);
+            this.caDutyTextbox.MaxLength = 20;
             this.caDutyTextbox.Name = "caDutyTextbox";
             this.caDutyTextbox.Size = new System.Drawing.Size(233, 20);
             this.caDutyTextbox.TabIndex = 29;
@@ -833,6 +834,7 @@
             // 
             this.usDutyTextbox.Enabled = false;
             this.usDutyTextbox.Location = new System.Drawing.Point(493, 677);
+            this.usDutyTextbox.MaxLength = 20;
             this.usDutyTextbox.Name = "usDutyTextbox";
             this.usDutyTextbox.Size = new System.Drawing.Size(233, 20);
             this.usDutyTextbox.TabIndex = 32;
@@ -840,7 +842,7 @@
             // progressBar
             // 
             this.progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.progressBar.Location = new System.Drawing.Point(201, 1536);
+            this.progressBar.Location = new System.Drawing.Point(201, 1569);
             this.progressBar.Name = "progressBar";
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
@@ -854,7 +856,7 @@
             this.duplicateLabel.Location = new System.Drawing.Point(530, 113);
             this.duplicateLabel.Name = "duplicateLabel";
             this.duplicateLabel.Size = new System.Drawing.Size(196, 13);
-            this.duplicateLabel.TabIndex = 112;
+            this.duplicateLabel.TabIndex = 4;
             this.duplicateLabel.Text = "duplicate product family code detected !";
             this.duplicateLabel.Visible = false;
             // 
@@ -863,16 +865,16 @@
             this.pricingTierLabel.AutoSize = true;
             this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pricingTierLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.pricingTierLabel.Location = new System.Drawing.Point(21, 1529);
+            this.pricingTierLabel.Location = new System.Drawing.Point(23, 723);
             this.pricingTierLabel.Name = "pricingTierLabel";
             this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
-            this.pricingTierLabel.TabIndex = 65;
+            this.pricingTierLabel.TabIndex = 33;
             this.pricingTierLabel.Text = "Pricing Tier";
             // 
             // pricingTierUpdown
             // 
             this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pricingTierUpdown.Location = new System.Drawing.Point(25, 1552);
+            this.pricingTierUpdown.Location = new System.Drawing.Point(124, 723);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
             4,
             0,
@@ -880,23 +882,23 @@
             0});
             this.pricingTierUpdown.Name = "pricingTierUpdown";
             this.pricingTierUpdown.Size = new System.Drawing.Size(91, 20);
-            this.pricingTierUpdown.TabIndex = 66;
+            this.pricingTierUpdown.TabIndex = 34;
             // 
             // reorderQuantityLabel
             // 
             this.reorderQuantityLabel.AutoSize = true;
             this.reorderQuantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reorderQuantityLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.reorderQuantityLabel.Location = new System.Drawing.Point(21, 1575);
+            this.reorderQuantityLabel.Location = new System.Drawing.Point(277, 723);
             this.reorderQuantityLabel.Name = "reorderQuantityLabel";
             this.reorderQuantityLabel.Size = new System.Drawing.Size(100, 20);
-            this.reorderQuantityLabel.TabIndex = 67;
+            this.reorderQuantityLabel.TabIndex = 35;
             this.reorderQuantityLabel.Text = "Reorder Qty";
             // 
             // reorderQtyUpdown
             // 
             this.reorderQtyUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reorderQtyUpdown.Location = new System.Drawing.Point(25, 1598);
+            this.reorderQtyUpdown.Location = new System.Drawing.Point(383, 723);
             this.reorderQtyUpdown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -904,26 +906,26 @@
             0});
             this.reorderQtyUpdown.Name = "reorderQtyUpdown";
             this.reorderQtyUpdown.Size = new System.Drawing.Size(91, 20);
-            this.reorderQtyUpdown.TabIndex = 68;
+            this.reorderQtyUpdown.TabIndex = 36;
             // 
             // reorderLevelLabel
             // 
             this.reorderLevelLabel.AutoSize = true;
             this.reorderLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reorderLevelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.reorderLevelLabel.Location = new System.Drawing.Point(21, 1621);
+            this.reorderLevelLabel.Location = new System.Drawing.Point(515, 723);
             this.reorderLevelLabel.Name = "reorderLevelLabel";
             this.reorderLevelLabel.Size = new System.Drawing.Size(114, 20);
-            this.reorderLevelLabel.TabIndex = 69;
+            this.reorderLevelLabel.TabIndex = 37;
             this.reorderLevelLabel.Text = "Reorder Level";
             // 
             // reorderLevelUpdown
             // 
             this.reorderLevelUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.reorderLevelUpdown.Location = new System.Drawing.Point(25, 1644);
+            this.reorderLevelUpdown.Location = new System.Drawing.Point(635, 723);
             this.reorderLevelUpdown.Name = "reorderLevelUpdown";
             this.reorderLevelUpdown.Size = new System.Drawing.Size(91, 20);
-            this.reorderLevelUpdown.TabIndex = 70;
+            this.reorderLevelUpdown.TabIndex = 38;
             // 
             // AddFamily
             // 

@@ -52,7 +52,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             AddColumn(mainTable, "yt tax exempt");                       // 26
 
             // local field for inserting data to table
-            double[] price = getPriceList();
+            double[] price = GetPriceList();
 
             // start loading data
             mainTable.BeginLoadData();
@@ -99,7 +99,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         }
 
         /* a method that return the all fields for price calculation */
-        private double[] getPriceList()
+        private double[] GetPriceList()
         {
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
             double[] list = new double[4];

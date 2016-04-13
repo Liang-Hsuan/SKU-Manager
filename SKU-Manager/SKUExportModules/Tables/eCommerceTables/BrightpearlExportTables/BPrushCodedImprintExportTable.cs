@@ -47,11 +47,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                 row[2] = list[2] + " - " + list[3] + " - " + list[4];       // description
                 row[3] = "1; 6; 24; 50; 100; 250; 500; 1000; 2500";         // qty breaks
                 double msrp = Convert.ToDouble(list[0]) * discountList[5][0];
-                double runCharge;
-                if (list[1].Equals(DBNull.Value))
-                    runCharge = Math.Round(msrp*0.05)/0.6;
-                else
-                    runCharge = Math.Round(msrp * 0.05) / 0.6 + Convert.ToInt32(list[1]) - 1;
+                double runCharge = list[1].Equals(DBNull.Value) ? Math.Round(msrp*0.05)/0.6 : Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[1]) - 1;
                 if (runCharge > 8)
                     runCharge = 8;
                 else if (runCharge < 1)
