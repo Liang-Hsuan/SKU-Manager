@@ -124,6 +124,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel1.Visible = false;
 
             done[0] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -135,6 +138,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel2.Visible = false;
 
             done[1] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -146,6 +152,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel3.Visible = false;
 
             done[2] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -157,6 +166,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel4.Visible = false;
 
             done[3] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -168,6 +180,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel5.Visible = false;
 
             done[4] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker6_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -179,6 +194,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel6.Visible = false;
 
             done[5] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -191,6 +209,8 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[6] = true;
 
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -202,6 +222,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel8.Visible = false;
 
             done[7] = true;
+
+            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
+                currencyButton.Enabled = true;
         }
         #endregion
 
@@ -629,6 +652,108 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             progressLabel8.Visible = true;
         }
         #endregion
+
+        /* currency button that switch currency between USD and CAD */
+        private void currencyButton_Click(object sender, EventArgs e)
+        {
+            if (currencyButton.Text == "USD")
+            {
+                // change currency for each table
+                foreach (DataTable changeTable in table)
+                {
+                    // change currency 
+                    foreach (DataRow row in changeTable.Rows)
+                    {
+                        double[] costList = new double[9];
+                        string cost = row[4].ToString();
+
+                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[8] = double.Parse(cost) * 0.8;
+
+                        row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
+                                 costList[7] + "; " + costList[8];
+                    }
+                }
+
+                currencyButton.Text = "CAD";
+            }
+            else
+            {
+                // change currency for each table
+                foreach (DataTable changeTable in table)
+                {
+                    // change currency 
+                    foreach (DataRow row in changeTable.Rows)
+                    {
+                        double[] costList = new double[9];
+                        string cost = row[4].ToString();
+
+                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                        costList[8] = double.Parse(cost) * 0.8;
+
+                        row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
+                                 costList[7] + "; " + costList[8];
+                    }
+                }
+
+                currencyButton.Text = "USD";
+            }
+
+            dataGridView1.DataSource = table[0];
+            dataGridView2.DataSource = table[1];
+            dataGridView3.DataSource = table[2];
+            dataGridView4.DataSource = table[3];
+            dataGridView5.DataSource = table[4];
+            dataGridView6.DataSource = table[5];
+            dataGridView7.DataSource = table[6];
+            dataGridView8.DataSource = table[7];
+        }
 
         /* the event for exit button click */
         private void exitButton_Click(object sender, EventArgs e)

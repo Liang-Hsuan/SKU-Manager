@@ -79,6 +79,7 @@
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.currencyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -664,12 +665,30 @@
             this.timer8.Interval = 600;
             this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
+            // currencyButton
+            // 
+            this.currencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.currencyButton.BackColor = System.Drawing.Color.Transparent;
+            this.currencyButton.Enabled = false;
+            this.currencyButton.FlatAppearance.BorderSize = 0;
+            this.currencyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencyButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currencyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.currencyButton.Location = new System.Drawing.Point(2, 699);
+            this.currencyButton.Name = "currencyButton";
+            this.currencyButton.Size = new System.Drawing.Size(60, 34);
+            this.currencyButton.TabIndex = 36;
+            this.currencyButton.Text = "USD";
+            this.currencyButton.UseVisualStyleBackColor = false;
+            this.currencyButton.Click += new System.EventHandler(this.currencyButton_Click);
+            // 
             // BPinventoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1017, 790);
+            this.Controls.Add(this.currencyButton);
             this.Controls.Add(this.loadingLabel8);
             this.Controls.Add(this.progressLabel8);
             this.Controls.Add(this.progressLabel7);
@@ -774,5 +793,6 @@
         private System.Windows.Forms.Timer timer6;
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Timer timer8;
+        private System.Windows.Forms.Button currencyButton;
     }
 }
