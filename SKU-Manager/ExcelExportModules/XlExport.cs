@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -27,41 +28,41 @@ namespace SKU_Manager.ExcelExportModules
         public void NowExport(string path, DataSet ds, string[] names)
         {
             // add worksheet for each table
-            addSheet(ds);
+            AddSheet(ds);
 
             // add column names and data to each worksheet
-            addData(ds, names);
+            AddData(ds, names);
 
             // save file from the given save path 
             xlWorkBook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            ReleaseObject(xlWorkSheet);
+            ReleaseObject(xlWorkBook);
+            ReleaseObject(xlApp);
         }
         public void NowExport(string path, DataSet ds, string[] names, int[][] textIndex)
         {
             // add worksheet for each table
-            addSheet(ds);
+            AddSheet(ds);
 
             // add column names and data to each worksheet
-            addData(ds, names, textIndex);
+            AddData(ds, names, textIndex);
 
             // save file from the given save path 
             xlWorkBook.SaveAs(path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            ReleaseObject(xlWorkSheet);
+            ReleaseObject(xlWorkBook);
+            ReleaseObject(xlApp);
         }
         #endregion
 
         /* a method that add the number of worksheets according to dataset */
-        private void addSheet(DataSet ds)
+        private void AddSheet(DataSet ds)
         {
             int length = ds.Tables.Count;
 
@@ -74,7 +75,7 @@ namespace SKU_Manager.ExcelExportModules
 
         #region Add Data Methods
         /* method that add column names and data to the tables */
-        private void addData(DataSet ds, string[] names)
+        private void AddData(DataSet ds, IReadOnlyList<string> names)
         {
             int length = ds.Tables.Count;
 
@@ -112,7 +113,7 @@ namespace SKU_Manager.ExcelExportModules
                 range.EntireRow.Columns.AutoFit();
             }
         }
-        private void addData(DataSet ds, string[] names, int[][] textIndex)
+        private void AddData(DataSet ds, IReadOnlyList<string> names, IReadOnlyList<int[]> textIndex)
         {
             int length = ds.Tables.Count;
 
@@ -161,7 +162,7 @@ namespace SKU_Manager.ExcelExportModules
         #endregion
 
         /* method that release the object */
-        private static void releaseObject(object obj)
+        private static void ReleaseObject(object obj)
         {
             try
             {

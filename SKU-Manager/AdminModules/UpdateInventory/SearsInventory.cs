@@ -76,10 +76,9 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel.Text += '.';
         }
 
         /* button event for update that refresh the inventory data in sears */

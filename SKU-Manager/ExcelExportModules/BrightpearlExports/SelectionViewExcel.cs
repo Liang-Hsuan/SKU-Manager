@@ -126,7 +126,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
                 }
 
-                showExportMessage(saveFileDialog.FileName);
+                ShowExportMessage(saveFileDialog.FileName);
             }
         }
 
@@ -185,11 +185,11 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 Properties.Settings.Default.BPproductTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* method that showing messagebox for sucessfully export an Excel file */
-        private static void showExportMessage(string filePath)
+        private static void ShowExportMessage(string filePath)
         {
             MessageBox.Show("Excel file has been successfully exported in \n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

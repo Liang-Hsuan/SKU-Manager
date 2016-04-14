@@ -77,10 +77,9 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             {
                 loadingLabel.Text = "Please Wait";
                 timeLeft = 4;
-                timer.Start();
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel.Text += '.';
         }
 
         private void updateButton_Click(object sender, EventArgs e)

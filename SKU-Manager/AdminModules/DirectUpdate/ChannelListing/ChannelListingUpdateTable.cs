@@ -36,34 +36,34 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
             mainTable.Reset();
             Current = 0;
 
-            addColumn(mainTable, "SKU", false);                    // 1
-            addColumn(mainTable, "Bestbuy", false);                // 2
-            addColumn(mainTable, "Bestbuy Net", false);            // 3
-            addColumn(mainTable, "Bestbuy Listed", true);          // 4
-            addColumn(mainTable, "Amazon CA", false);              // 5
-            addColumn(mainTable, "Amazon CA Price", false);        // 6
-            addColumn(mainTable, "Amazon CA Listed", true);        // 7
-            addColumn(mainTable, "Amazon US", false);              // 8
-            addColumn(mainTable, "Amazon US Price", false);        // 9
-            addColumn(mainTable, "Amazon US Listed", true);        // 10
-            addColumn(mainTable, "Staples", false);                // 11
-            addColumn(mainTable, "Staples Net", false);            // 12
-            addColumn(mainTable, "Staples Listed", true);          // 13
-            addColumn(mainTable, "Staples Advantage", false);      // 14
-            addColumn(mainTable, "Staples Advantage Net", false);  // 15
-            addColumn(mainTable, "Staples Advantage Listed", true);// 16
-            addColumn(mainTable, "Walmart", false);                // 17
-            addColumn(mainTable, "Walmart Net", false);            // 18
-            addColumn(mainTable, "Walmart Listed", true);          // 19
-            addColumn(mainTable, "Shop.ca", false);                // 20
-            addColumn(mainTable, "Shop.ca Price", false);          // 21
-            addColumn(mainTable, "Shop.ca Listed", true);          // 22
-            addColumn(mainTable, "Sears", false);                  // 23
-            addColumn(mainTable, "Sears Net", false);              // 24
-            addColumn(mainTable, "Sears Listed", true);            // 25
-            addColumn(mainTable, "Giant Tiger", false);            // 26
-            addColumn(mainTable, "Giant Tiger Net", false);        // 27
-            addColumn(mainTable, "Giant Tiger Listed", true);      // 28
+            AddColumn(mainTable, "SKU", false);                    // 1
+            AddColumn(mainTable, "Bestbuy", false);                // 2
+            AddColumn(mainTable, "Bestbuy Net", false);            // 3
+            AddColumn(mainTable, "Bestbuy Listed", true);          // 4
+            AddColumn(mainTable, "Amazon CA", false);              // 5
+            AddColumn(mainTable, "Amazon CA Price", false);        // 6
+            AddColumn(mainTable, "Amazon CA Listed", true);        // 7
+            AddColumn(mainTable, "Amazon US", false);              // 8
+            AddColumn(mainTable, "Amazon US Price", false);        // 9
+            AddColumn(mainTable, "Amazon US Listed", true);        // 10
+            AddColumn(mainTable, "Staples", false);                // 11
+            AddColumn(mainTable, "Staples Net", false);            // 12
+            AddColumn(mainTable, "Staples Listed", true);          // 13
+            AddColumn(mainTable, "Staples Advantage", false);      // 14
+            AddColumn(mainTable, "Staples Advantage Net", false);  // 15
+            AddColumn(mainTable, "Staples Advantage Listed", true);// 16
+            AddColumn(mainTable, "Walmart", false);                // 17
+            AddColumn(mainTable, "Walmart Net", false);            // 18
+            AddColumn(mainTable, "Walmart Listed", true);          // 19
+            AddColumn(mainTable, "Shop.ca", false);                // 20
+            AddColumn(mainTable, "Shop.ca Price", false);          // 21
+            AddColumn(mainTable, "Shop.ca Listed", true);          // 22
+            AddColumn(mainTable, "Sears", false);                  // 23
+            AddColumn(mainTable, "Sears Net", false);              // 24
+            AddColumn(mainTable, "Sears Listed", true);            // 25
+            AddColumn(mainTable, "Giant Tiger", false);            // 26
+            AddColumn(mainTable, "Giant Tiger Net", false);        // 27
+            AddColumn(mainTable, "Giant Tiger Listed", true);      // 28
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.ChannelListingTable;

@@ -50,7 +50,7 @@ namespace SKU_Manager.ExcelExportModules
             for (int i = 0; i < length; i++)
             {
                 int index = i;
-                thread[i] = new Thread(() => getTables(tables[index], index));
+                thread[i] = new Thread(() => GetTables(tables[index], index));
                 thread[i].Start();
             }
         }
@@ -62,7 +62,7 @@ namespace SKU_Manager.ExcelExportModules
         public bool Complete { get; private set; }
 
         /* method that get the tables from ExportTable */
-        private void getTables(ExportTable table, int index)
+        private void GetTables(ExportTable table, int index)
         {
             dt[index] = table.GetTable();
         }

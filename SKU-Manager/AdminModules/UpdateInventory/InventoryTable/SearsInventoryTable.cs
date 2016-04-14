@@ -48,14 +48,14 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.Reset();
             Current = 0;
 
-            addColumn(mainTable, "Ashlin SKU", false);
-            addColumn(mainTable, "Sears SKU", false);
-            addColumn(mainTable, "BP Item ID", false);
-            addColumn(mainTable, "On Hand", false);
-            addColumn(mainTable, "Reorder Quantity", false);
-            addColumn(mainTable, "Reorder Level", false);
-            addColumn(mainTable, "Purchase Order", true);
-            addColumn(mainTable, "Discontinue", true);
+            AddColumn(mainTable, "Ashlin SKU", false);
+            AddColumn(mainTable, "Sears SKU", false);
+            AddColumn(mainTable, "BP Item ID", false);
+            AddColumn(mainTable, "On Hand", false);
+            AddColumn(mainTable, "Reorder Quantity", false);
+            AddColumn(mainTable, "Reorder Level", false);
+            AddColumn(mainTable, "Purchase Order", true);
+            AddColumn(mainTable, "Discontinue", true);
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;

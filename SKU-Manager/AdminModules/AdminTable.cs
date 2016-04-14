@@ -20,7 +20,7 @@ namespace SKU_Manager.AdminModules
         public abstract DataTable GetTable();
 
         /* method that add new column to table */
-        protected void addColumn(DataTable table, string name, bool checkbox)
+        protected void AddColumn(DataTable table, string name, bool checkbox)
         {
             // set up column
             DataColumn column = new DataColumn {ColumnName = name};
