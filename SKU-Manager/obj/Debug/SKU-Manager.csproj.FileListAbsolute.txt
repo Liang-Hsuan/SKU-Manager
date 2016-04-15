@@ -688,3 +688,4 @@ E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExport
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.ActiveAttributeExports.UpcExportView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.AsiView.resources
 E:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.PromotionalAssociationExports.SageView.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews.BPproductView.resources

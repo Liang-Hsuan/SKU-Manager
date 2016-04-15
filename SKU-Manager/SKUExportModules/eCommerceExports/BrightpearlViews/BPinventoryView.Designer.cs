@@ -676,9 +676,9 @@
             this.currencyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.currencyButton.Location = new System.Drawing.Point(2, 699);
             this.currencyButton.Name = "currencyButton";
-            this.currencyButton.Size = new System.Drawing.Size(60, 34);
+            this.currencyButton.Size = new System.Drawing.Size(133, 34);
             this.currencyButton.TabIndex = 36;
-            this.currencyButton.Text = "USD";
+            this.currencyButton.Text = "=> USD";
             this.currencyButton.UseVisualStyleBackColor = false;
             this.currencyButton.Click += new System.EventHandler(this.currencyButton_Click);
             // 

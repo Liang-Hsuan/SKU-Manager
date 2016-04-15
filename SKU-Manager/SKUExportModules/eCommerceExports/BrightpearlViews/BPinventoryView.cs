@@ -656,7 +656,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         /* currency button that switch currency between USD and CAD */
         private void currencyButton_Click(object sender, EventArgs e)
         {
-            if (currencyButton.Text == "USD")
+            if (currencyButton.Text == @"=> USD")
             {
                 // change currency for each table
                 foreach (DataTable changeTable in table)
@@ -698,7 +698,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                     }
                 }
 
-                currencyButton.Text = "CAD";
+                currencyButton.Text = @"=> CAD";
             }
             else
             {
@@ -742,7 +742,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                     }
                 }
 
-                currencyButton.Text = "USD";
+                currencyButton.Text = @"=> USD";
             }
 
             dataGridView1.DataSource = table[0];
