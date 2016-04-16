@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.SplashModules.UploadImage
 {
-    partial class UpdateUPCForm
+    partial class UpdateUpcForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateUPCForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateUpcForm));
             this.noButton = new System.Windows.Forms.Button();
             this.yesButton = new System.Windows.Forms.Button();
             this.promptLabel = new System.Windows.Forms.Label();
@@ -99,7 +99,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UpdateUPCForm";
+            this.Name = "UpdateUpcForm";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update UPC";

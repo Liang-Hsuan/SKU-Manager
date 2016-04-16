@@ -31,8 +31,8 @@ namespace SKU_Manager.SupportingClasses.Photo
             int i = 1;    // for naming file
 
             // check if directory exists
-            if (Directory.Exists(START_DIR + "/" + prefix))
-                targetDirectory += "/" + prefix;
+            if (Directory.Exists(START_DIR + '/' + prefix))
+                targetDirectory += '/' + prefix;
             else // no image for this design, return it
                 return;
 
@@ -87,7 +87,7 @@ namespace SKU_Manager.SupportingClasses.Photo
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT UPC_Code_9, UPC_Code_10 FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT UPC_Code_9, UPC_Code_10 FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }

@@ -46,7 +46,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[0] = sku;
 
                 // looking for the data for this sku
-                foreach (Values value in list.Where(value => sku == value.SKU))
+                foreach (Values value in list.Where(value => sku == value.Sku))
                 {
                     row[1] = value.ProductId;
                     row[2] = value.Quantity;

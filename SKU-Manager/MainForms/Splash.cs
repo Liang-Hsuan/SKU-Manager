@@ -128,7 +128,7 @@ namespace SKU_Manager.MainForms
         /* the event for clicking update upc button */
         private void updateUpcImageButton_Click(object sender, EventArgs e)
         {
-            new UpdateUPCForm().ShowDialog(this);
+            new UpdateUpcForm().ShowDialog(this);
         }
 
         /* the event for clicking update global button */

@@ -9,6 +9,7 @@ using SKU_Manager.ActiveInactiveList;
 using SKU_Manager.SupportingClasses;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 
 namespace SKU_Manager.SplashModules.Update
 {
@@ -321,8 +322,8 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             productFamilyCombobox.Text = productFamily;
-            brandTextbox.Text = "Ashlin®";
-            giftCheckbox.Checked = boolean[8] == "True" ? true : false;
+            brandTextbox.Text = @"Ashlin®";
+            giftCheckbox.Checked = boolean[8] == "True";
             internalNameTextbox.Text = internalName;
             shortEnglishDescriptionTextbox.Text = shortEnglishDescription;
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
@@ -693,11 +694,11 @@ namespace SKU_Manager.SplashModules.Update
 
                 // calculate flat value for shippable width
                 if (shippableWidthTextbox.Text != "")
-                    shippableWidthTextbox.Text = (Convert.ToDouble(shippableWidthTextbox.Text) * 1.2).ToString();
+                    shippableWidthTextbox.Text = (Convert.ToDouble(shippableWidthTextbox.Text) * 1.2).ToString(CultureInfo.InvariantCulture);
 
                 // calculate flat value for shippable depth
                 if (shippableWidthTextbox.Text != "")
-                    shippableDepthTextbox.Text = (Convert.ToDouble(shippableDepthTextbox.Text) * 0.3).ToString();
+                    shippableDepthTextbox.Text = (Convert.ToDouble(shippableDepthTextbox.Text) * 0.3).ToString(CultureInfo.InvariantCulture);
             }
             else
             {
@@ -769,14 +770,14 @@ namespace SKU_Manager.SplashModules.Update
             if (!isFlat && !isFolded) // normal situation
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
             else if (isFlat && productWidthTextbox.Text != "") // is flat, calculate the flat value of width
-                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString();
+                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString(CultureInfo.InvariantCulture);
         }
         private void productDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (!isFlat && !isFolded) // normal situation
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
             else if (isFlat && productDepthTextbox.Text != "") // is flat, calculate the flat value of depth
-                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString();
+                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString(CultureInfo.InvariantCulture);
         }
         #endregion
 

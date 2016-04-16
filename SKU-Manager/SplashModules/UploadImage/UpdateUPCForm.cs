@@ -8,13 +8,13 @@ namespace SKU_Manager.SplashModules.UploadImage
     /*
      * an application module for update all the upc photo
      */
-    public partial class UpdateUPCForm : Form
+    public partial class UpdateUpcForm : Form
     {
         // field for updating
         private readonly ImageReplace image = new ImageReplace();
 
         /* constructor that initialize all the graphic components */
-        public UpdateUPCForm()
+        public UpdateUpcForm()
         {
             InitializeComponent();
         }

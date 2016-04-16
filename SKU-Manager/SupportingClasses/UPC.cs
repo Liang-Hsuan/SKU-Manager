@@ -38,7 +38,7 @@ namespace SKU_Manager.SupportingClasses
             while (upcList.Contains(iterator))
                 iterator++;
 
-            return iterator.ToString();
+            return iterator.ToString(System.Globalization.CultureInfo.InvariantCulture);
         }
 
         /* a method that returns upc code with check digit */

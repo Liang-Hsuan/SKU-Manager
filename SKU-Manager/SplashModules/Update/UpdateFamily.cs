@@ -500,8 +500,7 @@ namespace SKU_Manager.SplashModules.Update
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand();
-                    command.Connection = connection;
+                    SqlCommand command = new SqlCommand {Connection = connection};
 
                     // connect to database and update the family
                     if (caHts != "" && usHts != "")
@@ -632,9 +631,7 @@ namespace SKU_Manager.SplashModules.Update
         {
             // add selected item to the textbox
             if (promoMarketingTextbox.Text == "")
-            {
                 promoMarketingTextbox.Text = promoMarketingCombobox.SelectedItem.ToString();
-            }
             else if (!promoMarketingTextbox.Text.Contains(promoMarketingCombobox.SelectedItem.ToString()))
                 promoMarketingTextbox.Text += "; " + promoMarketingCombobox.SelectedItem;
         }

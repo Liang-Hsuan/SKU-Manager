@@ -106,7 +106,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return GetImage(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetImage(sku).Select(name => DROPBOX_URI + prefix + '/' + name).ToArray();
         }
 
         /* return all group product image in uri form */
@@ -116,7 +116,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return GetGroup(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetGroup(sku).Select(name => DROPBOX_URI + prefix + '/' + name).ToArray();
         }
 
         /* return all model product image in uri form */
@@ -126,7 +126,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return GetModel(sku).Select(name => DROPBOX_URI + prefix + "/" + name).ToArray();
+            return GetModel(sku).Select(name => DROPBOX_URI + prefix + '/' + name).ToArray();
         }
 
         /* return all template product image in uri form */
@@ -136,7 +136,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             string prefix = sku.Substring(0, sku.IndexOf('-'));
 
             // add imge to the list
-            return GetTemplate(sku).Select(name => DROPBOX_URI + "1_DESIGN%20TEMPLATE%20LAYOUTS" + prefix + "/" + name).ToArray();
+            return GetTemplate(sku).Select(name => DROPBOX_URI + "1_DESIGN%20TEMPLATE%20LAYOUTS" + prefix + '/' + name).ToArray();
         }
         #endregion
     }
