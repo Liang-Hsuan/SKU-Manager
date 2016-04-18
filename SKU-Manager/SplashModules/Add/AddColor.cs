@@ -86,15 +86,15 @@ namespace SKU_Manager.SplashModules.Add
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            if (shortFrenchDescription.Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
 
-            if (extendedFrenchDescription.Contains("Error:"))
-                MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (Translate.Error)
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;   
         }

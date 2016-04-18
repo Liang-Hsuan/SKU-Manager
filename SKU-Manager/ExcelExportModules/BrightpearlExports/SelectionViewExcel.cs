@@ -3,6 +3,8 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportTables;
+using SKU_Manager.SupportingClasses;
+using System.Data.SqlClient;
 
 namespace SKU_Manager.ExcelExportModules.BrightpearlExports
 {
@@ -12,22 +14,34 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
         private DataSet ds = new DataSet();
         private ExportTable[] exportTables;
 
+        // supporting field
+        private readonly double usd;
+
         /* constructor that initialize graphic components */
         public SelectionViewExcel()
         {
             InitializeComponent();
+
+            // get the rate for USD currency
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            {
+                SqlCommand command = new SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                usd = reader.GetDouble(0);
+            }
         }
 
         /* the event for inventory button click */
         private void inventoryButton_Click(object sender, EventArgs e)
         {
             #region Error Check
-
             // the case if stock quantity table has not been loaded yet
             if (Properties.Settings.Default.StockQuantityTable == null)
             {
                 MessageBox.Show(
-                    "For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.",
+                    "For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.",
                     "Sorry", MessageBoxButtons.OK);
                 return;
             }
@@ -43,7 +57,6 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             #endregion
 
             // save the file
@@ -65,6 +78,10 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
             for (int i = 0; i < 8; i++)
                 textIndex[i] = index;
 
+            // get the save path info
+            string extension = saveFileDialog.FileName.Substring(saveFileDialog.FileName.LastIndexOf('.'));
+            string path = saveFileDialog.FileName.Remove(saveFileDialog.FileName.LastIndexOf('.'));
+
             if (Properties.Settings.Default.BPcodedBlankTable != null &&
                 Properties.Settings.Default.BPcodedImprintTable != null &&
                 Properties.Settings.Default.BPrushCodedBlankTable != null &&
@@ -83,15 +100,157 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 ds.Tables.Add(Properties.Settings.Default.BPrushNetBlankTable);
                 ds.Tables.Add(Properties.Settings.Default.BPrushNetImprintTable);
 
+                // the case if the save tables are in USD -> change sheets' names to USD
+                if (Currency.CurrencyNow == "USD")
+                {
+                    names[0] = "Coded Blank - USD";
+                    names[1] = "Coded Imprinted - USD";
+                    names[2] = "Rush Coded Blank - USD";
+                    names[3] = "Rush Coded Imprinted- USD";
+                    names[4] = "Net Blank - USD";
+                    names[5] = "Net Imprinted - USD";
+                    names[6] = "Rush Net Blank - USD";
+                    names[7] = "Rush Net Imprinted - USD";
+                }
+
                 try
                 {
                     // export the excel files    
-                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    export.NowExport(path + '_' + Currency.CurrencyNow + extension, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+                }
+
+                if (Currency.CurrencyNow == "USD")
+                {
+                    // change currency for each table -> to CAD
+                    foreach (DataTable table in ds.Tables)
+                    {
+                        // change currency for each row in the table -> to CAD
+                        foreach (DataRow row in table.Rows)
+                        {
+                            double[] costList = new double[9];
+                            string cost = row[4].ToString();
+
+                            costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[8] = double.Parse(cost) / usd;
+
+                            row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
+                                     costList[7] + "; " + costList[8];
+                        }
+                    }
+
+                    // change sheets' names to CAD
+                    names[0] = "Coded Blank - CAD";
+                    names[1] = "Coded Imprinted - CAD";
+                    names[2] = "Rush Coded Blank - CAD";
+                    names[3] = "Rush Coded Imprinted- CAD";
+                    names[4] = "Net Blank - CAD";
+                    names[5] = "Net Imprinted - CAD";
+                    names[6] = "Rush Net Blank - CAD";
+                    names[7] = "Rush Net Imprinted - CAD";
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport(); 
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    // change currency for each table -> to USD
+                    foreach (DataTable table in ds.Tables)
+                    {
+                        // change currency for each row in the table -> to USD
+                        foreach (DataRow row in table.Rows)
+                        {
+                            double[] costList = new double[9];
+                            string cost = row[4].ToString();
+
+                            costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[8] = double.Parse(cost) * usd;
+
+                            row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
+                                     costList[7] + "; " + costList[8];
+                        }
+                    }
+
+                    // change sheets' names to USD
+                    names[0] = "Coded Blank - USD";
+                    names[1] = "Coded Imprinted - USD";
+                    names[2] = "Rush Coded Blank - USD";
+                    names[3] = "Rush Coded Imprinted- USD";
+                    names[4] = "Net Blank - USD";
+                    names[5] = "Net Imprinted - USD";
+                    names[6] = "Rush Net Blank - USD";
+                    names[7] = "Rush Net Imprinted - USD";
+
+                    try
+                    {
+                        // export the excel files  
+                        export = new XlExport();  
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             else // load the tables
@@ -116,7 +275,69 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     try
                     {
                         // export the excel files   
-                        export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // change currency for each table -> to USD
+                    foreach (DataTable table in ds.Tables)
+                    {
+                        // change currency for each row in the table -> to USD
+                        foreach (DataRow row in table.Rows)
+                        {
+                            double[] costList = new double[9];
+                            string cost = row[4].ToString();
+
+                            costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
+                            cost = cost.Substring(cost.IndexOf(';') + 2);
+
+                            costList[8] = double.Parse(cost) * usd;
+
+                            row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
+                                     costList[7] + "; " + costList[8];
+                        }
+                    }
+
+                    // change sheets' names to USD
+                    names[0] = "Coded Blank - USD";
+                    names[1] = "Coded Imprinted - USD";
+                    names[2] = "Rush Coded Blank - USD";
+                    names[3] = "Rush Coded Imprinted- USD";
+                    names[4] = "Net Blank - USD";
+                    names[5] = "Net Imprinted - USD";
+                    names[6] = "Rush Net Blank - USD";
+                    names[7] = "Rush Net Imprinted - USD";
+
+                    try
+                    {
+                        // export the excel files  
+                        export = new XlExport();  
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
                     }
                     catch (Exception ex)
                     {

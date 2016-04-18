@@ -36,8 +36,15 @@
             this.caHtsLabel = new System.Windows.Forms.Label();
             this.usHtsLabel = new System.Windows.Forms.Label();
             this.backgroundWorkerUpdate = new System.ComponentModel.BackgroundWorker();
+            this.currencyLabel = new System.Windows.Forms.Label();
+            this.dataGridViewCurrency = new System.Windows.Forms.DataGridView();
+            this.listview = new System.Windows.Forms.ListView();
+            this.currency = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lastestCurrencyLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurrency)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewCA
@@ -50,7 +57,7 @@
             this.dataGridViewCA.GridColor = System.Drawing.Color.Purple;
             this.dataGridViewCA.Location = new System.Drawing.Point(0, 45);
             this.dataGridViewCA.Name = "dataGridViewCA";
-            this.dataGridViewCA.Size = new System.Drawing.Size(655, 558);
+            this.dataGridViewCA.Size = new System.Drawing.Size(655, 283);
             this.dataGridViewCA.TabIndex = 2;
             // 
             // progressBar
@@ -62,7 +69,7 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(1345, 150);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 5;
+            this.progressBar.TabIndex = 8;
             // 
             // udpateButton
             // 
@@ -75,7 +82,7 @@
             this.udpateButton.Location = new System.Drawing.Point(584, 644);
             this.udpateButton.Name = "udpateButton";
             this.udpateButton.Size = new System.Drawing.Size(184, 80);
-            this.udpateButton.TabIndex = 4;
+            this.udpateButton.TabIndex = 9;
             this.udpateButton.Text = "Update HTS";
             this.udpateButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.udpateButton.UseVisualStyleBackColor = false;
@@ -91,7 +98,7 @@
             this.dataGridViewUS.GridColor = System.Drawing.Color.Purple;
             this.dataGridViewUS.Location = new System.Drawing.Point(682, 45);
             this.dataGridViewUS.Name = "dataGridViewUS";
-            this.dataGridViewUS.Size = new System.Drawing.Size(655, 558);
+            this.dataGridViewUS.Size = new System.Drawing.Size(655, 283);
             this.dataGridViewUS.TabIndex = 3;
             // 
             // caHtsLabel
@@ -124,13 +131,81 @@
             this.backgroundWorkerUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerUpdate_DoWork);
             this.backgroundWorkerUpdate.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerUpdate_ProgressChanged);
             // 
-            // UpdateHTS
+            // currencyLabel
+            // 
+            this.currencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.currencyLabel.AutoSize = true;
+            this.currencyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currencyLabel.ForeColor = System.Drawing.Color.Purple;
+            this.currencyLabel.Location = new System.Drawing.Point(-4, 346);
+            this.currencyLabel.Name = "currencyLabel";
+            this.currencyLabel.Size = new System.Drawing.Size(140, 24);
+            this.currencyLabel.TabIndex = 4;
+            this.currencyLabel.Text = "Currency Table";
+            // 
+            // dataGridViewCurrency
+            // 
+            this.dataGridViewCurrency.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dataGridViewCurrency.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewCurrency.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewCurrency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCurrency.GridColor = System.Drawing.Color.Purple;
+            this.dataGridViewCurrency.Location = new System.Drawing.Point(178, 346);
+            this.dataGridViewCurrency.Name = "dataGridViewCurrency";
+            this.dataGridViewCurrency.Size = new System.Drawing.Size(477, 257);
+            this.dataGridViewCurrency.TabIndex = 5;
+            // 
+            // listview
+            // 
+            this.listview.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.listview.BackColor = System.Drawing.Color.White;
+            this.listview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.currency,
+            this.value});
+            this.listview.ForeColor = System.Drawing.Color.Purple;
+            this.listview.GridLines = true;
+            this.listview.Location = new System.Drawing.Point(682, 346);
+            this.listview.Name = "listview";
+            this.listview.Size = new System.Drawing.Size(477, 257);
+            this.listview.TabIndex = 6;
+            this.listview.UseCompatibleStateImageBehavior = false;
+            this.listview.View = System.Windows.Forms.View.Details;
+            this.listview.Visible = false;
+            // 
+            // currency
+            // 
+            this.currency.Text = "Currency";
+            this.currency.Width = 193;
+            // 
+            // value
+            // 
+            this.value.Text = "Value";
+            this.value.Width = 257;
+            // 
+            // lastestCurrencyLabel
+            // 
+            this.lastestCurrencyLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lastestCurrencyLabel.AutoSize = true;
+            this.lastestCurrencyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lastestCurrencyLabel.ForeColor = System.Drawing.Color.Purple;
+            this.lastestCurrencyLabel.Location = new System.Drawing.Point(1179, 346);
+            this.lastestCurrencyLabel.Name = "lastestCurrencyLabel";
+            this.lastestCurrencyLabel.Size = new System.Drawing.Size(149, 24);
+            this.lastestCurrencyLabel.TabIndex = 7;
+            this.lastestCurrencyLabel.Text = "Lastest Currency";
+            this.lastestCurrencyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // UpdateHts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1330, 751);
+            this.Controls.Add(this.lastestCurrencyLabel);
+            this.Controls.Add(this.listview);
+            this.Controls.Add(this.dataGridViewCurrency);
+            this.Controls.Add(this.currencyLabel);
             this.Controls.Add(this.usHtsLabel);
             this.Controls.Add(this.caHtsLabel);
             this.Controls.Add(this.dataGridViewUS);
@@ -148,6 +223,7 @@
             this.Load += new System.EventHandler(this.UpdateHTS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCurrency)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +238,11 @@
         private System.Windows.Forms.Label caHtsLabel;
         private System.Windows.Forms.Label usHtsLabel;
         private System.ComponentModel.BackgroundWorker backgroundWorkerUpdate;
+        private System.Windows.Forms.Label currencyLabel;
+        private System.Windows.Forms.DataGridView dataGridViewCurrency;
+        private System.Windows.Forms.ListView listview;
+        private System.Windows.Forms.Label lastestCurrencyLabel;
+        private System.Windows.Forms.ColumnHeader currency;
+        private System.Windows.Forms.ColumnHeader value;
     }
 }

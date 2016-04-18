@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
+using System;
 using System.Data.SqlClient;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -67,6 +68,12 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             {
                 GC.Collect();
             }
+        }
+
+        /* a method that update giant tiger inventory data and create purchase order if necessary, also send email for notification */
+        public void Update(GiantTigerInventoryValues[] list)
+        {
+
         }
     }
 }

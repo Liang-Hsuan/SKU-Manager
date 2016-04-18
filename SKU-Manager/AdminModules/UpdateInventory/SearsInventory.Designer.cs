@@ -36,7 +36,6 @@
             this.backgroundWorkerTable = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.updateButton = new System.Windows.Forms.Button();
-            this.processingLabel = new System.Windows.Forms.Label();
             this.nextAvailableDaysLabel = new System.Windows.Forms.Label();
             this.availableDaysUpdown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -104,24 +103,11 @@
             this.updateButton.Location = new System.Drawing.Point(570, 652);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(184, 80);
-            this.updateButton.TabIndex = 6;
+            this.updateButton.TabIndex = 5;
             this.updateButton.Text = "Update Inventory";
             this.updateButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.updateButton.UseVisualStyleBackColor = false;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // processingLabel
-            // 
-            this.processingLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.processingLabel.AutoSize = true;
-            this.processingLabel.BackColor = System.Drawing.Color.White;
-            this.processingLabel.ForeColor = System.Drawing.Color.Purple;
-            this.processingLabel.Location = new System.Drawing.Point(627, 636);
-            this.processingLabel.Name = "processingLabel";
-            this.processingLabel.Size = new System.Drawing.Size(68, 13);
-            this.processingLabel.TabIndex = 5;
-            this.processingLabel.Text = "Processing...";
-            this.processingLabel.Visible = false;
             // 
             // nextAvailableDaysLabel
             // 
@@ -159,7 +145,6 @@
             this.ClientSize = new System.Drawing.Size(1330, 755);
             this.Controls.Add(this.availableDaysUpdown);
             this.Controls.Add(this.nextAvailableDaysLabel);
-            this.Controls.Add(this.processingLabel);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.loadingLabel);
@@ -185,7 +170,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerTable;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.Label processingLabel;
         private System.Windows.Forms.Label nextAvailableDaysLabel;
         private System.Windows.Forms.NumericUpDown availableDaysUpdown;
     }

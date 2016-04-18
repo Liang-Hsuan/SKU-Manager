@@ -127,7 +127,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             #region Email
             // generating email body
             string body = "SKU need to be purchased: (Po Number = " + poNumber + ")\n\r";
-            body = skuList.Aggregate(body, (current1, sku) => current1 + sku + "\n");
+            body = skuList.Aggregate(body, (current1, sku) => current1 + sku + '\n');
 
             // send email
             MailMessage mail = new MailMessage();

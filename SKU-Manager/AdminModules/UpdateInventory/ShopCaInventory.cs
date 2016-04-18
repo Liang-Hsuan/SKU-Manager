@@ -82,9 +82,10 @@ namespace SKU_Manager.AdminModules.UpdateInventory
                 loadingLabel.Text += '.';
         }
 
+        /* button event for update that refresh the inventory data in shop.ca */
         private void updateButton_Click(object sender, EventArgs e)
         {
-            processingLabel.Visible = true;
+            Cursor.Current = Cursors.WaitCursor;
 
             #region Processing
             // local fields
@@ -115,7 +116,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             }
             #endregion
 
-            processingLabel.Visible = false;
+            Cursor.Current = Cursors.Default;
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
 {
     /*
-     * A class for storing shop.ca inventory values in order to generate csv file
+     * A class for storing shop.ca inventory values in order to generate txt file
      */
     public class ShopCaInventoryValues
     {

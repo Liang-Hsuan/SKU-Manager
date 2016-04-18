@@ -396,8 +396,8 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            if (shortFrenchDescription.Contains("Error:"))
-                MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (Translate.Error)
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
         }

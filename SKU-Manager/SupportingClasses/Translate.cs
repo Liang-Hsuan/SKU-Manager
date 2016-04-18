@@ -14,9 +14,16 @@ namespace SKU_Manager.SupportingClasses
         private static WebRequest request;
         private static HttpWebResponse response;
 
+        // fields for error indication
+        public static bool Error { get; private set; }
+        public static string ErrorMessage { get; private set; }
+
         /* translate the english string provided */
         public static string NowTranslate(string englishString)
         {
+            // set error to false
+            Error = false;
+
             // format translate string
             string copy = englishString.Trim();
             copy = copy.Replace("\n", " ");
@@ -38,7 +45,9 @@ namespace SKU_Manager.SupportingClasses
             }
             catch (WebException ex)
             {
-                return "Error: " + ex.Message;
+                Error = true;
+                ErrorMessage = ex.Message;
+                return null;
             }
 
             // read all the text from JSON response

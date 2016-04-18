@@ -1,7 +1,9 @@
 ﻿using SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportTables;
+using SKU_Manager.SupportingClasses;
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
@@ -18,6 +20,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         private readonly int[] timeLeft = new int[8];
 
         // supporting field
+        private readonly double usd;
         private readonly bool[] done = new bool[8];
 
         // initialize brightpearl inventory Table objects
@@ -27,6 +30,16 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         public BPinventoryView()
         {
             InitializeComponent();
+
+            // get the rate for USD currency
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            {
+                SqlCommand command = new SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                usd = reader.GetDouble(0);
+            }
 
             // initialize export tables
             exportTable[0] = new BPcodedBlankExportTable();
@@ -125,8 +138,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[0] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -139,8 +153,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[1] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -153,8 +168,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[2] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -167,8 +183,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[3] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -181,8 +198,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[4] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker6_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -195,8 +213,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[5] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -209,8 +228,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[6] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -223,8 +243,9 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             done[7] = true;
 
-            if (done[0] && done[1] && done[2] && done[3] && done[4] && done[5] && done[6] && done[7])
-                currencyButton.Enabled = true;
+            if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
+            currencyButton.Enabled = true;
+            Currency.CurrencyNow = "CAD";
         }
         #endregion
 
@@ -661,37 +682,37 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 // change currency for each table
                 foreach (DataTable changeTable in table)
                 {
-                    // change currency 
+                    // change currency for each row in the table
                     foreach (DataRow row in changeTable.Rows)
                     {
                         double[] costList = new double[9];
                         string cost = row[4].ToString();
 
-                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) * 0.8;
+                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) * usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[8] = double.Parse(cost) * 0.8;
+                        costList[8] = double.Parse(cost) * usd;
 
                         row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
                                  costList[7] + "; " + costList[8];
@@ -713,31 +734,31 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                         double[] costList = new double[9];
                         string cost = row[4].ToString();
 
-                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[0] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[1] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[2] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[3] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[4] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[5] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[6] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) / 0.8;
+                        costList[7] = double.Parse(cost.Remove(cost.IndexOf(';'))) / usd;
                         cost = cost.Substring(cost.IndexOf(';') + 2);
 
-                        costList[8] = double.Parse(cost) * 0.8;
+                        costList[8] = double.Parse(cost) * usd;
 
                         row[4] = costList[0] + "; " + costList[1] + "; " + costList[2] + "; " + costList[3] + "; " + costList[4] + "; " + costList[5] + "; " + costList[6] + "; " +
                                  costList[7] + "; " + costList[8];

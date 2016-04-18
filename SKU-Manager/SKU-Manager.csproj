@@ -147,6 +147,14 @@
     <Compile Include="AdminModules\ImportUpdate\ImportUpdate.cs" />
     <Compile Include="AdminModules\ImportUpdate\Sears.cs" />
     <Compile Include="AdminModules\ImportUpdate\ShopCa.cs" />
+    <Compile Include="AdminModules\UpdateInventory\GiantTigerInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminModules\UpdateInventory\GiantTigerInventory.Designer.cs">
+      <DependentUpon>GiantTigerInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminModules\UpdateInventory\InventoryTable\GiantTigerInventoryTable.cs" />
+    <Compile Include="AdminModules\UpdateInventory\InventoryTable\GiantTigerInventoryValues.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryTable.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\SearsInventoryValues.cs" />
     <Compile Include="AdminModules\UpdateInventory\InventoryTable\ShopCaInventoryTable.cs" />
@@ -573,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyChannelPricing.resx">
       <DependentUpon>ModifyChannelPricing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminModules\UpdateInventory\GiantTigerInventory.resx">
+      <DependentUpon>GiantTigerInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModules\UpdateInventory\SearsInventory.resx">
       <DependentUpon>SearsInventory.cs</DependentUpon>

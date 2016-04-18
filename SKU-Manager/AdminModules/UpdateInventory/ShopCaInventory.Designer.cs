@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShopCaInventory));
             this.availableDaysUpdown = new System.Windows.Forms.NumericUpDown();
             this.nextAvailableDaysLabel = new System.Windows.Forms.Label();
-            this.processingLabel = new System.Windows.Forms.Label();
             this.updateButton = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();
             this.loadingLabel = new System.Windows.Forms.Label();
@@ -71,19 +70,6 @@
             this.nextAvailableDaysLabel.TabIndex = 3;
             this.nextAvailableDaysLabel.Text = "Next Available Days:";
             // 
-            // processingLabel
-            // 
-            this.processingLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.processingLabel.AutoSize = true;
-            this.processingLabel.BackColor = System.Drawing.Color.White;
-            this.processingLabel.ForeColor = System.Drawing.Color.Purple;
-            this.processingLabel.Location = new System.Drawing.Point(627, 636);
-            this.processingLabel.Name = "processingLabel";
-            this.processingLabel.Size = new System.Drawing.Size(68, 13);
-            this.processingLabel.TabIndex = 5;
-            this.processingLabel.Text = "Processing...";
-            this.processingLabel.Visible = false;
-            // 
             // updateButton
             // 
             this.updateButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -95,7 +81,7 @@
             this.updateButton.Location = new System.Drawing.Point(570, 652);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(184, 80);
-            this.updateButton.TabIndex = 6;
+            this.updateButton.TabIndex = 5;
             this.updateButton.Text = "Update Inventory";
             this.updateButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.updateButton.UseVisualStyleBackColor = false;
@@ -159,7 +145,6 @@
             this.ClientSize = new System.Drawing.Size(1330, 755);
             this.Controls.Add(this.availableDaysUpdown);
             this.Controls.Add(this.nextAvailableDaysLabel);
-            this.Controls.Add(this.processingLabel);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.loadingLabel);
@@ -183,7 +168,6 @@
 
         private System.Windows.Forms.NumericUpDown availableDaysUpdown;
         private System.Windows.Forms.Label nextAvailableDaysLabel;
-        private System.Windows.Forms.Label processingLabel;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.Label loadingLabel;

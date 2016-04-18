@@ -27,7 +27,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
 
             using (SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
-                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = \'Brightpearl\';", authenticationConnection);
+                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = 'Brightpearl'", authenticationConnection);
                 authenticationConnection.Open();
                 SqlDataReader reader = getAuthetication.ExecuteReader();
                 reader.Read();
@@ -286,7 +286,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             public string ProductTextResponse(int starting)
             {
                 // uri for getting all item on brightpearl
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product/" + starting + "-" + (starting + 199);
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/product-service/product/" + starting + '-' + (starting + 199);
 
                 // post request to uri
                 request = WebRequest.Create(uri);
@@ -320,7 +320,7 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             public string QuantityTextResponse(int starting, int ending)
             {
                 // generate search uri
-                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/warehouse-service/product-availability/" + starting + "-" + ending;
+                string uri = "https://ws-use.brightpearl.com/2.0.0/ashlin/warehouse-service/product-availability/" + starting + '-' + ending;
 
                 // post request to uri
                 request = WebRequest.Create(uri);

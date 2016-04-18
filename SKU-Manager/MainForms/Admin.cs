@@ -254,6 +254,7 @@ namespace SKU_Manager.MainForms
                     case "Amazon":
                         break;
                     case "Giant Tiger":
+                        new GiantTigerInventory().ShowDialog(this);
                         break;
                 }
             }

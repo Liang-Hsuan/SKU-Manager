@@ -529,29 +529,29 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerTranslate1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            if (shortFrenchDescription.Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(shortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
 
-            if (extendedFrenchDescription.Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(extendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
 
-            if (trendShortFrenchDescription.Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(trendShortFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             trendFrenchShortTextbox.Text = trendShortFrenchDescription;
 
-            if (trendExtendedFrenchDescription.Contains("Error:"))
-                MessageBox.Show(trendExtendedFrenchDescription, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (Translate.Error)
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 trendFrenchExtendedTextbox.Text = trendExtendedFrenchDescription;
         }
@@ -609,36 +609,36 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerTranslate2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // show result to textbox
-            if (frenchOption[0].Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(frenchOption[0], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             option1FrenchTextbox.Text = frenchOption[0];
 
-            if (frenchOption[1].Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(frenchOption[1], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             option2FrenchTextbox.Text = frenchOption[1];
 
-            if (frenchOption[2].Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(frenchOption[2], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             option3FrenchTextbox.Text = frenchOption[2];
 
-            if (frenchOption[3].Contains("Error:"))
+            if (Translate.Error)
             {
-                MessageBox.Show(frenchOption[3], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             option4FrenchTextbox.Text = frenchOption[3];
 
-            if (frenchOption[4].Contains("Error:"))
-                MessageBox.Show(frenchOption[4], "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (Translate.Error)
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 option5FrenchTextbox.Text = frenchOption[4];
         }

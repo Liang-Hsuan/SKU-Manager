@@ -66,8 +66,8 @@ namespace SKU_Manager.SplashModules
         }
         private void backgroundWorkerTranslate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (French.Contains("Error:"))
-                MessageBox.Show(French, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (Translate.Error)
+                MessageBox.Show("Error: " + Translate.ErrorMessage, "Translate Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
                 frenchTextbox.Text = French;
         }
