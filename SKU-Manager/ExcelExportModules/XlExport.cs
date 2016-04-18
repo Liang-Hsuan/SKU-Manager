@@ -90,9 +90,7 @@ namespace SKU_Manager.ExcelExportModules
 
                 // insert column names
                 for (int column = 0; column < columns; column++)
-                {
                     data[0, column] = ds.Tables[i].Columns[column].ColumnName;
-                }
 
                 // insert data
                 for (int row = 0; row < rows; row++)
@@ -136,9 +134,7 @@ namespace SKU_Manager.ExcelExportModules
 
                 // insert column names
                 for (int column = 0; column < columns; column++)
-                {
                     data[0, column] = ds.Tables[i].Columns[column].ColumnName;
-                }
 
                 // insert data
                 for (int row = 0; row < rows; row++)

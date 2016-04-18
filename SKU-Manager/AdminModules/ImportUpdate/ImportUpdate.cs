@@ -27,13 +27,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public abstract void Discontinue(string sku);
 
         /* a supporting method that create the po number for the channel */
-        protected static string createPoNumber(string channelNo)
+        protected static string CreatePoNumber(string channelNo)
         {
             return channelNo + '-' + DateTime.Today.ToString("yyyyMMdd");
         }
 
         /* a supporting method that release the excel object */
-        protected static void releaseObject(object obj)
+        protected static void ReleaseObject(object obj)
         {
             try
             {

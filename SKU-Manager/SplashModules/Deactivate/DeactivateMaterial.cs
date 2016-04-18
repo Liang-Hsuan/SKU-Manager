@@ -45,7 +45,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Active = \'True\' ORDER BY Material_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Active = 'True' ORDER BY Material_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -94,7 +94,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended, Material_Online, Material_Online_FR " 
-                                                          + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
+                                                          + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -137,7 +137,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 // connect to database and activat the material
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Active =  \'False\', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MMMM-dd") + "\' "
+                    SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MMMM-dd") + "\' "
                                                       + "WHERE Material_Code = \'" + materialCode + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();

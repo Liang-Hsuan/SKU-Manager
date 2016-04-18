@@ -81,7 +81,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             SqlCommand command  = new SqlCommand("SELECT Short_Description, UPC_Code_9, UPC_Code_10 " +
                                                  "FROM master_SKU_Attributes sku " +
                                                  "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                 "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
+                                                 "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 2; i++)

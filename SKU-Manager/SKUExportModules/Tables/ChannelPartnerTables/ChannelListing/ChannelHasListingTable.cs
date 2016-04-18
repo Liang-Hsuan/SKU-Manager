@@ -109,7 +109,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
 
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND (SKU_BESTBUY_CA != '' OR SKU_AMAZON_CA != '' OR "
-                                              + "SKU_AMAZON_COM != '' OR SKU_STAPLES_CA != '' OR SKU_WALMART_CA != '' OR SKU_SHOP_CA != '' OR SKU_SEARS_CA != '' OR SKU_GIANT_TIGER != '');", connection);
+                                              + "SKU_AMAZON_COM != '' OR SKU_STAPLES_CA != '' OR SKU_WALMART_CA != '' OR SKU_SHOP_CA != '' OR SKU_SEARS_CA != '' OR SKU_GIANT_TIGER != '')", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

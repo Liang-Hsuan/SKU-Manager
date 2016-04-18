@@ -42,7 +42,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
 
                 // grab data
                 adapter = new SqlDataAdapter("SELECT Channel_No, Channel_Name, Marketplace, Currency, Msrp_Disc, Ship_Incl_Flag, Base_Ship, " + 
-                                             "Gross_Marg, Sell_Net, Sell_Msrp, Sell_Cents, Default_Ship_Price FROM Channel_Pricing;", connection);
+                                             "Gross_Marg, Sell_Net, Sell_Msrp, Sell_Cents, Default_Ship_Price FROM Channel_Pricing", connection);
                 connection.Open();
                 adapter.Fill(dataSet, "Channel_Pricing");
                 connection.Close();

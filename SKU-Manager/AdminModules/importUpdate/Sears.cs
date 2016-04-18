@@ -23,7 +23,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             // get credentials for sears sftp log on and initialize the field
             using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
-                SqlCommand command = new SqlCommand("SELECT Field1_Value, Field2_Value, Field3_Value FROM ASCM_Credentials WHERE Source = 'CommerceHub' and Client = 'Sears';", connection);
+                SqlCommand command = new SqlCommand("SELECT Field1_Value, Field2_Value, Field3_Value FROM ASCM_Credentials WHERE Source = 'CommerceHub' and Client = 'Sears'", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -53,7 +53,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                 string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
 
                 // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\';", connection);
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
                 command.ExecuteNonQuery();
                 Current = row;
             }
@@ -62,9 +62,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             xlWorkBook.Close(true, null, null);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            ReleaseObject(xlWorkSheet);
+            ReleaseObject(xlWorkBook);
+            ReleaseObject(xlApp);
         }
 
         /* a method that update sears inventory data and create purchase order if necessary, also send email for notification */
@@ -110,7 +110,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\SearsInventory";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            string poNumber = createPoNumber("2002");
+            string poNumber = CreatePoNumber("2002");
             path += "\\" + poNumber + DateTime.Now.ToString("HHmm") + ".xsd";
             StreamWriter writer = new StreamWriter(path);
             writer.WriteLine(xml);
@@ -150,7 +150,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
         public override void Discontinue(string sku)
         {
-            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();

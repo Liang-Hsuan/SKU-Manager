@@ -22,7 +22,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         {
             using (connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_SEARS_CA FROM master_SKU_Attributes WHERE SKU_SEARS_CA != '';", connection);
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_SEARS_CA FROM master_SKU_Attributes WHERE SKU_SEARS_CA != ''", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -73,13 +73,13 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 row[1] = sku.SearsSku;                                  // sears sku
                 try
                 {
-                    DataRow rowCopy = table.Select("SKU = \'" + sku.AshlinSku + "\'")[0];
+                    DataRow rowCopy = table.Select("SKU = \'" + sku.AshlinSku + '\'')[0];
                     row[2] = rowCopy[1];                                // bp item id
                     row[3] = rowCopy[2];                                // on hand
                     row[4] = rowCopy[3];                                // reorder quantity
                     row[5] = rowCopy[4];                                // reorder level
                 }
-                catch { /* ignore */ }
+                catch { /* ignore -> null case */ }
                 row[6] = false;                                         // purchase order
                 row[7] = false;                                         // discontinue
 

@@ -134,7 +134,7 @@ namespace SKU_Manager.SplashModules.Activate
         {
             designCodeTextbox.Text = designCode;
             productFamilyTextbox.Text = productFamily;
-            brandTextbox.Text = "Ashlin®";
+            brandTextbox.Text = @"Ashlin®";
             designServiceFlagTextbox.Text = designServiceFlag;
             internalNameTextbox.Text = internalName;
             designDescriptionTextbox.Text = designDescription;
@@ -168,7 +168,7 @@ namespace SKU_Manager.SplashModules.Activate
             // connect to database and activate the color
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  \'True\', Date_Activated = \'" + DateTime.Now.ToString() + "\' "
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                   + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
                 connection.Open();
                 command.ExecuteNonQuery();

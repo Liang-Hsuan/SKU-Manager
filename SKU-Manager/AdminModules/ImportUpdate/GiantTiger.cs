@@ -37,7 +37,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                 string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
 
                 // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\';", connection);
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
                 command.ExecuteNonQuery();
                 Current = row;
             }
@@ -46,13 +46,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             xlWorkBook.Close(true, null, null);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            ReleaseObject(xlWorkSheet);
+            ReleaseObject(xlWorkBook);
+            ReleaseObject(xlApp);
         }
 
         /* a supporting method that release the excel object */
-        private static void releaseObject(object obj)
+        private static void ReleaseObject(object obj)
         {
             try
             {

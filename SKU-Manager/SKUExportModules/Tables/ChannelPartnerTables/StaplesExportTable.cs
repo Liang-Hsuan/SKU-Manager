@@ -165,7 +165,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                                                         "FROM master_SKU_Attributes sku " +
                                                         "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                         "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "WHERE sku.Active = \'True\' AND SKU_STAPLES_CA != \'\' ORDER BY SKU_Ashlin;", connection);
+                                                        "WHERE sku.Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             adapter.Fill(table);
             connection.Close();
@@ -179,7 +179,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
             double[] list = new double[5];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();

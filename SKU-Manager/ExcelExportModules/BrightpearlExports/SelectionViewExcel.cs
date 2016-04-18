@@ -22,10 +22,13 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
         private void inventoryButton_Click(object sender, EventArgs e)
         {
             #region Error Check
+
             // the case if stock quantity table has not been loaded yet
             if (Properties.Settings.Default.StockQuantityTable == null)
             {
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show(
+                    "For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.",
+                    "Sorry", MessageBoxButtons.OK);
                 return;
             }
 
@@ -40,48 +43,79 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             #endregion
 
             // save the file
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                // formatting fields
-                ds.Reset();
-                string[] names = new string[8];
-                names[0] = "Coded Blank Price List";
-                names[1] = "Coded Imprinted Price List";
-                names[2] = "Rush Coded Blank Price List";
-                names[3] = "Rush Coded Imprinted Price List";
-                names[4] = "Net Blank Price List";
-                names[5] = "Net Imprinted Price List";
-                names[6] = "Rush Net Blank Price List";
-                names[7] = "Rush Net Imprinted Price List";
-                int[][] textIndex = new int[8][];
-                int[] index = {2};
-                for (int i = 0; i < 8; i++)
-                    textIndex[i] = index;
+            if (saveFileDialog.ShowDialog(this) != DialogResult.OK) return;
 
-                if (Properties.Settings.Default.BPcodedBlankTable != null &&
-                    Properties.Settings.Default.BPcodedImprintTable != null &&
-                    Properties.Settings.Default.BPrushCodedBlankTable != null &&
-                    Properties.Settings.Default.BPrushCodedImprintTable != null
-                    && Properties.Settings.Default.BPnetBlankTable != null &&
-                    Properties.Settings.Default.BPnetImprintTable != null &&
-                    Properties.Settings.Default.BPrushNetBlankTable != null &&
-                    Properties.Settings.Default.BPrushNetImprintTable != null) // tables have already been saved
+            // formatting fields
+            ds.Reset();
+            string[] names = new string[8];
+            names[0] = "Coded Blank - CAD";
+            names[1] = "Coded Imprinted - CAD";
+            names[2] = "Rush Coded Blank - CAD";
+            names[3] = "Rush Coded Imprinted- CAD";
+            names[4] = "Net Blank - CAD";
+            names[5] = "Net Imprinted - CAD";
+            names[6] = "Rush Net Blank - CAD";
+            names[7] = "Rush Net Imprinted - CAD";
+            int[][] textIndex = new int[8][];
+            int[] index = {2};
+            for (int i = 0; i < 8; i++)
+                textIndex[i] = index;
+
+            if (Properties.Settings.Default.BPcodedBlankTable != null &&
+                Properties.Settings.Default.BPcodedImprintTable != null &&
+                Properties.Settings.Default.BPrushCodedBlankTable != null &&
+                Properties.Settings.Default.BPrushCodedImprintTable != null
+                && Properties.Settings.Default.BPnetBlankTable != null &&
+                Properties.Settings.Default.BPnetImprintTable != null &&
+                Properties.Settings.Default.BPrushNetBlankTable != null &&
+                Properties.Settings.Default.BPrushNetImprintTable != null) // tables have already been saved
+            {
+                ds.Tables.Add(Properties.Settings.Default.BPcodedBlankTable);
+                ds.Tables.Add(Properties.Settings.Default.BPcodedImprintTable);
+                ds.Tables.Add(Properties.Settings.Default.BPrushCodedBlankTable);
+                ds.Tables.Add(Properties.Settings.Default.BPrushCodedImprintTable);
+                ds.Tables.Add(Properties.Settings.Default.BPnetBlankTable);
+                ds.Tables.Add(Properties.Settings.Default.BPnetImprintTable);
+                ds.Tables.Add(Properties.Settings.Default.BPrushNetBlankTable);
+                ds.Tables.Add(Properties.Settings.Default.BPrushNetImprintTable);
+
+                try
                 {
-                    ds.Tables.Add(Properties.Settings.Default.BPcodedBlankTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPcodedImprintTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPrushCodedBlankTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPrushCodedImprintTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPnetBlankTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPnetImprintTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPrushNetBlankTable);
-                    ds.Tables.Add(Properties.Settings.Default.BPrushNetImprintTable);
+                    // export the excel files    
+                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else // load the tables
+            {
+                exportTables = new ExportTable[8];
+                exportTables[0] = new BPcodedBlankExportTable();
+                exportTables[1] = new BPcodedImprintExportTable();
+                exportTables[2] = new BPrushCodedBlankExportTable();
+                exportTables[3] = new BPrushCodedImprintExportTable();
+                exportTables[4] = new BPnetBlankExportTable();
+                exportTables[5] = new BPnetImprintExportTable();
+                exportTables[6] = new BPrushNetBlankExportTable();
+                exportTables[7] = new BPrushNetImprintExportTable();
+                ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
+                form.ShowDialog(this);
+
+                if (form.Complete) // the tables have complete
+                {
+                    // get the data
+                    ds = form.Tables;
 
                     try
                     {
-                        // export the excel files    
+                        // export the excel files   
                         export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
                     }
                     catch (Exception ex)
@@ -90,44 +124,13 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                         return;
                     }
                 }
-                else    // load the tables
-                {
-                    exportTables = new ExportTable[8];
-                    exportTables[0] = new BPcodedBlankExportTable();
-                    exportTables[1] = new BPcodedImprintExportTable();
-                    exportTables[2] = new BPrushCodedBlankExportTable();
-                    exportTables[3] = new BPrushCodedImprintExportTable();
-                    exportTables[4] = new BPnetBlankExportTable();
-                    exportTables[5] = new BPnetImprintExportTable();
-                    exportTables[6] = new BPrushNetBlankExportTable();
-                    exportTables[7] = new BPrushNetImprintExportTable();
-                    ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
-                    form.ShowDialog(this);
+                else // user close the form early 
+                    return;
 
-                    if (form.Complete) // the tables have complete
-                    {
-                        // get the data
-                        ds = form.Tables;
-
-                        try
-                        {
-                            // export the excel files   
-                            export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    else // user close the form early 
-                        return;
-
-                    Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
-                }
-
-                ShowExportMessage(saveFileDialog.FileName);
+                Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
             }
+
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for product button click */
@@ -191,7 +194,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
         /* method that showing messagebox for sucessfully export an Excel file */
         private static void ShowExportMessage(string filePath)
         {
-            MessageBox.Show("Excel file has been successfully exported in \n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Excel file has been successfully exported in\n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -197,7 +197,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 11; i++)

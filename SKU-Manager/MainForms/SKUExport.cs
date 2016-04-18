@@ -110,7 +110,7 @@ namespace SKU_Manager.MainForms
             if (Properties.Settings.Default.StockQuantityTable != null)
                 new AmazonCaView().ShowDialog(this);
             else
-                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for amazon.com button click */
@@ -119,7 +119,7 @@ namespace SKU_Manager.MainForms
             if (Properties.Settings.Default.StockQuantityTable != null)
                 new AmazonComView().ShowDialog(this);
             else
-                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for staples.ca button click */
@@ -140,7 +140,7 @@ namespace SKU_Manager.MainForms
             if (Properties.Settings.Default.StockQuantityTable != null)
                 new ShopCaView().ShowDialog(this);
             else
-                MessageBox.Show("For performance purpose, please go to \n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for giant tiger button click */

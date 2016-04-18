@@ -94,7 +94,7 @@ namespace SKU_Manager.SplashModules.Activate
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended, Colour_Online, Colour_Online_FR " 
-                                                          + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
+                                                          + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -137,15 +137,15 @@ namespace SKU_Manager.SplashModules.Activate
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand( "UPDATE ref_Colours SET Active =  \'True\', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                       + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                    SqlCommand command = new SqlCommand( "UPDATE ref_Colours SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
+                                                       + "WHERE Colour_Code = \'" + colorCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

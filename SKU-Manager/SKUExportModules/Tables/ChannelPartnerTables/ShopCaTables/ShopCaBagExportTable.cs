@@ -177,7 +177,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 37; i++)
@@ -195,7 +195,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_SHOP_CA != '' AND Design_Service_Code in (" +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code in ( " +
-                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE 'bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag'));", connection);
+                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE 'bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag'))", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.SupportingClasses;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace SKU_Manager.SplashModules.Add
 {
@@ -179,7 +180,7 @@ namespace SKU_Manager.SplashModules.Add
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                caDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                caDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
             }
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
@@ -191,7 +192,7 @@ namespace SKU_Manager.SplashModules.Add
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
-                usDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                usDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
             }
         }
         #endregion
@@ -433,7 +434,7 @@ namespace SKU_Manager.SplashModules.Add
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

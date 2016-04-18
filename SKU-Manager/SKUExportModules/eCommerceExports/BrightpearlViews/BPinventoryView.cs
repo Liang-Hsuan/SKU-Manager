@@ -698,6 +698,8 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                     }
                 }
 
+                // set currency to USD
+                Currency.CurrencyNow = "USD";
                 currencyButton.Text = @"=> CAD";
             }
             else
@@ -742,6 +744,8 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                     }
                 }
 
+                // set currency to CAD
+                Currency.CurrencyNow = "CAD";
                 currencyButton.Text = @"=> USD";
             }
 

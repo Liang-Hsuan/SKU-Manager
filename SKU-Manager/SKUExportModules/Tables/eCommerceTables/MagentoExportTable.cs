@@ -423,7 +423,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 65; i++)

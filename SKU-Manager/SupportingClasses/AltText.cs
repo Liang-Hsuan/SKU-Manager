@@ -21,11 +21,11 @@ namespace SKU_Manager.SupportingClasses
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            alt += reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2);
+            alt += reader.GetString(0) + ' ' + reader.GetString(1) + ' ' + reader.GetString(2);
             connection.Close();
 
             return alt;
@@ -43,20 +43,20 @@ namespace SKU_Manager.SupportingClasses
             string material = firstTwo.Substring(firstTwo.IndexOf('-') + 1);
             string color = sku.Substring(sku.LastIndexOf('-') + 1);
 
-            SqlCommand command = new SqlCommand("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + "\'", connection);
+            SqlCommand command = new SqlCommand("SELECT Short_Description FROM master_Design_Attributes WHERE Design_Service_Code = \'" + design + '\'', connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            alt += reader.GetString(0) + " ";
+            alt += reader.GetString(0) + ' ';
             reader.Close();
 
-            command.CommandText = "SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + "\'";
+            command.CommandText = "SELECT Material_Description_Short FROM ref_Materials WHERE Material_Code = \'" + material + '\'';
             reader = command.ExecuteReader();
             reader.Read();
             alt += reader.GetString(0) + ", ";
             reader.Close();
 
-            command.CommandText = "SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + "\'";
+            command.CommandText = "SELECT Colour_Description_Short FROM ref_Colours WHERE Colour_Code = \'" + color + '\'';
             reader = command.ExecuteReader();
             reader.Read();
             alt += reader.GetString(0);

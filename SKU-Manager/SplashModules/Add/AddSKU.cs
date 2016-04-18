@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.SupportingClasses;
@@ -234,7 +235,7 @@ namespace SKU_Manager.SplashModules.Add
             else // has something behind
             {
                 string orignal = skuCodeTextbox.Text;
-                skuCodeTextbox.Text = currentDesignCode + "-" + orignal;
+                skuCodeTextbox.Text = currentDesignCode + '-' + orignal;
                 frontHasAdded = true;
             }
 
@@ -399,7 +400,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Active FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Active FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -474,7 +475,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this color code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Active FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Active FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -531,11 +532,11 @@ namespace SKU_Manager.SplashModules.Add
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    caDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                    caDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
                 }
             }
             else
@@ -547,11 +548,11 @@ namespace SKU_Manager.SplashModules.Add
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    usDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                    usDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
                 }
             }
             else
@@ -803,7 +804,7 @@ namespace SKU_Manager.SplashModules.Add
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

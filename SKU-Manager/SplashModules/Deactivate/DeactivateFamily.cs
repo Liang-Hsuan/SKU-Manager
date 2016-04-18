@@ -13,9 +13,12 @@ namespace SKU_Manager.SplashModules.Deactivate
     */
     public partial class DeactivateFamily : Form
     {
-        // fields for storing adding color data
+        // fields for storing family data
         private string familyCode;
         private string shortEnglishDescription;
+        private int pricingTier;
+        private int reorderQty;
+        private int reorderLevel;
 
         // fields for combobox
         private readonly ArrayList productFamilyList = new ArrayList();
@@ -40,7 +43,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Active = \'True\' ORDER BY Design_Service_Family_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Active = 'True' ORDER BY Design_Service_Family_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -82,16 +85,23 @@ namespace SKU_Manager.SplashModules.Deactivate
             // store data and assign to the field
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Design_Service_family_Description FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT Design_Service_family_Description, Pricing_Tier, Reorder_Quantity, Reorder_Level " + 
+                                                    "FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 shortEnglishDescription = reader.GetString(0);
+                pricingTier = reader.GetInt32(1);
+                reorderQty = reader.GetInt32(2);
+                reorderLevel = reader.GetInt32(3);
             }
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             shortEnglishDescriptionTextbox.Text = shortEnglishDescription;
+            pricingTierUpdown.Value = pricingTier;
+            reorderQtyUpdown.Value = reorderQty;
+            reorderLevelUpdown.Value = reorderLevel;
         }
         #endregion
 
@@ -137,7 +147,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

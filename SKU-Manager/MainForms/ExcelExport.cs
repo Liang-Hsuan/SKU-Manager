@@ -754,7 +754,7 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
             else 
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for amazon com button click that export amazon com export table */
@@ -815,7 +815,7 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
             else
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for staples button click that export staples export table */
@@ -1006,7 +1006,7 @@ namespace SKU_Manager.MainForms
                 showExportMessage(saveFileDialog.FileName);
             }
             else
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         } 
 
         /* the event for giant tiger button click that export ginat tiger export table */
@@ -1393,7 +1393,7 @@ namespace SKU_Manager.MainForms
         /* method that showing messagebox for sucessfully export an Excel file */
         private static void showExportMessage(string filePath)
         {
-            MessageBox.Show("Excel file has been successfully exported in \n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Excel file has been successfully exported in\n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

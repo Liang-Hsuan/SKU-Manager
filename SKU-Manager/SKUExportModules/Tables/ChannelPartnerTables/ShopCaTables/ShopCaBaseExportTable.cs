@@ -75,8 +75,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             foreach (string sku in skuList)
             {
                 ArrayList list = GetData(sku);
-
-                var row = mainTable.NewRow();
+                DataRow row = mainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                       // supplier id
                 row[1] = "nishis_boutique";                  // store name
@@ -146,7 +145,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                                                 "FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 20; i++)

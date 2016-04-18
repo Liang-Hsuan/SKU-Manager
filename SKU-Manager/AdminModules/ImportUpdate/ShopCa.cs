@@ -54,7 +54,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                 string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
 
                 // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + "\';", connection);
+                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
                 command.ExecuteNonQuery();
                 Current = row;
             }
@@ -63,9 +63,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             xlWorkBook.Close(true, null, null);
             xlApp.Quit();
 
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            ReleaseObject(xlWorkSheet);
+            ReleaseObject(xlWorkBook);
+            ReleaseObject(xlApp);
         }
 
         /* a method that update shop.ca inventory data and create purchase order if necessary, also send email for notification */
@@ -104,7 +104,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\ShopCaInventory";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            string poNumber = createPoNumber("1005");
+            string poNumber = CreatePoNumber("1005");
             path += "\\" + poNumber + DateTime.Now.ToString("HHmm") + ".txt";
             StreamWriter writer = new StreamWriter(path);
             writer.WriteLine(csv);
@@ -144,7 +144,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a PUBLIC supporting method that set the given sku to discontine in database for shop.ca */
         public override void Discontinue(string sku)
         {
-            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = '' WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = '' WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();

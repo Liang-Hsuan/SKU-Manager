@@ -39,7 +39,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 5; i++)

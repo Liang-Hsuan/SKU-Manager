@@ -143,7 +143,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                                                         "FROM master_Design_Attributes design " +
                                                         "INNER JOIN master_SKU_Attributes sku ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                         "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "WHERE SKU_BESTBUY_CA != \'\' and sku.Active = 'True' ORDER BY SKU_Ashlin;", connection);
+                                                        "WHERE SKU_BESTBUY_CA != '' and sku.Active = 'True' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             adapter.Fill(table);
             connection.Close();
@@ -158,7 +158,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' AND SKU_BESTBUY_CA != \'\' ORDER BY SKU_Ashlin;", connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_BESTBUY_CA != '' ORDER BY SKU_Ashlin", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -174,7 +174,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
             double[] list = new double[5];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();

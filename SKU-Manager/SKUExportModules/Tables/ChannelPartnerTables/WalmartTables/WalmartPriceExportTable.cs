@@ -79,7 +79,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables
 
             // start grabbing data              
             // [0] for all related to price       
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));

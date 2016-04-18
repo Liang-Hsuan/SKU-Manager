@@ -75,7 +75,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         private void backgroundWorkerTable_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             dataGridView.DataSource = table;
-            changeColor();
+            ChangeColor();
 
             // stop the loading promopt
             timer.Stop();
@@ -101,7 +101,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         }
 
         /* a method that change color for data grid view */
-        private void changeColor()
+        private void ChangeColor()
         {
             dataGridView.Columns[1].DefaultCellStyle.BackColor = Color.FromArgb(254, 232, 255);
             dataGridView.Columns[2].DefaultCellStyle.BackColor = Color.FromArgb(254, 232, 255);
@@ -217,7 +217,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                     {
                         using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
                         {
-                            SqlCommand updateCommand = new SqlCommand(command.Remove(command.Length - 1) + " WHERE SKU_Ashlin = \'" + row[0] + "\';", connection);
+                            SqlCommand updateCommand = new SqlCommand(command.Remove(command.Length - 1) + " WHERE SKU_Ashlin = \'" + row[0] + '\'', connection);
                             connection.Open();
                             updateCommand.ExecuteNonQuery();
                         }

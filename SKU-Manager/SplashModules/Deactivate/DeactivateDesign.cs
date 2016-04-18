@@ -121,7 +121,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             productFamilyTextbox.Text = productFamily;
-            brandTextbox.Text = "Ashlin®";
+            brandTextbox.Text = @"Ashlin®";
             designServiceFlagTextbox.Text = designServiceFlag;
             internalNameTextbox.Text = internalName;
             shortDescriptionTextbox.Text = shortDescription;
@@ -160,13 +160,13 @@ namespace SKU_Manager.SplashModules.Deactivate
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designCode + "\'";
+                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designCode + '\'';
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

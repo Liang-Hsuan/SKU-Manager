@@ -49,7 +49,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = \'True\' ORDER BY SKU_Ashlin;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -130,7 +130,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             designCodeTextbox.Text = designCode;
             productFamilyTextbox.Text = productFamily;
-            brandTextbox.Text = "Ashlin®";
+            brandTextbox.Text = @"Ashlin®";
             designServiceFlagTextbox.Text = designServiceFlag;
             internalNameTextbox.Text = internalName;
             designDescriptionTextbox.Text = designDescription;
@@ -166,7 +166,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 // connect to database and activate the color
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active =  'False', SKU_Website = 'False', Date_Deactivated = \'" +DateTime.Today.ToString("yyyy-MM-dd") + "\' "
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                       + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
@@ -174,7 +174,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

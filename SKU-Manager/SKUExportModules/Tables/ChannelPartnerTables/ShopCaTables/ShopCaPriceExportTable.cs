@@ -90,7 +90,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // start grabbing data              
             // [0] for all related to price      
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));
@@ -104,7 +104,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
             double[] list = new double[4];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();

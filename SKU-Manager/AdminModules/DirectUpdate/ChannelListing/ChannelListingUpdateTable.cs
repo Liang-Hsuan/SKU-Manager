@@ -17,7 +17,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
         {
             using (connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True';", connection);
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())

@@ -105,7 +105,7 @@ namespace SKU_Manager.SplashModules.Activate
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Design_Online, Design_Online_FR, GiftBox " 
-                                                          + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
+                                                          + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -123,7 +123,7 @@ namespace SKU_Manager.SplashModules.Activate
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             productFamilyTextbox.Text = productFamily;
-            brandTextbox.Text = "Ashlin®";
+            brandTextbox.Text = @"Ashlin®";
             designServiceFlagTextbox.Text = designServiceFlag;
             internalNameTextbox.Text = internalName;
             shortDescriptionTextbox.Text = shortDescription;
@@ -157,15 +157,15 @@ namespace SKU_Manager.SplashModules.Activate
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active =  'True', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\' "
-                                                      + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
+                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active = 'True', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") + "\' "
+                                                      + "WHERE Design_Service_Code = \'" + designCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

@@ -155,14 +155,14 @@ namespace SKU_Manager.SplashModules.Add
                 using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO ref_Materials (Material_Code, Material_Description_Extended, Material_Description_Short, Material_Description_Extended_FR, Material_Description_Short_FR, Material_Online, Material_Online_FR, Active, Date_Added) " +
-                                                        "VALUES (\'" + materialCode + "\', \'" + extendedEnglishDescription + "\', \'" + shortEnglishDescription + "\', \'" + extendedFrenchDescription + "\', \'" + shortFrenchDescription + "\', \'" + materialOnlineEnglish.Replace("'", "''") + "\', \'" + materialOnlineFrench.Replace("'", "''") + "\', \'" + active + "\', \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);
+                                                        "VALUES (\'" + materialCode + "\',\'" + extendedEnglishDescription + "\',\'" + shortEnglishDescription + "\',\'" + extendedFrenchDescription + "\',\'" + shortFrenchDescription + "\',\'" + materialOnlineEnglish.Replace("'", "''") + "\',\'" + materialOnlineFrench.Replace("'", "''") + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\')", connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

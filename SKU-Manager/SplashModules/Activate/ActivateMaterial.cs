@@ -45,7 +45,7 @@ namespace SKU_Manager.SplashModules.Activate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Active = \'False\' ORDER BY Material_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Active = 'False' ORDER BY Material_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -94,7 +94,7 @@ namespace SKU_Manager.SplashModules.Activate
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended, Material_Online, Material_Online_FR " 
-                                                          + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
+                                                          + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -145,7 +145,7 @@ namespace SKU_Manager.SplashModules.Activate
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
