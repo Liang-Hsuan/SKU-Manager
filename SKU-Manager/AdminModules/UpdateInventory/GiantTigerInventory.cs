@@ -1,7 +1,6 @@
 ﻿using SKU_Manager.AdminModules.ImportUpdate;
 using SKU_Manager.AdminModules.UpdateInventory.InventoryTable;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -96,7 +95,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             // start updating
             try
             {
-                sears.Update((from DataRow row in table.Rows where row[2].ToString() != "" select new GiantTigerInventoryValues(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[4].ToString(), Convert.ToInt32(row[6]), Convert.ToDouble(row[5]), Convert.ToBoolean(row[9]), row[2].ToString())).ToArray());
+                sears.Update((from DataRow row in table.Rows where row[2].ToString() != "" select new GiantTigerInventoryValues(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[4].ToString(), Convert.ToInt32(row[6]), Convert.ToDouble(row[5]), Convert.ToBoolean(row[9]), row[2].ToString(), Convert.ToInt32(row[7]))).ToArray());
             }
             catch (Exception ex)
             {

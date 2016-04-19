@@ -1089,7 +1089,7 @@ namespace SKU_Manager.MainForms
             string[] names = new string[1];
             names[0] = "Magento Export Sheet";
             int[][] textIndex = new int[1][];
-            int[] index = { 1, 8 };
+            int[] index = { 1, 6, 7, 8 };
             textIndex[0] = index;
 
             if (Properties.Settings.Default.MagentoTable != null)   // tables have already been saved

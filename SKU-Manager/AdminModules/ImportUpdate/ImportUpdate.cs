@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SKU_Manager.SupportingClasses;
+using System;
 using System.Data.SqlClient;
 using Tamir.SharpSsh;
 
@@ -12,8 +13,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         // field for database connection
         protected readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
-        // field for sftp connection
+        // field for ftp/sftp connection
         protected Sftp sftp;
+        protected Ftp ftp;
 
         // field for showing the progress
         public int Total { get; protected set; } = 1;

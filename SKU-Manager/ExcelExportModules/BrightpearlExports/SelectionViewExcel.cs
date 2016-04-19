@@ -376,7 +376,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
             string[] names = new string[1];
             names[0] = "BP Product Export Sheet";
             int[][] textIndex = new int[1][];
-            int[] index = { 1 };
+            int[] index = { 1, 38, 39 };
             textIndex[0] = index;
 
             if (Properties.Settings.Default.BPproductTable != null)   // tables have already been saved

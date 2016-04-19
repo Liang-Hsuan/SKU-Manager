@@ -298,6 +298,7 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="SupportingClasses\Currency.cs" />
+    <Compile Include="SupportingClasses\Ftp.cs" />
     <Compile Include="SupportingClasses\Photo\ImageReplace.cs" />
     <Compile Include="SupportingClasses\Photo\ImageSearch.cs" />
     <Compile Include="SupportingClasses\ProductDetail\Product.cs" />
