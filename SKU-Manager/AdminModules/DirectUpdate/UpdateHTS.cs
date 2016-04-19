@@ -69,7 +69,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
             foreach (KeyValuePair<string, double> pair in dic)
             {
                 ListViewItem item = new ListViewItem(pair.Key);
-                item.SubItems.Add(pair.Value.ToString());
+                item.SubItems.Add(pair.Value.ToString(System.Globalization.CultureInfo.InvariantCulture));
                 listview.Items.Add(item);
             }
             listview.Visible = true;

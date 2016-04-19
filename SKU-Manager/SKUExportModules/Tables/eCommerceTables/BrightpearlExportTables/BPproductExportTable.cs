@@ -205,7 +205,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             list[1] = reader.GetDouble(0);
             connection.Close();
 
-            return new double[][] { list };
+            return new[] { list };
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SKU_Manager.AdminModules.UpdateInventory
@@ -90,22 +91,12 @@ namespace SKU_Manager.AdminModules.UpdateInventory
 
             #region Processing
             // local fields
-            List<GiantTigerInventoryValues> list = new List<GiantTigerInventoryValues>();
             GiantTiger sears = new GiantTiger();
-
-            foreach (DataRow row in table.Rows)
-            {
-                if (row[2].ToString() == "") continue;
-
-                GiantTigerInventoryValues value = new GiantTigerInventoryValues(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[4].ToString(), Convert.ToInt32(row[6]),
-                                                                                Convert.ToDouble(row[5]), Convert.ToBoolean(row[9]), row[2].ToString());
-                list.Add(value);
-            }
 
             // start updating
             try
             {
-                sears.Update(list.ToArray());
+                sears.Update((from DataRow row in table.Rows where row[2].ToString() != "" select new GiantTigerInventoryValues(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[4].ToString(), Convert.ToInt32(row[6]), Convert.ToDouble(row[5]), Convert.ToBoolean(row[9]), row[2].ToString())).ToArray());
             }
             catch (Exception ex)
             {
