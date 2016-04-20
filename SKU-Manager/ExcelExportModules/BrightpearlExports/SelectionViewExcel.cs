@@ -101,7 +101,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 ds.Tables.Add(Properties.Settings.Default.BPrushNetImprintTable);
 
                 // the case if the save tables are in USD -> change sheets' names to USD
-                if (Currency.CurrencyNow == "USD")
+                if (Currency.BrightpearlCurrency == "USD")
                 {
                     names[0] = "Coded Blank - USD";
                     names[1] = "Coded Imprinted - USD";
@@ -116,7 +116,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 try
                 {
                     // export the excel files    
-                    export.NowExport(path + '_' + Currency.CurrencyNow + extension, ds, names, textIndex);
+                    export.NowExport(path + '_' + Currency.BrightpearlCurrency + extension, ds, names, textIndex);
                 }
                 catch (Exception ex)
                 {
@@ -124,7 +124,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     return;
                 }
 
-                if (Currency.CurrencyNow == "USD")
+                if (Currency.BrightpearlCurrency == "USD")
                 {
                     // change currency for each table -> to CAD
                     foreach (DataTable table in ds.Tables)

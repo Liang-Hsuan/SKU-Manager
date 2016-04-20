@@ -90,7 +90,7 @@ namespace SKU_Manager.MainForms
         }
         private void activateSkuButton_Click(object sender, EventArgs e)
         {
-            new ActivateSKU().ShowDialog(this);
+            new ActivateSku().ShowDialog(this);
         }
         #endregion
 
@@ -114,7 +114,7 @@ namespace SKU_Manager.MainForms
         }
         private void deactivateSkuButton_Click(object sender, EventArgs e)
         {
-            new DeactivateSKU().ShowDialog(this);
+            new DeactivateSku().ShowDialog(this);
         }
         #endregion
 

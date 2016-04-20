@@ -140,7 +140,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -155,7 +155,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -170,7 +170,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -185,7 +185,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -200,7 +200,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker6_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -215,7 +215,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -230,7 +230,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         private void backgroundWorker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -245,7 +245,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
 
             if (!done[0] || !done[1] || !done[2] || !done[3] || !done[4] || !done[5] || !done[6] || !done[7]) return;
             currencyButton.Enabled = true;
-            Currency.CurrencyNow = "CAD";
+            Currency.BrightpearlCurrency = "CAD";
         }
         #endregion
 
@@ -720,7 +720,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 }
 
                 // set currency to USD
-                Currency.CurrencyNow = "USD";
+                Currency.BrightpearlCurrency = "USD";
                 currencyButton.Text = @"=> CAD";
             }
             else
@@ -766,7 +766,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 }
 
                 // set currency to CAD
-                Currency.CurrencyNow = "CAD";
+                Currency.BrightpearlCurrency = "CAD";
                 currencyButton.Text = @"=> USD";
             }
 

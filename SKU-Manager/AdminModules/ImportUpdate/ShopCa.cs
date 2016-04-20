@@ -21,9 +21,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public ShopCa()
         {
             // get credentials for shop.ca sftp log on and initialize the field
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ASCMcs))
+            using (SqlConnection authCon = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
-                SqlCommand command = new SqlCommand("SELECT Field1_Value, Username, Password From ASCM_Credentials WHERE Source='Shop.ca - SFTP';", connection);
+                SqlCommand command = new SqlCommand("SELECT Field1_Value, Username, Password From ASCM_Credentials WHERE Source='Shop.ca - SFTP'", connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();

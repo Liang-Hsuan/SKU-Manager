@@ -12,7 +12,7 @@ namespace SKU_Manager.SplashModules.Deactivate
    /*
    * An application module that deactivate a sku
    */
-    public partial class DeactivateSKU : Form
+    public partial class DeactivateSku : Form
     {
         // fields for storing design data
         private string sku;
@@ -33,7 +33,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
-        public DeactivateSKU()
+        public DeactivateSku()
         {
             InitializeComponent();
             skuList.Add("");

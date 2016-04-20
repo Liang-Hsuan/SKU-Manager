@@ -12,7 +12,7 @@ namespace SKU_Manager.SplashModules.Activate
    /*
     * An application module that activate a sku
     */
-    public partial class ActivateSKU : Form
+    public partial class ActivateSku : Form
     {
         // fields for storing design data
         private string sku;
@@ -33,7 +33,7 @@ namespace SKU_Manager.SplashModules.Activate
         private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic components */
-        public ActivateSKU()
+        public ActivateSku()
         {
             InitializeComponent();
             skuList.Add("");

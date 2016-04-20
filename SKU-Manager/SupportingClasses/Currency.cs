@@ -11,7 +11,7 @@ namespace SKU_Manager.SupportingClasses
     public static class Currency
     {
         // field for keep track currency right now
-        public static string CurrencyNow { get; set; }
+        public static string BrightpearlCurrency { get; set; }
 
         /* method that return latest currency */
         public static Dictionary<string, double> GetCurrency(string baseCurrency)

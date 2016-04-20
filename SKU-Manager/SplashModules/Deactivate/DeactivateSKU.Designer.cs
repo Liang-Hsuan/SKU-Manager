@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.SplashModules.Deactivate
 {
-    partial class DeactivateSKU
+    partial class DeactivateSku
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeactivateSKU));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeactivateSku));
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.inactiveListButton = new System.Windows.Forms.Button();
             this.activeListButton = new System.Windows.Forms.Button();

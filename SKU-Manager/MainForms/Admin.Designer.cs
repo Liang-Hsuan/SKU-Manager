@@ -144,7 +144,7 @@
             this.modifyHtsButton.Name = "modifyHtsButton";
             this.modifyHtsButton.Size = new System.Drawing.Size(222, 142);
             this.modifyHtsButton.TabIndex = 8;
-            this.modifyHtsButton.Text = "Modify HTS Tables";
+            this.modifyHtsButton.Text = "Modify HTS and Currency Tables";
             this.modifyHtsButton.UseVisualStyleBackColor = false;
             this.modifyHtsButton.Click += new System.EventHandler(this.modifyHtsButton_Click);
             // 

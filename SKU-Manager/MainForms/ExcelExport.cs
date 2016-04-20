@@ -56,7 +56,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void activeMaterialButton_Click(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void activeFamilyButton_Click(object sender, EventArgs e)
         {
@@ -94,7 +94,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void activeDesignButton_Click(object sender, EventArgs e)
         {
@@ -144,7 +144,7 @@ namespace SKU_Manager.MainForms
             else // user close the form early 
                 return;
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void activeSkuButton_Click(object sender, EventArgs e)
         {
@@ -194,7 +194,7 @@ namespace SKU_Manager.MainForms
             else // user close the form early 
                 return;
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         #endregion
 
@@ -217,7 +217,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void inactiveMaterialButton_Click(object sender, EventArgs e)
         {
@@ -236,7 +236,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void inactiveFamilyButton_Click(object sender, EventArgs e)
         {
@@ -255,7 +255,7 @@ namespace SKU_Manager.MainForms
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void inactiveDesignButton_Click(object sender, EventArgs e)
         {
@@ -305,7 +305,7 @@ namespace SKU_Manager.MainForms
             else // user close the form early 
                 return;
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         private void inactiveSkuButton_Click(object sender, EventArgs e)
         {
@@ -355,7 +355,7 @@ namespace SKU_Manager.MainForms
             else // user close the form early 
                 return;
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         #endregion
 
@@ -429,7 +429,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for upc button click that export upc export table */
@@ -502,7 +502,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.UpcTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for stock quantity button click that export stock export table */
@@ -574,7 +574,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.StockQuantityTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         #endregion
 
@@ -638,7 +638,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.ChannelNewListingTable = ds.Tables[2];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for bestbuy button click that export bestbuy export table */
@@ -693,7 +693,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.BestbuyTable1 = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for amazon ca button click that export amazon ca export table */
@@ -751,7 +751,7 @@ namespace SKU_Manager.MainForms
                     Properties.Settings.Default.AmazonCaTable = ds.Tables[0];
                 }
 
-                showExportMessage(saveFileDialog.FileName);
+                ShowExportMessage(saveFileDialog.FileName);
             }
             else 
                 MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
@@ -812,7 +812,7 @@ namespace SKU_Manager.MainForms
                     Properties.Settings.Default.AmazonComTable = ds.Tables[0];
                 }
 
-                showExportMessage(saveFileDialog.FileName);
+                ShowExportMessage(saveFileDialog.FileName);
             }
             else
                 MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
@@ -871,7 +871,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.StaplesTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for walamrt button click that export walmart export tables */
@@ -933,7 +933,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.WalmartPriceTable = ds.Tables[1];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for shop ca button click that export shop ca export tables */
@@ -1003,7 +1003,7 @@ namespace SKU_Manager.MainForms
                     Properties.Settings.Default.ShopCaPriceTable = ds.Tables[3];
                 }
 
-                showExportMessage(saveFileDialog.FileName);
+                ShowExportMessage(saveFileDialog.FileName);
             }
             else
                 MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
@@ -1062,7 +1062,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.GiantTigerTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         #endregion
 
@@ -1120,7 +1120,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.MagentoTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for shop ca button click that will show the selection view for brightpearl */
@@ -1186,7 +1186,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.UducatTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for distributor central button click that export distributor central table */
@@ -1244,7 +1244,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.DistributorCentralTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for asi button click that export asi table */
@@ -1302,7 +1302,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.AsiTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
 
         /* the event for sage button click that export sage table */
@@ -1360,7 +1360,7 @@ namespace SKU_Manager.MainForms
                 Properties.Settings.Default.SageTable = ds.Tables[0];
             }
 
-            showExportMessage(saveFileDialog.FileName);
+            ShowExportMessage(saveFileDialog.FileName);
         }
         #endregion
 
@@ -1391,7 +1391,7 @@ namespace SKU_Manager.MainForms
         #endregion
 
         /* method that showing messagebox for sucessfully export an Excel file */
-        private static void showExportMessage(string filePath)
+        private static void ShowExportMessage(string filePath)
         {
             MessageBox.Show("Excel file has been successfully exported in\n" + filePath, "Congratulations", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

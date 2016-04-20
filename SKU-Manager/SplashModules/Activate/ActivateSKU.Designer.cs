@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.SplashModules.Activate
 {
-    partial class ActivateSKU
+    partial class ActivateSku
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActivateSKU));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActivateSku));
             this.skuCombobox = new System.Windows.Forms.ComboBox();
             this.skuLable = new System.Windows.Forms.Label();
             this.detailLabel = new System.Windows.Forms.Label();
@@ -419,7 +419,7 @@
             this.Controls.Add(this.titleLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ActivateSKU";
+            this.Name = "ActivateSku";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Activate SKU";
             this.ResumeLayout(false);

@@ -423,11 +423,11 @@
     <Compile Include="SplashModules\Activate\ActivateMaterial.Designer.cs">
       <DependentUpon>ActivateMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashModules\Activate\ActivateSKU.cs">
+    <Compile Include="SplashModules\Activate\ActivateSku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashModules\Activate\ActivateSKU.Designer.cs">
-      <DependentUpon>ActivateSKU.cs</DependentUpon>
+    <Compile Include="SplashModules\Activate\ActivateSku.Designer.cs">
+      <DependentUpon>ActivateSku.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashModules\Add\AddColor.cs">
       <SubType>Form</SubType>
@@ -453,11 +453,11 @@
     <Compile Include="SplashModules\Add\AddFamily.Designer.cs">
       <DependentUpon>AddFamily.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashModules\Add\AddSKU.cs">
+    <Compile Include="SplashModules\Add\AddSku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashModules\Add\AddSKU.Designer.cs">
-      <DependentUpon>AddSKU.cs</DependentUpon>
+    <Compile Include="SplashModules\Add\AddSku.Designer.cs">
+      <DependentUpon>AddSku.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashModules\Deactivate\DeactivateColor.cs">
       <SubType>Form</SubType>
@@ -483,11 +483,11 @@
     <Compile Include="SplashModules\Deactivate\DeactivateMaterial.Designer.cs">
       <DependentUpon>DeactivateMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashModules\Deactivate\DeactivateSKU.cs">
+    <Compile Include="SplashModules\Deactivate\DeactivateSku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashModules\Deactivate\DeactivateSKU.Designer.cs">
-      <DependentUpon>DeactivateSKU.cs</DependentUpon>
+    <Compile Include="SplashModules\Deactivate\DeactivateSku.Designer.cs">
+      <DependentUpon>DeactivateSku.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashModules\Update\EditAlt.cs">
       <SubType>Form</SubType>
@@ -519,11 +519,11 @@
     <Compile Include="SplashModules\Update\UpdateMaterial.Designer.cs">
       <DependentUpon>UpdateMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashModules\Update\UpdateSKU.cs">
+    <Compile Include="SplashModules\Update\UpdateSku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashModules\Update\UpdateSKU.Designer.cs">
-      <DependentUpon>UpdateSKU.cs</DependentUpon>
+    <Compile Include="SplashModules\Update\UpdateSku.Designer.cs">
+      <DependentUpon>UpdateSku.cs</DependentUpon>
     </Compile>
     <Compile Include="SplashModules\UploadImage\UpdateGlobalForm.cs">
       <SubType>Form</SubType>
@@ -537,15 +537,15 @@
     <Compile Include="SplashModules\UploadImage\UpdatePhotoForm.Designer.cs">
       <DependentUpon>UpdatePhotoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashModules\UploadImage\UpdateUPCForm.cs">
+    <Compile Include="SplashModules\UploadImage\UpdateUpcForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashModules\UploadImage\UpdateUPCForm.Designer.cs">
-      <DependentUpon>UpdateUPCForm.cs</DependentUpon>
+    <Compile Include="SplashModules\UploadImage\UpdateUpcForm.Designer.cs">
+      <DependentUpon>UpdateUpcForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SupportingClasses\ProductDetail\Values.cs" />
     <Compile Include="SupportingClasses\Translate.cs" />
-    <Compile Include="SupportingClasses\UPC.cs" />
+    <Compile Include="SupportingClasses\Upc.cs" />
     <Compile Include="SupportingClasses\Photo\UpdatePhoto.cs" />
     <EmbeddedResource Include="ActiveInactiveList\ActiveColorList.resx">
       <DependentUpon>ActiveColorList.cs</DependentUpon>
@@ -700,8 +700,8 @@
     <EmbeddedResource Include="SplashModules\Activate\ActivateMaterial.resx">
       <DependentUpon>ActivateMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashModules\Activate\ActivateSKU.resx">
-      <DependentUpon>ActivateSKU.cs</DependentUpon>
+    <EmbeddedResource Include="SplashModules\Activate\ActivateSku.resx">
+      <DependentUpon>ActivateSku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Add\AddColor.resx">
       <DependentUpon>AddColor.cs</DependentUpon>
@@ -715,8 +715,8 @@
     <EmbeddedResource Include="SplashModules\Add\AddFamily.resx">
       <DependentUpon>AddFamily.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashModules\Add\AddSKU.resx">
-      <DependentUpon>AddSKU.cs</DependentUpon>
+    <EmbeddedResource Include="SplashModules\Add\AddSku.resx">
+      <DependentUpon>AddSku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Online.resx">
       <DependentUpon>Online.cs</DependentUpon>
@@ -733,8 +733,8 @@
     <EmbeddedResource Include="SplashModules\Deactivate\DeactivateMaterial.resx">
       <DependentUpon>DeactivateMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashModules\Deactivate\DeactivateSKU.resx">
-      <DependentUpon>DeactivateSKU.cs</DependentUpon>
+    <EmbeddedResource Include="SplashModules\Deactivate\DeactivateSku.resx">
+      <DependentUpon>DeactivateSku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Update\EditAlt.resx">
       <DependentUpon>EditAlt.cs</DependentUpon>
@@ -751,8 +751,8 @@
     <EmbeddedResource Include="SplashModules\Update\UpdateMaterial.resx">
       <DependentUpon>UpdateMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashModules\Update\UpdateSKU.resx">
-      <DependentUpon>UpdateSKU.cs</DependentUpon>
+    <EmbeddedResource Include="SplashModules\Update\UpdateSku.resx">
+      <DependentUpon>UpdateSku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\UploadImage\UpdateGlobalForm.resx">
       <DependentUpon>UpdateGlobalForm.cs</DependentUpon>
@@ -760,8 +760,8 @@
     <EmbeddedResource Include="SplashModules\UploadImage\UpdatePhotoForm.resx">
       <DependentUpon>UpdatePhotoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashModules\UploadImage\UpdateUPCForm.resx">
-      <DependentUpon>UpdateUPCForm.cs</DependentUpon>
+    <EmbeddedResource Include="SplashModules\UploadImage\UpdateUpcForm.resx">
+      <DependentUpon>UpdateUpcForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
