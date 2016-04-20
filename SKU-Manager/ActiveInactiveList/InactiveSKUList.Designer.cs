@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.ActiveInactiveList
 {
-    partial class InactiveSKUList
+    partial class InactiveSkuList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InactiveSKUList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InactiveSkuList));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.exitButton = new System.Windows.Forms.Button();
             this.progressLabel = new System.Windows.Forms.Label();

@@ -191,11 +191,11 @@ namespace SKU_Manager.SplashModules.Activate
         /* the event for active and inactive list button that open the table of active sku list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            new InactiveSKUList().ShowDialog(this);
+            new InactiveSkuList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            new ActiveSKUList().ShowDialog(this);
+            new ActiveSkuList().ShowDialog(this);
         }
         #endregion
     }

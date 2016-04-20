@@ -6,19 +6,16 @@ namespace SKU_Manager.SupportingClasses
    /*
     * A class that find the lowest available upc code 
     */
-    public class Upc
+    public static class Upc
     {
         // field that store upc code list
-        private readonly List<double> upcList = new List<double>();
-
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
+        private static readonly List<double> upcList = new List<double>();
 
         /* constructor that add all the used upc code in the list */
-        public Upc()
+        static Upc()
         {
             // connect to database and get the upc
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
             {
                 SqlCommand command = new SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9;", connection);
                 connection.Open();
@@ -30,7 +27,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that returns the lowest possible upc code */
-        public string GetUpc()
+        public static string GetUpc()
         {
             // local fields for seeking available upc code
             double iterator = 62618300000;
@@ -42,7 +39,7 @@ namespace SKU_Manager.SupportingClasses
         }
 
         /* a method that returns upc code with check digit */
-        public string GetUpc10(string upcCode)
+        public static string GetUpc10(string upcCode)
         {
             // it already got check digit, no need to give
             if (upcCode.Length >= 12)

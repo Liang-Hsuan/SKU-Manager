@@ -1,4 +1,5 @@
 ﻿using SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables;
+using SKU_Manager.SupportingClasses;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private DataTable table;
 
         // supporting fields
+        private readonly double usd = Currency.Usd;
         private int timeLeft;
         private bool done;  // default set to false
 
@@ -54,6 +56,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             progressLabel.Visible = false;
 
             done = true;
+            currencyButton.Enabled = true;
 
             // disable sorting
             foreach (DataGridViewColumn column in dataGridView.Columns)
@@ -75,6 +78,45 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             }
             else
                 loadingLabel.Text += '.';
+        }
+
+        /* currency button click that switch the currency of the price */
+        private void currencyButton_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (currencyButton.Text == @"=> USD")
+            {
+                // change currency in each row
+                foreach (DataRow row in table.Rows)
+                {
+                    if (row[69].Equals(DBNull.Value)) continue;
+                    for (int i = 69; i <= 77; i++)
+                        row[i] = Convert.ToDouble(row[i]) * usd;
+                    if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
+                }
+
+                // set currency to USD
+                Currency.AsiCurrency = "USD";
+                currencyButton.Text = @"=> CAD";
+            }
+            else
+            {
+                // change currency in each row
+                foreach (DataRow row in table.Rows)
+                {
+                    if (row[69].Equals(DBNull.Value)) continue;
+                    for (int i = 69; i <= 77; i++)
+                        row[i] = Convert.ToDouble(row[i]) / usd;
+                    if (!row[92].Equals(DBNull.Value)) row[92] = "CAD";
+                }
+
+                // set currency to CAD
+                Currency.AsiCurrency = "CAD";
+                currencyButton.Text = @"=> USD";
+            }
+
+            Cursor.Current = Cursors.Default;
         }
 
         /* the event for exit button click */

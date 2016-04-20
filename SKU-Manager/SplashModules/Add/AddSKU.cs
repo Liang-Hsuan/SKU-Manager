@@ -630,9 +630,8 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // addition fields for adding upc image
-            Upc upc = new Upc();
-            upcCode9 = upc.GetUpc();
-            upcCode10 = upc.GetUpc10(upcCode9);
+            upcCode9 = Upc.GetUpc();
+            upcCode10 = Upc.GetUpc10(upcCode9);
 
             // adding upc image
             ImageReplace imageReplace = new ImageReplace();

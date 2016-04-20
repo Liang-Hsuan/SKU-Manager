@@ -4,7 +4,6 @@ using System.Data;
 using System.Windows.Forms;
 using SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportTables;
 using SKU_Manager.SupportingClasses;
-using System.Data.SqlClient;
 
 namespace SKU_Manager.ExcelExportModules.BrightpearlExports
 {
@@ -15,22 +14,12 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
         private ExportTable[] exportTables;
 
         // supporting field
-        private readonly double usd;
+        private readonly double usd = Currency.Usd;
 
         /* constructor that initialize graphic components */
         public SelectionViewExcel()
         {
             InitializeComponent();
-
-            // get the rate for USD currency
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
-            {
-                SqlCommand command = new SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                usd = reader.GetDouble(0);
-            }
         }
 
         /* the event for inventory button click */
@@ -91,6 +80,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                 Properties.Settings.Default.BPrushNetBlankTable != null &&
                 Properties.Settings.Default.BPrushNetImprintTable != null) // tables have already been saved
             {
+                #region Table has Loaded Case
                 ds.Tables.Add(Properties.Settings.Default.BPcodedBlankTable);
                 ds.Tables.Add(Properties.Settings.Default.BPcodedImprintTable);
                 ds.Tables.Add(Properties.Settings.Default.BPrushCodedBlankTable);
@@ -252,9 +242,11 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                         return;
                     }
                 }
+                #endregion
             }
             else // load the tables
             {
+                #region Table has not Loaded Case
                 exportTables = new ExportTable[8];
                 exportTables[0] = new BPcodedBlankExportTable();
                 exportTables[1] = new BPcodedImprintExportTable();
@@ -349,6 +341,7 @@ namespace SKU_Manager.ExcelExportModules.BrightpearlExports
                     return;
 
                 Properties.Settings.Default.ActivePriceTable = ds.Tables[0];
+                #endregion
             }
 
             ShowExportMessage(saveFileDialog.FileName);

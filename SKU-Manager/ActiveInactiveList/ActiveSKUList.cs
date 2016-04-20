@@ -8,7 +8,7 @@ namespace SKU_Manager.ActiveInactiveList
    /*
     * An application module for update SKU that show the list of all active SKUs
     */
-    public partial class ActiveSKUList : Form
+    public partial class ActiveSkuList : Form
     {
         // field for storing data
         private DataTable table;
@@ -20,7 +20,7 @@ namespace SKU_Manager.ActiveInactiveList
         private readonly ActiveSkuTable skuTable = new ActiveSkuTable();
 
         /* constructor that initialize graphic componenets */
-        public ActiveSKUList()
+        public ActiveSkuList()
         {
             InitializeComponent();
 

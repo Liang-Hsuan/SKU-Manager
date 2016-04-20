@@ -10,6 +10,7 @@ using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables;
 using SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.WalmartTables;
 using SKU_Manager.SKUExportModules.Tables.eCommerceTables;
 using SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables;
+using SKU_Manager.SupportingClasses;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -27,6 +28,9 @@ namespace SKU_Manager.MainForms
         // field for storing table 
         private DataSet ds = new DataSet();
         private ExportTable[] exportTables;
+
+        // supporting field
+        private readonly double usd = Currency.Usd;
 
         /* constructor that initialize graphic components and get the perent form */
         public ExcelExport(IWin32Window parent)
@@ -1272,15 +1276,77 @@ namespace SKU_Manager.MainForms
             int[] index = { 3 };
             textIndex[0] = index;
 
+            // get the save path info
+            string extension = saveFileDialog.FileName.Substring(saveFileDialog.FileName.LastIndexOf('.'));
+            string path = saveFileDialog.FileName.Remove(saveFileDialog.FileName.LastIndexOf('.'));
+
             if (Properties.Settings.Default.AsiTable != null)   // tables have already been saved
             {
+                #region Table has Loaded Case
                 ds.Tables.Add(Properties.Settings.Default.AsiTable);
 
-                // export the excel files      
-                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                try
+                {
+                    // export the excel files      
+                    export.NowExport(path + '_' + Currency.AsiCurrency + extension, ds, names, textIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (Currency.AsiCurrency == "USD")
+                {
+                    // change currency in each row
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        if (row[69].Equals(DBNull.Value)) continue;
+                        for (int i = 69; i <= 77; i++)
+                            row[i] = Convert.ToDouble(row[i]) / usd;
+                        if (!row[92].Equals(DBNull.Value)) row[92] = "CAD";
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    // change currency in each row
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        if (row[69].Equals(DBNull.Value)) continue;
+                        for (int i = 69; i <= 77; i++)
+                            row[i] = Convert.ToDouble(row[i]) * usd;
+                        if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                #endregion
             }
             else    // load the tables
             {
+                #region Table has not Loaded Case
                 exportTables = new ExportTable[1];
                 exportTables[0] = new AsiExportTable();
                 ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
@@ -1291,15 +1357,43 @@ namespace SKU_Manager.MainForms
                     // get the data
                     ds = form.Tables;
 
-                    // export the excel files   
-                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    try
+                    {
+                        // export the excel files   
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // change currency to USD
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        if (row[69].Equals(DBNull.Value)) continue;
+                        for (int i = 69; i <= 77; i++)
+                            row[i] = Convert.ToDouble(row[i]) * usd;
+                        if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else    // user close the form early 
-                {
                     return;
-                }
 
                 Properties.Settings.Default.AsiTable = ds.Tables[0];
+                #endregion
             }
 
             ShowExportMessage(saveFileDialog.FileName);
@@ -1330,15 +1424,73 @@ namespace SKU_Manager.MainForms
             int[] index = { 1, 7, 8 };
             textIndex[0] = index;
 
+            // get the save path info
+            string extension = saveFileDialog.FileName.Substring(saveFileDialog.FileName.LastIndexOf('.'));
+            string path = saveFileDialog.FileName.Remove(saveFileDialog.FileName.LastIndexOf('.'));
+
             if (Properties.Settings.Default.SageTable != null)   // tables have already been saved
             {
+                #region Table has Loaded Case
                 ds.Tables.Add(Properties.Settings.Default.SageTable);
 
-                // export the excel files      
-                export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                try
+                {
+                    // export the excel files      
+                    export.NowExport(path + '_' + Currency.SageCurrency + extension, ds, names, textIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (Currency.SageCurrency == "USD")
+                {
+                    // change currency in each row
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        for (int i = 25; i <= 96; i++)
+                            row[i] = Convert.ToDouble(row[i]) / usd;
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    // change currency in each row
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        for (int i = 25; i <= 96; i++)
+                            row[i] = Convert.ToDouble(row[i]) * usd;
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                #endregion
             }
             else    // load the tables
             {
+                #region Table has not Loaded Case
                 exportTables = new ExportTable[1];
                 exportTables[0] = new SageExportTable();
                 ExportTableLoadingForm form = new ExportTableLoadingForm(exportTables);
@@ -1349,15 +1501,41 @@ namespace SKU_Manager.MainForms
                     // get the data
                     ds = form.Tables;
 
-                    // export the excel files   
-                    export.NowExport(saveFileDialog.FileName, ds, names, textIndex);
+                    try
+                    {
+                        // export the excel files   
+                        export.NowExport(path + "_CAD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // change currency to USD
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        for (int i = 25; i <= 96; i++)
+                            row[i] = Convert.ToDouble(row[i]) * usd;
+                    }
+
+                    try
+                    {
+                        // export the excel files   
+                        export = new XlExport();
+                        export.NowExport(path + "_USD" + extension, ds, names, textIndex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else    // user close the form early 
-                {
                     return;
-                }
 
                 Properties.Settings.Default.SageTable = ds.Tables[0];
+                #endregion
             }
 
             ShowExportMessage(saveFileDialog.FileName);

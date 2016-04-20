@@ -92,11 +92,11 @@
     <Compile Include="ActiveInactiveList\ActiveMaterialList.Designer.cs">
       <DependentUpon>ActiveMaterialList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActiveInactiveList\ActiveSKUList.cs">
+    <Compile Include="ActiveInactiveList\ActiveSkuList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ActiveInactiveList\ActiveSKUList.Designer.cs">
-      <DependentUpon>ActiveSKUList.cs</DependentUpon>
+    <Compile Include="ActiveInactiveList\ActiveSkuList.Designer.cs">
+      <DependentUpon>ActiveSkuList.cs</DependentUpon>
     </Compile>
     <Compile Include="ActiveInactiveList\InactiveColorList.cs">
       <SubType>Form</SubType>
@@ -122,11 +122,11 @@
     <Compile Include="ActiveInactiveList\InactiveMaterialList.Designer.cs">
       <DependentUpon>InactiveMaterialList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ActiveInactiveList\InactiveSKUList.cs">
+    <Compile Include="ActiveInactiveList\InactiveSkuList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ActiveInactiveList\InactiveSKUList.Designer.cs">
-      <DependentUpon>InactiveSKUList.cs</DependentUpon>
+    <Compile Include="ActiveInactiveList\InactiveSkuList.Designer.cs">
+      <DependentUpon>InactiveSkuList.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminModules\AdminTable.cs" />
     <Compile Include="AdminModules\DirectUpdate\ChannelListing\ChannelListingUpdateTable.cs" />
@@ -202,11 +202,11 @@
     <Compile Include="AdminModules\DirectUpdate\ModifyDiscount.Designer.cs">
       <DependentUpon>ModifyDiscount.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminModules\DirectUpdate\UpdateHTS.cs">
+    <Compile Include="AdminModules\DirectUpdate\UpdateHts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminModules\DirectUpdate\UpdateHTS.Designer.cs">
-      <DependentUpon>UpdateHTS.cs</DependentUpon>
+    <Compile Include="AdminModules\DirectUpdate\UpdateHts.Designer.cs">
+      <DependentUpon>UpdateHts.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForms\ExcelExport.cs">
       <SubType>Form</SubType>
@@ -304,11 +304,11 @@
     <Compile Include="SupportingClasses\ProductDetail\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MainForms\SKUExport.cs">
+    <Compile Include="MainForms\SkuExport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForms\SKUExport.Designer.cs">
-      <DependentUpon>SKUExport.cs</DependentUpon>
+    <Compile Include="MainForms\SkuExport.Designer.cs">
+      <DependentUpon>SkuExport.cs</DependentUpon>
     </Compile>
     <Compile Include="SKUExportModules\ActiveAttributeExports\ActivePriceView.cs">
       <SubType>Form</SubType>
@@ -559,8 +559,8 @@
     <EmbeddedResource Include="ActiveInactiveList\ActiveMaterialList.resx">
       <DependentUpon>ActiveMaterialList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ActiveInactiveList\ActiveSKUList.resx">
-      <DependentUpon>ActiveSKUList.cs</DependentUpon>
+    <EmbeddedResource Include="ActiveInactiveList\ActiveSkuList.resx">
+      <DependentUpon>ActiveSkuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ActiveInactiveList\InactiveColorList.resx">
       <DependentUpon>InactiveColorList.cs</DependentUpon>
@@ -574,8 +574,8 @@
     <EmbeddedResource Include="ActiveInactiveList\InactiveMaterialList.resx">
       <DependentUpon>InactiveMaterialList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ActiveInactiveList\InactiveSKUList.resx">
-      <DependentUpon>InactiveSKUList.cs</DependentUpon>
+    <EmbeddedResource Include="ActiveInactiveList\InactiveSkuList.resx">
+      <DependentUpon>InactiveSkuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyChannelListing.resx">
       <DependentUpon>ModifyChannelListing.cs</DependentUpon>
@@ -607,8 +607,8 @@
     <EmbeddedResource Include="AdminModules\DirectUpdate\ModifyDiscount.resx">
       <DependentUpon>ModifyDiscount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminModules\DirectUpdate\UpdateHTS.resx">
-      <DependentUpon>UpdateHTS.cs</DependentUpon>
+    <EmbeddedResource Include="AdminModules\DirectUpdate\UpdateHts.resx">
+      <DependentUpon>UpdateHts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -625,8 +625,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MainForms\SKUExport.resx">
-      <DependentUpon>SKUExport.cs</DependentUpon>
+    <EmbeddedResource Include="MainForms\SkuExport.resx">
+      <DependentUpon>SkuExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SKUExportModules\ActiveAttributeExports\ActivePriceView.resx">
       <DependentUpon>ActivePriceView.cs</DependentUpon>

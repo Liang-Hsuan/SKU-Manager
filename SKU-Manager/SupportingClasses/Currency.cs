@@ -12,6 +12,25 @@ namespace SKU_Manager.SupportingClasses
     {
         // field for keep track currency right now
         public static string BrightpearlCurrency { get; set; }
+        public static string SageCurrency { get; set; }
+        public static string AsiCurrency { get; set; }
+
+        // field for currency rate
+        public static readonly double Usd;
+
+        /* constructor that initialize currency rate */
+        static Currency()
+        {
+            // get the rate for USD currency
+            using (var connection = new System.Data.SqlClient.SqlConnection(Properties.Settings.Default.Designcs))
+            {
+                var command = new System.Data.SqlClient.SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                reader.Read();
+                Usd = reader.GetDouble(0);
+            }
+        }
 
         /* method that return latest currency */
         public static Dictionary<string, double> GetCurrency(string baseCurrency)

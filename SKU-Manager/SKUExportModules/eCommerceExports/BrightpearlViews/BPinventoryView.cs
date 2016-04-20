@@ -3,7 +3,6 @@ using SKU_Manager.SupportingClasses;
 using System;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
@@ -20,7 +19,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         private readonly int[] timeLeft = new int[8];
 
         // supporting field
-        private readonly double usd;
+        private readonly double usd = Currency.Usd;
         private readonly bool[] done = new bool[8];
 
         // initialize brightpearl inventory Table objects
@@ -30,16 +29,6 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         public BPinventoryView()
         {
             InitializeComponent();
-
-            // get the rate for USD currency
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
-            {
-                SqlCommand command = new SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-                usd = reader.GetDouble(0);
-            }
 
             // initialize export tables
             exportTable[0] = new BPcodedBlankExportTable();
@@ -679,6 +668,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
         {
             if (currencyButton.Text == @"=> USD")
             {
+                #region Change to USD
                 // change currency for each table
                 foreach (DataTable changeTable in table)
                 {
@@ -722,9 +712,11 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 // set currency to USD
                 Currency.BrightpearlCurrency = "USD";
                 currencyButton.Text = @"=> CAD";
+                #endregion
             }
             else
             {
+                #region Change to CAD
                 // change currency for each table
                 foreach (DataTable changeTable in table)
                 {
@@ -768,6 +760,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
                 // set currency to CAD
                 Currency.BrightpearlCurrency = "CAD";
                 currencyButton.Text = @"=> USD";
+                #endregion
             }
 
             dataGridView1.DataSource = table[0];

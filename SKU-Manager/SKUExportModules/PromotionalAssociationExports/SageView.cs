@@ -1,4 +1,5 @@
 ﻿using SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables;
+using SKU_Manager.SupportingClasses;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
         private DataTable table;
 
         // supporting fields
+        private readonly double usd = Currency.Usd;
         private int timeLeft;
         private bool done;  // default set to false
 
@@ -54,6 +56,7 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             progressLabel.Visible = false;
 
             done = true;
+            currencyButton.Enabled = true;
 
             // set first column to freeze
             dataGridView.Columns[0].Frozen = true;
@@ -74,6 +77,41 @@ namespace SKU_Manager.SKUExportModules.PromotionalAssociationExports
             }
             else
                 loadingLabel.Text += '.';
+        }
+
+        /* currency button click that switch the currency of the price */
+        private void currencyButton_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+
+            if (currencyButton.Text == @"=> USD")
+            {
+                // change currency in each row
+                foreach (DataRow row in table.Rows)
+                {
+                    for (int i = 25; i <= 96; i++)
+                        row[i] = Convert.ToDouble(row[i]) * usd;
+                }
+
+                // set currency to USD
+                Currency.SageCurrency = "USD";
+                currencyButton.Text = @"=> CAD";
+            }
+            else
+            {
+                // change currency in each row
+                foreach (DataRow row in table.Rows)
+                {
+                    for (int i = 25; i <= 96; i++)
+                        row[i] = Convert.ToDouble(row[i]) / usd;
+                }
+
+                // set currency to CAD
+                Currency.SageCurrency = "CAD";
+                currencyButton.Text = @"=> USD";
+            }
+
+            Cursor.Current = Cursors.Default;
         }
 
         /* the event for exit button click */

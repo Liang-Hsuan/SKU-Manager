@@ -287,7 +287,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[86] = 'R';                                              // d8
                 row[87] = 'R';                                              // d9
                 row[90] = "Blank Product Only";                             // price includes
-                row[92] = "USD";                                            // currency
+                row[92] = "CAD";                                            // currency
                 row[94] = "List";                                           // price type
                 row[96] = "Hot Foil Stamping";                              // upcharge name      
                 row[97] = "IMMD:HOT FOIL STAMPING";                         // upcharge criteria 1

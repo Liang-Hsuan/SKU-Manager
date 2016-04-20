@@ -172,9 +172,9 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 ArrayList list = GetData(sku);
                 DataRow row = mainTable.NewRow();
 
-                row[0] = "Ashlin®" + list[0];                      // item name
-                row[2] = "Ashlin®";                                // brand name
-                row[3] = "Ashlin®";                                // manufacturer 
+                row[0] = list[0] + " " + list[37] + ' ' + list[36] + " [" + sku + ']';  // item name
+                row[2] = @"Ashlin®";                               // brand name
+                row[3] = @"Ashlin®";                               // manufacturer 
                 row[4] = list[24];                                 // external product_id
                 row[5] = "UPC";                                    // external product id type
                 row[6] = sku;                                      // item sku

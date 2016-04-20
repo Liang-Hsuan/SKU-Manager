@@ -36,6 +36,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.backgroundWorkerTable = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.currencyButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.exitButton.Location = new System.Drawing.Point(302, 685);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(142, 76);
-            this.exitButton.TabIndex = 3;
+            this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Exit List";
             this.exitButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.exitButton.UseVisualStyleBackColor = false;
@@ -106,12 +107,30 @@
             this.timer.Interval = 600;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // currencyButton
+            // 
+            this.currencyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.currencyButton.BackColor = System.Drawing.Color.Transparent;
+            this.currencyButton.Enabled = false;
+            this.currencyButton.FlatAppearance.BorderSize = 0;
+            this.currencyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.currencyButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currencyButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.currencyButton.Location = new System.Drawing.Point(0, 659);
+            this.currencyButton.Name = "currencyButton";
+            this.currencyButton.Size = new System.Drawing.Size(133, 34);
+            this.currencyButton.TabIndex = 3;
+            this.currencyButton.Text = "=> USD";
+            this.currencyButton.UseVisualStyleBackColor = false;
+            this.currencyButton.Click += new System.EventHandler(this.currencyButton_Click);
+            // 
             // SageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(762, 790);
+            this.Controls.Add(this.currencyButton);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.loadingLabel);
             this.Controls.Add(this.exitButton);
@@ -138,5 +157,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTable;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button currencyButton;
     }
 }

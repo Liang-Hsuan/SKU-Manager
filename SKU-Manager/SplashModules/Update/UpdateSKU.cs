@@ -1097,9 +1097,8 @@ namespace SKU_Manager.SplashModules.Update
             // adding upc image
             if (upcCode9.Length < 11 && upcCode10.Length < 12)
             {
-                Upc upcCode = new Upc();
-                upcCode9 = upcCode.GetUpc();
-                upcCode10 = upcCode.GetUpc10(upcCode9);
+                upcCode9 = Upc.GetUpc();
+                upcCode10 = Upc.GetUpc10(upcCode9);
             }
             ImageReplace imageReplace = new ImageReplace();
             imageReplace.AddUpc(sku, upcCode9);
@@ -1156,11 +1155,11 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for active list button that open the table of active sku list */
         private void activeListButton_Click(object sender, EventArgs e)
         {
-            new ActiveSKUList().ShowDialog(this);
+            new ActiveSkuList().ShowDialog(this);
         }
         private void inactiveListButton_Click(object sender, EventArgs e)
         {
-            new InactiveSKUList().ShowDialog(this);
+            new InactiveSkuList().ShowDialog(this);
         }
         #endregion
 
