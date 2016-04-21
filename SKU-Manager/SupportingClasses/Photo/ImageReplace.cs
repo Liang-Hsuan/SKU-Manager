@@ -39,7 +39,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             // start copying a upc code image
             foreach (string image in Directory.GetFiles(targetDirectory, "*.jpg").Where(image => image.Contains(sku)))
             {
-                File.Copy(image, targetDirectory + "/" + upc + "_" + i + ".jpg", true);
+                File.Copy(image, targetDirectory + '/' + upc + '_' + i + ".jpg", true);
                 i++;
             }
         }

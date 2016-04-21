@@ -5,6 +5,7 @@ using System.Threading;
 using SKU_Manager.AdminModules.DirectUpdate;
 using SKU_Manager.AdminModules.UpdateInventory;
 using System.Data;
+using System.Runtime.CompilerServices;
 using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 
 namespace SKU_Manager.MainForms
@@ -182,16 +183,18 @@ namespace SKU_Manager.MainForms
                     break;
                 case "Amazon":
                     // amazon case
-                    try
+                    amazon = new Amazon();
+                    Thread thread = new Thread(() => amazon.Update(openFileDialog.FileName));
+                    thread.Start();
+                    thread.Join();
+
+                    // error check
+                    if (amazon.Error)
                     {
-                        amazon = new Amazon();
-                        new Thread(() => amazon.Update(openFileDialog.FileName)).Start();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error occurs during updating:\n" + amazon.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+
                     sears = null;
                     shopCa = null;
                     giantTiger = null;

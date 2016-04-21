@@ -13,6 +13,7 @@ using SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables;
 using SKU_Manager.SupportingClasses;
 using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SKU_Manager.MainForms
@@ -1322,9 +1323,8 @@ namespace SKU_Manager.MainForms
                 else
                 {
                     // change currency in each row
-                    foreach (DataRow row in ds.Tables[0].Rows)
+                    foreach (DataRow row in ds.Tables[0].Rows.Cast<DataRow>().Where(row => !row[69].Equals(DBNull.Value)))
                     {
-                        if (row[69].Equals(DBNull.Value)) continue;
                         for (int i = 69; i <= 77; i++)
                             row[i] = Convert.ToDouble(row[i]) * usd;
                         if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
@@ -1342,6 +1342,7 @@ namespace SKU_Manager.MainForms
                         return;
                     }
                 }
+
                 #endregion
             }
             else    // load the tables
@@ -1369,9 +1370,8 @@ namespace SKU_Manager.MainForms
                     }
 
                     // change currency to USD
-                    foreach (DataRow row in ds.Tables[0].Rows)
+                    foreach (DataRow row in ds.Tables[0].Rows.Cast<DataRow>().Where(row => !row[69].Equals(DBNull.Value)))
                     {
-                        if (row[69].Equals(DBNull.Value)) continue;
                         for (int i = 69; i <= 77; i++)
                             row[i] = Convert.ToDouble(row[i]) * usd;
                         if (!row[92].Equals(DBNull.Value)) row[92] = "USD";

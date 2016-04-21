@@ -13,48 +13,64 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         public int Total { get; private set; } = 1;
         public int Current { get; private set; }
 
+        // fields for error indication
+        public bool Error { get; private set; }
+        public string ErrorMessage { get; private set; }
+
         /* a method that update new amzon merchant sku from the excel import */
         public void Update(string xlPath)
         {
-            // fields for excel sheet reading
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            // set error to false
+            Error = false;
 
-            // declare range in sheet
-            Excel.Range range = xlWorkSheet.UsedRange;
-            Total = range.Rows.Count;
-
-            // start updating database for new amazon sku
-            connection.Open();
-            for (int row = 1; row <= range.Rows.Count; row++)
+            try
             {
-                // getting amazon's sku and our sku
-                string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
-                string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+                // fields for excel sheet reading
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet) xlWorkBook.Worksheets.get_Item(1);
 
-                // update database - amazon.ca
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_AMAZON_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
-                command.ExecuteNonQuery();
+                // declare range in sheet
+                Excel.Range range = xlWorkSheet.UsedRange;
+                Total = range.Rows.Count;
 
-                // getting amazon's sku and our sku
-                merchantSku = (string)(range.Cells[row, 3] as Excel.Range).Value2;
-                vendorSku = (string)(range.Cells[row, 4] as Excel.Range).Value2;
+                // start updating database for new amazon sku
+                connection.Open();
+                for (int row = 1; row <= range.Rows.Count; row++)
+                {
+                    // getting amazon's sku and our sku
+                    string merchantSku = (string) (range.Cells[row, 1] as Excel.Range).Value2;
+                    string vendorSku = (string) (range.Cells[row, 2] as Excel.Range).Value2;
 
-                // update database - amazon.ca
-                command.CommandText = "UPDATE master_SKU_Attributes SET SKU_AMAZON_COM = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'';
-                command.ExecuteNonQuery();
+                    // update database - amazon.ca
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_AMAZON_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
+                    command.ExecuteNonQuery();
 
-                Current = row;
+                    // getting amazon's sku and our sku
+                    merchantSku = (string) (range.Cells[row, 3] as Excel.Range).Value2;
+                    vendorSku = (string) (range.Cells[row, 4] as Excel.Range).Value2;
+
+                    // update database - amazon.ca
+                    command.CommandText = "UPDATE master_SKU_Attributes SET SKU_AMAZON_COM = \'" + merchantSku +
+                                          "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'';
+                    command.ExecuteNonQuery();
+
+                    Current = row;
+                }
+                connection.Close();
+
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+
+                ReleaseObject(xlWorkSheet);
+                ReleaseObject(xlWorkBook);
+                ReleaseObject(xlApp);
             }
-            connection.Close();
-
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-
-            ReleaseObject(xlWorkSheet);
-            ReleaseObject(xlWorkBook);
-            ReleaseObject(xlApp);
+            catch (Exception ex)
+            {
+                Error = true;
+                ErrorMessage = ex.Message;
+            }
         }
 
         /* a supporting method that release the excel object */
