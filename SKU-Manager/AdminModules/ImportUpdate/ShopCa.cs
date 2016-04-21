@@ -17,14 +17,17 @@ namespace SKU_Manager.AdminModules.ImportUpdate
      */
     public class ShopCa : ImportUpdate
     {
+        // field for sftp server connection
+        private readonly Sftp sftp;
+
         /* constructor that initialize sftp object */
         public ShopCa()
         {
             // get credentials for shop.ca sftp log on and initialize the field
             using (SqlConnection authCon = new SqlConnection(Properties.Settings.Default.ASCMcs))
             {
-                SqlCommand command = new SqlCommand("SELECT Field1_Value, Username, Password From ASCM_Credentials WHERE Source='Shop.ca - SFTP'", connection);
-                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT Field1_Value, Username, Password FROM ASCM_Credentials WHERE Source='Shop.ca - SFTP'", authCon);
+                authCon.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
 
@@ -36,36 +39,47 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a method that update new shop.ca merchant sku from the excel import */
         public override void Update(string xlPath)
         {
-            // fields for excel sheet reading
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            // set error to false
+            Error = false;
 
-            // declare range in sheet
-            Excel.Range range = xlWorkSheet.UsedRange;
-            Total = range.Rows.Count;
-
-            // start updating database for new sears sku
-            connection.Open();
-            for (int row = 1; row <= range.Rows.Count; row++)
+            try
             {
-                // getting sears's sku and our sku
-                string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
-                string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+                // fields for excel sheet reading
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
-                command.ExecuteNonQuery();
-                Current = row;
+                // declare range in sheet
+                Excel.Range range = xlWorkSheet.UsedRange;
+                Total = range.Rows.Count;
+
+                // start updating database for new sears sku
+                connection.Open();
+                for (int row = 1; row <= range.Rows.Count; row++)
+                {
+                    // getting sears's sku and our sku
+                    string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
+                    string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+
+                    // update database
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SHOP_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
+                    command.ExecuteNonQuery();
+                    Current = row;
+                }
+                connection.Close();
+
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+
+                ReleaseObject(xlWorkSheet);
+                ReleaseObject(xlWorkBook);
+                ReleaseObject(xlApp);
             }
-            connection.Close();
-
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-
-            ReleaseObject(xlWorkSheet);
-            ReleaseObject(xlWorkBook);
-            ReleaseObject(xlApp);
+            catch (Exception ex)
+            {
+                Error = true;
+                ErrorMessage = ex.Message;
+            }
         }
 
         /* a method that update shop.ca inventory data and create purchase order if necessary, also send email for notification */
@@ -75,8 +89,8 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             Dictionary<string, int> purchaseList = new Dictionary<string, int>();
             List<string> skuList = new List<string>();
 
-            #region CSV
-            // generate xml file
+            #region TXT
+            // generate txt file
             string csv = "Base Data\tfeed_id=shop.ca_order_inventory_01\t(For internal processing. Do not remove rows 1 and 2)\n" +
                          "supplier_id\tstore_name\tsku\tquantity\tout_of_stock_quantity\trestock_date\tstandard_fulfillment_latency\tpriority_fulfillment_latency\tbackorderable\treturn_not_desired\tinventory_as_of_date\texternal_inventory_id\tshipping_comments\n";
             foreach (ShopCaInventoryValues value in list)
@@ -100,7 +114,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                     csv += "\t\t\t\t\t\t\t\t\t\n";
             }
 
-            // export xml file
+            // export txt file
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\ShopCaInventory";
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
@@ -129,6 +143,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
 
             mail.From = new MailAddress("intern1002@ashlinbpg.com");
             mail.To.Add("juanne.kochhar@ashlinbpg.com");
+            mail.To.Add("ashlin@ashlinbpg.com");
             mail.Subject = "PENDING PURCHASE ORDER - SHOP.CA";
             mail.Body = body;
 

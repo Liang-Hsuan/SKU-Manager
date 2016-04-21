@@ -284,6 +284,12 @@
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\SageExportTable.cs" />
     <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
+    <Compile Include="SplashModules\BagDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashModules\BagDetail.Designer.cs">
+      <DependentUpon>BagDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="SplashModules\Online.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -717,6 +723,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Add\AddSku.resx">
       <DependentUpon>AddSku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashModules\BagDetail.resx">
+      <DependentUpon>BagDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashModules\Online.resx">
       <DependentUpon>Online.cs</DependentUpon>

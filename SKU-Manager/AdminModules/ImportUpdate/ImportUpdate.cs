@@ -1,7 +1,5 @@
-﻿using SKU_Manager.SupportingClasses;
-using System;
+﻿using System;
 using System.Data.SqlClient;
-using Tamir.SharpSsh;
 
 namespace SKU_Manager.AdminModules.ImportUpdate
 {
@@ -13,13 +11,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         // field for database connection
         protected readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
 
-        // field for ftp/sftp connection
-        protected Sftp sftp;
-        protected Ftp ftp;
-
         // field for showing the progress
         public int Total { get; protected set; } = 1;
         public int Current { get; protected set; }
+
+        // fields for error indication
+        public bool Error { get; protected set; }
+        public string ErrorMessage { get; protected set; }
 
         /* a method that update new channel's merchant sku from the excel import */
         public abstract void Update(string xlPath);

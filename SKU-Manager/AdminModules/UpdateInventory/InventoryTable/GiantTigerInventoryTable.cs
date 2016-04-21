@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -48,8 +49,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.Reset();
             Current = 0;
 
-            AddColumn(mainTable, "Giant Tiger SKU", false);     // 1
-            AddColumn(mainTable, "Ashlin SKU", false);          // 2
+            AddColumn(mainTable, "Ashlin SKU", false);     // 1
+            AddColumn(mainTable, "Host SKU", false);          // 2
             AddColumn(mainTable, "BP Item ID", false);          // 3
             AddColumn(mainTable, "UPC", false);                 // 4
             AddColumn(mainTable, "Description", false);         // 5
@@ -58,12 +59,14 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             AddColumn(mainTable, "Reorder Quantity", false);    // 8
             AddColumn(mainTable, "Reorder Level", false);       // 9
             AddColumn(mainTable, "Purchase Order", true);       // 10
+            AddColumn(mainTable, "Discontinued", true);         // 11
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
             connection = new SqlConnection(Properties.Settings.Default.Designcs);
+            double[] price = GetPriceList();
             connection.Open();
             mainTable.BeginLoadData();
 
@@ -80,7 +83,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 row[1] = sku.GiantTigerSku;                             // giant tiger sku
                 row[3] = list[0];                                       // upc
                 row[4] = list[1];                                       // description
-                row[5] = list[2];                                       // unit cost
+                double sellMsrp = Math.Ceiling(Convert.ToDouble(list[2]) * price[0] * (1 - price[1] / 100) + price[3]) - (1 - price[2]);
+                row[5] = sellMsrp - (price[4] * sellMsrp) + price[3];   // unit cost
                 try
                 {
                     DataRow rowCopy = table.Select("SKU = \'" + sku.AshlinSku + '\'')[0];
@@ -91,6 +95,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 }
                 catch { /* ignore -> null case */ }
                 row[9] = false;                                         // purchase order
+                row[10] = false;                                        // discontinue
 
                 mainTable.Rows.Add(row);
             }
@@ -115,6 +120,31 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             reader.Read();
             for (int i = 0; i <= 2; i++)
                 list[i] = reader.GetValue(i);
+
+            return list;
+        }
+
+        /* method that give price list */
+        private double[] GetPriceList()
+        {
+            // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
+            double[] list = new double[5];
+
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            list[0] = reader.GetDouble(0);
+            reader.Close();
+
+            command.CommandText = "SELECT Msrp_Disc, Sell_Cents, Base_Ship, Gross_Marg FROM Channel_Pricing WHERE Channel_No = 2001";
+            reader = command.ExecuteReader();
+            reader.Read();
+            list[1] = reader.GetInt32(0);
+            list[2] = (double)reader.GetDecimal(1);
+            list[3] = (double)reader.GetDecimal(2);
+            list[4] = (double)reader.GetDecimal(3);
+            connection.Close();
 
             return list;
         }

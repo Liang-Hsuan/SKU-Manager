@@ -117,6 +117,9 @@ namespace SKU_Manager.AdminModules.UpdateInventory
             #endregion
 
             Cursor.Current = Cursors.Default;
+
+            // show complete message
+            MessageBox.Show("Inventory update complete to Shop.ca");
         }
     }
 }

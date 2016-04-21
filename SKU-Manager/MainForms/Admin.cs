@@ -5,7 +5,6 @@ using System.Threading;
 using SKU_Manager.AdminModules.DirectUpdate;
 using SKU_Manager.AdminModules.UpdateInventory;
 using System.Data;
-using System.Runtime.CompilerServices;
 using SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables;
 
 namespace SKU_Manager.MainForms
@@ -150,70 +149,84 @@ namespace SKU_Manager.MainForms
             switch (loadingLabel.Text)
             {
                 case "Sears":
-                    // sears case
-                    try
                     {
+                        // sears case
                         sears = new Sears();
-                        new Thread(() => sears.Update(openFileDialog.FileName)).Start();
+                        Thread thread = new Thread(() => sears.Update(openFileDialog.FileName));
+                        thread.Start();
+                        thread.Join();
+
+                        // error check
+                        if (sears.Error)
+                        {
+                            MessageBox.Show("Error occurs during updating:\n" + sears.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        shopCa = null;
+                        amazon = null;
+                        giantTiger = null;
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    shopCa = null;
-                    amazon = null;
-                    giantTiger = null;
                     break;
                 case "Shop.ca":
-                    // shop.ca case
-                    try
                     {
+                        // shop.ca case
                         shopCa = new ShopCa();
-                        new Thread(() => shopCa.Update(openFileDialog.FileName)).Start();
+                        Thread thread = new Thread(() => shopCa.Update(openFileDialog.FileName));
+                        thread.Start();
+                        thread.Join();
+
+                        // error check
+                        if (shopCa.Error)
+                        {
+                            MessageBox.Show("Error occurs during updating:\n" + shopCa.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        sears = null;
+                        giantTiger = null;
+                        amazon = null;
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    sears = null;
-                    giantTiger = null;
-                    amazon = null;
                     break;
                 case "Amazon":
-                    // amazon case
-                    amazon = new Amazon();
-                    Thread thread = new Thread(() => amazon.Update(openFileDialog.FileName));
-                    thread.Start();
-                    thread.Join();
-
-                    // error check
-                    if (amazon.Error)
                     {
-                        MessageBox.Show("Error occurs during updating:\n" + amazon.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                        // amazon case
+                        amazon = new Amazon();
+                        Thread thread = new Thread(() => amazon.Update(openFileDialog.FileName));
+                        thread.Start();
+                        thread.Join();
 
-                    sears = null;
-                    shopCa = null;
-                    giantTiger = null;
+                        // error check
+                        if (amazon.Error)
+                        {
+                            MessageBox.Show("Error occurs during updating:\n" + amazon.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        sears = null;
+                        shopCa = null;
+                        giantTiger = null;
+                    }
                     break;
                 case "Giant Tiger":
-                    // giant tiger case
-                    try
                     {
+                        // giant tiger case
                         giantTiger = new GiantTiger();
-                        new Thread(() => giantTiger.Update(openFileDialog.FileName)).Start();
+                        Thread thread = new Thread(() => giantTiger.Update(openFileDialog.FileName));
+                        thread.Start();
+                        thread.Join();
+
+                        // error check
+                        if (giantTiger.Error)
+                        {
+                            MessageBox.Show("Error occurs during updating:\n" + giantTiger.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        sears = null;
+                        shopCa = null;
+                        amazon = null;
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error occurs during updating:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    sears = null;
-                    shopCa = null;
-                    amazon = null;
                     break;
             }
 

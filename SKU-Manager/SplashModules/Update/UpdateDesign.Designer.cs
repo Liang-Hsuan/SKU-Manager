@@ -121,8 +121,8 @@
             this.bestbuyLabel = new System.Windows.Forms.Label();
             this.tscTextbox = new System.Windows.Forms.TextBox();
             this.bestbuyTextbox = new System.Windows.Forms.TextBox();
-            this.costcoTextbox = new System.Windows.Forms.TextBox();
-            this.costcoLabel = new System.Windows.Forms.Label();
+            this.theBayTextbox = new System.Windows.Forms.TextBox();
+            this.theBayLabel = new System.Windows.Forms.Label();
             this.detailLabel4 = new System.Windows.Forms.Label();
             this.inactiveListButton = new System.Windows.Forms.Button();
             this.activeListButton = new System.Windows.Forms.Button();
@@ -147,16 +147,19 @@
             this.rightButton = new System.Windows.Forms.Button();
             this.onlineButton = new System.Windows.Forms.Button();
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
+            this.countryCombobox = new System.Windows.Forms.ComboBox();
+            this.countryLabel = new System.Windows.Forms.Label();
+            this.bagDetailButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // shippableWeightTextbox
             // 
             this.shippableWeightTextbox.Enabled = false;
-            this.shippableWeightTextbox.Location = new System.Drawing.Point(1017, 616);
+            this.shippableWeightTextbox.Location = new System.Drawing.Point(1017, 661);
             this.shippableWeightTextbox.MaxLength = 10;
             this.shippableWeightTextbox.Name = "shippableWeightTextbox";
             this.shippableWeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableWeightTextbox.TabIndex = 68;
+            this.shippableWeightTextbox.TabIndex = 71;
             // 
             // imprintHeightTextbox
             // 
@@ -180,33 +183,33 @@
             // shippableDepthTextbox
             // 
             this.shippableDepthTextbox.Enabled = false;
-            this.shippableDepthTextbox.Location = new System.Drawing.Point(1017, 590);
+            this.shippableDepthTextbox.Location = new System.Drawing.Point(1017, 635);
             this.shippableDepthTextbox.MaxLength = 10;
             this.shippableDepthTextbox.Name = "shippableDepthTextbox";
             this.shippableDepthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableDepthTextbox.TabIndex = 66;
+            this.shippableDepthTextbox.TabIndex = 69;
             this.shippableDepthTextbox.TextChanged += new System.EventHandler(this.shippableDepthTextbox_TextChanged);
             this.shippableDepthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableDepthTextbox_KeyPress);
             // 
             // shippableWidthTextbox
             // 
             this.shippableWidthTextbox.Enabled = false;
-            this.shippableWidthTextbox.Location = new System.Drawing.Point(1017, 566);
+            this.shippableWidthTextbox.Location = new System.Drawing.Point(1017, 611);
             this.shippableWidthTextbox.MaxLength = 10;
             this.shippableWidthTextbox.Name = "shippableWidthTextbox";
             this.shippableWidthTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableWidthTextbox.TabIndex = 64;
+            this.shippableWidthTextbox.TabIndex = 67;
             this.shippableWidthTextbox.TextChanged += new System.EventHandler(this.shippableWidthTextbox_TextChanged);
             this.shippableWidthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableWidthTextbox_KeyPress);
             // 
             // shippableHeightTextbox
             // 
             this.shippableHeightTextbox.Enabled = false;
-            this.shippableHeightTextbox.Location = new System.Drawing.Point(1017, 540);
+            this.shippableHeightTextbox.Location = new System.Drawing.Point(1017, 585);
             this.shippableHeightTextbox.MaxLength = 10;
             this.shippableHeightTextbox.Name = "shippableHeightTextbox";
             this.shippableHeightTextbox.Size = new System.Drawing.Size(386, 20);
-            this.shippableHeightTextbox.TabIndex = 62;
+            this.shippableHeightTextbox.TabIndex = 65;
             this.shippableHeightTextbox.TextChanged += new System.EventHandler(this.shippableHeightTextbox_TextChanged);
             this.shippableHeightTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.shippableHeightTextbox_KeyPress);
             // 
@@ -296,10 +299,10 @@
             this.shippableWeightLabel.AutoSize = true;
             this.shippableWeightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippableWeightLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippableWeightLabel.Location = new System.Drawing.Point(736, 616);
+            this.shippableWeightLabel.Location = new System.Drawing.Point(736, 661);
             this.shippableWeightLabel.Name = "shippableWeightLabel";
             this.shippableWeightLabel.Size = new System.Drawing.Size(203, 20);
-            this.shippableWeightLabel.TabIndex = 67;
+            this.shippableWeightLabel.TabIndex = 70;
             this.shippableWeightLabel.Text = "Shippable Weight (grams)";
             // 
             // shippableDepthLabel
@@ -307,10 +310,10 @@
             this.shippableDepthLabel.AutoSize = true;
             this.shippableDepthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippableDepthLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippableDepthLabel.Location = new System.Drawing.Point(736, 590);
+            this.shippableDepthLabel.Location = new System.Drawing.Point(736, 635);
             this.shippableDepthLabel.Name = "shippableDepthLabel";
             this.shippableDepthLabel.Size = new System.Drawing.Size(172, 20);
-            this.shippableDepthLabel.TabIndex = 65;
+            this.shippableDepthLabel.TabIndex = 68;
             this.shippableDepthLabel.Text = "Shippable Depth (cm)";
             // 
             // shippableWidthLabel
@@ -318,10 +321,10 @@
             this.shippableWidthLabel.AutoSize = true;
             this.shippableWidthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippableWidthLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippableWidthLabel.Location = new System.Drawing.Point(736, 566);
+            this.shippableWidthLabel.Location = new System.Drawing.Point(736, 611);
             this.shippableWidthLabel.Name = "shippableWidthLabel";
             this.shippableWidthLabel.Size = new System.Drawing.Size(170, 20);
-            this.shippableWidthLabel.TabIndex = 63;
+            this.shippableWidthLabel.TabIndex = 66;
             this.shippableWidthLabel.Text = "Shippable Width (cm)";
             // 
             // shippableHeightLabel
@@ -329,10 +332,10 @@
             this.shippableHeightLabel.AutoSize = true;
             this.shippableHeightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippableHeightLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippableHeightLabel.Location = new System.Drawing.Point(736, 540);
+            this.shippableHeightLabel.Location = new System.Drawing.Point(736, 585);
             this.shippableHeightLabel.Name = "shippableHeightLabel";
             this.shippableHeightLabel.Size = new System.Drawing.Size(176, 20);
-            this.shippableHeightLabel.TabIndex = 61;
+            this.shippableHeightLabel.TabIndex = 64;
             this.shippableHeightLabel.Text = "Shippable Height (cm)";
             // 
             // shippedFoldedLabel
@@ -340,10 +343,10 @@
             this.shippedFoldedLabel.AutoSize = true;
             this.shippedFoldedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippedFoldedLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippedFoldedLabel.Location = new System.Drawing.Point(736, 492);
+            this.shippedFoldedLabel.Location = new System.Drawing.Point(736, 537);
             this.shippedFoldedLabel.Name = "shippedFoldedLabel";
             this.shippedFoldedLabel.Size = new System.Drawing.Size(253, 20);
-            this.shippedFoldedLabel.TabIndex = 59;
+            this.shippedFoldedLabel.TabIndex = 62;
             this.shippedFoldedLabel.Text = "Can this item be shipped folded?";
             // 
             // shippedFoldedCombobox
@@ -355,10 +358,10 @@
             this.shippedFoldedCombobox.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.shippedFoldedCombobox.Location = new System.Drawing.Point(1082, 494);
+            this.shippedFoldedCombobox.Location = new System.Drawing.Point(1082, 539);
             this.shippedFoldedCombobox.Name = "shippedFoldedCombobox";
             this.shippedFoldedCombobox.Size = new System.Drawing.Size(321, 21);
-            this.shippedFoldedCombobox.TabIndex = 60;
+            this.shippedFoldedCombobox.TabIndex = 63;
             this.shippedFoldedCombobox.SelectedValueChanged += new System.EventHandler(this.shippedFoldedCombobox_SelectedValueChanged);
             // 
             // shippedFlatLabel
@@ -366,10 +369,10 @@
             this.shippedFlatLabel.AutoSize = true;
             this.shippedFlatLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippedFlatLabel.ForeColor = System.Drawing.Color.Green;
-            this.shippedFlatLabel.Location = new System.Drawing.Point(736, 465);
+            this.shippedFlatLabel.Location = new System.Drawing.Point(736, 510);
             this.shippedFlatLabel.Name = "shippedFlatLabel";
             this.shippedFlatLabel.Size = new System.Drawing.Size(231, 20);
-            this.shippedFlatLabel.TabIndex = 57;
+            this.shippedFlatLabel.TabIndex = 60;
             this.shippedFlatLabel.Text = "Can this item be shipped flat?";
             // 
             // shippedFlatCombobox
@@ -381,10 +384,10 @@
             this.shippedFlatCombobox.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.shippedFlatCombobox.Location = new System.Drawing.Point(1082, 467);
+            this.shippedFlatCombobox.Location = new System.Drawing.Point(1082, 512);
             this.shippedFlatCombobox.Name = "shippedFlatCombobox";
             this.shippedFlatCombobox.Size = new System.Drawing.Size(321, 21);
-            this.shippedFlatCombobox.TabIndex = 58;
+            this.shippedFlatCombobox.TabIndex = 61;
             this.shippedFlatCombobox.SelectedValueChanged += new System.EventHandler(this.shippedFlatCombobox_SelectedValueChanged);
             // 
             // zippedCombobox
@@ -396,20 +399,20 @@
             this.zippedCombobox.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.zippedCombobox.Location = new System.Drawing.Point(1082, 440);
+            this.zippedCombobox.Location = new System.Drawing.Point(1082, 485);
             this.zippedCombobox.Name = "zippedCombobox";
             this.zippedCombobox.Size = new System.Drawing.Size(321, 21);
-            this.zippedCombobox.TabIndex = 56;
+            this.zippedCombobox.TabIndex = 59;
             // 
             // zippedLabel
             // 
             this.zippedLabel.AutoSize = true;
             this.zippedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zippedLabel.ForeColor = System.Drawing.Color.Green;
-            this.zippedLabel.Location = new System.Drawing.Point(736, 441);
+            this.zippedLabel.Location = new System.Drawing.Point(736, 486);
             this.zippedLabel.Name = "zippedLabel";
             this.zippedLabel.Size = new System.Drawing.Size(313, 20);
-            this.zippedLabel.TabIndex = 55;
+            this.zippedLabel.TabIndex = 58;
             this.zippedLabel.Text = "Does this item have a zipped enclosure?";
             // 
             // detachableLabel
@@ -681,7 +684,7 @@
             this.extendedFrenchDescriptionTextbox.MaxLength = 1000;
             this.extendedFrenchDescriptionTextbox.Multiline = true;
             this.extendedFrenchDescriptionTextbox.Name = "extendedFrenchDescriptionTextbox";
-            this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 123);
+            this.extendedFrenchDescriptionTextbox.Size = new System.Drawing.Size(230, 137);
             this.extendedFrenchDescriptionTextbox.TabIndex = 24;
             // 
             // extendedEnglishDescriptionTextbox
@@ -691,7 +694,7 @@
             this.extendedEnglishDescriptionTextbox.MaxLength = 1000;
             this.extendedEnglishDescriptionTextbox.Multiline = true;
             this.extendedEnglishDescriptionTextbox.Name = "extendedEnglishDescriptionTextbox";
-            this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 123);
+            this.extendedEnglishDescriptionTextbox.Size = new System.Drawing.Size(233, 137);
             this.extendedEnglishDescriptionTextbox.TabIndex = 23;
             // 
             // shortFrenchDescriptionTextbox
@@ -810,12 +813,12 @@
             // progressBar
             // 
             this.progressBar.ForeColor = System.Drawing.Color.Green;
-            this.progressBar.Location = new System.Drawing.Point(537, 1001);
+            this.progressBar.Location = new System.Drawing.Point(537, 1046);
             this.progressBar.Name = "progressBar";
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 109;
+            this.progressBar.TabIndex = 112;
             // 
             // displayedOnWebsiteCombobox
             // 
@@ -826,20 +829,20 @@
             this.displayedOnWebsiteCombobox.Items.AddRange(new object[] {
             "True",
             "False"});
-            this.displayedOnWebsiteCombobox.Location = new System.Drawing.Point(1121, 927);
+            this.displayedOnWebsiteCombobox.Location = new System.Drawing.Point(1121, 972);
             this.displayedOnWebsiteCombobox.Name = "displayedOnWebsiteCombobox";
             this.displayedOnWebsiteCombobox.Size = new System.Drawing.Size(251, 21);
-            this.displayedOnWebsiteCombobox.TabIndex = 106;
+            this.displayedOnWebsiteCombobox.TabIndex = 109;
             // 
             // displayedOnWebsiteLabel
             // 
             this.displayedOnWebsiteLabel.AutoSize = true;
             this.displayedOnWebsiteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.displayedOnWebsiteLabel.ForeColor = System.Drawing.Color.Black;
-            this.displayedOnWebsiteLabel.Location = new System.Drawing.Point(736, 928);
+            this.displayedOnWebsiteLabel.Location = new System.Drawing.Point(736, 973);
             this.displayedOnWebsiteLabel.Name = "displayedOnWebsiteLabel";
             this.displayedOnWebsiteLabel.Size = new System.Drawing.Size(349, 20);
-            this.displayedOnWebsiteLabel.TabIndex = 105;
+            this.displayedOnWebsiteLabel.TabIndex = 108;
             this.displayedOnWebsiteLabel.Text = "Should this item be displayed on the website?";
             // 
             // option5Label
@@ -847,10 +850,10 @@
             this.option5Label.AutoSize = true;
             this.option5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option5Label.ForeColor = System.Drawing.Color.Gray;
-            this.option5Label.Location = new System.Drawing.Point(736, 889);
+            this.option5Label.Location = new System.Drawing.Point(736, 934);
             this.option5Label.Name = "option5Label";
             this.option5Label.Size = new System.Drawing.Size(72, 20);
-            this.option5Label.TabIndex = 102;
+            this.option5Label.TabIndex = 105;
             this.option5Label.Text = "Option 5";
             // 
             // option4Label
@@ -858,10 +861,10 @@
             this.option4Label.AutoSize = true;
             this.option4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option4Label.ForeColor = System.Drawing.Color.Gray;
-            this.option4Label.Location = new System.Drawing.Point(736, 851);
+            this.option4Label.Location = new System.Drawing.Point(736, 896);
             this.option4Label.Name = "option4Label";
             this.option4Label.Size = new System.Drawing.Size(72, 20);
-            this.option4Label.TabIndex = 99;
+            this.option4Label.TabIndex = 102;
             this.option4Label.Text = "Option 4";
             // 
             // option3Label
@@ -869,10 +872,10 @@
             this.option3Label.AutoSize = true;
             this.option3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option3Label.ForeColor = System.Drawing.Color.Gray;
-            this.option3Label.Location = new System.Drawing.Point(736, 813);
+            this.option3Label.Location = new System.Drawing.Point(736, 858);
             this.option3Label.Name = "option3Label";
             this.option3Label.Size = new System.Drawing.Size(72, 20);
-            this.option3Label.TabIndex = 96;
+            this.option3Label.TabIndex = 99;
             this.option3Label.Text = "Option 3";
             // 
             // option2Label
@@ -880,122 +883,122 @@
             this.option2Label.AutoSize = true;
             this.option2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option2Label.ForeColor = System.Drawing.Color.Gray;
-            this.option2Label.Location = new System.Drawing.Point(736, 775);
+            this.option2Label.Location = new System.Drawing.Point(736, 820);
             this.option2Label.Name = "option2Label";
             this.option2Label.Size = new System.Drawing.Size(72, 20);
-            this.option2Label.TabIndex = 93;
+            this.option2Label.TabIndex = 96;
             this.option2Label.Text = "Option 2";
             // 
             // option5FrenchTextbox
             // 
             this.option5FrenchTextbox.Enabled = false;
-            this.option5FrenchTextbox.Location = new System.Drawing.Point(1121, 889);
+            this.option5FrenchTextbox.Location = new System.Drawing.Point(1121, 934);
             this.option5FrenchTextbox.MaxLength = 255;
             this.option5FrenchTextbox.Multiline = true;
             this.option5FrenchTextbox.Name = "option5FrenchTextbox";
             this.option5FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option5FrenchTextbox.TabIndex = 104;
+            this.option5FrenchTextbox.TabIndex = 107;
             // 
             // option4FrenchTextbox
             // 
             this.option4FrenchTextbox.Enabled = false;
-            this.option4FrenchTextbox.Location = new System.Drawing.Point(1121, 851);
+            this.option4FrenchTextbox.Location = new System.Drawing.Point(1121, 896);
             this.option4FrenchTextbox.MaxLength = 255;
             this.option4FrenchTextbox.Multiline = true;
             this.option4FrenchTextbox.Name = "option4FrenchTextbox";
             this.option4FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option4FrenchTextbox.TabIndex = 101;
+            this.option4FrenchTextbox.TabIndex = 104;
             // 
             // option5EnglishTextbox
             // 
             this.option5EnglishTextbox.Enabled = false;
-            this.option5EnglishTextbox.Location = new System.Drawing.Point(839, 889);
+            this.option5EnglishTextbox.Location = new System.Drawing.Point(839, 934);
             this.option5EnglishTextbox.MaxLength = 255;
             this.option5EnglishTextbox.Multiline = true;
             this.option5EnglishTextbox.Name = "option5EnglishTextbox";
             this.option5EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option5EnglishTextbox.TabIndex = 103;
+            this.option5EnglishTextbox.TabIndex = 106;
             // 
             // option4EnglishTextbox
             // 
             this.option4EnglishTextbox.Enabled = false;
-            this.option4EnglishTextbox.Location = new System.Drawing.Point(839, 851);
+            this.option4EnglishTextbox.Location = new System.Drawing.Point(839, 896);
             this.option4EnglishTextbox.MaxLength = 255;
             this.option4EnglishTextbox.Multiline = true;
             this.option4EnglishTextbox.Name = "option4EnglishTextbox";
             this.option4EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option4EnglishTextbox.TabIndex = 100;
+            this.option4EnglishTextbox.TabIndex = 103;
             // 
             // option3FrenchTextbox
             // 
             this.option3FrenchTextbox.Enabled = false;
-            this.option3FrenchTextbox.Location = new System.Drawing.Point(1121, 813);
+            this.option3FrenchTextbox.Location = new System.Drawing.Point(1121, 858);
             this.option3FrenchTextbox.MaxLength = 255;
             this.option3FrenchTextbox.Multiline = true;
             this.option3FrenchTextbox.Name = "option3FrenchTextbox";
             this.option3FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option3FrenchTextbox.TabIndex = 98;
+            this.option3FrenchTextbox.TabIndex = 101;
             // 
             // option3EnglishTextbox
             // 
             this.option3EnglishTextbox.Enabled = false;
-            this.option3EnglishTextbox.Location = new System.Drawing.Point(839, 813);
+            this.option3EnglishTextbox.Location = new System.Drawing.Point(839, 858);
             this.option3EnglishTextbox.MaxLength = 255;
             this.option3EnglishTextbox.Multiline = true;
             this.option3EnglishTextbox.Name = "option3EnglishTextbox";
             this.option3EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option3EnglishTextbox.TabIndex = 97;
+            this.option3EnglishTextbox.TabIndex = 100;
             // 
             // option2FrenchTextbox
             // 
             this.option2FrenchTextbox.Enabled = false;
-            this.option2FrenchTextbox.Location = new System.Drawing.Point(1121, 773);
+            this.option2FrenchTextbox.Location = new System.Drawing.Point(1121, 818);
             this.option2FrenchTextbox.MaxLength = 255;
             this.option2FrenchTextbox.Multiline = true;
             this.option2FrenchTextbox.Name = "option2FrenchTextbox";
             this.option2FrenchTextbox.Size = new System.Drawing.Size(251, 34);
-            this.option2FrenchTextbox.TabIndex = 95;
+            this.option2FrenchTextbox.TabIndex = 98;
             // 
             // option2EnglishTextbox
             // 
             this.option2EnglishTextbox.Enabled = false;
-            this.option2EnglishTextbox.Location = new System.Drawing.Point(839, 775);
+            this.option2EnglishTextbox.Location = new System.Drawing.Point(839, 820);
             this.option2EnglishTextbox.MaxLength = 255;
             this.option2EnglishTextbox.Multiline = true;
             this.option2EnglishTextbox.Name = "option2EnglishTextbox";
             this.option2EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option2EnglishTextbox.TabIndex = 94;
+            this.option2EnglishTextbox.TabIndex = 97;
             // 
             // option1FrenchTextbox
             // 
             this.option1FrenchTextbox.Enabled = false;
-            this.option1FrenchTextbox.Location = new System.Drawing.Point(1121, 735);
+            this.option1FrenchTextbox.Location = new System.Drawing.Point(1121, 780);
             this.option1FrenchTextbox.MaxLength = 255;
             this.option1FrenchTextbox.Multiline = true;
             this.option1FrenchTextbox.Name = "option1FrenchTextbox";
             this.option1FrenchTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option1FrenchTextbox.TabIndex = 92;
+            this.option1FrenchTextbox.TabIndex = 95;
             // 
             // option1Label
             // 
             this.option1Label.AutoSize = true;
             this.option1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option1Label.ForeColor = System.Drawing.Color.Gray;
-            this.option1Label.Location = new System.Drawing.Point(736, 735);
+            this.option1Label.Location = new System.Drawing.Point(736, 780);
             this.option1Label.Name = "option1Label";
             this.option1Label.Size = new System.Drawing.Size(72, 20);
-            this.option1Label.TabIndex = 90;
+            this.option1Label.TabIndex = 93;
             this.option1Label.Text = "Option 1";
             // 
             // option1EnglishTextbox
             // 
             this.option1EnglishTextbox.Enabled = false;
-            this.option1EnglishTextbox.Location = new System.Drawing.Point(839, 737);
+            this.option1EnglishTextbox.Location = new System.Drawing.Point(839, 782);
             this.option1EnglishTextbox.MaxLength = 255;
             this.option1EnglishTextbox.Multiline = true;
             this.option1EnglishTextbox.Name = "option1EnglishTextbox";
             this.option1EnglishTextbox.Size = new System.Drawing.Size(251, 32);
-            this.option1EnglishTextbox.TabIndex = 91;
+            this.option1EnglishTextbox.TabIndex = 94;
             // 
             // translateButton2
             // 
@@ -1003,10 +1006,10 @@
             this.translateButton2.Enabled = false;
             this.translateButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.translateButton2.ForeColor = System.Drawing.Color.White;
-            this.translateButton2.Location = new System.Drawing.Point(1057, 708);
+            this.translateButton2.Location = new System.Drawing.Point(1057, 753);
             this.translateButton2.Name = "translateButton2";
             this.translateButton2.Size = new System.Drawing.Size(92, 23);
-            this.translateButton2.TabIndex = 88;
+            this.translateButton2.TabIndex = 91;
             this.translateButton2.Text = "TRANSLATE";
             this.translateButton2.UseVisualStyleBackColor = false;
             this.translateButton2.Click += new System.EventHandler(this.translateButton2_Click);
@@ -1016,10 +1019,10 @@
             this.frenchLabel2.AutoSize = true;
             this.frenchLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.frenchLabel2.ForeColor = System.Drawing.Color.Gray;
-            this.frenchLabel2.Location = new System.Drawing.Point(1189, 712);
+            this.frenchLabel2.Location = new System.Drawing.Point(1189, 757);
             this.frenchLabel2.Name = "frenchLabel2";
             this.frenchLabel2.Size = new System.Drawing.Size(57, 15);
-            this.frenchLabel2.TabIndex = 89;
+            this.frenchLabel2.TabIndex = 92;
             this.frenchLabel2.Text = "FRENCH";
             // 
             // englishLabel2
@@ -1027,10 +1030,10 @@
             this.englishLabel2.AutoSize = true;
             this.englishLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.englishLabel2.ForeColor = System.Drawing.Color.Gray;
-            this.englishLabel2.Location = new System.Drawing.Point(961, 712);
+            this.englishLabel2.Location = new System.Drawing.Point(961, 757);
             this.englishLabel2.Name = "englishLabel2";
             this.englishLabel2.Size = new System.Drawing.Size(60, 15);
-            this.englishLabel2.TabIndex = 87;
+            this.englishLabel2.TabIndex = 90;
             this.englishLabel2.Text = "ENGLISH";
             // 
             // walmartLabel
@@ -1038,10 +1041,10 @@
             this.walmartLabel.AutoSize = true;
             this.walmartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.walmartLabel.ForeColor = System.Drawing.Color.Gray;
-            this.walmartLabel.Location = new System.Drawing.Point(8, 928);
+            this.walmartLabel.Location = new System.Drawing.Point(8, 973);
             this.walmartLabel.Name = "walmartLabel";
             this.walmartLabel.Size = new System.Drawing.Size(295, 20);
-            this.walmartLabel.TabIndex = 84;
+            this.walmartLabel.TabIndex = 87;
             this.walmartLabel.Text = "What is this item\'s WALMART Name?";
             // 
             // staplesLabel
@@ -1049,10 +1052,10 @@
             this.staplesLabel.AutoSize = true;
             this.staplesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staplesLabel.ForeColor = System.Drawing.Color.Gray;
-            this.staplesLabel.Location = new System.Drawing.Point(8, 896);
+            this.staplesLabel.Location = new System.Drawing.Point(8, 941);
             this.staplesLabel.Name = "staplesLabel";
             this.staplesLabel.Size = new System.Drawing.Size(286, 20);
-            this.staplesLabel.TabIndex = 82;
+            this.staplesLabel.TabIndex = 85;
             this.staplesLabel.Text = "What is this item\'s STAPLES Name?";
             // 
             // searsLabel
@@ -1060,10 +1063,10 @@
             this.searsLabel.AutoSize = true;
             this.searsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searsLabel.ForeColor = System.Drawing.Color.Gray;
-            this.searsLabel.Location = new System.Drawing.Point(8, 866);
+            this.searsLabel.Location = new System.Drawing.Point(8, 911);
             this.searsLabel.Name = "searsLabel";
             this.searsLabel.Size = new System.Drawing.Size(267, 20);
-            this.searsLabel.TabIndex = 80;
+            this.searsLabel.TabIndex = 83;
             this.searsLabel.Text = "What is this item\'s SEARS Name?";
             // 
             // amazonLabel
@@ -1071,126 +1074,126 @@
             this.amazonLabel.AutoSize = true;
             this.amazonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amazonLabel.ForeColor = System.Drawing.Color.Gray;
-            this.amazonLabel.Location = new System.Drawing.Point(8, 835);
+            this.amazonLabel.Location = new System.Drawing.Point(8, 880);
             this.amazonLabel.Name = "amazonLabel";
             this.amazonLabel.Size = new System.Drawing.Size(281, 20);
-            this.amazonLabel.TabIndex = 78;
+            this.amazonLabel.TabIndex = 81;
             this.amazonLabel.Text = "What is this item\'s AMAZON Name?";
             // 
             // walmartTextbox
             // 
             this.walmartTextbox.Enabled = false;
-            this.walmartTextbox.Location = new System.Drawing.Point(312, 928);
+            this.walmartTextbox.Location = new System.Drawing.Point(312, 973);
             this.walmartTextbox.MaxLength = 50;
             this.walmartTextbox.Name = "walmartTextbox";
             this.walmartTextbox.Size = new System.Drawing.Size(374, 20);
-            this.walmartTextbox.TabIndex = 85;
+            this.walmartTextbox.TabIndex = 88;
             // 
             // staplesTextbox
             // 
             this.staplesTextbox.Enabled = false;
-            this.staplesTextbox.Location = new System.Drawing.Point(312, 896);
+            this.staplesTextbox.Location = new System.Drawing.Point(312, 941);
             this.staplesTextbox.MaxLength = 50;
             this.staplesTextbox.Name = "staplesTextbox";
             this.staplesTextbox.Size = new System.Drawing.Size(374, 20);
-            this.staplesTextbox.TabIndex = 83;
+            this.staplesTextbox.TabIndex = 86;
             // 
             // searsTextbox
             // 
             this.searsTextbox.Enabled = false;
-            this.searsTextbox.Location = new System.Drawing.Point(312, 866);
+            this.searsTextbox.Location = new System.Drawing.Point(312, 911);
             this.searsTextbox.MaxLength = 50;
             this.searsTextbox.Name = "searsTextbox";
             this.searsTextbox.Size = new System.Drawing.Size(374, 20);
-            this.searsTextbox.TabIndex = 81;
+            this.searsTextbox.TabIndex = 84;
             // 
             // amazonTextbox
             // 
             this.amazonTextbox.Enabled = false;
-            this.amazonTextbox.Location = new System.Drawing.Point(312, 835);
+            this.amazonTextbox.Location = new System.Drawing.Point(312, 880);
             this.amazonTextbox.MaxLength = 50;
             this.amazonTextbox.Name = "amazonTextbox";
             this.amazonTextbox.Size = new System.Drawing.Size(374, 20);
-            this.amazonTextbox.TabIndex = 79;
+            this.amazonTextbox.TabIndex = 82;
             // 
             // shopcaLabel
             // 
             this.shopcaLabel.AutoSize = true;
             this.shopcaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shopcaLabel.ForeColor = System.Drawing.Color.Gray;
-            this.shopcaLabel.Location = new System.Drawing.Point(8, 803);
+            this.shopcaLabel.Location = new System.Drawing.Point(8, 848);
             this.shopcaLabel.Name = "shopcaLabel";
             this.shopcaLabel.Size = new System.Drawing.Size(286, 20);
-            this.shopcaLabel.TabIndex = 76;
+            this.shopcaLabel.TabIndex = 79;
             this.shopcaLabel.Text = "What is this item\'s SHOP.CA Name?";
             // 
             // shopcaTextbox
             // 
             this.shopcaTextbox.Enabled = false;
-            this.shopcaTextbox.Location = new System.Drawing.Point(312, 803);
+            this.shopcaTextbox.Location = new System.Drawing.Point(312, 848);
             this.shopcaTextbox.MaxLength = 50;
             this.shopcaTextbox.Name = "shopcaTextbox";
             this.shopcaTextbox.Size = new System.Drawing.Size(374, 20);
-            this.shopcaTextbox.TabIndex = 77;
+            this.shopcaTextbox.TabIndex = 80;
             // 
             // bestbuyLabel
             // 
             this.bestbuyLabel.AutoSize = true;
             this.bestbuyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bestbuyLabel.ForeColor = System.Drawing.Color.Gray;
-            this.bestbuyLabel.Location = new System.Drawing.Point(8, 769);
+            this.bestbuyLabel.Location = new System.Drawing.Point(8, 814);
             this.bestbuyLabel.Name = "bestbuyLabel";
             this.bestbuyLabel.Size = new System.Drawing.Size(289, 20);
-            this.bestbuyLabel.TabIndex = 74;
+            this.bestbuyLabel.TabIndex = 77;
             this.bestbuyLabel.Text = "What is this item\'s BESTBUY Name?";
             // 
             // tscTextbox
             // 
             this.tscTextbox.Enabled = false;
-            this.tscTextbox.Location = new System.Drawing.Point(312, 711);
+            this.tscTextbox.Location = new System.Drawing.Point(312, 756);
             this.tscTextbox.MaxLength = 50;
             this.tscTextbox.Name = "tscTextbox";
             this.tscTextbox.Size = new System.Drawing.Size(374, 20);
-            this.tscTextbox.TabIndex = 71;
+            this.tscTextbox.TabIndex = 74;
             // 
             // bestbuyTextbox
             // 
             this.bestbuyTextbox.Enabled = false;
-            this.bestbuyTextbox.Location = new System.Drawing.Point(312, 769);
+            this.bestbuyTextbox.Location = new System.Drawing.Point(312, 814);
             this.bestbuyTextbox.MaxLength = 50;
             this.bestbuyTextbox.Name = "bestbuyTextbox";
             this.bestbuyTextbox.Size = new System.Drawing.Size(374, 20);
-            this.bestbuyTextbox.TabIndex = 75;
+            this.bestbuyTextbox.TabIndex = 78;
             // 
-            // costcoTextbox
+            // theBayTextbox
             // 
-            this.costcoTextbox.Enabled = false;
-            this.costcoTextbox.Location = new System.Drawing.Point(312, 739);
-            this.costcoTextbox.MaxLength = 50;
-            this.costcoTextbox.Name = "costcoTextbox";
-            this.costcoTextbox.Size = new System.Drawing.Size(374, 20);
-            this.costcoTextbox.TabIndex = 73;
+            this.theBayTextbox.Enabled = false;
+            this.theBayTextbox.Location = new System.Drawing.Point(312, 784);
+            this.theBayTextbox.MaxLength = 50;
+            this.theBayTextbox.Name = "theBayTextbox";
+            this.theBayTextbox.Size = new System.Drawing.Size(374, 20);
+            this.theBayTextbox.TabIndex = 76;
             // 
-            // costcoLabel
+            // theBayLabel
             // 
-            this.costcoLabel.AutoSize = true;
-            this.costcoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costcoLabel.ForeColor = System.Drawing.Color.Gray;
-            this.costcoLabel.Location = new System.Drawing.Point(8, 739);
-            this.costcoLabel.Name = "costcoLabel";
-            this.costcoLabel.Size = new System.Drawing.Size(282, 20);
-            this.costcoLabel.TabIndex = 72;
-            this.costcoLabel.Text = "What is this item\'s COSTCO Name?";
+            this.theBayLabel.AutoSize = true;
+            this.theBayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.theBayLabel.ForeColor = System.Drawing.Color.Gray;
+            this.theBayLabel.Location = new System.Drawing.Point(8, 784);
+            this.theBayLabel.Name = "theBayLabel";
+            this.theBayLabel.Size = new System.Drawing.Size(283, 20);
+            this.theBayLabel.TabIndex = 75;
+            this.theBayLabel.Text = "What is this item\'s THE BAY Name?";
             // 
             // detailLabel4
             // 
             this.detailLabel4.BackColor = System.Drawing.Color.Green;
             this.detailLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detailLabel4.ForeColor = System.Drawing.Color.White;
-            this.detailLabel4.Location = new System.Drawing.Point(736, 673);
+            this.detailLabel4.Location = new System.Drawing.Point(736, 718);
             this.detailLabel4.Name = "detailLabel4";
             this.detailLabel4.Size = new System.Drawing.Size(682, 29);
-            this.detailLabel4.TabIndex = 86;
+            this.detailLabel4.TabIndex = 89;
             this.detailLabel4.Text = "Options and Features";
             this.detailLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1199,10 +1202,10 @@
             this.inactiveListButton.BackColor = System.Drawing.Color.Silver;
             this.inactiveListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inactiveListButton.ForeColor = System.Drawing.Color.Black;
-            this.inactiveListButton.Location = new System.Drawing.Point(722, 1090);
+            this.inactiveListButton.Location = new System.Drawing.Point(722, 1135);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 112;
+            this.inactiveListButton.TabIndex = 115;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -1212,10 +1215,10 @@
             this.activeListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.activeListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeListButton.ForeColor = System.Drawing.Color.White;
-            this.activeListButton.Location = new System.Drawing.Point(536, 1090);
+            this.activeListButton.Location = new System.Drawing.Point(536, 1135);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 111;
+            this.activeListButton.TabIndex = 114;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -1226,10 +1229,10 @@
             this.updateDesignButton.Enabled = false;
             this.updateDesignButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDesignButton.ForeColor = System.Drawing.Color.White;
-            this.updateDesignButton.Location = new System.Drawing.Point(537, 1008);
+            this.updateDesignButton.Location = new System.Drawing.Point(537, 1053);
             this.updateDesignButton.Name = "updateDesignButton";
             this.updateDesignButton.Size = new System.Drawing.Size(370, 76);
-            this.updateDesignButton.TabIndex = 110;
+            this.updateDesignButton.TabIndex = 113;
             this.updateDesignButton.Text = "Update Design";
             this.updateDesignButton.UseVisualStyleBackColor = false;
             this.updateDesignButton.Click += new System.EventHandler(this.updateDesignButton_Click);
@@ -1239,10 +1242,10 @@
             this.tscLabel.AutoSize = true;
             this.tscLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tscLabel.ForeColor = System.Drawing.Color.Gray;
-            this.tscLabel.Location = new System.Drawing.Point(8, 712);
+            this.tscLabel.Location = new System.Drawing.Point(8, 757);
             this.tscLabel.Name = "tscLabel";
             this.tscLabel.Size = new System.Drawing.Size(244, 20);
-            this.tscLabel.TabIndex = 70;
+            this.tscLabel.TabIndex = 73;
             this.tscLabel.Text = "What is this item\'s TSC Name?";
             // 
             // detailLabel3
@@ -1250,10 +1253,10 @@
             this.detailLabel3.BackColor = System.Drawing.Color.Green;
             this.detailLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detailLabel3.ForeColor = System.Drawing.Color.White;
-            this.detailLabel3.Location = new System.Drawing.Point(0, 673);
+            this.detailLabel3.Location = new System.Drawing.Point(0, 718);
             this.detailLabel3.Name = "detailLabel3";
             this.detailLabel3.Size = new System.Drawing.Size(694, 29);
-            this.detailLabel3.TabIndex = 69;
+            this.detailLabel3.TabIndex = 72;
             this.detailLabel3.Text = "Online Naming";
             this.detailLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1262,20 +1265,20 @@
             this.activeLabel.AutoSize = true;
             this.activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeLabel.ForeColor = System.Drawing.Color.Green;
-            this.activeLabel.Location = new System.Drawing.Point(736, 958);
+            this.activeLabel.Location = new System.Drawing.Point(736, 1003);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(172, 20);
-            this.activeLabel.TabIndex = 107;
+            this.activeLabel.TabIndex = 110;
             this.activeLabel.Text = "Is this Design Active?";
             // 
             // activeCheckbox
             // 
             this.activeCheckbox.AutoSize = true;
             this.activeCheckbox.Enabled = false;
-            this.activeCheckbox.Location = new System.Drawing.Point(935, 963);
+            this.activeCheckbox.Location = new System.Drawing.Point(935, 1008);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 108;
+            this.activeCheckbox.TabIndex = 111;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             this.activeCheckbox.CheckedChanged += new System.EventHandler(this.activeCheckbox_CheckedChanged);
             // 
@@ -1308,7 +1311,7 @@
             // trendEnglishShortTextbox
             // 
             this.trendEnglishShortTextbox.Enabled = false;
-            this.trendEnglishShortTextbox.Location = new System.Drawing.Point(213, 474);
+            this.trendEnglishShortTextbox.Location = new System.Drawing.Point(213, 497);
             this.trendEnglishShortTextbox.MaxLength = 50;
             this.trendEnglishShortTextbox.Multiline = true;
             this.trendEnglishShortTextbox.Name = "trendEnglishShortTextbox";
@@ -1318,31 +1321,31 @@
             // trendFrenchShortTextbox
             // 
             this.trendFrenchShortTextbox.Enabled = false;
-            this.trendFrenchShortTextbox.Location = new System.Drawing.Point(464, 474);
+            this.trendFrenchShortTextbox.Location = new System.Drawing.Point(464, 497);
             this.trendFrenchShortTextbox.MaxLength = 50;
             this.trendFrenchShortTextbox.Multiline = true;
             this.trendFrenchShortTextbox.Name = "trendFrenchShortTextbox";
-            this.trendFrenchShortTextbox.Size = new System.Drawing.Size(233, 33);
+            this.trendFrenchShortTextbox.Size = new System.Drawing.Size(230, 33);
             this.trendFrenchShortTextbox.TabIndex = 27;
             // 
             // trendEnglishExtendedTextbox
             // 
             this.trendEnglishExtendedTextbox.Enabled = false;
-            this.trendEnglishExtendedTextbox.Location = new System.Drawing.Point(213, 513);
+            this.trendEnglishExtendedTextbox.Location = new System.Drawing.Point(213, 539);
             this.trendEnglishExtendedTextbox.MaxLength = 1000;
             this.trendEnglishExtendedTextbox.Multiline = true;
             this.trendEnglishExtendedTextbox.Name = "trendEnglishExtendedTextbox";
-            this.trendEnglishExtendedTextbox.Size = new System.Drawing.Size(233, 123);
+            this.trendEnglishExtendedTextbox.Size = new System.Drawing.Size(233, 142);
             this.trendEnglishExtendedTextbox.TabIndex = 29;
             // 
             // trendFrenchExtendedTextbox
             // 
             this.trendFrenchExtendedTextbox.Enabled = false;
-            this.trendFrenchExtendedTextbox.Location = new System.Drawing.Point(464, 513);
+            this.trendFrenchExtendedTextbox.Location = new System.Drawing.Point(464, 536);
             this.trendFrenchExtendedTextbox.MaxLength = 1000;
             this.trendFrenchExtendedTextbox.Multiline = true;
             this.trendFrenchExtendedTextbox.Name = "trendFrenchExtendedTextbox";
-            this.trendFrenchExtendedTextbox.Size = new System.Drawing.Size(233, 123);
+            this.trendFrenchExtendedTextbox.Size = new System.Drawing.Size(230, 145);
             this.trendFrenchExtendedTextbox.TabIndex = 30;
             // 
             // trendShortLabel
@@ -1350,7 +1353,7 @@
             this.trendShortLabel.AutoSize = true;
             this.trendShortLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trendShortLabel.ForeColor = System.Drawing.Color.Green;
-            this.trendShortLabel.Location = new System.Drawing.Point(8, 474);
+            this.trendShortLabel.Location = new System.Drawing.Point(8, 497);
             this.trendShortLabel.Name = "trendShortLabel";
             this.trendShortLabel.Size = new System.Drawing.Size(188, 20);
             this.trendShortLabel.TabIndex = 25;
@@ -1360,7 +1363,7 @@
             // 
             this.trendExtendedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trendExtendedLabel.ForeColor = System.Drawing.Color.Green;
-            this.trendExtendedLabel.Location = new System.Drawing.Point(8, 513);
+            this.trendExtendedLabel.Location = new System.Drawing.Point(8, 539);
             this.trendExtendedLabel.Name = "trendExtendedLabel";
             this.trendExtendedLabel.Size = new System.Drawing.Size(168, 47);
             this.trendExtendedLabel.TabIndex = 28;
@@ -1406,7 +1409,7 @@
             this.onlineButton.BackColor = System.Drawing.Color.Green;
             this.onlineButton.Enabled = false;
             this.onlineButton.ForeColor = System.Drawing.Color.White;
-            this.onlineButton.Location = new System.Drawing.Point(12, 607);
+            this.onlineButton.Location = new System.Drawing.Point(12, 652);
             this.onlineButton.Name = "onlineButton";
             this.onlineButton.Size = new System.Drawing.Size(165, 29);
             this.onlineButton.TabIndex = 31;
@@ -1427,6 +1430,285 @@
             this.giftCheckbox.Text = "Gift Box";
             this.giftCheckbox.UseVisualStyleBackColor = true;
             // 
+            // countryCombobox
+            // 
+            this.countryCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.countryCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.countryCombobox.Enabled = false;
+            this.countryCombobox.FormattingEnabled = true;
+            this.countryCombobox.Items.AddRange(new object[] {
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "American Samoa",
+            "Andorra",
+            "Angola",
+            "Anguilla",
+            "Antactica",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Aruba",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Betarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bermuda",
+            "Bhutan",
+            "Bolivia",
+            "Bonaire",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Bouvet island",
+            "Brazil",
+            "British Indian Ocean Territory",
+            "Brunei Darussalam",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Cape Verde",
+            "Cayman Islands",
+            "Central African republic",
+            "Chad",
+            "Chile",
+            "China",
+            "Chrismas Island",
+            "Cocos islands",
+            "Colombia",
+            "Comoros",
+            "Congo",
+            "Democratic Republic of the Congo",
+            "Cook Islands",
+            "Costa Rica",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican republic",
+            "Ecuador",
+            "Egypt",
+            "EL Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estoria",
+            "Ethiopia",
+            "Falkland Islands",
+            "Foaroe Islands",
+            "Fiji",
+            "Finland",
+            "Freance",
+            "French Guiana",
+            "French Polynesia",
+            "French Southern territories",
+            "Gabon",
+            "Gambia",
+            "Georgia germany",
+            "Ghana",
+            "Gibraltar",
+            "Greece",
+            "Greenland",
+            "grenada",
+            "Guadeloupe",
+            "Guam",
+            "Guatemala",
+            "Guernsey",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Heard Island and McDonald Mcdonald Islands",
+            "Holy See",
+            "Honduras",
+            "Hong Kong",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Isle of Man",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jersey",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Korea",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Lao People\'s Democratic Republic",
+            "Latvia",
+            "Lebanaon",
+            "Lesotho",
+            "Liberia",
+            "Lbya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macao",
+            "Macedonia",
+            "madagascar",
+            "Malawi",
+            "Malaysia",
+            "maldives",
+            "mali",
+            "Malta",
+            "Marshall Islands",
+            "martinique",
+            "Mauritania",
+            "Mauritius",
+            "Mayotte",
+            "mexico",
+            "Micronesia",
+            "Moldova",
+            "monaco",
+            "Mongolia",
+            "Montenegro",
+            "Montserrat",
+            "Morocco",
+            "Mozambique",
+            "Myanmar",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Caledonia",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Niue",
+            "Norfolk island",
+            "Northern Mariana Islands",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Palestine",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Pitcairn",
+            "Poland",
+            "Portugal",
+            "Puerto Rico",
+            "Qatar",
+            "Romania",
+            "Russian Federation",
+            "Rwanda",
+            "Reunion",
+            "Saint Barthelemy",
+            "Saint Helena",
+            "Saint Kitts and Nevis",
+            "Saint Lucia",
+            "Saint Martin",
+            "Saint Pierre and Miquelon",
+            "Saint Vincent and the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome and Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Sint Maarten",
+            "Slovaia",
+            "Slovenia",
+            "Solomon Islands",
+            "somalia",
+            "South Africa",
+            "South Georgia and the South Sandwich Islands",
+            "South Sudan",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Svalbard and Jan Mayen",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syrian Arab republic",
+            "Taiwan",
+            "Tajikistan",
+            "united republic of Tanzania",
+            "Thailand",
+            "Timor-Leste",
+            "Togo",
+            "Tokelau",
+            "Tonga",
+            "Trinidad and Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Turks and Caicos Islands",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States ",
+            "United States Minor Outlying Islands",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Venezuela",
+            "Viet Nam",
+            "Wallis and Futuna",
+            "Western Sahara",
+            "Yemem",
+            "Zambia",
+            "Zimbabwe"});
+            this.countryCombobox.Location = new System.Drawing.Point(1017, 416);
+            this.countryCombobox.Name = "countryCombobox";
+            this.countryCombobox.Size = new System.Drawing.Size(386, 21);
+            this.countryCombobox.TabIndex = 56;
+            this.countryCombobox.Text = "Canada";
+            // 
+            // countryLabel
+            // 
+            this.countryLabel.AutoSize = true;
+            this.countryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countryLabel.ForeColor = System.Drawing.Color.Green;
+            this.countryLabel.Location = new System.Drawing.Point(736, 414);
+            this.countryLabel.Name = "countryLabel";
+            this.countryLabel.Size = new System.Drawing.Size(136, 20);
+            this.countryLabel.TabIndex = 55;
+            this.countryLabel.Text = "Country of Origin";
+            // 
+            // bagDetailButton
+            // 
+            this.bagDetailButton.BackColor = System.Drawing.Color.Green;
+            this.bagDetailButton.Enabled = false;
+            this.bagDetailButton.ForeColor = System.Drawing.Color.White;
+            this.bagDetailButton.Location = new System.Drawing.Point(740, 444);
+            this.bagDetailButton.Name = "bagDetailButton";
+            this.bagDetailButton.Size = new System.Drawing.Size(165, 29);
+            this.bagDetailButton.TabIndex = 57;
+            this.bagDetailButton.Text = "More Bag Details";
+            this.bagDetailButton.UseVisualStyleBackColor = false;
+            this.bagDetailButton.Click += new System.EventHandler(this.bagDetailButton_Click);
+            // 
             // UpdateDesign
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1434,6 +1716,9 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
+            this.Controls.Add(this.bagDetailButton);
+            this.Controls.Add(this.countryCombobox);
+            this.Controls.Add(this.countryLabel);
             this.Controls.Add(this.giftCheckbox);
             this.Controls.Add(this.onlineButton);
             this.Controls.Add(this.leftButton);
@@ -1481,8 +1766,8 @@
             this.Controls.Add(this.bestbuyLabel);
             this.Controls.Add(this.tscTextbox);
             this.Controls.Add(this.bestbuyTextbox);
-            this.Controls.Add(this.costcoTextbox);
-            this.Controls.Add(this.costcoLabel);
+            this.Controls.Add(this.theBayTextbox);
+            this.Controls.Add(this.theBayLabel);
             this.Controls.Add(this.detailLabel4);
             this.Controls.Add(this.inactiveListButton);
             this.Controls.Add(this.activeListButton);
@@ -1652,8 +1937,8 @@
         private System.Windows.Forms.Label bestbuyLabel;
         private System.Windows.Forms.TextBox tscTextbox;
         private System.Windows.Forms.TextBox bestbuyTextbox;
-        private System.Windows.Forms.TextBox costcoTextbox;
-        private System.Windows.Forms.Label costcoLabel;
+        private System.Windows.Forms.TextBox theBayTextbox;
+        private System.Windows.Forms.Label theBayLabel;
         private System.Windows.Forms.Label detailLabel4;
         private System.Windows.Forms.Button inactiveListButton;
         private System.Windows.Forms.Button activeListButton;
@@ -1678,5 +1963,8 @@
         private System.Windows.Forms.Button rightButton;
         private System.Windows.Forms.Button onlineButton;
         private System.Windows.Forms.CheckBox giftCheckbox;
+        private System.Windows.Forms.ComboBox countryCombobox;
+        private System.Windows.Forms.Label countryLabel;
+        private System.Windows.Forms.Button bagDetailButton;
     }
 }

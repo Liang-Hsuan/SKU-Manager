@@ -4,21 +4,13 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SKU_Manager.AdminModules.ImportUpdate
 {
-    public class Amazon
+    /* 
+     * A class that deal with amazon inventory import and update the database
+     */
+    public class Amazon : ImportUpdate
     {
-        // field for database connection
-        private readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
-
-        // field for showing the progress
-        public int Total { get; private set; } = 1;
-        public int Current { get; private set; }
-
-        // fields for error indication
-        public bool Error { get; private set; }
-        public string ErrorMessage { get; private set; }
-
         /* a method that update new amzon merchant sku from the excel import */
-        public void Update(string xlPath)
+        public override void Update(string xlPath)
         {
             // set error to false
             Error = false;
@@ -73,22 +65,10 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             }
         }
 
-        /* a supporting method that release the excel object */
-        private static void ReleaseObject(object obj)
+        /* override discontinue method */
+        public override void Discontinue(string sku)
         {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch
-            {
-                obj = null;
-            }
-            finally
-            {
-                GC.Collect();
-            }
+            throw new NotImplementedException();
         }
     }
 }

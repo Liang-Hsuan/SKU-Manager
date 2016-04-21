@@ -18,6 +18,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
      */
     public class GiantTiger : ImportUpdate
     {
+        // field for ftp server connection
+        private readonly Ftp ftp;
+
         /* constructor that initialize ftp object */
         public GiantTiger()
         {
@@ -37,36 +40,47 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a method that update new amzon merchant sku from the excel import */
         public override void Update(string xlPath)
         {
-            // fields for excel sheet reading
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            // set error to false
+            Error = false;
 
-            // declare range in sheet
-            Excel.Range range = xlWorkSheet.UsedRange;
-            Total = range.Rows.Count;
-
-            // start updating database for new sears sku
-            connection.Open();
-            for (int row = 1; row <= range.Rows.Count; row++)
+            try
             {
-                // getting sears's sku and our sku
-                string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
-                string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+                // fields for excel sheet reading
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
-                command.ExecuteNonQuery();
-                Current = row;
+                // declare range in sheet
+                Excel.Range range = xlWorkSheet.UsedRange;
+                Total = range.Rows.Count;
+
+                // start updating database for new sears sku
+                connection.Open();
+                for (int row = 1; row <= range.Rows.Count; row++)
+                {
+                    // getting sears's sku and our sku
+                    string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
+                    string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+
+                    // update database
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
+                    command.ExecuteNonQuery();
+                    Current = row;
+                }
+                connection.Close();
+
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+
+                ReleaseObject(xlWorkSheet);
+                ReleaseObject(xlWorkBook);
+                ReleaseObject(xlApp);
             }
-            connection.Close();
-
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-
-            ReleaseObject(xlWorkSheet);
-            ReleaseObject(xlWorkBook);
-            ReleaseObject(xlApp);
+            catch (Exception ex)
+            {
+                Error = true;
+                ErrorMessage = ex.Message;
+            }
         }
 
         /* a method that update giant tiger inventory data and create purchase order if necessary, also send email for notification */
@@ -87,7 +101,10 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             // writing content of csv file
             for (int i = 0; i < list.Length; i++)
             {
-                csv[i + 1] = new[] { list[i].HostSku, list[i].VendorSku, list[i].Upc, list[i].HostItemDescription, list[i].QtyOnHand.ToString(), list[i].UnitCost.ToString() };
+                // the case if the item is discontinue -> set its quantity to -1
+                if (list[i].Discontinue) list[i].QtyOnHand = -1;
+
+                csv[i + 1] = new[] { list[i].HostSku, list[i].VendorSku, list[i].Upc, '"' + list[i].HostItemDescription + '"', list[i].QtyOnHand.ToString(), list[i].UnitCost.ToString() };
 
                 // check if item requires purchase order -> if yes, add to the purchase list
                 if (list[i].PurchaseOrder)
@@ -111,7 +128,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             File.WriteAllText(path, sb.ToString());
 
             // upload file to ftp server
-            // ftp.Upload("put/inventory/" + poNumber + DateTime.Now.ToString("HHmm") + ".csv", path);
+            ftp.Upload("put/inventory/" + poNumber + DateTime.Now.ToString("HHmm") + ".csv", path);
             #endregion
 
             if (purchaseList.Count < 1) return;
@@ -126,7 +143,8 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             SmtpClient client = new SmtpClient("smtp.gmail.com");
 
             mail.From = new MailAddress("intern1002@ashlinbpg.com");
-            mail.To.Add("intern1002@ashlinbpg.com");
+            mail.To.Add("juanne.kochhar@ashlinbpg.com");
+            mail.To.Add("ashlin@ashlinbpg.com");
             mail.Subject = "PENDING PURCHASE ORDER - GIANT TIGER";
             mail.Body = body;
 
@@ -139,10 +157,13 @@ namespace SKU_Manager.AdminModules.ImportUpdate
             new Product().PostOrder(purchaseList, 12, poNumber);
         }
 
-        /* override discontinue method */
+        /* a PUBLIC supporting method that set the given sku to discontine in database for giant tiger */
         public override void Discontinue(string sku)
         {
-            throw new NotImplementedException();
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_GIANT_TIGER = '' WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }

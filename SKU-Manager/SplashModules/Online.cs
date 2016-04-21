@@ -7,7 +7,7 @@ using SKU_Manager.SupportingClasses;
 namespace SKU_Manager.SplashModules
 {
     /*
-     * A spalsh add module that edit the online description
+     * A spalsh module that edit the online description
      */
     public partial class Online : Form
     {
@@ -73,7 +73,7 @@ namespace SKU_Manager.SplashModules
         }
         #endregion
 
-        /* edit button clicks that set the online description for the client */
+        /* edit button clicks that send the online description for the client */
         private void editButton_Click(object sender, EventArgs e)
         {
             // get the online description

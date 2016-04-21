@@ -17,6 +17,9 @@ namespace SKU_Manager.AdminModules.ImportUpdate
      */
     public class Sears : ImportUpdate
     {
+        // field for sftp server connection
+        private readonly Sftp sftp;
+
         /* constructor that initialize sftp object */
         public Sears()
         {
@@ -35,36 +38,47 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a method that update new sears merchant sku from the excel import */
         public override void Update(string xlPath)
         {
-            // fields for excel sheet reading
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            // set error to false
+            Error = false;
 
-            // declare range in sheet
-            Excel.Range range = xlWorkSheet.UsedRange;
-            Total = range.Rows.Count;
-
-            // start updating database for new sears sku
-            connection.Open();
-            for (int row = 1; row <= range.Rows.Count; row++)
+            try
             {
-                // getting sears's sku and our sku
-                string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
-                string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+                // fields for excel sheet reading
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkBook = xlApp.Workbooks.Open(xlPath, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                // update database
-                SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
-                command.ExecuteNonQuery();
-                Current = row;
+                // declare range in sheet
+                Excel.Range range = xlWorkSheet.UsedRange;
+                Total = range.Rows.Count;
+
+                // start updating database for new sears sku
+                connection.Open();
+                for (int row = 1; row <= range.Rows.Count; row++)
+                {
+                    // getting sears's sku and our sku
+                    string merchantSku = (string)(range.Cells[row, 1] as Excel.Range).Value2;
+                    string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
+
+                    // update database
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
+                    command.ExecuteNonQuery();
+                    Current = row;
+                }
+                connection.Close();
+
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+
+                ReleaseObject(xlWorkSheet);
+                ReleaseObject(xlWorkBook);
+                ReleaseObject(xlApp);
             }
-            connection.Close();
-
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-
-            ReleaseObject(xlWorkSheet);
-            ReleaseObject(xlWorkBook);
-            ReleaseObject(xlApp);
+            catch (Exception ex)
+            {
+                Error = true;
+                ErrorMessage = ex.Message;
+            }
         }
 
         /* a method that update sears inventory data and create purchase order if necessary, also send email for notification */
@@ -135,6 +149,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
 
             mail.From = new MailAddress("intern1002@ashlinbpg.com");
             mail.To.Add("juanne.kochhar@ashlinbpg.com");
+            mail.To.Add("ashlin@ashlinbpg.com");
             mail.Subject = "PENDING PURCHASE ORDER - SEARS";
             mail.Body = body;
 

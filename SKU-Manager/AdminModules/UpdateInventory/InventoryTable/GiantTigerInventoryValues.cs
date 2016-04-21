@@ -12,6 +12,7 @@
         public int QtyOnHand { get; set; }
         public double UnitCost { get; set; }
         public bool PurchaseOrder { get; set; }
+        public bool Discontinue { get; set; }
 
         // additional field for convenience
         public string BpItemNumber { get; set; }
@@ -27,13 +28,15 @@
             QtyOnHand = 0;
             UnitCost = 0;
             PurchaseOrder = false;
+            Discontinue = false;
 
             BpItemNumber = "";
             ReorderQuantity = 0;
         }
 
         /* second constructor that accept all parameters as argument */
-        public GiantTigerInventoryValues(string hostSku, string vendorSku, string upc, string hostItemDescription, int qtyOnHand, double unitCost, bool purchaseOrder, string bpItemNumber, int reorderQty)
+        public GiantTigerInventoryValues(string hostSku, string vendorSku, string upc, string hostItemDescription, int qtyOnHand, double unitCost, bool purchaseOrder, bool discontinue,
+                                         string bpItemNumber, int reorderQty)
         {
             HostSku = hostSku;
             VendorSku = vendorSku;
@@ -42,6 +45,7 @@
             QtyOnHand = qtyOnHand;
             UnitCost = unitCost;
             PurchaseOrder = purchaseOrder;
+            Discontinue = discontinue;
 
             BpItemNumber = bpItemNumber;
             ReorderQuantity = reorderQty;
