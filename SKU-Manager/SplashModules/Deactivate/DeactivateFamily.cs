@@ -23,9 +23,6 @@ namespace SKU_Manager.SplashModules.Deactivate
         // fields for combobox
         private readonly ArrayList productFamilyList = new ArrayList();
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic components */
         public DeactivateFamily()
         {
@@ -41,7 +38,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         /* the backgound workder for adding items to comboBox */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Code FROM ref_Families WHERE Active = 'True' ORDER BY Design_Service_Family_Code", connection);    // for selecting data
                 connection.Open();
@@ -83,7 +80,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         private void backgroundWorkerInfo_DoWork(object sender, DoWorkEventArgs e)
         {
             // store data and assign to the field
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Design_Service_family_Description, Pricing_Tier, Reorder_Quantity, Reorder_Level " + 
                                                     "FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
@@ -128,7 +125,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             try
             {
                 // connect to database and activate the family
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Families SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                       + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);

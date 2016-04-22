@@ -25,6 +25,8 @@ namespace SKU_Manager.SplashModules.Add
         private string basePrice;
         private readonly string[] location = new string[4];    // [0] for warehouse, [1] for rack, [2] for shelf, [3] for columnIndex
         private string locationFull;
+        private string liningMaterial;
+        private string trim;
         private string caHts;
         private string usHts;
         private string caDuty;
@@ -63,17 +65,17 @@ namespace SKU_Manager.SplashModules.Add
 
         // fields for storing uri path and alt text of images
         private readonly ImageSearch imageSearch = new ImageSearch();
-        private readonly List<string> image = new List<string>();
-        private readonly List<string> group = new List<string>();
-        private readonly List<string> model = new List<string>();
-        private readonly List<string> template = new List<string>();
-        private readonly TextBox[] imageTextbox = new TextBox[10];
-        private readonly TextBox[] groupTextbox = new TextBox[5];
-        private readonly TextBox[] modelTextbox = new TextBox[5];
-        private readonly TextBox[] templateTextbox = new TextBox[2];
-        private readonly string[] imageAlt = new string[10];
-        private readonly string[] groupAlt = new string[5];
-        private readonly string[] modelAlt = new string[5];
+        private string[] image = new string[10];
+        private string[] group = new string[5];
+        private string[] model = new string[5];
+        private string[] template = new string[2];
+        private TextBox[] imageTextbox = new TextBox[10];
+        private TextBox[] groupTextbox = new TextBox[5];
+        private TextBox[] modelTextbox = new TextBox[5];
+        private TextBox[] templateTextbox = new TextBox[2];
+        private string[] imageAlt = new string[10];
+        private string[] groupAlt = new string[5];
+        private string[] modelAlt = new string[5];
 
         // fields for lists
         private readonly ArrayList designServiceCodeList = new ArrayList();
@@ -86,9 +88,6 @@ namespace SKU_Manager.SplashModules.Add
         private readonly ArrayList caHtsList = new ArrayList();
         private readonly ArrayList usHtsList = new ArrayList();
         private readonly HashSet<string> skuList = new HashSet<string>();
-
-        // connection string to the database
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         /* constructor that initialize graphic component */
         public AddSku()
@@ -109,7 +108,7 @@ namespace SKU_Manager.SplashModules.Add
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for Design Service Code
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(Credentials.DesignCon);
             SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code", connection);    
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -209,7 +208,7 @@ namespace SKU_Manager.SplashModules.Add
             string currentDesignCode = designServiceCodeCombobox.SelectedItem.ToString();
 
             // connect to database to get the info about this design code
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox, Website_Flag, Active FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + '\'', connection);
                 connection.Open();
@@ -264,7 +263,7 @@ namespace SKU_Manager.SplashModules.Add
         private void backgroundWorkerHTS_DoWork(object sender, DoWorkEventArgs e)
         {
             // connect to database to get hts
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(Credentials.DesignCon);
             SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families family JOIN master_Design_Attributes design " +
                                                 "ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
@@ -318,6 +317,8 @@ namespace SKU_Manager.SplashModules.Add
                 rackCombobox.Enabled = false;
                 shelfCombobox.Enabled = false;
                 columnIndexCombobox.Enabled = false;
+                liningMaterialCombobox.Enabled = false;
+                trimTextbox.Enabled = false;
                 ashlinTextbox.Enabled = false;
                 magentoTextbox.Enabled = false;
                 tscTextbox.Enabled = false;
@@ -340,25 +341,27 @@ namespace SKU_Manager.SplashModules.Add
 
                 materialCombobox.Text = "SVC";
                 colorCodeCombobox.Text = "SVC";
-                rackCombobox.Text = "";
-                shelfCombobox.Text = "";
-                columnIndexCombobox.Text = "";
-                ashlinTextbox.Text = "";
-                magentoTextbox.Text = "";
-                tscTextbox.Text = "";
-                costcoTextbox.Text = "";
-                bestbuyTextbox.Text = "";
-                shopCaTextbox.Text = "";
-                amazonCaTextbox.Text = "";
-                amazonComTextbox.Text = "";
-                searsTextbox.Text = "";
-                staplesTextbox.Text = "";
-                walmartCaTextbox.Text = "";
-                walmartComTextbox.Text = "";
-                distributorCentralTextbox.Text = "";
-                promoMarketingTextbox.Text = "";
-                giantTigerTextbox.Text = "";
-                asiXidTextbox.Text = "";
+                rackCombobox.Text = string.Empty;
+                shelfCombobox.Text = string.Empty;
+                columnIndexCombobox.Text = string.Empty;
+                liningMaterialCombobox.Text = string.Empty;
+                trimTextbox.Text = string.Empty;
+                ashlinTextbox.Text = string.Empty;
+                magentoTextbox.Text = string.Empty;
+                tscTextbox.Text = string.Empty;
+                costcoTextbox.Text = string.Empty;
+                bestbuyTextbox.Text = string.Empty;
+                shopCaTextbox.Text = string.Empty;
+                amazonCaTextbox.Text = string.Empty;
+                amazonComTextbox.Text = string.Empty;
+                searsTextbox.Text = string.Empty;
+                staplesTextbox.Text = string.Empty;
+                walmartCaTextbox.Text = string.Empty;
+                walmartComTextbox.Text = string.Empty;
+                distributorCentralTextbox.Text = string.Empty;
+                promoMarketingTextbox.Text = string.Empty;
+                giantTigerTextbox.Text = string.Empty;
+                asiXidTextbox.Text = string.Empty;
             }
             else
             {
@@ -368,6 +371,8 @@ namespace SKU_Manager.SplashModules.Add
                 rackCombobox.Enabled = true;
                 shelfCombobox.Enabled = true;
                 columnIndexCombobox.Enabled = true;
+                liningMaterialCombobox.Enabled = true;
+                trimTextbox.Enabled = true;
                 ashlinTextbox.Enabled = true;
                 magentoTextbox.Enabled = true;
                 tscTextbox.Enabled = true;
@@ -387,6 +392,8 @@ namespace SKU_Manager.SplashModules.Add
                 pricingTierUpdown.Enabled = true;
                 reorderQtyUpdown.Enabled = true;
                 reorderLevelUpdown.Enabled = true;
+                liningMaterialCombobox.SelectedIndex = 1;
+                trimTextbox.Text = "matching material";
             }
         }
 
@@ -398,7 +405,7 @@ namespace SKU_Manager.SplashModules.Add
             string currentMaterial = materialCombobox.SelectedItem.ToString();
 
             // connect to database to get the info about this material code
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Active FROM ref_Materials WHERE Material_Code = \'" + currentMaterial + '\'', connection);
                 connection.Open();
@@ -473,7 +480,7 @@ namespace SKU_Manager.SplashModules.Add
             string currentColorCode = colorCodeCombobox.SelectedItem.ToString();
 
             // connect to database to get the info about this color code
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Active FROM ref_Colours WHERE Colour_Code = \'" + currentColorCode + '\'', connection);
                 connection.Open();
@@ -530,7 +537,7 @@ namespace SKU_Manager.SplashModules.Add
             // down to business -> search for duty
             if (canadianHtsCombobox.SelectedItem.ToString() != "")
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
@@ -540,13 +547,13 @@ namespace SKU_Manager.SplashModules.Add
                 }
             }
             else
-                caDutyTextbox.Text = "";
+                caDutyTextbox.Text = string.Empty;
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (usHtsCombobox.SelectedItem.ToString() != "")
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
@@ -556,7 +563,7 @@ namespace SKU_Manager.SplashModules.Add
                 }
             }
             else
-                usDutyTextbox.Text = "";
+                usDutyTextbox.Text = string.Empty;
         }
         #endregion
 
@@ -594,33 +601,49 @@ namespace SKU_Manager.SplashModules.Add
             sku = skuCodeTextbox.Text;
 
             // search images and generate uri that assign to image fields
+            int index = 0;
             string[] imageCopy = imageSearch.GetImageUri(sku);
-            foreach (string uri in imageCopy) // get the value that exist
-                image.Add(uri);
-            int j = 10 - imageCopy.Length;    // get the number of value missing, add them
-            for (int i = 0; i < j; i++)
-                image.Add("");
+            foreach (string uri in imageCopy)    // get the value that exist
+            {
+                image[index] = uri;
+                index++;
+            }
+            // add the missing value 
+            for (int i = index; i < 10; i++)
+                image[i] = string.Empty;
 
+            index = 0;
             string[] groupCopy = imageSearch.GetGroupUri(sku);
-            foreach (string uri in groupCopy) // get the value that exist
-                group.Add(uri);
-            j = 5 - groupCopy.Length;        // get the number of value missing, add them
-            for (int i = 0; i < j; i++)
-                group.Add("");
+            foreach (string uri in groupCopy)    // get the value that exist
+            {
+                group[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 5; i++)
+                group[i] = string.Empty;
 
+            index = 0;
             string[] modelCopy = imageSearch.GetModelUri(sku);
-            foreach (string uri in modelCopy) // get the value that exist
-                model.Add(uri);
-            j = 5 - modelCopy.Length;         // get the number of value missing, add them
-            for (int i = 0; i < j; i++)
-                model.Add("");
+            foreach (string uri in modelCopy)    // get the value that exist
+            {
+                model[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 5; i++)
+                model[i] = string.Empty;
 
+            index = 0;
             string[] templateCopy = imageSearch.GetTemplateUri(sku);
-            foreach (string uri in templateCopy) // get the value that exist
-                template.Add(uri);
-            j = 2 - templateCopy.Length;         // get the number of value missing, add them
-            for (int i = 0; i < j; i++)
-                template.Add("");
+            foreach (string uri in templateCopy)    // get the value that exist
+            {
+                template[index] = uri;
+                index++;
+            }
+            // add the missing value
+            for (int i = index; i < 2; i++)
+                template[i] = string.Empty;
 
             // simulate progress 10% ~ 20%
             for (int i = 10; i <= 20; i++)
@@ -676,19 +699,19 @@ namespace SKU_Manager.SplashModules.Add
         private void backgroundWorkerImagePath_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // assign image uri to image textboxes
-            for (int i = 0; i < image.Count; i++)
+            for (int i = 0; i < image.Length; i++)
                 imageTextbox[i].Text = image[i];
 
             // assign image uri to group textboxes
-            for (int i = 0; i < group.Count; i++)
+            for (int i = 0; i < group.Length; i++)
                 groupTextbox[i].Text = group[i];
 
             // assign image uri to model textboxes
-            for (int i = 0; i < model.Count; i++)
+            for (int i = 0; i < model.Length; i++)
                 modelTextbox[i].Text = model[i];
 
             // assign image uri to template textboxes
-            for (int i = 0; i < template.Count; i++)
+            for (int i = 0; i < template.Length; i++)
                 templateTextbox[i].Text = template[i];
 
             // initialize location field and HTS
@@ -698,6 +721,7 @@ namespace SKU_Manager.SplashModules.Add
             location[3] = columnIndexCombobox.SelectedItem.ToString();
             caHts = canadianHtsCombobox.SelectedItem.ToString();
             usHts = usHtsCombobox.SelectedItem.ToString();
+            liningMaterial = liningMaterialCombobox.SelectedItem.ToString();
 
             // call background worker
             if (!backgroundWorkerAddSKU.IsBusy)
@@ -717,6 +741,7 @@ namespace SKU_Manager.SplashModules.Add
             if (basePrice == "")
                 basePrice = "0";
             locationFull = "WH" + location[0] + "-R" + location[1] + "-S" + location[2] + "-C" + location[3];
+            trim = trimTextbox.Text.Replace("'", "''");
             caDuty = caDutyTextbox.Text;
             usDuty = usDutyTextbox.Text;
             ashlin = ashlinTextbox.Text.Replace("'", "''");
@@ -744,33 +769,33 @@ namespace SKU_Manager.SplashModules.Add
             }
 
             // assgin alt text to image
-            int i = 0;
-            for (; i < image.Count; i++)
+            int index = 0;
+            for (; index < image.Length; index++)
             {
-                if (image[i] == "")
-                    imageAlt[i] = "";
+                if (image[index] == "")
+                    imageAlt[index] = "";
                 else
-                    imageAlt[i] = AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
+                    imageAlt[index] = AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
-            i = 0;
-            for (; i < group.Count; i++)
+            index = 0;
+            for (; index < group.Length; index++)
             {
-                if (group[i] == "")
-                    groupAlt[i] = "";
+                if (group[index] == "")
+                    groupAlt[index] = "";
                 else
-                    groupAlt[i] = "Group " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
+                    groupAlt[index] = "Group " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // assgin alt text to image
-            i = 0;
-            for (; i < model.Count; i++)
+            index = 0;
+            for (; index < model.Length; index++)
             {
-                if (model[i] == "")
-                    modelAlt[i] = "";
+                if (model[index] == "")
+                    modelAlt[index] = "";
                 else
-                    modelAlt[i] = "Model " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
+                    modelAlt[index] = "Model " + AltText.GetAltWithSkuNotExist(sku).Replace("'", "''");
             }
 
             // simulate progress 70% ~ 90%
@@ -783,19 +808,19 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database and insert new row
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     if (!caHts.Equals("") && !usHts.Equals(""))
                     {
-                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level) "
-                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\',\'" + shopCa + "\',\'" + staples + "\',\'" + walmartCa + "\',\'" + walmartCom + "\',\'" + distributorCentral + "\',\'" + promoMarketing + "\',\'" + giantTiger + "\',\'" + asiXid + "\',\'" + location[0] + "\',\'" + location[2] + "\',\'" + location[3] + "\',\'" + location[1] + "\', \'" + locationFull + "\'," + basePrice + ',' + upcCode9 + ',' + upcCode10 + ",\'" + ashlin + "\',\'" + caHts + "\',\'" + usHts + "\'," + caDuty + ',' + usDuty + ",\'" + image[0] + "\',\'" + image[1] + "\',\'" + image[2] + "\',\'" + image[3] + "\',\'" + image[4] + "\',\'" + image[5] + "\',\'" + image[6] + "\',\'" + image[7] + "\',\'" + image[8] + "\',\'" + image[9] + "\',\'" + group[0] + "\',\'" + group[1] + "\',\'" + group[2] + "\',\'" + group[3] + "\',\'" + group[4] + "\',\'" + model[0] + "\',\'" + model[1] + "\',\'" + model[2] + "\',\'" + model[3] + "\',\'" + model[4] + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + imageAlt[0] + "\',\'" + imageAlt[1] + "\',\'" + imageAlt[2] + "\',\'" + imageAlt[3] + "\',\'" + imageAlt[4] + "\',\'" + imageAlt[5] + "\',\'" + imageAlt[6] + "\',\'" + imageAlt[7] + "\',\'" + imageAlt[8] + "\',\'" + imageAlt[9] + "\',\'" + groupAlt[0] + "\',\'" + groupAlt[1] + "\',\'" + groupAlt[2] + "\',\'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\',\'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\',\'" + modelAlt[2] + "\',\'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ')', connection);
+                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level, Lining_Material, Trim) "
+                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\',\'" + shopCa + "\',\'" + staples + "\',\'" + walmartCa + "\',\'" + walmartCom + "\',\'" + distributorCentral + "\',\'" + promoMarketing + "\',\'" + giantTiger + "\',\'" + asiXid + "\',\'" + location[0] + "\',\'" + location[2] + "\',\'" + location[3] + "\',\'" + location[1] + "\', \'" + locationFull + "\'," + basePrice + ',' + upcCode9 + ',' + upcCode10 + ",\'" + ashlin + "\',\'" + caHts + "\',\'" + usHts + "\'," + caDuty + ',' + usDuty + ",\'" + image[0] + "\',\'" + image[1] + "\',\'" + image[2] + "\',\'" + image[3] + "\',\'" + image[4] + "\',\'" + image[5] + "\',\'" + image[6] + "\',\'" + image[7] + "\',\'" + image[8] + "\',\'" + image[9] + "\',\'" + group[0] + "\',\'" + group[1] + "\',\'" + group[2] + "\',\'" + group[3] + "\',\'" + group[4] + "\',\'" + model[0] + "\',\'" + model[1] + "\',\'" + model[2] + "\',\'" + model[3] + "\',\'" + model[4] + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + imageAlt[0] + "\',\'" + imageAlt[1] + "\',\'" + imageAlt[2] + "\',\'" + imageAlt[3] + "\',\'" + imageAlt[4] + "\',\'" + imageAlt[5] + "\',\'" + imageAlt[6] + "\',\'" + imageAlt[7] + "\',\'" + imageAlt[8] + "\',\'" + imageAlt[9] + "\',\'" + groupAlt[0] + "\',\'" + groupAlt[1] + "\',\'" + groupAlt[2] + "\',\'" + groupAlt[3] + "\', \'" + groupAlt[4] + "\',\'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\',\'" + modelAlt[2] + "\',\'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ",\'" + liningMaterial + "\',\'" + trim + "\')", connection);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
                     else
                     {
-                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level) "
-                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\',\'" + shopCa + "\',\'" + staples + "\',\'" + walmartCa + "\',\'" + walmartCom + "\',\'" + distributorCentral + "\',\'" + promoMarketing + "\',\'" + giantTiger + "\',\'" + asiXid + "\',\'" + location[0] + "\',\'" + location[2] + "\',\'" + location[3] + "\',\'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ',' + upcCode9 + ',' + upcCode10 + ",\'" + ashlin + "\',\'" + image[0] + "\',\'" + image[1] + "\',\'" + image[2] + "\',\'" + image[3] + "\',\'" + image[4] + "\',\'" + image[5] + "\',\'" + image[6] + "\',\'" + image[7] + "\',\'" + image[8] + "\',\'" + image[9] + "\',\'" + group[0] + "\',\'" + group[1] + "\',\'" + group[2] + "\',\'" + group[3] + "\',\'" + group[4] + "\',\'" + model[0] + "\',\'" + model[1] + "\',\'" + model[2] + "\',\'" + model[3] + "\',\'" + model[4] + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + imageAlt[0] + "\',\'" + imageAlt[1] + "\',\'" + imageAlt[2] + "\',\'" + imageAlt[3] + "\',\'" + imageAlt[4] + "\',\'" + imageAlt[5] + "\',\'" + imageAlt[6] + "\',\'" + imageAlt[7] + "\',\'" + imageAlt[8] + "\',\'" + imageAlt[9] + "\',\'" + groupAlt[0] + "\',\'" + groupAlt[1] + "\',\'" + groupAlt[2] + "\',\'" + groupAlt[3] + "\',\'" + groupAlt[4] + "\',\'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\', \'" + modelAlt[2] + "\', \'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ')', connection);
+                        SqlCommand command = new SqlCommand("INSERT INTO master_SKU_Attributes (SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_Website, SKU_MAGENTO, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, Location_WH, Location_Shelf, Location_ColIndex, Location_Rack, Location_Full, Base_Price, UPC_Code_9, UPC_Code_10, Ashlin_URL, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Active, Date_Added, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, Template_URL_1, Template_URL_2, Pricing_Tier, Reorder_Quantity, Reorder_Level, Lining_Material, Trim) "
+                                                          + "VALUES (\'" + sku + "\',\'" + designServiceCode + "\',\'" + material + "\',\'" + colorCode + "\',\'" + onWebsite[1] + "\',\'" + magento + "\',\'" + sears + "\',\'" + tsc + "\',\'" + costco + "\',\'" + bestbuy + "\',\'" + amazonCa + "\',\'" + amazonCom + "\',\'" + shopCa + "\',\'" + staples + "\',\'" + walmartCa + "\',\'" + walmartCom + "\',\'" + distributorCentral + "\',\'" + promoMarketing + "\',\'" + giantTiger + "\',\'" + asiXid + "\',\'" + location[0] + "\',\'" + location[2] + "\',\'" + location[3] + "\',\'" + location[1] + "\', \'" + locationFull + "\', " + basePrice + ',' + upcCode9 + ',' + upcCode10 + ",\'" + ashlin + "\',\'" + image[0] + "\',\'" + image[1] + "\',\'" + image[2] + "\',\'" + image[3] + "\',\'" + image[4] + "\',\'" + image[5] + "\',\'" + image[6] + "\',\'" + image[7] + "\',\'" + image[8] + "\',\'" + image[9] + "\',\'" + group[0] + "\',\'" + group[1] + "\',\'" + group[2] + "\',\'" + group[3] + "\',\'" + group[4] + "\',\'" + model[0] + "\',\'" + model[1] + "\',\'" + model[2] + "\',\'" + model[3] + "\',\'" + model[4] + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + imageAlt[0] + "\',\'" + imageAlt[1] + "\',\'" + imageAlt[2] + "\',\'" + imageAlt[3] + "\',\'" + imageAlt[4] + "\',\'" + imageAlt[5] + "\',\'" + imageAlt[6] + "\',\'" + imageAlt[7] + "\',\'" + imageAlt[8] + "\',\'" + imageAlt[9] + "\',\'" + groupAlt[0] + "\',\'" + groupAlt[1] + "\',\'" + groupAlt[2] + "\',\'" + groupAlt[3] + "\',\'" + groupAlt[4] + "\',\'" + modelAlt[0] + "\',\'" + modelAlt[1] + "\', \'" + modelAlt[2] + "\', \'" + modelAlt[3] + "\',\'" + modelAlt[4] + "\',\'" + template[0] + "\',\'" + template[1] + "\'," + pricingTier + ',' + reorderQty + ',' + reorderLevel + ",\'" + liningMaterial + "\',\'" + trim + "\')", connection);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }

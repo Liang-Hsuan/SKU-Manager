@@ -215,7 +215,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 {
                     try
                     {
-                        using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+                        using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                         {
                             SqlCommand updateCommand = new SqlCommand(command.Remove(command.Length - 1) + " WHERE SKU_Ashlin = \'" + row[0] + '\'', connection);
                             connection.Open();

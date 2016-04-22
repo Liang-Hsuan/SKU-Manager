@@ -29,9 +29,6 @@ namespace SKU_Manager.SplashModules.Activate
         // fields for combobox
         private readonly ArrayList skuList = new ArrayList();
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic components */
         public ActivateSku()
         {
@@ -47,7 +44,7 @@ namespace SKU_Manager.SplashModules.Activate
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'False' AND " +
                                                     "Design_Service_Code IN (SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'True') AND " +
@@ -105,7 +102,7 @@ namespace SKU_Manager.SplashModules.Activate
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT sku.Design_Service_Code, sku.Material_Code, sku.Colour_Code, " +
                                                             "Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, " +
@@ -166,7 +163,7 @@ namespace SKU_Manager.SplashModules.Activate
             }
 
             // connect to database and activate the color
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                   + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);

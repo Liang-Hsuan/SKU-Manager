@@ -44,12 +44,12 @@ namespace SKU_Manager.SplashModules.Update
         private string country;
         private double shoulderDropLength;
         private double handleStrapDropLength;
-        private string notableStrapGeneralFeatures = "";
+        private string notableStrapGeneralFeatures = "1 long";
         private bool protectiveFeet;
-        private string closure = "";
+        private string closure = "Zippered";
         private bool innerPocket;
         private bool outsidePocket;
-        private string sizeDifferentiation = "";
+        private string sizeDifferentiation = "Medium";
         private string numberComponents;
         private string shippableHeight;
         private string shippableWidth;
@@ -76,15 +76,12 @@ namespace SKU_Manager.SplashModules.Update
         private readonly ArrayList productFamilyList = new ArrayList();
         private readonly HashSet<string> internalNameList = new HashSet<string>();
 
-        // connection string to the database
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic component */
         public UpdateDesign()
         {
             InitializeComponent();
-            designCodeList.Add("");
-            productFamilyList.Add("");
+            designCodeList.Add(string.Empty);
+            productFamilyList.Add(string.Empty);
 
             // call background worker for adding items to combobox
             if (!backgroundWorkerCombobox.IsBusy)
@@ -96,7 +93,7 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for Design Service Code
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(Credentials.DesignCon);
             SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Code is not NULL ORDER BY Design_Service_Code", connection);   
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -170,53 +167,55 @@ namespace SKU_Manager.SplashModules.Update
             else
             {
                 // set textboxes to nothing
-                brandTextbox.Text = "";
-                internalNameTextbox.Text = "";
-                shortEnglishDescriptionTextbox.Text = "";
-                shortFrenchDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
-                extendedFrenchDescriptionTextbox.Text = "";
-                trendEnglishShortTextbox.Text = "";
-                trendFrenchShortTextbox.Text = "";
-                trendEnglishExtendedTextbox.Text = "";
-                trendFrenchExtendedTextbox.Text = "";
-                imprintHeightTextbox.Text = "";
-                imprintWidthTextbox.Text = "";
-                productHeightTextbox.Text = "";
-                productWidthTextbox.Text = "";
-                productDepthTextbox.Text = "";
-                weightTextBox.Text = "";
-                numberComponentTextbox.Text = "";
-                tscTextbox.Text = "";
-                theBayTextbox.Text = "";
-                bestbuyTextbox.Text = "";
-                shopcaTextbox.Text = "";
-                amazonTextbox.Text = "";
-                searsTextbox.Text = "";
-                staplesTextbox.Text = "";
-                walmartTextbox.Text = "";
-                option1EnglishTextbox.Text = "";
-                option2EnglishTextbox.Text = "";
-                option3EnglishTextbox.Text = "";
-                option4EnglishTextbox.Text = "";
-                option5EnglishTextbox.Text = "";
-                option1FrenchTextbox.Text = "";
-                option2FrenchTextbox.Text = "";
-                option3FrenchTextbox.Text = "";
-                option4FrenchTextbox.Text = "";
-                option5FrenchTextbox.Text = "";
+                brandTextbox.Text = string.Empty;
+                internalNameTextbox.Text = string.Empty;
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                shortFrenchDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
+                extendedFrenchDescriptionTextbox.Text = string.Empty;
+                trendEnglishShortTextbox.Text = string.Empty;
+                trendFrenchShortTextbox.Text = string.Empty;
+                trendEnglishExtendedTextbox.Text = string.Empty;
+                trendFrenchExtendedTextbox.Text = string.Empty;
+                imprintHeightTextbox.Text = string.Empty;
+                imprintWidthTextbox.Text = string.Empty;
+                productHeightTextbox.Text = string.Empty;
+                productWidthTextbox.Text = string.Empty;
+                productDepthTextbox.Text = string.Empty;
+                weightTextBox.Text = string.Empty;
+                numberComponentTextbox.Text = string.Empty;
+                tscTextbox.Text = string.Empty;
+                theBayTextbox.Text = string.Empty;
+                bestbuyTextbox.Text = string.Empty;
+                shopcaTextbox.Text = string.Empty;
+                amazonTextbox.Text = string.Empty;
+                searsTextbox.Text = string.Empty;
+                staplesTextbox.Text = string.Empty;
+                walmartTextbox.Text = string.Empty;
+                option1EnglishTextbox.Text = string.Empty;
+                option2EnglishTextbox.Text = string.Empty;
+                option3EnglishTextbox.Text = string.Empty;
+                option4EnglishTextbox.Text = string.Empty;
+                option5EnglishTextbox.Text = string.Empty;
+                option1FrenchTextbox.Text = string.Empty;
+                option2FrenchTextbox.Text = string.Empty;
+                option3FrenchTextbox.Text = string.Empty;
+                option4FrenchTextbox.Text = string.Empty;
+                option5FrenchTextbox.Text = string.Empty;
 
                 // set the comboboxes' text to nothing
-                productFamilyCombobox.Text = "";
-                designServiceFlagCombobox.Text = "";
-                monogrammedCombobox.Text = "";
-                imprintedCombobox.Text = "";
-                strapCombobox.Text = "";
-                detachableCombobox.Text = "";
-                zippedCombobox.Text = "";
-                shippedFlatCombobox.Text = "";
-                shippedFoldedCombobox.Text = "";
-                displayedOnWebsiteCombobox.Text = "";
+                productFamilyCombobox.Text = string.Empty;
+                designServiceFlagCombobox.Text = string.Empty;
+                monogrammedCombobox.Text = string.Empty;
+                imprintedCombobox.Text = string.Empty;
+                strapCombobox.Text = string.Empty;
+                detachableCombobox.Text = string.Empty;
+                zippedCombobox.Text = string.Empty;
+                shippedFlatCombobox.Text = string.Empty;
+                shippedFoldedCombobox.Text = string.Empty;
+                displayedOnWebsiteCombobox.Text = string.Empty;
+                countryCombobox.Text = string.Empty;
+                displayedOnWebsiteCombobox.Text = string.Empty;
 
                 productFamilyCombobox.Enabled = false;
                 designServiceFlagCombobox.Enabled = false;
@@ -256,17 +255,17 @@ namespace SKU_Manager.SplashModules.Update
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Short_Description_FR, Extended_Description, Extended_Description_FR, Monogram, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Weight_grams, Components, Strap, Detachable_Strap, Zippered_Enclosure, Flat_Shippable, Fold_Shippable, Shippable_Height_cm, Shippable_Width_cm, Shippable_Depth_cm, Shippable_Weight_grams, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_THE_BAY, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, "  
-                                                          + "Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Design_Online, Design_Online_FR, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
+                                                          + "Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Design_Online, Design_Online_FR, GiftBox, Country, ShoulderDropLength, HandleStrapDropLength, NotableStrapGeneralFeatures, ProtectiveFeet, Closure, InnerPocket, OutsidePocket, SizeDifferentiation FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
 
             // this is special case
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 // this is for searching family description for product family code
                 SqlCommand command = new SqlCommand("SELECT Design_service_Family_Description FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][0] + '\'', connection);
@@ -327,6 +326,15 @@ namespace SKU_Manager.SplashModules.Update
             boolean[7] = table.Rows[0][43].ToString();
             active = table.Rows[0][44].ToString() != "False";
             boolean[8] = table.Rows[0][51].ToString();
+            country = table.Rows[0][52].ToString();
+            shoulderDropLength = Convert.ToDouble(table.Rows[0][53]);
+            handleStrapDropLength = Convert.ToDouble(table.Rows[0][54]);
+            notableStrapGeneralFeatures = table.Rows[0][55].ToString();
+            protectiveFeet = Convert.ToBoolean(table.Rows[0][56]);
+            closure = table.Rows[0][57].ToString();
+            innerPocket = Convert.ToBoolean(table.Rows[0][58]);
+            outsidePocket = Convert.ToBoolean(table.Rows[0][59]);
+            sizeDifferentiation = table.Rows[0][60].ToString();
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -350,6 +358,7 @@ namespace SKU_Manager.SplashModules.Update
             productWidthTextbox.Text = productWidth;
             productDepthTextbox.Text = productDepth;
             weightTextBox.Text = weight;
+            countryCombobox.Text = country;
             numberComponentTextbox.Text = numberComponents;
             strapCombobox.Text = boolean[2];
             detachableCombobox.Text = boolean[3];
@@ -484,7 +493,7 @@ namespace SKU_Manager.SplashModules.Update
             // the case if the selection is nothing
             if (productFamilyCombobox.SelectedIndex < 1) return; 
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem.ToString().Replace("'", "''") + '\'', connection);
                 connection.Open();
@@ -706,8 +715,8 @@ namespace SKU_Manager.SplashModules.Update
             {
                 imprintHeightTextbox.Enabled = false;
                 imprintWidthTextbox.Enabled = false;
-                imprintHeightTextbox.Text = "";
-                imprintWidthTextbox.Text = "";
+                imprintHeightTextbox.Text = string.Empty;
+                imprintWidthTextbox.Text = string.Empty;
             }
             else
             {
@@ -752,10 +761,10 @@ namespace SKU_Manager.SplashModules.Update
                 shippableDepthTextbox.Enabled = true;
                 isFolded = true;
 
-                shippableHeightTextbox.Text = "";
-                shippableWidthTextbox.Text = "";
-                shippableDepthTextbox.Text = "";
-                shippableWeightTextbox.Text = "";
+                shippableHeightTextbox.Text = string.Empty;
+                shippableWidthTextbox.Text = string.Empty;
+                shippableDepthTextbox.Text = string.Empty;
+                shippableWeightTextbox.Text = string.Empty;
             }
             else
             {
@@ -765,7 +774,7 @@ namespace SKU_Manager.SplashModules.Update
                 shippableDepthTextbox.Enabled = false;
                 isFolded = false;
 
-                shippableWeightTextbox.Text = "";
+                shippableWeightTextbox.Text = string.Empty;
                 shippableHeightTextbox.Text = productHeightTextbox.Text;
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
@@ -846,21 +855,21 @@ namespace SKU_Manager.SplashModules.Update
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
                 shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
-                shippableWeightTextbox.Text = "";
+                shippableWeightTextbox.Text = string.Empty;
         }
         private void shippableWidthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
                 shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
-                shippableWeightTextbox.Text = "";
+                shippableWeightTextbox.Text = string.Empty;
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
                 shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
-                shippableWeightTextbox.Text = "";
+                shippableWeightTextbox.Text = string.Empty;
         }
         #endregion
 
@@ -912,6 +921,7 @@ namespace SKU_Manager.SplashModules.Update
             designServiceCode = designCodeCombobox.SelectedItem.ToString();
             productFamily = productFamilyCombobox.SelectedItem.ToString();
             designServiceFlag = designServiceFlagCombobox.SelectedItem.ToString();
+            country = countryCombobox.SelectedItem.ToString();
             CalculateTrueAndFalse();
 
             // call background worker, the update button will only be activated if vaild design service code has been selected, so no need to check
@@ -938,38 +948,27 @@ namespace SKU_Manager.SplashModules.Update
             trendExtendedEnglishDescription = trendEnglishExtendedTextbox.Text.Replace("'", "''");
             trendExtendedFrenchDescription = trendFrenchExtendedTextbox.Text.Replace("'", "''");
             imprintHeight = imprintHeightTextbox.Text;
-            if (imprintHeight == "")
-                imprintHeight = "NULL";
+            if (imprintHeight == "") imprintHeight = "NULL";
             imprintWidth = imprintWidthTextbox.Text;
-            if (imprintWidth == "")
-                imprintWidth = "NULL";
+            if (imprintWidth == "") imprintWidth = "NULL";
             productHeight = productHeightTextbox.Text;
-            if (productHeight == "")
-                productHeight = "NULL";
+            if (productHeight == "") productHeight = "NULL";
             productWidth = productWidthTextbox.Text;
-            if (productWidth == "")
-                productWidth = "NULL";
+            if (productWidth == "") productWidth = "NULL";
             productDepth = productDepthTextbox.Text;
-            if (productDepth == "")
-                productDepth = "NULL";
+            if (productDepth == "") productDepth = "NULL";
             weight = weightTextBox.Text;
-            if (weight == "")
-                weight = "NULL";
+            if (weight == "") weight = "NULL";
             numberComponents = numberComponentTextbox.Text;
-            if (numberComponents == "")
-                numberComponents = "NULL";
+            if (numberComponents == "") numberComponents = "NULL";
             shippableHeight = shippableHeightTextbox.Text;
-            if (shippableHeight == "")
-                shippableHeight = "NULL";
+            if (shippableHeight == "") shippableHeight = "NULL";
             shippableWidth = productWidthTextbox.Text;
-            if (shippableWidth == "")
-                shippableWidth = "NULL";
+            if (shippableWidth == "") shippableWidth = "NULL";
             shippableDepth = shippableDepthTextbox.Text;
-            if (shippableDepth == "")
-                shippableDepth = "NULL";
+            if (shippableDepth == "") shippableDepth = "NULL";
             shippableWeight = shippableWeightTextbox.Text;
-            if (shippableWeight == "")
-                shippableWeight = "NULL";
+            if (shippableWeight == "") shippableWeight = "NULL";
             tsc = tscTextbox.Text.Replace("'", "''");
             theBay = theBayTextbox.Text.Replace("'", "''");
             bestbuy = bestbuyTextbox.Text.Replace("'", "''");
@@ -1004,7 +1003,7 @@ namespace SKU_Manager.SplashModules.Update
             try
             {
                 // connect to database and insert new row
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     // this is for searching family code for product family
                     DataTable table = new DataTable();
@@ -1013,9 +1012,9 @@ namespace SKU_Manager.SplashModules.Update
                     adapter.Fill(table);
 
                     // this is the real thing
-                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Brand = 'Ashlin®', GiftBox = " + integer[9] + ", Design_Service_Flag = \'" + designServiceFlag + "\', Design_Service_Family_Code = \'" + table.Rows[0][0].ToString() + "\', Design_Service_Fashion_Name_Ashlin = \'" + internalName + "\', Design_Service_Fashion_Name_TSC_CA = \'" + tsc + "\', Design_Service_Fashion_Name_THE_BAY = \'" + theBay + "\', Design_Service_Fashion_Name_BESTBUY_CA = \'" + bestbuy + "\', Design_Service_Fashion_Name_SHOP_CA = \'" + shopca + "\', Design_Service_Fashion_Name_AMAZON_CA = \'" + amazon + "\', Design_Service_Fashion_Name_AMAZON_COM = \'" + amazon + "\', Design_Service_Fashion_Name_SEARS_CA = \'" + sears + "\', Design_Service_Fashion_Name_STAPLES_CA = \'" + staples + "\', Design_Service_Fashion_Name_WALMART = \'" + walmart + "\', Short_Description = \'" + shortEnglishDescription + "\', Short_Description_FR = \'" + shortFrenchDescription + "\', Extended_Description = \'" + extendedEnglishDescription + "\', Extended_Description_FR = \'" + extendedFrenchDescription + "\', Imprintable = " + integer[1] + ", Imprint_Height_cm = " + imprintHeight + ", Imprint_Width_cm = " + imprintWidth + ", Width_cm = " + productWidth + ", Height_cm = " + productHeight + ", Depth_cm = " + productDepth + ", Weight_grams = " + weight + ", Active = \'" + active
-                                                      + "\',Flat_Shippable=" + integer[5] + ",Fold_Shippable=" + integer[6] + ",Shippable_Width_cm=" + shippableWidth + ", Shippable_Height_cm = " + shippableHeight + ", Shippable_Depth_cm = " + shippableDepth + ", Shippable_Weight_grams = " + shippableWeight + ", Components = " + numberComponents + ", Strap = " + integer[2] + ", Detachable_Strap = " + integer[3] + ", Zippered_Enclosure = " + integer[4] + ", Option_1 = \'" + englishOption[0] + "\', Option_1_FR = \'" + frenchOption[0] + "\', Option_2 =\'" + englishOption[1] + "\',Option_2_FR=\'" + frenchOption[1] + "\', Option_3=\'" + englishOption[2] + "\', Option_3_FR=\'" + frenchOption[2] + "\',Option_4=\'" + englishOption[3] + "\', Option_4_FR = \'" + frenchOption[3] + "\', Option_5 = \'" + englishOption[4] + "\', Option_5_FR = \'" + frenchOption[4] + "\', Website_Flag = " + integer[7] + ",Date_Updated =\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',Design_URL =\'" + designUrl + "\',Trend_Short_Description=\'" + trendShortEnglishDescription + "\',Trend_Short_Description_FR=\'" + trendShortFrenchDescription + "\',Trend_Extended_Description=\'" + trendExtendedEnglishDescription + "\',Trend_Extended_Description_FR=\'" + trendExtendedFrenchDescription + "\',Design_Online=\'" + designOnlineEnglish.Replace("'", "''") + "\',Design_Online_FR=\'" + designOnlineFrench.Replace("'", "''")
-                                                      + "\' WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
+                    SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Brand='Ashlin®',GiftBox=" + integer[9] + ",Design_Service_Flag=\'" + designServiceFlag + "\',Design_Service_Family_Code =\'" + table.Rows[0][0].ToString() + "\', Design_Service_Fashion_Name_Ashlin = \'" + internalName + "\', Design_Service_Fashion_Name_TSC_CA = \'" + tsc + "\',Design_Service_Fashion_Name_THE_BAY=\'" + theBay + "\', Design_Service_Fashion_Name_BESTBUY_CA=\'" + bestbuy + "\',Design_Service_Fashion_Name_SHOP_CA=\'" + shopca + "\',Design_Service_Fashion_Name_AMAZON_CA=\'" + amazon + "\',Design_Service_Fashion_Name_AMAZON_COM=\'" + amazon + "\',Design_Service_Fashion_Name_SEARS_CA = \'" + sears + "\',Design_Service_Fashion_Name_STAPLES_CA = \'" + staples + "\',Design_Service_Fashion_Name_WALMART = \'" + walmart + "\', Short_Description = \'" + shortEnglishDescription + "\', Short_Description_FR = \'" + shortFrenchDescription + "\', Extended_Description = \'" + extendedEnglishDescription + "\', Extended_Description_FR = \'" + extendedFrenchDescription + "\', Imprintable = " + integer[1] + ", Imprint_Height_cm = " + imprintHeight + ", Imprint_Width_cm = " + imprintWidth + ", Width_cm = " + productWidth + ", Height_cm = " + productHeight + ", Depth_cm = " + productDepth + ", Weight_grams = " + weight + ", Active = \'" + active
+                                                      + "\',Flat_Shippable=" + integer[5] + ",Fold_Shippable=" + integer[6] + ",Shippable_Width_cm=" + shippableWidth + ",Shippable_Height_cm=" + shippableHeight + ",Shippable_Depth_cm=" + shippableDepth + ", Shippable_Weight_grams = " + shippableWeight + ", Components = " + numberComponents + ", Strap = " + integer[2] + ",Detachable_Strap = " + integer[3] + ",Zippered_Enclosure=" + integer[4] + ",Option_1 =\'" + englishOption[0] + "\',Option_1_FR=\'" + frenchOption[0] + "\',Option_2 =\'" + englishOption[1] + "\',Option_2_FR=\'" + frenchOption[1] + "\',Option_3=\'" + englishOption[2] + "\',Option_3_FR=\'" + frenchOption[2] + "\',Option_4=\'" + englishOption[3] + "\',Option_4_FR = \'" + frenchOption[3] + "\',Option_5=\'" + englishOption[4] + "\',Option_5_FR = \'" + frenchOption[4] + "\', Website_Flag = " + integer[7] + ",Date_Updated =\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',Design_URL =\'" + designUrl + "\',Trend_Short_Description=\'" + trendShortEnglishDescription + "\',Trend_Short_Description_FR=\'" + trendShortFrenchDescription + "\',Trend_Extended_Description=\'" + trendExtendedEnglishDescription + "\',Trend_Extended_Description_FR=\'" + trendExtendedFrenchDescription + "\',Design_Online=\'" + designOnlineEnglish.Replace("'", "''") + "\',Design_Online_FR=\'" + designOnlineFrench.Replace("'", "''")
+                                                      + "\',Country=\'" + country + "\',ShoulderDropLength=" + shoulderDropLength + ",HandleStrapDropLength=" + handleStrapDropLength + ",NotableStrapGeneralFeatures=\'" + notableStrapGeneralFeatures + "\',ProtectiveFeet=\'" + protectiveFeet + "\',Closure=\'" + closure + "\',InnerPocket=\'" + innerPocket + "\',OutsidePocket=\'" + outsidePocket + "\',SizeDifferentiation=\'" + sizeDifferentiation + "\' WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
                     command.ExecuteNonQuery();
 
                     // the case if the design is not active or not on website -> set all the SKUs' website flag to false that associate with this design

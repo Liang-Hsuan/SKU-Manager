@@ -21,9 +21,6 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         // field for storing tables
         private DataSet dataSet;
 
-        // database connection string
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic componenets */
         public UpdateHts()
         {
@@ -40,7 +37,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 dataSet = new DataSet();
 
                 // connect to database
-                connection = new SqlConnection(connectionString);
+                connection = new SqlConnection(Credentials.DesignCon);
 
                 // grab data
                 adapter[0] = new SqlDataAdapter("SELECT * FROM HTS_CA", connection);

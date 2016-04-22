@@ -171,6 +171,7 @@
     <Compile Include="AdminModules\UpdateInventory\ShopCaInventory.Designer.cs">
       <DependentUpon>ShopCaInventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Credentials.cs" />
     <Compile Include="ExcelExportModules\BrightpearlExports\SelectionViewExcel.cs">
       <SubType>Form</SubType>
     </Compile>

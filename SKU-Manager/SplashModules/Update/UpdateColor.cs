@@ -26,9 +26,6 @@ namespace SKU_Manager.SplashModules.Update
         private string colorOnlineFrench;
         private bool active = true;    // default is set to true
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         // fields for combobox
         private readonly ArrayList colorCodeList = new ArrayList();
 
@@ -48,7 +45,7 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for Canadian HTS
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code;", connection);   
                 connection.Open();
@@ -129,7 +126,7 @@ namespace SKU_Manager.SplashModules.Update
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Colour_Online, Colour_Online_FR, Active FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
                 connection.Open();
@@ -248,7 +245,7 @@ namespace SKU_Manager.SplashModules.Update
             try
             {
                 // connect to database and update the color
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Colour_Description_Extended = \'" + extendedEnglishDescription + "\', Colour_Description_Short = \'" + shortEnglishDescription + "\', Colour_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Colour_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
                                                         "Colour_Online = \'" + colorOnlineEnglish.Replace("'", "''") + "\', Colour_Online_FR = \'" + colorOnlineFrench.Replace("'", "''") + "\', Active = \'" + active + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);

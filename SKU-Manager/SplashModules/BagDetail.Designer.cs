@@ -127,7 +127,6 @@
             this.notableStrapGeneralFeaturesCombobox.Name = "notableStrapGeneralFeaturesCombobox";
             this.notableStrapGeneralFeaturesCombobox.Size = new System.Drawing.Size(386, 21);
             this.notableStrapGeneralFeaturesCombobox.TabIndex = 5;
-            this.notableStrapGeneralFeaturesCombobox.Text = "1 long";
             // 
             // protectiveFeetCombobox
             // 
@@ -141,7 +140,6 @@
             this.protectiveFeetCombobox.Name = "protectiveFeetCombobox";
             this.protectiveFeetCombobox.Size = new System.Drawing.Size(386, 21);
             this.protectiveFeetCombobox.TabIndex = 7;
-            this.protectiveFeetCombobox.Text = "False";
             // 
             // protectiveFeetLabel
             // 
@@ -168,7 +166,6 @@
             this.closureCombobox.Name = "closureCombobox";
             this.closureCombobox.Size = new System.Drawing.Size(386, 21);
             this.closureCombobox.TabIndex = 9;
-            this.closureCombobox.Text = "Zippered";
             // 
             // closureLabel
             // 
@@ -193,7 +190,6 @@
             this.innerPocketCombobox.Name = "innerPocketCombobox";
             this.innerPocketCombobox.Size = new System.Drawing.Size(386, 21);
             this.innerPocketCombobox.TabIndex = 11;
-            this.innerPocketCombobox.Text = "False";
             // 
             // outsidePocketCombobox
             // 
@@ -207,7 +203,6 @@
             this.outsidePocketCombobox.Name = "outsidePocketCombobox";
             this.outsidePocketCombobox.Size = new System.Drawing.Size(386, 21);
             this.outsidePocketCombobox.TabIndex = 13;
-            this.outsidePocketCombobox.Text = "False";
             // 
             // sizeDifferentiationCombobox
             // 
@@ -225,7 +220,6 @@
             this.sizeDifferentiationCombobox.Name = "sizeDifferentiationCombobox";
             this.sizeDifferentiationCombobox.Size = new System.Drawing.Size(386, 21);
             this.sizeDifferentiationCombobox.TabIndex = 15;
-            this.sizeDifferentiationCombobox.Text = "Medium";
             // 
             // innerPocketLabel
             // 

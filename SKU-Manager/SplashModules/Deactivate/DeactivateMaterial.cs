@@ -25,9 +25,6 @@ namespace SKU_Manager.SplashModules.Deactivate
         // fields for combobox
         private readonly ArrayList materialList = new ArrayList();
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic components */
         public DeactivateMaterial()
         {
@@ -43,7 +40,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Active = 'True' ORDER BY Material_Code", connection);    // for selecting data
                 connection.Open();
@@ -91,7 +88,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Extended, Material_Online, Material_Online_FR " 
                                                           + "FROM ref_Materials WHERE Material_Code = \'" + materialCode + '\'', connection);
@@ -135,7 +132,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             try
             {
                 // connect to database and activat the material
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MMMM-dd") + "\' "
                                                       + "WHERE Material_Code = \'" + materialCode + "\'", connection);

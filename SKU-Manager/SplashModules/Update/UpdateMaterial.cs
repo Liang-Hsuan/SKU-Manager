@@ -26,9 +26,6 @@ namespace SKU_Manager.SplashModules.Update
         private string materialOnlineFrench;
         private bool active = true;    // default is set to true
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         // fields for combobox
         private readonly ArrayList materialCodeList = new ArrayList();
 
@@ -48,9 +45,9 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for Canadian HTS
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
-                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code;", connection);   
+                SqlCommand command = new SqlCommand("SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code", connection);   
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -111,7 +108,7 @@ namespace SKU_Manager.SplashModules.Update
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Material_Description_Short, Material_Description_Short_FR, Material_Description_Extended, Material_Description_Extended_FR, Material_Online, Material_Online_FR, Active FROM ref_Materials WHERE Material_Code = \'" + materialCode + "\';", connection);
                 connection.Open();
@@ -247,7 +244,7 @@ namespace SKU_Manager.SplashModules.Update
             try
             {
                 // connect to database and insert new row
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
                                                         "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);

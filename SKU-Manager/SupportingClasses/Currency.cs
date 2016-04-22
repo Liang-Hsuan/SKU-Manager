@@ -22,7 +22,7 @@ namespace SKU_Manager.SupportingClasses
         static Currency()
         {
             // get the rate for USD currency
-            using (var connection = new System.Data.SqlClient.SqlConnection(Properties.Settings.Default.Designcs))
+            using (var connection = new System.Data.SqlClient.SqlConnection(Credentials.DesignCon))
             {
                 var command = new System.Data.SqlClient.SqlCommand("SELECT Value FROM Currency WHERE Currency = 'USD'", connection);
                 connection.Open();

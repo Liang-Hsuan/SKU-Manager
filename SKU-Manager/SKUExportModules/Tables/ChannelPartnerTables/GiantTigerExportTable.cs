@@ -65,7 +65,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[1] = "Ashlin®";                                                 // brand
                 newRow[2] = row[6];                                                    // style
                 newRow[3] = "Ashlin® " + row[0] + " " + row[7] + " " + row[8];         // description
-                newRow[4] = row[0];                                                    // romance
+                newRow[4] = row[1];                                                    // romance
                 newRow[5] = row[8];                                                    // color
                 newRow[6] = row[7];                                                    // material
                 newRow[7] = row[2] + "cm x " + row[3] + "cm x " + row[4] + "cm";       // size in cm

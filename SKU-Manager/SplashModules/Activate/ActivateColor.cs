@@ -25,9 +25,6 @@ namespace SKU_Manager.SplashModules.Activate
         // fields for combobox
         private readonly ArrayList colorCodeList = new ArrayList();
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic components */
         public ActivateColor()
         {
@@ -43,7 +40,7 @@ namespace SKU_Manager.SplashModules.Activate
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = 'False' ORDER BY Colour_Code", connection);    // for selecting data
                 connection.Open();
@@ -91,7 +88,7 @@ namespace SKU_Manager.SplashModules.Activate
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended, Colour_Online, Colour_Online_FR " 
                                                           + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + '\'', connection);
@@ -135,7 +132,7 @@ namespace SKU_Manager.SplashModules.Activate
             // connect to database and activate the color
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand( "UPDATE ref_Colours SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                        + "WHERE Colour_Code = \'" + colorCode + '\'', connection);

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.SqlClient;
 
 namespace SKU_Manager.SupportingClasses
 {
@@ -15,11 +14,11 @@ namespace SKU_Manager.SupportingClasses
         static Upc()
         {
             // connect to database and get the upc
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            using (var connection = new System.Data.SqlClient.SqlConnection(Credentials.DesignCon))
             {
-                SqlCommand command = new SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9;", connection);
+                var command = new System.Data.SqlClient.SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9;", connection);
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                var reader = command.ExecuteReader();
 
                 while (reader.Read())
                     upcList.Add(reader.GetDouble(0));

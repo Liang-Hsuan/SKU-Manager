@@ -19,9 +19,6 @@ namespace SKU_Manager.AdminModules.DirectUpdate
         // field for storing tables
         private DataSet dataSet;
 
-        // database connection string
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic componenets */
         public ModifyChannelPricing()
         {
@@ -38,7 +35,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 dataSet = new DataSet();
 
                 // connect to database
-                connection = new SqlConnection(connectionString);
+                connection = new SqlConnection(Credentials.DesignCon);
 
                 // grab data
                 adapter = new SqlDataAdapter("SELECT Channel_No, Channel_Name, Marketplace, Currency, Msrp_Disc, Ship_Incl_Flag, Base_Ship, " + 

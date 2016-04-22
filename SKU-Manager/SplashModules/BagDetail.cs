@@ -67,8 +67,8 @@ namespace SKU_Manager.SplashModules
         /* edit button clicks that send the bag details for the client */
         private void saveButton_Click(object sender, System.EventArgs e)
         {
-            ShoulderDropLength = double.Parse(shoulderDropLengthTextbox.Text);
-            HandleStrapDropLength = double.Parse(handleStrapDropLengthTextbox.Text);
+            ShoulderDropLength = shoulderDropLengthTextbox.Text != "" ? double.Parse(shoulderDropLengthTextbox.Text) : 0;
+            HandleStrapDropLength = handleStrapDropLengthTextbox.Text != "" ? double.Parse(handleStrapDropLengthTextbox.Text) : 0;
             NotableStrapGeneralFeatures = notableStrapGeneralFeaturesCombobox.Text;
             ProtectiveFeet = bool.Parse(protectiveFeetCombobox.Text);
             Closure = closureCombobox.Text;

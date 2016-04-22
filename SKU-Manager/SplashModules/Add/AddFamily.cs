@@ -50,9 +50,6 @@ namespace SKU_Manager.SplashModules.Add
         private readonly ArrayList distributorCentralList = new ArrayList();
         private readonly HashSet<string> familyCodeList = new HashSet<string>();
 
-        // connection string to the database
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic component */
         public AddFamily()
         {
@@ -68,7 +65,7 @@ namespace SKU_Manager.SplashModules.Add
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for canadian HTS
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(Credentials.DesignCon);
             SqlCommand command = new SqlCommand("SELECT HTS_CA FROM HTS_CA", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -174,7 +171,7 @@ namespace SKU_Manager.SplashModules.Add
         private void canadianHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
             // connect to database to get the info about this material code
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + '\'', connection);
                 connection.Open();
@@ -186,7 +183,7 @@ namespace SKU_Manager.SplashModules.Add
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
             // connect to database to get the info about this material code
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + '\'', connection);
                 connection.Open();
@@ -424,7 +421,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database and insert new row
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO ref_Families (Design_Service_Family_Code, Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Active, Date_Added, KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, Amazon_Browse_Nodes_1_USA, Amazon_Browse_Nodes_2_USA, HTS_CA, HTS_US, CA_Duty, US_Duty, Pricing_Tier, Reorder_Quantity, Reorder_Level) " +
                                                         "VALUES (\'" + familyCode + "\',\'" + shortEnglishDescription + "\',\'" + shortFrenchDescription + "\',\'" + generalKeywords + "\',\'" + sageCategory + "\',\'" + sageTheme + "\',\'" + esp + "\',\'" + promoMarketing + "\',\'" + uducat + "\',\'" + distributorCentral + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + amazonKeywords[0] + "\',\'" + amazonKeywords[1] + "\',\'" + amazonKeywords[2] + "\',\'" + amazonKeywords[3] + "\',\'" + amazonKeywords[4] + "\',\'" + amazonCaNode[0] + "\',\'" + amazonCaNode[1] + "\',\'" + amazonComNode[0] + "\',\'" + amazonComNode[1] + "\',\'" + caHts + "\',\'" + usHts + "\'," + caDuty + ',' + usDuty + ',' + pricingTier + ',' + reorderQty + ',' + reorderLevel + ')', connection);

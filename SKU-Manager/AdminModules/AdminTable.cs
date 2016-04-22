@@ -10,7 +10,7 @@ namespace SKU_Manager.AdminModules
         protected DataTable mainTable = new DataTable();
 
         // field for database connection
-        protected SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
+        protected SqlConnection connection = new SqlConnection(Credentials.DesignCon);
 
         // fields for progress 
         public int Total { get; protected set; }

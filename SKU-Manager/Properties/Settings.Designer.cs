@@ -25,18 +25,6 @@ namespace SKU_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Designcs {
-            get {
-                return ((string)(this["Designcs"]));
-            }
-            set {
-                this["Designcs"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Data.DataTable BestbuyTable1 {
             get {
                 return ((global::System.Data.DataTable)(this["BestbuyTable1"]));
@@ -120,18 +108,6 @@ namespace SKU_Manager.Properties {
             }
             set {
                 this["UpcTable"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ASCMcs {
-            get {
-                return ((string)(this["ASCMcs"]));
-            }
-            set {
-                this["ASCMcs"] = value;
             }
         }
         

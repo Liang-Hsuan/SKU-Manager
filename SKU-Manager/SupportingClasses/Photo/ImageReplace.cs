@@ -14,9 +14,6 @@ namespace SKU_Manager.SupportingClasses.Photo
         // fields for searching image, sku, and upc
         private const string START_DIR = @"Z:\Public\Product Media Content";
         private readonly List<string> skuList = new List<string>();
-        
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
 
         // fields for getting progress
         public int Progress { get; private set; }
@@ -52,7 +49,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             Progress = 0;
 
             // get all the sku from database
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", connection);
                 connection.Open();
@@ -85,7 +82,7 @@ namespace SKU_Manager.SupportingClasses.Photo
             DataTable table = new DataTable();
             string[] upcCode = new string[2];
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT UPC_Code_9, UPC_Code_10 FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
                 connection.Open();

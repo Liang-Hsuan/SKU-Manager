@@ -55,8 +55,8 @@ namespace SKU_Manager
             if (IsConnected(connection[0]) && IsConnected(connection[1]))
             {
                 // properties saving
-                Properties.Settings.Default.Designcs = connectionString[0];
-                Properties.Settings.Default.ASCMcs = connectionString[1];
+                Credentials.DesignCon = connectionString[0];
+                Credentials.AscmCon = connectionString[1];
                 Properties.Settings.Default.Username = userName;
                 Properties.Settings.Default.Password = password;
 

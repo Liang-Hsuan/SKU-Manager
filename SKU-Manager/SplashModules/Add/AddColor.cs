@@ -33,7 +33,7 @@ namespace SKU_Manager.SplashModules.Add
             InitializeComponent();
 
             // adding all the existing color code list
-            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours;", connection);
                 connection.Open();
@@ -152,7 +152,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database and insert new row                    
             try
             {
-                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("INSERT INTO ref_Colours (Colour_Code, Colour_Description_Extended, Colour_Description_Short, Colour_Description_Extended_FR, Colour_Description_Short_FR, Colour_Online, Colour_Online_FR, Active, Date_Added) " +
                                                         "VALUES (\'" + colorCode + "\',\'" + extendedEnglishDescription + "\',\'" + shortEnglishDescription + "\',\'" + extendedFrenchDescription + "\',\'" + shortFrenchDescription + "\',\'" + colorOnlineEnglish.Replace("'", "''") + "\',\'" + colorOnlineFrench.Replace("'", "''") + "\',\'" + active + "\',\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\');", connection);

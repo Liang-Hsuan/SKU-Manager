@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -25,11 +24,11 @@ namespace SKU_Manager.SupportingClasses.ProductDetail
             string appRef;
             string appToken;
 
-            using (SqlConnection authenticationConnection = new SqlConnection(Properties.Settings.Default.ASCMcs))
+            using (var authCon = new System.Data.SqlClient.SqlConnection(Credentials.AscmCon))
             {
-                SqlCommand getAuthetication = new SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = 'Brightpearl'", authenticationConnection);
-                authenticationConnection.Open();
-                SqlDataReader reader = getAuthetication.ExecuteReader();
+                var auth = new System.Data.SqlClient.SqlCommand("SELECT Field3_Value, Field1_Value FROM ASCM_Credentials WHERE Source = 'Brightpearl'", authCon);
+                authCon.Open();
+                var reader = auth.ExecuteReader();
                 reader.Read();
                 appRef = reader.GetString(0);
                 appToken = reader.GetString(1);

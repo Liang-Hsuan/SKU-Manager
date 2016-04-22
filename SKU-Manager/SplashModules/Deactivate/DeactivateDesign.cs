@@ -29,9 +29,6 @@ namespace SKU_Manager.SplashModules.Deactivate
         // fields for combobox
         private readonly ArrayList designCodeList = new ArrayList();
 
-        // field for database connection
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic components */
         public DeactivateDesign()
         {
@@ -47,7 +44,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         /* the backgound workder for adding items to comboBoxes */
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'True' ORDER BY Design_Service_Code;", connection);    // for selecting data
                 connection.Open();
@@ -100,7 +97,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Design_Online, Design_Online_FR, GiftBox " 
                                                           + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
@@ -153,7 +150,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             try
             {
                 // connect to database and activate the color
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
                                                       + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);

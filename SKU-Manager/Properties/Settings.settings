@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SKU_Manager.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Designcs" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="BestbuyTable1" Type="System.Data.DataTable" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
@@ -27,9 +24,6 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UpcTable" Type="System.Data.DataTable" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ASCMcs" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MagentoTable" Type="System.Data.DataTable" Scope="User">

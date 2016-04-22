@@ -9,7 +9,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
     public abstract class ImportUpdate
     {
         // field for database connection
-        protected readonly SqlConnection connection = new SqlConnection(Properties.Settings.Default.Designcs);
+        protected readonly SqlConnection connection = new SqlConnection(Credentials.DesignCon);
 
         // field for showing the progress
         public int Total { get; protected set; } = 1;

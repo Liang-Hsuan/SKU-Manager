@@ -10,7 +10,6 @@ namespace SKU_Manager.SupportingClasses.Photo
     public class UpdatePhoto
     {
         // field that finds and store all sku
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
         private readonly List<string> skuList = new List<string>();
         private readonly ImageSearch imageSearch = new ImageSearch();
 
@@ -22,7 +21,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         public UpdatePhoto()
         {
             // getting sku data
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes", connection);
                 connection.Open();
@@ -54,7 +53,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         /* put the given image uri to database */
         private void PutImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 // local field for looping through column in table to add uri
                 string commandString = "UPDATE master_SKU_Attributes SET ";

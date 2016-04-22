@@ -53,9 +53,6 @@ namespace SKU_Manager.SplashModules.Update
         private readonly ArrayList uducatList = new ArrayList();
         private readonly ArrayList distributorCentralList = new ArrayList();
 
-        // connection string to the database
-        private readonly string connectionString = Properties.Settings.Default.Designcs;
-
         /* constructor that initialize graphic component */
         public UpdateFamily()
         {
@@ -80,7 +77,7 @@ namespace SKU_Manager.SplashModules.Update
         private void backgroundWorkerCombobox_DoWork(object sender, DoWorkEventArgs e)
         {
             // make comboBox for canadian HTS
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(Credentials.DesignCon);
             SqlCommand command = new SqlCommand("SELECT HTS_CA FROM HTS_CA", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -293,7 +290,7 @@ namespace SKU_Manager.SplashModules.Update
             DataTable table = new DataTable();
 
             // store data to the table
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_Keywords_General, KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, Amazon_Browse_Nodes_1_USA, Amazon_Browse_Nodes_2_USA, Active, Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP,Design_Service_Family_Category_PromoMarketing,Design_Service_Family_Category_UDUCAT,Design_Service_Family_Category_DistributorCentral,HTS_CA, HTS_US,"
                                                           + "Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
@@ -410,7 +407,7 @@ namespace SKU_Manager.SplashModules.Update
             if (canadianHtsCombobox.SelectedItem.ToString() != "")
             {
                 // connect to database to get the info about this material code
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
@@ -427,7 +424,7 @@ namespace SKU_Manager.SplashModules.Update
             if (usHtsCombobox.SelectedItem.ToString() != "")
             {
                 // connect to database to get the info about this material code
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
                     connection.Open();
@@ -498,7 +495,7 @@ namespace SKU_Manager.SplashModules.Update
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand {Connection = connection};
 
@@ -507,7 +504,7 @@ namespace SKU_Manager.SplashModules.Update
                     {
                         command.CommandText = "UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',"
                                             + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', HTS_CA = \'" + caHts + "\', HTS_US = \'" + usHts + "\',CA_Duty=" + caDuty + ",US_Duty=" + usDuty + ",Active=\'" + active + "\',Pricing_Tier=" + pricingTier + ",Reorder_Quantity=" + reorderQty + ",Reorder_Level=" + reorderLevel
-                                            + " WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                                            + " WHERE Design_Service_Family_Code = \'" + familyCode + '\'';
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
@@ -515,7 +512,7 @@ namespace SKU_Manager.SplashModules.Update
                     {
                         command.CommandText = "UPDATE ref_Families SET Design_Service_Family_Description = \'" + shortEnglishDescription + "\', Design_Service_Family_Description_FR = \'" + shortFrenchDescription + "\', Design_Service_Family_KeyWords_General = \'" + generalKeywords + "\', Design_Service_Family_Category_Sage = \'" + sageCategory + "\', Design_Service_Family_Themes_Sage = \'" + sageTheme + "\', Design_Service_Family_Category_ESP = \'" + esp + "\', Design_Service_Family_Category_PromoMarketing = \'" + promoMarketing + "\', Design_Service_Family_Category_UDUCAT = \'" + uducat + "\', Design_Service_Family_Category_DistributorCentral = \'" + distributorCentral + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', "
                                             + "KeyWords_Amazon_1 = \'" + amazonKeywords[0] + "\', KeyWords_Amazon_2 = \'" + amazonKeywords[1] + "\', KeyWords_Amazon_3 = \'" + amazonKeywords[2] + "\', KeyWords_Amazon_4 = \'" + amazonKeywords[3] + "\', KeyWords_Amazon_5 = \'" + amazonKeywords[4] + "\', Amazon_Browse_Nodes_1_CDA = \'" + amazonCaNode[0] + "\', Amazon_Browse_Nodes_2_CDA = \'" + amazonCaNode[1] + "\', Amazon_Browse_Nodes_1_USA = \'" + amazonComNode[0] + "\', Amazon_Browse_Nodes_2_USA = \'" + amazonComNode[1] + "\', Active = \'" + active + "\', Pricing_Tier = " + pricingTier + ",Reorder_Quantity=" + reorderQty + ",Reorder_Level=" + reorderLevel
-                                            + " WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                                            + " WHERE Design_Service_Family_Code = \'" + familyCode + '\'';
                         connection.Open();
                         command.ExecuteNonQuery();
                     }

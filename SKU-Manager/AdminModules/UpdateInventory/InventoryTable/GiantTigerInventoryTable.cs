@@ -65,7 +65,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
-            connection = new SqlConnection(Properties.Settings.Default.Designcs);
+            connection = new SqlConnection(Credentials.DesignCon);
             double[] price = GetPriceList();
             connection.Open();
             mainTable.BeginLoadData();
