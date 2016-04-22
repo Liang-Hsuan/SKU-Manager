@@ -104,14 +104,12 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                 // the case if the item is discontinue -> set its quantity to -1
                 if (list[i].Discontinue) list[i].QtyOnHand = -1;
 
-                csv[i + 1] = new[] { list[i].HostSku, list[i].VendorSku, list[i].Upc, '"' + list[i].HostItemDescription + '"', list[i].QtyOnHand.ToString(), list[i].UnitCost.ToString() };
+                csv[i + 1] = new[] { list[i].HostSku, list[i].VendorSku, list[i].Upc, '"' + list[i].HostItemDescription + '"', list[i].QtyOnHand.ToString(), list[i].UnitCost.ToString(System.Globalization.CultureInfo.InvariantCulture) };
 
                 // check if item requires purchase order -> if yes, add to the purchase list
-                if (list[i].PurchaseOrder)
-                {
-                    skuList.Add(list[i].VendorSku);
-                    purchaseList.Add(list[i].BpItemNumber, list[i].ReorderQuantity);
-                }
+                if (!list[i].PurchaseOrder) continue;
+                skuList.Add(list[i].VendorSku);
+                purchaseList.Add(list[i].BpItemNumber, list[i].ReorderQuantity);
             }
 
             // export csv file

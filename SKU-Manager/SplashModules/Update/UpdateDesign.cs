@@ -260,7 +260,7 @@ namespace SKU_Manager.SplashModules.Update
             {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Short_Description_FR, Extended_Description, Extended_Description_FR, Monogram, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Height_cm, Width_cm, Depth_cm, Weight_grams, Components, Strap, Detachable_Strap, Zippered_Enclosure, Flat_Shippable, Fold_Shippable, Shippable_Height_cm, Shippable_Width_cm, Shippable_Depth_cm, Shippable_Weight_grams, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_THE_BAY, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, "  
-                                                          + "Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Design_Online, Design_Online_FR, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
+                                                          + "Option_1, Option_1_FR, Option_2, Option_2_FR, Option_3, Option_3_FR, Option_4, Option_4_FR, Option_5, Option_5_FR, Website_Flag, Active, Trend_Short_Description, Trend_Short_Description_FR, Trend_Extended_Description, Trend_Extended_Description_FR, Design_Online, Design_Online_FR, GiftBox FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -269,7 +269,7 @@ namespace SKU_Manager.SplashModules.Update
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 // this is for searching family description for product family code
-                SqlCommand command = new SqlCommand("SELECT Design_service_Family_Description FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][0].ToString() + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT Design_service_Family_Description FROM ref_Families WHERE Design_Service_Family_Code = \'" + table.Rows[0][0] + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
@@ -486,7 +486,7 @@ namespace SKU_Manager.SplashModules.Update
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem.ToString().Replace("'", "''") + "\'", connection);
+                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem.ToString().Replace("'", "''") + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -844,21 +844,21 @@ namespace SKU_Manager.SplashModules.Update
         private void shippableHeightTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }
         private void shippableWidthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString();
+                shippableWeightTextbox.Text = (Convert.ToDouble(shippableHeightTextbox.Text) * Convert.ToDouble(shippableWidthTextbox.Text) * Convert.ToDouble(shippableDepthTextbox.Text) / 6).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }
@@ -1015,18 +1015,18 @@ namespace SKU_Manager.SplashModules.Update
                     // this is the real thing
                     SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Brand = 'Ashlin®', GiftBox = " + integer[9] + ", Design_Service_Flag = \'" + designServiceFlag + "\', Design_Service_Family_Code = \'" + table.Rows[0][0].ToString() + "\', Design_Service_Fashion_Name_Ashlin = \'" + internalName + "\', Design_Service_Fashion_Name_TSC_CA = \'" + tsc + "\', Design_Service_Fashion_Name_THE_BAY = \'" + theBay + "\', Design_Service_Fashion_Name_BESTBUY_CA = \'" + bestbuy + "\', Design_Service_Fashion_Name_SHOP_CA = \'" + shopca + "\', Design_Service_Fashion_Name_AMAZON_CA = \'" + amazon + "\', Design_Service_Fashion_Name_AMAZON_COM = \'" + amazon + "\', Design_Service_Fashion_Name_SEARS_CA = \'" + sears + "\', Design_Service_Fashion_Name_STAPLES_CA = \'" + staples + "\', Design_Service_Fashion_Name_WALMART = \'" + walmart + "\', Short_Description = \'" + shortEnglishDescription + "\', Short_Description_FR = \'" + shortFrenchDescription + "\', Extended_Description = \'" + extendedEnglishDescription + "\', Extended_Description_FR = \'" + extendedFrenchDescription + "\', Imprintable = " + integer[1] + ", Imprint_Height_cm = " + imprintHeight + ", Imprint_Width_cm = " + imprintWidth + ", Width_cm = " + productWidth + ", Height_cm = " + productHeight + ", Depth_cm = " + productDepth + ", Weight_grams = " + weight + ", Active = \'" + active
                                                       + "\',Flat_Shippable=" + integer[5] + ",Fold_Shippable=" + integer[6] + ",Shippable_Width_cm=" + shippableWidth + ", Shippable_Height_cm = " + shippableHeight + ", Shippable_Depth_cm = " + shippableDepth + ", Shippable_Weight_grams = " + shippableWeight + ", Components = " + numberComponents + ", Strap = " + integer[2] + ", Detachable_Strap = " + integer[3] + ", Zippered_Enclosure = " + integer[4] + ", Option_1 = \'" + englishOption[0] + "\', Option_1_FR = \'" + frenchOption[0] + "\', Option_2 =\'" + englishOption[1] + "\',Option_2_FR=\'" + frenchOption[1] + "\', Option_3=\'" + englishOption[2] + "\', Option_3_FR=\'" + frenchOption[2] + "\',Option_4=\'" + englishOption[3] + "\', Option_4_FR = \'" + frenchOption[3] + "\', Option_5 = \'" + englishOption[4] + "\', Option_5_FR = \'" + frenchOption[4] + "\', Website_Flag = " + integer[7] + ",Date_Updated =\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',Design_URL =\'" + designUrl + "\',Trend_Short_Description=\'" + trendShortEnglishDescription + "\',Trend_Short_Description_FR=\'" + trendShortFrenchDescription + "\',Trend_Extended_Description=\'" + trendExtendedEnglishDescription + "\',Trend_Extended_Description_FR=\'" + trendExtendedFrenchDescription + "\',Design_Online=\'" + designOnlineEnglish.Replace("'", "''") + "\',Design_Online_FR=\'" + designOnlineFrench.Replace("'", "''")
-                                                      + "\' WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
+                                                      + "\' WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
                     command.ExecuteNonQuery();
 
                     // the case if the design is not active or not on website -> set all the SKUs' website flag to false that associate with this design
                     if (!active)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + "\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + '\'';
                         command.ExecuteNonQuery();
                     }
                     else if (integer[7] == 0)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + "\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET SKU_Website = 'False' WHERE Design_Service_Code = \'" + designServiceCode + '\'';
                         command.ExecuteNonQuery();
                     }
                 }

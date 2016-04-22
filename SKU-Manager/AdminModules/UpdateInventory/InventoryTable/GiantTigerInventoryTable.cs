@@ -49,8 +49,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             mainTable.Reset();
             Current = 0;
 
-            AddColumn(mainTable, "Ashlin SKU", false);     // 1
-            AddColumn(mainTable, "Host SKU", false);          // 2
+            AddColumn(mainTable, "Ashlin SKU", false);          // 1
+            AddColumn(mainTable, "Host SKU", false);            // 2
             AddColumn(mainTable, "BP Item ID", false);          // 3
             AddColumn(mainTable, "UPC", false);                 // 4
             AddColumn(mainTable, "Description", false);         // 5

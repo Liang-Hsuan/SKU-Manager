@@ -7,6 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.SupportingClasses;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace SKU_Manager.SplashModules.Add
 {
@@ -93,7 +94,7 @@ namespace SKU_Manager.SplashModules.Add
             // make comboBox for Product Family
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Description != \'\' ORDER BY Design_Service_Family_Description;", connection);   
+                SqlCommand command = new SqlCommand("SELECT Design_Service_Family_Description FROM ref_Families WHERE Design_Service_Family_Description != '' ORDER BY Design_Service_Family_Description", connection);   
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -101,13 +102,13 @@ namespace SKU_Manager.SplashModules.Add
                 reader.Close();
 
                 // additional addition for design service code and ashlin internal name checking
-                command.CommandText = "SELECT Design_Service_Code FROM master_Design_Attributes;";
+                command.CommandText = "SELECT Design_Service_Code FROM master_Design_Attributes";
                 reader = command.ExecuteReader();
                 while (reader.Read())
                     designCodeList.Add(reader.GetString(0));
                 reader.Close();
 
-                command.CommandText = "SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes;";
+                command.CommandText = "SELECT Design_Service_Fashion_Name_Ashlin FROM master_Design_Attributes";
                 reader = command.ExecuteReader();
                 while (reader.Read())
                     internalNameList.Add(reader.GetString(0));
@@ -213,7 +214,7 @@ namespace SKU_Manager.SplashModules.Add
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem + "\'", connection);
+                SqlCommand command = new SqlCommand("SELECT Active FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamilyCombobox.SelectedItem + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -702,14 +703,14 @@ namespace SKU_Manager.SplashModules.Add
             if (!isFlat && !isFolded) // normal situation
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
             else if (isFlat && productWidthTextbox.Text != "") // is flat, calculate the flat value of width
-                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString();
+                shippableWidthTextbox.Text = (Convert.ToDouble(productWidthTextbox.Text)*1.2).ToString(CultureInfo.InvariantCulture);
         }
         private void productDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (!isFlat && !isFolded) // normal situation
                 shippableDepthTextbox.Text = productDepthTextbox.Text;
             else if (isFlat && productDepthTextbox.Text != "") // is flat, calculate the flat value of depth
-                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString();
+                shippableDepthTextbox.Text = (Convert.ToDouble(productDepthTextbox.Text)*0.3).ToString(CultureInfo.InvariantCulture);
         }
         #endregion
 
@@ -744,7 +745,7 @@ namespace SKU_Manager.SplashModules.Add
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" &&
                 shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString();
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }
@@ -752,14 +753,14 @@ namespace SKU_Manager.SplashModules.Add
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" &&
                 shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString();
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/6, 2).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }
         private void shippableDepthTextbox_TextChanged(object sender, EventArgs e)
         {
             if (shippableHeightTextbox.Text != "" && shippableWidthTextbox.Text != "" && shippableDepthTextbox.Text != "")
-                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/ 6, 2).ToString();
+                shippableWeightTextbox.Text = Math.Round(Convert.ToDouble(shippableHeightTextbox.Text)*Convert.ToDouble(shippableWidthTextbox.Text)*Convert.ToDouble(shippableDepthTextbox.Text)/ 6, 2).ToString(CultureInfo.InvariantCulture);
             else
                 shippableWeightTextbox.Text = "";
         }

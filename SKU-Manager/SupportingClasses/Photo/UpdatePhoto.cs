@@ -15,7 +15,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         private readonly ImageSearch imageSearch = new ImageSearch();
 
         // fields for getting progress
-        public int Progress { get; private set; } = 0;
+        public int Progress { get; private set; }
         public int Total => skuList.Count;
 
         /* constructor that initilize that store all sku data */
@@ -112,7 +112,7 @@ namespace SKU_Manager.SupportingClasses.Photo
 
                 // remove last comma
                 commandString = commandString.Remove(commandString.Length - 1);
-                commandString += " WHERE SKU_Ashlin = \'" + sku + "\';";
+                commandString += " WHERE SKU_Ashlin = \'" + sku + '\'';
 
                 // start update
                 SqlCommand command = new SqlCommand(commandString, connection);

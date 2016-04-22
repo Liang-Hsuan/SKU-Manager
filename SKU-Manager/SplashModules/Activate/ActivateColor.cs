@@ -45,7 +45,7 @@ namespace SKU_Manager.SplashModules.Activate
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = \'False\' ORDER BY Colour_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = 'False' ORDER BY Colour_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())

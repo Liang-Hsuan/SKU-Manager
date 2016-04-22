@@ -69,7 +69,7 @@ namespace SKU_Manager.SplashModules.Add
         {
             // make comboBox for canadian HTS
             SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("SELECT HTS_CA FROM HTS_CA;", connection);
+            SqlCommand command = new SqlCommand("SELECT HTS_CA FROM HTS_CA", connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -77,7 +77,7 @@ namespace SKU_Manager.SplashModules.Add
             reader.Close();
 
             // make comboBox for us HTS
-            command.CommandText = "SELECT HTS_US FROM HTS_US;";
+            command.CommandText = "SELECT HTS_US FROM HTS_US";
             reader = command.ExecuteReader();
             while (reader.Read())
                 usHtsList.Add(reader.GetValue(0));
@@ -86,7 +86,7 @@ namespace SKU_Manager.SplashModules.Add
             // make lists for CATEGORY comboboxes
             command.CommandText = "SELECT Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, " +
                                   "Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral " +
-                                  "FROM list_online_product_categories;";
+                                  "FROM list_online_product_categories";
             reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -105,7 +105,7 @@ namespace SKU_Manager.SplashModules.Add
             }
             reader.Close();
 
-            command.CommandText = "SELECT Design_Service_Family_Code FROM ref_Families;";
+            command.CommandText = "SELECT Design_Service_Family_Code FROM ref_Families";
             reader = command.ExecuteReader();
             while (reader.Read())
                 familyCodeList.Add(reader.GetString(0));
@@ -176,7 +176,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -188,7 +188,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this material code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
+                SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();

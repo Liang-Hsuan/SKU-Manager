@@ -133,28 +133,28 @@ namespace SKU_Manager.SplashModules.Add
 
 
             // make comboBox for Warehouse
-            command.CommandText = "SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL"; 
+            command.CommandText = "SELECT Warehouse FROM list_location_warehouses WHERE Warehouse IS NOT NULL"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 warehouseList.Add(reader.GetValue(0));
             reader.Close();
 
             // make comboBox for Rack
-            command.CommandText = "SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL";  
+            command.CommandText = "SELECT Warehouse FROM list_location_racks WHERE Warehouse IS NOT NULL";  
             reader = command.ExecuteReader();
             while (reader.Read())
                 rackList.Add(reader.GetValue(0));
             reader.Close(); ;
 
             // make comboBox for Shelf
-            command.CommandText = "SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL";  
+            command.CommandText = "SELECT Warehouse FROM list_location_shelves WHERE Warehouse IS NOT NULL";  
             reader = command.ExecuteReader();
             while (reader.Read())
                 shelfList.Add(reader.GetValue(0));
             reader.Close(); ;
 
             // make comboBox for Column index
-            command.CommandText = "SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL"; 
+            command.CommandText = "SELECT Warehouse FROM list_location_colindex WHERE Warehouse IS NOT NULL"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 columnIndexList.Add(reader.GetValue(0));
@@ -211,7 +211,7 @@ namespace SKU_Manager.SplashModules.Add
             // connect to database to get the info about this design code
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox, Website_Flag, Active FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Brand, Short_Description, Design_Service_Flag, GiftBox, Website_Flag, Active FROM master_Design_Attributes WHERE Design_Service_Code = \'" + currentDesignCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -267,7 +267,7 @@ namespace SKU_Manager.SplashModules.Add
             SqlConnection connection = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand("SELECT HTS_CA, CA_Duty, HTS_US, US_Duty, Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families family JOIN master_Design_Attributes design " +
                                                 "ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                "WHERE Design_Service_Code = \'" + designServiceCode + "\';", connection);
+                                                "WHERE Design_Service_Code = \'" + designServiceCode + '\'', connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
