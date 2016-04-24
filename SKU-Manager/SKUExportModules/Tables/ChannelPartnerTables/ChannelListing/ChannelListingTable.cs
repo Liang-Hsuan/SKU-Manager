@@ -14,49 +14,49 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
         /* constructor that initialize fields */
         public ChannelListingTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
-            AddColumn(mainTable, "SKU");                    // 1
-            AddColumn(mainTable, "Bestbuy");                // 2
-            AddColumn(mainTable, "Bestbuy Net");            // 3
-            AddColumn(mainTable, "Amazon CA");              // 4
-            AddColumn(mainTable, "Amazon CA Price");        // 5
-            AddColumn(mainTable, "Amazon US");              // 6
-            AddColumn(mainTable, "Amazon US Price");        // 7
-            AddColumn(mainTable, "Staples");                // 8
-            AddColumn(mainTable, "Staples Net");            // 9
-            AddColumn(mainTable, "Staples Advantage");      // 10
-            AddColumn(mainTable, "Staples Advantage Net");  // 11
-            AddColumn(mainTable, "Walmart");                // 12
-            AddColumn(mainTable, "Walmart Net");            // 13
-            AddColumn(mainTable, "Shop.ca");                // 14
-            AddColumn(mainTable, "Shop.ca Price");          // 15
-            AddColumn(mainTable, "Sears");                  // 16
-            AddColumn(mainTable, "Sears Net");              // 17
-            AddColumn(mainTable, "Giant Tiger");            // 18
-            AddColumn(mainTable, "Giant Tiger Net");        // 19
+            AddColumn(MainTable, "SKU");                    // 1
+            AddColumn(MainTable, "Bestbuy");                // 2
+            AddColumn(MainTable, "Bestbuy Net");            // 3
+            AddColumn(MainTable, "Amazon CA");              // 4
+            AddColumn(MainTable, "Amazon CA Price");        // 5
+            AddColumn(MainTable, "Amazon US");              // 6
+            AddColumn(MainTable, "Amazon US Price");        // 7
+            AddColumn(MainTable, "Staples");                // 8
+            AddColumn(MainTable, "Staples Net");            // 9
+            AddColumn(MainTable, "Staples Advantage");      // 10
+            AddColumn(MainTable, "Staples Advantage Net");  // 11
+            AddColumn(MainTable, "Walmart");                // 12
+            AddColumn(MainTable, "Walmart Net");            // 13
+            AddColumn(MainTable, "Shop.ca");                // 14
+            AddColumn(MainTable, "Shop.ca Price");          // 15
+            AddColumn(MainTable, "Sears");                  // 16
+            AddColumn(MainTable, "Sears Net");              // 17
+            AddColumn(MainTable, "Giant Tiger");            // 18
+            AddColumn(MainTable, "Giant Tiger Net");        // 19
 
             // fields for pricing calculation
             double multiplier = GetMultiplier();
             Price[] priceList = GetPrice();
 
             // start load data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 // calculate msrp
                 double msrp = multiplier * Convert.ToDouble(list[0]);
@@ -90,15 +90,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
                 if (list[8].ToString() != "")
                     row[18] = Math.Ceiling(msrp * (1 - priceList[11].MsrpDisc / 100) + priceList[11].BaseShip) - (1 - priceList[11].SellCent);   // giant tiger net
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -108,12 +108,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }

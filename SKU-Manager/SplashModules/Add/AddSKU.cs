@@ -64,7 +64,6 @@ namespace SKU_Manager.SplashModules.Add
         private readonly string[] htsList = new string[4];
 
         // fields for storing uri path and alt text of images
-        private readonly ImageSearch imageSearch = new ImageSearch();
         private string[] image = new string[10];
         private string[] group = new string[5];
         private string[] model = new string[5];
@@ -117,14 +116,14 @@ namespace SKU_Manager.SplashModules.Add
             reader.Close();
 
             // make comboBox for Material
-            command.CommandText = "SELECT Material_Code FROM ref_Materials WHERE Material_Code is not NULL ORDER BY Material_Code";
+            command.CommandText = "SELECT Material_Code FROM ref_Materials WHERE Material_Code IS NOT NULL ORDER BY Material_Code";
             reader = command.ExecuteReader();
             while (reader.Read())
                 materialList.Add(reader.GetString(0));
             reader.Close();
 
             // make comboBox for Colour Code
-            command.CommandText = "SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code"; 
+            command.CommandText = "SELECT Colour_Code FROM ref_Colours WHERE Colour_Code IS NOT NULL ORDER BY Colour_Code"; 
             reader = command.ExecuteReader();
             while (reader.Read())
                 colorCodeList.Add(reader.GetString(0));
@@ -602,9 +601,10 @@ namespace SKU_Manager.SplashModules.Add
 
             // search images and generate uri that assign to image fields
             int index = 0;
-            string[] imageCopy = imageSearch.GetImageUri(sku);
-            foreach (string uri in imageCopy)    // get the value that exist
+            string[] imageCopy = ImageSearch.GetImageUri(sku);
+            foreach (string uri in imageCopy)
             {
+                if (index > 9) break;
                 image[index] = uri;
                 index++;
             }
@@ -613,9 +613,10 @@ namespace SKU_Manager.SplashModules.Add
                 image[i] = string.Empty;
 
             index = 0;
-            string[] groupCopy = imageSearch.GetGroupUri(sku);
+            string[] groupCopy = ImageSearch.GetGroupUri(sku);
             foreach (string uri in groupCopy)    // get the value that exist
             {
+                if (index > 4) break;
                 group[index] = uri;
                 index++;
             }
@@ -624,9 +625,10 @@ namespace SKU_Manager.SplashModules.Add
                 group[i] = string.Empty;
 
             index = 0;
-            string[] modelCopy = imageSearch.GetModelUri(sku);
+            string[] modelCopy = ImageSearch.GetModelUri(sku);
             foreach (string uri in modelCopy)    // get the value that exist
             {
+                if (index > 4) break;
                 model[index] = uri;
                 index++;
             }
@@ -635,9 +637,10 @@ namespace SKU_Manager.SplashModules.Add
                 model[i] = string.Empty;
 
             index = 0;
-            string[] templateCopy = imageSearch.GetTemplateUri(sku);
+            string[] templateCopy = ImageSearch.GetTemplateUri(sku);
             foreach (string uri in templateCopy)    // get the value that exist
             {
+                if (index > 1) break;
                 template[index] = uri;
                 index++;
             }

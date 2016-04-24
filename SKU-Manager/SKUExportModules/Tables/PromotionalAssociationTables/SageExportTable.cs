@@ -14,150 +14,150 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         /* constructor that initialize fields */
         public SageExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset the table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "SKU Ashlin");                             // 1
-            AddColumn(mainTable, "Design Service Code");                    // 2
-            AddColumn(mainTable, "Design Service Fashion Name Ashlin");     // 3
-            AddColumn(mainTable, "Design_Short Description");               // 4
-            AddColumn(mainTable, "Design Extended Description");            // 5
-            AddColumn(mainTable, "Material Code");                          // 6
-            AddColumn(mainTable, "Colour Code");                            // 7
-            AddColumn(mainTable, "Material Description Extended");          // 8
-            AddColumn(mainTable, "Colour Description Extended");            // 9
-            AddColumn(mainTable, "Design Service Family Description");      // 10
-            AddColumn(mainTable, "Option 1");                               // 11
-            AddColumn(mainTable, "Option 2");                               // 12
-            AddColumn(mainTable, "Option 3");                               // 13
-            AddColumn(mainTable, "Option 4");                               // 14
-            AddColumn(mainTable, "Option 5");                               // 15
-            AddColumn(mainTable, "Strap");                                  // 16
-            AddColumn(mainTable, "Detachable Strap");                       // 17
-            AddColumn(mainTable, "Zippered Enclosure");                     // 18
-            AddColumn(mainTable, "Shippable Weight grams");                 // 19
-            AddColumn(mainTable, "Shippable Weight lb");                    // 20
-            AddColumn(mainTable, "Imprintable");                            // 21
-            AddColumn(mainTable, "Imprint Area cm");                        // 22
-            AddColumn(mainTable, "Imprint Area in");                        // 23
-            AddColumn(mainTable, "Finished Dimensions (cm)");               // 24
-            AddColumn(mainTable, "Finished Dimensions (in)");               // 25
-            AddColumn(mainTable, "Price 1 C Blank");                        // 26
-            AddColumn(mainTable, "Price 6 C Blank");                        // 27
-            AddColumn(mainTable, "Price 24 C Blank");                       // 28
-            AddColumn(mainTable, "Price 50 C Blank");                       // 29
-            AddColumn(mainTable, "Price 100 C Blank");                      // 30
-            AddColumn(mainTable, "Price 250 C Blank");                      // 31
-            AddColumn(mainTable, "Price 500 C Blank");                      // 32
-            AddColumn(mainTable, "Price 1000 C Blank");                     // 33
-            AddColumn(mainTable, "Price 2500 C Blank");                     // 34
-            AddColumn(mainTable, "Price RUSH 1 C Blank");                   // 35
-            AddColumn(mainTable, "Price RUSH 6 C Blank");                   // 36
-            AddColumn(mainTable, "Price RUSH 24 C Blank");                  // 37
-            AddColumn(mainTable, "Price RUSH 50 C Blank");                  // 38
-            AddColumn(mainTable, "Price RUSH 100 C Blank");                 // 39
-            AddColumn(mainTable, "Price RUSH 250 C Blank");                 // 40
-            AddColumn(mainTable, "Price RUSH 500 C Blank");                 // 41
-            AddColumn(mainTable, "Price RUSH 1000 C Blank");                // 42
-            AddColumn(mainTable, "Price RUSH 2500 C Blank");                // 43
-            AddColumn(mainTable, "Price 1 Net Blank");                      // 44
-            AddColumn(mainTable, "Price 6 Net Blank");                      // 45
-            AddColumn(mainTable, "Price 24 Net Blank");                     // 46
-            AddColumn(mainTable, "Price 50 Net Blank");                     // 47
-            AddColumn(mainTable, "Price 100 Net Blank");                    // 48
-            AddColumn(mainTable, "Price 250 Net Blank");                    // 49
-            AddColumn(mainTable, "Price 500 Net Blank");                    // 50
-            AddColumn(mainTable, "Price 1000 Net Blank");                   // 51
-            AddColumn(mainTable, "Price 2500 Net Blank");                   // 52
-            AddColumn(mainTable, "Price RUSH 1 Net Blank");                 // 53
-            AddColumn(mainTable, "Price RUSH 6 Net Blank");                 // 54
-            AddColumn(mainTable, "Price RUSH 24 Net Blank");                // 55
-            AddColumn(mainTable, "Price RUSH 50 Net Blank");                // 56
-            AddColumn(mainTable, "Price RUSH 100 Net Blank");               // 57
-            AddColumn(mainTable, "Price RUSH 250 Net Blank");               // 58
-            AddColumn(mainTable, "Price RUSH 500 Net Blank");               // 59
-            AddColumn(mainTable, "Price RUSH 1000 Net Blank");              // 60
-            AddColumn(mainTable, "Price RUSH 2500 Net Blank");              // 61
-            AddColumn(mainTable, "Price 1 C Imprinted");                    // 62
-            AddColumn(mainTable, "Price 6 C Imprinted");                    // 63
-            AddColumn(mainTable, "Price 24 C Imprinted");                   // 64
-            AddColumn(mainTable, "Price 50 C Imprinted");                   // 65
-            AddColumn(mainTable, "Price 100 C Imprinted");                  // 66
-            AddColumn(mainTable, "Price 250 C Imprinted");                  // 67
-            AddColumn(mainTable, "Price 500 C Imprinted");                  // 68
-            AddColumn(mainTable, "Price 1000 C Imprinted");                 // 69
-            AddColumn(mainTable, "Price 2500 C Imprinted");                 // 70
-            AddColumn(mainTable, "Price Rush 1 C Imprinted");               // 71
-            AddColumn(mainTable, "Price Rush 6 C Imprinted");               // 72
-            AddColumn(mainTable, "Price Rush 24 C Imprinted");              // 73
-            AddColumn(mainTable, "Price Rush 50 C Imprinted");              // 74
-            AddColumn(mainTable, "Price Rush 100 C Imprinted");             // 75
-            AddColumn(mainTable, "Price Rush 250 C Imprinted");             // 76
-            AddColumn(mainTable, "Price Rush 500 C Imprinted");             // 77
-            AddColumn(mainTable, "Price Rush 1000 C Imprinted");            // 78
-            AddColumn(mainTable, "Price Rush 2500 C Imprinted");            // 79
-            AddColumn(mainTable, "Price 1 Net Imprinted");                  // 80
-            AddColumn(mainTable, "Price 6 Net Imprinted");                  // 81
-            AddColumn(mainTable, "Price 24 Net Imprinted");                 // 82
-            AddColumn(mainTable, "Price 50 Net Imprinted");                 // 83
-            AddColumn(mainTable, "Price 100 Net Imprinted");                // 84
-            AddColumn(mainTable, "Price 250 Net Imprinted");                // 85
-            AddColumn(mainTable, "Price 500 Net Imprinted");                // 86
-            AddColumn(mainTable, "Price 1000 Net Imprinted");               // 87
-            AddColumn(mainTable, "Price 2500 Net Imprinted");               // 88
-            AddColumn(mainTable, "Price RUSH 1 Net Imprinted");             // 89
-            AddColumn(mainTable, "Price RUSH 6 Net Imprinted");             // 90
-            AddColumn(mainTable, "Price RUSH 24 Net Imprinted");            // 91
-            AddColumn(mainTable, "Price RUSH 50 Net Imprinted");            // 92
-            AddColumn(mainTable, "Price RUSH 100 Net Imprinted");           // 93
-            AddColumn(mainTable, "Price RUSH 250 Net Imprinted");           // 94
-            AddColumn(mainTable, "Price RUSH 500 Net Imprinted");           // 95
-            AddColumn(mainTable, "Price RUSH 1000 Net Imprinted");          // 96
-            AddColumn(mainTable, "Price RUSH 2500 Net Imprinted");          // 97
-            AddColumn(mainTable, "Image 1 Path");                           // 98
-            AddColumn(mainTable, "Image 2 Path");                           // 99
-            AddColumn(mainTable, "Image 3 Path");                           // 100
-            AddColumn(mainTable, "Image 4 Path");                           // 101
-            AddColumn(mainTable, "Image 5 Path");                           // 102
-            AddColumn(mainTable, "Image 6 Path");                           // 103
-            AddColumn(mainTable, "Image 7 Path");                           // 104
-            AddColumn(mainTable, "Image 8 Path");                           // 105
-            AddColumn(mainTable, "Image 9 Path");                           // 106
-            AddColumn(mainTable, "Image 10 Path");                          // 107
-            AddColumn(mainTable, "Image Group 1 Path");                     // 108
-            AddColumn(mainTable, "Image Group 2 Path");                     // 109
-            AddColumn(mainTable, "Image Group 3 Path");                     // 110
-            AddColumn(mainTable, "Image Group 4 Path");                     // 111
-            AddColumn(mainTable, "Image Group 5 Path");                     // 112
-            AddColumn(mainTable, "Image Model 1 Path");                     // 113
-            AddColumn(mainTable, "Image Model 2 Path");                     // 114
-            AddColumn(mainTable, "Image Model 3 Path");                     // 115
-            AddColumn(mainTable, "Image Model 4 Path");                     // 116
-            AddColumn(mainTable, "Image Model 5 Path");                     // 117
-            AddColumn(mainTable, "Swatch Path");                            // 118
-            AddColumn(mainTable, "Wholesale");                              // 119
-            AddColumn(mainTable, "Keywords");                               // 120
+            AddColumn(MainTable, "SKU Ashlin");                             // 1
+            AddColumn(MainTable, "Design Service Code");                    // 2
+            AddColumn(MainTable, "Design Service Fashion Name Ashlin");     // 3
+            AddColumn(MainTable, "Design_Short Description");               // 4
+            AddColumn(MainTable, "Design Extended Description");            // 5
+            AddColumn(MainTable, "Material Code");                          // 6
+            AddColumn(MainTable, "Colour Code");                            // 7
+            AddColumn(MainTable, "Material Description Extended");          // 8
+            AddColumn(MainTable, "Colour Description Extended");            // 9
+            AddColumn(MainTable, "Design Service Family Description");      // 10
+            AddColumn(MainTable, "Option 1");                               // 11
+            AddColumn(MainTable, "Option 2");                               // 12
+            AddColumn(MainTable, "Option 3");                               // 13
+            AddColumn(MainTable, "Option 4");                               // 14
+            AddColumn(MainTable, "Option 5");                               // 15
+            AddColumn(MainTable, "Strap");                                  // 16
+            AddColumn(MainTable, "Detachable Strap");                       // 17
+            AddColumn(MainTable, "Zippered Enclosure");                     // 18
+            AddColumn(MainTable, "Shippable Weight grams");                 // 19
+            AddColumn(MainTable, "Shippable Weight lb");                    // 20
+            AddColumn(MainTable, "Imprintable");                            // 21
+            AddColumn(MainTable, "Imprint Area cm");                        // 22
+            AddColumn(MainTable, "Imprint Area in");                        // 23
+            AddColumn(MainTable, "Finished Dimensions (cm)");               // 24
+            AddColumn(MainTable, "Finished Dimensions (in)");               // 25
+            AddColumn(MainTable, "Price 1 C Blank");                        // 26
+            AddColumn(MainTable, "Price 6 C Blank");                        // 27
+            AddColumn(MainTable, "Price 24 C Blank");                       // 28
+            AddColumn(MainTable, "Price 50 C Blank");                       // 29
+            AddColumn(MainTable, "Price 100 C Blank");                      // 30
+            AddColumn(MainTable, "Price 250 C Blank");                      // 31
+            AddColumn(MainTable, "Price 500 C Blank");                      // 32
+            AddColumn(MainTable, "Price 1000 C Blank");                     // 33
+            AddColumn(MainTable, "Price 2500 C Blank");                     // 34
+            AddColumn(MainTable, "Price RUSH 1 C Blank");                   // 35
+            AddColumn(MainTable, "Price RUSH 6 C Blank");                   // 36
+            AddColumn(MainTable, "Price RUSH 24 C Blank");                  // 37
+            AddColumn(MainTable, "Price RUSH 50 C Blank");                  // 38
+            AddColumn(MainTable, "Price RUSH 100 C Blank");                 // 39
+            AddColumn(MainTable, "Price RUSH 250 C Blank");                 // 40
+            AddColumn(MainTable, "Price RUSH 500 C Blank");                 // 41
+            AddColumn(MainTable, "Price RUSH 1000 C Blank");                // 42
+            AddColumn(MainTable, "Price RUSH 2500 C Blank");                // 43
+            AddColumn(MainTable, "Price 1 Net Blank");                      // 44
+            AddColumn(MainTable, "Price 6 Net Blank");                      // 45
+            AddColumn(MainTable, "Price 24 Net Blank");                     // 46
+            AddColumn(MainTable, "Price 50 Net Blank");                     // 47
+            AddColumn(MainTable, "Price 100 Net Blank");                    // 48
+            AddColumn(MainTable, "Price 250 Net Blank");                    // 49
+            AddColumn(MainTable, "Price 500 Net Blank");                    // 50
+            AddColumn(MainTable, "Price 1000 Net Blank");                   // 51
+            AddColumn(MainTable, "Price 2500 Net Blank");                   // 52
+            AddColumn(MainTable, "Price RUSH 1 Net Blank");                 // 53
+            AddColumn(MainTable, "Price RUSH 6 Net Blank");                 // 54
+            AddColumn(MainTable, "Price RUSH 24 Net Blank");                // 55
+            AddColumn(MainTable, "Price RUSH 50 Net Blank");                // 56
+            AddColumn(MainTable, "Price RUSH 100 Net Blank");               // 57
+            AddColumn(MainTable, "Price RUSH 250 Net Blank");               // 58
+            AddColumn(MainTable, "Price RUSH 500 Net Blank");               // 59
+            AddColumn(MainTable, "Price RUSH 1000 Net Blank");              // 60
+            AddColumn(MainTable, "Price RUSH 2500 Net Blank");              // 61
+            AddColumn(MainTable, "Price 1 C Imprinted");                    // 62
+            AddColumn(MainTable, "Price 6 C Imprinted");                    // 63
+            AddColumn(MainTable, "Price 24 C Imprinted");                   // 64
+            AddColumn(MainTable, "Price 50 C Imprinted");                   // 65
+            AddColumn(MainTable, "Price 100 C Imprinted");                  // 66
+            AddColumn(MainTable, "Price 250 C Imprinted");                  // 67
+            AddColumn(MainTable, "Price 500 C Imprinted");                  // 68
+            AddColumn(MainTable, "Price 1000 C Imprinted");                 // 69
+            AddColumn(MainTable, "Price 2500 C Imprinted");                 // 70
+            AddColumn(MainTable, "Price Rush 1 C Imprinted");               // 71
+            AddColumn(MainTable, "Price Rush 6 C Imprinted");               // 72
+            AddColumn(MainTable, "Price Rush 24 C Imprinted");              // 73
+            AddColumn(MainTable, "Price Rush 50 C Imprinted");              // 74
+            AddColumn(MainTable, "Price Rush 100 C Imprinted");             // 75
+            AddColumn(MainTable, "Price Rush 250 C Imprinted");             // 76
+            AddColumn(MainTable, "Price Rush 500 C Imprinted");             // 77
+            AddColumn(MainTable, "Price Rush 1000 C Imprinted");            // 78
+            AddColumn(MainTable, "Price Rush 2500 C Imprinted");            // 79
+            AddColumn(MainTable, "Price 1 Net Imprinted");                  // 80
+            AddColumn(MainTable, "Price 6 Net Imprinted");                  // 81
+            AddColumn(MainTable, "Price 24 Net Imprinted");                 // 82
+            AddColumn(MainTable, "Price 50 Net Imprinted");                 // 83
+            AddColumn(MainTable, "Price 100 Net Imprinted");                // 84
+            AddColumn(MainTable, "Price 250 Net Imprinted");                // 85
+            AddColumn(MainTable, "Price 500 Net Imprinted");                // 86
+            AddColumn(MainTable, "Price 1000 Net Imprinted");               // 87
+            AddColumn(MainTable, "Price 2500 Net Imprinted");               // 88
+            AddColumn(MainTable, "Price RUSH 1 Net Imprinted");             // 89
+            AddColumn(MainTable, "Price RUSH 6 Net Imprinted");             // 90
+            AddColumn(MainTable, "Price RUSH 24 Net Imprinted");            // 91
+            AddColumn(MainTable, "Price RUSH 50 Net Imprinted");            // 92
+            AddColumn(MainTable, "Price RUSH 100 Net Imprinted");           // 93
+            AddColumn(MainTable, "Price RUSH 250 Net Imprinted");           // 94
+            AddColumn(MainTable, "Price RUSH 500 Net Imprinted");           // 95
+            AddColumn(MainTable, "Price RUSH 1000 Net Imprinted");          // 96
+            AddColumn(MainTable, "Price RUSH 2500 Net Imprinted");          // 97
+            AddColumn(MainTable, "Image 1 Path");                           // 98
+            AddColumn(MainTable, "Image 2 Path");                           // 99
+            AddColumn(MainTable, "Image 3 Path");                           // 100
+            AddColumn(MainTable, "Image 4 Path");                           // 101
+            AddColumn(MainTable, "Image 5 Path");                           // 102
+            AddColumn(MainTable, "Image 6 Path");                           // 103
+            AddColumn(MainTable, "Image 7 Path");                           // 104
+            AddColumn(MainTable, "Image 8 Path");                           // 105
+            AddColumn(MainTable, "Image 9 Path");                           // 106
+            AddColumn(MainTable, "Image 10 Path");                          // 107
+            AddColumn(MainTable, "Image Group 1 Path");                     // 108
+            AddColumn(MainTable, "Image Group 2 Path");                     // 109
+            AddColumn(MainTable, "Image Group 3 Path");                     // 110
+            AddColumn(MainTable, "Image Group 4 Path");                     // 111
+            AddColumn(MainTable, "Image Group 5 Path");                     // 112
+            AddColumn(MainTable, "Image Model 1 Path");                     // 113
+            AddColumn(MainTable, "Image Model 2 Path");                     // 114
+            AddColumn(MainTable, "Image Model 3 Path");                     // 115
+            AddColumn(MainTable, "Image Model 4 Path");                     // 116
+            AddColumn(MainTable, "Image Model 5 Path");                     // 117
+            AddColumn(MainTable, "Swatch Path");                            // 118
+            AddColumn(MainTable, "Wholesale");                              // 119
+            AddColumn(MainTable, "Keywords");                               // 120
 
             // local field for price calculation
             double[][] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = sku;                                                 // sku ashlin
                 row[1] = list[0];                                             // design service code
@@ -309,15 +309,15 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[118] = (msrp - runCharge) * discountList[k][20];               // whole sale
                 row[119] = list[47];                                               // keywords
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -329,12 +329,12 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND Design_Service_Code in (" +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code in (" +
-                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Category_Sage != ''))", connection);
-            connection.Open();
+                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Category_Sage != ''))", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -369,7 +369,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 44; i++)
@@ -386,8 +386,8 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // [0] rush standard, [1] 1 c standard, [2] 6 c standard, [3] 24 c standard, [4] 50 c standard, [5] 100 c standard, [6] 250 c standard, [7] 500 c standard, [8] 1000 c standard, [9] 2500 c standard, [10] rush net, [11] 1 c net standard
             // [12] 6 c net standard, [13] 24 c net standard, [14] 50 c net standard, [15] 100 net standard, [16] 250 net standard, [17] 500 net standard, [18] 1000 net standard, [19] 2500 net standard, [20] wholesale net
             SqlCommand command = new SqlCommand("SELECT [RUSH_C_25_wks], [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], "
-                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", connection);
-            connection.Open();
+                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 4; i++)
             {
@@ -413,7 +413,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             reader = command.ExecuteReader();
             reader.Read();
             list[5] = new[] { reader.GetDouble(0) };
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

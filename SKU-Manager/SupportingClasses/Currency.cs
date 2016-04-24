@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Web.Script.Serialization;
 
 namespace SKU_Manager.SupportingClasses
 {
@@ -59,7 +58,7 @@ namespace SKU_Manager.SupportingClasses
                 textJson = streamReader.ReadToEnd();
 
             // deserialize json to key value
-            var info = new JavaScriptSerializer().Deserialize<Dictionary<string, dynamic>>(textJson);
+            var info = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<Dictionary<string, dynamic>>(textJson);
 
             // adding Currency and Rate to the dictionary
             Dictionary<string, double> dic = new Dictionary<string, double>();

@@ -75,8 +75,8 @@ namespace SKU_Manager.SplashModules.Activate
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
 
                 activateMaterialButton.Enabled = false;
                 onlineButton.Enabled = false;
@@ -135,7 +135,7 @@ namespace SKU_Manager.SplashModules.Activate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") +
-                                                        "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
+                                                        "\' WHERE Material_Code = \'" + materialCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

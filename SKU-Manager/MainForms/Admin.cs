@@ -69,7 +69,7 @@ namespace SKU_Manager.MainForms
 
         private void amazonButton_MouseHover(object sender, EventArgs e)
         {
-            loadingLabel.Text = "Amazon";
+            loadingLabel.Text = @"Amazon";
             loadingLabel.Visible = true;
             excelButton.Visible = true;
             refreshButton.Visible = true;
@@ -90,7 +90,7 @@ namespace SKU_Manager.MainForms
         /* sears button hover that show sear's functions */
         private void searsButton_MouseHover(object sender, EventArgs e)
         {
-            loadingLabel.Text = "Sears";
+            loadingLabel.Text = @"Sears";
             loadingLabel.Visible = true;
             excelButton.Visible = true;
             refreshButton.Visible = true;
@@ -111,7 +111,7 @@ namespace SKU_Manager.MainForms
         /* shop.ca button hover that show shop.ca's functions */
         private void shopCaButton_MouseHover(object sender, EventArgs e)
         {
-            loadingLabel.Text = "Shop.ca";
+            loadingLabel.Text = @"Shop.ca";
             loadingLabel.Visible = true;
             excelButton.Visible = true;
             refreshButton.Visible = true;
@@ -132,7 +132,7 @@ namespace SKU_Manager.MainForms
         /* giant tiger button hover that show giant tiger's functions */
         private void giantTigerButton_MouseHover(object sender, EventArgs e)
         {
-            loadingLabel.Text = "Giant Tiger";
+            loadingLabel.Text = @"Giant Tiger";
             loadingLabel.Visible = true;
             excelButton.Visible = true;
             refreshButton.Visible = true;
@@ -315,7 +315,7 @@ namespace SKU_Manager.MainForms
                 if (sears.Current >= sears.Total)
                 {
                     timer.Stop();
-                    loadingLabel.Text = "Sears";
+                    loadingLabel.Text = @"Sears";
                 }
                 else
                     loadingLabel.Text = sears.Current + " / " + sears.Total;
@@ -327,7 +327,7 @@ namespace SKU_Manager.MainForms
                 if (shopCa.Current >= shopCa.Total)
                 {
                     timer.Stop();
-                    loadingLabel.Text = "Shop.ca";
+                    loadingLabel.Text = @"Shop.ca";
                 }
                 else
                     loadingLabel.Text = shopCa.Current + " / " + shopCa.Total;
@@ -339,7 +339,7 @@ namespace SKU_Manager.MainForms
                 if (amazon.Current >= amazon.Total)
                 {
                     timer.Stop();
-                    loadingLabel.Text = "Amazon";
+                    loadingLabel.Text = @"Amazon";
                 }
                 else
                     loadingLabel.Text = amazon.Current + " / " + amazon.Total;
@@ -351,7 +351,7 @@ namespace SKU_Manager.MainForms
                 if (giantTiger.Current >= giantTiger.Total)
                 {
                     timer.Stop();
-                    loadingLabel.Text = "Giant Tiger";
+                    loadingLabel.Text = @"Giant Tiger";
                 }
                 else
                     loadingLabel.Text = giantTiger.Current + " / " + giantTiger.Total;

@@ -69,7 +69,7 @@ namespace SKU_Manager.ActiveInactiveList
                 timeLeft = 4;
             }
             else
-                loadingLabel.Text += ".";
+                loadingLabel.Text += '.';
         }
 
         /* the event for exit button click */

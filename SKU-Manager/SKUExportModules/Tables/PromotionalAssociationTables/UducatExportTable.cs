@@ -14,129 +14,129 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         /* constructor that initialize fields */
         public UducatExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "SKU");                    // 1
-            AddColumn(mainTable, "Category");               // 2
-            AddColumn(mainTable, "Category1EN");            // 3
-            AddColumn(mainTable, "Category1FR");            // 4
-            AddColumn(mainTable, "Category2EN");            // 5
-            AddColumn(mainTable, "Category2FR");            // 6
-            AddColumn(mainTable, "Category3EN");            // 7
-            AddColumn(mainTable, "Category3FR");            // 8
-            AddColumn(mainTable, "Category4EN");            // 9
-            AddColumn(mainTable, "Category4FR");            // 10
-            AddColumn(mainTable, "Category5EN");            // 11
-            AddColumn(mainTable, "Category5FR");            // 12
-            AddColumn(mainTable, "NameEN");                 // 13
-            AddColumn(mainTable, "NameFR");                 // 14
-            AddColumn(mainTable, "DescriptionEN");          // 15
-            AddColumn(mainTable, "DescriptionFR");          // 16
-            AddColumn(mainTable, "Image");                  // 17
-            AddColumn(mainTable, "CatelogPage");            // 18
-            AddColumn(mainTable, "CatelogYear");            // 19
-            AddColumn(mainTable, "Active");                 // 20
-            AddColumn(mainTable, "CartQtrMin");             // 21
-            AddColumn(mainTable, "CartQtyMax");             // 23
-            AddColumn(mainTable, "CADCertified");           // 24
-            AddColumn(mainTable, "CADValidUntilDate");      // 25
-            AddColumn(mainTable, "CADGeneralInfoEN");       // 26
-            AddColumn(mainTable, "CADGeneralInfoFR");       // 27
-            AddColumn(mainTable, "CADMinQty1");             // 28
-            AddColumn(mainTable, "CADMaxQty1");             // 29
-            AddColumn(mainTable, "CADPrice1");              // 30
-            AddColumn(mainTable, "CADSalePrice1");          // 31
-            AddColumn(mainTable, "CADPriceCode1");          // 32
-            AddColumn(mainTable, "CADPriceMsg1EN");         // 33
-            AddColumn(mainTable, "CADPriceMsg1FR");         // 34   
-            AddColumn(mainTable, "CADMINQty2");             // 35
-            AddColumn(mainTable, "CADMAXQTY2");             // 36
-            AddColumn(mainTable, "CADSalePrice2");          // 37
-            AddColumn(mainTable, "CADPrice2");              // 38
-            AddColumn(mainTable, "CADPriceCode2");          // 39
-            AddColumn(mainTable, "CADPriceMsg2EN");         // 40
-            AddColumn(mainTable, "CADPriceMsg2FR");         // 41
-            AddColumn(mainTable, "CADMinQty3");             // 42
-            AddColumn(mainTable, "CADMAXQty3");             // 43
-            AddColumn(mainTable, "CADPrice3");              // 44
-            AddColumn(mainTable, "CADSalePrice3");          // 45
-            AddColumn(mainTable, "CADPriceCode3");          // 46
-            AddColumn(mainTable, "CADPriceMsg3EN");         // 47
-            AddColumn(mainTable, "CADPriceMsg3FR");         // 48
-            AddColumn(mainTable, "CADMinQty4");             // 49
-            AddColumn(mainTable, "CADMAXQty4");             // 50
-            AddColumn(mainTable, "CADPrice4");              // 51
-            AddColumn(mainTable, "CADSalePrice4");          // 52
-            AddColumn(mainTable, "CADPriceCode4");          // 53
-            AddColumn(mainTable, "CADPriceMsg4EN");         // 54
-            AddColumn(mainTable, "CADPriceMsg4FR");         // 55
-            AddColumn(mainTable, "CADMinQty5");             // 56
-            AddColumn(mainTable, "CADMAXQty5");             // 57
-            AddColumn(mainTable, "CADPrice5");              // 58
-            AddColumn(mainTable, "CADSalePrice5");          // 59
-            AddColumn(mainTable, "CADPriceCode5");          // 60
-            AddColumn(mainTable, "CADPriceMsg5EN");         // 61
-            AddColumn(mainTable, "CADPriceMsg5FR");         // 62
-            AddColumn(mainTable, "CADMinQty6");             // 63
-            AddColumn(mainTable, "CADMAXQty6");             // 64
-            AddColumn(mainTable, "CADPrice6");              // 65
-            AddColumn(mainTable, "CADSalePrice6");          // 66
-            AddColumn(mainTable, "CADPriceCode6");          // 67
-            AddColumn(mainTable, "CADPriceMsg6EN");         // 68
-            AddColumn(mainTable, "CADPriceMsg6FR");         // 69
-            AddColumn(mainTable, "CADMinQty7");             // 70
-            AddColumn(mainTable, "CADMAXQty7");             // 71
-            AddColumn(mainTable, "CADPrice7");              // 72
-            AddColumn(mainTable, "CADSalePrice7");          // 73
-            AddColumn(mainTable, "CADPriceCode7");          // 74
-            AddColumn(mainTable, "CADPriceMsg7EN");         // 75
-            AddColumn(mainTable, "CADPriceMsg7FR");         // 76
-            AddColumn(mainTable, "CADMinQty8");             // 77
-            AddColumn(mainTable, "CADMAXQty8");             // 78
-            AddColumn(mainTable, "CADPrice8");              // 79
-            AddColumn(mainTable, "CADSalePrice8");          // 80
-            AddColumn(mainTable, "CADPriceCode8");          // 81
-            AddColumn(mainTable, "CADPriceMsg8EN");         // 82
-            AddColumn(mainTable, "CADPriceMsg8FR");         // 83
-            AddColumn(mainTable, "CADMinQty9");             // 84
-            AddColumn(mainTable, "CADMAXQty9");             // 85
-            AddColumn(mainTable, "CADPrice9");              // 86
-            AddColumn(mainTable, "CADSalePrice9");          // 87
-            AddColumn(mainTable, "CADPriceCode9");          // 88
-            AddColumn(mainTable, "CADPriceMsg9EN");         // 89
-            AddColumn(mainTable, "CADPriceMsg9FR");         // 90
-            AddColumn(mainTable, "CADMinQty10");            // 91
-            AddColumn(mainTable, "CADMAXQty10");            // 92
-            AddColumn(mainTable, "CADPrice10");             // 93
-            AddColumn(mainTable, "CADSalePrice10");         // 94
-            AddColumn(mainTable, "CADPriceCode10");         // 95
-            AddColumn(mainTable, "CADPriceMsg10EN");        // 96
-            AddColumn(mainTable, "CADPriceMsg10FR");        // 97
-            AddColumn(mainTable, "CADSaleStartDateTime");   // 98
-            AddColumn(mainTable, "CADSaleEndDateTime");     // 99
-            AddColumn(mainTable, "Keywords");               // 100
+            AddColumn(MainTable, "SKU");                    // 1
+            AddColumn(MainTable, "Category");               // 2
+            AddColumn(MainTable, "Category1EN");            // 3
+            AddColumn(MainTable, "Category1FR");            // 4
+            AddColumn(MainTable, "Category2EN");            // 5
+            AddColumn(MainTable, "Category2FR");            // 6
+            AddColumn(MainTable, "Category3EN");            // 7
+            AddColumn(MainTable, "Category3FR");            // 8
+            AddColumn(MainTable, "Category4EN");            // 9
+            AddColumn(MainTable, "Category4FR");            // 10
+            AddColumn(MainTable, "Category5EN");            // 11
+            AddColumn(MainTable, "Category5FR");            // 12
+            AddColumn(MainTable, "NameEN");                 // 13
+            AddColumn(MainTable, "NameFR");                 // 14
+            AddColumn(MainTable, "DescriptionEN");          // 15
+            AddColumn(MainTable, "DescriptionFR");          // 16
+            AddColumn(MainTable, "Image");                  // 17
+            AddColumn(MainTable, "CatelogPage");            // 18
+            AddColumn(MainTable, "CatelogYear");            // 19
+            AddColumn(MainTable, "Active");                 // 20
+            AddColumn(MainTable, "CartQtrMin");             // 21
+            AddColumn(MainTable, "CartQtyMax");             // 23
+            AddColumn(MainTable, "CADCertified");           // 24
+            AddColumn(MainTable, "CADValidUntilDate");      // 25
+            AddColumn(MainTable, "CADGeneralInfoEN");       // 26
+            AddColumn(MainTable, "CADGeneralInfoFR");       // 27
+            AddColumn(MainTable, "CADMinQty1");             // 28
+            AddColumn(MainTable, "CADMaxQty1");             // 29
+            AddColumn(MainTable, "CADPrice1");              // 30
+            AddColumn(MainTable, "CADSalePrice1");          // 31
+            AddColumn(MainTable, "CADPriceCode1");          // 32
+            AddColumn(MainTable, "CADPriceMsg1EN");         // 33
+            AddColumn(MainTable, "CADPriceMsg1FR");         // 34   
+            AddColumn(MainTable, "CADMINQty2");             // 35
+            AddColumn(MainTable, "CADMAXQTY2");             // 36
+            AddColumn(MainTable, "CADSalePrice2");          // 37
+            AddColumn(MainTable, "CADPrice2");              // 38
+            AddColumn(MainTable, "CADPriceCode2");          // 39
+            AddColumn(MainTable, "CADPriceMsg2EN");         // 40
+            AddColumn(MainTable, "CADPriceMsg2FR");         // 41
+            AddColumn(MainTable, "CADMinQty3");             // 42
+            AddColumn(MainTable, "CADMAXQty3");             // 43
+            AddColumn(MainTable, "CADPrice3");              // 44
+            AddColumn(MainTable, "CADSalePrice3");          // 45
+            AddColumn(MainTable, "CADPriceCode3");          // 46
+            AddColumn(MainTable, "CADPriceMsg3EN");         // 47
+            AddColumn(MainTable, "CADPriceMsg3FR");         // 48
+            AddColumn(MainTable, "CADMinQty4");             // 49
+            AddColumn(MainTable, "CADMAXQty4");             // 50
+            AddColumn(MainTable, "CADPrice4");              // 51
+            AddColumn(MainTable, "CADSalePrice4");          // 52
+            AddColumn(MainTable, "CADPriceCode4");          // 53
+            AddColumn(MainTable, "CADPriceMsg4EN");         // 54
+            AddColumn(MainTable, "CADPriceMsg4FR");         // 55
+            AddColumn(MainTable, "CADMinQty5");             // 56
+            AddColumn(MainTable, "CADMAXQty5");             // 57
+            AddColumn(MainTable, "CADPrice5");              // 58
+            AddColumn(MainTable, "CADSalePrice5");          // 59
+            AddColumn(MainTable, "CADPriceCode5");          // 60
+            AddColumn(MainTable, "CADPriceMsg5EN");         // 61
+            AddColumn(MainTable, "CADPriceMsg5FR");         // 62
+            AddColumn(MainTable, "CADMinQty6");             // 63
+            AddColumn(MainTable, "CADMAXQty6");             // 64
+            AddColumn(MainTable, "CADPrice6");              // 65
+            AddColumn(MainTable, "CADSalePrice6");          // 66
+            AddColumn(MainTable, "CADPriceCode6");          // 67
+            AddColumn(MainTable, "CADPriceMsg6EN");         // 68
+            AddColumn(MainTable, "CADPriceMsg6FR");         // 69
+            AddColumn(MainTable, "CADMinQty7");             // 70
+            AddColumn(MainTable, "CADMAXQty7");             // 71
+            AddColumn(MainTable, "CADPrice7");              // 72
+            AddColumn(MainTable, "CADSalePrice7");          // 73
+            AddColumn(MainTable, "CADPriceCode7");          // 74
+            AddColumn(MainTable, "CADPriceMsg7EN");         // 75
+            AddColumn(MainTable, "CADPriceMsg7FR");         // 76
+            AddColumn(MainTable, "CADMinQty8");             // 77
+            AddColumn(MainTable, "CADMAXQty8");             // 78
+            AddColumn(MainTable, "CADPrice8");              // 79
+            AddColumn(MainTable, "CADSalePrice8");          // 80
+            AddColumn(MainTable, "CADPriceCode8");          // 81
+            AddColumn(MainTable, "CADPriceMsg8EN");         // 82
+            AddColumn(MainTable, "CADPriceMsg8FR");         // 83
+            AddColumn(MainTable, "CADMinQty9");             // 84
+            AddColumn(MainTable, "CADMAXQty9");             // 85
+            AddColumn(MainTable, "CADPrice9");              // 86
+            AddColumn(MainTable, "CADSalePrice9");          // 87
+            AddColumn(MainTable, "CADPriceCode9");          // 88
+            AddColumn(MainTable, "CADPriceMsg9EN");         // 89
+            AddColumn(MainTable, "CADPriceMsg9FR");         // 90
+            AddColumn(MainTable, "CADMinQty10");            // 91
+            AddColumn(MainTable, "CADMAXQty10");            // 92
+            AddColumn(MainTable, "CADPrice10");             // 93
+            AddColumn(MainTable, "CADSalePrice10");         // 94
+            AddColumn(MainTable, "CADPriceCode10");         // 95
+            AddColumn(MainTable, "CADPriceMsg10EN");        // 96
+            AddColumn(MainTable, "CADPriceMsg10FR");        // 97
+            AddColumn(MainTable, "CADSaleStartDateTime");   // 98
+            AddColumn(MainTable, "CADSaleEndDateTime");     // 99
+            AddColumn(MainTable, "Keywords");               // 100
 
             // local field for inserting data to table
             double[][] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
            
                 row[0] = sku;                                            // sku 
                 row[1] = list[1];                                        // category
@@ -207,15 +207,15 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[86] = 'C';                                           // cad price code 9
                 row[98] = list[3];                                       // keywords
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -227,12 +227,12 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND Design_Service_Code in ( " +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Website_Flag = 'True' And Design_Service_Family_Code in ( " +
-                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Category_UDUCAT !=''))", connection);
-            connection.Open();
+                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Category_UDUCAT !=''))", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -257,7 +257,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 8; i++)
@@ -273,8 +273,8 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
 
             // [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 2500 c standard
             SqlCommand command = new SqlCommand("SELECT [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery] "
-                                                     + "FROM Discount_Matrix", connection);
-            connection.Open();
+                                                     + "FROM Discount_Matrix", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 4; i++)
             {
@@ -300,7 +300,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             reader = command.ExecuteReader();
             reader.Read();
             list[5] = new[] { reader.GetDouble(0) };
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

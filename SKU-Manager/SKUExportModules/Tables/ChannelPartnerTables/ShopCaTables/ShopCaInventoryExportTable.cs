@@ -12,56 +12,56 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         /* constructor that initialize fields */
         public ShopCaInventoryExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "supplier id");                                    // 1
-            AddColumn(mainTable, "store name");                                     // 2
-            AddColumn(mainTable, "sku");                                            // 3
-            AddColumn(mainTable, "quantity");                                       // 4
-            AddColumn(mainTable, "out of stock quantity");                          // 5
-            AddColumn(mainTable, "restock date");                                   // 6
-            AddColumn(mainTable, "standard fulfillment latency");                   // 7
-            AddColumn(mainTable, "priority fulfillment latency");                   // 8
-            AddColumn(mainTable, "backorderable");                                  // 9
-            AddColumn(mainTable, "return not desired");                             // 10
-            AddColumn(mainTable, "inventory as of date");                           // 11
-            AddColumn(mainTable, "external inventory id");                          // 12
-            AddColumn(mainTable, "shipping comments");                              // 13
+            AddColumn(MainTable, "supplier id");                                    // 1
+            AddColumn(MainTable, "store name");                                     // 2
+            AddColumn(MainTable, "sku");                                            // 3
+            AddColumn(MainTable, "quantity");                                       // 4
+            AddColumn(MainTable, "out of stock quantity");                          // 5
+            AddColumn(MainTable, "restock date");                                   // 6
+            AddColumn(MainTable, "standard fulfillment latency");                   // 7
+            AddColumn(MainTable, "priority fulfillment latency");                   // 8
+            AddColumn(MainTable, "backorderable");                                  // 9
+            AddColumn(MainTable, "return not desired");                             // 10
+            AddColumn(MainTable, "inventory as of date");                           // 11
+            AddColumn(MainTable, "external inventory id");                          // 12
+            AddColumn(MainTable, "shipping comments");                              // 13
 
             // local field for inserting data to table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                               // brand
                 row[1] = "nishis_boutique";                          // store name
                 row[2] = sku;                                        // sku
-                row[3] = table.Select("SKU='" + sku + "'")[0][2];    // quantity
+                row[3] = table.Select("SKU='" + sku + '\'')[0][2];    // quantity
                 row[8] = true;                                       // backorderable
 
-                mainTable.Rows.Add(row);         
+                MainTable.Rows.Add(row);         
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
+            MainTable.EndLoadData();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* override getData method */

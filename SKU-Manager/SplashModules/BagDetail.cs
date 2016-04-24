@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace SKU_Manager.SplashModules
@@ -23,8 +24,8 @@ namespace SKU_Manager.SplashModules
             InitializeComponent();
 
             // declare fields
-            shoulderDropLengthTextbox.Text = shoulderDropLength.ToString();
-            handleStrapDropLengthTextbox.Text = handleStrapLength.ToString();
+            shoulderDropLengthTextbox.Text = shoulderDropLength.ToString(CultureInfo.InvariantCulture);
+            handleStrapDropLengthTextbox.Text = handleStrapLength.ToString(CultureInfo.InvariantCulture);
             notableStrapGeneralFeaturesCombobox.Text = notableStrapGeneralFeatures;
             protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 1 : 0;
             closureCombobox.Text = closure;
@@ -40,8 +41,8 @@ namespace SKU_Manager.SplashModules
             InitializeComponent();
 
             // declare fields
-            shoulderDropLengthTextbox.Text = shoulderDropLength.ToString();
-            handleStrapDropLengthTextbox.Text = handleStrapLength.ToString();
+            shoulderDropLengthTextbox.Text = shoulderDropLength.ToString(CultureInfo.InvariantCulture);
+            handleStrapDropLengthTextbox.Text = handleStrapLength.ToString(CultureInfo.InvariantCulture);
             notableStrapGeneralFeaturesCombobox.Text = notableStrapGeneralFeatures;
             protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 1 : 0;
             closureCombobox.Text = closure;

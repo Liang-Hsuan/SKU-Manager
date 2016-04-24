@@ -78,16 +78,16 @@ namespace SKU_Manager.SplashModules.Deactivate
             else
             {
                 // set the text to nothing
-                designCodeTextbox.Text = "";
-                productFamilyTextbox.Text = "";
-                brandTextbox.Text = "";
-                designServiceFlagTextbox.Text = "";
-                internalNameTextbox.Text = "";
-                designDescriptionTextbox.Text = "";
-                materialCodeTextbox.Text = "";
-                materialDescriptionTextbox.Text = "";
-                colorCodeTextbox.Text = "";
-                colorDescriptionTextbox.Text = "";
+                designCodeTextbox.Text = string.Empty;
+                productFamilyTextbox.Text = string.Empty;
+                brandTextbox.Text = string.Empty;
+                designServiceFlagTextbox.Text = string.Empty;
+                internalNameTextbox.Text = string.Empty;
+                designDescriptionTextbox.Text = string.Empty;
+                materialCodeTextbox.Text = string.Empty;
+                materialDescriptionTextbox.Text = string.Empty;
+                colorCodeTextbox.Text = string.Empty;
+                colorDescriptionTextbox.Text = string.Empty;
 
                 deactivateSKUButton.Enabled = false;
             }
@@ -107,7 +107,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                                                             "INNER JOIN master_Design_Attributes design ON (design.Design_Service_Code = sku.Design_Service_Code) " +
                                                             "INNER JOIN ref_Materials material ON (material.Material_Code = sku.Material_Code) " +
                                                             "INNER JOIN ref_Colours color ON (color.Colour_Code = sku.Colour_Code) " +
-                                                            "WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                            "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -164,7 +164,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                      + "WHERE SKU_Ashlin = \'" + sku + "\'", connection);
+                                                      + "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

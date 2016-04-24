@@ -13,58 +13,58 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         /* constructor that initialize fields */
         public GiantTigerExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset the table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "SKU number");                                // 1
-            AddColumn(mainTable, "Brand");                                     // 2
-            AddColumn(mainTable, "Style");                                     // 3
-            AddColumn(mainTable, "Description");                               // 4
-            AddColumn(mainTable, "Romance");                                   // 5
-            AddColumn(mainTable, "Color");                                     // 6
-            AddColumn(mainTable, "Material");                                  // 7
-            AddColumn(mainTable, "Size in CM");                                // 8
-            AddColumn(mainTable, "Weight");                                    // 9
-            AddColumn(mainTable, "Cost");                                      // 10
-            AddColumn(mainTable, "Retail");                                    // 11
-            AddColumn(mainTable, "MSRP");                                      // 12
-            AddColumn(mainTable, "Area Code");                                 // 13
-            AddColumn(mainTable, "Image 1 Path");                              // 14
-            AddColumn(mainTable, "Image 2 Path");                              // 15
-            AddColumn(mainTable, "Image 3 Path");                              // 16
-            AddColumn(mainTable, "Image 4 Path");                              // 17
-            AddColumn(mainTable, "Image 5 Path");                              // 18
-            AddColumn(mainTable, "Image 6 Path");                              // 19
-            AddColumn(mainTable, "Image 7 Path");                              // 20
-            AddColumn(mainTable, "Image 8 Path");                              // 21
-            AddColumn(mainTable, "Image 9 Path");                              // 22
-            AddColumn(mainTable, "Image 10 Path");                             // 23
+            AddColumn(MainTable, "SKU number");                                // 1
+            AddColumn(MainTable, "Brand");                                     // 2
+            AddColumn(MainTable, "Style");                                     // 3
+            AddColumn(MainTable, "Description");                               // 4
+            AddColumn(MainTable, "Romance");                                   // 5
+            AddColumn(MainTable, "Color");                                     // 6
+            AddColumn(MainTable, "Material");                                  // 7
+            AddColumn(MainTable, "Size in CM");                                // 8
+            AddColumn(MainTable, "Weight");                                    // 9
+            AddColumn(MainTable, "Cost");                                      // 10
+            AddColumn(MainTable, "Retail");                                    // 11
+            AddColumn(MainTable, "MSRP");                                      // 12
+            AddColumn(MainTable, "Area Code");                                 // 13
+            AddColumn(MainTable, "Image 1 Path");                              // 14
+            AddColumn(MainTable, "Image 2 Path");                              // 15
+            AddColumn(MainTable, "Image 3 Path");                              // 16
+            AddColumn(MainTable, "Image 4 Path");                              // 17
+            AddColumn(MainTable, "Image 5 Path");                              // 18
+            AddColumn(MainTable, "Image 6 Path");                              // 19
+            AddColumn(MainTable, "Image 7 Path");                              // 20
+            AddColumn(MainTable, "Image 8 Path");                              // 21
+            AddColumn(MainTable, "Image 9 Path");                              // 22
+            AddColumn(MainTable, "Image 10 Path");                             // 23
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
             double[] price = GetPriceList();
 
             // start loading data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                DataRow newRow = mainTable.NewRow();
+                DataRow newRow = MainTable.NewRow();
                 double msrp = Convert.ToDouble(row[9]) * price[0];
 
                 newRow[0] = row[20];                                                   // sku number
                 newRow[1] = "Ashlin®";                                                 // brand
                 newRow[2] = row[6];                                                    // style
-                newRow[3] = "Ashlin® " + row[0] + " " + row[7] + " " + row[8];         // description
+                newRow[3] = "Ashlin® " + row[0] + ' ' + row[7] + ' ' + row[8];         // description
                 newRow[4] = row[1];                                                    // romance
                 newRow[5] = row[8];                                                    // color
                 newRow[6] = row[7];                                                    // material
@@ -86,14 +86,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[21] = row[18];                                                  // image 9 path
                 newRow[22] = row[19];                                                  // image 10 path
 
-                mainTable.Rows.Add(newRow);
+                MainTable.Rows.Add(newRow);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
+            MainTable.EndLoadData();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -103,12 +103,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> list = new List<string>();
 
             // connect to database and grab data ( use the ones that have on walmart )
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_GIANT_TIGER != ''", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_GIANT_TIGER != ''", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -135,10 +135,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                                                         "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " + 
                                                         "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " + 
                                                         "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "WHERE sku.Active = 'True' AND SKU_GIANT_TIGER != '' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+                                                        "WHERE sku.Active = 'True' AND SKU_GIANT_TIGER != '' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             adapter.Fill(table);
-            connection.Close();
+            Connection.Close();
 
             return table;
         }
@@ -149,8 +149,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
             double[] list = new double[5];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -163,7 +163,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             list[2] = (double)reader.GetDecimal(1);
             list[3] = (double)reader.GetDecimal(2);
             list[4] = (double)reader.GetDecimal(3);
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

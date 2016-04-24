@@ -14,8 +14,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
      */
     public partial class UpdateHts : Form
     {
-        // fields for database connection
-        private SqlConnection connection;
+        // field for database connection
         private readonly SqlDataAdapter[] adapter = new SqlDataAdapter[3];    // [0] for HTS_CA, [1] for HTS_US, [2] for Currency
 
         // field for storing tables
@@ -37,7 +36,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 dataSet = new DataSet();
 
                 // connect to database
-                connection = new SqlConnection(Credentials.DesignCon);
+                SqlConnection connection = new SqlConnection(Credentials.DesignCon);
 
                 // grab data
                 adapter[0] = new SqlDataAdapter("SELECT * FROM HTS_CA", connection);

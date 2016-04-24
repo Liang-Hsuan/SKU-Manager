@@ -81,12 +81,12 @@ namespace SKU_Manager.SplashModules.Activate
             else
             {
                 // set the text to nothing
-                productFamilyTextbox.Text = "";
-                brandTextbox.Text = "";
-                designServiceFlagTextbox.Text = "";
-                internalNameTextbox.Text = "";
-                shortDescriptionTextbox.Text = "";
-                extendedDescriptionTextbox.Text = "";
+                productFamilyTextbox.Text = string.Empty;
+                brandTextbox.Text = string.Empty;
+                designServiceFlagTextbox.Text = string.Empty;
+                internalNameTextbox.Text = string.Empty;
+                shortDescriptionTextbox.Text = string.Empty;
+                extendedDescriptionTextbox.Text = string.Empty;
                 giftCheckbox.Checked = false;
 
                 activateDesignButton.Enabled = false;

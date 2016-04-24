@@ -83,7 +83,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlCommand command = new SqlCommand("SELECT Design_Service_family_Description, Pricing_Tier, Reorder_Quantity, Reorder_Level " + 
-                                                    "FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
+                                                    "FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + '\'', connection);
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -128,12 +128,12 @@ namespace SKU_Manager.SplashModules.Deactivate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Families SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                      + "WHERE Design_Service_Family_Code = \'" + familyCode + "\'", connection);
+                                                      + "WHERE Design_Service_Family_Code = \'" + familyCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 
                     // design deactivation
-                    command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                    command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + '\'';
                     command.ExecuteNonQuery();
 
                     // sku deactivation

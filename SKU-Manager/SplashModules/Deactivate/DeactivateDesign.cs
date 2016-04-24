@@ -46,7 +46,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
-                SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'True' ORDER BY Design_Service_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'True' ORDER BY Design_Service_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -79,12 +79,12 @@ namespace SKU_Manager.SplashModules.Deactivate
             else
             {
                 // set the text to nothing
-                productFamilyTextbox.Text = "";
-                brandTextbox.Text = "";
-                designServiceFlagTextbox.Text = "";
-                internalNameTextbox.Text = "";
-                shortDescriptionTextbox.Text = "";
-                extendedDescriptionTextbox.Text = "";
+                productFamilyTextbox.Text = string.Empty;
+                brandTextbox.Text = string.Empty;
+                designServiceFlagTextbox.Text = string.Empty;
+                internalNameTextbox.Text = string.Empty;
+                shortDescriptionTextbox.Text = string.Empty;
+                extendedDescriptionTextbox.Text = string.Empty;
                 giftCheckbox.Checked = false;
 
                 deactivateDesignButton.Enabled = false;
@@ -100,7 +100,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code, Design_Service_Flag, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Design_Online, Design_Online_FR, GiftBox " 
-                                                          + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + "\';", connection);
+                                                          + "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -153,7 +153,7 @@ namespace SKU_Manager.SplashModules.Deactivate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE master_Design_Attributes SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                      + "WHERE Design_Service_Code = \'" + designCode + "\'", connection);
+                                                      + "WHERE Design_Service_Code = \'" + designCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 

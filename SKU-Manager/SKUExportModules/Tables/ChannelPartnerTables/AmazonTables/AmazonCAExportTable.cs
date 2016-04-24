@@ -14,166 +14,166 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
         /* constructor that initialize fields */
         public AmazonCaExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "item_name");                                      // 1
-            AddColumn(mainTable, "feed_product_type");                              // 2
-            AddColumn(mainTable, "brand_name");                                     // 3
-            AddColumn(mainTable, "manufacturer");                                   // 4
-            AddColumn(mainTable, "external_product_id");                            // 5
-            AddColumn(mainTable, "external_product_id_type");                       // 6
-            AddColumn(mainTable, "item_sku");                                       // 7
-            AddColumn(mainTable, "part_number");                                    // 8
-            AddColumn(mainTable, "product description");                            // 9
-            AddColumn(mainTable, "update_delete");                                  // 10
-            AddColumn(mainTable, "standard_price");                                 // 11
-            AddColumn(mainTable, "currency");                                       // 12
-            AddColumn(mainTable, "condition_type");                                 // 13
-            AddColumn(mainTable, "condition_note");                                 // 14
-            AddColumn(mainTable, "is_discountinued_by_manufacturer");               // 15
-            AddColumn(mainTable, "restock_date");                                   // 16
-            AddColumn(mainTable, "quantity");                                       // 17
-            AddColumn(mainTable, "max_aggregate_ship_quantity");                    // 18
-            AddColumn(mainTable, "item_package_quantity");                          // 19
-            AddColumn(mainTable, "number_of_items");                                // 20
-            AddColumn(mainTable, "missing_keyset_reason");                          // 21
-            AddColumn(mainTable, "product_site_launch_date");                       // 22
-            AddColumn(mainTable, "product_tax_code");                               // 23
-            AddColumn(mainTable, "merchant_release_date");                          // 24
-            AddColumn(mainTable, "sale_price");                                     // 25
-            AddColumn(mainTable, "sale_end_date");                                  // 26
-            AddColumn(mainTable, "sale_from_date");                                 // 27
-            AddColumn(mainTable, "fulfillment_latency");                            // 28
-            AddColumn(mainTable, "offering_can_be_gift_mes");                       // 29
-            AddColumn(mainTable, "offering_can_be_giftwrapped");                    // 30
-            AddColumn(mainTable, "item_height");                                    // 31
-            AddColumn(mainTable, "item_length");                                    // 32
-            AddColumn(mainTable, "item_width");                                     // 33
-            AddColumn(mainTable, "item_dimensions_unit_of_measure");                // 34
-            AddColumn(mainTable, "item_weight");                                    // 35
-            AddColumn(mainTable, "item_weight_unit_of_measure");                    // 36
-            AddColumn(mainTable, "website_shipping_weight");                        // 37 
-            AddColumn(mainTable, "website_shipping_weight_unit_of_measure");        // 38
-            AddColumn(mainTable, "volumn_capacity_name");                           // 39
-            AddColumn(mainTable, "volumn_capacity_name_unit_of_measure");           // 40
-            AddColumn(mainTable, "KeyWords_Amazon_1");                              // 41
-            AddColumn(mainTable, "KeyWrods_Amazon_2");                              // 42
-            AddColumn(mainTable, "KeyWrods_Amazon_3");                              // 43
-            AddColumn(mainTable, "KeyWrods_Amazon_4");                              // 44
-            AddColumn(mainTable, "KeyWrods_Amazon_5");                              // 45
-            AddColumn(mainTable, "target_audience_base1");                          // 46
-            AddColumn(mainTable, "target_audience_base2");                          // 47
-            AddColumn(mainTable, "target_audience_base3");                          // 48
-            AddColumn(mainTable, "target_audience_base4");                          // 49
-            AddColumn(mainTable, "target_audience_base5");                          // 50
-            AddColumn(mainTable, "platinum_keywords");                              // 51
-            AddColumn(mainTable, "recommended_browse_nodes1");                      // 52
-            AddColumn(mainTable, "recommended_browse_nodes2");                      // 53
-            AddColumn(mainTable, "bullet_point_1");                                 // 54
-            AddColumn(mainTable, "bullet_point_2");                                 // 55
-            AddColumn(mainTable, "bullet_point_3");                                 // 56
-            AddColumn(mainTable, "bullet_point_4");                                 // 57
-            AddColumn(mainTable, "bullet_point_5");                                 // 58
-            AddColumn(mainTable, "catalog_number");                                 // 59
-            AddColumn(mainTable, "main_image_url");                                 // 60
-            AddColumn(mainTable, "swatch_image_url");                               // 61
-            AddColumn(mainTable, "other_iamge_url1");                               // 62
-            AddColumn(mainTable, "other_image_url2");                               // 63
-            AddColumn(mainTable, "other_image_url3");                               // 64
-            AddColumn(mainTable, "other_image_url4");                               // 65
-            AddColumn(mainTable, "other_image_url5");                               // 66
-            AddColumn(mainTable, "other_image_url6");                               // 67
-            AddColumn(mainTable, "other_image_url7");                               // 68
-            AddColumn(mainTable, "other_image_url8");                               // 69
-            AddColumn(mainTable, "fulfillment_center_id");                          // 70
-            AddColumn(mainTable, "package_height");                                 // 71
-            AddColumn(mainTable, "package_height_unit_of_measure");                 // 72
-            AddColumn(mainTable, "package_length");                                 // 73
-            AddColumn(mainTable, "package_length_unit_of_measure");                 // 74
-            AddColumn(mainTable, "package_width");                                  // 75
-            AddColumn(mainTable, "package_width_unit_of_measure");                  // 76
-            AddColumn(mainTable, "package_weight");                                 // 77
-            AddColumn(mainTable, "package_weight_unit_of_measure");                 // 78
-            AddColumn(mainTable, "relation_type");                                  // 79
-            AddColumn(mainTable, "variation_theme");                                // 80
-            AddColumn(mainTable, "parent_sku");                                     // 81
-            AddColumn(mainTable, "parent_child");                                   // 82
-            AddColumn(mainTable, "safty_warning");                                  // 83
-            AddColumn(mainTable, "country_of_origin");                              // 84
-            AddColumn(mainTable, "legal_disclaimer-description");                   // 85
-            AddColumn(mainTable, "size_name");                                      // 86
-            AddColumn(mainTable, "color_name1");                                    // 87   
-            AddColumn(mainTable, "color_name2");                                    // 88
-            AddColumn(mainTable, "color_map");                                      // 89
-            AddColumn(mainTable, "team_name");                                      // 90
-            AddColumn(mainTable, "outer_material_type");                            // 91
-            AddColumn(mainTable, "wheel_type");                                     // 92
-            AddColumn(mainTable, "number_of_wheels");                               // 93
-            AddColumn(mainTable, "material_type");                                  // 94
-            AddColumn(mainTable, "leather_type");                                   // 95
-            AddColumn(mainTable, "fabric_type");                                    // 96
-            AddColumn(mainTable, "inner_material_type");                            // 97
-            AddColumn(mainTable, "lining_description");                             // 98
-            AddColumn(mainTable, "model_year");                                     // 99
-            AddColumn(mainTable, "configuration");                                  // 100
-            AddColumn(mainTable, "department_name");                                // 101
-            AddColumn(mainTable, "shell_type");                                     // 102
-            AddColumn(mainTable, "is_stain_resistant");                             // 103
-            AddColumn(mainTable, "specification_met1");                             // 104
-            AddColumn(mainTable, "specification_met2");                             // 105
-            AddColumn(mainTable, "specification_met3");                             // 106
-            AddColumn(mainTable, "specification_met4");                             // 107
-            AddColumn(mainTable, "specification_met5");                             // 108
-            AddColumn(mainTable, "pattern_name");                                   // 109
-            AddColumn(mainTable, "strap_type");                                     // 110
-            AddColumn(mainTable, "shoulder_strap_drop");                            // 111
-            AddColumn(mainTable, "shoulder_strap_droup_unit_of_measure");           // 112
-            AddColumn(mainTable, "closure_type");                                   // 113
-            AddColumn(mainTable, "external_testing_certification1");                // 114  
-            AddColumn(mainTable, "external_testgin_certification2");                // 115
-            AddColumn(mainTable, "special_features1");                              // 116  
-            AddColumn(mainTable, "special_features2");                              // 117
-            AddColumn(mainTable, "special_features3");                              // 118
-            AddColumn(mainTable, "special_features4");                              // 119
-            AddColumn(mainTable, "special_features5");                              // 120
-            AddColumn(mainTable, "style_name1");                                    // 121  
-            AddColumn(mainTable, "style_name2");                                    // 122  
-            AddColumn(mainTable, "style_name3");                                    // 123
-            AddColumn(mainTable, "style_name4");                                    // 124  
-            AddColumn(mainTable, "style_name5");                                    // 125
-            AddColumn(mainTable, "seasons");                                        // 126
-            AddColumn(mainTable, "lifestyle");                                      // 127
-            AddColumn(mainTable, "collection_name");                                // 128
-            AddColumn(mainTable, "are_batteries_included");                         // 129
-            AddColumn(mainTable, "battery_description");                            // 130
-            AddColumn(mainTable, "number_of_batteries");                            // 131
-            AddColumn(mainTable, "batery_cell_composition");                        // 132
-            AddColumn(mainTable, "lithium_battery_weight_unit_of_measure");         // 133
-            AddColumn(mainTable, "lithium_battery_weight");                         // 134
-            AddColumn(mainTable, "battery_form_factor");                            // 135
-            AddColumn(mainTable, "battery_type");                                   // 136
+            AddColumn(MainTable, "item_name");                                      // 1
+            AddColumn(MainTable, "feed_product_type");                              // 2
+            AddColumn(MainTable, "brand_name");                                     // 3
+            AddColumn(MainTable, "manufacturer");                                   // 4
+            AddColumn(MainTable, "external_product_id");                            // 5
+            AddColumn(MainTable, "external_product_id_type");                       // 6
+            AddColumn(MainTable, "item_sku");                                       // 7
+            AddColumn(MainTable, "part_number");                                    // 8
+            AddColumn(MainTable, "product description");                            // 9
+            AddColumn(MainTable, "update_delete");                                  // 10
+            AddColumn(MainTable, "standard_price");                                 // 11
+            AddColumn(MainTable, "currency");                                       // 12
+            AddColumn(MainTable, "condition_type");                                 // 13
+            AddColumn(MainTable, "condition_note");                                 // 14
+            AddColumn(MainTable, "is_discountinued_by_manufacturer");               // 15
+            AddColumn(MainTable, "restock_date");                                   // 16
+            AddColumn(MainTable, "quantity");                                       // 17
+            AddColumn(MainTable, "max_aggregate_ship_quantity");                    // 18
+            AddColumn(MainTable, "item_package_quantity");                          // 19
+            AddColumn(MainTable, "number_of_items");                                // 20
+            AddColumn(MainTable, "missing_keyset_reason");                          // 21
+            AddColumn(MainTable, "product_site_launch_date");                       // 22
+            AddColumn(MainTable, "product_tax_code");                               // 23
+            AddColumn(MainTable, "merchant_release_date");                          // 24
+            AddColumn(MainTable, "sale_price");                                     // 25
+            AddColumn(MainTable, "sale_end_date");                                  // 26
+            AddColumn(MainTable, "sale_from_date");                                 // 27
+            AddColumn(MainTable, "fulfillment_latency");                            // 28
+            AddColumn(MainTable, "offering_can_be_gift_mes");                       // 29
+            AddColumn(MainTable, "offering_can_be_giftwrapped");                    // 30
+            AddColumn(MainTable, "item_height");                                    // 31
+            AddColumn(MainTable, "item_length");                                    // 32
+            AddColumn(MainTable, "item_width");                                     // 33
+            AddColumn(MainTable, "item_dimensions_unit_of_measure");                // 34
+            AddColumn(MainTable, "item_weight");                                    // 35
+            AddColumn(MainTable, "item_weight_unit_of_measure");                    // 36
+            AddColumn(MainTable, "website_shipping_weight");                        // 37 
+            AddColumn(MainTable, "website_shipping_weight_unit_of_measure");        // 38
+            AddColumn(MainTable, "volumn_capacity_name");                           // 39
+            AddColumn(MainTable, "volumn_capacity_name_unit_of_measure");           // 40
+            AddColumn(MainTable, "KeyWords_Amazon_1");                              // 41
+            AddColumn(MainTable, "KeyWrods_Amazon_2");                              // 42
+            AddColumn(MainTable, "KeyWrods_Amazon_3");                              // 43
+            AddColumn(MainTable, "KeyWrods_Amazon_4");                              // 44
+            AddColumn(MainTable, "KeyWrods_Amazon_5");                              // 45
+            AddColumn(MainTable, "target_audience_base1");                          // 46
+            AddColumn(MainTable, "target_audience_base2");                          // 47
+            AddColumn(MainTable, "target_audience_base3");                          // 48
+            AddColumn(MainTable, "target_audience_base4");                          // 49
+            AddColumn(MainTable, "target_audience_base5");                          // 50
+            AddColumn(MainTable, "platinum_keywords");                              // 51
+            AddColumn(MainTable, "recommended_browse_nodes1");                      // 52
+            AddColumn(MainTable, "recommended_browse_nodes2");                      // 53
+            AddColumn(MainTable, "bullet_point_1");                                 // 54
+            AddColumn(MainTable, "bullet_point_2");                                 // 55
+            AddColumn(MainTable, "bullet_point_3");                                 // 56
+            AddColumn(MainTable, "bullet_point_4");                                 // 57
+            AddColumn(MainTable, "bullet_point_5");                                 // 58
+            AddColumn(MainTable, "catalog_number");                                 // 59
+            AddColumn(MainTable, "main_image_url");                                 // 60
+            AddColumn(MainTable, "swatch_image_url");                               // 61
+            AddColumn(MainTable, "other_iamge_url1");                               // 62
+            AddColumn(MainTable, "other_image_url2");                               // 63
+            AddColumn(MainTable, "other_image_url3");                               // 64
+            AddColumn(MainTable, "other_image_url4");                               // 65
+            AddColumn(MainTable, "other_image_url5");                               // 66
+            AddColumn(MainTable, "other_image_url6");                               // 67
+            AddColumn(MainTable, "other_image_url7");                               // 68
+            AddColumn(MainTable, "other_image_url8");                               // 69
+            AddColumn(MainTable, "fulfillment_center_id");                          // 70
+            AddColumn(MainTable, "package_height");                                 // 71
+            AddColumn(MainTable, "package_height_unit_of_measure");                 // 72
+            AddColumn(MainTable, "package_length");                                 // 73
+            AddColumn(MainTable, "package_length_unit_of_measure");                 // 74
+            AddColumn(MainTable, "package_width");                                  // 75
+            AddColumn(MainTable, "package_width_unit_of_measure");                  // 76
+            AddColumn(MainTable, "package_weight");                                 // 77
+            AddColumn(MainTable, "package_weight_unit_of_measure");                 // 78
+            AddColumn(MainTable, "relation_type");                                  // 79
+            AddColumn(MainTable, "variation_theme");                                // 80
+            AddColumn(MainTable, "parent_sku");                                     // 81
+            AddColumn(MainTable, "parent_child");                                   // 82
+            AddColumn(MainTable, "safty_warning");                                  // 83
+            AddColumn(MainTable, "country_of_origin");                              // 84
+            AddColumn(MainTable, "legal_disclaimer-description");                   // 85
+            AddColumn(MainTable, "size_name");                                      // 86
+            AddColumn(MainTable, "color_name1");                                    // 87   
+            AddColumn(MainTable, "color_name2");                                    // 88
+            AddColumn(MainTable, "color_map");                                      // 89
+            AddColumn(MainTable, "team_name");                                      // 90
+            AddColumn(MainTable, "outer_material_type");                            // 91
+            AddColumn(MainTable, "wheel_type");                                     // 92
+            AddColumn(MainTable, "number_of_wheels");                               // 93
+            AddColumn(MainTable, "material_type");                                  // 94
+            AddColumn(MainTable, "leather_type");                                   // 95
+            AddColumn(MainTable, "fabric_type");                                    // 96
+            AddColumn(MainTable, "inner_material_type");                            // 97
+            AddColumn(MainTable, "lining_description");                             // 98
+            AddColumn(MainTable, "model_year");                                     // 99
+            AddColumn(MainTable, "configuration");                                  // 100
+            AddColumn(MainTable, "department_name");                                // 101
+            AddColumn(MainTable, "shell_type");                                     // 102
+            AddColumn(MainTable, "is_stain_resistant");                             // 103
+            AddColumn(MainTable, "specification_met1");                             // 104
+            AddColumn(MainTable, "specification_met2");                             // 105
+            AddColumn(MainTable, "specification_met3");                             // 106
+            AddColumn(MainTable, "specification_met4");                             // 107
+            AddColumn(MainTable, "specification_met5");                             // 108
+            AddColumn(MainTable, "pattern_name");                                   // 109
+            AddColumn(MainTable, "strap_type");                                     // 110
+            AddColumn(MainTable, "shoulder_strap_drop");                            // 111
+            AddColumn(MainTable, "shoulder_strap_droup_unit_of_measure");           // 112
+            AddColumn(MainTable, "closure_type");                                   // 113
+            AddColumn(MainTable, "external_testing_certification1");                // 114  
+            AddColumn(MainTable, "external_testgin_certification2");                // 115
+            AddColumn(MainTable, "special_features1");                              // 116  
+            AddColumn(MainTable, "special_features2");                              // 117
+            AddColumn(MainTable, "special_features3");                              // 118
+            AddColumn(MainTable, "special_features4");                              // 119
+            AddColumn(MainTable, "special_features5");                              // 120
+            AddColumn(MainTable, "style_name1");                                    // 121  
+            AddColumn(MainTable, "style_name2");                                    // 122  
+            AddColumn(MainTable, "style_name3");                                    // 123
+            AddColumn(MainTable, "style_name4");                                    // 124  
+            AddColumn(MainTable, "style_name5");                                    // 125
+            AddColumn(MainTable, "seasons");                                        // 126
+            AddColumn(MainTable, "lifestyle");                                      // 127
+            AddColumn(MainTable, "collection_name");                                // 128
+            AddColumn(MainTable, "are_batteries_included");                         // 129
+            AddColumn(MainTable, "battery_description");                            // 130
+            AddColumn(MainTable, "number_of_batteries");                            // 131
+            AddColumn(MainTable, "batery_cell_composition");                        // 132
+            AddColumn(MainTable, "lithium_battery_weight_unit_of_measure");         // 133
+            AddColumn(MainTable, "lithium_battery_weight");                         // 134
+            AddColumn(MainTable, "battery_form_factor");                            // 135
+            AddColumn(MainTable, "battery_type");                                   // 136
 
             // local field for inserting data to table
             double[] price = GetPriceList();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = list[0] + " " + list[37] + ' ' + list[36] + " [" + sku + ']';  // item name
                 row[2] = "Ashlin®";                                // brand name
@@ -188,7 +188,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[11] = "CAD";                                   // currency
                 row[12] = "NEW";                                   // condition type
                 row[13] = "Brand New";                             // condition note
-                row[16] = minorTable.Select("SKU='"+sku+"'")[0][2];// quantity
+                row[16] = MinorTable.Select("SKU='"+sku+"'")[0][2];// quantity
                 row[17] = 1;                                       // max aggregate ship quantity
                 row[18] = 1;                                       // item package quantity
                 row[19] = 1;                                       // number_of_items
@@ -249,15 +249,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                 row[126] = "Casual, Formal, Travel, Executive";    // lifestyle
                 row[127] = "ASHLIN";                               // collection name 
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading table
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -267,12 +267,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' AND SKU_AMAZON_CA != '' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' AND SKU_AMAZON_CA != '' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }

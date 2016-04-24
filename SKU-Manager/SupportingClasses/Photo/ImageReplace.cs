@@ -76,7 +76,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* return upc code for the given sku */
-        private string[] GetUpc(string sku)
+        private static string[] GetUpc(string sku)
         {
             // local field for storing data
             DataTable table = new DataTable();

@@ -12,24 +12,24 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         /* constructor that initializes field */
         public ActiveFamilyTable()
         {
-            mainTable = new DataTable();
+            MainTable = new DataTable();
         }
 
         /* method that get the table */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // connect to database and grab the all the active families' data and put them into the table
-            using (connection)
+            using (Connection)
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM active_family_list_new;", connection);
-                connection.Open();
-                adapter.Fill(mainTable);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM active_family_list_new", Connection);
+                Connection.Open();
+                adapter.Fill(MainTable);
             }
 
-            return mainTable;
+            return MainTable;
         }
 
         /* not implement get sku method */

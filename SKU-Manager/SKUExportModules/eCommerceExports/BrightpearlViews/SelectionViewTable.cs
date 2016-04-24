@@ -23,7 +23,7 @@ namespace SKU_Manager.SKUExportModules.eCommerceExports.BrightpearlViews
             if (Properties.Settings.Default.StockQuantityTable != null)
                 new BPinventoryView().ShowDialog(parent);
             else
-                MessageBox.Show("For performance purpose, please go to \n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
+                MessageBox.Show("For performance purpose, please go to\n| VIEW SKU EXPORTS -> Stock Quantity List | and load the table first.", "Sorry", MessageBoxButtons.OK);
         }
 
         /* the event for product button click */

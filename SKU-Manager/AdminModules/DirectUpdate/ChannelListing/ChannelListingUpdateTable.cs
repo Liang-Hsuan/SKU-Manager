@@ -15,10 +15,10 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
         /* constructor that adding sku list */
         public ChannelListingUpdateTable()
         {
-            using (connection)
+            using (Connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", connection);
-                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", Connection);
+                Connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                     skuList.Add(reader.GetString(0));
@@ -33,54 +33,54 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
         public override DataTable GetTable()
         {
             // reset table just in case and set current to zero
-            mainTable.Reset();
+            MainTable.Reset();
             Current = 0;
 
-            AddColumn(mainTable, "SKU", false);                    // 1
-            AddColumn(mainTable, "Bestbuy", false);                // 2
-            AddColumn(mainTable, "Bestbuy Net", false);            // 3
-            AddColumn(mainTable, "Bestbuy Listed", true);          // 4
-            AddColumn(mainTable, "Amazon CA", false);              // 5
-            AddColumn(mainTable, "Amazon CA Price", false);        // 6
-            AddColumn(mainTable, "Amazon CA Listed", true);        // 7
-            AddColumn(mainTable, "Amazon US", false);              // 8
-            AddColumn(mainTable, "Amazon US Price", false);        // 9
-            AddColumn(mainTable, "Amazon US Listed", true);        // 10
-            AddColumn(mainTable, "Staples", false);                // 11
-            AddColumn(mainTable, "Staples Net", false);            // 12
-            AddColumn(mainTable, "Staples Listed", true);          // 13
-            AddColumn(mainTable, "Staples Advantage", false);      // 14
-            AddColumn(mainTable, "Staples Advantage Net", false);  // 15
-            AddColumn(mainTable, "Staples Advantage Listed", true);// 16
-            AddColumn(mainTable, "Walmart", false);                // 17
-            AddColumn(mainTable, "Walmart Net", false);            // 18
-            AddColumn(mainTable, "Walmart Listed", true);          // 19
-            AddColumn(mainTable, "Shop.ca", false);                // 20
-            AddColumn(mainTable, "Shop.ca Price", false);          // 21
-            AddColumn(mainTable, "Shop.ca Listed", true);          // 22
-            AddColumn(mainTable, "Sears", false);                  // 23
-            AddColumn(mainTable, "Sears Net", false);              // 24
-            AddColumn(mainTable, "Sears Listed", true);            // 25
-            AddColumn(mainTable, "Giant Tiger", false);            // 26
-            AddColumn(mainTable, "Giant Tiger Net", false);        // 27
-            AddColumn(mainTable, "Giant Tiger Listed", true);      // 28
+            AddColumn(MainTable, "SKU", false);                    // 1
+            AddColumn(MainTable, "Bestbuy", false);                // 2
+            AddColumn(MainTable, "Bestbuy Net", false);            // 3
+            AddColumn(MainTable, "Bestbuy Listed", true);          // 4
+            AddColumn(MainTable, "Amazon CA", false);              // 5
+            AddColumn(MainTable, "Amazon CA Price", false);        // 6
+            AddColumn(MainTable, "Amazon CA Listed", true);        // 7
+            AddColumn(MainTable, "Amazon US", false);              // 8
+            AddColumn(MainTable, "Amazon US Price", false);        // 9
+            AddColumn(MainTable, "Amazon US Listed", true);        // 10
+            AddColumn(MainTable, "Staples", false);                // 11
+            AddColumn(MainTable, "Staples Net", false);            // 12
+            AddColumn(MainTable, "Staples Listed", true);          // 13
+            AddColumn(MainTable, "Staples Advantage", false);      // 14
+            AddColumn(MainTable, "Staples Advantage Net", false);  // 15
+            AddColumn(MainTable, "Staples Advantage Listed", true);// 16
+            AddColumn(MainTable, "Walmart", false);                // 17
+            AddColumn(MainTable, "Walmart Net", false);            // 18
+            AddColumn(MainTable, "Walmart Listed", true);          // 19
+            AddColumn(MainTable, "Shop.ca", false);                // 20
+            AddColumn(MainTable, "Shop.ca Price", false);          // 21
+            AddColumn(MainTable, "Shop.ca Listed", true);          // 22
+            AddColumn(MainTable, "Sears", false);                  // 23
+            AddColumn(MainTable, "Sears Net", false);              // 24
+            AddColumn(MainTable, "Sears Listed", true);            // 25
+            AddColumn(MainTable, "Giant Tiger", false);            // 26
+            AddColumn(MainTable, "Giant Tiger Net", false);        // 27
+            AddColumn(MainTable, "Giant Tiger Listed", true);      // 28
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.ChannelListingTable;
 
             // start loading data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
             // add data to each row
             foreach (string sku in skuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
                 Current++;
 
                 DataRow rowCopy;
                 try
                 {
-                    rowCopy = table.Select("SKU = \'" + sku + "\'")[0];
+                    rowCopy = table.Select("SKU = \'" + sku + '\'')[0];
                 }
                 catch
                 {
@@ -115,12 +115,12 @@ namespace SKU_Manager.AdminModules.DirectUpdate.ChannelListing
                 row[26] = rowCopy[18];                  // giant tiger net
                 row[27] = rowCopy[17].ToString() != ""; // listed
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            return mainTable;
+            MainTable.EndLoadData();
+            return MainTable;
         }
     }
 }

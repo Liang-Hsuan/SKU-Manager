@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
@@ -58,7 +59,6 @@ namespace SKU_Manager.SplashModules.Update
         private bool[] activeList = new bool[3];
 
         // fields for storing uri path and alt text of images
-        private readonly ImageSearch imageSearch = new ImageSearch();
         private string[] image = new string[10];
         private string[] group = new string[5];
         private string[] model = new string[5];
@@ -105,7 +105,7 @@ namespace SKU_Manager.SplashModules.Update
 
             // make combobox for Ashlin SKU
             SqlConnection connection = new SqlConnection(Credentials.DesignCon);
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin is not NULL", connection);  
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Ashlin IS NOT NULL", connection);  
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -113,28 +113,28 @@ namespace SKU_Manager.SplashModules.Update
             reader.Close();
 
             // make comboBox for Warehouse
-            command.CommandText = "SELECT Warehouse FROM list_location_warehouses WHERE Warehouse is not NULL";
+            command.CommandText = "SELECT Warehouse FROM list_location_warehouses WHERE Warehouse IS NOT NULL";
             reader = command.ExecuteReader();
             while (reader.Read())
                 warehouseList.Add(reader.GetValue(0));
             reader.Close();
 
             // make comboBox for Rack
-            command.CommandText = "SELECT Warehouse FROM list_location_racks WHERE Warehouse is not NULL";
+            command.CommandText = "SELECT Warehouse FROM list_location_racks WHERE Warehouse IS NOT NULL";
             reader = command.ExecuteReader();
             while (reader.Read())
                 rackList.Add(reader.GetValue(0));
             reader.Close();
 
             // make comboBox for Shelf
-            command.CommandText = "SELECT Warehouse FROM list_location_shelves WHERE Warehouse is not NULL";
+            command.CommandText = "SELECT Warehouse FROM list_location_shelves WHERE Warehouse IS NOT NULL";
             reader = command.ExecuteReader();
             while (reader.Read())
                 shelfList.Add(reader.GetValue(0));
             reader.Close();
 
             // make comboBox for Column index
-            command.CommandText = "SELECT Warehouse FROM list_location_colindex WHERE Warehouse is not NULL";
+            command.CommandText = "SELECT Warehouse FROM list_location_colindex WHERE Warehouse IS NOT NULL";
             reader = command.ExecuteReader();
             while (reader.Read())
                 columnIndexList.Add(reader.GetValue(0));
@@ -295,7 +295,7 @@ namespace SKU_Manager.SplashModules.Update
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Code, Material_Code, Colour_Code, Base_Price, Location_WH, Location_Rack, Location_Shelf, Location_ColIndex, Active, Ashlin_URL, SKU_MAGENTO, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_SHOP_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SEARS_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_GIANT_TIGER, ASI_XID, UPC_Code_9, UPC_Code_10, HTS_CDN, HTS_US, Duty_CDN, Duty_US, "
                                                           + "Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path,  Template_URL_1, Template_URL_2, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, "
-                                                          + "SKU_Website, Pricing_Tier, Reorder_Quantity, Reorder_Level, Lining_Material, Trim FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + "\';", connection);
+                                                          + "SKU_Website, Pricing_Tier, Reorder_Quantity, Reorder_Level, Lining_Material, Trim FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -485,7 +485,7 @@ namespace SKU_Manager.SplashModules.Update
             brandTextbox.Text = table.Rows[0][0].ToString();
             designShortDescriptionTextbox.Text = table.Rows[0][1].ToString();
             designServiceFlagTextbox.Text = table.Rows[0][2].ToString();
-            giftCheckbox.Checked = table.Rows[0][3].ToString() == "True" ? true : false;
+            giftCheckbox.Checked = table.Rows[0][3].ToString() == "True";
             activeList[0] = Convert.ToBoolean(table.Rows[0][4]);
             onWebsite[0] = Convert.ToBoolean(table.Rows[0][5]);
 
@@ -656,7 +656,7 @@ namespace SKU_Manager.SplashModules.Update
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    caDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                    caDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
                 }
             }
             else
@@ -672,7 +672,7 @@ namespace SKU_Manager.SplashModules.Update
                     connection.Open();
                     SqlDataReader reader = commmand.ExecuteReader();
                     reader.Read();
-                    usDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                    usDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
                 }
             }
             else
@@ -743,7 +743,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -894,9 +894,10 @@ namespace SKU_Manager.SplashModules.Update
 
             // search images and generate uri that assign to image fields
             int index = 0;
-            string[] imageCopy = imageSearch.GetImageUri(sku);
+            string[] imageCopy = ImageSearch.GetImageUri(sku);
             foreach (string uri in imageCopy)    // get the value that exist
             {
+                if (index > 9) break;
                 image[index] = uri;
                 index++;
             }
@@ -905,9 +906,10 @@ namespace SKU_Manager.SplashModules.Update
                 image[i] = string.Empty;
 
             index = 0;
-            string[] groupCopy = imageSearch.GetGroupUri(sku);
+            string[] groupCopy = ImageSearch.GetGroupUri(sku);
             foreach (string uri in groupCopy)    // get the value that exist
             {
+                if (index > 4) break;
                 group[index] = uri;
                 index++;
             }
@@ -916,9 +918,10 @@ namespace SKU_Manager.SplashModules.Update
                 group[i] = string.Empty;
 
             index = 0;
-            string[] modelCopy = imageSearch.GetModelUri(sku);
+            string[] modelCopy = ImageSearch.GetModelUri(sku);
             foreach (string uri in modelCopy)    // get the value that exist
             {
+                if (index > 4) break;
                 model[index] = uri;
                 index++;
             }
@@ -927,9 +930,10 @@ namespace SKU_Manager.SplashModules.Update
                 model[i] = string.Empty;
 
             index = 0;
-            string[] templateCopy = imageSearch.GetTemplateUri(sku);
+            string[] templateCopy = ImageSearch.GetTemplateUri(sku);
             foreach (string uri in templateCopy)    // get the value that exist
             {
+                if (index > 2) break;
                 template[index] = uri;
                 index++;
             }

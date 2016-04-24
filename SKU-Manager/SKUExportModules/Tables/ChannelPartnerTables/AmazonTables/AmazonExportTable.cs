@@ -10,7 +10,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
     public abstract class AmazonExportTable : ExportTable
     {
         // field for getting product's quantity
-        protected DataTable minorTable = Properties.Settings.Default.StockQuantityTable;
+        protected DataTable MinorTable = Properties.Settings.Default.StockQuantityTable;
 
         /* method that get the data from given sku */
         protected ArrayList GetData(string sku)
@@ -30,7 +30,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 37; i++)
@@ -45,8 +45,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
             double[] list = new double[4];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier;", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -58,7 +58,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.AmazonTables
             list[1] = reader.GetInt32(0);
             list[2] = (double)reader.GetDecimal(1);
             list[3] = (double)reader.GetDecimal(2);
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

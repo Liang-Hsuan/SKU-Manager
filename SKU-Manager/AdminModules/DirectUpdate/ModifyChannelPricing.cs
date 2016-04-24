@@ -13,7 +13,6 @@ namespace SKU_Manager.AdminModules.DirectUpdate
     public partial class ModifyChannelPricing : Form
     {
         // fields for database connection
-        private SqlConnection connection;
         private SqlDataAdapter adapter;
 
         // field for storing tables
@@ -35,7 +34,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 dataSet = new DataSet();
 
                 // connect to database
-                connection = new SqlConnection(Credentials.DesignCon);
+                SqlConnection connection = new SqlConnection(Credentials.DesignCon);
 
                 // grab data
                 adapter = new SqlDataAdapter("SELECT Channel_No, Channel_Name, Marketplace, Currency, Msrp_Disc, Ship_Incl_Flag, Base_Ship, " + 

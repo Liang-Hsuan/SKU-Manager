@@ -12,8 +12,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
      */
     public partial class ModifyDiscount : Form
     {
-        // fields for database connection
-        private SqlConnection connection;
+        // field for database connection
         private SqlDataAdapter adapter;
 
         // field for storing tables
@@ -35,7 +34,7 @@ namespace SKU_Manager.AdminModules.DirectUpdate
                 dataSet = new DataSet();
 
                 // connect to database
-                connection = new SqlConnection(Credentials.DesignCon);
+                SqlConnection connection = new SqlConnection(Credentials.DesignCon);
 
                 // grab data
                 adapter = new SqlDataAdapter("SELECT [Pricing_Tier], [RUSH_C_25_wks], [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], " 

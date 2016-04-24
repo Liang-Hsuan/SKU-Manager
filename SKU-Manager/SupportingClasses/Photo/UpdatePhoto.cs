@@ -11,7 +11,6 @@ namespace SKU_Manager.SupportingClasses.Photo
     {
         // field that finds and store all sku
         private readonly List<string> skuList = new List<string>();
-        private readonly ImageSearch imageSearch = new ImageSearch();
 
         // fields for getting progress
         public int Progress { get; private set; }
@@ -38,10 +37,10 @@ namespace SKU_Manager.SupportingClasses.Photo
             foreach (string sku in skuList)
             {
                 // get uri array
-                string[] image = imageSearch.GetImageUri(sku);
-                string[] group = imageSearch.GetGroupUri(sku);
-                string[] model = imageSearch.GetModelUri(sku);
-                string[] template = imageSearch.GetTemplateUri(sku);
+                string[] image = ImageSearch.GetImageUri(sku);
+                string[] group = ImageSearch.GetGroupUri(sku);
+                string[] model = ImageSearch.GetModelUri(sku);
+                string[] template = ImageSearch.GetTemplateUri(sku);
 
                 // start update
                 PutImageInDatabase(sku, image, group, model, template);
@@ -51,7 +50,7 @@ namespace SKU_Manager.SupportingClasses.Photo
         }
 
         /* put the given image uri to database */
-        private void PutImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
+        private static void PutImageInDatabase(string sku, IEnumerable<string> imageUri, IEnumerable<string> groupUri, IEnumerable<string> modelUri, IEnumerable<string> templateUri)
         {
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {

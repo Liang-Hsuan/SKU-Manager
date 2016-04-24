@@ -47,7 +47,7 @@ namespace SKU_Manager.SplashModules.Update
             // make comboBox for Canadian HTS
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
-                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code;", connection);   
+                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Colour_Code is not NULL ORDER BY Colour_Code", connection);   
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -104,10 +104,10 @@ namespace SKU_Manager.SplashModules.Update
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                shortFrenchDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
-                extendedFrenchDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                shortFrenchDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
+                extendedFrenchDescriptionTextbox.Text = string.Empty;
 
                 translateButton.Enabled = false;
                 shortEnglishDescriptionTextbox.Enabled = false;
@@ -128,7 +128,7 @@ namespace SKU_Manager.SplashModules.Update
             // store data to the table
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Colour_Online, Colour_Online_FR, Active FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Short_FR, Colour_Description_Extended, Colour_Description_Extended_FR, Colour_Online, Colour_Online_FR, Active FROM ref_Colours WHERE Colour_Code = \'" + colorCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -248,14 +248,14 @@ namespace SKU_Manager.SplashModules.Update
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Colour_Description_Extended = \'" + extendedEnglishDescription + "\', Colour_Description_Short = \'" + shortEnglishDescription + "\', Colour_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Colour_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
-                                                        "Colour_Online = \'" + colorOnlineEnglish.Replace("'", "''") + "\', Colour_Online_FR = \'" + colorOnlineFrench.Replace("'", "''") + "\', Active = \'" + active + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                                                        "Colour_Online = \'" + colorOnlineEnglish.Replace("'", "''") + "\', Colour_Online_FR = \'" + colorOnlineFrench.Replace("'", "''") + "\', Active = \'" + active + "\', Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' WHERE Colour_Code = \'" + colorCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 
                     // the case if the color is not active -> set all the SKUs' active and website flag to false that associate with this color
                     if (!active)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + "\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + '\'';
                         command.ExecuteNonQuery();
                     }
                 }

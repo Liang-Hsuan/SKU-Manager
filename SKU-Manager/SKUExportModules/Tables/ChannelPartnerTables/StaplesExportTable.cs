@@ -13,72 +13,72 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
         /* constructor that initialize fields */
         public StaplesExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "Vendor");                                                 // 1
-            AddColumn(mainTable, "Vendor Name");                                            // 2
-            AddColumn(mainTable, "UPC");                                                    // 3
-            AddColumn(mainTable, "STAPLES SKU");                                            // 4
-            AddColumn(mainTable, "SHORT PRODUCT NAME");                                     // 5
-            AddColumn(mainTable, "VENDOR PART #");                                          // 6
-            AddColumn(mainTable, "MFR MODEL");                                              // 7
-            AddColumn(mainTable, "___");                                                    // 8
-            AddColumn(mainTable, "__");                                                     // 9
-            AddColumn(mainTable, "_");                                                      // 10
-            AddColumn(mainTable, "CS");                                                     // 11
-            AddColumn(mainTable, "Div");                                                    // 12
-            AddColumn(mainTable, "Dept");                                                   // 13
-            AddColumn(mainTable, "Class");                                                  // 14
-            AddColumn(mainTable, "LENGTH");                                                 // 15
-            AddColumn(mainTable, "WIDTH");                                                  // 16
-            AddColumn(mainTable, "HEIGHT");                                                 // 17
-            AddColumn(mainTable, "WEIGHT");                                                 // 18
-            AddColumn(mainTable, "WHOLESALE COST");                                         // 19
-            AddColumn(mainTable, "RETAIL PRICE");                                           // 20
-            AddColumn(mainTable, "PRODUCT GROUP");                                          // 21
-            AddColumn(mainTable, "RECOMMENDED PRIMARY CATEGORY");                           // 22
-            AddColumn(mainTable, "RECOMMENDED SECONDARY CATEGORY");                         // 23
-            AddColumn(mainTable, "Brand");                                                  // 24
-            AddColumn(mainTable, "Web Name");                                               // 25
-            AddColumn(mainTable, "SELLING PACK SIZE");                                      // 26
-            AddColumn(mainTable, "COPY BULLET 1");                                          // 27
-            AddColumn(mainTable, "COPY BULLET 2");                                          // 28
-            AddColumn(mainTable, "COPY BULLET 3");                                          // 29
-            AddColumn(mainTable, "COPY BULLET 4");                                          // 30
-            AddColumn(mainTable, "COPY BULLET 5");                                          // 31
-            AddColumn(mainTable, "COPY BULLET 6");                                          // 32
-            AddColumn(mainTable, "COPY BULLET 7");                                          // 33
-            AddColumn(mainTable, "COPY BULLET 8");                                          // 34
-            AddColumn(mainTable, "COPY BULLET 9");                                          // 35
-            AddColumn(mainTable, "COPY BULLET 10");                                         // 36
-            AddColumn(mainTable, "Image_1_Path");                                           // 37 
-            AddColumn(mainTable, "Image_2_Path");                                           // 38
-            AddColumn(mainTable, "Image_3_Path");                                           // 39
-            AddColumn(mainTable, "Image_4_Path");                                           // 40
-            AddColumn(mainTable, "Customization_Personalization_Initials_Charge");          // 41
-            AddColumn(mainTable, "Customization_Personalization_Name_Charge");              // 42
-            AddColumn(mainTable, "Customization_Logo_Charge");                              // 43
+            AddColumn(MainTable, "Vendor");                                                 // 1
+            AddColumn(MainTable, "Vendor Name");                                            // 2
+            AddColumn(MainTable, "UPC");                                                    // 3
+            AddColumn(MainTable, "STAPLES SKU");                                            // 4
+            AddColumn(MainTable, "SHORT PRODUCT NAME");                                     // 5
+            AddColumn(MainTable, "VENDOR PART #");                                          // 6
+            AddColumn(MainTable, "MFR MODEL");                                              // 7
+            AddColumn(MainTable, "___");                                                    // 8
+            AddColumn(MainTable, "__");                                                     // 9
+            AddColumn(MainTable, "_");                                                      // 10
+            AddColumn(MainTable, "CS");                                                     // 11
+            AddColumn(MainTable, "Div");                                                    // 12
+            AddColumn(MainTable, "Dept");                                                   // 13
+            AddColumn(MainTable, "Class");                                                  // 14
+            AddColumn(MainTable, "LENGTH");                                                 // 15
+            AddColumn(MainTable, "WIDTH");                                                  // 16
+            AddColumn(MainTable, "HEIGHT");                                                 // 17
+            AddColumn(MainTable, "WEIGHT");                                                 // 18
+            AddColumn(MainTable, "WHOLESALE COST");                                         // 19
+            AddColumn(MainTable, "RETAIL PRICE");                                           // 20
+            AddColumn(MainTable, "PRODUCT GROUP");                                          // 21
+            AddColumn(MainTable, "RECOMMENDED PRIMARY CATEGORY");                           // 22
+            AddColumn(MainTable, "RECOMMENDED SECONDARY CATEGORY");                         // 23
+            AddColumn(MainTable, "Brand");                                                  // 24
+            AddColumn(MainTable, "Web Name");                                               // 25
+            AddColumn(MainTable, "SELLING PACK SIZE");                                      // 26
+            AddColumn(MainTable, "COPY BULLET 1");                                          // 27
+            AddColumn(MainTable, "COPY BULLET 2");                                          // 28
+            AddColumn(MainTable, "COPY BULLET 3");                                          // 29
+            AddColumn(MainTable, "COPY BULLET 4");                                          // 30
+            AddColumn(MainTable, "COPY BULLET 5");                                          // 31
+            AddColumn(MainTable, "COPY BULLET 6");                                          // 32
+            AddColumn(MainTable, "COPY BULLET 7");                                          // 33
+            AddColumn(MainTable, "COPY BULLET 8");                                          // 34
+            AddColumn(MainTable, "COPY BULLET 9");                                          // 35
+            AddColumn(MainTable, "COPY BULLET 10");                                         // 36
+            AddColumn(MainTable, "Image_1_Path");                                           // 37 
+            AddColumn(MainTable, "Image_2_Path");                                           // 38
+            AddColumn(MainTable, "Image_3_Path");                                           // 39
+            AddColumn(MainTable, "Image_4_Path");                                           // 40
+            AddColumn(MainTable, "Customization_Personalization_Initials_Charge");          // 41
+            AddColumn(MainTable, "Customization_Personalization_Name_Charge");              // 42
+            AddColumn(MainTable, "Customization_Logo_Charge");                              // 43
 
             // local field for inserting data to table
             DataTable table = GetDataTable();
             double[] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
             // add data to each row 
             foreach (DataRow row in table.Rows)
             {
-                DataRow newRow = mainTable.NewRow();
+                DataRow newRow = MainTable.NewRow();
 
                 newRow[0] = "Ashlin Leather";                                          // vendor
                 newRow[1] = "juanne.kochhar@ashlinbpg.com";                            // vendor name
@@ -120,14 +120,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                 newRow[41] = 10.00;                                                     // customization personalization name change 
                 newRow[42] = 75.00;                                                     // customization logo charge
 
-                mainTable.Rows.Add(newRow);
+                MainTable.Rows.Add(newRow);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
+            MainTable.EndLoadData();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -137,12 +137,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -165,10 +165,10 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
                                                         "FROM master_SKU_Attributes sku " +
                                                         "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                         "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                        "WHERE sku.Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+                                                        "WHERE sku.Active = 'True' AND SKU_STAPLES_CA != '' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             adapter.Fill(table);
-            connection.Close();
+            Connection.Close();
 
             return table;
         }
@@ -179,8 +179,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
             double[] list = new double[5];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -193,7 +193,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables
             list[2] = (double)reader.GetDecimal(1);
             list[3] = (double)reader.GetDecimal(2);
             list[4] = (double)reader.GetDecimal(3);
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

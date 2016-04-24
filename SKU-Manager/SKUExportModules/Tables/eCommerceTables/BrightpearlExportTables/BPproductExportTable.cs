@@ -12,78 +12,78 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         /* constructor that initialize fields */
         public BPproductExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "SKU");                    // 1
-            AddColumn(mainTable, "Name");                   // 2
-            AddColumn(mainTable, "Brand");                  // 3
-            AddColumn(mainTable, "Category");               // 4
-            AddColumn(mainTable, "PRICE (COST)");           // 5
-            AddColumn(mainTable, "PRICE (WHOLE)");          // 6
-            AddColumn(mainTable, "PRICE (RETAIL)");         // 7
-            AddColumn(mainTable, "Tax Class");              // 8
-            AddColumn(mainTable, "Manage Stock");           // 9
-            AddColumn(mainTable, "Supplier");               // 10
-            AddColumn(mainTable, "Collection");             // 11
-            AddColumn(mainTable, "Weight");                 // 12
-            AddColumn(mainTable, "Barcode");                // 13
-            AddColumn(mainTable, "EAN");                    // 14
-            AddColumn(mainTable, "ISBN");                   // 15
-            AddColumn(mainTable, "UPC");                    // 16
-            AddColumn(mainTable, "Sell code");              // 17
-            AddColumn(mainTable, "Buy code");               // 18
-            AddColumn(mainTable, "Stock code");             // 19
-            AddColumn(mainTable, "Aisle");                  // 20
-            AddColumn(mainTable, "Bay");                    // 21
-            AddColumn(mainTable, "Shelf");                  // 22
-            AddColumn(mainTable, "Bin");                    // 23
-            AddColumn(mainTable, "Reorder level");          // 24
-            AddColumn(mainTable, "Reorder qty");            // 25
-            AddColumn(mainTable, "Bundle (SKU)");           // 26
-            AddColumn(mainTable, "Colour");                 // 27
-            AddColumn(mainTable, "Size");                   // 28
-            AddColumn(mainTable, "Short Description");      // 29
-            AddColumn(mainTable, "Long Description");       // 30
-            AddColumn(mainTable, "Image");                  // 31
-            AddColumn(mainTable, "Option 1");               // 32
-            AddColumn(mainTable, "Option 2");               // 33
-            AddColumn(mainTable, "OPTION 3");               // 34
-            AddColumn(mainTable, "OPTION 4");               // 35
-            AddColumn(mainTable, "Design Name");            // 36
-            AddColumn(mainTable, "Design Code");            // 37
-            AddColumn(mainTable, "Material Code");          // 38
-            AddColumn(mainTable, "Colour Code");            // 39
-            AddColumn(mainTable, "Material Description");   // 40
-            AddColumn(mainTable, "Colour Description");     // 41
-            AddColumn(mainTable, "Actual Product Weight (unshipped)");      // 42
-            AddColumn(mainTable, "Imprintable");            // 43
-            AddColumn(mainTable, "Imprint Height cm");      // 44
-            AddColumn(mainTable, "Imprint Width cm");       // 45
-            AddColumn(mainTable, "Depth cm");               // 46
-            AddColumn(mainTable, "Width cm");               // 47
-            AddColumn(mainTable, "Height cm");              // 48
-            AddColumn(mainTable, "Run Charge");             // 49
+            AddColumn(MainTable, "SKU");                    // 1
+            AddColumn(MainTable, "Name");                   // 2
+            AddColumn(MainTable, "Brand");                  // 3
+            AddColumn(MainTable, "Category");               // 4
+            AddColumn(MainTable, "PRICE (COST)");           // 5
+            AddColumn(MainTable, "PRICE (WHOLE)");          // 6
+            AddColumn(MainTable, "PRICE (RETAIL)");         // 7
+            AddColumn(MainTable, "Tax Class");              // 8
+            AddColumn(MainTable, "Manage Stock");           // 9
+            AddColumn(MainTable, "Supplier");               // 10
+            AddColumn(MainTable, "Collection");             // 11
+            AddColumn(MainTable, "Weight");                 // 12
+            AddColumn(MainTable, "Barcode");                // 13
+            AddColumn(MainTable, "EAN");                    // 14
+            AddColumn(MainTable, "ISBN");                   // 15
+            AddColumn(MainTable, "UPC");                    // 16
+            AddColumn(MainTable, "Sell code");              // 17
+            AddColumn(MainTable, "Buy code");               // 18
+            AddColumn(MainTable, "Stock code");             // 19
+            AddColumn(MainTable, "Aisle");                  // 20
+            AddColumn(MainTable, "Bay");                    // 21
+            AddColumn(MainTable, "Shelf");                  // 22
+            AddColumn(MainTable, "Bin");                    // 23
+            AddColumn(MainTable, "Reorder level");          // 24
+            AddColumn(MainTable, "Reorder qty");            // 25
+            AddColumn(MainTable, "Bundle (SKU)");           // 26
+            AddColumn(MainTable, "Colour");                 // 27
+            AddColumn(MainTable, "Size");                   // 28
+            AddColumn(MainTable, "Short Description");      // 29
+            AddColumn(MainTable, "Long Description");       // 30
+            AddColumn(MainTable, "Image");                  // 31
+            AddColumn(MainTable, "Option 1");               // 32
+            AddColumn(MainTable, "Option 2");               // 33
+            AddColumn(MainTable, "OPTION 3");               // 34
+            AddColumn(MainTable, "OPTION 4");               // 35
+            AddColumn(MainTable, "Design Name");            // 36
+            AddColumn(MainTable, "Design Code");            // 37
+            AddColumn(MainTable, "Material Code");          // 38
+            AddColumn(MainTable, "Colour Code");            // 39
+            AddColumn(MainTable, "Material Description");   // 40
+            AddColumn(MainTable, "Colour Description");     // 41
+            AddColumn(MainTable, "Actual Product Weight (unshipped)");      // 42
+            AddColumn(MainTable, "Imprintable");            // 43
+            AddColumn(MainTable, "Imprint Height cm");      // 44
+            AddColumn(MainTable, "Imprint Width cm");       // 45
+            AddColumn(MainTable, "Depth cm");               // 46
+            AddColumn(MainTable, "Width cm");               // 47
+            AddColumn(MainTable, "Height cm");              // 48
+            AddColumn(MainTable, "Run Charge");             // 49
 
             // local field for inserting data to table
             double[][] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 object[] list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = sku;           // sku
                 row[1] = list[8];       // name
@@ -133,15 +133,15 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                     runCharge = 1;
                 row[48] = Math.Round(runCharge, 4);   // run charge    
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* override get data method */
@@ -176,7 +176,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 24; i++)
@@ -191,8 +191,8 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             double[] list = new double[2];
 
             //  [0] wholesale net
-            SqlCommand command = new SqlCommand("SELECT [Wholesale_Net] FROM Discount_Matrix WHERE Pricing_Tier = 0", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [Wholesale_Net] FROM Discount_Matrix WHERE Pricing_Tier = 0", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -203,7 +203,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             reader = command.ExecuteReader();
             reader.Read();
             list[1] = reader.GetDouble(0);
-            connection.Close();
+            Connection.Close();
 
             return new[] { list };
         }

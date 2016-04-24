@@ -6,20 +6,20 @@ namespace SKU_Manager.SKUExportModules.Tables
     public abstract class ExportTable : Table
     {
         // field for the main table
-        protected DataTable mainTable;
+        protected DataTable MainTable;
 
         // field for database connection
-        protected SqlConnection connection = new SqlConnection(Credentials.DesignCon);
+        protected SqlConnection Connection = new SqlConnection(Credentials.DesignCon);
 
         // supporting field
         public int Progress { get; protected set; } = 0;
-        protected string[] skuList;
+        protected string[] SkuList;
 
         /* inherient the return table method -> the most import one */
         public abstract DataTable GetTable();
 
         /* return the total number of sku */
-        public int Total => skuList.Length;
+        public int Total => SkuList.Length;
 
         /* some supporting private method that will help building the table */
         /* a method that will return all desired SKUs */

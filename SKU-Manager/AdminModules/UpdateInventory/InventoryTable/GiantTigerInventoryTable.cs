@@ -21,10 +21,10 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         /* constructor that get all the sku that are on sears */
         public GiantTigerInventoryTable()
         {
-            using (connection)
+            using (Connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_GIANT_TIGER FROM master_SKU_Attributes WHERE SKU_GIANT_TIGER != ''", connection);
-                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_GIANT_TIGER FROM master_SKU_Attributes WHERE SKU_GIANT_TIGER != ''", Connection);
+                Connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -46,34 +46,34 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         public override DataTable GetTable()
         {
             // reset table just in case and set current to zero
-            mainTable.Reset();
+            MainTable.Reset();
             Current = 0;
 
-            AddColumn(mainTable, "Ashlin SKU", false);          // 1
-            AddColumn(mainTable, "Host SKU", false);            // 2
-            AddColumn(mainTable, "BP Item ID", false);          // 3
-            AddColumn(mainTable, "UPC", false);                 // 4
-            AddColumn(mainTable, "Description", false);         // 5
-            AddColumn(mainTable, "Unit Cost", false);           // 6
-            AddColumn(mainTable, "On Hand", false);             // 7
-            AddColumn(mainTable, "Reorder Quantity", false);    // 8
-            AddColumn(mainTable, "Reorder Level", false);       // 9
-            AddColumn(mainTable, "Purchase Order", true);       // 10
-            AddColumn(mainTable, "Discontinued", true);         // 11
+            AddColumn(MainTable, "Ashlin SKU", false);          // 1
+            AddColumn(MainTable, "Host SKU", false);            // 2
+            AddColumn(MainTable, "BP Item ID", false);          // 3
+            AddColumn(MainTable, "UPC", false);                 // 4
+            AddColumn(MainTable, "Description", false);         // 5
+            AddColumn(MainTable, "Unit Cost", false);           // 6
+            AddColumn(MainTable, "On Hand", false);             // 7
+            AddColumn(MainTable, "Reorder Quantity", false);    // 8
+            AddColumn(MainTable, "Reorder Level", false);       // 9
+            AddColumn(MainTable, "Purchase Order", true);       // 10
+            AddColumn(MainTable, "Discontinued", true);         // 11
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
-            connection = new SqlConnection(Credentials.DesignCon);
+            Connection = new SqlConnection(Credentials.DesignCon);
             double[] price = GetPriceList();
-            connection.Open();
-            mainTable.BeginLoadData();
+            Connection.Open();
+            MainTable.BeginLoadData();
 
             // add data to each row
             foreach (Sku sku in skuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
                 Current++;
 
                 // get data
@@ -97,14 +97,14 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 row[9] = false;                                         // purchase order
                 row[10] = false;                                        // discontinue
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all necessary data for table generation */
@@ -115,7 +115,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             // [0] upc, [1] description, [2] unit cost
             SqlCommand commnad = new SqlCommand("SELECT UPC_Code_9, Short_Description, Base_Price FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 2; i++)
@@ -130,8 +130,8 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship, [4] gross marg
             double[] list = new double[5];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -144,7 +144,7 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
             list[2] = (double)reader.GetDecimal(1);
             list[3] = (double)reader.GetDecimal(2);
             list[4] = (double)reader.GetDecimal(3);
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

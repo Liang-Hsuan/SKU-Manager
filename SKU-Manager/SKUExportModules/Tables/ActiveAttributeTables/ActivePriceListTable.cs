@@ -14,243 +14,243 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         /* constructor that initialize fields */
         public ActivePriceListTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "Brand");                                                 // 1
-            AddColumn(mainTable, "Brand Description");                                     // 2
-            AddColumn(mainTable, "SKU_Ahslin");                                            // 3
-            AddColumn(mainTable, "Design_Service_Code");                                   // 4
-            AddColumn(mainTable, "Material_Code");                                         // 5
-            AddColumn(mainTable, "Material_Description_Short");                            // 6
-            AddColumn(mainTable, "Material_Description_Extended");                         // 7
-            AddColumn(mainTable, "Material_Description_Short_FR");                         // 8
-            AddColumn(mainTable, "Material_Description_Extended_FR");                      // 9
-            AddColumn(mainTable, "Colour_Code");                                           // 10
-            AddColumn(mainTable, "Colour_Description_Short");                              // 11
-            AddColumn(mainTable, "Colour_Description_Extended");                           // 12
-            AddColumn(mainTable, "Colour_Description_Short_FR");                           // 13
-            AddColumn(mainTable, "Colour_Description_Extended_FR");                        // 14
-            AddColumn(mainTable, "Design_Service_Flag");                                   // 15
-            AddColumn(mainTable, "Design_Service_Family_Code");                            // 16
-            AddColumn(mainTable, "Design_Service_Family_Description");                     // 17
-            AddColumn(mainTable, "Design_Service_Family_Description_FR");                  // 18
-            AddColumn(mainTable, "Design_Service_Family_KeyWords_Generals");               // 19
-            AddColumn(mainTable, "Design_Service_Family_Category_Sage");                   // 20
-            AddColumn(mainTable, "Design_Service_Family_Category_ESP");                    // 21
-            AddColumn(mainTable, "Design_Service_Family_Category_PromoMarketing");         // 22
-            AddColumn(mainTable, "Design_Service_Family_Category_UDUCAT");                 // 23
-            AddColumn(mainTable, "Design_Service_Family_Category_DistributorCentral");     // 24
-            AddColumn(mainTable, "Design_Service_Family_Themes_Sage");                     // 25
-            AddColumn(mainTable, "Design Short Description");                              // 26
-            AddColumn(mainTable, "Design Extended Description");                           // 27
-            AddColumn(mainTable, "Design Short Description FR");                           // 28
-            AddColumn(mainTable, "Design Extended Description FR");                        // 29
-            AddColumn(mainTable, "Imprintable");                                           // 30
-            AddColumn(mainTable, "Imprint_Height_cm");                                     // 31
-            AddColumn(mainTable, "Imprint_Width_cm");                                      // 32
-            AddColumn(mainTable, "Depth_cm");                                              // 33
-            AddColumn(mainTable, "Width_cm");                                              // 34
-            AddColumn(mainTable, "Height_cm");                                             // 35
-            AddColumn(mainTable, "Imprint_Height_in");                                     // 36
-            AddColumn(mainTable, "Imprint_Width_in");                                      // 37
-            AddColumn(mainTable, "Depth_in");                                              // 38
-            AddColumn(mainTable, "Width_in");                                              // 39
-            AddColumn(mainTable, "Height_in");                                             // 40
-            AddColumn(mainTable, "Weight_grams");                                          // 41
-            AddColumn(mainTable, "Weight_Pounds");                                         // 42
-            AddColumn(mainTable, "Shippable_Width_cm");                                    // 43
-            AddColumn(mainTable, "Shippable_Height_cm");                                   // 44
-            AddColumn(mainTable, "Shippable_Depth_cm");                                    // 45
-            AddColumn(mainTable, "Shippable_Width_in");                                    // 46
-            AddColumn(mainTable, "Shippable_Height_in");                                   // 47
-            AddColumn(mainTable, "Shippable_Depth_in");                                    // 48
-            AddColumn(mainTable, "Shippable_weight_grams");                                // 49
-            AddColumn(mainTable, "Shippable_weight_lb");                                   // 50
-            AddColumn(mainTable, "Strap");                                                 // 51
-            AddColumn(mainTable, "Detachable_Strap");                                      // 52
-            AddColumn(mainTable, "Zippered_Enclosure");                                    // 53
-            AddColumn(mainTable, "Design_Service_Fashion_Name_Ashlin");                    // 54
-            AddColumn(mainTable, "Design_Service_Fashion_Name_TSC_CA");                    // 55
-            AddColumn(mainTable, "Design_Service_Fashion_name_COSTCO_CA");                 // 56
-            AddColumn(mainTable, "Design_Service_Fashion_Name_BESTBUY_CA");                // 57
-            AddColumn(mainTable, "Design_Service_Fashion_Name_SHOP_CA");                   // 58
-            AddColumn(mainTable, "Design_Servive_Fashion_Name_AMAZON_CA");                 // 59
-            AddColumn(mainTable, "Design_Service_Fashion_Name_AMAZON_COM");                // 60
-            AddColumn(mainTable, "Design_Service_Fashion_Name_SEARS");                     // 61
-            AddColumn(mainTable, "Design_Service_Fashion_Name_STAPLES_CA");                // 62
-            AddColumn(mainTable, "Design_Service_Fashion_Name_WALMART");                   // 63
-            AddColumn(mainTable, "SKU_SEARS");                                             // 64
-            AddColumn(mainTable, "SKU_TSC_CA");                                            // 65
-            AddColumn(mainTable, "SKU_COSTCO_CA");                                         // 66
-            AddColumn(mainTable, "SKU_BESTBUY_CA");                                        // 67
-            AddColumn(mainTable, "SKU_AMAZON_CA");                                         // 68
-            AddColumn(mainTable, "SKU_AMAZON_COM");                                        // 69
-            AddColumn(mainTable, "SKU_SHOP_CA");                                           // 70 
-            AddColumn(mainTable, "SKU_STAPLES_CA");                                        // 71
-            AddColumn(mainTable, "SKU_WALMART_CA");                                        // 72
-            AddColumn(mainTable, "SKU_WALMART_COM");                                       // 73
-            AddColumn(mainTable, "SKU_DistributorCentral");                                // 74
-            AddColumn(mainTable, "SKU_PromoMarketing");                                    // 75
-            AddColumn(mainTable, "SKU_MAGENTO");                                           // 76
-            AddColumn(mainTable, "Option_1");                                              // 77
-            AddColumn(mainTable, "Option_2");                                              // 78
-            AddColumn(mainTable, "Option_3");                                              // 79
-            AddColumn(mainTable, "Option_4");                                              // 80
-            AddColumn(mainTable, "Option_5");                                              // 81
-            AddColumn(mainTable, "Option_1_FR");                                           // 82
-            AddColumn(mainTable, "Option_2_FR");                                           // 83
-            AddColumn(mainTable, "Option_3_FR");                                           // 84
-            AddColumn(mainTable, "Option_4_FR");                                           // 85
-            AddColumn(mainTable, "Option_5_FR");                                           // 86
-            AddColumn(mainTable, "UPC_Code_9");                                            // 87
-            AddColumn(mainTable, "UPC_Code_10");                                           // 88
-            AddColumn(mainTable, "Base_Price");                                            // 89
-            AddColumn(mainTable, "Components");                                            // 90
-            AddColumn(mainTable, "MSRP");                                                  // 91
-            AddColumn(mainTable, "Run_Charges");                                           // 92
-            AddColumn(mainTable, "Price_1_C");                                             // 93
-            AddColumn(mainTable, "Price_6_C");                                             // 94
-            AddColumn(mainTable, "Price_24_C");                                            // 95
-            AddColumn(mainTable, "Price_50_C");                                            // 96
-            AddColumn(mainTable, "Price_100_C");                                           // 97
-            AddColumn(mainTable, "Price_250_C");                                           // 98
-            AddColumn(mainTable, "Price_500_C");                                           // 99
-            AddColumn(mainTable, "Price_1000_C");                                          // 100
-            AddColumn(mainTable, "Price_2500_C");                                          // 101
-            AddColumn(mainTable, "Price_RUSH_1_C");                                        // 102
-            AddColumn(mainTable, "Price_RUSH_6_C");                                        // 103
-            AddColumn(mainTable, "Price_RUSH_24_C");                                       // 104
-            AddColumn(mainTable, "Price_RUSH_50_C");                                       // 105
-            AddColumn(mainTable, "Price_RUSH_100_C");                                      // 106
-            AddColumn(mainTable, "Price_RUSH_250_C");                                      // 107
-            AddColumn(mainTable, "Price_RUSH_500_C");                                      // 108
-            AddColumn(mainTable, "Price_RUSH_1000_C");                                     // 109
-            AddColumn(mainTable, "Price_RUSH_2500_C");                                     // 110
-            AddColumn(mainTable, "Run_Charge_1_C");                                        // 111
-            AddColumn(mainTable, "Run_Charge_6_C");                                        // 112
-            AddColumn(mainTable, "Run_Charge_24_C");                                       // 113
-            AddColumn(mainTable, "Run_Charge_50_C");                                       // 114
-            AddColumn(mainTable, "Run_Charge_100_C");                                      // 115
-            AddColumn(mainTable, "Run_Charge_250_C");                                      // 116
-            AddColumn(mainTable, "Run_Charge_500_C");                                      // 117
-            AddColumn(mainTable, "Run_Charge_1000_C");                                     // 118
-            AddColumn(mainTable, "Run_Charge_2500_C");                                     // 119
-            AddColumn(mainTable, "Run_Charge_RUSH_1_C");                                   // 120
-            AddColumn(mainTable, "Run_Charge_RUSH_6_C");                                   // 121
-            AddColumn(mainTable, "Run_Charge_RUSH_24_C");                                  // 122
-            AddColumn(mainTable, "Run_Charge_RUSH_50_C");                                  // 123
-            AddColumn(mainTable, "Run_Charge_RUSH_100_C");                                 // 124
-            AddColumn(mainTable, "Run_Charge_RUSH_250_C");                                 // 125
-            AddColumn(mainTable, "Run_Charge_RUSH_500_C");                                 // 126
-            AddColumn(mainTable, "Run_Charge_RUSH_1000_C");                                // 127
-            AddColumn(mainTable, "Run_Charge_RUSH_2500_C");                                // 128
-            AddColumn(mainTable, "Price_1_Net");                                           // 129
-            AddColumn(mainTable, "Price_6_Net");                                           // 130
-            AddColumn(mainTable, "Price_24_Net");                                          // 131
-            AddColumn(mainTable, "Price_50_Net");                                          // 132
-            AddColumn(mainTable, "Price_100_Net");                                         // 133
-            AddColumn(mainTable, "Price_250_Net");                                         // 134
-            AddColumn(mainTable, "Price_500_Net");                                         // 135
-            AddColumn(mainTable, "Price_1000_Net");                                        // 136
-            AddColumn(mainTable, "Price_2500_Net");                                        // 137
-            AddColumn(mainTable, "Price_RUSH_1_Net");                                      // 138
-            AddColumn(mainTable, "Price_RUSH_6_Net");                                      // 139
-            AddColumn(mainTable, "Price_RUSH_24_Net");                                     // 140
-            AddColumn(mainTable, "Price_RUSH_50_Net");                                     // 141
-            AddColumn(mainTable, "Price_RUSH_100_Net");                                    // 142
-            AddColumn(mainTable, "Price_RUSH_250_Net");                                    // 143
-            AddColumn(mainTable, "Price_RUSH_500_Net");                                    // 144
-            AddColumn(mainTable, "Price_RUSH_1000_Net");                                   // 145
-            AddColumn(mainTable, "Price_RUSH_2500_Net");                                   // 146
-            AddColumn(mainTable, "Run_Charge_1_Net");                                      // 147
-            AddColumn(mainTable, "Run_Charge_6_Net");                                      // 148
-            AddColumn(mainTable, "Run_Charge_24_Net");                                     // 149
-            AddColumn(mainTable, "Run_Charge_50_Net");                                     // 150
-            AddColumn(mainTable, "Run_Charge_100_Net");                                    // 151
-            AddColumn(mainTable, "Run_Charge_250_Net");                                    // 152
-            AddColumn(mainTable, "Run_Charge_500_Net");                                    // 153
-            AddColumn(mainTable, "Run_Charge_1000_Net");                                   // 154
-            AddColumn(mainTable, "Run_Charge_2500_Net");                                   // 155
-            AddColumn(mainTable, "Run_Charge_RUSH_1_Net");                                 // 156
-            AddColumn(mainTable, "Run_Charge_RUSH_6_Net");                                 // 157
-            AddColumn(mainTable, "Run_Charge_RUSH_24_Net");                                // 158
-            AddColumn(mainTable, "Run_Charge_RUSH_50_Net");                                // 159
-            AddColumn(mainTable, "Run_Charge_RUSH_100_Net");                               // 160
-            AddColumn(mainTable, "Run_Charge_RUSH_250_Net");                               // 161
-            AddColumn(mainTable, "Run_Charge_RUSH_500_Net");                               // 162
-            AddColumn(mainTable, "Run_Charge_RUSH_1000_Net");                              // 163
-            AddColumn(mainTable, "Run_Charge_RUSH_2500_Net");                              // 164
-            AddColumn(mainTable, "Location_WH");                                           // 165
-            AddColumn(mainTable, "Location_Shelf");                                        // 166
-            AddColumn(mainTable, "Location_Rack");                                         // 167
-            AddColumn(mainTable, "Location_ColIndex");                                     // 168  
-            AddColumn(mainTable, "Location_Full");                                         // 169
-            AddColumn(mainTable, "Image_1_Path");                                          // 170
-            AddColumn(mainTable, "Image_2_Path");                                          // 171
-            AddColumn(mainTable, "Image_3_Path");                                          // 172
-            AddColumn(mainTable, "Image_4_Path");                                          // 173
-            AddColumn(mainTable, "Image_5_Path");                                          // 174  
-            AddColumn(mainTable, "Image_6_Path");                                          // 175
-            AddColumn(mainTable, "Image_7_Path");                                          // 176
-            AddColumn(mainTable, "Image_8_Path");                                          // 177
-            AddColumn(mainTable, "Image_9_Path");                                          // 178
-            AddColumn(mainTable, "Image_10_Path");                                         // 179
-            AddColumn(mainTable, "Image_Group_1_Path");                                    // 180
-            AddColumn(mainTable, "Image_Group_2_Path");                                    // 181
-            AddColumn(mainTable, "Image_Group_3_Path");                                    // 182
-            AddColumn(mainTable, "Image_Group_4_Path");                                    // 183
-            AddColumn(mainTable, "Image_Group_5_Path");                                    // 184
-            AddColumn(mainTable, "Image_Model_1_Path");                                    // 185
-            AddColumn(mainTable, "Image_Model_2_Path");                                    // 186
-            AddColumn(mainTable, "Image_Model_3_Path");                                    // 187
-            AddColumn(mainTable, "Image_Model_4_Path");                                    // 188
-            AddColumn(mainTable, "Image_Model_5_Path");                                    // 189
-            AddColumn(mainTable, "Swatch_Material_Colour_Path");                           // 190
-            AddColumn(mainTable, "Swatch_Colour_Path");                                    // 191
-            AddColumn(mainTable, "Flat_Shippable");                                        // 192
-            AddColumn(mainTable, "Website_Flag");                                          // 193
-            AddColumn(mainTable, "Alt_Text_Image_1_Path");                                 // 194
-            AddColumn(mainTable, "Alt_Text_Image_2_Path");                                 // 195
-            AddColumn(mainTable, "Alt_Text_Image_3_Path");                                 // 196
-            AddColumn(mainTable, "Alt_Text_Image_4_Path");                                 // 197
-            AddColumn(mainTable, "Alt_Text_Image_5_Path");                                 // 198
-            AddColumn(mainTable, "Alt_Text_Image_6_Path");                                 // 199
-            AddColumn(mainTable, "Alt_Text_Image_7_Path");                                 // 200
-            AddColumn(mainTable, "Alt_Text_Image_8_Path");                                 // 201
-            AddColumn(mainTable, "Alt_Text_Image_9_Path");                                 // 202
-            AddColumn(mainTable, "Alt_Text_Image_10_Path");                                // 203
-            AddColumn(mainTable, "Alt_Text_Group_1_Path");                                 // 204
-            AddColumn(mainTable, "Alt_Text_Group_2_Path");                                 // 205
-            AddColumn(mainTable, "Alt_Text_Group_3_Path");                                 // 206
-            AddColumn(mainTable, "Alt_Text_Group_4_Path");                                 // 207
-            AddColumn(mainTable, "Alt_Text_Group_5_Path");                                 // 208
-            AddColumn(mainTable, "Alt_Text_Model_1_Path");                                 // 209
-            AddColumn(mainTable, "Alt_Text_Model_2_Path");                                 // 210
-            AddColumn(mainTable, "Alt_Text_Model_3_Path");                                 // 211
-            AddColumn(mainTable, "Alt_Text_Model_4_Path");                                 // 212
-            AddColumn(mainTable, "Alt_Text_Model_5_Path");                                 // 213
+            AddColumn(MainTable, "Brand");                                                 // 1
+            AddColumn(MainTable, "Brand Description");                                     // 2
+            AddColumn(MainTable, "SKU_Ahslin");                                            // 3
+            AddColumn(MainTable, "Design_Service_Code");                                   // 4
+            AddColumn(MainTable, "Material_Code");                                         // 5
+            AddColumn(MainTable, "Material_Description_Short");                            // 6
+            AddColumn(MainTable, "Material_Description_Extended");                         // 7
+            AddColumn(MainTable, "Material_Description_Short_FR");                         // 8
+            AddColumn(MainTable, "Material_Description_Extended_FR");                      // 9
+            AddColumn(MainTable, "Colour_Code");                                           // 10
+            AddColumn(MainTable, "Colour_Description_Short");                              // 11
+            AddColumn(MainTable, "Colour_Description_Extended");                           // 12
+            AddColumn(MainTable, "Colour_Description_Short_FR");                           // 13
+            AddColumn(MainTable, "Colour_Description_Extended_FR");                        // 14
+            AddColumn(MainTable, "Design_Service_Flag");                                   // 15
+            AddColumn(MainTable, "Design_Service_Family_Code");                            // 16
+            AddColumn(MainTable, "Design_Service_Family_Description");                     // 17
+            AddColumn(MainTable, "Design_Service_Family_Description_FR");                  // 18
+            AddColumn(MainTable, "Design_Service_Family_KeyWords_Generals");               // 19
+            AddColumn(MainTable, "Design_Service_Family_Category_Sage");                   // 20
+            AddColumn(MainTable, "Design_Service_Family_Category_ESP");                    // 21
+            AddColumn(MainTable, "Design_Service_Family_Category_PromoMarketing");         // 22
+            AddColumn(MainTable, "Design_Service_Family_Category_UDUCAT");                 // 23
+            AddColumn(MainTable, "Design_Service_Family_Category_DistributorCentral");     // 24
+            AddColumn(MainTable, "Design_Service_Family_Themes_Sage");                     // 25
+            AddColumn(MainTable, "Design Short Description");                              // 26
+            AddColumn(MainTable, "Design Extended Description");                           // 27
+            AddColumn(MainTable, "Design Short Description FR");                           // 28
+            AddColumn(MainTable, "Design Extended Description FR");                        // 29
+            AddColumn(MainTable, "Imprintable");                                           // 30
+            AddColumn(MainTable, "Imprint_Height_cm");                                     // 31
+            AddColumn(MainTable, "Imprint_Width_cm");                                      // 32
+            AddColumn(MainTable, "Depth_cm");                                              // 33
+            AddColumn(MainTable, "Width_cm");                                              // 34
+            AddColumn(MainTable, "Height_cm");                                             // 35
+            AddColumn(MainTable, "Imprint_Height_in");                                     // 36
+            AddColumn(MainTable, "Imprint_Width_in");                                      // 37
+            AddColumn(MainTable, "Depth_in");                                              // 38
+            AddColumn(MainTable, "Width_in");                                              // 39
+            AddColumn(MainTable, "Height_in");                                             // 40
+            AddColumn(MainTable, "Weight_grams");                                          // 41
+            AddColumn(MainTable, "Weight_Pounds");                                         // 42
+            AddColumn(MainTable, "Shippable_Width_cm");                                    // 43
+            AddColumn(MainTable, "Shippable_Height_cm");                                   // 44
+            AddColumn(MainTable, "Shippable_Depth_cm");                                    // 45
+            AddColumn(MainTable, "Shippable_Width_in");                                    // 46
+            AddColumn(MainTable, "Shippable_Height_in");                                   // 47
+            AddColumn(MainTable, "Shippable_Depth_in");                                    // 48
+            AddColumn(MainTable, "Shippable_weight_grams");                                // 49
+            AddColumn(MainTable, "Shippable_weight_lb");                                   // 50
+            AddColumn(MainTable, "Strap");                                                 // 51
+            AddColumn(MainTable, "Detachable_Strap");                                      // 52
+            AddColumn(MainTable, "Zippered_Enclosure");                                    // 53
+            AddColumn(MainTable, "Design_Service_Fashion_Name_Ashlin");                    // 54
+            AddColumn(MainTable, "Design_Service_Fashion_Name_TSC_CA");                    // 55
+            AddColumn(MainTable, "Design_Service_Fashion_name_COSTCO_CA");                 // 56
+            AddColumn(MainTable, "Design_Service_Fashion_Name_BESTBUY_CA");                // 57
+            AddColumn(MainTable, "Design_Service_Fashion_Name_SHOP_CA");                   // 58
+            AddColumn(MainTable, "Design_Servive_Fashion_Name_AMAZON_CA");                 // 59
+            AddColumn(MainTable, "Design_Service_Fashion_Name_AMAZON_COM");                // 60
+            AddColumn(MainTable, "Design_Service_Fashion_Name_SEARS");                     // 61
+            AddColumn(MainTable, "Design_Service_Fashion_Name_STAPLES_CA");                // 62
+            AddColumn(MainTable, "Design_Service_Fashion_Name_WALMART");                   // 63
+            AddColumn(MainTable, "SKU_SEARS");                                             // 64
+            AddColumn(MainTable, "SKU_TSC_CA");                                            // 65
+            AddColumn(MainTable, "SKU_COSTCO_CA");                                         // 66
+            AddColumn(MainTable, "SKU_BESTBUY_CA");                                        // 67
+            AddColumn(MainTable, "SKU_AMAZON_CA");                                         // 68
+            AddColumn(MainTable, "SKU_AMAZON_COM");                                        // 69
+            AddColumn(MainTable, "SKU_SHOP_CA");                                           // 70 
+            AddColumn(MainTable, "SKU_STAPLES_CA");                                        // 71
+            AddColumn(MainTable, "SKU_WALMART_CA");                                        // 72
+            AddColumn(MainTable, "SKU_WALMART_COM");                                       // 73
+            AddColumn(MainTable, "SKU_DistributorCentral");                                // 74
+            AddColumn(MainTable, "SKU_PromoMarketing");                                    // 75
+            AddColumn(MainTable, "SKU_MAGENTO");                                           // 76
+            AddColumn(MainTable, "Option_1");                                              // 77
+            AddColumn(MainTable, "Option_2");                                              // 78
+            AddColumn(MainTable, "Option_3");                                              // 79
+            AddColumn(MainTable, "Option_4");                                              // 80
+            AddColumn(MainTable, "Option_5");                                              // 81
+            AddColumn(MainTable, "Option_1_FR");                                           // 82
+            AddColumn(MainTable, "Option_2_FR");                                           // 83
+            AddColumn(MainTable, "Option_3_FR");                                           // 84
+            AddColumn(MainTable, "Option_4_FR");                                           // 85
+            AddColumn(MainTable, "Option_5_FR");                                           // 86
+            AddColumn(MainTable, "UPC_Code_9");                                            // 87
+            AddColumn(MainTable, "UPC_Code_10");                                           // 88
+            AddColumn(MainTable, "Base_Price");                                            // 89
+            AddColumn(MainTable, "Components");                                            // 90
+            AddColumn(MainTable, "MSRP");                                                  // 91
+            AddColumn(MainTable, "Run_Charges");                                           // 92
+            AddColumn(MainTable, "Price_1_C");                                             // 93
+            AddColumn(MainTable, "Price_6_C");                                             // 94
+            AddColumn(MainTable, "Price_24_C");                                            // 95
+            AddColumn(MainTable, "Price_50_C");                                            // 96
+            AddColumn(MainTable, "Price_100_C");                                           // 97
+            AddColumn(MainTable, "Price_250_C");                                           // 98
+            AddColumn(MainTable, "Price_500_C");                                           // 99
+            AddColumn(MainTable, "Price_1000_C");                                          // 100
+            AddColumn(MainTable, "Price_2500_C");                                          // 101
+            AddColumn(MainTable, "Price_RUSH_1_C");                                        // 102
+            AddColumn(MainTable, "Price_RUSH_6_C");                                        // 103
+            AddColumn(MainTable, "Price_RUSH_24_C");                                       // 104
+            AddColumn(MainTable, "Price_RUSH_50_C");                                       // 105
+            AddColumn(MainTable, "Price_RUSH_100_C");                                      // 106
+            AddColumn(MainTable, "Price_RUSH_250_C");                                      // 107
+            AddColumn(MainTable, "Price_RUSH_500_C");                                      // 108
+            AddColumn(MainTable, "Price_RUSH_1000_C");                                     // 109
+            AddColumn(MainTable, "Price_RUSH_2500_C");                                     // 110
+            AddColumn(MainTable, "Run_Charge_1_C");                                        // 111
+            AddColumn(MainTable, "Run_Charge_6_C");                                        // 112
+            AddColumn(MainTable, "Run_Charge_24_C");                                       // 113
+            AddColumn(MainTable, "Run_Charge_50_C");                                       // 114
+            AddColumn(MainTable, "Run_Charge_100_C");                                      // 115
+            AddColumn(MainTable, "Run_Charge_250_C");                                      // 116
+            AddColumn(MainTable, "Run_Charge_500_C");                                      // 117
+            AddColumn(MainTable, "Run_Charge_1000_C");                                     // 118
+            AddColumn(MainTable, "Run_Charge_2500_C");                                     // 119
+            AddColumn(MainTable, "Run_Charge_RUSH_1_C");                                   // 120
+            AddColumn(MainTable, "Run_Charge_RUSH_6_C");                                   // 121
+            AddColumn(MainTable, "Run_Charge_RUSH_24_C");                                  // 122
+            AddColumn(MainTable, "Run_Charge_RUSH_50_C");                                  // 123
+            AddColumn(MainTable, "Run_Charge_RUSH_100_C");                                 // 124
+            AddColumn(MainTable, "Run_Charge_RUSH_250_C");                                 // 125
+            AddColumn(MainTable, "Run_Charge_RUSH_500_C");                                 // 126
+            AddColumn(MainTable, "Run_Charge_RUSH_1000_C");                                // 127
+            AddColumn(MainTable, "Run_Charge_RUSH_2500_C");                                // 128
+            AddColumn(MainTable, "Price_1_Net");                                           // 129
+            AddColumn(MainTable, "Price_6_Net");                                           // 130
+            AddColumn(MainTable, "Price_24_Net");                                          // 131
+            AddColumn(MainTable, "Price_50_Net");                                          // 132
+            AddColumn(MainTable, "Price_100_Net");                                         // 133
+            AddColumn(MainTable, "Price_250_Net");                                         // 134
+            AddColumn(MainTable, "Price_500_Net");                                         // 135
+            AddColumn(MainTable, "Price_1000_Net");                                        // 136
+            AddColumn(MainTable, "Price_2500_Net");                                        // 137
+            AddColumn(MainTable, "Price_RUSH_1_Net");                                      // 138
+            AddColumn(MainTable, "Price_RUSH_6_Net");                                      // 139
+            AddColumn(MainTable, "Price_RUSH_24_Net");                                     // 140
+            AddColumn(MainTable, "Price_RUSH_50_Net");                                     // 141
+            AddColumn(MainTable, "Price_RUSH_100_Net");                                    // 142
+            AddColumn(MainTable, "Price_RUSH_250_Net");                                    // 143
+            AddColumn(MainTable, "Price_RUSH_500_Net");                                    // 144
+            AddColumn(MainTable, "Price_RUSH_1000_Net");                                   // 145
+            AddColumn(MainTable, "Price_RUSH_2500_Net");                                   // 146
+            AddColumn(MainTable, "Run_Charge_1_Net");                                      // 147
+            AddColumn(MainTable, "Run_Charge_6_Net");                                      // 148
+            AddColumn(MainTable, "Run_Charge_24_Net");                                     // 149
+            AddColumn(MainTable, "Run_Charge_50_Net");                                     // 150
+            AddColumn(MainTable, "Run_Charge_100_Net");                                    // 151
+            AddColumn(MainTable, "Run_Charge_250_Net");                                    // 152
+            AddColumn(MainTable, "Run_Charge_500_Net");                                    // 153
+            AddColumn(MainTable, "Run_Charge_1000_Net");                                   // 154
+            AddColumn(MainTable, "Run_Charge_2500_Net");                                   // 155
+            AddColumn(MainTable, "Run_Charge_RUSH_1_Net");                                 // 156
+            AddColumn(MainTable, "Run_Charge_RUSH_6_Net");                                 // 157
+            AddColumn(MainTable, "Run_Charge_RUSH_24_Net");                                // 158
+            AddColumn(MainTable, "Run_Charge_RUSH_50_Net");                                // 159
+            AddColumn(MainTable, "Run_Charge_RUSH_100_Net");                               // 160
+            AddColumn(MainTable, "Run_Charge_RUSH_250_Net");                               // 161
+            AddColumn(MainTable, "Run_Charge_RUSH_500_Net");                               // 162
+            AddColumn(MainTable, "Run_Charge_RUSH_1000_Net");                              // 163
+            AddColumn(MainTable, "Run_Charge_RUSH_2500_Net");                              // 164
+            AddColumn(MainTable, "Location_WH");                                           // 165
+            AddColumn(MainTable, "Location_Shelf");                                        // 166
+            AddColumn(MainTable, "Location_Rack");                                         // 167
+            AddColumn(MainTable, "Location_ColIndex");                                     // 168  
+            AddColumn(MainTable, "Location_Full");                                         // 169
+            AddColumn(MainTable, "Image_1_Path");                                          // 170
+            AddColumn(MainTable, "Image_2_Path");                                          // 171
+            AddColumn(MainTable, "Image_3_Path");                                          // 172
+            AddColumn(MainTable, "Image_4_Path");                                          // 173
+            AddColumn(MainTable, "Image_5_Path");                                          // 174  
+            AddColumn(MainTable, "Image_6_Path");                                          // 175
+            AddColumn(MainTable, "Image_7_Path");                                          // 176
+            AddColumn(MainTable, "Image_8_Path");                                          // 177
+            AddColumn(MainTable, "Image_9_Path");                                          // 178
+            AddColumn(MainTable, "Image_10_Path");                                         // 179
+            AddColumn(MainTable, "Image_Group_1_Path");                                    // 180
+            AddColumn(MainTable, "Image_Group_2_Path");                                    // 181
+            AddColumn(MainTable, "Image_Group_3_Path");                                    // 182
+            AddColumn(MainTable, "Image_Group_4_Path");                                    // 183
+            AddColumn(MainTable, "Image_Group_5_Path");                                    // 184
+            AddColumn(MainTable, "Image_Model_1_Path");                                    // 185
+            AddColumn(MainTable, "Image_Model_2_Path");                                    // 186
+            AddColumn(MainTable, "Image_Model_3_Path");                                    // 187
+            AddColumn(MainTable, "Image_Model_4_Path");                                    // 188
+            AddColumn(MainTable, "Image_Model_5_Path");                                    // 189
+            AddColumn(MainTable, "Swatch_Material_Colour_Path");                           // 190
+            AddColumn(MainTable, "Swatch_Colour_Path");                                    // 191
+            AddColumn(MainTable, "Flat_Shippable");                                        // 192
+            AddColumn(MainTable, "Website_Flag");                                          // 193
+            AddColumn(MainTable, "Alt_Text_Image_1_Path");                                 // 194
+            AddColumn(MainTable, "Alt_Text_Image_2_Path");                                 // 195
+            AddColumn(MainTable, "Alt_Text_Image_3_Path");                                 // 196
+            AddColumn(MainTable, "Alt_Text_Image_4_Path");                                 // 197
+            AddColumn(MainTable, "Alt_Text_Image_5_Path");                                 // 198
+            AddColumn(MainTable, "Alt_Text_Image_6_Path");                                 // 199
+            AddColumn(MainTable, "Alt_Text_Image_7_Path");                                 // 200
+            AddColumn(MainTable, "Alt_Text_Image_8_Path");                                 // 201
+            AddColumn(MainTable, "Alt_Text_Image_9_Path");                                 // 202
+            AddColumn(MainTable, "Alt_Text_Image_10_Path");                                // 203
+            AddColumn(MainTable, "Alt_Text_Group_1_Path");                                 // 204
+            AddColumn(MainTable, "Alt_Text_Group_2_Path");                                 // 205
+            AddColumn(MainTable, "Alt_Text_Group_3_Path");                                 // 206
+            AddColumn(MainTable, "Alt_Text_Group_4_Path");                                 // 207
+            AddColumn(MainTable, "Alt_Text_Group_5_Path");                                 // 208
+            AddColumn(MainTable, "Alt_Text_Model_1_Path");                                 // 209
+            AddColumn(MainTable, "Alt_Text_Model_2_Path");                                 // 210
+            AddColumn(MainTable, "Alt_Text_Model_3_Path");                                 // 211
+            AddColumn(MainTable, "Alt_Text_Model_4_Path");                                 // 212
+            AddColumn(MainTable, "Alt_Text_Model_5_Path");                                 // 213
 
             // local field for inserting data to table
             double[][] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = "Ashlin®";                                                 // brand
                 row[1] = "Ashlin® is a boutique quality brand, featuring elegant leathergoods for your fashion needs";         // brand description
@@ -504,15 +504,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[211] = list[122];                                               // alt text image model 4 path
                 row[212] = list[123];                                               // alt text image model 5 path
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -522,12 +522,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -566,7 +566,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = commnad.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 121; i++)
@@ -592,8 +592,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // [0] rush standard, [1] 1 c standard, [2] 6 c standard, [3] 24 c standard, [4] 50 c standard, [5] 100 c standard, [6] 250 c standard, [7] 500 c standard, [8] 1000 c standard, [9] 2500 c standard, [10] rush net, [11] 1 c net standard
             // [12] 6 c net standard, [13] 24 c net standard, [14] 50 c net standard, [15] 100 net standard, [16] 250 net standard, [17] 500 net standard, [18] 1000 net standard, [19] 2500 net standard, [20] wholesale net
             SqlCommand command = new SqlCommand("SELECT [RUSH_C_25_wks], [1_C_Standard Delivery], [6_C_Standard Delivery], [24_C_Standard Delivery], [50_C_Standard Delivery], [100_C_Standard Delivery], [250_C_Standard Delivery], [500_C_Standard Delivery], [1000_C_Standard Delivery], [2500_C_Standard Delivery], "
-                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", connection);         
-            connection.Open();
+                                              + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", Connection);         
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 4; i++)
             { 
@@ -619,7 +619,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             reader = command.ExecuteReader();
             reader.Read();
             list[5] = new[] { reader.GetDouble(0) };
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

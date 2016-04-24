@@ -30,9 +30,6 @@ namespace SKU_Manager.MainForms
         private DataSet ds = new DataSet();
         private ExportTable[] exportTables;
 
-        // supporting field
-        private readonly double usd = Currency.Usd;
-
         /* constructor that initialize graphic components and get the perent form */
         public ExcelExport(IWin32Window parent)
         {
@@ -1304,7 +1301,7 @@ namespace SKU_Manager.MainForms
                     {
                         if (row[69].Equals(DBNull.Value)) continue;
                         for (int i = 69; i <= 77; i++)
-                            row[i] = Convert.ToDouble(row[i]) / usd;
+                            row[i] = Convert.ToDouble(row[i]) / Currency.Usd;
                         if (!row[92].Equals(DBNull.Value)) row[92] = "CAD";
                     }
 
@@ -1326,7 +1323,7 @@ namespace SKU_Manager.MainForms
                     foreach (DataRow row in ds.Tables[0].Rows.Cast<DataRow>().Where(row => !row[69].Equals(DBNull.Value)))
                     {
                         for (int i = 69; i <= 77; i++)
-                            row[i] = Convert.ToDouble(row[i]) * usd;
+                            row[i] = Convert.ToDouble(row[i]) * Currency.Usd;
                         if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
                     }
 
@@ -1373,7 +1370,7 @@ namespace SKU_Manager.MainForms
                     foreach (DataRow row in ds.Tables[0].Rows.Cast<DataRow>().Where(row => !row[69].Equals(DBNull.Value)))
                     {
                         for (int i = 69; i <= 77; i++)
-                            row[i] = Convert.ToDouble(row[i]) * usd;
+                            row[i] = Convert.ToDouble(row[i]) * Currency.Usd;
                         if (!row[92].Equals(DBNull.Value)) row[92] = "USD";
                     }
 
@@ -1450,7 +1447,7 @@ namespace SKU_Manager.MainForms
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         for (int i = 25; i <= 96; i++)
-                            row[i] = Convert.ToDouble(row[i]) / usd;
+                            row[i] = Convert.ToDouble(row[i]) / Currency.Usd;
                     }
 
                     try
@@ -1471,7 +1468,7 @@ namespace SKU_Manager.MainForms
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         for (int i = 25; i <= 96; i++)
-                            row[i] = Convert.ToDouble(row[i]) * usd;
+                            row[i] = Convert.ToDouble(row[i]) * Currency.Usd;
                     }
 
                     try
@@ -1516,7 +1513,7 @@ namespace SKU_Manager.MainForms
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         for (int i = 25; i <= 96; i++)
-                            row[i] = Convert.ToDouble(row[i]) * usd;
+                            row[i] = Convert.ToDouble(row[i]) * Currency.Usd;
                     }
 
                     try

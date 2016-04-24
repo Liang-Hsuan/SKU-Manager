@@ -13,77 +13,77 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         /* constructor that initialize fields */
         public ShopCaBagExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset the table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "supplier id");                             // 1
-            AddColumn(mainTable, "store name");                              // 2
-            AddColumn(mainTable, "sku");                                     // 3
-            AddColumn(mainTable, "title");                                   // 4
-            AddColumn(mainTable, "description");                             // 5
-            AddColumn(mainTable, "shipping weight");                         // 6
-            AddColumn(mainTable, "shipping weight unit of measure");         // 7
-            AddColumn(mainTable, "primary product category id");             // 8
-            AddColumn(mainTable, "product type");                            // 9
-            AddColumn(mainTable, "main image location");                     // 10
-            AddColumn(mainTable, "standard product id");                     // 11
-            AddColumn(mainTable, "standard product id type");                // 12
-            AddColumn(mainTable, "availability");                            // 13
-            AddColumn(mainTable, "brand");                                   // 14
-            AddColumn(mainTable, "launch date");                             // 15
-            AddColumn(mainTable, "release date");                            // 16
-            AddColumn(mainTable, "product condition");                       // 17
-            AddColumn(mainTable, "item package quantity");                   // 18
-            AddColumn(mainTable, "number of items");                         // 19
-            AddColumn(mainTable, "designer");                                // 20
-            AddColumn(mainTable, "package height");                          // 21
-            AddColumn(mainTable, "package length");                          // 22
-            AddColumn(mainTable, "package width");                           // 23
-            AddColumn(mainTable, "package dimension unit of measure");       // 24
-            AddColumn(mainTable, "max order quantity");                      // 25
-            AddColumn(mainTable, "legal disclaimer");                        // 26
-            AddColumn(mainTable, "manufacturer");                            // 27
-            AddColumn(mainTable, "mfr part number");                         // 28
-            AddColumn(mainTable, "search terms");                            // 29
-            AddColumn(mainTable, "parent sku");                              // 30
-            AddColumn(mainTable, "secondary product category id");           // 31
-            AddColumn(mainTable, "is new product");                          // 32
-            AddColumn(mainTable, "alt image location 1");                    // 33
-            AddColumn(mainTable, "alt image location 2");                    // 34
-            AddColumn(mainTable, "alt image location 3");                    // 35
-            AddColumn(mainTable, "alt image location 4");                    // 36
-            AddColumn(mainTable, "alt image location 5");                    // 37
-            AddColumn(mainTable, "alt image location 6");                    // 38
-            AddColumn(mainTable, "alt image location 7");                    // 39
-            AddColumn(mainTable, "alt image location 8");                    // 40
-            AddColumn(mainTable, "alt image location 9");                    // 41
-            AddColumn(mainTable, "video location");                          // 42
-            AddColumn(mainTable, "material");                                // 43      
-            AddColumn(mainTable, "color");                                   // 44
-            AddColumn(mainTable, "style");                                   // 45
-            AddColumn(mainTable, "trend");                                   // 47
-            AddColumn(mainTable, "strap type");                              // 46
-            AddColumn(mainTable, "closure type");                            // 48
-            AddColumn(mainTable, "generic size");                            // 49
-            AddColumn(mainTable, "features");                                // 50
+            AddColumn(MainTable, "supplier id");                             // 1
+            AddColumn(MainTable, "store name");                              // 2
+            AddColumn(MainTable, "sku");                                     // 3
+            AddColumn(MainTable, "title");                                   // 4
+            AddColumn(MainTable, "description");                             // 5
+            AddColumn(MainTable, "shipping weight");                         // 6
+            AddColumn(MainTable, "shipping weight unit of measure");         // 7
+            AddColumn(MainTable, "primary product category id");             // 8
+            AddColumn(MainTable, "product type");                            // 9
+            AddColumn(MainTable, "main image location");                     // 10
+            AddColumn(MainTable, "standard product id");                     // 11
+            AddColumn(MainTable, "standard product id type");                // 12
+            AddColumn(MainTable, "availability");                            // 13
+            AddColumn(MainTable, "brand");                                   // 14
+            AddColumn(MainTable, "launch date");                             // 15
+            AddColumn(MainTable, "release date");                            // 16
+            AddColumn(MainTable, "product condition");                       // 17
+            AddColumn(MainTable, "item package quantity");                   // 18
+            AddColumn(MainTable, "number of items");                         // 19
+            AddColumn(MainTable, "designer");                                // 20
+            AddColumn(MainTable, "package height");                          // 21
+            AddColumn(MainTable, "package length");                          // 22
+            AddColumn(MainTable, "package width");                           // 23
+            AddColumn(MainTable, "package dimension unit of measure");       // 24
+            AddColumn(MainTable, "max order quantity");                      // 25
+            AddColumn(MainTable, "legal disclaimer");                        // 26
+            AddColumn(MainTable, "manufacturer");                            // 27
+            AddColumn(MainTable, "mfr part number");                         // 28
+            AddColumn(MainTable, "search terms");                            // 29
+            AddColumn(MainTable, "parent sku");                              // 30
+            AddColumn(MainTable, "secondary product category id");           // 31
+            AddColumn(MainTable, "is new product");                          // 32
+            AddColumn(MainTable, "alt image location 1");                    // 33
+            AddColumn(MainTable, "alt image location 2");                    // 34
+            AddColumn(MainTable, "alt image location 3");                    // 35
+            AddColumn(MainTable, "alt image location 4");                    // 36
+            AddColumn(MainTable, "alt image location 5");                    // 37
+            AddColumn(MainTable, "alt image location 6");                    // 38
+            AddColumn(MainTable, "alt image location 7");                    // 39
+            AddColumn(MainTable, "alt image location 8");                    // 40
+            AddColumn(MainTable, "alt image location 9");                    // 41
+            AddColumn(MainTable, "video location");                          // 42
+            AddColumn(MainTable, "material");                                // 43      
+            AddColumn(MainTable, "color");                                   // 44
+            AddColumn(MainTable, "style");                                   // 45
+            AddColumn(MainTable, "trend");                                   // 47
+            AddColumn(MainTable, "strap type");                              // 46
+            AddColumn(MainTable, "closure type");                            // 48
+            AddColumn(MainTable, "generic size");                            // 49
+            AddColumn(MainTable, "features");                                // 50
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow newRow = mainTable.NewRow();
+                DataRow newRow = MainTable.NewRow();
 
                 newRow[0] = "ashlin_bpg";                                // supplier id
                 newRow[1] = "nishis_boutique";                           // store name
@@ -142,15 +142,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 newRow[48] = list[9] + "cm x " + list[10] + "cm x " + list[11] + "cm";                         // generic size
                 newRow[49] = list[13] + " " + list[14] + " " + list[15] + " " + list[16] + " " + list[17];     // features
 
-                mainTable.Rows.Add(newRow);
+                MainTable.Rows.Add(newRow);
                 Progress++;
             } 
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* method that get the data from given sku */
@@ -177,7 +177,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                                                 "INNER JOIN ref_Colours color ON color.Colour_Code = sku.Colour_Code " +
                                                 "INNER JOIN ref_Materials material ON material.Material_Code = sku.Material_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
-                                                "WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+                                                "WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 37; i++)
@@ -195,12 +195,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // connect to database and grab data
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND SKU_SHOP_CA != '' AND Design_Service_Code in (" +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code in ( " +
-                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE 'bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag'))", connection);
-            connection.Open();
+                                                "SELECT Design_Service_Family_Code FROM ref_Families WHERE LOWER(Design_Service_Family_Description) LIKE 'bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag%' OR LOWER(Design_Service_Family_Description) LIKE '%bag'))", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }

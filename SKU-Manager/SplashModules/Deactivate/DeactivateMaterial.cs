@@ -75,8 +75,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
 
                 deactivateMaterialButton.Enabled = false;
                 onlineButton.Enabled = false;
@@ -135,17 +135,17 @@ namespace SKU_Manager.SplashModules.Deactivate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Active = 'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MMMM-dd") + "\' "
-                                                      + "WHERE Material_Code = \'" + materialCode + "\'", connection);
+                                                      + "WHERE Material_Code = \'" + materialCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Material_Code = \'" + materialCode + "\'";
+                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Material_Code = \'" + materialCode + '\'';
                     command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

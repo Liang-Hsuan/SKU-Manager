@@ -13,55 +13,55 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
         /* constructor that initialize fields */
         public ShopCaPriceExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "supplier id");                         // 1
-            AddColumn(mainTable, "store name");                          // 2
-            AddColumn(mainTable, "sku");                                 // 3
-            AddColumn(mainTable, "supplier suggested retail price");     // 4
-            AddColumn(mainTable, "msrp");                                // 5
-            AddColumn(mainTable, "supplier list price");                 // 6
-            AddColumn(mainTable, "supplier cost");                       // 7
-            AddColumn(mainTable, "effective");                           // 8
-            AddColumn(mainTable, "effective end date");                  // 9
-            AddColumn(mainTable, "is point");                            // 10
-            AddColumn(mainTable, "currency");                            // 11
-            AddColumn(mainTable, "standard ship cost");                  // 12
-            AddColumn(mainTable, "priority shup cost");                  // 13
-            AddColumn(mainTable, "ab tax exempt");                       // 14
-            AddColumn(mainTable, "bc tax exempt");                       // 15
-            AddColumn(mainTable, "mb tax exempt");                       // 16
-            AddColumn(mainTable, "nb tax exempt");                       // 17
-            AddColumn(mainTable, "nl tax exempt");                       // 18
-            AddColumn(mainTable, "nt tax exempt");                       // 19
-            AddColumn(mainTable, "ns tax exempt");                       // 20
-            AddColumn(mainTable, "nu tax exempt");                       // 21
-            AddColumn(mainTable, "on tax exempt");                       // 22
-            AddColumn(mainTable, "pe tax exempt");                       // 23
-            AddColumn(mainTable, "qc tax exempt");                       // 24
-            AddColumn(mainTable, "sk tax exempt");                       // 25
-            AddColumn(mainTable, "yt tax exempt");                       // 26
+            AddColumn(MainTable, "supplier id");                         // 1
+            AddColumn(MainTable, "store name");                          // 2
+            AddColumn(MainTable, "sku");                                 // 3
+            AddColumn(MainTable, "supplier suggested retail price");     // 4
+            AddColumn(MainTable, "msrp");                                // 5
+            AddColumn(MainTable, "supplier list price");                 // 6
+            AddColumn(MainTable, "supplier cost");                       // 7
+            AddColumn(MainTable, "effective");                           // 8
+            AddColumn(MainTable, "effective end date");                  // 9
+            AddColumn(MainTable, "is point");                            // 10
+            AddColumn(MainTable, "currency");                            // 11
+            AddColumn(MainTable, "standard ship cost");                  // 12
+            AddColumn(MainTable, "priority shup cost");                  // 13
+            AddColumn(MainTable, "ab tax exempt");                       // 14
+            AddColumn(MainTable, "bc tax exempt");                       // 15
+            AddColumn(MainTable, "mb tax exempt");                       // 16
+            AddColumn(MainTable, "nb tax exempt");                       // 17
+            AddColumn(MainTable, "nl tax exempt");                       // 18
+            AddColumn(MainTable, "nt tax exempt");                       // 19
+            AddColumn(MainTable, "ns tax exempt");                       // 20
+            AddColumn(MainTable, "nu tax exempt");                       // 21
+            AddColumn(MainTable, "on tax exempt");                       // 22
+            AddColumn(MainTable, "pe tax exempt");                       // 23
+            AddColumn(MainTable, "qc tax exempt");                       // 24
+            AddColumn(MainTable, "sk tax exempt");                       // 25
+            AddColumn(MainTable, "yt tax exempt");                       // 26
 
             // local field for inserting data to table
             double[] price = GetPriceList();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = "ashlin_bpg";                                           // brand
                 row[1] = "nishis_boutique";                                      // store name
@@ -72,15 +72,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
                 row[4] = msrp;                                                   // msrp
                 row[5] = sellMsrp;                                               // supplier list price
 
-                mainTable.Rows.Add(row);        
+                MainTable.Rows.Add(row);        
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* method that get the data from given sku */
@@ -90,7 +90,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
 
             // start grabbing data              
             // [0] for all related to price      
-            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', connection);
+            SqlCommand command = new SqlCommand("SELECT Base_Price FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list.Add(reader.GetValue(0));
@@ -104,8 +104,8 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             // [0] multiplier, [1] msrp disc, [2] sell cents, [3] base ship
             double[] list = new double[4];
 
-            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT [MSRP Multiplier] FROM ref_msrp_multiplier", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             list[0] = reader.GetDouble(0);
@@ -117,7 +117,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ShopCaTables
             list[1] = reader.GetInt32(0);
             list[2] = (double)reader.GetDecimal(1);
             list[3] = (double)reader.GetDecimal(2);
-            connection.Close();
+            Connection.Close();
 
             return list;
         }

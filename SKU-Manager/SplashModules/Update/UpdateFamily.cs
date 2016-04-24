@@ -201,38 +201,38 @@ namespace SKU_Manager.SplashModules.Update
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                shortFrenchDescriptionTextbox.Text = "";
-                generalKeywordsTextBox.Text = "";
-                amazonKeywordsTextbox1.Text = "";
-                amazonKeywordsTextbox2.Text = "";
-                amazonKeywordsTextbox3.Text = "";
-                amazonKeywordsTextbox4.Text = "";
-                amazonKeywordsTextbox5.Text = "";
-                amazonCaTextbox1.Text = "";
-                amazonCaTextbox2.Text = "";
-                amazonCaTextbox1.Text = "";
-                amazonCaTextbox2.Text = "";
-                amazonComTextbox1.Text = "";
-                amazonComTextbox2.Text = "";
-                caDutyTextbox.Text = "";
-                usDutyTextbox.Text = "";
-                sageCategoryTextbox.Text = "";
-                sageThemeTextbox.Text = "";
-                espTextbox.Text = "";
-                promoMarketingTextbox.Text = "";
-                uducatTextbox.Text = "";
-                distributorCentralTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                shortFrenchDescriptionTextbox.Text = string.Empty;
+                generalKeywordsTextBox.Text = string.Empty;
+                amazonKeywordsTextbox1.Text = string.Empty;
+                amazonKeywordsTextbox2.Text = string.Empty;
+                amazonKeywordsTextbox3.Text = string.Empty;
+                amazonKeywordsTextbox4.Text = string.Empty;
+                amazonKeywordsTextbox5.Text = string.Empty;
+                amazonCaTextbox1.Text = string.Empty;
+                amazonCaTextbox2.Text = string.Empty;
+                amazonCaTextbox1.Text = string.Empty;
+                amazonCaTextbox2.Text = string.Empty;
+                amazonComTextbox1.Text = string.Empty;
+                amazonComTextbox2.Text = string.Empty;
+                caDutyTextbox.Text = string.Empty;
+                usDutyTextbox.Text = string.Empty;
+                sageCategoryTextbox.Text = string.Empty;
+                sageThemeTextbox.Text = string.Empty;
+                espTextbox.Text = string.Empty;
+                promoMarketingTextbox.Text = string.Empty;
+                uducatTextbox.Text = string.Empty;
+                distributorCentralTextbox.Text = string.Empty;
 
                 // set the comboboxes' text to nothing
-                canadianHtsCombobox.Text = "";
-                usHtsCombobox.Text = "";
-                sageCategoryCombobox.Text = "";
-                sageThemeCombobox.Text = "";
-                espCombobox.Text = "";
-                promoMarketingCombobox.Text = "";
-                uducatCombobox.Text = "";
-                distributorCentralCombobox.Text = "";
+                canadianHtsCombobox.Text = string.Empty;
+                usHtsCombobox.Text = string.Empty;
+                sageCategoryCombobox.Text = string.Empty;
+                sageThemeCombobox.Text = string.Empty;
+                espCombobox.Text = string.Empty;
+                promoMarketingCombobox.Text = string.Empty;
+                uducatCombobox.Text = string.Empty;
+                distributorCentralCombobox.Text = string.Empty;
 
                 translateButton.Enabled = false;
                 shortEnglishDescriptionTextbox.Enabled = false;
@@ -293,7 +293,7 @@ namespace SKU_Manager.SplashModules.Update
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_Keywords_General, KeyWords_Amazon_1, KeyWords_Amazon_2, KeyWords_Amazon_3, KeyWords_Amazon_4, KeyWords_Amazon_5, Amazon_Browse_Nodes_1_CDA, Amazon_Browse_Nodes_2_CDA, Amazon_Browse_Nodes_1_USA, Amazon_Browse_Nodes_2_USA, Active, Design_Service_Family_Category_Sage, Design_Service_Family_Themes_Sage, Design_Service_Family_Category_ESP,Design_Service_Family_Category_PromoMarketing,Design_Service_Family_Category_UDUCAT,Design_Service_Family_Category_DistributorCentral,HTS_CA, HTS_US,"
-                                                          + "Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + "\';", connection);
+                                                          + "Pricing_Tier, Reorder_Quantity, Reorder_Level FROM ref_Families WHERE Design_Service_Family_Code = \'" + familyCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -409,7 +409,7 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database to get the info about this material code
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
-                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT CA_Duty FROM HTS_CA WHERE HTS_CA = \'" + canadianHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -417,7 +417,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-                caDutyTextbox.Text = "";
+                caDutyTextbox.Text = string.Empty;
         }
         private void usHtsCombobox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -426,7 +426,7 @@ namespace SKU_Manager.SplashModules.Update
                 // connect to database to get the info about this material code
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
-                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + "\';", connection);
+                    SqlCommand command = new SqlCommand("SELECT US_Duty FROM HTS_US WHERE HTS_US = \'" + usHtsCombobox.SelectedItem + '\'', connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
@@ -434,7 +434,7 @@ namespace SKU_Manager.SplashModules.Update
                 }
             }
             else
-                usDutyTextbox.Text = "";
+                usDutyTextbox.Text = string.Empty;
         }
         #endregion
 
@@ -521,7 +521,7 @@ namespace SKU_Manager.SplashModules.Update
                     if (!active)
                     {
                         // design deactivation
-                        command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + "\'";
+                        command.CommandText = "UPDATE master_Design_Attributes SET Active = 'False', Website_Flag = 'False' WHERE Design_Service_Family_Code = \'" + familyCode + '\'';
                         command.ExecuteNonQuery();
 
                         // sku deactivation
@@ -580,7 +580,7 @@ namespace SKU_Manager.SplashModules.Update
                 sageCategoryTextbox.Text = sageCategoryTextbox.Text.Substring(0, index);
             }
             else
-                sageCategoryTextbox.Text = "";
+                sageCategoryTextbox.Text = string.Empty;
         }
 
         /* the event for sage theme add and remove button click */
@@ -600,7 +600,7 @@ namespace SKU_Manager.SplashModules.Update
                 sageThemeTextbox.Text = sageThemeTextbox.Text.Substring(0, index);
             }
             else
-                sageThemeTextbox.Text = "";
+                sageThemeTextbox.Text = string.Empty;
         }
 
         /* the event for ESP add and remove button click */
@@ -620,7 +620,7 @@ namespace SKU_Manager.SplashModules.Update
                 espTextbox.Text = espTextbox.Text.Substring(0, index);
             }
             else
-                espTextbox.Text = "";
+                espTextbox.Text = string.Empty;
         }
 
         /* the event for promo marketing add and remove button click */
@@ -640,7 +640,7 @@ namespace SKU_Manager.SplashModules.Update
                 promoMarketingTextbox.Text = promoMarketingTextbox.Text.Substring(0, index);
             }
             else
-                promoMarketingTextbox.Text = "";
+                promoMarketingTextbox.Text = string.Empty;
         }
 
         /* the event for UDUCAT add and remove button click */
@@ -660,7 +660,7 @@ namespace SKU_Manager.SplashModules.Update
                 uducatTextbox.Text = uducatTextbox.Text.Substring(0, index);
             }
             else
-                uducatTextbox.Text = "";
+                uducatTextbox.Text = string.Empty;
         }
 
         /* the event for distributor central add and remove button click */
@@ -680,7 +680,7 @@ namespace SKU_Manager.SplashModules.Update
                 distributorCentralTextbox.Text = distributorCentralTextbox.Text.Substring(0, index);
             }
             else
-                distributorCentralTextbox.Text = "";
+                distributorCentralTextbox.Text = string.Empty;
         }
         #endregion
     }

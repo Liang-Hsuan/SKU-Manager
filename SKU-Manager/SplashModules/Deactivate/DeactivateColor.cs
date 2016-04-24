@@ -43,7 +43,7 @@ namespace SKU_Manager.SplashModules.Deactivate
         {
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
-                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = 'True' ORDER BY Colour_Code;", connection);    // for selecting data
+                SqlCommand command = new SqlCommand("SELECT Colour_Code FROM ref_Colours WHERE Active = 'True' ORDER BY Colour_Code", connection);    // for selecting data
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();    // for reading data
                 while (reader.Read())
@@ -76,8 +76,8 @@ namespace SKU_Manager.SplashModules.Deactivate
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
 
                 deactivateColorButton.Enabled = false;
                 onlineButton.Enabled = false;
@@ -92,7 +92,7 @@ namespace SKU_Manager.SplashModules.Deactivate
             using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT Colour_Description_Short, Colour_Description_Extended, Colour_Online, Colour_Online_FR " 
-                                                          + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + "\';", connection);
+                                                          + "FROM ref_Colours WHERE Colour_Code = \'" + colorCode + '\'', connection);
                 connection.Open();
                 adapter.Fill(table);
             }
@@ -136,11 +136,11 @@ namespace SKU_Manager.SplashModules.Deactivate
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Colours SET Active =  'False', Date_Deactivated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\' "
-                                                      + "WHERE Colour_Code = \'" + colorCode + "\'", connection);
+                                                      + "WHERE Colour_Code = \'" + colorCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 
-                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + "\'";
+                    command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Colour_Code = \'" + colorCode + '\'';
                     command.ExecuteNonQuery();
                 }
             }

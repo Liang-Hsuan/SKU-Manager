@@ -13,68 +13,68 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
         /* constructor that initializes field */
         public ActiveDesignTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* method that get the table */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "Design Service Code");        // 1
-            AddColumn(mainTable, "Brand");                      // 2
-            AddColumn(mainTable, "Design Service Flag");        // 3
-            AddColumn(mainTable, "Design Service Family Code"); // 4
-            AddColumn(mainTable, "Ashlin Internal Name");       // 5
-            AddColumn(mainTable, "Short Description");          // 6
-            AddColumn(mainTable, "Extended Description");       // 7
-            AddColumn(mainTable, "Trend Short Description");    // 8
-            AddColumn(mainTable, "Trend Extended Description"); // 9
-            AddColumn(mainTable, "Online Description");         // 10
-            AddColumn(mainTable, "Gift Box");                   // 11
-            AddColumn(mainTable, "Imprintable");                // 12
-            AddColumn(mainTable, "Imprintable Height");         // 13
-            AddColumn(mainTable, "Imprinttable Width");         // 14
-            AddColumn(mainTable, "Width");                      // 15
-            AddColumn(mainTable, "Height");                     // 16
-            AddColumn(mainTable, "Depth");                      // 17
-            AddColumn(mainTable, "Weight");                     // 18
-            AddColumn(mainTable, "Flat Shippable");             // 19
-            AddColumn(mainTable, "Fold Shippable");             // 20
-            AddColumn(mainTable, "Shippable Width");            // 21
-            AddColumn(mainTable, "Shippable Height");           // 22
-            AddColumn(mainTable, "Shippable Depth");            // 23
-            AddColumn(mainTable, "Shippable Weight");           // 24
-            AddColumn(mainTable, "Detachable Strap");           // 25
-            AddColumn(mainTable, "Zippered Enclosure");         // 26
-            AddColumn(mainTable, "Country of Origin");          // 27
-            AddColumn(mainTable, "Shoulder Drop Length");       // 28
-            AddColumn(mainTable, "Handle/Strap Drop Length");   // 29
-            AddColumn(mainTable, "Notable Strap or General Features");  //30
-            AddColumn(mainTable, "Protective Feet");            // 31
-            AddColumn(mainTable, "Closure");                    // 32
-            AddColumn(mainTable, "Inner Pocket");               // 33
-            AddColumn(mainTable, "Outside Pocket");             // 34
-            AddColumn(mainTable, "Size Differentiation");       // 35
-            AddColumn(mainTable, "Option 1");                   // 36
-            AddColumn(mainTable, "Option 2");                   // 37
-            AddColumn(mainTable, "Option 3");                   // 38
-            AddColumn(mainTable, "Option 4");                   // 39
-            AddColumn(mainTable, "Option 5");                   // 40
-            AddColumn(mainTable, "Active");                     // 41
+            AddColumn(MainTable, "Design Service Code");        // 1
+            AddColumn(MainTable, "Brand");                      // 2
+            AddColumn(MainTable, "Design Service Flag");        // 3
+            AddColumn(MainTable, "Design Service Family Code"); // 4
+            AddColumn(MainTable, "Ashlin Internal Name");       // 5
+            AddColumn(MainTable, "Short Description");          // 6
+            AddColumn(MainTable, "Extended Description");       // 7
+            AddColumn(MainTable, "Trend Short Description");    // 8
+            AddColumn(MainTable, "Trend Extended Description"); // 9
+            AddColumn(MainTable, "Online Description");         // 10
+            AddColumn(MainTable, "Gift Box");                   // 11
+            AddColumn(MainTable, "Imprintable");                // 12
+            AddColumn(MainTable, "Imprintable Height");         // 13
+            AddColumn(MainTable, "Imprinttable Width");         // 14
+            AddColumn(MainTable, "Width");                      // 15
+            AddColumn(MainTable, "Height");                     // 16
+            AddColumn(MainTable, "Depth");                      // 17
+            AddColumn(MainTable, "Weight");                     // 18
+            AddColumn(MainTable, "Flat Shippable");             // 19
+            AddColumn(MainTable, "Fold Shippable");             // 20
+            AddColumn(MainTable, "Shippable Width");            // 21
+            AddColumn(MainTable, "Shippable Height");           // 22
+            AddColumn(MainTable, "Shippable Depth");            // 23
+            AddColumn(MainTable, "Shippable Weight");           // 24
+            AddColumn(MainTable, "Detachable Strap");           // 25
+            AddColumn(MainTable, "Zippered Enclosure");         // 26
+            AddColumn(MainTable, "Country of Origin");          // 27
+            AddColumn(MainTable, "Shoulder Drop Length");       // 28
+            AddColumn(MainTable, "Handle/Strap Drop Length");   // 29
+            AddColumn(MainTable, "Notable Strap or General Features");  //30
+            AddColumn(MainTable, "Protective Feet");            // 31
+            AddColumn(MainTable, "Closure");                    // 32
+            AddColumn(MainTable, "Inner Pocket");               // 33
+            AddColumn(MainTable, "Outside Pocket");             // 34
+            AddColumn(MainTable, "Size Differentiation");       // 35
+            AddColumn(MainTable, "Option 1");                   // 36
+            AddColumn(MainTable, "Option 2");                   // 37
+            AddColumn(MainTable, "Option 3");                   // 38
+            AddColumn(MainTable, "Option 4");                   // 39
+            AddColumn(MainTable, "Option 5");                   // 40
+            AddColumn(MainTable, "Active");                     // 41
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
                 ArrayList list = GetData(sku);
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = list[0];       // design service code
                 row[1] = list[1];       // brand
@@ -118,15 +118,15 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                 row[39] = list[39];     // option 5
                 row[40] = list[40];     // active
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the design service code that is active */
@@ -136,12 +136,12 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'TRUE' ORDER BY Design_Service_Code", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT Design_Service_Code FROM master_Design_Attributes WHERE Active = 'TRUE' ORDER BY Design_Service_Code", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }
@@ -159,7 +159,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             SqlCommand command = new SqlCommand("SELECT Design_Service_Code, Brand, Design_Service_Flag, Design_Service_Family_Code, Design_Service_Fashion_Name_Ashlin, Short_Description, Extended_Description, Trend_Short_Description, Trend_Extended_Description, Design_Online, " +
                                                 "GiftBox, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Width_cm, Height_cm, Depth_cm, Weight_grams, Flat_Shippable, Fold_Shippable, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_Weight_grams, Detachable_Strap, "
                                               + "Zippered_Enclosure, Country, ShoulderDropLength, HandleStrapDropLength, NotableStrapGeneralFeatures, ProtectiveFeet, Closure, InnerPocket, OutsidePocket, SizeDifferentiation, Option_1, Option_2, Option_3, Option_4, Option_5, Active " +
-                                                "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + '\'', connection);
+                                                "FROM master_Design_Attributes WHERE Design_Service_Code = \'" + designCode + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
             for (int i = 0; i <= 40; i++)

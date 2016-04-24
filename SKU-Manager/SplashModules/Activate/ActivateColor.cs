@@ -75,8 +75,8 @@ namespace SKU_Manager.SplashModules.Activate
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";            
-                extendedEnglishDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
 
                 activateColorButton.Enabled = false;
                 onlineButton.Enabled = false;

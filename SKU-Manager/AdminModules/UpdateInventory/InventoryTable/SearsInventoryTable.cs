@@ -20,10 +20,10 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         /* constructor that get all the sku that are on sears */
         public SearsInventoryTable()
         {
-            using (connection)
+            using (Connection)
             {
-                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_SEARS_CA FROM master_SKU_Attributes WHERE SKU_SEARS_CA != ''", connection);
-                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, SKU_SEARS_CA FROM master_SKU_Attributes WHERE SKU_SEARS_CA != ''", Connection);
+                Connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -45,28 +45,28 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
         public override DataTable GetTable()
         {
             // reset table just in case and set current to zero
-            mainTable.Reset();
+            MainTable.Reset();
             Current = 0;
 
-            AddColumn(mainTable, "Ashlin SKU", false);
-            AddColumn(mainTable, "Sears SKU", false);
-            AddColumn(mainTable, "BP Item ID", false);
-            AddColumn(mainTable, "On Hand", false);
-            AddColumn(mainTable, "Reorder Quantity", false);
-            AddColumn(mainTable, "Reorder Level", false);
-            AddColumn(mainTable, "Purchase Order", true);
-            AddColumn(mainTable, "Discontinue", true);
+            AddColumn(MainTable, "Ashlin SKU", false);
+            AddColumn(MainTable, "Sears SKU", false);
+            AddColumn(MainTable, "BP Item ID", false);
+            AddColumn(MainTable, "On Hand", false);
+            AddColumn(MainTable, "Reorder Quantity", false);
+            AddColumn(MainTable, "Reorder Level", false);
+            AddColumn(MainTable, "Purchase Order", true);
+            AddColumn(MainTable, "Discontinue", true);
 
             // starting work for begin loading data to the table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
 
             // start loading data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
             // add data to each row
             foreach (Sku sku in skuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
                 Current++;
 
                 row[0] = sku.AshlinSku;                                 // ashlin sku
@@ -83,13 +83,13 @@ namespace SKU_Manager.AdminModules.UpdateInventory.InventoryTable
                 row[6] = false;                                         // purchase order
                 row[7] = false;                                         // discontinue
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
             }
 
             // finish loading data
-            mainTable.EndLoadData();
+            MainTable.EndLoadData();
 
-            return mainTable;
+            return MainTable;
         }
     }
 }

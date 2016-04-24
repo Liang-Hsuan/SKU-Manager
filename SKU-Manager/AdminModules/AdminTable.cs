@@ -7,10 +7,10 @@ namespace SKU_Manager.AdminModules
     public abstract class AdminTable : Table
     {
         // the main table that will be return to client
-        protected DataTable mainTable = new DataTable();
+        protected DataTable MainTable = new DataTable();
 
         // field for database connection
-        protected SqlConnection connection = new SqlConnection(Credentials.DesignCon);
+        protected SqlConnection Connection = new SqlConnection(Credentials.DesignCon);
 
         // fields for progress 
         public int Total { get; protected set; }

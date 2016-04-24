@@ -672,7 +672,7 @@ namespace SKU_Manager.SplashModules.Add
                 shippableDepthTextbox.Enabled = false;
                 isFolded = false;
 
-                shippableWeightTextbox.Text = "";
+                shippableWeightTextbox.Text = string.Empty;
                 shippableHeightTextbox.Text = productHeightTextbox.Text;
                 shippableWidthTextbox.Text = productWidthTextbox.Text;
                 shippableDepthTextbox.Text = productDepthTextbox.Text;

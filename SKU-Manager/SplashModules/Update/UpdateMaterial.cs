@@ -86,10 +86,10 @@ namespace SKU_Manager.SplashModules.Update
             else
             {
                 // set the text to nothing
-                shortEnglishDescriptionTextbox.Text = "";
-                shortFrenchDescriptionTextbox.Text = "";
-                extendedEnglishDescriptionTextbox.Text = "";
-                extendedFrenchDescriptionTextbox.Text = "";
+                shortEnglishDescriptionTextbox.Text = string.Empty;
+                shortFrenchDescriptionTextbox.Text = string.Empty;
+                extendedEnglishDescriptionTextbox.Text = string.Empty;
+                extendedFrenchDescriptionTextbox.Text = string.Empty;
 
                 translateButton.Enabled = false;
                 shortEnglishDescriptionTextbox.Enabled = false;
@@ -247,14 +247,14 @@ namespace SKU_Manager.SplashModules.Update
                 using (SqlConnection connection = new SqlConnection(Credentials.DesignCon))
                 {
                     SqlCommand command = new SqlCommand("UPDATE ref_Materials SET Material_Description_Extended = \'" + extendedEnglishDescription + "\', Material_Description_Short = \'" + shortEnglishDescription + "\', Material_Description_Extended_FR = \'" + extendedFrenchDescription + "\', Material_Description_Short_FR = \'" + shortFrenchDescription + "\', " + 
-                                                        "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + "\'", connection);
+                                                        "Material_Online = \'" + materialOnlineEnglish.Replace("'", "''") + "\', Material_Online_FR = \'" + materialOnlineFrench.Replace("'", "''") + "\',Date_Updated = \'" + DateTime.Today.ToString("yyyy-MM-dd") + "\', Active = \'" + active + "\' WHERE Material_Code = \'" + materialCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();
 
                     // the case if the material is not active -> set all the SKUs' active and website flag to false that associate with this material
                     if (!active)
                     {
-                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Material_Code = \'" + materialCode + "\'";
+                        command.CommandText = "UPDATE master_SKU_Attributes SET Active = 'False', SKU_Website = 'False' WHERE Material_Code = \'" + materialCode + '\'';
                         command.ExecuteNonQuery();
                     }
                 }

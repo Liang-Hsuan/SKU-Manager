@@ -16,7 +16,7 @@ namespace SKU_Manager.SupportingClasses
             // connect to database and get the upc
             using (var connection = new System.Data.SqlClient.SqlConnection(Credentials.DesignCon))
             {
-                var command = new System.Data.SqlClient.SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9;", connection);
+                var command = new System.Data.SqlClient.SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9", connection);
                 connection.Open();
                 var reader = command.ExecuteReader();
 

@@ -12,38 +12,38 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         /* constructor that initialize fields */
         public BPrushNetImprintExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "BP item ID#");          // 1
-            AddColumn(mainTable, "SKU#");                 // 2
-            AddColumn(mainTable, "Description");          // 3
-            AddColumn(mainTable, "QTY breaks");           // 4
-            AddColumn(mainTable, "COSTS breaks");         // 5
+            AddColumn(MainTable, "BP item ID#");          // 1
+            AddColumn(MainTable, "SKU#");                 // 2
+            AddColumn(MainTable, "Description");          // 3
+            AddColumn(MainTable, "QTY breaks");           // 4
+            AddColumn(MainTable, "COSTS breaks");         // 5
 
             // local field for inserting data to table
             DataTable table = Properties.Settings.Default.StockQuantityTable;
             double[][] discountList = GetDiscount();
 
             // start loading data
-            mainTable.BeginLoadData();
-            connection.Open();
+            MainTable.BeginLoadData();
+            Connection.Open();
 
             // add data to each row 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
                 object[] list = GetData(sku);
 
-                row[0] = table.Select("SKU = \'" + sku + "\'")[0][1];       // BP item id#
+                row[0] = table.Select("SKU = \'" + sku + '\'')[0][1];       // BP item id#
                 row[1] = sku;                                               // sku#
                 row[2] = list[2] + " - " + list[3] + " - " + list[4];       // description
                 row[3] = "1; 6; 24; 50; 100; 250; 500; 1000; 2500";         // qty breaks
@@ -78,15 +78,15 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                        + Math.Round(msrp * discountList[k][4], 4) + "; " + Math.Round(msrp * discountList[k][5], 4) + "; " + Math.Round(msrp * discountList[k][6], 4) + "; " + Math.Round(msrp * discountList[k][7], 4) + "; "
                        + Math.Round(msrp * discountList[k][8], 4);
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // finish loading data
-            mainTable.EndLoadData();
-            connection.Close();
+            MainTable.EndLoadData();
+            Connection.Close();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that return the discount matrix */
@@ -96,9 +96,9 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
 
             //  [0] 1 net standard, [1] 6 net standard, [2] 24 net standard, [3] 50 net standard, [4] 100 net standard, [5] 250 net standard, [6] 500 net standard, [7] 1000 net standard, [8] 2500 net standard, [9] rush net
             SqlCommand command = new SqlCommand("SELECT [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], "
-                                              + "[RUSH_Net_25_wks] FROM Discount_Matrix", connection);
+                                              + "[RUSH_Net_25_wks] FROM Discount_Matrix", Connection);
 
-            connection.Open();
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             for (int i = 0; i <= 4; i++)
             {
@@ -123,8 +123,8 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new double[] { reader.GetDouble(0) };
-            connection.Close();
+            list[5] = new[] { reader.GetDouble(0) };
+            Connection.Close();
 
             return list;
         }

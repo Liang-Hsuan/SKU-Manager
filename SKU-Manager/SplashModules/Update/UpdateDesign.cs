@@ -1007,7 +1007,7 @@ namespace SKU_Manager.SplashModules.Update
                 {
                     // this is for searching family code for product family
                     DataTable table = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamily + "\';", connection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Description = \'" + productFamily + '\'', connection);
                     connection.Open();
                     adapter.Fill(table);
 

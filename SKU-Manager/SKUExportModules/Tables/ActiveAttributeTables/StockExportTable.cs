@@ -14,22 +14,22 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         /* constructor that initializes fields */
         public StockExportTable()
         {
-            mainTable = new DataTable();
-            skuList = GetSku();
+            MainTable = new DataTable();
+            SkuList = GetSku();
         }
 
         /* the real thing -> return the table !!! */
         public override DataTable GetTable()
         {
             // reset table just in case
-            mainTable.Reset();
+            MainTable.Reset();
 
             // add column to table
-            AddColumn(mainTable, "SKU");                // 1
-            AddColumn(mainTable, "BP Item#");           // 2
-            AddColumn(mainTable, "Quantity");           // 3
-            AddColumn(mainTable, "Reorder Quantity");   // 4 
-            AddColumn(mainTable, "Reorder Level");      // 5
+            AddColumn(MainTable, "SKU");                // 1
+            AddColumn(MainTable, "BP Item#");           // 2
+            AddColumn(MainTable, "Quantity");           // 3
+            AddColumn(MainTable, "Reorder Quantity");   // 4 
+            AddColumn(MainTable, "Reorder Level");      // 5
 
             // local field for inserting data to table
             Product product = new Product();
@@ -37,11 +37,11 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             bool found = false;
 
             // start load data
-            mainTable.BeginLoadData();
+            MainTable.BeginLoadData();
 
-            foreach (string sku in skuList)
+            foreach (string sku in SkuList)
             {
-                DataRow row = mainTable.NewRow();
+                DataRow row = MainTable.NewRow();
 
                 row[0] = sku;
 
@@ -66,14 +66,14 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
 
                 found = false;
 
-                mainTable.Rows.Add(row);
+                MainTable.Rows.Add(row);
                 Progress++;
             }
 
             // end loading data
-            mainTable.EndLoadData();
+            MainTable.EndLoadData();
 
-            return mainTable;
+            return MainTable;
         }
 
         /* a method that get all the sku that is active */
@@ -83,12 +83,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' ORDER BY SKU_Ashlin", connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'TRUE' ORDER BY SKU_Ashlin", Connection);
+            Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
                 list.Add(reader.GetString(0));
-            connection.Close();
+            Connection.Close();
 
             return list.ToArray();
         }

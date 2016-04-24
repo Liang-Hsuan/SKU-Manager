@@ -215,7 +215,7 @@ namespace SKU_Manager.SplashModules.Add
                 sageCategoryTextbox.Text = sageCategoryTextbox.Text.Substring(0, index);
             }
             else
-                sageCategoryTextbox.Text = "";
+                sageCategoryTextbox.Text = string.Empty;
         }
 
         /* the event for sage theme add and remove button click */
@@ -238,7 +238,7 @@ namespace SKU_Manager.SplashModules.Add
                 sageThemeTextbox.Text = sageThemeTextbox.Text.Substring(0, index);
             }
             else
-                sageThemeTextbox.Text = "";
+                sageThemeTextbox.Text = string.Empty;
         }
 
         /* the event for ESP add and remove button click */
@@ -261,7 +261,7 @@ namespace SKU_Manager.SplashModules.Add
                 espTextbox.Text = espTextbox.Text.Substring(0, index);
             }
             else
-                espTextbox.Text = "";
+                espTextbox.Text = string.Empty;
         }
 
         /* the event for promo marketing add and remove button click */
@@ -284,7 +284,7 @@ namespace SKU_Manager.SplashModules.Add
                 promoMarketingTextbox.Text = promoMarketingTextbox.Text.Substring(0, index);
             }
             else
-                promoMarketingTextbox.Text = "";
+                promoMarketingTextbox.Text = string.Empty;
         }
 
         /* the event for UDUCAT add and remove button click */
@@ -307,7 +307,7 @@ namespace SKU_Manager.SplashModules.Add
                 uducatTextbox.Text = uducatTextbox.Text.Substring(0, index);
             }
             else
-                uducatTextbox.Text = "";
+                uducatTextbox.Text = string.Empty;
         }
 
         /* the event for distributor central add and remove button click */
@@ -330,7 +330,7 @@ namespace SKU_Manager.SplashModules.Add
                 distributorCentralTextbox.Text = distributorCentralTextbox.Text.Substring(0, index);
             }
             else
-                distributorCentralTextbox.Text = "";
+                distributorCentralTextbox.Text = string.Empty;
         }
         #endregion
 
