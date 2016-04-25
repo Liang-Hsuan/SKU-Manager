@@ -152,16 +152,7 @@ namespace SKU_Manager.MainForms
                     {
                         // sears case
                         sears = new Sears();
-                        Thread thread = new Thread(() => sears.Update(openFileDialog.FileName));
-                        thread.Start();
-                        thread.Join();
-
-                        // error check
-                        if (sears.Error)
-                        {
-                            MessageBox.Show("Error occurs during updating:\n" + sears.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        new Thread(() => sears.Update(openFileDialog.FileName)).Start();
 
                         shopCa = null;
                         amazon = null;
@@ -172,16 +163,7 @@ namespace SKU_Manager.MainForms
                     {
                         // shop.ca case
                         shopCa = new ShopCa();
-                        Thread thread = new Thread(() => shopCa.Update(openFileDialog.FileName));
-                        thread.Start();
-                        thread.Join();
-
-                        // error check
-                        if (shopCa.Error)
-                        {
-                            MessageBox.Show("Error occurs during updating:\n" + shopCa.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        new Thread(() => shopCa.Update(openFileDialog.FileName)).Start();
 
                         sears = null;
                         giantTiger = null;
@@ -192,16 +174,7 @@ namespace SKU_Manager.MainForms
                     {
                         // amazon case
                         amazon = new Amazon();
-                        Thread thread = new Thread(() => amazon.Update(openFileDialog.FileName));
-                        thread.Start();
-                        thread.Join();
-
-                        // error check
-                        if (amazon.Error)
-                        {
-                            MessageBox.Show("Error occurs during updating:\n" + amazon.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        new Thread(() => amazon.Update(openFileDialog.FileName)).Start();
 
                         sears = null;
                         shopCa = null;
@@ -212,16 +185,7 @@ namespace SKU_Manager.MainForms
                     {
                         // giant tiger case
                         giantTiger = new GiantTiger();
-                        Thread thread = new Thread(() => giantTiger.Update(openFileDialog.FileName));
-                        thread.Start();
-                        thread.Join();
-
-                        // error check
-                        if (giantTiger.Error)
-                        {
-                            MessageBox.Show("Error occurs during updating:\n" + giantTiger.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
+                        new Thread(() => giantTiger.Update(openFileDialog.FileName)).Start();
 
                         sears = null;
                         shopCa = null;
@@ -311,6 +275,15 @@ namespace SKU_Manager.MainForms
             if (sears != null)
             {
                 // sears case
+                // error check
+                if (sears.Error)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = @"Sears";
+                    MessageBox.Show("Error occurs during updating:\n" + sears.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // check if updating is finish -> stop the timer and set text to nothing
                 if (sears.Current >= sears.Total)
                 {
@@ -323,6 +296,15 @@ namespace SKU_Manager.MainForms
             else if (shopCa != null)
             {
                 // shop.ca case
+                // error check
+                if (shopCa.Error)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = @"Shop.ca";
+                    MessageBox.Show("Error occurs during updating:\n" + shopCa.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // check if updating is finish -> stop the timer and set text to nothing
                 if (shopCa.Current >= shopCa.Total)
                 {
@@ -335,6 +317,15 @@ namespace SKU_Manager.MainForms
             else if (amazon != null)
             {
                 // amazon case
+                // error check
+                if (amazon.Error)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = @"Amazon";
+                    MessageBox.Show("Error occurs during updating:\n" + amazon.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // check if updating is finish -> stop the timer and set text to nothing
                 if (amazon.Current >= amazon.Total)
                 {
@@ -347,6 +338,15 @@ namespace SKU_Manager.MainForms
             else if (giantTiger != null)
             {
                 // giant tiger case
+                // error check
+                if (giantTiger.Error)
+                {
+                    timer.Stop();
+                    loadingLabel.Text = @"Giant Tiger";
+                    MessageBox.Show("Error occurs during updating:\n" + giantTiger.ErrorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // check if updating is finish -> stop the timer and set text to nothing
                 if (giantTiger.Current >= giantTiger.Total)
                 {

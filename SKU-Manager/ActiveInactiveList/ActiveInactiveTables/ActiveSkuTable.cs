@@ -124,7 +124,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // [0] sku, [1] design service code, [2] material code, [3] colour code, [4] sku sears ca, [5] sku tsc ca, [6] sku costco ca, [7] sku bestbuy ca, [8] sku amazon ca [9] sku amazon com, [10] sku shop ca, [11] base price, [12] Pricing_Tier, 
             // [13] reorder quantity, [14] reorder level [15] upc code 9, [16] upc code 10, [17] location full, [18] hts ca, [19] hts us, [20] duty ca, [21] duty us, [22] lining material, [23] trim, [24] active
             SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, " +
-                                                "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, Pricing_Tier, Reorder_Quantity, Reorder_Level, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Lining_Material, Trim Active " +
+                                                "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, Pricing_Tier, Reorder_Quantity, Reorder_Level, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Lining_Material, Trim, Active " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();

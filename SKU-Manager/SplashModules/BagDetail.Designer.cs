@@ -64,9 +64,9 @@
             this.shoulderDropLengthLabel.ForeColor = System.Drawing.Color.Green;
             this.shoulderDropLengthLabel.Location = new System.Drawing.Point(12, 21);
             this.shoulderDropLengthLabel.Name = "shoulderDropLengthLabel";
-            this.shoulderDropLengthLabel.Size = new System.Drawing.Size(173, 20);
+            this.shoulderDropLengthLabel.Size = new System.Drawing.Size(226, 20);
             this.shoulderDropLengthLabel.TabIndex = 0;
-            this.shoulderDropLengthLabel.Text = "Shoulder Drop Length";
+            this.shoulderDropLengthLabel.Text = "Shoulder Drop Length (cm\'s)";
             // 
             // handleStrapDropLengthTextbox
             // 
@@ -84,9 +84,9 @@
             this.handleStrapDropLengthLabel.ForeColor = System.Drawing.Color.Green;
             this.handleStrapDropLengthLabel.Location = new System.Drawing.Point(12, 47);
             this.handleStrapDropLengthLabel.Name = "handleStrapDropLengthLabel";
-            this.handleStrapDropLengthLabel.Size = new System.Drawing.Size(205, 20);
+            this.handleStrapDropLengthLabel.Size = new System.Drawing.Size(258, 20);
             this.handleStrapDropLengthLabel.TabIndex = 2;
-            this.handleStrapDropLengthLabel.Text = "Handle/Strap Drop Length";
+            this.handleStrapDropLengthLabel.Text = "Handle/Strap Drop Length (cm\'s)";
             // 
             // notableStrapGeneralFeaturesLabel
             // 

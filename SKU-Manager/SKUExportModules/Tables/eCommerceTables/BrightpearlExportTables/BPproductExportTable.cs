@@ -90,12 +90,12 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                 row[2] = "Ashlin";      // brand
                 row[3] = list[24];      // category
                 double msrp = Convert.ToDouble(list[3]) * discountList[0][1];
-                row[4] = msrp * discountList[0][0];        // price (cost)
-                row[5] = msrp * discountList[0][0];        // price (whole)
-                row[6] = msrp;                             // price (retail)
+                row[4] = Math.Ceiling(msrp * discountList[0][0]);        // price (cost)
+                row[5] = Math.Ceiling(msrp * discountList[0][0]);        // price (whole)
+                row[6] = Math.Ceiling(msrp);                             // price (retail)
                 row[7] = 'T';                              // tax class
                 row[8] = "Yes";                            // manage stock
-                row[9] = "Ashlin BPG Marketing INC";       // supplier
+                row[9] = 9835;          // supplier
                 row[11] = list[9];      // weight
                 row[12] = list[4];      // barcode
                 row[15] = list[4];      // upc

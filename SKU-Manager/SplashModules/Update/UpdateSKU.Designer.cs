@@ -68,7 +68,7 @@
             this.asiXidLabel = new System.Windows.Forms.Label();
             this.wmManufacturerLabel = new System.Windows.Forms.Label();
             this.staplesLabel = new System.Windows.Forms.Label();
-            this.costcoLabel = new System.Windows.Forms.Label();
+            this.theBayLabel = new System.Windows.Forms.Label();
             this.inactiveListButton = new System.Windows.Forms.Button();
             this.activeListButton = new System.Windows.Forms.Button();
             this.updateSkuButton = new System.Windows.Forms.Button();
@@ -139,7 +139,7 @@
             this.ashlinTextbox = new System.Windows.Forms.TextBox();
             this.magentoTextbox = new System.Windows.Forms.TextBox();
             this.tscTextbox = new System.Windows.Forms.TextBox();
-            this.costcoTextbox = new System.Windows.Forms.TextBox();
+            this.theBayTextbox = new System.Windows.Forms.TextBox();
             this.bestbuyTextbox = new System.Windows.Forms.TextBox();
             this.shopCaTextbox = new System.Windows.Forms.TextBox();
             this.amazonCaTextbox = new System.Windows.Forms.TextBox();
@@ -620,16 +620,16 @@
             this.staplesLabel.TabIndex = 75;
             this.staplesLabel.Text = "STAPLES.CA SKU";
             // 
-            // costcoLabel
+            // theBayLabel
             // 
-            this.costcoLabel.AutoSize = true;
-            this.costcoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costcoLabel.ForeColor = System.Drawing.Color.Gray;
-            this.costcoLabel.Location = new System.Drawing.Point(4, 631);
-            this.costcoLabel.Name = "costcoLabel";
-            this.costcoLabel.Size = new System.Drawing.Size(138, 20);
-            this.costcoLabel.TabIndex = 63;
-            this.costcoLabel.Text = "COSTCO.CA SKU";
+            this.theBayLabel.AutoSize = true;
+            this.theBayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.theBayLabel.ForeColor = System.Drawing.Color.Gray;
+            this.theBayLabel.Location = new System.Drawing.Point(4, 631);
+            this.theBayLabel.Name = "theBayLabel";
+            this.theBayLabel.Size = new System.Drawing.Size(115, 20);
+            this.theBayLabel.TabIndex = 63;
+            this.theBayLabel.Text = "THE BAY SKU";
             // 
             // inactiveListButton
             // 
@@ -1485,14 +1485,14 @@
             this.tscTextbox.Size = new System.Drawing.Size(574, 20);
             this.tscTextbox.TabIndex = 62;
             // 
-            // costcoTextbox
+            // theBayTextbox
             // 
-            this.costcoTextbox.Enabled = false;
-            this.costcoTextbox.Location = new System.Drawing.Point(187, 631);
-            this.costcoTextbox.MaxLength = 100;
-            this.costcoTextbox.Name = "costcoTextbox";
-            this.costcoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.costcoTextbox.TabIndex = 64;
+            this.theBayTextbox.Enabled = false;
+            this.theBayTextbox.Location = new System.Drawing.Point(187, 631);
+            this.theBayTextbox.MaxLength = 100;
+            this.theBayTextbox.Name = "theBayTextbox";
+            this.theBayTextbox.Size = new System.Drawing.Size(574, 20);
+            this.theBayTextbox.TabIndex = 64;
             // 
             // bestbuyTextbox
             // 
@@ -2115,7 +2115,7 @@
             this.Controls.Add(this.amazonCaTextbox);
             this.Controls.Add(this.shopCaTextbox);
             this.Controls.Add(this.bestbuyTextbox);
-            this.Controls.Add(this.costcoTextbox);
+            this.Controls.Add(this.theBayTextbox);
             this.Controls.Add(this.tscTextbox);
             this.Controls.Add(this.magentoTextbox);
             this.Controls.Add(this.ashlinTextbox);
@@ -2171,7 +2171,7 @@
             this.Controls.Add(this.asiXidLabel);
             this.Controls.Add(this.wmManufacturerLabel);
             this.Controls.Add(this.staplesLabel);
-            this.Controls.Add(this.costcoLabel);
+            this.Controls.Add(this.theBayLabel);
             this.Controls.Add(this.inactiveListButton);
             this.Controls.Add(this.activeListButton);
             this.Controls.Add(this.updateSkuButton);
@@ -2280,7 +2280,7 @@
         private System.Windows.Forms.Label asiXidLabel;
         private System.Windows.Forms.Label wmManufacturerLabel;
         private System.Windows.Forms.Label staplesLabel;
-        private System.Windows.Forms.Label costcoLabel;
+        private System.Windows.Forms.Label theBayLabel;
         private System.Windows.Forms.Button inactiveListButton;
         private System.Windows.Forms.Button activeListButton;
         private System.Windows.Forms.Button updateSkuButton;
@@ -2351,7 +2351,7 @@
         private System.Windows.Forms.TextBox ashlinTextbox;
         private System.Windows.Forms.TextBox magentoTextbox;
         private System.Windows.Forms.TextBox tscTextbox;
-        private System.Windows.Forms.TextBox costcoTextbox;
+        private System.Windows.Forms.TextBox theBayTextbox;
         private System.Windows.Forms.TextBox bestbuyTextbox;
         private System.Windows.Forms.TextBox shopCaTextbox;
         private System.Windows.Forms.TextBox amazonCaTextbox;
