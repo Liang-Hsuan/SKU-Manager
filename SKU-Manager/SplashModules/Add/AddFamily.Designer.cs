@@ -876,7 +876,7 @@
             this.pricingTierUpdown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pricingTierUpdown.Location = new System.Drawing.Point(124, 723);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});

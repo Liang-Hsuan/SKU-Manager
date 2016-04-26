@@ -149,7 +149,7 @@
             this.giftCheckbox = new System.Windows.Forms.CheckBox();
             this.countryCombobox = new System.Windows.Forms.ComboBox();
             this.countryLabel = new System.Windows.Forms.Label();
-            this.bagDetailButton = new System.Windows.Forms.Button();
+            this.bagWalletDetailButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // shippableWeightTextbox
@@ -1696,18 +1696,18 @@
             this.countryLabel.TabIndex = 55;
             this.countryLabel.Text = "Country of Origin";
             // 
-            // bagDetailButton
+            // bagWalletDetailButton
             // 
-            this.bagDetailButton.BackColor = System.Drawing.Color.Green;
-            this.bagDetailButton.Enabled = false;
-            this.bagDetailButton.ForeColor = System.Drawing.Color.White;
-            this.bagDetailButton.Location = new System.Drawing.Point(740, 444);
-            this.bagDetailButton.Name = "bagDetailButton";
-            this.bagDetailButton.Size = new System.Drawing.Size(165, 29);
-            this.bagDetailButton.TabIndex = 57;
-            this.bagDetailButton.Text = "More Bag Details";
-            this.bagDetailButton.UseVisualStyleBackColor = false;
-            this.bagDetailButton.Click += new System.EventHandler(this.bagDetailButton_Click);
+            this.bagWalletDetailButton.BackColor = System.Drawing.Color.Green;
+            this.bagWalletDetailButton.Enabled = false;
+            this.bagWalletDetailButton.ForeColor = System.Drawing.Color.White;
+            this.bagWalletDetailButton.Location = new System.Drawing.Point(740, 444);
+            this.bagWalletDetailButton.Name = "bagWalletDetailButton";
+            this.bagWalletDetailButton.Size = new System.Drawing.Size(165, 29);
+            this.bagWalletDetailButton.TabIndex = 57;
+            this.bagWalletDetailButton.Text = "More Bag Details";
+            this.bagWalletDetailButton.UseVisualStyleBackColor = false;
+            this.bagWalletDetailButton.Click += new System.EventHandler(this.bagWalletDetailButton_Click);
             // 
             // UpdateDesign
             // 
@@ -1716,7 +1716,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1418, 751);
-            this.Controls.Add(this.bagDetailButton);
+            this.Controls.Add(this.bagWalletDetailButton);
             this.Controls.Add(this.countryCombobox);
             this.Controls.Add(this.countryLabel);
             this.Controls.Add(this.giftCheckbox);
@@ -1965,6 +1965,6 @@
         private System.Windows.Forms.CheckBox giftCheckbox;
         private System.Windows.Forms.ComboBox countryCombobox;
         private System.Windows.Forms.Label countryLabel;
-        private System.Windows.Forms.Button bagDetailButton;
+        private System.Windows.Forms.Button bagWalletDetailButton;
     }
 }

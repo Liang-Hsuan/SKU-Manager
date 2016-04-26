@@ -196,6 +196,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.liningMaterialCombobox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.handleMaterialCombobox = new System.Windows.Forms.ComboBox();
+            this.hardwareColorLabel = new System.Windows.Forms.Label();
+            this.handleMaterialLabel = new System.Windows.Forms.Label();
+            this.hardwareColorCombobox = new System.Windows.Forms.ComboBox();
             this.autoManualPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).BeginInit();
@@ -205,11 +209,11 @@
             // usDutyTextbox
             // 
             this.usDutyTextbox.Enabled = false;
-            this.usDutyTextbox.Location = new System.Drawing.Point(496, 383);
+            this.usDutyTextbox.Location = new System.Drawing.Point(496, 411);
             this.usDutyTextbox.MaxLength = 20;
             this.usDutyTextbox.Name = "usDutyTextbox";
             this.usDutyTextbox.Size = new System.Drawing.Size(265, 20);
-            this.usDutyTextbox.TabIndex = 41;
+            this.usDutyTextbox.TabIndex = 45;
             // 
             // usHtsCombobox
             // 
@@ -217,10 +221,10 @@
             this.usHtsCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.usHtsCombobox.Enabled = false;
             this.usHtsCombobox.FormattingEnabled = true;
-            this.usHtsCombobox.Location = new System.Drawing.Point(496, 357);
+            this.usHtsCombobox.Location = new System.Drawing.Point(496, 385);
             this.usHtsCombobox.Name = "usHtsCombobox";
             this.usHtsCombobox.Size = new System.Drawing.Size(265, 21);
-            this.usHtsCombobox.TabIndex = 39;
+            this.usHtsCombobox.TabIndex = 43;
             this.usHtsCombobox.SelectedValueChanged += new System.EventHandler(this.usHtsCombobox_SelectedValueChanged);
             // 
             // label4
@@ -228,10 +232,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(353, 384);
+            this.label4.Location = new System.Drawing.Point(353, 412);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 20);
-            this.label4.TabIndex = 40;
+            this.label4.TabIndex = 44;
             this.label4.Text = "US Duty";
             // 
             // label3
@@ -239,20 +243,20 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(353, 357);
+            this.label3.Location = new System.Drawing.Point(353, 385);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 20);
-            this.label3.TabIndex = 38;
+            this.label3.TabIndex = 42;
             this.label3.Text = "US HTS";
             // 
             // caDutyTextbox
             // 
             this.caDutyTextbox.Enabled = false;
-            this.caDutyTextbox.Location = new System.Drawing.Point(496, 331);
+            this.caDutyTextbox.Location = new System.Drawing.Point(496, 359);
             this.caDutyTextbox.MaxLength = 20;
             this.caDutyTextbox.Name = "caDutyTextbox";
             this.caDutyTextbox.Size = new System.Drawing.Size(265, 20);
-            this.caDutyTextbox.TabIndex = 37;
+            this.caDutyTextbox.TabIndex = 41;
             // 
             // canadianHtsCombobox
             // 
@@ -260,10 +264,10 @@
             this.canadianHtsCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.canadianHtsCombobox.Enabled = false;
             this.canadianHtsCombobox.FormattingEnabled = true;
-            this.canadianHtsCombobox.Location = new System.Drawing.Point(496, 304);
+            this.canadianHtsCombobox.Location = new System.Drawing.Point(496, 332);
             this.canadianHtsCombobox.Name = "canadianHtsCombobox";
             this.canadianHtsCombobox.Size = new System.Drawing.Size(265, 21);
-            this.canadianHtsCombobox.TabIndex = 35;
+            this.canadianHtsCombobox.TabIndex = 39;
             this.canadianHtsCombobox.SelectedValueChanged += new System.EventHandler(this.canadianHtsCombobox_SelectedValueChanged);
             // 
             // label2
@@ -271,10 +275,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Green;
-            this.label2.Location = new System.Drawing.Point(352, 331);
+            this.label2.Location = new System.Drawing.Point(352, 359);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 20);
-            this.label2.TabIndex = 36;
+            this.label2.TabIndex = 40;
             this.label2.Text = "CA Duty";
             // 
             // label1
@@ -282,10 +286,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Location = new System.Drawing.Point(352, 303);
+            this.label1.Location = new System.Drawing.Point(352, 331);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
-            this.label1.TabIndex = 34;
+            this.label1.TabIndex = 38;
             this.label1.Text = "Canadian HTS";
             // 
             // colorShortDescriptionTextbox
@@ -339,22 +343,22 @@
             this.skuCodeTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.skuCodeTextbox.Enabled = false;
             this.skuCodeTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skuCodeTextbox.Location = new System.Drawing.Point(180, 441);
+            this.skuCodeTextbox.Location = new System.Drawing.Point(180, 469);
             this.skuCodeTextbox.MaxLength = 100;
             this.skuCodeTextbox.Multiline = true;
             this.skuCodeTextbox.Name = "skuCodeTextbox";
             this.skuCodeTextbox.Size = new System.Drawing.Size(581, 28);
-            this.skuCodeTextbox.TabIndex = 49;
+            this.skuCodeTextbox.TabIndex = 53;
             // 
             // skuCodeLabel
             // 
             this.skuCodeLabel.BackColor = System.Drawing.Color.Green;
             this.skuCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skuCodeLabel.ForeColor = System.Drawing.Color.White;
-            this.skuCodeLabel.Location = new System.Drawing.Point(0, 445);
+            this.skuCodeLabel.Location = new System.Drawing.Point(0, 473);
             this.skuCodeLabel.Name = "skuCodeLabel";
             this.skuCodeLabel.Size = new System.Drawing.Size(174, 20);
-            this.skuCodeLabel.TabIndex = 48;
+            this.skuCodeLabel.TabIndex = 52;
             this.skuCodeLabel.Text = "SKU CODE:";
             this.skuCodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -363,10 +367,10 @@
             this.columnIndexLabel.AutoSize = true;
             this.columnIndexLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.columnIndexLabel.ForeColor = System.Drawing.Color.Gray;
-            this.columnIndexLabel.Location = new System.Drawing.Point(184, 385);
+            this.columnIndexLabel.Location = new System.Drawing.Point(184, 413);
             this.columnIndexLabel.Name = "columnIndexLabel";
             this.columnIndexLabel.Size = new System.Drawing.Size(88, 16);
-            this.columnIndexLabel.TabIndex = 32;
+            this.columnIndexLabel.TabIndex = 36;
             this.columnIndexLabel.Text = "Column Index";
             // 
             // shelfLabel
@@ -374,10 +378,10 @@
             this.shelfLabel.AutoSize = true;
             this.shelfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shelfLabel.ForeColor = System.Drawing.Color.Gray;
-            this.shelfLabel.Location = new System.Drawing.Point(184, 358);
+            this.shelfLabel.Location = new System.Drawing.Point(184, 386);
             this.shelfLabel.Name = "shelfLabel";
             this.shelfLabel.Size = new System.Drawing.Size(38, 16);
-            this.shelfLabel.TabIndex = 60;
+            this.shelfLabel.TabIndex = 34;
             this.shelfLabel.Text = "Shelf";
             // 
             // rackLabel
@@ -385,10 +389,10 @@
             this.rackLabel.AutoSize = true;
             this.rackLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rackLabel.ForeColor = System.Drawing.Color.Gray;
-            this.rackLabel.Location = new System.Drawing.Point(184, 331);
+            this.rackLabel.Location = new System.Drawing.Point(184, 359);
             this.rackLabel.Name = "rackLabel";
             this.rackLabel.Size = new System.Drawing.Size(40, 16);
-            this.rackLabel.TabIndex = 58;
+            this.rackLabel.TabIndex = 32;
             this.rackLabel.Text = "Rack";
             // 
             // columnIndexCombobox
@@ -397,10 +401,10 @@
             this.columnIndexCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.columnIndexCombobox.Enabled = false;
             this.columnIndexCombobox.FormattingEnabled = true;
-            this.columnIndexCombobox.Location = new System.Drawing.Point(285, 383);
+            this.columnIndexCombobox.Location = new System.Drawing.Point(285, 411);
             this.columnIndexCombobox.Name = "columnIndexCombobox";
             this.columnIndexCombobox.Size = new System.Drawing.Size(61, 21);
-            this.columnIndexCombobox.TabIndex = 33;
+            this.columnIndexCombobox.TabIndex = 37;
             // 
             // shelfCombobox
             // 
@@ -408,10 +412,10 @@
             this.shelfCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.shelfCombobox.Enabled = false;
             this.shelfCombobox.FormattingEnabled = true;
-            this.shelfCombobox.Location = new System.Drawing.Point(285, 356);
+            this.shelfCombobox.Location = new System.Drawing.Point(285, 384);
             this.shelfCombobox.Name = "shelfCombobox";
             this.shelfCombobox.Size = new System.Drawing.Size(61, 21);
-            this.shelfCombobox.TabIndex = 31;
+            this.shelfCombobox.TabIndex = 35;
             // 
             // rackCombobox
             // 
@@ -419,10 +423,10 @@
             this.rackCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.rackCombobox.Enabled = false;
             this.rackCombobox.FormattingEnabled = true;
-            this.rackCombobox.Location = new System.Drawing.Point(285, 329);
+            this.rackCombobox.Location = new System.Drawing.Point(285, 357);
             this.rackCombobox.Name = "rackCombobox";
             this.rackCombobox.Size = new System.Drawing.Size(61, 21);
-            this.rackCombobox.TabIndex = 59;
+            this.rackCombobox.TabIndex = 33;
             // 
             // warehouseCombobox
             // 
@@ -430,20 +434,20 @@
             this.warehouseCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.warehouseCombobox.Enabled = false;
             this.warehouseCombobox.FormattingEnabled = true;
-            this.warehouseCombobox.Location = new System.Drawing.Point(285, 302);
+            this.warehouseCombobox.Location = new System.Drawing.Point(285, 330);
             this.warehouseCombobox.Name = "warehouseCombobox";
             this.warehouseCombobox.Size = new System.Drawing.Size(61, 21);
-            this.warehouseCombobox.TabIndex = 57;
+            this.warehouseCombobox.TabIndex = 31;
             // 
             // warehouseLabel
             // 
             this.warehouseLabel.AutoSize = true;
             this.warehouseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.warehouseLabel.ForeColor = System.Drawing.Color.Gray;
-            this.warehouseLabel.Location = new System.Drawing.Point(184, 304);
+            this.warehouseLabel.Location = new System.Drawing.Point(184, 332);
             this.warehouseLabel.Name = "warehouseLabel";
             this.warehouseLabel.Size = new System.Drawing.Size(78, 16);
-            this.warehouseLabel.TabIndex = 56;
+            this.warehouseLabel.TabIndex = 30;
             this.warehouseLabel.Text = "Warehouse";
             // 
             // locationLabel
@@ -451,10 +455,10 @@
             this.locationLabel.AutoSize = true;
             this.locationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.locationLabel.ForeColor = System.Drawing.Color.Green;
-            this.locationLabel.Location = new System.Drawing.Point(13, 301);
+            this.locationLabel.Location = new System.Drawing.Point(13, 329);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(73, 20);
-            this.locationLabel.TabIndex = 25;
+            this.locationLabel.TabIndex = 29;
             this.locationLabel.Text = "Location";
             // 
             // basesPriceLabel
@@ -462,11 +466,11 @@
             this.basesPriceLabel.AutoSize = true;
             this.basesPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.basesPriceLabel.ForeColor = System.Drawing.Color.Green;
-            this.basesPriceLabel.Location = new System.Drawing.Point(13, 276);
+            this.basesPriceLabel.Location = new System.Drawing.Point(13, 304);
             this.basesPriceLabel.Name = "basesPriceLabel";
-            this.basesPriceLabel.Size = new System.Drawing.Size(114, 20);
-            this.basesPriceLabel.TabIndex = 22;
-            this.basesPriceLabel.Text = "Bases Pricing";
+            this.basesPriceLabel.Size = new System.Drawing.Size(105, 20);
+            this.basesPriceLabel.TabIndex = 26;
+            this.basesPriceLabel.Text = "Base Pricing";
             // 
             // colorCodeLabel
             // 
@@ -493,10 +497,10 @@
             // basesPriceTextbox
             // 
             this.basesPriceTextbox.Enabled = false;
-            this.basesPriceTextbox.Location = new System.Drawing.Point(187, 276);
+            this.basesPriceTextbox.Location = new System.Drawing.Point(187, 304);
             this.basesPriceTextbox.Name = "basesPriceTextbox";
             this.basesPriceTextbox.Size = new System.Drawing.Size(159, 20);
-            this.basesPriceTextbox.TabIndex = 24;
+            this.basesPriceTextbox.TabIndex = 28;
             // 
             // designServiceFlagLabel
             // 
@@ -549,10 +553,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(171, 276);
+            this.label5.Location = new System.Drawing.Point(171, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
-            this.label5.TabIndex = 23;
+            this.label5.TabIndex = 27;
             this.label5.Text = "$";
             // 
             // activeLabel
@@ -560,42 +564,42 @@
             this.activeLabel.AutoSize = true;
             this.activeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeLabel.ForeColor = System.Drawing.Color.Green;
-            this.activeLabel.Location = new System.Drawing.Point(21, 481);
+            this.activeLabel.Location = new System.Drawing.Point(21, 509);
             this.activeLabel.Name = "activeLabel";
             this.activeLabel.Size = new System.Drawing.Size(153, 20);
-            this.activeLabel.TabIndex = 50;
+            this.activeLabel.TabIndex = 54;
             this.activeLabel.Text = "Is this SKU Active?";
             // 
             // activeCheckbox
             // 
             this.activeCheckbox.AutoSize = true;
             this.activeCheckbox.Enabled = false;
-            this.activeCheckbox.Location = new System.Drawing.Point(181, 485);
+            this.activeCheckbox.Location = new System.Drawing.Point(181, 513);
             this.activeCheckbox.Name = "activeCheckbox";
             this.activeCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.activeCheckbox.TabIndex = 51;
+            this.activeCheckbox.TabIndex = 55;
             this.activeCheckbox.UseVisualStyleBackColor = true;
             this.activeCheckbox.CheckedChanged += new System.EventHandler(this.activeCheckbox_CheckedChanged);
             // 
             // progressBar
             // 
             this.progressBar.ForeColor = System.Drawing.Color.Green;
-            this.progressBar.Location = new System.Drawing.Point(193, 985);
+            this.progressBar.Location = new System.Drawing.Point(193, 1013);
             this.progressBar.Name = "progressBar";
             this.progressBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.progressBar.Size = new System.Drawing.Size(370, 10);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 89;
+            this.progressBar.TabIndex = 93;
             // 
             // asiXidLabel
             // 
             this.asiXidLabel.AutoSize = true;
             this.asiXidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.asiXidLabel.ForeColor = System.Drawing.Color.Gray;
-            this.asiXidLabel.Location = new System.Drawing.Point(4, 943);
+            this.asiXidLabel.Location = new System.Drawing.Point(4, 971);
             this.asiXidLabel.Name = "asiXidLabel";
             this.asiXidLabel.Size = new System.Drawing.Size(142, 20);
-            this.asiXidLabel.TabIndex = 87;
+            this.asiXidLabel.TabIndex = 91;
             this.asiXidLabel.Text = "ASI XID NUMBER";
             // 
             // wmManufacturerLabel
@@ -603,10 +607,10 @@
             this.wmManufacturerLabel.AutoSize = true;
             this.wmManufacturerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.wmManufacturerLabel.ForeColor = System.Drawing.Color.Gray;
-            this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 917);
+            this.wmManufacturerLabel.Location = new System.Drawing.Point(4, 945);
             this.wmManufacturerLabel.Name = "wmManufacturerLabel";
             this.wmManufacturerLabel.Size = new System.Drawing.Size(124, 20);
-            this.wmManufacturerLabel.TabIndex = 85;
+            this.wmManufacturerLabel.TabIndex = 89;
             this.wmManufacturerLabel.Text = "Giant Tiger SKU";
             // 
             // staplesLabel
@@ -614,10 +618,10 @@
             this.staplesLabel.AutoSize = true;
             this.staplesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.staplesLabel.ForeColor = System.Drawing.Color.Gray;
-            this.staplesLabel.Location = new System.Drawing.Point(4, 787);
+            this.staplesLabel.Location = new System.Drawing.Point(4, 815);
             this.staplesLabel.Name = "staplesLabel";
             this.staplesLabel.Size = new System.Drawing.Size(144, 20);
-            this.staplesLabel.TabIndex = 75;
+            this.staplesLabel.TabIndex = 79;
             this.staplesLabel.Text = "STAPLES.CA SKU";
             // 
             // theBayLabel
@@ -625,10 +629,10 @@
             this.theBayLabel.AutoSize = true;
             this.theBayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.theBayLabel.ForeColor = System.Drawing.Color.Gray;
-            this.theBayLabel.Location = new System.Drawing.Point(4, 631);
+            this.theBayLabel.Location = new System.Drawing.Point(4, 659);
             this.theBayLabel.Name = "theBayLabel";
             this.theBayLabel.Size = new System.Drawing.Size(115, 20);
-            this.theBayLabel.TabIndex = 63;
+            this.theBayLabel.TabIndex = 67;
             this.theBayLabel.Text = "THE BAY SKU";
             // 
             // inactiveListButton
@@ -636,10 +640,10 @@
             this.inactiveListButton.BackColor = System.Drawing.Color.Silver;
             this.inactiveListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inactiveListButton.ForeColor = System.Drawing.Color.Black;
-            this.inactiveListButton.Location = new System.Drawing.Point(379, 1067);
+            this.inactiveListButton.Location = new System.Drawing.Point(379, 1095);
             this.inactiveListButton.Name = "inactiveListButton";
             this.inactiveListButton.Size = new System.Drawing.Size(185, 39);
-            this.inactiveListButton.TabIndex = 92;
+            this.inactiveListButton.TabIndex = 96;
             this.inactiveListButton.Text = "Inactive List";
             this.inactiveListButton.UseVisualStyleBackColor = false;
             this.inactiveListButton.Click += new System.EventHandler(this.inactiveListButton_Click);
@@ -649,10 +653,10 @@
             this.activeListButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.activeListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activeListButton.ForeColor = System.Drawing.Color.White;
-            this.activeListButton.Location = new System.Drawing.Point(193, 1067);
+            this.activeListButton.Location = new System.Drawing.Point(193, 1095);
             this.activeListButton.Name = "activeListButton";
             this.activeListButton.Size = new System.Drawing.Size(180, 39);
-            this.activeListButton.TabIndex = 91;
+            this.activeListButton.TabIndex = 95;
             this.activeListButton.Text = "Active List";
             this.activeListButton.UseVisualStyleBackColor = false;
             this.activeListButton.Click += new System.EventHandler(this.activeListButton_Click);
@@ -663,10 +667,10 @@
             this.updateSkuButton.Enabled = false;
             this.updateSkuButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateSkuButton.ForeColor = System.Drawing.Color.White;
-            this.updateSkuButton.Location = new System.Drawing.Point(193, 985);
+            this.updateSkuButton.Location = new System.Drawing.Point(193, 1013);
             this.updateSkuButton.Name = "updateSkuButton";
             this.updateSkuButton.Size = new System.Drawing.Size(370, 76);
-            this.updateSkuButton.TabIndex = 90;
+            this.updateSkuButton.TabIndex = 94;
             this.updateSkuButton.Text = "Update SKU";
             this.updateSkuButton.UseVisualStyleBackColor = false;
             this.updateSkuButton.Click += new System.EventHandler(this.updateSkuButton_Click);
@@ -676,10 +680,10 @@
             this.promoMarketingLabel.AutoSize = true;
             this.promoMarketingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.promoMarketingLabel.ForeColor = System.Drawing.Color.Gray;
-            this.promoMarketingLabel.Location = new System.Drawing.Point(4, 891);
+            this.promoMarketingLabel.Location = new System.Drawing.Point(4, 919);
             this.promoMarketingLabel.Name = "promoMarketingLabel";
             this.promoMarketingLabel.Size = new System.Drawing.Size(162, 20);
-            this.promoMarketingLabel.TabIndex = 83;
+            this.promoMarketingLabel.TabIndex = 87;
             this.promoMarketingLabel.Text = "PromoMarketing SKU";
             // 
             // walmartComLabel
@@ -687,10 +691,10 @@
             this.walmartComLabel.AutoSize = true;
             this.walmartComLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.walmartComLabel.ForeColor = System.Drawing.Color.Gray;
-            this.walmartComLabel.Location = new System.Drawing.Point(4, 839);
+            this.walmartComLabel.Location = new System.Drawing.Point(4, 867);
             this.walmartComLabel.Name = "walmartComLabel";
             this.walmartComLabel.Size = new System.Drawing.Size(166, 20);
-            this.walmartComLabel.TabIndex = 79;
+            this.walmartComLabel.TabIndex = 83;
             this.walmartComLabel.Text = "WALMART.COM SKU";
             // 
             // walmartCaLabel
@@ -698,10 +702,10 @@
             this.walmartCaLabel.AutoSize = true;
             this.walmartCaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.walmartCaLabel.ForeColor = System.Drawing.Color.Gray;
-            this.walmartCaLabel.Location = new System.Drawing.Point(3, 813);
+            this.walmartCaLabel.Location = new System.Drawing.Point(3, 841);
             this.walmartCaLabel.Name = "walmartCaLabel";
             this.walmartCaLabel.Size = new System.Drawing.Size(152, 20);
-            this.walmartCaLabel.TabIndex = 77;
+            this.walmartCaLabel.TabIndex = 81;
             this.walmartCaLabel.Text = "WALMART.CA SKU";
             // 
             // searsCaLabel
@@ -709,10 +713,10 @@
             this.searsCaLabel.AutoSize = true;
             this.searsCaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searsCaLabel.ForeColor = System.Drawing.Color.Gray;
-            this.searsCaLabel.Location = new System.Drawing.Point(4, 761);
+            this.searsCaLabel.Location = new System.Drawing.Point(4, 789);
             this.searsCaLabel.Name = "searsCaLabel";
             this.searsCaLabel.Size = new System.Drawing.Size(128, 20);
-            this.searsCaLabel.TabIndex = 73;
+            this.searsCaLabel.TabIndex = 77;
             this.searsCaLabel.Text = "SEARS.CA SKU";
             // 
             // amazonComLabel
@@ -720,10 +724,10 @@
             this.amazonComLabel.AutoSize = true;
             this.amazonComLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amazonComLabel.ForeColor = System.Drawing.Color.Gray;
-            this.amazonComLabel.Location = new System.Drawing.Point(4, 735);
+            this.amazonComLabel.Location = new System.Drawing.Point(4, 763);
             this.amazonComLabel.Name = "amazonComLabel";
             this.amazonComLabel.Size = new System.Drawing.Size(154, 20);
-            this.amazonComLabel.TabIndex = 71;
+            this.amazonComLabel.TabIndex = 75;
             this.amazonComLabel.Text = "AMAZON.COM SKU";
             // 
             // amazonCaLabel
@@ -731,10 +735,10 @@
             this.amazonCaLabel.AutoSize = true;
             this.amazonCaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amazonCaLabel.ForeColor = System.Drawing.Color.Gray;
-            this.amazonCaLabel.Location = new System.Drawing.Point(4, 709);
+            this.amazonCaLabel.Location = new System.Drawing.Point(4, 737);
             this.amazonCaLabel.Name = "amazonCaLabel";
             this.amazonCaLabel.Size = new System.Drawing.Size(144, 20);
-            this.amazonCaLabel.TabIndex = 69;
+            this.amazonCaLabel.TabIndex = 73;
             this.amazonCaLabel.Text = "AMAZON.CA  SKU";
             // 
             // shopcaLabel
@@ -742,10 +746,10 @@
             this.shopcaLabel.AutoSize = true;
             this.shopcaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shopcaLabel.ForeColor = System.Drawing.Color.Gray;
-            this.shopcaLabel.Location = new System.Drawing.Point(4, 683);
+            this.shopcaLabel.Location = new System.Drawing.Point(4, 711);
             this.shopcaLabel.Name = "shopcaLabel";
             this.shopcaLabel.Size = new System.Drawing.Size(117, 20);
-            this.shopcaLabel.TabIndex = 67;
+            this.shopcaLabel.TabIndex = 71;
             this.shopcaLabel.Text = "SHOP.CA SKU";
             // 
             // bestbuyLabel
@@ -753,10 +757,10 @@
             this.bestbuyLabel.AutoSize = true;
             this.bestbuyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bestbuyLabel.ForeColor = System.Drawing.Color.Gray;
-            this.bestbuyLabel.Location = new System.Drawing.Point(4, 657);
+            this.bestbuyLabel.Location = new System.Drawing.Point(4, 685);
             this.bestbuyLabel.Name = "bestbuyLabel";
             this.bestbuyLabel.Size = new System.Drawing.Size(148, 20);
-            this.bestbuyLabel.TabIndex = 65;
+            this.bestbuyLabel.TabIndex = 69;
             this.bestbuyLabel.Text = "BESTBUY.CA SKU";
             // 
             // tscLabel
@@ -764,10 +768,10 @@
             this.tscLabel.AutoSize = true;
             this.tscLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tscLabel.ForeColor = System.Drawing.Color.Gray;
-            this.tscLabel.Location = new System.Drawing.Point(4, 605);
+            this.tscLabel.Location = new System.Drawing.Point(4, 633);
             this.tscLabel.Name = "tscLabel";
             this.tscLabel.Size = new System.Drawing.Size(103, 20);
-            this.tscLabel.TabIndex = 61;
+            this.tscLabel.TabIndex = 65;
             this.tscLabel.Text = "TSC.CA SKU";
             // 
             // magentoLabel
@@ -775,10 +779,10 @@
             this.magentoLabel.AutoSize = true;
             this.magentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.magentoLabel.ForeColor = System.Drawing.Color.Gray;
-            this.magentoLabel.Location = new System.Drawing.Point(4, 579);
+            this.magentoLabel.Location = new System.Drawing.Point(4, 607);
             this.magentoLabel.Name = "magentoLabel";
             this.magentoLabel.Size = new System.Drawing.Size(126, 20);
-            this.magentoLabel.TabIndex = 59;
+            this.magentoLabel.TabIndex = 63;
             this.magentoLabel.Text = "MAGENTO SKU";
             // 
             // ashlinLabel
@@ -786,10 +790,10 @@
             this.ashlinLabel.AutoSize = true;
             this.ashlinLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ashlinLabel.ForeColor = System.Drawing.Color.Gray;
-            this.ashlinLabel.Location = new System.Drawing.Point(4, 553);
+            this.ashlinLabel.Location = new System.Drawing.Point(4, 581);
             this.ashlinLabel.Name = "ashlinLabel";
             this.ashlinLabel.Size = new System.Drawing.Size(89, 20);
-            this.ashlinLabel.TabIndex = 57;
+            this.ashlinLabel.TabIndex = 61;
             this.ashlinLabel.Text = "Ashlin URL";
             // 
             // onlineDetailsLabel
@@ -797,10 +801,10 @@
             this.onlineDetailsLabel.BackColor = System.Drawing.Color.Green;
             this.onlineDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onlineDetailsLabel.ForeColor = System.Drawing.Color.White;
-            this.onlineDetailsLabel.Location = new System.Drawing.Point(0, 512);
+            this.onlineDetailsLabel.Location = new System.Drawing.Point(0, 540);
             this.onlineDetailsLabel.Name = "onlineDetailsLabel";
             this.onlineDetailsLabel.Size = new System.Drawing.Size(770, 29);
-            this.onlineDetailsLabel.TabIndex = 56;
+            this.onlineDetailsLabel.TabIndex = 60;
             this.onlineDetailsLabel.Text = "Online Details";
             this.onlineDetailsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -809,10 +813,10 @@
             this.distributorCentralLabel.AutoSize = true;
             this.distributorCentralLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.distributorCentralLabel.ForeColor = System.Drawing.Color.Gray;
-            this.distributorCentralLabel.Location = new System.Drawing.Point(4, 865);
+            this.distributorCentralLabel.Location = new System.Drawing.Point(4, 893);
             this.distributorCentralLabel.Name = "distributorCentralLabel";
             this.distributorCentralLabel.Size = new System.Drawing.Size(174, 20);
-            this.distributorCentralLabel.TabIndex = 81;
+            this.distributorCentralLabel.TabIndex = 85;
             this.distributorCentralLabel.Text = "Distributor Central SKU";
             // 
             // template2Label
@@ -820,10 +824,10 @@
             this.template2Label.AutoSize = true;
             this.template2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.template2Label.ForeColor = System.Drawing.Color.Gray;
-            this.template2Label.Location = new System.Drawing.Point(5, 1707);
+            this.template2Label.Location = new System.Drawing.Point(5, 1735);
             this.template2Label.Name = "template2Label";
             this.template2Label.Size = new System.Drawing.Size(106, 16);
-            this.template2Label.TabIndex = 159;
+            this.template2Label.TabIndex = 163;
             this.template2Label.Text = "Template URL 2";
             // 
             // template1Label
@@ -831,10 +835,10 @@
             this.template1Label.AutoSize = true;
             this.template1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.template1Label.ForeColor = System.Drawing.Color.Gray;
-            this.template1Label.Location = new System.Drawing.Point(5, 1681);
+            this.template1Label.Location = new System.Drawing.Point(5, 1709);
             this.template1Label.Name = "template1Label";
             this.template1Label.Size = new System.Drawing.Size(106, 16);
-            this.template1Label.TabIndex = 157;
+            this.template1Label.TabIndex = 161;
             this.template1Label.Text = "Template URL 1";
             // 
             // model5Label
@@ -842,10 +846,10 @@
             this.model5Label.AutoSize = true;
             this.model5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model5Label.ForeColor = System.Drawing.Color.Gray;
-            this.model5Label.Location = new System.Drawing.Point(5, 1655);
+            this.model5Label.Location = new System.Drawing.Point(5, 1683);
             this.model5Label.Name = "model5Label";
             this.model5Label.Size = new System.Drawing.Size(126, 16);
-            this.model5Label.TabIndex = 154;
+            this.model5Label.TabIndex = 158;
             this.model5Label.Text = "Model Image 5 path";
             // 
             // model4Label
@@ -853,10 +857,10 @@
             this.model4Label.AutoSize = true;
             this.model4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model4Label.ForeColor = System.Drawing.Color.Gray;
-            this.model4Label.Location = new System.Drawing.Point(5, 1629);
+            this.model4Label.Location = new System.Drawing.Point(5, 1657);
             this.model4Label.Name = "model4Label";
             this.model4Label.Size = new System.Drawing.Size(126, 16);
-            this.model4Label.TabIndex = 151;
+            this.model4Label.TabIndex = 155;
             this.model4Label.Text = "Model Image 4 path";
             // 
             // model3Label
@@ -864,10 +868,10 @@
             this.model3Label.AutoSize = true;
             this.model3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model3Label.ForeColor = System.Drawing.Color.Gray;
-            this.model3Label.Location = new System.Drawing.Point(5, 1603);
+            this.model3Label.Location = new System.Drawing.Point(5, 1631);
             this.model3Label.Name = "model3Label";
             this.model3Label.Size = new System.Drawing.Size(126, 16);
-            this.model3Label.TabIndex = 148;
+            this.model3Label.TabIndex = 152;
             this.model3Label.Text = "Model Image 3 path";
             // 
             // model2Label
@@ -875,10 +879,10 @@
             this.model2Label.AutoSize = true;
             this.model2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model2Label.ForeColor = System.Drawing.Color.Gray;
-            this.model2Label.Location = new System.Drawing.Point(5, 1577);
+            this.model2Label.Location = new System.Drawing.Point(5, 1605);
             this.model2Label.Name = "model2Label";
             this.model2Label.Size = new System.Drawing.Size(126, 16);
-            this.model2Label.TabIndex = 145;
+            this.model2Label.TabIndex = 149;
             this.model2Label.Text = "Model Image 2 path";
             // 
             // model1Label
@@ -886,10 +890,10 @@
             this.model1Label.AutoSize = true;
             this.model1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model1Label.ForeColor = System.Drawing.Color.Gray;
-            this.model1Label.Location = new System.Drawing.Point(5, 1551);
+            this.model1Label.Location = new System.Drawing.Point(5, 1579);
             this.model1Label.Name = "model1Label";
             this.model1Label.Size = new System.Drawing.Size(126, 16);
-            this.model1Label.TabIndex = 142;
+            this.model1Label.TabIndex = 146;
             this.model1Label.Text = "Model Image 1 path";
             // 
             // group5Label
@@ -897,10 +901,10 @@
             this.group5Label.AutoSize = true;
             this.group5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group5Label.ForeColor = System.Drawing.Color.Gray;
-            this.group5Label.Location = new System.Drawing.Point(4, 1525);
+            this.group5Label.Location = new System.Drawing.Point(4, 1553);
             this.group5Label.Name = "group5Label";
             this.group5Label.Size = new System.Drawing.Size(125, 16);
-            this.group5Label.TabIndex = 139;
+            this.group5Label.TabIndex = 143;
             this.group5Label.Text = "Group Image 5 path";
             // 
             // group4Label
@@ -908,10 +912,10 @@
             this.group4Label.AutoSize = true;
             this.group4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group4Label.ForeColor = System.Drawing.Color.Gray;
-            this.group4Label.Location = new System.Drawing.Point(5, 1499);
+            this.group4Label.Location = new System.Drawing.Point(5, 1527);
             this.group4Label.Name = "group4Label";
             this.group4Label.Size = new System.Drawing.Size(125, 16);
-            this.group4Label.TabIndex = 136;
+            this.group4Label.TabIndex = 140;
             this.group4Label.Text = "Group Image 4 path";
             // 
             // group3Label
@@ -919,10 +923,10 @@
             this.group3Label.AutoSize = true;
             this.group3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group3Label.ForeColor = System.Drawing.Color.Gray;
-            this.group3Label.Location = new System.Drawing.Point(5, 1473);
+            this.group3Label.Location = new System.Drawing.Point(5, 1501);
             this.group3Label.Name = "group3Label";
             this.group3Label.Size = new System.Drawing.Size(125, 16);
-            this.group3Label.TabIndex = 133;
+            this.group3Label.TabIndex = 137;
             this.group3Label.Text = "Group Image 3 path";
             // 
             // group2Label
@@ -930,10 +934,10 @@
             this.group2Label.AutoSize = true;
             this.group2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group2Label.ForeColor = System.Drawing.Color.Gray;
-            this.group2Label.Location = new System.Drawing.Point(5, 1447);
+            this.group2Label.Location = new System.Drawing.Point(5, 1475);
             this.group2Label.Name = "group2Label";
             this.group2Label.Size = new System.Drawing.Size(125, 16);
-            this.group2Label.TabIndex = 130;
+            this.group2Label.TabIndex = 134;
             this.group2Label.Text = "Group Image 2 path";
             // 
             // group1Label
@@ -941,10 +945,10 @@
             this.group1Label.AutoSize = true;
             this.group1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group1Label.ForeColor = System.Drawing.Color.Gray;
-            this.group1Label.Location = new System.Drawing.Point(4, 1421);
+            this.group1Label.Location = new System.Drawing.Point(4, 1449);
             this.group1Label.Name = "group1Label";
             this.group1Label.Size = new System.Drawing.Size(125, 16);
-            this.group1Label.TabIndex = 127;
+            this.group1Label.TabIndex = 131;
             this.group1Label.Text = "Group Image 1 path";
             // 
             // image10Label
@@ -952,10 +956,10 @@
             this.image10Label.AutoSize = true;
             this.image10Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image10Label.ForeColor = System.Drawing.Color.Gray;
-            this.image10Label.Location = new System.Drawing.Point(5, 1395);
+            this.image10Label.Location = new System.Drawing.Point(5, 1423);
             this.image10Label.Name = "image10Label";
             this.image10Label.Size = new System.Drawing.Size(93, 16);
-            this.image10Label.TabIndex = 124;
+            this.image10Label.TabIndex = 128;
             this.image10Label.Text = "Image 10 Path";
             // 
             // image9Label
@@ -963,10 +967,10 @@
             this.image9Label.AutoSize = true;
             this.image9Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image9Label.ForeColor = System.Drawing.Color.Gray;
-            this.image9Label.Location = new System.Drawing.Point(5, 1369);
+            this.image9Label.Location = new System.Drawing.Point(5, 1397);
             this.image9Label.Name = "image9Label";
             this.image9Label.Size = new System.Drawing.Size(86, 16);
-            this.image9Label.TabIndex = 121;
+            this.image9Label.TabIndex = 125;
             this.image9Label.Text = "Image 9 Path";
             // 
             // image8Label
@@ -974,10 +978,10 @@
             this.image8Label.AutoSize = true;
             this.image8Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image8Label.ForeColor = System.Drawing.Color.Gray;
-            this.image8Label.Location = new System.Drawing.Point(5, 1343);
+            this.image8Label.Location = new System.Drawing.Point(5, 1371);
             this.image8Label.Name = "image8Label";
             this.image8Label.Size = new System.Drawing.Size(86, 16);
-            this.image8Label.TabIndex = 118;
+            this.image8Label.TabIndex = 122;
             this.image8Label.Text = "Image 8 Path";
             // 
             // image7Label
@@ -985,10 +989,10 @@
             this.image7Label.AutoSize = true;
             this.image7Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image7Label.ForeColor = System.Drawing.Color.Gray;
-            this.image7Label.Location = new System.Drawing.Point(5, 1317);
+            this.image7Label.Location = new System.Drawing.Point(5, 1345);
             this.image7Label.Name = "image7Label";
             this.image7Label.Size = new System.Drawing.Size(86, 16);
-            this.image7Label.TabIndex = 115;
+            this.image7Label.TabIndex = 119;
             this.image7Label.Text = "Image 7 Path";
             // 
             // image6Label
@@ -996,10 +1000,10 @@
             this.image6Label.AutoSize = true;
             this.image6Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image6Label.ForeColor = System.Drawing.Color.Gray;
-            this.image6Label.Location = new System.Drawing.Point(5, 1291);
+            this.image6Label.Location = new System.Drawing.Point(5, 1319);
             this.image6Label.Name = "image6Label";
             this.image6Label.Size = new System.Drawing.Size(86, 16);
-            this.image6Label.TabIndex = 112;
+            this.image6Label.TabIndex = 116;
             this.image6Label.Text = "Image 6 Path";
             // 
             // image5Label
@@ -1007,10 +1011,10 @@
             this.image5Label.AutoSize = true;
             this.image5Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image5Label.ForeColor = System.Drawing.Color.Gray;
-            this.image5Label.Location = new System.Drawing.Point(5, 1265);
+            this.image5Label.Location = new System.Drawing.Point(5, 1293);
             this.image5Label.Name = "image5Label";
             this.image5Label.Size = new System.Drawing.Size(86, 16);
-            this.image5Label.TabIndex = 109;
+            this.image5Label.TabIndex = 113;
             this.image5Label.Text = "Image 5 Path";
             // 
             // image4Label
@@ -1018,10 +1022,10 @@
             this.image4Label.AutoSize = true;
             this.image4Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image4Label.ForeColor = System.Drawing.Color.Gray;
-            this.image4Label.Location = new System.Drawing.Point(5, 1239);
+            this.image4Label.Location = new System.Drawing.Point(5, 1267);
             this.image4Label.Name = "image4Label";
             this.image4Label.Size = new System.Drawing.Size(86, 16);
-            this.image4Label.TabIndex = 106;
+            this.image4Label.TabIndex = 110;
             this.image4Label.Text = "Image 4 Path";
             // 
             // image3Label
@@ -1029,10 +1033,10 @@
             this.image3Label.AutoSize = true;
             this.image3Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image3Label.ForeColor = System.Drawing.Color.Gray;
-            this.image3Label.Location = new System.Drawing.Point(5, 1213);
+            this.image3Label.Location = new System.Drawing.Point(5, 1241);
             this.image3Label.Name = "image3Label";
             this.image3Label.Size = new System.Drawing.Size(86, 16);
-            this.image3Label.TabIndex = 103;
+            this.image3Label.TabIndex = 107;
             this.image3Label.Text = "Image 3 Path";
             // 
             // image2Label
@@ -1040,10 +1044,10 @@
             this.image2Label.AutoSize = true;
             this.image2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image2Label.ForeColor = System.Drawing.Color.Gray;
-            this.image2Label.Location = new System.Drawing.Point(5, 1187);
+            this.image2Label.Location = new System.Drawing.Point(5, 1215);
             this.image2Label.Name = "image2Label";
             this.image2Label.Size = new System.Drawing.Size(86, 16);
-            this.image2Label.TabIndex = 100;
+            this.image2Label.TabIndex = 104;
             this.image2Label.Text = "Image 2 Path";
             // 
             // image1Label
@@ -1051,10 +1055,10 @@
             this.image1Label.AutoSize = true;
             this.image1Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image1Label.ForeColor = System.Drawing.Color.Gray;
-            this.image1Label.Location = new System.Drawing.Point(5, 1161);
+            this.image1Label.Location = new System.Drawing.Point(5, 1189);
             this.image1Label.Name = "image1Label";
             this.image1Label.Size = new System.Drawing.Size(86, 16);
-            this.image1Label.TabIndex = 97;
+            this.image1Label.TabIndex = 101;
             this.image1Label.Text = "Image 1 Path";
             // 
             // label24
@@ -1062,10 +1066,10 @@
             this.label24.BackColor = System.Drawing.Color.Green;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(0, 1120);
+            this.label24.Location = new System.Drawing.Point(0, 1148);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(770, 29);
-            this.label24.TabIndex = 96;
+            this.label24.TabIndex = 100;
             this.label24.Text = "Image Paths";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1108,10 +1112,10 @@
             this.image1AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image1AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image1AltButton.ForeColor = System.Drawing.Color.White;
-            this.image1AltButton.Location = new System.Drawing.Point(686, 1158);
+            this.image1AltButton.Location = new System.Drawing.Point(686, 1186);
             this.image1AltButton.Name = "image1AltButton";
             this.image1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image1AltButton.TabIndex = 99;
+            this.image1AltButton.TabIndex = 103;
             this.image1AltButton.Text = "See Alt";
             this.image1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image1AltButton.UseVisualStyleBackColor = false;
@@ -1124,10 +1128,10 @@
             this.image2AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image2AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image2AltButton.ForeColor = System.Drawing.Color.White;
-            this.image2AltButton.Location = new System.Drawing.Point(686, 1184);
+            this.image2AltButton.Location = new System.Drawing.Point(686, 1212);
             this.image2AltButton.Name = "image2AltButton";
             this.image2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image2AltButton.TabIndex = 102;
+            this.image2AltButton.TabIndex = 106;
             this.image2AltButton.Text = "See Alt";
             this.image2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image2AltButton.UseVisualStyleBackColor = false;
@@ -1140,10 +1144,10 @@
             this.image3AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image3AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image3AltButton.ForeColor = System.Drawing.Color.White;
-            this.image3AltButton.Location = new System.Drawing.Point(686, 1210);
+            this.image3AltButton.Location = new System.Drawing.Point(686, 1238);
             this.image3AltButton.Name = "image3AltButton";
             this.image3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image3AltButton.TabIndex = 105;
+            this.image3AltButton.TabIndex = 109;
             this.image3AltButton.Text = "See Alt";
             this.image3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image3AltButton.UseVisualStyleBackColor = false;
@@ -1156,10 +1160,10 @@
             this.image4AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image4AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image4AltButton.ForeColor = System.Drawing.Color.White;
-            this.image4AltButton.Location = new System.Drawing.Point(686, 1237);
+            this.image4AltButton.Location = new System.Drawing.Point(686, 1265);
             this.image4AltButton.Name = "image4AltButton";
             this.image4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image4AltButton.TabIndex = 108;
+            this.image4AltButton.TabIndex = 112;
             this.image4AltButton.Text = "See Alt";
             this.image4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image4AltButton.UseVisualStyleBackColor = false;
@@ -1172,10 +1176,10 @@
             this.image5AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image5AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image5AltButton.ForeColor = System.Drawing.Color.White;
-            this.image5AltButton.Location = new System.Drawing.Point(686, 1263);
+            this.image5AltButton.Location = new System.Drawing.Point(686, 1291);
             this.image5AltButton.Name = "image5AltButton";
             this.image5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image5AltButton.TabIndex = 111;
+            this.image5AltButton.TabIndex = 115;
             this.image5AltButton.Text = "See Alt";
             this.image5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image5AltButton.UseVisualStyleBackColor = false;
@@ -1188,10 +1192,10 @@
             this.image6AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image6AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image6AltButton.ForeColor = System.Drawing.Color.White;
-            this.image6AltButton.Location = new System.Drawing.Point(686, 1289);
+            this.image6AltButton.Location = new System.Drawing.Point(686, 1317);
             this.image6AltButton.Name = "image6AltButton";
             this.image6AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image6AltButton.TabIndex = 114;
+            this.image6AltButton.TabIndex = 118;
             this.image6AltButton.Text = "See Alt";
             this.image6AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image6AltButton.UseVisualStyleBackColor = false;
@@ -1204,10 +1208,10 @@
             this.image7AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image7AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image7AltButton.ForeColor = System.Drawing.Color.White;
-            this.image7AltButton.Location = new System.Drawing.Point(686, 1315);
+            this.image7AltButton.Location = new System.Drawing.Point(686, 1343);
             this.image7AltButton.Name = "image7AltButton";
             this.image7AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image7AltButton.TabIndex = 117;
+            this.image7AltButton.TabIndex = 121;
             this.image7AltButton.Text = "See Alt";
             this.image7AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image7AltButton.UseVisualStyleBackColor = false;
@@ -1220,10 +1224,10 @@
             this.image8AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image8AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image8AltButton.ForeColor = System.Drawing.Color.White;
-            this.image8AltButton.Location = new System.Drawing.Point(686, 1341);
+            this.image8AltButton.Location = new System.Drawing.Point(686, 1369);
             this.image8AltButton.Name = "image8AltButton";
             this.image8AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image8AltButton.TabIndex = 120;
+            this.image8AltButton.TabIndex = 124;
             this.image8AltButton.Text = "See Alt";
             this.image8AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image8AltButton.UseVisualStyleBackColor = false;
@@ -1236,10 +1240,10 @@
             this.image9AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image9AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image9AltButton.ForeColor = System.Drawing.Color.White;
-            this.image9AltButton.Location = new System.Drawing.Point(686, 1366);
+            this.image9AltButton.Location = new System.Drawing.Point(686, 1394);
             this.image9AltButton.Name = "image9AltButton";
             this.image9AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image9AltButton.TabIndex = 123;
+            this.image9AltButton.TabIndex = 127;
             this.image9AltButton.Text = "See Alt";
             this.image9AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image9AltButton.UseVisualStyleBackColor = false;
@@ -1252,10 +1256,10 @@
             this.image10AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.image10AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.image10AltButton.ForeColor = System.Drawing.Color.White;
-            this.image10AltButton.Location = new System.Drawing.Point(686, 1393);
+            this.image10AltButton.Location = new System.Drawing.Point(686, 1421);
             this.image10AltButton.Name = "image10AltButton";
             this.image10AltButton.Size = new System.Drawing.Size(75, 22);
-            this.image10AltButton.TabIndex = 126;
+            this.image10AltButton.TabIndex = 130;
             this.image10AltButton.Text = "See Alt";
             this.image10AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.image10AltButton.UseVisualStyleBackColor = false;
@@ -1268,10 +1272,10 @@
             this.group1AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group1AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group1AltButton.ForeColor = System.Drawing.Color.White;
-            this.group1AltButton.Location = new System.Drawing.Point(686, 1419);
+            this.group1AltButton.Location = new System.Drawing.Point(686, 1447);
             this.group1AltButton.Name = "group1AltButton";
             this.group1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group1AltButton.TabIndex = 129;
+            this.group1AltButton.TabIndex = 133;
             this.group1AltButton.Text = "See Alt";
             this.group1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group1AltButton.UseVisualStyleBackColor = false;
@@ -1284,10 +1288,10 @@
             this.group2AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group2AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group2AltButton.ForeColor = System.Drawing.Color.White;
-            this.group2AltButton.Location = new System.Drawing.Point(686, 1445);
+            this.group2AltButton.Location = new System.Drawing.Point(686, 1473);
             this.group2AltButton.Name = "group2AltButton";
             this.group2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group2AltButton.TabIndex = 132;
+            this.group2AltButton.TabIndex = 136;
             this.group2AltButton.Text = "See Alt";
             this.group2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group2AltButton.UseVisualStyleBackColor = false;
@@ -1300,10 +1304,10 @@
             this.group3AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group3AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group3AltButton.ForeColor = System.Drawing.Color.White;
-            this.group3AltButton.Location = new System.Drawing.Point(686, 1471);
+            this.group3AltButton.Location = new System.Drawing.Point(686, 1499);
             this.group3AltButton.Name = "group3AltButton";
             this.group3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group3AltButton.TabIndex = 135;
+            this.group3AltButton.TabIndex = 139;
             this.group3AltButton.Text = "See Alt";
             this.group3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group3AltButton.UseVisualStyleBackColor = false;
@@ -1316,10 +1320,10 @@
             this.group4AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group4AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group4AltButton.ForeColor = System.Drawing.Color.White;
-            this.group4AltButton.Location = new System.Drawing.Point(686, 1497);
+            this.group4AltButton.Location = new System.Drawing.Point(686, 1525);
             this.group4AltButton.Name = "group4AltButton";
             this.group4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group4AltButton.TabIndex = 138;
+            this.group4AltButton.TabIndex = 142;
             this.group4AltButton.Text = "See Alt";
             this.group4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group4AltButton.UseVisualStyleBackColor = false;
@@ -1332,10 +1336,10 @@
             this.group5AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.group5AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.group5AltButton.ForeColor = System.Drawing.Color.White;
-            this.group5AltButton.Location = new System.Drawing.Point(686, 1523);
+            this.group5AltButton.Location = new System.Drawing.Point(686, 1551);
             this.group5AltButton.Name = "group5AltButton";
             this.group5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.group5AltButton.TabIndex = 141;
+            this.group5AltButton.TabIndex = 145;
             this.group5AltButton.Text = "See Alt";
             this.group5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.group5AltButton.UseVisualStyleBackColor = false;
@@ -1348,10 +1352,10 @@
             this.model1AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.model1AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model1AltButton.ForeColor = System.Drawing.Color.White;
-            this.model1AltButton.Location = new System.Drawing.Point(686, 1549);
+            this.model1AltButton.Location = new System.Drawing.Point(686, 1577);
             this.model1AltButton.Name = "model1AltButton";
             this.model1AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model1AltButton.TabIndex = 144;
+            this.model1AltButton.TabIndex = 148;
             this.model1AltButton.Text = "See Alt";
             this.model1AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model1AltButton.UseVisualStyleBackColor = false;
@@ -1364,10 +1368,10 @@
             this.model2AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.model2AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model2AltButton.ForeColor = System.Drawing.Color.White;
-            this.model2AltButton.Location = new System.Drawing.Point(686, 1575);
+            this.model2AltButton.Location = new System.Drawing.Point(686, 1603);
             this.model2AltButton.Name = "model2AltButton";
             this.model2AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model2AltButton.TabIndex = 147;
+            this.model2AltButton.TabIndex = 151;
             this.model2AltButton.Text = "See Alt";
             this.model2AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model2AltButton.UseVisualStyleBackColor = false;
@@ -1380,10 +1384,10 @@
             this.model3AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.model3AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model3AltButton.ForeColor = System.Drawing.Color.White;
-            this.model3AltButton.Location = new System.Drawing.Point(686, 1601);
+            this.model3AltButton.Location = new System.Drawing.Point(686, 1629);
             this.model3AltButton.Name = "model3AltButton";
             this.model3AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model3AltButton.TabIndex = 150;
+            this.model3AltButton.TabIndex = 154;
             this.model3AltButton.Text = "See Alt";
             this.model3AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model3AltButton.UseVisualStyleBackColor = false;
@@ -1396,10 +1400,10 @@
             this.model4AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.model4AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model4AltButton.ForeColor = System.Drawing.Color.White;
-            this.model4AltButton.Location = new System.Drawing.Point(686, 1627);
+            this.model4AltButton.Location = new System.Drawing.Point(686, 1655);
             this.model4AltButton.Name = "model4AltButton";
             this.model4AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model4AltButton.TabIndex = 153;
+            this.model4AltButton.TabIndex = 157;
             this.model4AltButton.Text = "See Alt";
             this.model4AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model4AltButton.UseVisualStyleBackColor = false;
@@ -1412,10 +1416,10 @@
             this.model5AltButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.model5AltButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.model5AltButton.ForeColor = System.Drawing.Color.White;
-            this.model5AltButton.Location = new System.Drawing.Point(686, 1653);
+            this.model5AltButton.Location = new System.Drawing.Point(686, 1681);
             this.model5AltButton.Name = "model5AltButton";
             this.model5AltButton.Size = new System.Drawing.Size(75, 22);
-            this.model5AltButton.TabIndex = 156;
+            this.model5AltButton.TabIndex = 160;
             this.model5AltButton.Text = "See Alt";
             this.model5AltButton.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.model5AltButton.UseVisualStyleBackColor = false;
@@ -1461,344 +1465,344 @@
             // ashlinTextbox
             // 
             this.ashlinTextbox.Enabled = false;
-            this.ashlinTextbox.Location = new System.Drawing.Point(187, 553);
+            this.ashlinTextbox.Location = new System.Drawing.Point(187, 581);
             this.ashlinTextbox.MaxLength = 100;
             this.ashlinTextbox.Name = "ashlinTextbox";
             this.ashlinTextbox.Size = new System.Drawing.Size(574, 20);
-            this.ashlinTextbox.TabIndex = 58;
+            this.ashlinTextbox.TabIndex = 62;
             // 
             // magentoTextbox
             // 
             this.magentoTextbox.Enabled = false;
-            this.magentoTextbox.Location = new System.Drawing.Point(187, 579);
+            this.magentoTextbox.Location = new System.Drawing.Point(187, 607);
             this.magentoTextbox.MaxLength = 100;
             this.magentoTextbox.Name = "magentoTextbox";
             this.magentoTextbox.Size = new System.Drawing.Size(574, 20);
-            this.magentoTextbox.TabIndex = 10;
+            this.magentoTextbox.TabIndex = 64;
             // 
             // tscTextbox
             // 
             this.tscTextbox.Enabled = false;
-            this.tscTextbox.Location = new System.Drawing.Point(187, 605);
+            this.tscTextbox.Location = new System.Drawing.Point(187, 633);
             this.tscTextbox.MaxLength = 100;
             this.tscTextbox.Name = "tscTextbox";
             this.tscTextbox.Size = new System.Drawing.Size(574, 20);
-            this.tscTextbox.TabIndex = 62;
+            this.tscTextbox.TabIndex = 66;
             // 
             // theBayTextbox
             // 
             this.theBayTextbox.Enabled = false;
-            this.theBayTextbox.Location = new System.Drawing.Point(187, 631);
+            this.theBayTextbox.Location = new System.Drawing.Point(187, 659);
             this.theBayTextbox.MaxLength = 100;
             this.theBayTextbox.Name = "theBayTextbox";
             this.theBayTextbox.Size = new System.Drawing.Size(574, 20);
-            this.theBayTextbox.TabIndex = 64;
+            this.theBayTextbox.TabIndex = 68;
             // 
             // bestbuyTextbox
             // 
             this.bestbuyTextbox.Enabled = false;
-            this.bestbuyTextbox.Location = new System.Drawing.Point(187, 657);
+            this.bestbuyTextbox.Location = new System.Drawing.Point(187, 685);
             this.bestbuyTextbox.MaxLength = 100;
             this.bestbuyTextbox.Name = "bestbuyTextbox";
             this.bestbuyTextbox.Size = new System.Drawing.Size(574, 20);
-            this.bestbuyTextbox.TabIndex = 66;
+            this.bestbuyTextbox.TabIndex = 70;
             // 
             // shopCaTextbox
             // 
             this.shopCaTextbox.Enabled = false;
-            this.shopCaTextbox.Location = new System.Drawing.Point(187, 683);
+            this.shopCaTextbox.Location = new System.Drawing.Point(187, 711);
             this.shopCaTextbox.MaxLength = 100;
             this.shopCaTextbox.Name = "shopCaTextbox";
             this.shopCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.shopCaTextbox.TabIndex = 68;
+            this.shopCaTextbox.TabIndex = 72;
             // 
             // amazonCaTextbox
             // 
             this.amazonCaTextbox.Enabled = false;
-            this.amazonCaTextbox.Location = new System.Drawing.Point(187, 709);
+            this.amazonCaTextbox.Location = new System.Drawing.Point(187, 737);
             this.amazonCaTextbox.MaxLength = 100;
             this.amazonCaTextbox.Name = "amazonCaTextbox";
             this.amazonCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonCaTextbox.TabIndex = 70;
+            this.amazonCaTextbox.TabIndex = 74;
             // 
             // amazonComTextbox
             // 
             this.amazonComTextbox.Enabled = false;
-            this.amazonComTextbox.Location = new System.Drawing.Point(187, 735);
+            this.amazonComTextbox.Location = new System.Drawing.Point(187, 763);
             this.amazonComTextbox.MaxLength = 100;
             this.amazonComTextbox.Name = "amazonComTextbox";
             this.amazonComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.amazonComTextbox.TabIndex = 72;
+            this.amazonComTextbox.TabIndex = 76;
             // 
             // searsTextbox
             // 
             this.searsTextbox.Enabled = false;
-            this.searsTextbox.Location = new System.Drawing.Point(187, 761);
+            this.searsTextbox.Location = new System.Drawing.Point(187, 789);
             this.searsTextbox.MaxLength = 100;
             this.searsTextbox.Name = "searsTextbox";
             this.searsTextbox.Size = new System.Drawing.Size(574, 20);
-            this.searsTextbox.TabIndex = 74;
+            this.searsTextbox.TabIndex = 78;
             // 
             // staplesTextbox
             // 
             this.staplesTextbox.Enabled = false;
-            this.staplesTextbox.Location = new System.Drawing.Point(187, 787);
+            this.staplesTextbox.Location = new System.Drawing.Point(187, 815);
             this.staplesTextbox.MaxLength = 100;
             this.staplesTextbox.Name = "staplesTextbox";
             this.staplesTextbox.Size = new System.Drawing.Size(574, 20);
-            this.staplesTextbox.TabIndex = 76;
+            this.staplesTextbox.TabIndex = 80;
             // 
             // walmartCaTextbox
             // 
             this.walmartCaTextbox.Enabled = false;
-            this.walmartCaTextbox.Location = new System.Drawing.Point(187, 813);
+            this.walmartCaTextbox.Location = new System.Drawing.Point(187, 841);
             this.walmartCaTextbox.MaxLength = 100;
             this.walmartCaTextbox.Name = "walmartCaTextbox";
             this.walmartCaTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartCaTextbox.TabIndex = 78;
+            this.walmartCaTextbox.TabIndex = 82;
             // 
             // walmartComTextbox
             // 
             this.walmartComTextbox.Enabled = false;
-            this.walmartComTextbox.Location = new System.Drawing.Point(187, 839);
+            this.walmartComTextbox.Location = new System.Drawing.Point(187, 867);
             this.walmartComTextbox.MaxLength = 100;
             this.walmartComTextbox.Name = "walmartComTextbox";
             this.walmartComTextbox.Size = new System.Drawing.Size(574, 20);
-            this.walmartComTextbox.TabIndex = 80;
+            this.walmartComTextbox.TabIndex = 84;
             // 
             // giantTigerTextbox
             // 
             this.giantTigerTextbox.Enabled = false;
-            this.giantTigerTextbox.Location = new System.Drawing.Point(187, 917);
+            this.giantTigerTextbox.Location = new System.Drawing.Point(187, 945);
             this.giantTigerTextbox.MaxLength = 100;
             this.giantTigerTextbox.Name = "giantTigerTextbox";
             this.giantTigerTextbox.Size = new System.Drawing.Size(574, 20);
-            this.giantTigerTextbox.TabIndex = 86;
+            this.giantTigerTextbox.TabIndex = 90;
             // 
             // distributorCentralTextbox
             // 
             this.distributorCentralTextbox.Enabled = false;
-            this.distributorCentralTextbox.Location = new System.Drawing.Point(187, 865);
+            this.distributorCentralTextbox.Location = new System.Drawing.Point(187, 893);
             this.distributorCentralTextbox.MaxLength = 100;
             this.distributorCentralTextbox.Name = "distributorCentralTextbox";
             this.distributorCentralTextbox.Size = new System.Drawing.Size(574, 20);
-            this.distributorCentralTextbox.TabIndex = 82;
+            this.distributorCentralTextbox.TabIndex = 86;
             // 
             // promoMarketingTextbox
             // 
             this.promoMarketingTextbox.Enabled = false;
-            this.promoMarketingTextbox.Location = new System.Drawing.Point(187, 891);
+            this.promoMarketingTextbox.Location = new System.Drawing.Point(187, 919);
             this.promoMarketingTextbox.MaxLength = 100;
             this.promoMarketingTextbox.Name = "promoMarketingTextbox";
             this.promoMarketingTextbox.Size = new System.Drawing.Size(574, 20);
-            this.promoMarketingTextbox.TabIndex = 84;
+            this.promoMarketingTextbox.TabIndex = 88;
             // 
             // asiXidTextbox
             // 
             this.asiXidTextbox.Enabled = false;
-            this.asiXidTextbox.Location = new System.Drawing.Point(187, 943);
+            this.asiXidTextbox.Location = new System.Drawing.Point(187, 971);
             this.asiXidTextbox.MaxLength = 100;
             this.asiXidTextbox.Name = "asiXidTextbox";
             this.asiXidTextbox.Size = new System.Drawing.Size(574, 20);
-            this.asiXidTextbox.TabIndex = 88;
+            this.asiXidTextbox.TabIndex = 92;
             // 
             // image1Textbox
             // 
             this.image1Textbox.Enabled = false;
-            this.image1Textbox.Location = new System.Drawing.Point(187, 1160);
+            this.image1Textbox.Location = new System.Drawing.Point(187, 1188);
             this.image1Textbox.MaxLength = 1000;
             this.image1Textbox.Name = "image1Textbox";
             this.image1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image1Textbox.TabIndex = 98;
+            this.image1Textbox.TabIndex = 102;
             // 
             // image2Textbox
             // 
             this.image2Textbox.Enabled = false;
-            this.image2Textbox.Location = new System.Drawing.Point(187, 1186);
+            this.image2Textbox.Location = new System.Drawing.Point(187, 1214);
             this.image2Textbox.MaxLength = 1000;
             this.image2Textbox.Name = "image2Textbox";
             this.image2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image2Textbox.TabIndex = 101;
+            this.image2Textbox.TabIndex = 105;
             // 
             // image3Textbox
             // 
             this.image3Textbox.Enabled = false;
-            this.image3Textbox.Location = new System.Drawing.Point(187, 1212);
+            this.image3Textbox.Location = new System.Drawing.Point(187, 1240);
             this.image3Textbox.MaxLength = 1000;
             this.image3Textbox.Name = "image3Textbox";
             this.image3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image3Textbox.TabIndex = 104;
+            this.image3Textbox.TabIndex = 108;
             // 
             // image4Textbox
             // 
             this.image4Textbox.Enabled = false;
-            this.image4Textbox.Location = new System.Drawing.Point(187, 1238);
+            this.image4Textbox.Location = new System.Drawing.Point(187, 1266);
             this.image4Textbox.MaxLength = 1000;
             this.image4Textbox.Name = "image4Textbox";
             this.image4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image4Textbox.TabIndex = 107;
+            this.image4Textbox.TabIndex = 111;
             // 
             // image5Textbox
             // 
             this.image5Textbox.Enabled = false;
-            this.image5Textbox.Location = new System.Drawing.Point(187, 1264);
+            this.image5Textbox.Location = new System.Drawing.Point(187, 1292);
             this.image5Textbox.MaxLength = 1000;
             this.image5Textbox.Name = "image5Textbox";
             this.image5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image5Textbox.TabIndex = 110;
+            this.image5Textbox.TabIndex = 114;
             // 
             // image6Textbox
             // 
             this.image6Textbox.Enabled = false;
-            this.image6Textbox.Location = new System.Drawing.Point(187, 1290);
+            this.image6Textbox.Location = new System.Drawing.Point(187, 1318);
             this.image6Textbox.MaxLength = 1000;
             this.image6Textbox.Name = "image6Textbox";
             this.image6Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image6Textbox.TabIndex = 113;
+            this.image6Textbox.TabIndex = 117;
             // 
             // image7Textbox
             // 
             this.image7Textbox.Enabled = false;
-            this.image7Textbox.Location = new System.Drawing.Point(187, 1316);
+            this.image7Textbox.Location = new System.Drawing.Point(187, 1344);
             this.image7Textbox.MaxLength = 1000;
             this.image7Textbox.Name = "image7Textbox";
             this.image7Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image7Textbox.TabIndex = 116;
+            this.image7Textbox.TabIndex = 120;
             // 
             // image8Textbox
             // 
             this.image8Textbox.Enabled = false;
-            this.image8Textbox.Location = new System.Drawing.Point(187, 1342);
+            this.image8Textbox.Location = new System.Drawing.Point(187, 1370);
             this.image8Textbox.MaxLength = 1000;
             this.image8Textbox.Name = "image8Textbox";
             this.image8Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image8Textbox.TabIndex = 119;
+            this.image8Textbox.TabIndex = 123;
             // 
             // image9Textbox
             // 
             this.image9Textbox.Enabled = false;
-            this.image9Textbox.Location = new System.Drawing.Point(187, 1368);
+            this.image9Textbox.Location = new System.Drawing.Point(187, 1396);
             this.image9Textbox.MaxLength = 1000;
             this.image9Textbox.Name = "image9Textbox";
             this.image9Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image9Textbox.TabIndex = 122;
+            this.image9Textbox.TabIndex = 126;
             // 
             // image10Textbox
             // 
             this.image10Textbox.Enabled = false;
-            this.image10Textbox.Location = new System.Drawing.Point(187, 1394);
+            this.image10Textbox.Location = new System.Drawing.Point(187, 1422);
             this.image10Textbox.MaxLength = 1000;
             this.image10Textbox.Name = "image10Textbox";
             this.image10Textbox.Size = new System.Drawing.Size(500, 20);
-            this.image10Textbox.TabIndex = 125;
+            this.image10Textbox.TabIndex = 129;
             // 
             // group1Textbox
             // 
             this.group1Textbox.Enabled = false;
-            this.group1Textbox.Location = new System.Drawing.Point(187, 1420);
+            this.group1Textbox.Location = new System.Drawing.Point(187, 1448);
             this.group1Textbox.MaxLength = 1000;
             this.group1Textbox.Name = "group1Textbox";
             this.group1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group1Textbox.TabIndex = 128;
+            this.group1Textbox.TabIndex = 132;
             // 
             // group2Textbox
             // 
             this.group2Textbox.Enabled = false;
-            this.group2Textbox.Location = new System.Drawing.Point(187, 1446);
+            this.group2Textbox.Location = new System.Drawing.Point(187, 1474);
             this.group2Textbox.MaxLength = 1000;
             this.group2Textbox.Name = "group2Textbox";
             this.group2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group2Textbox.TabIndex = 131;
+            this.group2Textbox.TabIndex = 135;
             // 
             // group3Textbox
             // 
             this.group3Textbox.Enabled = false;
-            this.group3Textbox.Location = new System.Drawing.Point(187, 1472);
+            this.group3Textbox.Location = new System.Drawing.Point(187, 1500);
             this.group3Textbox.MaxLength = 1000;
             this.group3Textbox.Name = "group3Textbox";
             this.group3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group3Textbox.TabIndex = 134;
+            this.group3Textbox.TabIndex = 138;
             // 
             // group4Textbox
             // 
             this.group4Textbox.Enabled = false;
-            this.group4Textbox.Location = new System.Drawing.Point(187, 1498);
+            this.group4Textbox.Location = new System.Drawing.Point(187, 1526);
             this.group4Textbox.MaxLength = 1000;
             this.group4Textbox.Name = "group4Textbox";
             this.group4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group4Textbox.TabIndex = 137;
+            this.group4Textbox.TabIndex = 141;
             // 
             // group5Textbox
             // 
             this.group5Textbox.Enabled = false;
-            this.group5Textbox.Location = new System.Drawing.Point(187, 1524);
+            this.group5Textbox.Location = new System.Drawing.Point(187, 1552);
             this.group5Textbox.MaxLength = 1000;
             this.group5Textbox.Name = "group5Textbox";
             this.group5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.group5Textbox.TabIndex = 140;
+            this.group5Textbox.TabIndex = 144;
             // 
             // model1Textbox
             // 
             this.model1Textbox.Enabled = false;
-            this.model1Textbox.Location = new System.Drawing.Point(187, 1550);
+            this.model1Textbox.Location = new System.Drawing.Point(187, 1578);
             this.model1Textbox.MaxLength = 1000;
             this.model1Textbox.Name = "model1Textbox";
             this.model1Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model1Textbox.TabIndex = 143;
+            this.model1Textbox.TabIndex = 147;
             // 
             // model2Textbox
             // 
             this.model2Textbox.Enabled = false;
-            this.model2Textbox.Location = new System.Drawing.Point(187, 1576);
+            this.model2Textbox.Location = new System.Drawing.Point(187, 1604);
             this.model2Textbox.MaxLength = 1000;
             this.model2Textbox.Name = "model2Textbox";
             this.model2Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model2Textbox.TabIndex = 146;
+            this.model2Textbox.TabIndex = 150;
             // 
             // model3Textbox
             // 
             this.model3Textbox.Enabled = false;
-            this.model3Textbox.Location = new System.Drawing.Point(187, 1602);
+            this.model3Textbox.Location = new System.Drawing.Point(187, 1630);
             this.model3Textbox.MaxLength = 1000;
             this.model3Textbox.Name = "model3Textbox";
             this.model3Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model3Textbox.TabIndex = 149;
+            this.model3Textbox.TabIndex = 153;
             // 
             // model4Textbox
             // 
             this.model4Textbox.Enabled = false;
-            this.model4Textbox.Location = new System.Drawing.Point(187, 1628);
+            this.model4Textbox.Location = new System.Drawing.Point(187, 1656);
             this.model4Textbox.MaxLength = 1000;
             this.model4Textbox.Name = "model4Textbox";
             this.model4Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model4Textbox.TabIndex = 152;
+            this.model4Textbox.TabIndex = 156;
             // 
             // model5Textbox
             // 
             this.model5Textbox.Enabled = false;
-            this.model5Textbox.Location = new System.Drawing.Point(187, 1654);
+            this.model5Textbox.Location = new System.Drawing.Point(187, 1682);
             this.model5Textbox.MaxLength = 1000;
             this.model5Textbox.Name = "model5Textbox";
             this.model5Textbox.Size = new System.Drawing.Size(500, 20);
-            this.model5Textbox.TabIndex = 155;
+            this.model5Textbox.TabIndex = 159;
             // 
             // template1Textbox
             // 
             this.template1Textbox.Enabled = false;
-            this.template1Textbox.Location = new System.Drawing.Point(187, 1680);
+            this.template1Textbox.Location = new System.Drawing.Point(187, 1708);
             this.template1Textbox.MaxLength = 1000;
             this.template1Textbox.Name = "template1Textbox";
             this.template1Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template1Textbox.TabIndex = 158;
+            this.template1Textbox.TabIndex = 162;
             // 
             // template2Textbox
             // 
             this.template2Textbox.Enabled = false;
-            this.template2Textbox.Location = new System.Drawing.Point(187, 1706);
+            this.template2Textbox.Location = new System.Drawing.Point(187, 1734);
             this.template2Textbox.MaxLength = 1000;
             this.template2Textbox.Name = "template2Textbox";
             this.template2Textbox.Size = new System.Drawing.Size(574, 20);
-            this.template2Textbox.TabIndex = 160;
+            this.template2Textbox.TabIndex = 164;
             // 
             // updateSkuDetailButton
             // 
@@ -1806,10 +1810,10 @@
             this.updateSkuDetailButton.Enabled = false;
             this.updateSkuDetailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateSkuDetailButton.ForeColor = System.Drawing.Color.White;
-            this.updateSkuDetailButton.Location = new System.Drawing.Point(601, 475);
+            this.updateSkuDetailButton.Location = new System.Drawing.Point(601, 503);
             this.updateSkuDetailButton.Name = "updateSkuDetailButton";
             this.updateSkuDetailButton.Size = new System.Drawing.Size(160, 34);
-            this.updateSkuDetailButton.TabIndex = 55;
+            this.updateSkuDetailButton.TabIndex = 59;
             this.updateSkuDetailButton.Text = "Update SKU Details";
             this.updateSkuDetailButton.UseVisualStyleBackColor = false;
             this.updateSkuDetailButton.Click += new System.EventHandler(this.updateSkuDetailButton_Click);
@@ -1817,10 +1821,10 @@
             // completeLabel
             // 
             this.completeLabel.AutoSize = true;
-            this.completeLabel.Location = new System.Drawing.Point(532, 485);
+            this.completeLabel.Location = new System.Drawing.Point(532, 513);
             this.completeLabel.Name = "completeLabel";
             this.completeLabel.Size = new System.Drawing.Size(63, 13);
-            this.completeLabel.TabIndex = 54;
+            this.completeLabel.TabIndex = 58;
             this.completeLabel.Text = "Completed !";
             this.completeLabel.Visible = false;
             // 
@@ -1833,7 +1837,7 @@
             this.manualRadioButton.Location = new System.Drawing.Point(11, 14);
             this.manualRadioButton.Name = "manualRadioButton";
             this.manualRadioButton.Size = new System.Drawing.Size(127, 17);
-            this.manualRadioButton.TabIndex = 94;
+            this.manualRadioButton.TabIndex = 98;
             this.manualRadioButton.TabStop = true;
             this.manualRadioButton.Text = "Manual image update";
             this.manualRadioButton.UseVisualStyleBackColor = true;
@@ -1847,7 +1851,7 @@
             this.autoRadioButton.Location = new System.Drawing.Point(11, 37);
             this.autoRadioButton.Name = "autoRadioButton";
             this.autoRadioButton.Size = new System.Drawing.Size(114, 17);
-            this.autoRadioButton.TabIndex = 95;
+            this.autoRadioButton.TabIndex = 99;
             this.autoRadioButton.Text = "Auto image update";
             this.autoRadioButton.UseVisualStyleBackColor = true;
             this.autoRadioButton.CheckedChanged += new System.EventHandler(this.autoRadioButton_CheckedChanged);
@@ -1857,10 +1861,10 @@
             this.autoManualPanel.BackColor = System.Drawing.Color.Transparent;
             this.autoManualPanel.Controls.Add(this.manualRadioButton);
             this.autoManualPanel.Controls.Add(this.autoRadioButton);
-            this.autoManualPanel.Location = new System.Drawing.Point(569, 994);
+            this.autoManualPanel.Location = new System.Drawing.Point(569, 1022);
             this.autoManualPanel.Name = "autoManualPanel";
             this.autoManualPanel.Size = new System.Drawing.Size(141, 67);
-            this.autoManualPanel.TabIndex = 93;
+            this.autoManualPanel.TabIndex = 97;
             // 
             // backgroundWorkerImagePath
             // 
@@ -1922,11 +1926,11 @@
             this.onWebsiteCheckbox.Enabled = false;
             this.onWebsiteCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onWebsiteCheckbox.ForeColor = System.Drawing.Color.Green;
-            this.onWebsiteCheckbox.Location = new System.Drawing.Point(331, 485);
+            this.onWebsiteCheckbox.Location = new System.Drawing.Point(331, 513);
             this.onWebsiteCheckbox.Name = "onWebsiteCheckbox";
             this.onWebsiteCheckbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.onWebsiteCheckbox.Size = new System.Drawing.Size(15, 14);
-            this.onWebsiteCheckbox.TabIndex = 53;
+            this.onWebsiteCheckbox.TabIndex = 57;
             this.onWebsiteCheckbox.UseVisualStyleBackColor = true;
             // 
             // websiteLabel
@@ -1934,34 +1938,34 @@
             this.websiteLabel.AutoSize = true;
             this.websiteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.websiteLabel.ForeColor = System.Drawing.Color.Green;
-            this.websiteLabel.Location = new System.Drawing.Point(219, 481);
+            this.websiteLabel.Location = new System.Drawing.Point(219, 509);
             this.websiteLabel.Name = "websiteLabel";
             this.websiteLabel.Size = new System.Drawing.Size(106, 20);
-            this.websiteLabel.TabIndex = 52;
+            this.websiteLabel.TabIndex = 56;
             this.websiteLabel.Text = "On Website?";
             // 
             // pricingTierUpdown
             // 
             this.pricingTierUpdown.Enabled = false;
-            this.pricingTierUpdown.Location = new System.Drawing.Point(114, 409);
+            this.pricingTierUpdown.Location = new System.Drawing.Point(114, 437);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});
             this.pricingTierUpdown.Name = "pricingTierUpdown";
             this.pricingTierUpdown.Size = new System.Drawing.Size(96, 20);
-            this.pricingTierUpdown.TabIndex = 43;
+            this.pricingTierUpdown.TabIndex = 47;
             // 
             // pricingTierLabel
             // 
             this.pricingTierLabel.AutoSize = true;
             this.pricingTierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pricingTierLabel.ForeColor = System.Drawing.Color.Green;
-            this.pricingTierLabel.Location = new System.Drawing.Point(13, 409);
+            this.pricingTierLabel.Location = new System.Drawing.Point(13, 437);
             this.pricingTierLabel.Name = "pricingTierLabel";
             this.pricingTierLabel.Size = new System.Drawing.Size(95, 20);
-            this.pricingTierLabel.TabIndex = 42;
+            this.pricingTierLabel.TabIndex = 46;
             this.pricingTierLabel.Text = "Pricing Tier";
             // 
             // reorderQtyLabel
@@ -1969,16 +1973,16 @@
             this.reorderQtyLabel.AutoSize = true;
             this.reorderQtyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reorderQtyLabel.ForeColor = System.Drawing.Color.Green;
-            this.reorderQtyLabel.Location = new System.Drawing.Point(281, 409);
+            this.reorderQtyLabel.Location = new System.Drawing.Point(281, 437);
             this.reorderQtyLabel.Name = "reorderQtyLabel";
             this.reorderQtyLabel.Size = new System.Drawing.Size(100, 20);
-            this.reorderQtyLabel.TabIndex = 44;
+            this.reorderQtyLabel.TabIndex = 48;
             this.reorderQtyLabel.Text = "Reorder Qty";
             // 
             // reorderQtyUpdown
             // 
             this.reorderQtyUpdown.Enabled = false;
-            this.reorderQtyUpdown.Location = new System.Drawing.Point(387, 409);
+            this.reorderQtyUpdown.Location = new System.Drawing.Point(387, 437);
             this.reorderQtyUpdown.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1986,31 +1990,31 @@
             0});
             this.reorderQtyUpdown.Name = "reorderQtyUpdown";
             this.reorderQtyUpdown.Size = new System.Drawing.Size(96, 20);
-            this.reorderQtyUpdown.TabIndex = 45;
+            this.reorderQtyUpdown.TabIndex = 49;
             // 
             // reorderLevelLabel
             // 
             this.reorderLevelLabel.AutoSize = true;
             this.reorderLevelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reorderLevelLabel.ForeColor = System.Drawing.Color.Green;
-            this.reorderLevelLabel.Location = new System.Drawing.Point(545, 409);
+            this.reorderLevelLabel.Location = new System.Drawing.Point(545, 437);
             this.reorderLevelLabel.Name = "reorderLevelLabel";
             this.reorderLevelLabel.Size = new System.Drawing.Size(114, 20);
-            this.reorderLevelLabel.TabIndex = 46;
+            this.reorderLevelLabel.TabIndex = 50;
             this.reorderLevelLabel.Text = "Reorder Level";
             // 
             // reorderLevelUpdown
             // 
             this.reorderLevelUpdown.Enabled = false;
-            this.reorderLevelUpdown.Location = new System.Drawing.Point(665, 409);
+            this.reorderLevelUpdown.Location = new System.Drawing.Point(665, 437);
             this.reorderLevelUpdown.Name = "reorderLevelUpdown";
             this.reorderLevelUpdown.Size = new System.Drawing.Size(96, 20);
-            this.reorderLevelUpdown.TabIndex = 47;
+            this.reorderLevelUpdown.TabIndex = 51;
             // 
             // trimTextbox
             // 
             this.trimTextbox.Enabled = false;
-            this.trimTextbox.Location = new System.Drawing.Point(493, 249);
+            this.trimTextbox.Location = new System.Drawing.Point(493, 250);
             this.trimTextbox.MaxLength = 50;
             this.trimTextbox.Name = "trimTextbox";
             this.trimTextbox.Size = new System.Drawing.Size(265, 20);
@@ -2055,6 +2059,57 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Lining Material";
             // 
+            // handleMaterialCombobox
+            // 
+            this.handleMaterialCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.handleMaterialCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.handleMaterialCombobox.Enabled = false;
+            this.handleMaterialCombobox.FormattingEnabled = true;
+            this.handleMaterialCombobox.Location = new System.Drawing.Point(493, 276);
+            this.handleMaterialCombobox.Name = "handleMaterialCombobox";
+            this.handleMaterialCombobox.Size = new System.Drawing.Size(265, 21);
+            this.handleMaterialCombobox.TabIndex = 25;
+            // 
+            // hardwareColorLabel
+            // 
+            this.hardwareColorLabel.AutoSize = true;
+            this.hardwareColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hardwareColorLabel.ForeColor = System.Drawing.Color.Green;
+            this.hardwareColorLabel.Location = new System.Drawing.Point(13, 278);
+            this.hardwareColorLabel.Name = "hardwareColorLabel";
+            this.hardwareColorLabel.Size = new System.Drawing.Size(136, 20);
+            this.hardwareColorLabel.TabIndex = 22;
+            this.hardwareColorLabel.Text = "Hardware Colour";
+            // 
+            // handleMaterialLabel
+            // 
+            this.handleMaterialLabel.AutoSize = true;
+            this.handleMaterialLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.handleMaterialLabel.ForeColor = System.Drawing.Color.Green;
+            this.handleMaterialLabel.Location = new System.Drawing.Point(353, 278);
+            this.handleMaterialLabel.Name = "handleMaterialLabel";
+            this.handleMaterialLabel.Size = new System.Drawing.Size(127, 20);
+            this.handleMaterialLabel.TabIndex = 24;
+            this.handleMaterialLabel.Text = "Handle Material";
+            // 
+            // hardwareColorCombobox
+            // 
+            this.hardwareColorCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.hardwareColorCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.hardwareColorCombobox.Enabled = false;
+            this.hardwareColorCombobox.FormattingEnabled = true;
+            this.hardwareColorCombobox.Items.AddRange(new object[] {
+            "",
+            "Nickel/Silver",
+            "Gold - Shiny",
+            "Golt - Matte-Satin",
+            "Silver - Matte-Satin",
+            "Antique"});
+            this.hardwareColorCombobox.Location = new System.Drawing.Point(187, 276);
+            this.hardwareColorCombobox.Name = "hardwareColorCombobox";
+            this.hardwareColorCombobox.Size = new System.Drawing.Size(159, 21);
+            this.hardwareColorCombobox.TabIndex = 23;
+            // 
             // UpdateSku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2062,6 +2117,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(770, 751);
+            this.Controls.Add(this.handleMaterialCombobox);
+            this.Controls.Add(this.hardwareColorLabel);
+            this.Controls.Add(this.handleMaterialLabel);
+            this.Controls.Add(this.hardwareColorCombobox);
             this.Controls.Add(this.trimTextbox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.liningMaterialCombobox);
@@ -2408,5 +2467,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox liningMaterialCombobox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox handleMaterialCombobox;
+        private System.Windows.Forms.Label hardwareColorLabel;
+        private System.Windows.Forms.Label handleMaterialLabel;
+        private System.Windows.Forms.ComboBox hardwareColorCombobox;
     }
 }

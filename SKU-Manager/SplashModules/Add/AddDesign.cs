@@ -39,14 +39,22 @@ namespace SKU_Manager.SplashModules.Add
         private string productWidth;
         private string productDepth;
         private string country;
-        private double shoulderDropLength;
-        private double handleStrapDropLength;
-        private string notableStrapGeneralFeatures = "1 long";
-        private bool protectiveFeet;
-        private string closure = "Zippered";
-        private bool innerPocket;
-        private bool outsidePocket;
-        private string sizeDifferentiation = "Medium";
+        private struct BagWallet
+        {
+            public double ShoulderDropLength;
+            public double HandleStrapDropLength;
+            public string NotableStrapGeneralFeatures;
+            public bool ProtectiveFeet;
+            public string Closure;
+            public bool InnerPocket;
+            public bool OutsidePocket;
+            public string SizeDifferentiation;
+            public bool DustBag;
+            public bool AuthenticityCard;
+            public int BillCompartment;
+            public int CardSlot;
+        }
+        private BagWallet bw = new BagWallet { NotableStrapGeneralFeatures = "1 long", Closure = "Zippered", SizeDifferentiation = "Medium", DustBag = true, AuthenticityCard = true };
         private string weight;
         private string numberComponents;
         private string shippableHeight;
@@ -169,7 +177,7 @@ namespace SKU_Manager.SplashModules.Add
                 productDepthTextbox.Enabled = true;
                 weightTextBox.Enabled = true;
                 countryCombobox.Enabled = true;
-                bagDetailButton.Enabled = true;
+                bagWalletDetailButton.Enabled = true;
                 numberComponentTextbox.Enabled = true;
                 strapCombobox.Enabled = true;
                 detachableCombobox.Enabled = true;
@@ -196,7 +204,7 @@ namespace SKU_Manager.SplashModules.Add
                 productDepthTextbox.Enabled = false;
                 weightTextBox.Enabled = false;
                 countryCombobox.Enabled = false;
-                bagDetailButton.Enabled = false;
+                bagWalletDetailButton.Enabled = false;
                 numberComponentTextbox.Enabled = false;
                 strapCombobox.Enabled = false;
                 detachableCombobox.Enabled = false;
@@ -311,23 +319,28 @@ namespace SKU_Manager.SplashModules.Add
         }
 
         /* bag detail button clicks that allow user to edit more fields for design */
-        private void bagDetailButton_Click(object sender, EventArgs e)
+        private void bagWalletDetailButton_Click(object sender, EventArgs e)
         {
-            BagDetail detail = new BagDetail(shoulderDropLength, handleStrapDropLength, notableStrapGeneralFeatures, protectiveFeet, closure, innerPocket, outsidePocket, sizeDifferentiation, Color.FromArgb(78, 95, 190), Color.White);
+            BagWalletDetail detail = new BagWalletDetail(bw.ShoulderDropLength, bw.HandleStrapDropLength, bw.NotableStrapGeneralFeatures, bw.ProtectiveFeet, bw.Closure, bw.InnerPocket, bw.OutsidePocket, bw.SizeDifferentiation, 
+                                                         bw.DustBag, bw.AuthenticityCard, bw.BillCompartment, bw.CardSlot, Color.FromArgb(78, 95, 190), Color.White);
             detail.ShowDialog(this);
 
             // set color online 
             if (detail.DialogResult != DialogResult.OK) return;
 
             // allocate data
-            shoulderDropLength = detail.ShoulderDropLength;
-            handleStrapDropLength = detail.HandleStrapDropLength;
-            notableStrapGeneralFeatures = detail.NotableStrapGeneralFeatures;
-            protectiveFeet = detail.ProtectiveFeet;
-            closure = detail.Closure;
-            innerPocket = detail.InnerPocket;
-            outsidePocket = detail.OutsidePocket;
-            sizeDifferentiation = detail.SizeDifferentiation;
+            bw.ShoulderDropLength = detail.ShoulderDropLength;
+            bw.HandleStrapDropLength = detail.HandleStrapDropLength;
+            bw.NotableStrapGeneralFeatures = detail.NotableStrapGeneralFeatures;
+            bw.ProtectiveFeet = detail.ProtectiveFeet;
+            bw.Closure = detail.Closure;
+            bw.InnerPocket = detail.InnerPocket;
+            bw.OutsidePocket = detail.OutsidePocket;
+            bw.SizeDifferentiation = detail.SizeDifferentiation;
+            bw.DustBag = detail.DustBag;
+            bw.AuthenticityCard = detail.AuthenticityCard;
+            bw.BillCompartment = detail.BillCompartment;
+            bw.CardSlot = detail.CardSlot;
         }
 
         #region Translate Button 2 Event
@@ -531,9 +544,9 @@ namespace SKU_Manager.SplashModules.Add
                     reader.Read();
 
                     // this is the real thing
-                    command = new SqlCommand("INSERT INTO master_Design_Attributes (Design_Service_Code,GiftBox,Brand,Design_Service_Flag,Design_Service_Family_Code,Design_Service_Fashion_Name_Ashlin,Design_Service_Fashion_Name_TSC_CA,Design_Service_Fashion_Name_THE_BAY,Design_Service_Fashion_Name_BESTBUY_CA,Design_Service_Fashion_Name_SHOP_CA,Design_Service_Fashion_Name_AMAZON_CA,Design_Service_Fashion_Name_AMAZON_COM,Design_Service_Fashion_Name_SEARS_CA,Design_Service_Fashion_Name_STAPLES_CA,Design_Service_Fashion_Name_WALMART, Short_Description,Short_Description_FR,Extended_Description,Extended_Description_FR,Trend_Short_Description,Trend_Short_Description_FR, Trend_Extended_Description,Trend_Extended_Description_FR, Design_Online, Design_Online_FR,Imprintable,Imprint_Height_cm,Imprint_Width_cm,Width_cm,Height_cm,Depth_cm, Weight_grams,Flat_Shippable,Fold_Shippable,Shippable_Width_cm,Shippable_Height_cm,Shippable_Depth_cm,Shippable_Weight_grams,Components,Strap,Detachable_Strap,Zippered_Enclosure,Option_1,Option_1_FR,Option_2,Option_2_FR,Option_3,Option_3_FR,Option_4,Option_4_FR,Option_5,Option_5_FR,Website_Flag,Active,Date_Added,Design_URL,Monogram,Country,ShoulderDropLength,HandleStrapDropLength,NotableStrapGeneralFeatures,ProtectiveFeet,Closure,InnerPocket,OutsidePocket,SizeDifferentiation) "
+                    command = new SqlCommand("INSERT INTO master_Design_Attributes (Design_Service_Code,GiftBox,Brand,Design_Service_Flag,Design_Service_Family_Code,Design_Service_Fashion_Name_Ashlin,Design_Service_Fashion_Name_TSC_CA,Design_Service_Fashion_Name_THE_BAY,Design_Service_Fashion_Name_BESTBUY_CA,Design_Service_Fashion_Name_SHOP_CA,Design_Service_Fashion_Name_AMAZON_CA,Design_Service_Fashion_Name_AMAZON_COM,Design_Service_Fashion_Name_SEARS_CA,Design_Service_Fashion_Name_STAPLES_CA,Design_Service_Fashion_Name_WALMART, Short_Description,Short_Description_FR,Extended_Description,Extended_Description_FR,Trend_Short_Description,Trend_Short_Description_FR,Trend_Extended_Description,Trend_Extended_Description_FR,Design_Online,Design_Online_FR,Imprintable,Imprint_Height_cm,Imprint_Width_cm,Width_cm,Height_cm,Depth_cm, Weight_grams,Flat_Shippable,Fold_Shippable,Shippable_Width_cm,Shippable_Height_cm,Shippable_Depth_cm,Shippable_Weight_grams,Components,Strap,Detachable_Strap,Zippered_Enclosure,Option_1,Option_1_FR,Option_2,Option_2_FR,Option_3,Option_3_FR,Option_4,Option_4_FR,Option_5,Option_5_FR,Website_Flag,Active,Date_Added,Design_URL,Monogram,Country,ShoulderDropLength,HandleStrapDropLength,NotableStrapGeneralFeatures,ProtectiveFeet,Closure,InnerPocket,OutsidePocket,SizeDifferentiation,Dust_Bag,Authenticity_Card,Bill_Compartment,Card_Slot) "
                                            + "VALUES (\'" + designServiceCode + "\'," + integer[9] + ",\'Ashlin®\',\'" + designServiceFlag + "\',\'" + reader.GetString(0) + "\',\'" + internalName + "\',\'" + tsc + "\',\'" + theBay + "\',\'" + bestbuy + "\',\'" + shopca + "\',\'" + amazon + "\',\'" + amazon + "\',\'" + sears + "\',\'" + staples + "\',\'" + walmart + "\',\'" + shortEnglishDescription + "\',\'" + shortFrenchDescription + "\',\'" + extendedEnglishDescription + "\',\'" + extendedFrenchDescription + "\',\'" + trendShortEnglishDescription + "\',\'" + trendShortFrenchDescription + "\',\'" + trendExtendedEnglishDescription + "\',\'" + trendExtendedFrenchDescription + "\',\'" + designOnlineEnglish.Replace("'", "''") + "\',\'" + designOnlineFrench.Replace("'", "''") + "\'," + integer[1] + ',' + imprintHeight + ',' + imprintWidth + ',' + productWidth + ", " + productHeight + ',' + productDepth + ',' + weight + ',' + integer[5] + ',' + integer[6] + ',' + shippableWidth + ',' + shippableHeight + ',' + shippableDepth + ',' + shippableWeight + ',' + numberComponents + ',' + integer[2] + ',' + integer[3] + ',' + integer[4] + ",\'" + englishOption[0] + "\',\'" + frenchOption[0] + "\',\'" + englishOption[1] + "\',\'" 
-                                           + frenchOption[1] + "\',\'" + englishOption[2] + "\',\'" + frenchOption[2] + "\',\'" + englishOption[3] + "\',\'" + frenchOption[3] + "\',\'" + englishOption[4] + "\',\'" + frenchOption[4] + "\'," + integer[7] + "," + integer[8] + ",\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + designUrl + "\'," + integer[0] + ",\'" + country + "\'," + shoulderDropLength + ',' + handleStrapDropLength + ",\'" + notableStrapGeneralFeatures + "\',\'" + protectiveFeet + "\',\'" + closure + "\',\'" + innerPocket + "\',\'" + outsidePocket + "\',\'" + sizeDifferentiation + "\')", connection);
+                                           + frenchOption[1] + "\',\'" + englishOption[2] + "\',\'" + frenchOption[2] + "\',\'" + englishOption[3] + "\',\'" + frenchOption[3] + "\',\'" + englishOption[4] + "\',\'" + frenchOption[4] + "\'," + integer[7] + "," + integer[8] + ",\'" + DateTime.Today.ToString("yyyy-MM-dd") + "\',\'" + designUrl + "\'," + integer[0] + ",\'" + country + "\'," + bw.ShoulderDropLength + ',' + bw.HandleStrapDropLength + ",\'" + bw.NotableStrapGeneralFeatures + "\',\'" + bw.ProtectiveFeet + "\',\'" + bw.Closure + "\',\'" + bw.InnerPocket + "\',\'" + bw.OutsidePocket + "\',\'" + bw.SizeDifferentiation + "\',\'" + bw.DustBag + "\',\'" + bw.AuthenticityCard + "\'," + bw.BillCompartment + ',' + bw.CardSlot + ')', connection);
                     reader.Close();
                     command.ExecuteNonQuery();
                 }

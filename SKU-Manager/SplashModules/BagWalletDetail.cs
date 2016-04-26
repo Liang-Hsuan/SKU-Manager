@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace SKU_Manager.SplashModules
 {
     /*
-     * A spalsh module that edit the bag detail
+     * A spalsh module that edit the bag and wallet detail
      */
-    public partial class BagDetail : Form
+    public partial class BagWalletDetail : Form
     {
         public double ShoulderDropLength { get; private set; }
         public double HandleStrapDropLength { get; private set; }
@@ -17,9 +17,14 @@ namespace SKU_Manager.SplashModules
         public bool InnerPocket { get; private set; }
         public bool OutsidePocket { get; private set; }
         public string SizeDifferentiation { get; private set; }
+        public bool DustBag { get; private set; }
+        public bool AuthenticityCard { get; private set; }
+        public int BillCompartment { get; private set; }
+        public int CardSlot { get; private set; }
 
         /* first constructor that initialize the fields parameters */
-        public BagDetail(double shoulderDropLength, double handleStrapLength, string notableStrapGeneralFeatures, bool protectiveFeet, string closure, bool innerPocket, bool outsidePocket, string sizeDifferentiation)
+        public BagWalletDetail(double shoulderDropLength, double handleStrapLength, string notableStrapGeneralFeatures, bool protectiveFeet, string closure, bool innerPocket, bool outsidePocket, string sizeDifferentiation,
+                         bool dustBag, bool authenticityCard, int billCompartment, int cardSlot)
         {
             InitializeComponent();
 
@@ -27,16 +32,31 @@ namespace SKU_Manager.SplashModules
             shoulderDropLengthTextbox.Text = shoulderDropLength.ToString(CultureInfo.InvariantCulture);
             handleStrapDropLengthTextbox.Text = handleStrapLength.ToString(CultureInfo.InvariantCulture);
             notableStrapGeneralFeaturesCombobox.Text = notableStrapGeneralFeatures;
-            protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 1 : 0;
+            protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 0 : 1;
             closureCombobox.Text = closure;
-            innerPocketCombobox.SelectedIndex = innerPocket ? 1 : 0;
-            outsidePocketCombobox.SelectedIndex = outsidePocket ? 1 : 0;
+            innerPocketCombobox.SelectedIndex = innerPocket ? 0 : 1;
+            outsidePocketCombobox.SelectedIndex = outsidePocket ? 0 : 1;
             sizeDifferentiationCombobox.Text = sizeDifferentiation;
+            if (dustBag) dustBagYesRadioButton.Checked = true; else dustBagNoRadioButton.Checked = true;
+            if (authenticityCard) authenticityCardYesRadioButton.Checked = true; else authenticityCardNoRadioButton.Checked = true;
+            switch (billCompartment)
+            {
+                case 1:
+                    billCompartmentCombobox.SelectedIndex = 1;
+                    break;
+                case 2:
+                    billCompartmentCombobox.SelectedIndex = 0;
+                    break;
+                default:
+                    billCompartmentCombobox.SelectedIndex = 2;
+                    break;
+            }
+            cardSlotUpdown.Value = cardSlot;
         }
 
         /* second constructor that initialize the fields parameters and set the color of the label and button */
-        public BagDetail(double shoulderDropLength, double handleStrapLength, string notableStrapGeneralFeatures, bool protectiveFeet, string closure, bool innerPocket, bool outsidePocket, string sizeDifferentiation,
-                         Color backColor, Color foreColor)
+        public BagWalletDetail(double shoulderDropLength, double handleStrapLength, string notableStrapGeneralFeatures, bool protectiveFeet, string closure, bool innerPocket, bool outsidePocket, string sizeDifferentiation,
+                         bool dustBag, bool authenticityCard, int billCompartment, int cardSlot, Color backColor, Color foreColor)
         {
             InitializeComponent();
 
@@ -44,11 +64,26 @@ namespace SKU_Manager.SplashModules
             shoulderDropLengthTextbox.Text = shoulderDropLength.ToString(CultureInfo.InvariantCulture);
             handleStrapDropLengthTextbox.Text = handleStrapLength.ToString(CultureInfo.InvariantCulture);
             notableStrapGeneralFeaturesCombobox.Text = notableStrapGeneralFeatures;
-            protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 1 : 0;
+            protectiveFeetCombobox.SelectedIndex = protectiveFeet ? 0 : 1;
             closureCombobox.Text = closure;
-            innerPocketCombobox.SelectedIndex = innerPocket ? 1 : 0;
-            outsidePocketCombobox.SelectedIndex = outsidePocket ? 1 : 0;
+            innerPocketCombobox.SelectedIndex = innerPocket ? 0 : 1;
+            outsidePocketCombobox.SelectedIndex = outsidePocket ? 0 : 1;
             sizeDifferentiationCombobox.Text = sizeDifferentiation;
+            if (dustBag) dustBagYesRadioButton.Checked = true; else dustBagNoRadioButton.Checked = true;
+            if (authenticityCard) authenticityCardYesRadioButton.Checked = true; else authenticityCardNoRadioButton.Checked = true;
+            switch (billCompartment)
+            {
+                case 1:
+                    billCompartmentCombobox.SelectedIndex = 1;
+                    break;
+                case 2:
+                    billCompartmentCombobox.SelectedIndex = 0;
+                    break;
+                default:
+                    billCompartmentCombobox.SelectedIndex = 2;
+                    break;
+            }
+            cardSlotUpdown.Value = cardSlot;
 
             // change back color
             shoulderDropLengthLabel.ForeColor = backColor;
@@ -60,12 +95,16 @@ namespace SKU_Manager.SplashModules
             outsidePocketLabel.ForeColor = backColor;
             sizeDifferentiationLabel.ForeColor = backColor;
             saveButton.BackColor = backColor;
+            dustBagLabel.ForeColor = backColor;
+            authenticityCardLabel.ForeColor = backColor;
+            billCompartmentLabel.ForeColor = backColor;
+            cardSlotLabel.ForeColor = backColor;
 
             // change fore color
             saveButton.ForeColor = foreColor;
         }
 
-        /* edit button clicks that send the bag details for the client */
+        /* edit button clicks that send the bag and wallet details for the client */
         private void saveButton_Click(object sender, System.EventArgs e)
         {
             ShoulderDropLength = shoulderDropLengthTextbox.Text != "" ? double.Parse(shoulderDropLengthTextbox.Text) : 0;
@@ -76,6 +115,21 @@ namespace SKU_Manager.SplashModules
             InnerPocket = bool.Parse(innerPocketCombobox.Text);
             OutsidePocket = bool.Parse(outsidePocketCombobox.Text);
             SizeDifferentiation = sizeDifferentiationCombobox.Text;
+            DustBag = dustBagYesRadioButton.Checked;
+            AuthenticityCard = authenticityCardYesRadioButton.Checked;
+            switch (billCompartmentCombobox.SelectedIndex)
+            {
+                case 0:
+                    BillCompartment = 2;
+                    break;
+                case 1:
+                    BillCompartment = 1;
+                    break;
+                default:
+                    BillCompartment = 0;
+                    break;
+            }
+            CardSlot = (int)cardSlotUpdown.Value;
 
             // set ok result
             DialogResult = DialogResult.OK;

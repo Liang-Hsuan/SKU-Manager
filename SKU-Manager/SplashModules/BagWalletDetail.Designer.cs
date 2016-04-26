@@ -1,6 +1,6 @@
 ﻿namespace SKU_Manager.SplashModules
 {
-    partial class BagDetail
+    partial class BagWalletDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BagDetail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BagWalletDetail));
             this.shoulderDropLengthTextbox = new System.Windows.Forms.TextBox();
             this.shoulderDropLengthLabel = new System.Windows.Forms.Label();
             this.handleStrapDropLengthTextbox = new System.Windows.Forms.TextBox();
@@ -46,6 +46,21 @@
             this.innerPocketLabel = new System.Windows.Forms.Label();
             this.outsidePocketLabel = new System.Windows.Forms.Label();
             this.sizeDifferentiationLabel = new System.Windows.Forms.Label();
+            this.dustBagLabel = new System.Windows.Forms.Label();
+            this.dustBagPanel = new System.Windows.Forms.Panel();
+            this.dustBagNoRadioButton = new System.Windows.Forms.RadioButton();
+            this.dustBagYesRadioButton = new System.Windows.Forms.RadioButton();
+            this.authenticityCardLabel = new System.Windows.Forms.Label();
+            this.authenticityCardPanel = new System.Windows.Forms.Panel();
+            this.authenticityCardNoRadioButton = new System.Windows.Forms.RadioButton();
+            this.authenticityCardYesRadioButton = new System.Windows.Forms.RadioButton();
+            this.billCompartmentLabel = new System.Windows.Forms.Label();
+            this.billCompartmentCombobox = new System.Windows.Forms.ComboBox();
+            this.cardSlotUpdown = new System.Windows.Forms.NumericUpDown();
+            this.cardSlotLabel = new System.Windows.Forms.Label();
+            this.dustBagPanel.SuspendLayout();
+            this.authenticityCardPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cardSlotUpdown)).BeginInit();
             this.SuspendLayout();
             // 
             // shoulderDropLengthTextbox
@@ -104,10 +119,10 @@
             this.saveButton.BackColor = System.Drawing.Color.Green;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Location = new System.Drawing.Point(294, 259);
+            this.saveButton.Location = new System.Drawing.Point(294, 367);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(92, 40);
-            this.saveButton.TabIndex = 16;
+            this.saveButton.TabIndex = 27;
             this.saveButton.Text = "SAVE";
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
@@ -254,12 +269,152 @@
             this.sizeDifferentiationLabel.TabIndex = 14;
             this.sizeDifferentiationLabel.Text = "Size Differentiation";
             // 
-            // BagDetail
+            // dustBagLabel
+            // 
+            this.dustBagLabel.AutoSize = true;
+            this.dustBagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dustBagLabel.ForeColor = System.Drawing.Color.Green;
+            this.dustBagLabel.Location = new System.Drawing.Point(12, 238);
+            this.dustBagLabel.Name = "dustBagLabel";
+            this.dustBagLabel.Size = new System.Drawing.Size(147, 20);
+            this.dustBagLabel.TabIndex = 16;
+            this.dustBagLabel.Text = "Dust Bag Included";
+            // 
+            // dustBagPanel
+            // 
+            this.dustBagPanel.Controls.Add(this.dustBagNoRadioButton);
+            this.dustBagPanel.Controls.Add(this.dustBagYesRadioButton);
+            this.dustBagPanel.Location = new System.Drawing.Point(294, 238);
+            this.dustBagPanel.Name = "dustBagPanel";
+            this.dustBagPanel.Size = new System.Drawing.Size(386, 20);
+            this.dustBagPanel.TabIndex = 17;
+            // 
+            // dustBagNoRadioButton
+            // 
+            this.dustBagNoRadioButton.AutoSize = true;
+            this.dustBagNoRadioButton.Location = new System.Drawing.Point(49, 3);
+            this.dustBagNoRadioButton.Name = "dustBagNoRadioButton";
+            this.dustBagNoRadioButton.Size = new System.Drawing.Size(39, 17);
+            this.dustBagNoRadioButton.TabIndex = 19;
+            this.dustBagNoRadioButton.Text = "No";
+            this.dustBagNoRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // dustBagYesRadioButton
+            // 
+            this.dustBagYesRadioButton.AutoSize = true;
+            this.dustBagYesRadioButton.Checked = true;
+            this.dustBagYesRadioButton.Location = new System.Drawing.Point(0, 3);
+            this.dustBagYesRadioButton.Name = "dustBagYesRadioButton";
+            this.dustBagYesRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.dustBagYesRadioButton.TabIndex = 18;
+            this.dustBagYesRadioButton.TabStop = true;
+            this.dustBagYesRadioButton.Text = "Yes";
+            this.dustBagYesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // authenticityCardLabel
+            // 
+            this.authenticityCardLabel.AutoSize = true;
+            this.authenticityCardLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authenticityCardLabel.ForeColor = System.Drawing.Color.Green;
+            this.authenticityCardLabel.Location = new System.Drawing.Point(12, 265);
+            this.authenticityCardLabel.Name = "authenticityCardLabel";
+            this.authenticityCardLabel.Size = new System.Drawing.Size(204, 20);
+            this.authenticityCardLabel.TabIndex = 20;
+            this.authenticityCardLabel.Text = "Authenticity Card Included";
+            // 
+            // authenticityCardPanel
+            // 
+            this.authenticityCardPanel.Controls.Add(this.authenticityCardNoRadioButton);
+            this.authenticityCardPanel.Controls.Add(this.authenticityCardYesRadioButton);
+            this.authenticityCardPanel.Location = new System.Drawing.Point(294, 264);
+            this.authenticityCardPanel.Name = "authenticityCardPanel";
+            this.authenticityCardPanel.Size = new System.Drawing.Size(386, 20);
+            this.authenticityCardPanel.TabIndex = 20;
+            // 
+            // authenticityCardNoRadioButton
+            // 
+            this.authenticityCardNoRadioButton.AutoSize = true;
+            this.authenticityCardNoRadioButton.Location = new System.Drawing.Point(49, 3);
+            this.authenticityCardNoRadioButton.Name = "authenticityCardNoRadioButton";
+            this.authenticityCardNoRadioButton.Size = new System.Drawing.Size(39, 17);
+            this.authenticityCardNoRadioButton.TabIndex = 22;
+            this.authenticityCardNoRadioButton.Text = "No";
+            this.authenticityCardNoRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // authenticityCardYesRadioButton
+            // 
+            this.authenticityCardYesRadioButton.AutoSize = true;
+            this.authenticityCardYesRadioButton.Checked = true;
+            this.authenticityCardYesRadioButton.Location = new System.Drawing.Point(0, 3);
+            this.authenticityCardYesRadioButton.Name = "authenticityCardYesRadioButton";
+            this.authenticityCardYesRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.authenticityCardYesRadioButton.TabIndex = 21;
+            this.authenticityCardYesRadioButton.TabStop = true;
+            this.authenticityCardYesRadioButton.Text = "Yes";
+            this.authenticityCardYesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // billCompartmentLabel
+            // 
+            this.billCompartmentLabel.AutoSize = true;
+            this.billCompartmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billCompartmentLabel.ForeColor = System.Drawing.Color.Green;
+            this.billCompartmentLabel.Location = new System.Drawing.Point(12, 291);
+            this.billCompartmentLabel.Name = "billCompartmentLabel";
+            this.billCompartmentLabel.Size = new System.Drawing.Size(139, 20);
+            this.billCompartmentLabel.TabIndex = 23;
+            this.billCompartmentLabel.Text = "Bill Compartment";
+            // 
+            // billCompartmentCombobox
+            // 
+            this.billCompartmentCombobox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.billCompartmentCombobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.billCompartmentCombobox.FormattingEnabled = true;
+            this.billCompartmentCombobox.Items.AddRange(new object[] {
+            "Double",
+            "Single",
+            "None"});
+            this.billCompartmentCombobox.Location = new System.Drawing.Point(294, 290);
+            this.billCompartmentCombobox.Name = "billCompartmentCombobox";
+            this.billCompartmentCombobox.Size = new System.Drawing.Size(386, 21);
+            this.billCompartmentCombobox.TabIndex = 24;
+            // 
+            // cardSlotUpdown
+            // 
+            this.cardSlotUpdown.Location = new System.Drawing.Point(294, 318);
+            this.cardSlotUpdown.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.cardSlotUpdown.Name = "cardSlotUpdown";
+            this.cardSlotUpdown.Size = new System.Drawing.Size(386, 20);
+            this.cardSlotUpdown.TabIndex = 26;
+            // 
+            // cardSlotLabel
+            // 
+            this.cardSlotLabel.AutoSize = true;
+            this.cardSlotLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cardSlotLabel.ForeColor = System.Drawing.Color.Green;
+            this.cardSlotLabel.Location = new System.Drawing.Point(12, 318);
+            this.cardSlotLabel.Name = "cardSlotLabel";
+            this.cardSlotLabel.Size = new System.Drawing.Size(88, 20);
+            this.cardSlotLabel.TabIndex = 25;
+            this.cardSlotLabel.Text = "Card Slots";
+            // 
+            // BagWalletDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(692, 321);
+            this.ClientSize = new System.Drawing.Size(692, 419);
+            this.Controls.Add(this.cardSlotLabel);
+            this.Controls.Add(this.cardSlotUpdown);
+            this.Controls.Add(this.billCompartmentCombobox);
+            this.Controls.Add(this.billCompartmentLabel);
+            this.Controls.Add(this.authenticityCardPanel);
+            this.Controls.Add(this.authenticityCardLabel);
+            this.Controls.Add(this.dustBagPanel);
+            this.Controls.Add(this.dustBagLabel);
             this.Controls.Add(this.sizeDifferentiationLabel);
             this.Controls.Add(this.outsidePocketLabel);
             this.Controls.Add(this.innerPocketLabel);
@@ -279,9 +434,14 @@
             this.Controls.Add(this.shoulderDropLengthLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "BagDetail";
+            this.Name = "BagWalletDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Bag Details";
+            this.Text = "Bag and Wallet Details";
+            this.dustBagPanel.ResumeLayout(false);
+            this.dustBagPanel.PerformLayout();
+            this.authenticityCardPanel.ResumeLayout(false);
+            this.authenticityCardPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cardSlotUpdown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,5 +466,17 @@
         private System.Windows.Forms.Label innerPocketLabel;
         private System.Windows.Forms.Label outsidePocketLabel;
         private System.Windows.Forms.Label sizeDifferentiationLabel;
+        private System.Windows.Forms.Label dustBagLabel;
+        private System.Windows.Forms.Panel dustBagPanel;
+        private System.Windows.Forms.RadioButton dustBagNoRadioButton;
+        private System.Windows.Forms.RadioButton dustBagYesRadioButton;
+        private System.Windows.Forms.Label authenticityCardLabel;
+        private System.Windows.Forms.Panel authenticityCardPanel;
+        private System.Windows.Forms.RadioButton authenticityCardNoRadioButton;
+        private System.Windows.Forms.RadioButton authenticityCardYesRadioButton;
+        private System.Windows.Forms.Label billCompartmentLabel;
+        private System.Windows.Forms.ComboBox billCompartmentCombobox;
+        private System.Windows.Forms.NumericUpDown cardSlotUpdown;
+        private System.Windows.Forms.Label cardSlotLabel;
     }
 }

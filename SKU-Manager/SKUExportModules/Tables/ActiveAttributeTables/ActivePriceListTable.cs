@@ -80,7 +80,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             AddColumn(MainTable, "Zippered_Enclosure");                                    // 53
             AddColumn(MainTable, "Design_Service_Fashion_Name_Ashlin");                    // 54
             AddColumn(MainTable, "Design_Service_Fashion_Name_TSC_CA");                    // 55
-            AddColumn(MainTable, "Design_Service_Fashion_name_COSTCO_CA");                 // 56
+            AddColumn(MainTable, "Design_Service_Fashion_name_THE_BAY");                   // 56
             AddColumn(MainTable, "Design_Service_Fashion_Name_BESTBUY_CA");                // 57
             AddColumn(MainTable, "Design_Service_Fashion_Name_SHOP_CA");                   // 58
             AddColumn(MainTable, "Design_Servive_Fashion_Name_AMAZON_CA");                 // 59
@@ -90,7 +90,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             AddColumn(MainTable, "Design_Service_Fashion_Name_WALMART");                   // 63
             AddColumn(MainTable, "SKU_SEARS");                                             // 64
             AddColumn(MainTable, "SKU_TSC_CA");                                            // 65
-            AddColumn(MainTable, "SKU_COSTCO_CA");                                         // 66
+            AddColumn(MainTable, "SKU_THE_BAY");                                           // 66
             AddColumn(MainTable, "SKU_BESTBUY_CA");                                        // 67
             AddColumn(MainTable, "SKU_AMAZON_CA");                                         // 68
             AddColumn(MainTable, "SKU_AMAZON_COM");                                        // 69
@@ -318,7 +318,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[52] = list[30];                                                 // zipped enclosure
                 row[53] = list[31];                                                 // design service fashion name ashlin
                 row[54] = list[32];                                                 // design service fashion name tsc
-                row[55] = list[33];                                                 // design service fashion name costco
+                row[55] = list[33];                                                 // design service fashion name the bay
                 row[56] = list[34];                                                 // design service fashion name bestbuy
                 row[57] = list[35];                                                 // design service fashion name shop ca
                 row[58] = list[36];                                                 // design service fashion name amazon ca
@@ -328,7 +328,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 row[62] = list[40];                                                 // design service fashion name walmart
                 row[63] = list[63];                                                 // sears
                 row[64] = list[64];                                                 // sku tsc
-                row[65] = list[65];                                                 // sku costco 
+                row[65] = list[65];                                                 // sku the bay
                 row[66] = list[66];                                                 // sku bestbuy
                 row[67] = list[67];                                                 // sku amazon ca
                 row[68] = list[68];                                                 // sku amazon com
@@ -354,7 +354,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                 double basePrice = Convert.ToDouble(list[78]);
                 row[88] = basePrice;                                                // base price
                 row[89] = list[51];                                                 // components
-                double msrp = discountList[5][0] * basePrice;
+                double msrp = discountList[7][0] * basePrice;
                 row[90] = msrp;                                                     // msrp
                 double runCharge = !list[51].Equals(DBNull.Value) ? Math.Round(msrp*0.05)/0.6 + Convert.ToInt32(list[51]) - 1 : Math.Round(msrp*0.05)/0.6;
                 if (runCharge > 8)
@@ -377,6 +377,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                         break;
                     case 4:
                         k = 4;
+                        break;
+                    case 5:
+                        k = 5;
+                        break;
+                    case 6:
+                        k = 6;
                         break;
                     default:
                         k = 0;
@@ -553,14 +559,15 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             // grab data from database
             // [3] material description short, [4] material description extended, [5] material description short fr, [6] material description extended fr 
             // [7] colour description short, [8] colour description extended, [9] colour description short fr, [10] colour description extended fr
-            // [11] design service flag, [12] design service family code, [13] design short description, [14] design extended description, [15] design short description fr, [16] design extended description fr, [17] imprintable, [18] imprint height cm, [19] imprint width cm, [20] depth cm, [21] width cm, [22] height cm, [23] weight grams. [24] shippable width cm, [25] shippable height cm, [26] shippable depth cm, [27] shippable weight grams, [28] strap, [29] detachable strap, [30] zipped enclosure, [31] design service fashion name ashlin, [32] design service fashion name tsc, [33] design service fashion name costco, [34] design service fashion name bestbuy, [35] design service fashion name shop ca, [36] design service fashion name amazon ca, [37] design service fashion name amazon com, [38] design service fashion name sears, [39] design service fashion name staples, [40] design service fashion name walmart, [41] option 1, [42] option 2, [43] option 3, [44] option 4, [45] option 5, [46] option 1 fr, [47] option 2 fr, [48] option 3 fr, [49] option 4 fr, [50] option 5 fr, [51] components, [52] flat shippable, [53] website flag
-            // [54] design servie family description, [55] design service family description fr, [56] design service family keywords general, [57] design service family category sage, [58] design service family category esp, [59] design service family category promomarketing, [60] design service family category uducat, [61] design service family distributocentral, [62] design service family themes sage                                                                                                                                                                                                                  & imprint height in     & imprint width in     & depth in     & width in     & height in     & weight pounds    & shippable width in     & shippable height in     & shippable depth in     & shippalbe weight lb
-            // [63] sku sears, [64] sku tsc, [65] sku costco, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path, [124] for price calculation
+            // [11] design service flag, [12] design service family code, [13] design short description, [14] design extended description, [15] design short description fr, [16] design extended description fr, [17] imprintable, [18] imprint height cm, [19] imprint width cm, [20] depth cm, [21] width cm, [22] height cm, [23] weight grams. [24] shippable width cm, [25] shippable height cm, [26] shippable depth cm, [27] shippable weight grams, [28] strap, [29] detachable strap, [30] zipped enclosure, [31] design service fashion name ashlin, [32] design service fashion name tsc, [33] design service fashion name the bay, [34] design service fashion name bestbuy, [35] design service fashion name shop ca, [36] design service fashion name amazon ca, [37] design service fashion name amazon com, [38] design service fashion name sears, [39] design service fashion name staples, [40] design service fashion name walmart, [41] option 1, [42] option 2, [43] option 3, [44] option 4, [45] option 5, [46] option 1 fr, [47] option 2 fr, [48] option 3 fr, [49] option 4 fr, [50] option 5 fr, [51] components, [52] flat shippable, [53] website flag
+            //                                                                                                                                                                                                                         & imprint height in     & imprint width in     & depth in     & width in     & height in     & weight pounds    & shippable width in     & shippable height in     & shippable depth in     & shippalbe weight lb
+            // [54] design servie family description, [55] design service family description fr, [56] design service family keywords general, [57] design service family category sage, [58] design service family category esp, [59] design service family category promomarketing, [60] design service family category uducat, [61] design service family distributocentral, [62] design service family themes sage                                                                                                                                                                                                                 
+            // [63] sku sears, [64] sku tsc, [65] sku the bay, [66] sku bestbuy, [67] sku amazon ca, [68] sku amazon com, [69] sku shop ca, [70] sku staples ca, [71] sku walmart ca, [72] walmart com, [73] sku distributorcentral, [74] sku promomarketing, [75] sku magento, [76] upc code 9, [77] upc code 10, [78] all columns related to price, [79] location wh, [80] location shelf, [81] location rack, [82] location colindex, [83] location full, [84] ~ [93] image path, [94] ~ [98] group path, [99] ~ [103] model path, [104] ~ [113] alt text image path, [114] ~ [118] alt text image group path, [119] ~ [123] alt text image model path, [124] for price calculation
             SqlCommand commnad = new SqlCommand("SELECT Material_Description_Short, Material_Description_Extended, Material_Description_Short_FR, Material_Description_Extended_FR, " +
                                                 "Colour_Description_Short, Colour_Description_Extended, Colour_Description_Short_FR, Colour_Description_Extended_FR, " +
-                                                "Design_Service_Flag, design.Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_COSTCO_CA, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
+                                                "Design_Service_Flag, design.Design_Service_Family_Code, Short_Description, Extended_Description, Short_Description_FR, Extended_Description_FR, Imprintable, Imprint_Height_cm, Imprint_Width_cm, Depth_cm, Width_cm, Height_cm, Weight_grams, Shippable_Width_cm, Shippable_Height_cm, Shippable_Depth_cm, Shippable_weight_grams, Strap, Detachable_Strap, Zippered_Enclosure, Design_Service_Fashion_Name_Ashlin, Design_Service_Fashion_Name_TSC_CA, Design_Service_Fashion_Name_THE_BAY, Design_Service_Fashion_Name_BESTBUY_CA, Design_Service_Fashion_Name_SHOP_CA, Design_Service_Fashion_Name_AMAZON_CA, Design_Service_Fashion_Name_AMAZON_COM, Design_Service_Fashion_Name_SEARS_CA, Design_Service_Fashion_Name_STAPLES_CA, Design_Service_Fashion_Name_WALMART, Option_1, Option_2, Option_3, Option_4, Option_5, Option_1_FR, Option_2_FR, Option_3_FR, Option_4_FR, Option_5_FR, Components, Flat_Shippable, Website_Flag, " +
                                                 "Design_Service_Family_Description, Design_Service_Family_Description_FR, Design_Service_Family_KeyWords_General, Design_Service_Family_Category_Sage, Design_Service_Family_Category_ESP, Design_Service_Family_Category_PromoMarketing, Design_Service_Family_Category_UDUCAT, Design_Service_Family_Category_DistributorCentral, Design_Service_Family_Themes_Sage, " +
-                                                "SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, " +
+                                                "SKU_SEARS_CA, SKU_TSC_CA, SKU_THE_BAY, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, SKU_STAPLES_CA, SKU_WALMART_CA, SKU_WALMART_COM, SKU_DistributorCentral, SKU_PromoMarketing, SKU_MAGENTO, UPC_Code_9, UPC_Code_10, Base_Price, Location_WH, Location_Shelf, Location_Rack, Location_ColIndex, Location_Full, Image_1_Path, Image_2_Path, Image_3_Path, Image_4_Path, Image_5_Path, Image_6_Path, Image_7_Path, Image_8_Path, Image_9_Path, Image_10_Path, Image_Group_1_Path, Image_Group_2_Path, Image_Group_3_Path, Image_Group_4_Path, Image_Group_5_Path, Image_Model_1_Path, Image_Model_2_Path, Image_Model_3_Path, Image_Model_4_Path, Image_Model_5_Path, Alt_Text_Image_1_Path, Alt_Text_Image_2_Path, Alt_Text_Image_3_Path, Alt_Text_Image_4_Path, Alt_Text_Image_5_Path, Alt_Text_Image_6_Path, Alt_Text_Image_7_Path, Alt_Text_Image_8_Path, Alt_Text_Image_9_Path, Alt_Text_Image_10_Path, Alt_Text_Image_Group_1_Path, Alt_Text_Image_Group_2_Path, Alt_Text_Image_Group_3_Path, Alt_Text_Image_Group_4_Path, Alt_Text_Image_Group_5_Path, Alt_Text_Image_Model_1_Path, Alt_Text_Image_Model_2_Path, Alt_Text_Image_Model_3_Path, Alt_Text_Image_Model_4_Path, Alt_Text_Image_Model_5_Path, " +
                                                 "sku.Pricing_Tier FROM master_SKU_Attributes sku " +
                                                 "INNER JOIN master_Design_Attributes design ON design.Design_Service_Code = sku.Design_Service_Code " +
                                                 "INNER JOIN ref_Families family ON family.Design_Service_Family_Code = design.Design_Service_Family_Code " +
@@ -587,7 +594,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
         /* a method that return the discount matrix */
         private double[][] GetDiscount()
         {
-            double[][] list = new double[6][];
+            double[][] list = new double[8][];
 
             // [0] rush standard, [1] 1 c standard, [2] 6 c standard, [3] 24 c standard, [4] 50 c standard, [5] 100 c standard, [6] 250 c standard, [7] 500 c standard, [8] 1000 c standard, [9] 2500 c standard, [10] rush net, [11] 1 c net standard
             // [12] 6 c net standard, [13] 24 c net standard, [14] 50 c net standard, [15] 100 net standard, [16] 250 net standard, [17] 500 net standard, [18] 1000 net standard, [19] 2500 net standard, [20] wholesale net
@@ -595,7 +602,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
                                               + "[RUSH_Net_25_wks], [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], [Wholesale_Net] FROM Discount_Matrix", Connection);         
             Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 6; i++)
             { 
                 double[] itemList = new double[21];
                 reader.Read();
@@ -618,7 +625,7 @@ namespace SKU_Manager.SKUExportModules.Tables.ActiveAttributeTables
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new[] { reader.GetDouble(0) };
+            list[7] = new[] { reader.GetDouble(0) };
             Connection.Close();
 
             return list;

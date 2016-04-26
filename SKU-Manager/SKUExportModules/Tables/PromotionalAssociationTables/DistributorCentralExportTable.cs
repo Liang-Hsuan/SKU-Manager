@@ -173,7 +173,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                 row[58] = 250;                                                          // qty 6
                 row[59] = 500;                                                          // qty 7
                 row[60] = 1000;                                                         // qty 8
-                double msrp = Convert.ToDouble(list[0]) * discountList[5][0];
+                double msrp = Convert.ToDouble(list[0]) * discountList[7][0];
                 int k;
                 switch (Convert.ToInt32(list[3]))
                 {
@@ -188,6 +188,12 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                         break;
                     case 4:
                         k = 4;
+                        break;
+                    case 5:
+                        k = 5;
+                        break;
+                    case 6:
+                        k = 6;
                         break;
                     default:
                         k = 0;
@@ -290,7 +296,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
         /* a method that return the discount matrix */
         private double[][] GetDiscount()
         {
-            double[][] list = new double[6][];
+            double[][] list = new double[8][];
 
             // [0] 1 c standard, [1] 6 c standard, [2] 24 c standard, [3] 50 c standard, [4] 100 c standard, [5] 250 c standard, [6] 500 c standard, [7] 1000 c standard, [8] 1 c net standard
             // [9] 6 c net standard, [10] 24 c net standard, [11] 50 c net standard, [12] 100 net standard, [13] 250 net standard, [14] 500 net standard, [15] 1000 net standard
@@ -298,7 +304,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
                                               + "[1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery] FROM Discount_Matrix", Connection);
             Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 6; i++)
             {
                 double[] itemList = new double[16];
                 reader.Read();
@@ -321,7 +327,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new[] { reader.GetDouble(0) };
+            list[7] = new[] { reader.GetDouble(0) };
             Connection.Close();
 
             return list;

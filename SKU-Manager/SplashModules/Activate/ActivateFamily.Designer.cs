@@ -237,7 +237,7 @@
             this.pricingTierUpdown.Enabled = false;
             this.pricingTierUpdown.Location = new System.Drawing.Point(122, 294);
             this.pricingTierUpdown.Maximum = new decimal(new int[] {
-            4,
+            6,
             0,
             0,
             0});

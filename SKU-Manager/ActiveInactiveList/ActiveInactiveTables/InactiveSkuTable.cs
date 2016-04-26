@@ -30,7 +30,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             AddColumn(MainTable, "Colour Code");            // 4
             AddColumn(MainTable, "SKU Sears.ca");           // 5
             AddColumn(MainTable, "SKU TSC.ca");             // 6
-            AddColumn(MainTable, "SKU COSTCO.ca");          // 7
+            AddColumn(MainTable, "SKU The Bay");            // 7
             AddColumn(MainTable, "SKU Bestbuy.ca");         // 8
             AddColumn(MainTable, "SKU Amazon.ca");          // 9
             AddColumn(MainTable, "SKU Amazon.com");         // 10
@@ -48,7 +48,9 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             AddColumn(MainTable, "Duty US");                // 22
             AddColumn(MainTable, "Lining Material");        // 23
             AddColumn(MainTable, "Trim");                   // 24
-            AddColumn(MainTable, "Active");                 // 25
+            AddColumn(MainTable, "Hardware Colour");        // 25
+            AddColumn(MainTable, "Handle Material");        // 26
+            AddColumn(MainTable, "Active");                 // 27
 
             // start loading data
             MainTable.BeginLoadData();
@@ -66,7 +68,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                 row[3] = list[3];       // colour code
                 row[4] = list[4];       // sku sears ca
                 row[5] = list[5];       // sku tsc ca
-                row[6] = list[6];       // sku costco ca
+                row[6] = list[6];       // sku the bay
                 row[7] = list[7];       // sku bestbuy ca
                 row[8] = list[8];       // sku amazon ca
                 row[9] = list[9];       // sku amazon com
@@ -84,7 +86,9 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
                 row[21] = list[21];     // duty us
                 row[22] = list[22];     // lining material
                 row[23] = list[23];     // trim
-                row[24] = list[24];     // active
+                row[24] = list[24];     // hardware color
+                row[25] = list[25];     // handle material
+                row[26] = list[26];     // active
 
                 MainTable.Rows.Add(row);
                 Progress++;
@@ -121,14 +125,14 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             ArrayList list = new ArrayList();
 
             // grab data from database
-            // [0] sku, [1] design service code, [2] material code, [3] colour code, [4] sku sears ca, [5] sku tsc ca, [6] sku costco ca, [7] sku bestbuy ca, [8] sku amazon ca [9] sku amazon com, [10] sku shop ca, [11] base price, [12] Pricing_Tier, 
-            // [13] reorder quantity, [14] reorder level [15] upc code 9, [16] upc code 10, [17] location full, [18] hts ca, [19] hts us, [20] duty ca, [21] duty us, [22] lining material, [23] trim, [24] active
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_SEARS_CA, SKU_TSC_CA, SKU_COSTCO_CA, SKU_BESTBUY_CA, SKU_AMAZON_CA, " +
-                                                "SKU_AMAZON_COM, SKU_SHOP_CA, Base_Price, Pricing_Tier, Reorder_Quantity, Reorder_Level, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Lining_Material, Trim, Active " +
+            // [0] sku, [1] design service code, [2] material code, [3] colour code, [4] sku sears ca, [5] sku tsc ca, [6] sku the bay, [7] sku bestbuy ca, [8] sku amazon ca [9] sku amazon com, [10] sku shop ca, [11] base price, [12] Pricing_Tier, 
+            // [13] reorder quantity, [14] reorder level [15] upc code 9, [16] upc code 10, [17] location full, [18] hts ca, [19] hts us, [20] duty ca, [21] duty us, [22] lining material, [23] trim, [24] hardware color, [25] handle material, [26] active
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin, Design_Service_Code, Material_Code, Colour_Code, SKU_SEARS_CA, SKU_TSC_CA, SKU_THE_BAY, SKU_BESTBUY_CA, SKU_AMAZON_CA, SKU_AMAZON_COM, SKU_SHOP_CA, " 
+                                              + "Base_Price, Pricing_Tier, Reorder_Quantity, Reorder_Level, UPC_CODE_9, UPC_CODE_10, Location_Full, HTS_CDN, HTS_US, Duty_CDN, Duty_US, Lining_Material, Trim, Hardware_Colour, Handle_Material, Active " +
                                                 "FROM master_SKU_Attributes WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            for (int i = 0; i <= 24; i++)
+            for (int i = 0; i <= 26; i++)
                 list.Add(reader.GetValue(i));
 
             return list;

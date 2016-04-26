@@ -61,11 +61,17 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
                     case 4:
                         k = 4;
                         break;
+                    case 5:
+                        k = 5;
+                        break;
+                    case 6:
+                        k = 6;
+                        break;
                     default:
                         k = 0;
                         break;
                 }
-                double msrp = Convert.ToDouble(list[0]) * discountList[k][9] * discountList[5][0];
+                double msrp = Convert.ToDouble(list[0]) * discountList[k][9] * discountList[7][0];
                 // costs breaks
                 row[4] = Math.Round(msrp * discountList[k][0], 4) + "; " + Math.Round(msrp * discountList[k][1], 4) + "; " + Math.Round(msrp * discountList[k][2], 4) + "; " + Math.Round(msrp * discountList[k][3], 4) + "; "
                        + Math.Round(msrp * discountList[k][4], 4) + "; " + Math.Round(msrp * discountList[k][5], 4) + "; " + Math.Round(msrp * discountList[k][6], 4) + "; " + Math.Round(msrp * discountList[k][7], 4) + "; "
@@ -85,7 +91,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
         /* a method that return the discount matrix */
         protected override double[][] GetDiscount()
         {
-            double[][] list = new double[6][];
+            double[][] list = new double[8][];
 
             //  [0] 1 net standard, [1] 6 net standard, [2] 24 net standard, [3] 50 net standard, [4] 100 net standard, [5] 250 net standard, [6] 500 net standard, [7] 1000 net standard, [8] 2500 net standard, [9] rush net
             SqlCommand command = new SqlCommand("SELECT [1_Net_Standard Delivery], [6_Net_Standard Delivery], [24_Net_Standard Delivery], [50_Net_Standard Delivery], [100_Net_Standard Delivery], [250_Net_Standard Delivery], [500_Net_Standard Delivery], [1000_Net_Standard Delivery], [2500_Net_Standard Delivery], "
@@ -93,7 +99,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
 
             Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 6; i++)
             {
                 double[] itemList = new double[10];
                 reader.Read();
@@ -116,7 +122,7 @@ namespace SKU_Manager.SKUExportModules.Tables.eCommerceTables.BrightpearlExportT
             command.CommandText = "SELECT [MSRP Multiplier] FROM ref_msrp_multiplier";
             reader = command.ExecuteReader();
             reader.Read();
-            list[5] = new[] { reader.GetDouble(0) };
+            list[7] = new[] { reader.GetDouble(0) };
             Connection.Close();
 
             return list;
