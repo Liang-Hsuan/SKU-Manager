@@ -315,7 +315,42 @@ namespace SKU_Manager.SplashModules.Add
         /* the event for design service flag textbox that determine the sku code */
         private void designServiceFlagTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (designServiceFlagTextbox.Text == "Service")
+            if (designServiceFlagTextbox.Text == "Design")
+            {
+                materialCombobox.Enabled = true;
+                colorCodeCombobox.Enabled = true;
+                warehouseCombobox.Enabled = true;
+                rackCombobox.Enabled = true;
+                shelfCombobox.Enabled = true;
+                columnIndexCombobox.Enabled = true;
+                liningMaterialCombobox.Enabled = true;
+                trimTextbox.Enabled = true;
+                hardwareColorCombobox.Enabled = true;
+                handleMaterialCombobox.Enabled = true;
+                ashlinTextbox.Enabled = true;
+                magentoTextbox.Enabled = true;
+                tscTextbox.Enabled = true;
+                theBayTextbox.Enabled = true;
+                bestbuyTextbox.Enabled = true;
+                shopCaTextbox.Enabled = true;
+                amazonCaTextbox.Enabled = true;
+                amazonComTextbox.Enabled = true;
+                searsTextbox.Enabled = true;
+                staplesTextbox.Enabled = true;
+                walmartCaTextbox.Enabled = true;
+                walmartComTextbox.Enabled = true;
+                distributorCentralTextbox.Enabled = true;
+                promoMarketingTextbox.Enabled = true;
+                giantTigerTextbox.Enabled = true;
+                asiXidTextbox.Enabled = true;
+                pricingTierUpdown.Enabled = true;
+                reorderQtyUpdown.Enabled = true;
+                reorderLevelUpdown.Enabled = true;
+                liningMaterialCombobox.SelectedIndex = 1;
+                trimTextbox.Text = "matching material";
+                hardwareColorCombobox.SelectedIndex = 1;
+            }
+            else
             {
                 materialCombobox.Enabled = false;
                 colorCodeCombobox.Enabled = false;
@@ -373,41 +408,6 @@ namespace SKU_Manager.SplashModules.Add
                 promoMarketingTextbox.Text = string.Empty;
                 giantTigerTextbox.Text = string.Empty;
                 asiXidTextbox.Text = string.Empty;
-            }
-            else
-            {
-                materialCombobox.Enabled = true;
-                colorCodeCombobox.Enabled = true;
-                warehouseCombobox.Enabled = true;
-                rackCombobox.Enabled = true;
-                shelfCombobox.Enabled = true;
-                columnIndexCombobox.Enabled = true;
-                liningMaterialCombobox.Enabled = true;
-                trimTextbox.Enabled = true;
-                hardwareColorCombobox.Enabled = true;
-                handleMaterialCombobox.Enabled = true;
-                ashlinTextbox.Enabled = true;
-                magentoTextbox.Enabled = true;
-                tscTextbox.Enabled = true;
-                theBayTextbox.Enabled = true;
-                bestbuyTextbox.Enabled = true;
-                shopCaTextbox.Enabled = true;
-                amazonCaTextbox.Enabled = true;
-                amazonComTextbox.Enabled = true;
-                searsTextbox.Enabled = true;
-                staplesTextbox.Enabled = true;
-                walmartCaTextbox.Enabled = true;
-                walmartComTextbox.Enabled = true;
-                distributorCentralTextbox.Enabled = true;
-                promoMarketingTextbox.Enabled = true;
-                giantTigerTextbox.Enabled = true;
-                asiXidTextbox.Enabled = true;
-                pricingTierUpdown.Enabled = true;
-                reorderQtyUpdown.Enabled = true;
-                reorderLevelUpdown.Enabled = true;
-                liningMaterialCombobox.SelectedIndex = 1;
-                trimTextbox.Text = "matching material";
-                hardwareColorCombobox.SelectedIndex = 1;
             }
         }
 

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 namespace SKU_Manager.SplashModules.Update
 {
    /*
-    * An application module for UpdateSKU that edit the text of alt
+    * An application module for UpdateSku that edit the text of alt
     */
     public partial class EditAlt : Form
     {

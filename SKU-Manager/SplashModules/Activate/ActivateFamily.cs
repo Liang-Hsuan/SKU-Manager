@@ -129,7 +129,7 @@ namespace SKU_Manager.SplashModules.Activate
                 {
                     SqlCommand command =
                         new SqlCommand(
-                            "UPDATE ref_Families SET Active = 'True', Date_Activated = \'" + DateTime.Now.ToString("yyyy-MM-dd") +
+                            "UPDATE ref_Families SET Active = 'True', Date_Activated = \'" + DateTime.Today.ToString("yyyy-MM-dd") +
                             "\' WHERE Design_Service_Family_Code = \'" + familyCode + '\'', connection);
                     connection.Open();
                     command.ExecuteNonQuery();

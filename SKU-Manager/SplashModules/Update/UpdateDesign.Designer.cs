@@ -1705,7 +1705,7 @@
             this.bagWalletDetailButton.Name = "bagWalletDetailButton";
             this.bagWalletDetailButton.Size = new System.Drawing.Size(165, 29);
             this.bagWalletDetailButton.TabIndex = 57;
-            this.bagWalletDetailButton.Text = "More Bag Details";
+            this.bagWalletDetailButton.Text = "More Bag and Wallet Details";
             this.bagWalletDetailButton.UseVisualStyleBackColor = false;
             this.bagWalletDetailButton.Click += new System.EventHandler(this.bagWalletDetailButton_Click);
             // 

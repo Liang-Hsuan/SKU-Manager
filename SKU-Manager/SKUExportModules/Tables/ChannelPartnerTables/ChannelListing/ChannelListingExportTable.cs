@@ -52,10 +52,12 @@ namespace SKU_Manager.SKUExportModules.Tables.ChannelPartnerTables.ChannelListin
             {
                 reader.Read();
 
-                Price price = new Price();
-                price.MsrpDisc = reader.GetInt32(0);
-                price.SellCent = (double)reader.GetDecimal(1);
-                price.BaseShip = (double)reader.GetDecimal(2);
+                Price price = new Price
+                {
+                    MsrpDisc = reader.GetInt32(0),
+                    SellCent = (double) reader.GetDecimal(1),
+                    BaseShip = (double) reader.GetDecimal(2)
+                };
 
                 list[i] = price;
             }

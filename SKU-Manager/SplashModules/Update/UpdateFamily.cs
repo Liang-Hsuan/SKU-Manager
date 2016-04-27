@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using SKU_Manager.ActiveInactiveList;
@@ -430,7 +431,7 @@ namespace SKU_Manager.SplashModules.Update
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
-                    usDutyTextbox.Text = reader.GetDecimal(0).ToString();
+                    usDutyTextbox.Text = reader.GetDecimal(0).ToString(CultureInfo.InvariantCulture);
                 }
             }
             else

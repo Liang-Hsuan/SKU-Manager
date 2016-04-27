@@ -283,10 +283,6 @@ namespace SKU_Manager.SplashModules.Update
                 basesPriceTextbox.Enabled = false;
                 canadianHtsCombobox.Enabled = false;
                 usHtsCombobox.Enabled = false;
-                liningMaterialCombobox.Enabled = false;
-                trimTextbox.Enabled = false;
-                hardwareColorCombobox.Enabled = false;
-                handleMaterialCombobox.Enabled = false;
                 activeCheckbox.Checked = false;
                 activeCheckbox.Enabled = false;
                 onWebsiteCheckbox.Checked = false;
@@ -297,8 +293,6 @@ namespace SKU_Manager.SplashModules.Update
                 autoRadioButton.Enabled = false;
                 autoRadioButton.Checked = true;
                 pricingTierUpdown.Enabled = false;
-                reorderQtyUpdown.Enabled = false;
-                reorderLevelUpdown.Enabled = false;
                 pricingTierUpdown.Value = 0;
                 reorderQtyUpdown.Value = 0;
                 reorderLevelUpdown.Value = 0;
@@ -611,37 +605,7 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for design service flag textbox text change that will determine some controls' enabilibty */
         private void designServiceFlagTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (designServiceFlagTextbox.Text == "Service")
-            {
-                warehouseCombobox.Enabled = false;
-                rackCombobox.Enabled = false;
-                shelfCombobox.Enabled = false;
-                columnIndexCombobox.Enabled = false;
-                liningMaterialCombobox.Enabled = false;
-                trimTextbox.Enabled = false;
-                hardwareColorCombobox.Enabled = false;
-                handleMaterialCombobox.Enabled = false;
-                ashlinTextbox.Enabled = false;
-                magentoTextbox.Enabled = false;
-                tscTextbox.Enabled = false;
-                theBayTextbox.Enabled = false;
-                bestbuyTextbox.Enabled = false;
-                shopCaTextbox.Enabled = false;
-                amazonCaTextbox.Enabled = false;
-                amazonComTextbox.Enabled = false;
-                searsTextbox.Enabled = false;
-                staplesTextbox.Enabled = false;
-                walmartCaTextbox.Enabled = false;
-                walmartComTextbox.Enabled = false;
-                distributorCentralTextbox.Enabled = false;
-                promoMarketingTextbox.Enabled = false;
-                giantTigerTextbox.Enabled = false;
-                asiXidTextbox.Enabled = false;
-                pricingTierUpdown.Enabled = false;
-                reorderQtyUpdown.Enabled = false;
-                reorderLevelUpdown.Enabled = false;
-            }
-            else
+            if (designServiceFlagTextbox.Text == "Design")
             {
                 warehouseCombobox.Enabled = true;
                 rackCombobox.Enabled = true;
@@ -667,9 +631,37 @@ namespace SKU_Manager.SplashModules.Update
                 promoMarketingTextbox.Enabled = true;
                 giantTigerTextbox.Enabled = true;
                 asiXidTextbox.Enabled = true;
-                pricingTierUpdown.Enabled = true;
                 reorderQtyUpdown.Enabled = true;
                 reorderLevelUpdown.Enabled = true;
+            }
+            else
+            {
+                warehouseCombobox.Enabled = false;
+                rackCombobox.Enabled = false;
+                shelfCombobox.Enabled = false;
+                columnIndexCombobox.Enabled = false;
+                liningMaterialCombobox.Enabled = false;
+                trimTextbox.Enabled = false;
+                hardwareColorCombobox.Enabled = false;
+                handleMaterialCombobox.Enabled = false;
+                ashlinTextbox.Enabled = false;
+                magentoTextbox.Enabled = false;
+                tscTextbox.Enabled = false;
+                theBayTextbox.Enabled = false;
+                bestbuyTextbox.Enabled = false;
+                shopCaTextbox.Enabled = false;
+                amazonCaTextbox.Enabled = false;
+                amazonComTextbox.Enabled = false;
+                searsTextbox.Enabled = false;
+                staplesTextbox.Enabled = false;
+                walmartCaTextbox.Enabled = false;
+                walmartComTextbox.Enabled = false;
+                distributorCentralTextbox.Enabled = false;
+                promoMarketingTextbox.Enabled = false;
+                giantTigerTextbox.Enabled = false;
+                asiXidTextbox.Enabled = false;
+                reorderQtyUpdown.Enabled = false;
+                reorderLevelUpdown.Enabled = false;
             }
         }
 

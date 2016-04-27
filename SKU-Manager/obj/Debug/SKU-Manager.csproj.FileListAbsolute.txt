@@ -764,3 +764,5 @@ V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashMod
 V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.UploadImage.UpdateUpcForm.resources
 V:\Project\Real Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU-Manager.csproj.GenerateResource.Cache
 C:\Users\Intern1001\Desktop\W16_Intern\Visual Studio project\workplace\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.BagWalletDetail.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.AdminModules.UpdateInventory.GiantTigerInventory.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\SKU-Manager\SKU-Manager\obj\Debug\SKU_Manager.SplashModules.BagWalletDetail.resources

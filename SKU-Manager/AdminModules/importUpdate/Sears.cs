@@ -53,7 +53,7 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                 Total = range.Rows.Count;
 
                 // start updating database for new sears sku
-                connection.Open();
+                Connection.Open();
                 for (int row = 1; row <= range.Rows.Count; row++)
                 {
                     // getting sears's sku and our sku
@@ -61,11 +61,11 @@ namespace SKU_Manager.AdminModules.ImportUpdate
                     string vendorSku = (string)(range.Cells[row, 2] as Excel.Range).Value2;
 
                     // update database
-                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', connection);
+                    SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = \'" + merchantSku + "\' WHERE SKU_Ashlin = \'" + vendorSku + '\'', Connection);
                     command.ExecuteNonQuery();
                     Current = row;
                 }
-                connection.Close();
+                Connection.Close();
 
                 xlWorkBook.Close(true, null, null);
                 xlApp.Quit();
@@ -165,10 +165,10 @@ namespace SKU_Manager.AdminModules.ImportUpdate
         /* a PUBLIC supporting method that set the given sku to discontine in database for sears */
         public override void Discontinue(string sku)
         {
-            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + '\'', connection);
-            connection.Open();
+            SqlCommand command = new SqlCommand("UPDATE master_SKU_Attributes SET SKU_SEARS_CA = '' WHERE SKU_Ashlin = \'" + sku + '\'', Connection);
+            Connection.Open();
             command.ExecuteNonQuery();
-            connection.Close();
+            Connection.Close();
         }
     }
 }

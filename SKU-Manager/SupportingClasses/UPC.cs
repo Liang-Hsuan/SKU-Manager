@@ -8,7 +8,7 @@ namespace SKU_Manager.SupportingClasses
     public static class Upc
     {
         // field that store upc code list
-        private static readonly List<double> upcList = new List<double>();
+        private static readonly List<double> UpcList = new List<double>();
 
         /* constructor that add all the used upc code in the list */
         static Upc()
@@ -16,12 +16,12 @@ namespace SKU_Manager.SupportingClasses
             // connect to database and get the upc
             using (var connection = new System.Data.SqlClient.SqlConnection(Credentials.DesignCon))
             {
-                var command = new System.Data.SqlClient.SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 is not NULL ORDER BY UPC_Code_9", connection);
+                var command = new System.Data.SqlClient.SqlCommand("SELECT UPC_Code_9 FROM master_SKU_Attributes WHERE UPC_Code_9 IS NOT NULL ORDER BY UPC_Code_9", connection);
                 connection.Open();
                 var reader = command.ExecuteReader();
 
                 while (reader.Read())
-                    upcList.Add(reader.GetDouble(0));
+                    UpcList.Add(reader.GetDouble(0));
             }
         }
 
@@ -31,7 +31,7 @@ namespace SKU_Manager.SupportingClasses
             // local fields for seeking available upc code
             double iterator = 62618300000;
 
-            while (upcList.Contains(iterator))
+            while (UpcList.Contains(iterator))
                 iterator++;
 
             return iterator.ToString(System.Globalization.CultureInfo.InvariantCulture);
