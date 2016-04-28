@@ -476,7 +476,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True'", Connection);
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Website = 'True'", Connection);
             Connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

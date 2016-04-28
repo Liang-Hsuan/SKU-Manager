@@ -215,76 +215,76 @@
     <Compile Include="MainForms\ExcelExport.Designer.cs">
       <DependentUpon>ExcelExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\ChannelListingView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\ChannelListingView.Designer.cs">
       <DependentUpon>ChannelListingView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.Designer.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.Designer.cs">
       <DependentUpon>BPinventoryView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPproductView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.Designer.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPproductView.Designer.cs">
       <DependentUpon>BPproductView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.Designer.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.Designer.cs">
       <DependentUpon>SelectionViewTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\AsiView.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\AsiView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\AsiView.Designer.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\AsiView.Designer.cs">
       <DependentUpon>AsiView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\DistributorCentralView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.Designer.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\DistributorCentralView.Designer.cs">
       <DependentUpon>DistributorCentralView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\SageView.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\SageView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\SageView.Designer.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\SageView.Designer.cs">
       <DependentUpon>SageView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\UducatView.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\UducatView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\PromotionalAssociationExports\UducatView.Designer.cs">
+    <Compile Include="SkuExportModules\PromotionalAssociationExports\UducatView.Designer.cs">
       <DependentUpon>UducatView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelHasListingTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelNewListingTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPexportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPcodedBlankExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPcodedImprintExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetBlankExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetImprintExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPproductExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedBlankExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedImprintExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetBlankExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetImprintExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ExportTableFast.cs" />
-    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\AsiExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\SageExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelHasListingTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelListingTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ChannelListing\ChannelNewListingTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPexportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPcodedBlankExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPcodedImprintExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetBlankExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPnetImprintExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPproductExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedBlankExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushCodedImprintExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetBlankExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\BrightpearlExportTables\BPrushNetImprintExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ExportTableFast.cs" />
+    <Compile Include="SkuExportModules\Tables\PromotionalAssociationTables\AsiExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\PromotionalAssociationTables\DistributorCentralExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\PromotionalAssociationTables\SageExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\PromotionalAssociationTables\UducatExportTable.cs" />
     <Compile Include="SplashModules\BagWalletDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,89 +317,89 @@
     <Compile Include="MainForms\SkuExport.Designer.cs">
       <DependentUpon>SkuExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\ActivePriceView.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\ActivePriceView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\ActivePriceView.Designer.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\ActivePriceView.Designer.cs">
       <DependentUpon>ActivePriceView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\StockQuantityView.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\StockQuantityView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\StockQuantityView.Designer.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\StockQuantityView.Designer.cs">
       <DependentUpon>StockQuantityView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\AmazonCaView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\AmazonCaView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\AmazonCaView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\AmazonCaView.Designer.cs">
       <DependentUpon>AmazonCaView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\AmazonComView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\AmazonComView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\AmazonComView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\AmazonComView.Designer.cs">
       <DependentUpon>AmazonComView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\BestbuyView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\BestbuyView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\BestbuyView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\BestbuyView.Designer.cs">
       <DependentUpon>BestbuyView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\GiantTigerView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\GiantTigerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\GiantTigerView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\GiantTigerView.Designer.cs">
       <DependentUpon>GiantTigerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\MagentoView.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\MagentoView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\eCommerceExports\MagentoView.Designer.cs">
+    <Compile Include="SkuExportModules\eCommerceExports\MagentoView.Designer.cs">
       <DependentUpon>MagentoView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\ShopCaView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\ShopCaView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\ShopCaView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\ShopCaView.Designer.cs">
       <DependentUpon>ShopCaView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\StaplesView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\StaplesView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\StaplesView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\StaplesView.Designer.cs">
       <DependentUpon>StaplesView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\UpcExportView.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\UpcExportView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ActiveAttributeExports\UpcExportView.Designer.cs">
+    <Compile Include="SkuExportModules\ActiveAttributeExports\UpcExportView.Designer.cs">
       <DependentUpon>UpcExportView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\WalmartView.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\WalmartView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SKUExportModules\ChannelPartnerExports\WalmartView.Designer.cs">
+    <Compile Include="SkuExportModules\ChannelPartnerExports\WalmartView.Designer.cs">
       <DependentUpon>WalmartView.cs</DependentUpon>
     </Compile>
-    <Compile Include="SKUExportModules\Tables\ActiveAttributeTables\ActivePriceListTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonCaExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonComExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\BestbuyExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\GiantTigerExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartItemExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartPriceExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\eCommerceTables\MagentoExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaBagExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaBaseExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaInventoryExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaPriceExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ChannelPartnerTables\StaplesExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ActiveAttributeTables\StockExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ActiveAttributeTables\UpcExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\ExportTable.cs" />
-    <Compile Include="SKUExportModules\Tables\Table.cs" />
+    <Compile Include="SkuExportModules\Tables\ActiveAttributeTables\ActivePriceListTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonCaExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\AmazonTables\AmazonComExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\BestbuyExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\GiantTigerExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartItemExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\WalmartTables\WalmartPriceExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\eCommerceTables\MagentoExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaBagExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaBaseExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaInventoryExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\ShopCaTables\ShopCaPriceExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ChannelPartnerTables\StaplesExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ActiveAttributeTables\StockExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ActiveAttributeTables\UpcExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\ExportTable.cs" />
+    <Compile Include="SkuExportModules\Tables\Table.cs" />
     <Compile Include="MainForms\Splash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -635,61 +635,61 @@
     <EmbeddedResource Include="MainForms\SkuExport.resx">
       <DependentUpon>SkuExport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ActiveAttributeExports\ActivePriceView.resx">
+    <EmbeddedResource Include="SkuExportModules\ActiveAttributeExports\ActivePriceView.resx">
       <DependentUpon>ActivePriceView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ActiveAttributeExports\StockQuantityView.resx">
+    <EmbeddedResource Include="SkuExportModules\ActiveAttributeExports\StockQuantityView.resx">
       <DependentUpon>StockQuantityView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\AmazonCaView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\AmazonCaView.resx">
       <DependentUpon>AmazonCaView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\AmazonComView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\AmazonComView.resx">
       <DependentUpon>AmazonComView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\BestbuyView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\BestbuyView.resx">
       <DependentUpon>BestbuyView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\ChannelListingView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\ChannelListingView.resx">
       <DependentUpon>ChannelListingView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\GiantTigerView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\GiantTigerView.resx">
       <DependentUpon>GiantTigerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.resx">
+    <EmbeddedResource Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPinventoryView.resx">
       <DependentUpon>BPinventoryView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\BPproductView.resx">
+    <EmbeddedResource Include="SkuExportModules\eCommerceExports\BrightpearlViews\BPproductView.resx">
       <DependentUpon>BPproductView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.resx">
+    <EmbeddedResource Include="SkuExportModules\eCommerceExports\BrightpearlViews\SelectionViewTable.resx">
       <DependentUpon>SelectionViewTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\eCommerceExports\MagentoView.resx">
+    <EmbeddedResource Include="SkuExportModules\eCommerceExports\MagentoView.resx">
       <DependentUpon>MagentoView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\ShopCaView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\ShopCaView.resx">
       <DependentUpon>ShopCaView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\StaplesView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\StaplesView.resx">
       <DependentUpon>StaplesView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ActiveAttributeExports\UpcExportView.resx">
+    <EmbeddedResource Include="SkuExportModules\ActiveAttributeExports\UpcExportView.resx">
       <DependentUpon>UpcExportView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\ChannelPartnerExports\WalmartView.resx">
+    <EmbeddedResource Include="SkuExportModules\ChannelPartnerExports\WalmartView.resx">
       <DependentUpon>WalmartView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\AsiView.resx">
+    <EmbeddedResource Include="SkuExportModules\PromotionalAssociationExports\AsiView.resx">
       <DependentUpon>AsiView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\DistributorCentralView.resx">
+    <EmbeddedResource Include="SkuExportModules\PromotionalAssociationExports\DistributorCentralView.resx">
       <DependentUpon>DistributorCentralView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\SageView.resx">
+    <EmbeddedResource Include="SkuExportModules\PromotionalAssociationExports\SageView.resx">
       <DependentUpon>SageView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SKUExportModules\PromotionalAssociationExports\UducatView.resx">
+    <EmbeddedResource Include="SkuExportModules\PromotionalAssociationExports\UducatView.resx">
       <DependentUpon>UducatView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForms\Splash.resx">

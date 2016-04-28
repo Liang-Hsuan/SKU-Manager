@@ -333,7 +333,7 @@ namespace SKU_Manager.SKUExportModules.Tables.PromotionalAssociationTables
             List<string> list = new List<string>();
 
             // connect to database and grab data
-            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE Active = 'True' AND Design_Service_Code in (" +
+            SqlCommand command = new SqlCommand("SELECT SKU_Ashlin FROM master_SKU_Attributes WHERE SKU_Website = 'True' AND Design_Service_Code in (" +
                                                 "SELECT Design_Service_Code FROM master_Design_Attributes WHERE Design_Service_Family_Code in (" +
                                                 "SELECT Design_Service_Family_Code FROM ref_Families WHERE Design_Service_Family_Category_Sage != ''))", Connection);
             Connection.Open();
