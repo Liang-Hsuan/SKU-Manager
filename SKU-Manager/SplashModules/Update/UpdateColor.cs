@@ -64,17 +64,25 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for left and right button click that change the index of comboboxes */
         private void leftButton_Click(object sender, EventArgs e)
         {
-            int i = colorCodeCombobox.SelectedIndex;
-            if (i > 0)
-                i--;
-            colorCodeCombobox.SelectedIndex = i;
+            try
+            {
+                int i = colorCodeCombobox.SelectedIndex;
+                if (i > 0)
+                    i--;
+                colorCodeCombobox.SelectedIndex = i;
+            }
+            catch { /* ignore -> out of bound */ }
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
-            int i = colorCodeCombobox.SelectedIndex;
-            if (i < colorCodeList.Count - 1)
-                i++;
-            colorCodeCombobox.SelectedIndex = i;
+            try
+            {
+                int i = colorCodeCombobox.SelectedIndex;
+                if (i < colorCodeList.Count - 1)
+                    i++;
+                colorCodeCombobox.SelectedIndex = i;
+            }
+            catch { /* ignore -> out of bound */ }
         }
         #endregion
 

@@ -192,10 +192,6 @@ namespace SKU_Manager.SplashModules.Update
             {
                 basesPriceTextbox.Enabled = true;
                 canadianHtsCombobox.Enabled = true;
-                liningMaterialCombobox.Enabled = true;
-                trimTextbox.Enabled = true;
-                hardwareColorCombobox.Enabled = true;
-                handleMaterialCombobox.Enabled = true;
                 usHtsCombobox.Enabled = true;
                 updateSkuDetailButton.Enabled = true;
                 updateSkuButton.Enabled = true;
@@ -203,8 +199,6 @@ namespace SKU_Manager.SplashModules.Update
                 autoRadioButton.Enabled = true;
                 autoRadioButton.Checked = true;
                 pricingTierUpdown.Enabled = true;
-                reorderQtyUpdown.Enabled = true;
-                reorderLevelUpdown.Enabled = true;
 
                 // set sku field from the selected item 
                 sku = ashlinSKUCombobox.SelectedItem.ToString();
@@ -469,17 +463,25 @@ namespace SKU_Manager.SplashModules.Update
         /* the event for left and right button click that change the index of comboboxes */
         private void leftButton_Click(object sender, EventArgs e)
         {
-            int i = ashlinSKUCombobox.SelectedIndex;
-            if (i > 0)
-                i--;
-            ashlinSKUCombobox.SelectedIndex = i;
+            try
+            {
+                int i = ashlinSKUCombobox.SelectedIndex;
+                if (i > 0)
+                    i--;
+                ashlinSKUCombobox.SelectedIndex = i;
+            }
+            catch { /* ignore -> out of bound */ }
         }
         private void rightButton_Click(object sender, EventArgs e)
         {
-            int i = ashlinSKUCombobox.SelectedIndex;
-            if (i < skuCodeList.Count - 1)
-                i++;
-            ashlinSKUCombobox.SelectedIndex = i;
+            try
+            {
+                int i = ashlinSKUCombobox.SelectedIndex;
+                if (i < skuCodeList.Count - 1)
+                    i++;
+                ashlinSKUCombobox.SelectedIndex = i;
+            }
+            catch { /* ignore -> out of bound */ }
         }
         #endregion
 
