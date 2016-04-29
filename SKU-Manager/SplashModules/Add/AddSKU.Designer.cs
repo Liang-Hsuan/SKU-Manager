@@ -1756,7 +1756,7 @@
             this.MaximizeBox = false;
             this.Name = "AddSku";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "12";
+            this.Text = "Add SKU";
             ((System.ComponentModel.ISupportInitialize)(this.pricingTierUpdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderQtyUpdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reorderLevelUpdown)).EndInit();

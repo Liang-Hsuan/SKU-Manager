@@ -122,8 +122,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedFrenchDescription = table.Rows[0][3].ToString();
             materialOnlineEnglish = table.Rows[0][4].ToString();
             materialOnlineFrench = table.Rows[0][5].ToString();
-            if (table.Rows[0][6].ToString() != "True")
-                active = false;
+            active = Convert.ToBoolean(table.Rows[0][6]);
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

@@ -148,8 +148,7 @@ namespace SKU_Manager.SplashModules.Update
             extendedFrenchDescription = table.Rows[0][3].ToString();
             colorOnlineEnglish = table.Rows[0][4].ToString();
             colorOnlineFrench = table.Rows[0][5].ToString();
-            if (table.Rows[0][6].ToString() != "True")
-                active = false;
+            active = Convert.ToBoolean(table.Rows[0][6]);
         }
         private void backgroundWorkerInfo_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -157,8 +156,7 @@ namespace SKU_Manager.SplashModules.Update
             shortFrenchDescriptionTextbox.Text = shortFrenchDescription;
             extendedEnglishDescriptionTextbox.Text = extendedEnglishDescription;
             extendedFrenchDescriptionTextbox.Text = extendedFrenchDescription;
-            if (active)
-                activeCheckbox.Checked = true;
+            activeCheckbox.Checked = active;
         }
         #endregion
 
@@ -270,7 +268,7 @@ namespace SKU_Manager.SplashModules.Update
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error happen during database updating: \r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error happen during database updating:\r\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

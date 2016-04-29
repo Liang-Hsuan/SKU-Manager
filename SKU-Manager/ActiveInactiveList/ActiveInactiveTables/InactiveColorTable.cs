@@ -24,7 +24,7 @@ namespace SKU_Manager.ActiveInactiveList.ActiveInactiveTables
             // connect to database and grab the all the active colors' data and put them into the table
             using (Connection)
             {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM inactive_colour_list_new;", Connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM inactive_colour_list_new", Connection);
                 Connection.Open();
                 adapter.Fill(MainTable);
             }
