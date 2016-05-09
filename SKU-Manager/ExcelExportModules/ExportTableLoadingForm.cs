@@ -19,7 +19,7 @@ namespace SKU_Manager.ExcelExportModules
         private int timeLeft;
         private readonly int total;
 
-        // initialize AmazonCATable object
+        // field for storing ExportTable list
         private readonly ExportTable[] tables;
         
         /* constrcutor that get the ExportTable object */
