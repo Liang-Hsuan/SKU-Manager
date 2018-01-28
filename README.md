@@ -1,5 +1,5 @@
 # SKU-Manager #
-## An enterprise application that manage company's products | my 2nd C# application ##
+## An enterprise application that manage company's products ##
 
 ### The main function of this enterprise application: ###
 
@@ -18,8 +18,6 @@
 * Since all credentials are grabbed from database and even database connection string requires user input, there is no confidential data anywhere in the code.
 
 -------------
-
-
 
 **Note:**
 The software has strong object-oriented design due to plenty of same functions for different eCommerce partners and online shopping channels but only the format and implementation are different.
